@@ -4,7 +4,7 @@ This folder is for the Director's **separate Original KOEI-inspired Windows/Linu
 
 ## Repackaged artifacts (locally verified; NOT yet stored in this repository)
 
-- **Game:** `KOEI_ENHANCED_BUILD40R3_NO_MUSIC_20261102.zip`; 68,112,066 bytes; SHA-256 `ad62439cdeead6769d022c79e2940957af268ab8e5a67c77b2b96f2fb782c8c1`. 512 entries, ZIP CRC PASS. Contains source, graphics, 14 generated sound effects, tests, and the game launcher. Excludes the 15 privately supplied MP3 tracks.
+- **Game:** `KOEI_ENHANCED_BUILD40R3_NO_MUSIC_20261102.zip`; 68,112,121 bytes; SHA-256 `ad62439cdeead6769d022c79e2940957af268ab8e5a67c77b2b96f2fb782c8c1`. 512 entries, ZIP CRC PASS. Contains source, graphics, 14 generated sound effects, tests, and the game launcher. Excludes the 15 privately supplied MP3 tracks.
 - **Music Assets:** `Music Assets.zip`; 80,632,011 bytes; SHA-256 `ee7078303874ccd44c1cc3737a9414dd8962727109435ed63b30dbb80fdf70fa`. 15 MP3s plus install instructions, ZIP CRC PASS. Its recording rights are **NOT cleared for public distribution**, so do not upload this archive to the public repository without appropriate rights.
 - **Original:** `KOEI_ENHANCED_BUILD40R3_HELP_TROOP_UI_CANDIDATE_20261102.zip`; 148,742,521 bytes; SHA-256 `dc51379520ec55765d983507724b2fe884f195b48d85b86ecaa4115b6191c4f4`, preserved unchanged outside GitHub.
 
