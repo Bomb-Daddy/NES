@@ -1,0 +1,100 @@
+ID,Category,Command / branch,Authority,Mode (from source),a_reach_UI,b_legal_commit,c_refuse_no_mutation,d_cancel,e_double_stale,f_boundary,g_interrupt_return,h_exit_coldload,i_mode_presence,Status,Evidence class,Evidence ref,Notes
+CMD-001,Top-level,Domestic,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Opens submenu
+CMD-002,Top-level,Military,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Opens submenu
+CMD-003,Top-level,Troop Assignments,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Distinct from Recruit and Move Army
+CMD-004,Top-level,Personnel,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Opens submenu
+CMD-005,Top-level,Market,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Standalone top-level not Commerce alias
+CMD-006,Top-level,Foreign Affairs,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Opens submenu
+CMD-007,Top-level,Information,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Nonmutating
+CMD-008,Top-level,Advisor,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-009,Top-level,Save/Load,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-010,Top-level,Options/Help,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-011,Top-level,End Month,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,See CMD-071 to CMD-073
+CMD-012,Top-level,Back to Strategic Map,UI0092 s5; DP-08,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Opens read-only map only; see CMD-074
+CMD-013,Domestic,Allocate Workers,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Seven job categories from finite budget; no Unassigned row
+CMD-014,Domestic,Distribute Food,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-015,Domestic,Distribute Goods,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-016,Military,Recruit Soldiers,UI0092 s5; DP-20,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Draws real workers; 100-group cap; civilian-to-soldier conservation
+CMD-017,Military,Move Army - friendly destination,UI0092 s5; DP-03,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-018,Military,Move Army - vacant destination (auto-occupy),UI0092 s5; DP-03,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Source-garrison defense-first rule; no separate Occupy command
+CMD-019,Military,Move Army - enemy-occupied destination,UI0092 s5; DP-03,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Must refuse or route to Attack; no mutation on refusal
+CMD-020,Military,Transport - troops,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Same ledger as Move Army where overlap
+CMD-021,Military,Transport - military supplies,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-022,Military,Transport - Metal,DP-18; DP-19,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Source debit target credit; enemy and nonadjacent controls
+CMD-023,Military,Plan Attack,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-024,Military,Attack (strategic),UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Hands off to tactical battle
+CMD-025,Military,Army-Assign soldiers among generals,DP-08; DP-18; C2 C-CMD,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Cap 100 groups per general; Skill and Arms mixing per original rules
+CMD-026,Military,Train Troops (province-wide by trainer War),DP-08; DP-18; C2 C-CMD,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Updates unit Skill/Training never officer War; absent from UI0092 list
+CMD-027,Military,Equip Arms / forge Arms from Metal,DP-18; DP-19; C2 C-CMD,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Consumes Metal and labor and time; no gold price
+CMD-028,Troop Assignments,Inspect units and assignments,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Nonmutating
+CMD-029,Troop Assignments,Assign/transfer between generals,UI0092 s5; DP-18,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Same validation as CMD-025
+CMD-030,Troop Assignments,Disband to population,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Conservation; legal only
+CMD-031,Personnel,Recruit Officer,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-032,Personnel,Train Officer,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Not Train Troops
+CMD-033,Personnel,Appoint Governor,UI0092 s5; DP-01,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Ruler only; bus-level authority; valid focus enum
+CMD-034,Personnel,Reward Governor,DP-02,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Ruler only; cost from ruler current province; 10+ governor roster scroll
+CMD-035,Personnel,Reward Officer,DP-02,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,CONDITIONAL: only if present in source; no free writings
+CMD-036,Personnel,Feast / Rest,DP-02,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,CONDITIONAL: once per province per month
+CMD-037,Personnel,Sworn brotherhood,DP-02,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,CONDITIONAL: difficulty cap validated at command and load
+CMD-038,Personnel,Appoint Advisor,DP-02,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,CONDITIONAL
+CMD-039,Personnel,Officer details view,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Nonmutating; no global roster panel
+CMD-040,Market,Buy Food,UI0092 s5; DP-09,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Seasonal quote; preview; conservation
+CMD-041,Market,Sell Food,UI0092 s5; DP-09,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-042,Market,Buy Metal,UI0092 s5; DP-09,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-043,Market,Sell Metal,UI0092 s5; DP-09,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-044,Market,Buy Arms,UI0092 s5; DP-18; C2 C-CMD,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Variable price; no domestic mine needed; raises unit Arms via lawful equip path
+CMD-045,Market,Buy Furs,UI0092 s5; DP-09,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-046,Market,Sell Furs,UI0092 s5; DP-09,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-047,Market,Specialty goods buy/sell,UI0092 s5; DP-09,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,To the extent supported by source
+CMD-048,Market,Quote and negotiation preview (Charisma and volume and officer BP),UI0092 s5; DP-09,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Stale quote must not commit
+CMD-049,Foreign Affairs,Ally,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,12-month term
+CMD-050,Foreign Affairs,Joint,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-051,Foreign Affairs,Marry,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Real eligibility refusal; no invented daughter
+CMD-052,Foreign Affairs,Give,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-053,Foreign Affairs,Cancel Alliance,UI0092 s5; DP-12,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Unilateral break; name-specific warning Confirm/Cancel
+CMD-054,Foreign Affairs,Threat,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-055,Foreign Affairs,Treaty renewal YES/NO prompt,DP-12; C3 C-RULES,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,M+11 vs M+12; YES/YES YES/NO NO/YES NO/NO; cold-load mid-vote
+CMD-056,Foreign Affairs,Breach warning Confirm/Cancel,DP-12,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Named warning before treaty-breaching command
+CMD-057,Information,Province and campaign details,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Nonmutating; all 41 provinces navigable without map clicks
+CMD-058,Information,Map and neighbor view,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Nonmutating
+CMD-059,Information,Journal and event history,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-060,Advisor,Monthly inquiry,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Real saved history only; no fabricated forecast
+CMD-061,Advisor,Six-month review,UI0092 s5; DP-10,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Real last 6 monthly snapshots
+CMD-062,Save/Load,Manual save slots 1-5,UI0092 s5; C6,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Five distinct slots; atomic write; slot isolation
+CMD-063,Save/Load,Load slot,UI0092 s5; C6,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Corrupt and incompatible-version refusal
+CMD-064,Save/Load,Continue Last Save,UI0092 s5; C6,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-065,Save/Load,Rolling autosave,UI0092 s5; C6,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Independent of manual slots
+CMD-066,Options/Help,Controller remapping,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-067,Options/Help,Music and SFX volume,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-068,Options/Help,Help screens,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-069,Options/Help,Pause / menu,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-070,Options/Help,Fullscreen / window,UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-071,End Month,End Month - normal (AI turn and calculation),UI0092 s5; DP-06,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Read-only map only while real processing runs; returns to same province
+CMD-072,End Month,End Month - player battle interrupt,DP-06; DP-12,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Calculation suspends and resumes; no skip; no double commit
+CMD-073,End Month,End Month - treaty prompt interrupt,DP-06; DP-12,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Never skipped to force province redraw
+CMD-074,Back to Strategic Map,Read-only China map open and return,DP-06; C1,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Zero command widgets; no map click issues orders
+CMD-075,Tactical,Move,C4; UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Multi-hex forest ambush
+CMD-076,Tactical,Attack - normal,C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-077,Tactical,Attack - simultaneous,C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-078,Tactical,Attack - charge,C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-079,Tactical,Attack - fire,C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Weather interaction
+CMD-080,Tactical,Wait / Guard,C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-081,Tactical,End Turn,C4; UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,No phantom extra turn
+CMD-082,Tactical,Auto Resolve,C4; UI0092 s5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-083,Tactical,Duel offer,C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-084,Tactical,Duel response (defender),C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,CPU response cannot be overridden; late duel rejected
+CMD-085,Tactical,Bribe,C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Protected-bit rule; gold and army ledger
+CMD-086,Tactical,Capture,C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-087,Tactical,Prisoner - Release,C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Defeated-ruler destination question (Q14) open in sources
+CMD-088,Tactical,Prisoner - Behead,C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-089,Tactical,Prisoner - Recruit (ordinary officers),C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Not offered for defeated ruler per reported Q14
+CMD-090,Tactical,Defender slot orders (human defender),C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-091,Tactical,Reinforcement / reserve call,C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,In-transit reserve must not defect before arrival
+CMD-092,Tactical,Withdraw / Flee destination,C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Whole-army withdrawal cancels in-transit reserves
+CMD-093,Tactical,Defender help request,C4,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,
+CMD-094,Launcher,Classic Game launch,C1,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Exact label; separate routing
+CMD-095,Launcher,Enhanced Game launch,C1,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Exact label; separate routing
+CMD-096,Setup,New game - historical ruler selection,C1; A2,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,15 historical rulers where supported; no silent R0/P9 start
+CMD-097,Setup,New game - custom ruler flow,A2; R2,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,As observed in original NES/SNES; NOT IMPLEMENTED in B37R2/B40R2 per register
+CMD-098,Setup,Setup China map province selection,C1; R5,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Setup-only interactive; vacant province rejected; occupied province opens ruler chooser
+CMD-099,Setup,Continue from launcher,C6,TBD,NR,NR,NR,NR,NR,NR,NR,NR,NOT RUN,,,Returns to saved province directly
