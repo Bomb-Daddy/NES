@@ -4,7 +4,7 @@ The original 148,742,521-byte Build40R3 ZIP was split **without modifying campai
 
 | Component | Bytes | SHA-256 | ZIP CRC |
 |---|---:|---|---|
-| Core no-music ZIP | 68,112,066 | `ad62439cdeead6769d022c79e2940957af268ab8e5a67c77b2b96f2fb782c8c1` | PASS |
+| Core no-music ZIP | 68,112,121 | `ad62439cdeead6769d022c79e2940957af268ab8e5a67c77b2b96f2fb782c8c1` | PASS |
 | Optional Music Assets ZIP | 80,632,011 | `ee7078303874ccd44c1cc3737a9414dd8962727109435ed63b30dbb80fdf70fa` | PASS |
 
 **Source integrity:** all 15 originally bundled arranged MP3s were extracted to the music archive. The main game ZIP contains zero music-format files. 14 generated WAV sound effects remain in the game. The core retains 507 unchanged source assets and modifies 4 narrowly related optional-audio test/preflight files.
