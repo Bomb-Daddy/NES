@@ -1,0 +1,78 @@
+id,surface,visible_control,route,route_status,engine_effect_test,cold_load_test,limitations
+B5CMD-001,Province main,Domestic,ProvinceStage.choose,ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Actual 4:3 960x720 view; full command semantics unverified
+B5CMD-002,Province main,Military,ProvinceStage.choose,ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Actual 4:3 960x720 view; full command semantics unverified
+B5CMD-003,Province main,Troop Assignments,ProvinceStage.choose,ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Actual 4:3 960x720 view; full command semantics unverified
+B5CMD-004,Province main,Personnel,ProvinceStage.choose,ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Actual 4:3 960x720 view; full command semantics unverified
+B5CMD-005,Province main,Market,ProvinceStage.choose,ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Actual 4:3 960x720 view; full command semantics unverified
+B5CMD-006,Province main,Foreign Affairs,ProvinceStage.choose,ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Actual 4:3 960x720 view; full command semantics unverified
+B5CMD-007,Province main,Information,ProvinceStage.choose,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Actual 4:3 960x720 view; full command semantics unverified
+B5CMD-008,Province main,Advisor,ProvinceStage.choose,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Actual 4:3 960x720 view; full command semantics unverified
+B5CMD-009,Province main,Save / Load,ProvinceStage.choose,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Actual 4:3 960x720 view; full command semantics unverified
+B5CMD-010,Province main,Options / Help,ProvinceStage.choose,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Actual 4:3 960x720 view; full command semantics unverified
+B5CMD-011,Province main,End Month,ProvinceStage.choose,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Actual 4:3 960x720 view; full command semantics unverified
+B5CMD-012,Province main,Back to Strategic Map,ProvinceStage.choose,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Actual 4:3 960x720 view; full command semantics unverified
+B5CMD-013,Province / Domestic,Allocate Workers,OrdersWindow(initial_order=Allocate Workers),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-014,Province / Domestic,Distribute Food,OrdersWindow(initial_order=Distribute Food),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-015,Province / Domestic,Distribute Goods,OrdersWindow(initial_order=Distribute Goods),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-016,Province / Military,Recruit,OrdersWindow(initial_order=Recruit),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-017,Province / Military,Train Troops,OrdersWindow(initial_order=Train Troops),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-018,Province / Military,Equip Arms,OrdersWindow(initial_order=Equip Arms),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-019,Province / Military,Move Army,OrdersWindow(initial_order=Move Army),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-020,Province / Military,Transport,OrdersWindow(initial_order=Transport),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-021,Province / Military,Plan Attack,OrdersWindow(initial_order=Plan Attack),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-022,Province / Military,Attack,OrdersWindow(initial_order=Attack),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-023,Province / Personnel,Recruit Officer,OrdersWindow(initial_order=Recruit Officer),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-024,Province / Personnel,Train Officer,OrdersWindow(initial_order=Train Officer),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-025,Province / Personnel,Reward Governor,OrdersWindow(initial_order=Reward Governor),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-026,Province / Personnel,Reward Officer,OrdersWindow(initial_order=Reward Officer),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-027,Province / Personnel,Buy Horse,OrdersWindow(initial_order=Buy Horse),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-028,Province / Personnel,Appoint Advisor,OrdersWindow(initial_order=Appoint Advisor),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-029,Province / Personnel,Swear Brotherhood,OrdersWindow(initial_order=Swear Brotherhood),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-030,Province / Personnel,Feast,OrdersWindow(initial_order=Feast),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-031,Province / Personnel,Rest,OrdersWindow(initial_order=Rest),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-032,Province / Personnel,Appoint Governor,OrdersWindow(initial_order=Appoint Governor),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-033,Province / Market,Market,OrdersWindow(initial_order=Market),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-034,Province / Foreign Affairs,Ally,OrdersWindow(initial_order=Ally),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-035,Province / Foreign Affairs,Joint,OrdersWindow(initial_order=Joint),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-036,Province / Foreign Affairs,Marry,OrdersWindow(initial_order=Marry),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-037,Province / Foreign Affairs,Give,OrdersWindow(initial_order=Give),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-038,Province / Foreign Affairs,Cancel Alliance,OrdersWindow(initial_order=Cancel Alliance),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-039,Province / Foreign Affairs,Threat,OrdersWindow(initial_order=Threat),ROUTE_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Real Tk semantic A + Help + B; source campaign fingerprint unchanged
+B5CMD-040,Troop Assignments,Transfer Between Generals,TroopAssignmentsWindow.build_command,CONTROLLER_FORM_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Recruit/Move remain in Military, not duplicate troop menu"
+B5CMD-041,Troop Assignments,Disband to Population,TroopAssignmentsWindow.build_command,CONTROLLER_FORM_VERIFIED_NO_COMMIT,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Recruit/Move remain in Military, not duplicate troop menu"
+B5CMD-042,Tactical,Move,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-043,Tactical,Next Officer,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-044,Tactical,Next Target,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-045,Tactical,Rest,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-046,Tactical,Move Enemy,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-047,Tactical,Bribe,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-048,Tactical,Duel,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-049,Tactical,Reinforce,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-050,Tactical,Withdraw,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-051,Tactical,Prisoner Fate,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-052,Tactical,Normal,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-053,Tactical,Charge,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-054,Tactical,Simult.,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-055,Tactical,Fire,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-056,Tactical,End Turn,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-057,Tactical,Auto Resolve,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-058,Tactical,Close,TacticalWindow controller_actions,HELP_VERIFIED_STATIC_ROUTE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,"Full tactical action, illegal, cancel and settlement cases not executed this pass"
+B5CMD-059,Start / Pause,Resume,PauseDialog.choose,STATIC_SOURCE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Five save slots and autosave require full current-build QA
+B5CMD-060,Start / Pause,Save Game,PauseDialog.choose,STATIC_SOURCE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Five save slots and autosave require full current-build QA
+B5CMD-061,Start / Pause,Load Game,PauseDialog.choose,STATIC_SOURCE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Five save slots and autosave require full current-build QA
+B5CMD-062,Start / Pause,Continue Last Save,PauseDialog.choose,STATIC_SOURCE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Five save slots and autosave require full current-build QA
+B5CMD-063,Start / Pause,Return to Main Menu,PauseDialog.choose,STATIC_SOURCE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Five save slots and autosave require full current-build QA
+B5CMD-064,Start / Pause,Exit Game,PauseDialog.choose,STATIC_SOURCE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Five save slots and autosave require full current-build QA
+B5CMD-065,Start / Pause,Music,PauseDialog.choose,STATIC_SOURCE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Five save slots and autosave require full current-build QA
+B5CMD-066,Start / Pause,Sound Effects,PauseDialog.choose,STATIC_SOURCE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Five save slots and autosave require full current-build QA
+B5CMD-067,Start / Pause,Audio Status,PauseDialog.choose,STATIC_SOURCE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Five save slots and autosave require full current-build QA
+B5CMD-068,Start / Pause,Soundtrack Library (15 tracks),PauseDialog.choose,STATIC_SOURCE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Five save slots and autosave require full current-build QA
+B5CMD-069,Start / Pause,Controller Bindings,PauseDialog.choose,STATIC_SOURCE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Five save slots and autosave require full current-build QA
+B5CMD-070,Start / Pause,Keyboard Bindings,PauseDialog.choose,STATIC_SOURCE_ONLY,NOT_RUN_THIS_PASS,NOT_RUN_THIS_PASS,Five save slots and autosave require full current-build QA
+B5CMD-071,New game,New Game province selection,StrategicWindow setup/coldload,FOCUSED_GUI_VERIFIED,PARTIAL,PARTIAL,Historical ruler path only; custom ruler still missing
+B5CMD-072,New game,Historical ruler selection,StrategicWindow setup/coldload,FOCUSED_GUI_VERIFIED,PARTIAL,PARTIAL,Historical ruler path only; custom ruler still missing
+B5CMD-073,New game,New Game cancel,StrategicWindow setup/coldload,FOCUSED_GUI_VERIFIED,PARTIAL,PARTIAL,Historical ruler path only; custom ruler still missing
+B5CMD-074,New game,Continue selected ruler save,StrategicWindow setup/coldload,EXISTING_REGRESSION_VERIFIED,PARTIAL,PARTIAL,Historical ruler path only; custom ruler still missing
+B5CMD-075,Required but not present/verified,Custom ruler creation,not connected or placeholder,MISSING_OR_UNVERIFIED,NOT_RUN,NOT_RUN,Not a visible working control; requirement included to avoid false completeness
+B5CMD-076,Required but not present/verified,True geographic China overview,not connected or placeholder,MISSING_OR_UNVERIFIED,NOT_RUN,NOT_RUN,Not a visible working control; requirement included to avoid false completeness
+B5CMD-077,Required but not present/verified,41 province-specific capital art,not connected or placeholder,MISSING_OR_UNVERIFIED,NOT_RUN,NOT_RUN,Not a visible working control; requirement included to avoid false completeness
