@@ -1,13 +1,21 @@
-# Original KOEI-inspired Enhanced PC game — Build40R3
+# Original KOEI-inspired Enhanced PC game — Build40R3 (music separated)
 
-This folder is reserved for the Director's original KOEI-inspired Windows/Linux game. **It is separate from the canonical ROTK II NES restoration** despite sharing the GitHub repository.
+This folder is for the Director's **separate Original KOEI-inspired Windows/Linux game**. Do not mix its source into the canonical ROTK II NES restoration simply because this repository is called NES.
 
-**Build status:** Build40R3 is an unaccepted integrated SOURCE CANDIDATE, not a release. 4:3 full UI, geographically accurate China map, old simulation saves (no longer a gate per Director), battle parity, and 300-campaign acceptance remain open.
+## Repackaged artifacts (locally verified; NOT yet stored in this repository)
 
-The original complete private source ZIP `KOEI_ENHANCED_BUILD40R3_HELP_TROOP_UI_CANDIDATE_20261102.zip` is 148.7 MB, with 526 entries. It is **not uploaded here yet**. The original archive contains licensed/private 1989 Soundware MP3s, which should not be redistributed in a public repository without license.
+- **Game:** `KOEI_ENHANCED_BUILD40R3_NO_MUSIC_20261102.zip`; 68,112,066 bytes; SHA-256 `ad62439cdeead6769d022c79e2940957af268ab8e5a67c77b2b96f2fb782c8c1`. 512 entries, ZIP CRC PASS. Contains source, graphics, 14 generated sound effects, tests, and the game launcher. Excludes the 15 privately supplied MP3 tracks.
+- **Music Assets:** `Music Assets.zip`; 80,632,011 bytes; SHA-256 `ee7078303874ccd44c1cc3737a9414dd8962727109435ed63b30dbb80fdf70fa`. 15 MP3s plus install instructions, ZIP CRC PASS. Its recording rights are **NOT cleared for public distribution**, so do not upload this archive to the public repository without appropriate rights.
+- **Original:** `KOEI_ENHANCED_BUILD40R3_HELP_TROOP_UI_CANDIDATE_20261102.zip`; 148,742,521 bytes; SHA-256 `dc51379520ec55765d983507724b2fe884f195b48d85b86ecaa4115b6191c4f4`, preserved unchanged outside GitHub.
 
-This README is NOT proof the ZIP or executable build exists in GitHub. It is a source/version placeholder pending a safe binary transfer mechanism; do not treat it as a released build.
+The two new ZIPs are each below GitHub's **100 MB per-file limit**. **This status document is not a claim that the binaries have been uploaded.** The current GitHub connector supports text writes and inline blob data, but does not provide a tool to stream container-local 68 MB / 80 MB files to GitHub. Accordingly both ZIP binaries remain local downloadable artifacts and are **NOT PUBLISHED IN GITHUB**. The provisional 77-row command matrix IS committed and read back here:
 
-The Director already accepted Windows installation and Xbox controller support as baseline requirements. This does not claim fresh regression coverage for every changed game screen.
+[Command verification matrix](./Build40R3/ALL_COMMANDS_VERIFICATION_MATRIX_PROVISIONAL_20261102.csv)
 
-Original authoritative candidate and command matrix were provided in the Project conversation on 2026-11-02. Neither source nor matrix should be represented as released unless both are actually fetched/read back from GitHub.
+## Installation and regression
+
+Unzip game archive first. Music is OPTIONAL; the game reports missing private tracks and still keeps sound effects. For authorized private music installation, unzip `Music Assets.zip` into the same extracted project root. Re-run the game after overlay. All 15 MP3s are SHA-checked against the retained music manifest.
+
+This source candidate is **not a released game**: geographically accurate China overview, complete province art, all real commands, 300 matched simulations and full combat parity remain open. The Director already accepted Windows installation and Xbox controller support as standing baselines; do not reopen those baselines.
+
+This source/audio split changes only optional-audio preflight logic and three corresponding tests; no game mechanics or existing art or launcher entries were intentionally changed.
