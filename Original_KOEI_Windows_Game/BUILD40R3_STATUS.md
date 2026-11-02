@@ -12,6 +12,13 @@ The two new ZIPs are each below GitHub's **100 MB per-file limit**. **This statu
 
 [Command verification matrix](./Build40R3/ALL_COMMANDS_VERIFICATION_MATRIX_PROVISIONAL_20261102.csv)
 
+## Verified source-only and optional-music tests (Linux)
+
+- **No music pack:** `KOEI_DISABLE_AUDIO=1 PYTHONPATH=. xvfb-run -a python -m pytest -q` in clean extracted core: **657 passed, 7 skipped, 2 xfailed, 3 subtests passed, exit 0** (48.08s).
+- **With private music overlaid:** `KOEI_DISABLE_AUDIO=1 PYTHONPATH=. python -m pytest -q tests/test_private_music_and_sfx_v113.py tests/test_events_and_bundled_audio_v115.py tests/test_windows_port_v116.py`: **26 passed, exit 0**. `verify_private_assets()` returned `ok=True`, 15 MP3s, 14 WAV SFX, no hash errors.
+- Missing music is nonfatal. `python -m third_branch.windows_doctor` returned `ok=True` in the no-music install, with a warning about 15 absent optional tracks. These are Linux tests, not Windows or actual audio-speaker validation.
+- ZIP CRCs pass and the split manifest proves all 15 original MP3 members were moved and 507 other original members remained byte-identical; four test/preflight files changed to support optional music.
+
 ## Installation and regression
 
 Unzip game archive first. Music is OPTIONAL; the game reports missing private tracks and still keeps sound effects. For authorized private music installation, unzip `Music Assets.zip` into the same extracted project root. Re-run the game after overlay. All 15 MP3s are SHA-checked against the retained music manifest.
