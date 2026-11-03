@@ -1,0 +1,31 @@
+{
+  "build36_patch_drive_id": "1aADr454QyI5n9IWqmt5-Ztdf18fxcR9-",
+  "build36_patch_sha256": "9d034af3b65dd22ffe782c9b7247a75f93f431f23b9450a3a0030eaa2f629109",
+  "candidate": "B36R1_SOURCE_RECOVERY_CANDIDATE",
+  "known_open": [
+    "P0 first-time new game must prompt ruler/new ruler > China setup map > legal province > setup loop > ProvinceStage",
+    "Historical month47 save schema incompatibility (missing skill/arms, >100 army caps)",
+    "Treaty renewal prompt and advisor review code present in v1.20 UI donor but absent live, prerequisite treaty_advisor/Renew command not yet recovered",
+    "Exact Build05 UI patch bytes not located; later semantic equivalents not proven",
+    "Unverified remaining 27 old legacy paths; original copies preserved, not blindly merged",
+    "Windows physical Xbox-controller, packaged Windows installer, complete player campaign NOT RUN",
+    "Private audio in source is for authorized user private project only; NOT redistribution-cleared"
+  ],
+  "latest_verified_full_test_result": "622 passed, 3 skipped, 2 xfailed, 3 subtests passed in 38.87s; exit 0; Linux Python pytest",
+  "legacy_8part_sha256": "cd18da7f3ea0d683f1c1b8c783568278256fbc81f0be1e5c18d7258ffa2ae0f3",
+  "parent_build35_folder_id": "1GflodyRLP_4a_9bxbx_G3XI0K333jffx",
+  "parent_build35_sha256": "49d211deede1e0f800ade0afb0c7ce7f126021f5c3e9ed762950b68308fa3ca7",
+  "project": "Original KOEI-inspired Windows/Linux strategy game (not NES Windows, not DOS)",
+  "recent_runtime": "xvfb Linux Tk game first boot player=R0 selected province=9 no ruler dialog: FAIL of Director first-time player flow",
+  "recovered_changes": [
+    "permitted 7-job recruitment source selection engine and UI; auto backward compatible",
+    "defensive neutral movement no-uncommanded-garrison guard and AI use",
+    "player text helper available as original source",
+    "Build36 battle Q14 latest patch",
+    "repaired legacy test semantics for human duel/prisoner interruption",
+    "fixed battle-only menu/test partition, ROM test env skip, historical rollback tests not collected"
+  ],
+  "source_folder_id": "1i5kLog2o1tC9c2dsjdF2CLFnXYQHVk_l",
+  "source_root": "Retro Gaming/Original_KOEI_Windows_Game",
+  "status": "SOURCE_CANDIDATE_RECOVERED_PARTIAL_NOT_PROMOTED"
+}

@@ -1,0 +1,168 @@
+"""Round-two real Tk acceptance of Original player-path repairs, Linux/Xvfb."""
+import os
+os.environ['KOEI_DISABLE_AUDIO']='1'
+import pytest
+from third_branch.strategic_game import StrategicWindow
+from third_branch.orders_ui import SPECS
+from third_branch.player_text import describe_effects,journal_entry
+from third_branch.historical_s1 import new_campaign_historical_s1
+from third_branch.integrated import save_file,load_file
+
+@pytest.fixture
+def game(tmp_path):
+    w=StrategicWindow(str(tmp_path/'auto.ogsave'));w.root.update()
+    yield w
+    try:
+        if w.root.winfo_exists():w.close()
+    except Exception:pass
+
+
+def test_d06_negative_fractional_support_reported_correctly():
+    s=new_campaign_historical_s1(balance_policy='OG_1000_DIRECTOR_V2').state
+    assert 'Public support: -0.5 points' in describe_effects(s,{'support_ticks':-25000})
+    assert 'Public support change: +0.5 points' in describe_effects(s,{'support_change_ticks':25000})
+    assert 'Public support: -1 points' in describe_effects(s,{'support_ticks':-50000})
+
+
+def test_d16_committed_journal_resolves_province_actor_and_real_outcome():
+    c=new_campaign_historical_s1(balance_policy='OG_1000_DIRECTOR_V2')
+    p=c.state['core']['officers']['nes:000']['province_id']
+    q=c.preview('cultivate','nes:000',{'province_id':p},'journal-proof')
+    c.execute('cultivate','nes:000',{'province_id':p},'journal-proof',q['quote_id'],q['revision'])
+    line=journal_entry(c.state,c.state['log'][-1])
+    assert 'Cao Cao' in line and 'Province '+p[1:] in line and 'Cultivation after' in line
+    assert not any(t in line for t in ('nes:','p9','{',"'result'"))
+    to=journal_entry(c.state,{'kind':'transport','month':12,'actor':'nes:000',
+       'result':{'province_id':'p9','target':'p12','units':18,'gold_cents_after':7800}})
+    assert 'Target: Province 12' in to and '78.00 gold' in to
+    assert 'p12' not in to
+
+
+def test_d08_load_invalidates_stale_live_order_dialog(game):
+    game.save();original=game.c.fingerprint
+    game.cultivate()
+    d=game.orders_dialog
+    d.actor.set(d.available_officers[0]);d.submit()
+    assert d.pending is not None and d.root.winfo_exists()
+    game.month();assert game.c.fingerprint!=original
+    while game.event_dialog is not None and game.event_dialog.winfo_exists():game._close_event_dialog()
+    assert game.load() is True
+    assert game.c.fingerprint==original
+    assert game.orders_dialog is None
+    assert not d.root.winfo_exists()
+
+
+def test_d12_controller_all_22_orders_and_preview_never_commit(game):
+    game.orders();d=game.orders_dialog
+    before=game.c.fingerprint
+    d.controller_index=0
+    d.on_nes_button('right')
+    assert d.actor.get() in d.available_officers
+    d.controller_index=1
+    assert d.order.get()=='Cultivate'
+    observed=[d.order.get()]
+    for _ in range(len(SPECS)-1):
+        d.on_nes_button('right')
+        observed.append(d.order.get())
+        assert d.controller_index==1
+    assert observed==list(SPECS)
+    for name in SPECS:
+        d.order.set(name);d._fields()
+        assert set(d.fields)=={x[0] for x in SPECS[name][1]}
+        # Even an invalid order must leave world untouched and report invalid.
+        d.controller_index=len(d._controller_items())-2
+        d.on_nes_button('a')
+        assert game.c.fingerprint==before
+        d.on_nes_button('b')
+        assert game.c.fingerprint==before
+        if not d.root.winfo_exists():break
+    assert game.c.fingerprint==before
+    if d.root.winfo_exists():d.close()
+
+
+def test_d15_all_15_rulers_gamepad_selection_preview_and_save(game):
+    factions=sorted(game.c.state['factions'],key=lambda x:int(x[1:]))
+    game.choose_ruler()
+    assert game.ruler_dialog.winfo_exists()
+    original=game.c.fingerprint
+    box=game.ruler_listbox
+    for i in range(15):
+        box.selection_clear(0,'end');box.selection_set(i)
+        box.activate(i);box.event_generate('<<ListboxSelect>>');game.root.update()
+        assert factions[i] in game.c.state['factions']
+        assert game.c.fingerprint==original
+        assert game.ruler_description.get().startswith(game.c.state['factions'][factions[i]]['name'])
+        assert game.ruler_photo is not None
+    box.selection_clear(0,'end');box.selection_set(10)
+    game.on_nes_button('a')
+    assert game.player==factions[10]
+    game.save();assert load_file(game.manual_path()).state['human_faction']==factions[10]
+
+
+def test_d07_five_controller_slots_atomic_and_autosave_separate(game):
+    start=game.c.fingerprint
+    game.pause();menu=game.pause_dialog
+    for slot in range(1,6):
+        menu.mode='save';menu.index=slot-1
+        menu.choose();assert menu.slot_path(slot).exists()
+        assert load_file(menu.slot_path(slot)).fingerprint==start
+    game.month()
+    while game.event_dialog is not None and game.event_dialog.winfo_exists():game._close_event_dialog()
+    assert game.c.fingerprint!=start
+    menu.mode='load';menu.index=4;menu.choose()
+    assert game.c.fingerprint==start
+    assert game.path.exists() and game.path!=menu.slot_path(5)
+    menu.close()
+
+
+def test_d16_120_entry_journal_scroll_and_cold_load(game):
+    p=game.c.state['core']['officers']['nes:000']['province_id']
+    entries=[{'id':f'journal-{n}','kind':'cultivate','actor':'nes:000','month':n+1,
+              'result':{'province_id':p,'cultivation_after':600+n,'bp_after':82}} for n in range(120)]
+    game.c.state['log'].extend(entries)
+    # This bounded-scroll test uses synthetic history only; keep the real
+    # campaign's required journal/request-id/revision invariants valid.
+    game.c.state['processed'].extend(x['id'] for x in entries)
+    game.c.state['revision']+=len(entries)
+    save_file(game.c,game.manual_path());expected=game.c.fingerprint
+    game._adopt_loaded(load_file(game.manual_path()));assert game.c.fingerprint==expected
+    game.journal();game.root.update();window=game.info_dialog
+    assert window.winfo_exists()
+    # All saved history is browsable: earlier 100-entry truncation was misleading.
+    text=game.info_text.get('1.0','end')
+    assert text.count('Cultivate')==120 and 'Month 120' in text and 'Month 1 —' in text
+    assert 'nes:' not in text and "'result'" not in text
+    assert len(load_file(game.manual_path()).state['log'])==120
+    game.on_nes_button('down');game.on_nes_button('up');game.on_nes_button('b')
+    assert not window.winfo_exists()
+
+
+def test_d17_sound_assets_integrity_and_mock_not_claim_audible():
+    from third_branch.audio_system import GameAudio,verify_private_assets
+    status=verify_private_assets()
+    assert status['ok'],status
+    assert status['mp3_count']==15 and status['sfx_count']>=1
+    g=GameAudio(backend='mock'); assert 'NOT audible' in g.status()
+    g.close()
+
+
+def test_d17_real_ffplay_failure_is_not_reported_as_music_playing(monkeypatch,tmp_path):
+    """Actual backend error negative, NOT an audible speaker acceptance claim."""
+    import time,shutil
+    from third_branch.audio_system import GameAudio
+    if not shutil.which('ffplay'):pytest.skip('FFplay not installed')
+    monkeypatch.setenv('SDL_AUDIODRIVER','not_a_real_audio_backend')
+    monkeypatch.setenv('XDG_CACHE_HOME',str(tmp_path))
+    audio=GameAudio(backend='ffplay')
+    try:
+        assert audio.play('track:07',loop=False)
+        for _ in range(40):
+            time.sleep(.1)
+            shown=audio.status()
+            if audio.error:break
+        assert audio.error.startswith('FFplay exited '),shown
+        assert 'Music unavailable' in shown
+        assert audio.process is None
+        assert audio.audio_log_path.exists() and audio.audio_log_path.read_text().strip()
+        assert not audio.play('track:07',loop=False), 'Failure must be throttled'
+    finally:audio.close()

@@ -1,0 +1,18 @@
+from pathlib import Path
+from third_branch.strategic_game import StrategicWindow
+from PIL import ImageGrab
+from tempfile import TemporaryDirectory
+path=Path('/mnt/data/OG_R3_UI');path.mkdir(exist_ok=True)
+with TemporaryDirectory() as d:
+ w=StrategicWindow(str(Path(d)/'game.ogsave'))
+ try:
+  w.root.update();w.root.update_idletasks()
+  x,y=w.root.winfo_rootx(),w.root.winfo_rooty()
+  ImageGrab.grab(bbox=(x,y,x+1280,y+720)).save(path/'round3_1280x720_main.png')
+  w.advisor();w.root.update();x,y=w.info_dialog.winfo_rootx(),w.info_dialog.winfo_rooty()
+  ImageGrab.grab(bbox=(x,y,x+840,y+620)).save(path/'round3_advisor.png')
+  w.info_dialog.destroy();w.info_dialog=None;w.info_text=None
+  w.orders();w.root.update();x,y=w.orders_dialog.root.winfo_rootx(),w.orders_dialog.root.winfo_rooty()
+  ImageGrab.grab(bbox=(x,y,x+760,y+600)).save(path/'round3_orders.png')
+ finally:w.close()
+print('CAPTURED 3 real Tk/Xvfb GUI views, not mock renders')

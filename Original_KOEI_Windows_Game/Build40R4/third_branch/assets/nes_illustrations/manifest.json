@@ -1,0 +1,503 @@
+{
+  "events": {
+    "event_01_locust_plague": {
+      "dimensions": [
+        56,
+        40
+      ],
+      "path": "assets/nes_illustrations/events/event_01_locust_plague.png",
+      "sha256": "6402a4513840bb927f09d42a866194f7a19e5af1f98104165800cfa52f74f753",
+      "size": 1305
+    },
+    "event_02_typhoon": {
+      "dimensions": [
+        56,
+        40
+      ],
+      "path": "assets/nes_illustrations/events/event_02_typhoon.png",
+      "sha256": "c8f261e9f6f07153705b2b17adea6a5ba8b55f5d81f19854ffb08d79841e605d",
+      "size": 1507
+    },
+    "event_03_flood": {
+      "dimensions": [
+        56,
+        40
+      ],
+      "path": "assets/nes_illustrations/events/event_03_flood.png",
+      "sha256": "02e89c4774d1654990e69bc79ae4f43209d1ecda1da0493ef23a0f81ec3f1c8a",
+      "size": 1294
+    },
+    "event_04_epidemic": {
+      "dimensions": [
+        56,
+        40
+      ],
+      "path": "assets/nes_illustrations/events/event_04_epidemic.png",
+      "sha256": "523e4428ea946bfa4c9dd22aeaf7435dffc7cb7c0cbb75033eb8ceac7d42803c",
+      "size": 1305
+    },
+    "event_05_riot": {
+      "dimensions": [
+        56,
+        40
+      ],
+      "path": "assets/nes_illustrations/events/event_05_riot.png",
+      "sha256": "d0eb2acff9ff9535e6fd00f5840ef28b65cd369065a2a5c0a2dca997e4404eca",
+      "size": 1247
+    },
+    "event_06_rebellion": {
+      "dimensions": [
+        56,
+        40
+      ],
+      "path": "assets/nes_illustrations/events/event_06_rebellion.png",
+      "sha256": "e88980b7bc5a56011c18ef6bdf7d95e55ddb51b5caa00ea981730b4e890bc9c2",
+      "size": 1328
+    },
+    "event_07_falling_star_evil_omen": {
+      "dimensions": [
+        56,
+        40
+      ],
+      "path": "assets/nes_illustrations/events/event_07_falling_star_evil_omen.png",
+      "sha256": "fec3f68303463e85517858d50d04b6b7776ea9cc31ecd651acbd71415b5ddd09",
+      "size": 795
+    },
+    "event_08_ruler_died_funeral": {
+      "dimensions": [
+        56,
+        40
+      ],
+      "path": "assets/nes_illustrations/events/event_08_ruler_died_funeral.png",
+      "sha256": "269ff9c6808fcbf19ce3459901d91f7e45c58132e23353192bebb14a7a8de0d7",
+      "size": 1148
+    },
+    "event_09_secret_letter_delivered": {
+      "dimensions": [
+        56,
+        40
+      ],
+      "path": "assets/nes_illustrations/events/event_09_secret_letter_delivered.png",
+      "sha256": "2da5b5d9cf5cf331b71153be5b7e5400f04d17932f14a0d4cc17188f80c6dd25",
+      "size": 1267
+    },
+    "event_10_messenger_caught_with_secret_letter": {
+      "dimensions": [
+        56,
+        40
+      ],
+      "path": "assets/nes_illustrations/events/event_10_messenger_caught_with_secret_letter.png",
+      "sha256": "8d3a951f6624685c42d3661ab3e71a3f9498ccb6adaea66f3b410472b5675cc1",
+      "size": 1235
+    },
+    "event_11_caught_transporting_gold_rice": {
+      "dimensions": [
+        56,
+        40
+      ],
+      "path": "assets/nes_illustrations/events/event_11_caught_transporting_gold_rice.png",
+      "sha256": "be85660da3199beae1f1b3e6371618b2248158e13391cbe37c04b0b5cdb66797",
+      "size": 1276
+    }
+  },
+  "rulers": {
+    "0": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Cao Cao",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_000_Cao_Cao_picture_103.png",
+      "picture_code": 103,
+      "sha256": "a9941fba8b4d630f332d73e65a39b6dc6095e9e327404f64ab9913edc1c3af80"
+    },
+    "1": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Liu Bei",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_001_Liu_Bei_picture_161.png",
+      "picture_code": 161,
+      "sha256": "a5a6f06426433c61ccb80fc410814f11ff67ab0a7332fed7f8836856a6094199"
+    },
+    "10": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Tao Quian",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_010_Tao_Quian_picture_132.png",
+      "picture_code": 132,
+      "sha256": "4bbdb6d32324af2980706cbc43adbb51c0e16549ec795d84f64358b148657ef5"
+    },
+    "11": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Hai Fu",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_011_Hai_Fu_picture_040.png",
+      "picture_code": 40,
+      "sha256": "b0f62f0506d0eb7e5622c581a894119071c3002b7f4576c1e3fa1b2b1ddbb48b"
+    },
+    "12": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Kong Rong",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_012_Kong_Rong_picture_067.png",
+      "picture_code": 67,
+      "sha256": "073199375d8659b423fdab454917a7295681710c5ab052fce301d63ba6c68ad0"
+    },
+    "13": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Wang Lang",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_013_Wang_Lang_picture_010.png",
+      "picture_code": 10,
+      "sha256": "a40619aa300cb5c4f5e19bf98d4d3257ab113b75067a9632a3b05a3007703d3a"
+    },
+    "14": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Liu Yong",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_014_Liu_Yong_picture_193.png",
+      "picture_code": 193,
+      "sha256": "b01941005a57069b9dd2ea7b21c749cdcaa732a8de3322665ee338ad31bac586"
+    },
+    "150": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Zhang Lu",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_150_Zhang_Lu_picture_123.png",
+      "picture_code": 123,
+      "sha256": "ef15e0b1a02d357587c4056e8a042d11bbff90ab51140a7b8068cb20d85d70b6"
+    },
+    "151": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Yang Feng",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_151_Yang_Feng_picture_154.png",
+      "picture_code": 154,
+      "sha256": "5062b229f6f7707e20e3205f0cceb780fad41a4ea698cff583e271b5d0fcbf4e"
+    },
+    "16": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Li Jue",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_016_Li_Jue_picture_165.png",
+      "picture_code": 165,
+      "sha256": "862abe5df5fcd409ebbd2041f15874d4795fd4981510f0122e657a7a55de40a1"
+    },
+    "18": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Liu Zhang",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_018_Liu_Zhang_picture_158.png",
+      "picture_code": 158,
+      "sha256": "5ae9947577c096d6ac10a3efbd531c03cdafb0d751be2f43958d1b31065b9d58"
+    },
+    "2": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Sun Jian",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_002_Sun_Jian_picture_001.png",
+      "picture_code": 1,
+      "sha256": "0b5db7b8b93587b3ec7dc62369847ab40b95e75c1e5d5bd94bebeeeee55a377b"
+    },
+    "209": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Liu Du",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_209_Liu_Du_picture_195.png",
+      "picture_code": 195,
+      "sha256": "d0d2f060eebd97dee227aafd4a4f4ac6b57d874f66fa325a699676d381611c51"
+    },
+    "220": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Sun Quan",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_220_Sun_Quan_picture_108.png",
+      "picture_code": 108,
+      "sha256": "aeffdfa5f8c94fe5e79571ecb5fddee2d520156be94f7b5aafb4dd9ac7c9743e"
+    },
+    "231": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Han Xuan",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_231_Han_Xuan_picture_031.png",
+      "picture_code": 31,
+      "sha256": "9aeed702302311aa46cf79dab1deea55e47539435d2b10d96cd318515b020647"
+    },
+    "266": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Jin Xuan",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_266_Jin_Xuan_picture_050.png",
+      "picture_code": 50,
+      "sha256": "a4775e0a76ee42d126e473ce81526fcfd613ac0fa477dc24c336d7798f4d2e6d"
+    },
+    "281": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Cao Pi",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_281_Cao_Pi_picture_104.png",
+      "picture_code": 104,
+      "sha256": "213f37b8528589169a22dec8bcb8eda6421efb0bf76e30c67e740051e8da00ad"
+    },
+    "298": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Meng Huo",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_298_Meng_Huo_picture_151.png",
+      "picture_code": 151,
+      "sha256": "8cd9a16219ba789a84abf8b191141bf97b362e9e0911de283448261ad959dadf"
+    },
+    "3": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Yuan Shao",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_003_Yuan_Shao_picture_003.png",
+      "picture_code": 3,
+      "sha256": "4736aa3d944168597863e290b287e48c0d7659183e6860bda49a8f88cefc838f"
+    },
+    "4": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Yuan Shu",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_004_Yuan_Shu_picture_074.png",
+      "picture_code": 74,
+      "sha256": "0c7b772205dbe7544c2bf96bc3eb8435124e95b2de287eb445aee10129e7e8bf"
+    },
+    "5": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Ma Teng",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_005_Ma_Teng_picture_140.png",
+      "picture_code": 140,
+      "sha256": "b7af13354936639446034ac9cbf38f16d19cb07cdd0ff84fa648512fe5e36320"
+    },
+    "52": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Lu Bu",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_052_Lu_Bu_picture_163.png",
+      "picture_code": 163,
+      "sha256": "f235999626b7390ad4d6ed2457c1ebe0e00fac0d8cb75b5a19ccec4f81ae3259"
+    },
+    "55": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Sun Ce",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_055_Sun_Ce_picture_002.png",
+      "picture_code": 2,
+      "sha256": "66ae09582bc2d069f58966cebd032a7ea82ce3b863adbb53cb45a8190aced44c"
+    },
+    "6": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Liu Yan",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_006_Liu_Yan_picture_156.png",
+      "picture_code": 156,
+      "sha256": "17d8912da870b4246a549c1bb74d07ca90e12ba7d2b33e1e438036bd3c730800"
+    },
+    "7": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Liu Biao",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_007_Liu_Biao_picture_160.png",
+      "picture_code": 160,
+      "sha256": "e1671d7ae21beaa4b6746340afda5ff603d4b898a8efa75c07b8f8404ef8cfd8"
+    },
+    "8": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Dong Zhuo",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_008_Dong_Zhuo_picture_134.png",
+      "picture_code": 134,
+      "sha256": "90a02c2317d57af0cb5d9a167617a5aed1ce7c76c706797c31068e4dcfd32c52"
+    },
+    "9": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Gongsun Zan",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_009_Gongsun_Zan_picture_064.png",
+      "picture_code": 64,
+      "sha256": "44871fca90ae7f85eb697d7fdaa27225dcbe939caef15272af5a8177d0093015"
+    },
+    "98": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "name": "Zhao Fan",
+      "path": "assets/nes_illustrations/rulers/NES_ruler_098_Zhao_Fan_picture_194.png",
+      "picture_code": 194,
+      "sha256": "f9bc27604f2c10c08c15105012f7bc71d450257fc4fdf69a583228ff9ec295e0"
+    }
+  },
+  "seasons": {
+    "season_1_spring": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "path": "assets/nes_illustrations/seasons/season_1_spring.png",
+      "sha256": "5f5cf7da751c99d1aba89625d2fc065ced71bc2fbdd3ef9130ddb1fb8f3b4a40",
+      "size": 1173
+    },
+    "season_2_summer": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "path": "assets/nes_illustrations/seasons/season_2_summer.png",
+      "sha256": "c3ab6b4f20ce5372a9ea72bd865eb4ec072d13c354ec18693a9b7576e67f42da",
+      "size": 1054
+    },
+    "season_3_autumn": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "path": "assets/nes_illustrations/seasons/season_3_autumn.png",
+      "sha256": "393ee76000aa1a041eeab18e3efa1eeef4c92196d7bbf777cda9bede5ae79272",
+      "size": 845
+    },
+    "season_4_winter": {
+      "dimensions": [
+        40,
+        48
+      ],
+      "path": "assets/nes_illustrations/seasons/season_4_winter.png",
+      "sha256": "260d41e3cd212da5fa37c7088f9dc4dc0dc2a0d9e44e71e7753fa28769681723",
+      "size": 810
+    }
+  },
+  "source": {
+    "event_pack": "Drive Event_Illustrations_NES_Original, 23 files",
+    "original_game_runtime_parity": "Only Yuan Shu portrait verified against original screenshot; most event images not runtime verified",
+    "portrait_pack": "ROTK2_NES_All_28_Historical_Ruler_Portraits_ROM_VERIFIED_2026-10-30.zip",
+    "rom_sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a"
+  },
+  "story": {
+    "intro_three_brothers_16x8": {
+      "dimensions": [
+        128,
+        64
+      ],
+      "path": "assets/nes_illustrations/story/intro_three_brothers_16x8.png",
+      "sha256": "046ef7c70b695c97b0ae02b73feb34553cc350f3bb65bbda3b44ecdffab0ef71",
+      "size": 3262
+    },
+    "story_0_10x8": {
+      "dimensions": [
+        80,
+        64
+      ],
+      "path": "assets/nes_illustrations/story/story_0_10x8.png",
+      "sha256": "8838aac1cfd8f17f758a71b8832b155e700be3c34cb7f4e7e5254255c5d757ac",
+      "size": 2350
+    },
+    "story_1_10x8": {
+      "dimensions": [
+        80,
+        64
+      ],
+      "path": "assets/nes_illustrations/story/story_1_10x8.png",
+      "sha256": "d85c7fa6d8cca6620d30db403956c4b93559d3ceed7e76915f0a8def23ce8b92",
+      "size": 1856
+    },
+    "story_2_10x8": {
+      "dimensions": [
+        80,
+        64
+      ],
+      "path": "assets/nes_illustrations/story/story_2_10x8.png",
+      "sha256": "c910babd93110bdbfbc0002f75e7fbae3735cdfc8e948149723d38f5d80d7796",
+      "size": 2221
+    },
+    "story_3_10x8": {
+      "dimensions": [
+        80,
+        64
+      ],
+      "path": "assets/nes_illustrations/story/story_3_10x8.png",
+      "sha256": "a777f882fe55dbf4f45d20483006896b1d38c942ea4a68c4e71c3c7d460c6591",
+      "size": 2189
+    },
+    "story_4_10x8": {
+      "dimensions": [
+        80,
+        64
+      ],
+      "path": "assets/nes_illustrations/story/story_4_10x8.png",
+      "sha256": "b821c2c867bcc3203951cd9824919d53cdbdd2d1008f24aa70a4022b23c09a5a",
+      "size": 1884
+    },
+    "story_5_10x8": {
+      "dimensions": [
+        80,
+        64
+      ],
+      "path": "assets/nes_illustrations/story/story_5_10x8.png",
+      "sha256": "a5f62e67e157b2361c6b18affc1c96554559c44aaa66b3642aa1bc054011f2c7",
+      "size": 2579
+    },
+    "story_palace_10x8": {
+      "dimensions": [
+        80,
+        64
+      ],
+      "path": "assets/nes_illustrations/story/story_palace_10x8.png",
+      "sha256": "d375aadcadf5fc96d18fd6e22845df6a7ed90658ff8bb194fa0a4e5d894f90ae",
+      "size": 1423
+    }
+  }
+}

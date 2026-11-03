@@ -1,0 +1,10 @@
+# Original Enhanced B36R1 — Recovery Candidate Only (2026-11-02)
+
+The full source tree is Build35 reconstructed SHA256 `49d211deede1e0f800ade0afb0c7ce7f126021f5c3e9ed762950b68308fa3ca7` plus the source-verified Build36 Q14 patch SHA256 `9d034af3b65dd22ffe782c9b7247a75f93f431f23b9450a3a0030eaa2f629109`, followed by the documented direct source restorations.
+
+**VERIFIED STATIC:** Build35 downloaded 18/18 parts, archive SHA/ZIP CRC 468 members, patch SHA/parent checks; full source tree included here.
+**TESTED_PORT (Linux):** `PYTHONPATH=. python -m pytest -q` from source root exit0 `622 passed, 3 skipped, 2 xfailed, 3 subtests passed in 38.87s`. Full raw logs in recovery checkpoint. `xvfb-run -a ... StrategicWindow(fresh_temp_save)` returned R0/P9, no setup: an outstanding P0, not a PASS.
+**DIRECT RESTORATIONS:** explicit optional job-specific recruitment source forwarded through live Recruit order UI, safe neutral garrison evacuation guard for human/AI, retained older player text helper, latest Build36 combat, negative regression source and adapted older test suite. Exact old source donors saved in `historical_reference_only/recovery_20261102` as inert reference copies. All tests pass, but menu category accessibility and end-to-end all-scenario acceptance are not yet proven.
+**OPEN / NOT RECOVERED:** Director new-ruler/China map setup, v1.20 treaty expiry advisor + Renew dependency, historical month47 migration of missing arms/over-cap armies, exact original local-only Build05 UI work, full 41-province/controller acceptance and actual native Windows install. Read `SOURCE_RECOVERY_LOCK.json` for stable provenance and constraints.
+**PRIVATE ASSETS:** Soundware audio is an existing private reference asset only. This is a private backup of source, NOT public redistributable software. Do not distribute media without checking rights.
+**PUBLISH RULE:** THIS IS AN IMMUTABLE CANDIDATE, NOT 'CURRENT VERIFIED COMPLETE GAME' OR RELEASE. The historical canonical source pointer stays unchanged pending player-first P0 and full feature reconciliation. Do not overwrite earlier archives.

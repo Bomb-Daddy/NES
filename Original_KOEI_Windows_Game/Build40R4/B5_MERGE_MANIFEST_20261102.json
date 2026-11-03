@@ -1,0 +1,71 @@
+{
+  "status": "CANDIDATE_NOT_DIRECTOR_ACCEPTED",
+  "base_B36R1_sha256": "805d3fdfc8c67d6d6de6a6453e7f4efd57005c8a8c159df22a402bc404ce6491",
+  "Build37_drive_full_source_sha256": "d80041c0234a6935a6d2be65803cef8c0b1e866402f5659eef1fc96b5a7fb470",
+  "Build37_patch_sha256": "02add0fae01d33d55f5fa5e1fa2970fb0634b461ac348c3ec85c168ad0b6a9fd",
+  "merge": "B36R1 preserved all original 496 entries; Build37 human-defender code imported; B36R1 source commander garrison guard retained; exact launcher labels repaired; historical Q05 test corrected to exercise actual human defender; three regression tests added",
+  "changed_files": [
+    {
+      "file": "launcher/app.py",
+      "before_sha256": "5ea8bf042dad8290fdcd42a1a6a9cbfe4194ee068445c912e0dee05bc7015011",
+      "after_sha256": "8daa887a017c1fcb49f267104b72b02627f71de0e8692afd81381a9defce70c4",
+      "kind": "modified"
+    },
+    {
+      "file": "tests/test_build08_release_integration.py",
+      "before_sha256": "65aea6c551637a777372a587b7bc04d2eaf76411339314faaa0b1cdf27b9b469",
+      "after_sha256": "76ceaf55063abdd23deeee13d13683058db24b77b4d51b501b93af3dd8eac221",
+      "kind": "modified"
+    },
+    {
+      "file": "tests/test_build29_q05_q07_human_difficulty.py",
+      "before_sha256": "c69b8e55e82a641c23e3967b88395f21351b2fc04be206f45e0f3859a0b909ff",
+      "after_sha256": "4243d7a0418c6b2d73fd6e5877f4a84c159397de96b3b73c912129ccdc54f9f6",
+      "kind": "modified"
+    },
+    {
+      "file": "tests/test_director_two_mode_launcher_build08.py",
+      "before_sha256": "aa96b0ab26e8051ca547b883066514816c3bdf8b5fef2dc6df43ea5dd40d7f8a",
+      "after_sha256": "6b8b7cc3d391c21e37fe14005727504308e4379cd48fa9ae4adc82793c9d543e",
+      "kind": "modified"
+    },
+    {
+      "file": "third_branch/integrated.py",
+      "before_sha256": "b072e8377daf5bcee797fcb33124280d2156517fa2d16832711f92d71493c53d",
+      "after_sha256": "686f35f01db5b7349c3558d6a3aa3d9f62d68b682484a979525a25ec9a4cf4fc",
+      "kind": "modified"
+    },
+    {
+      "file": "third_branch/officer_battle_adapter.py",
+      "before_sha256": "4ec69b167192c1e29dcd1e483df76ee5a496e1e55e4f2a25a491c46791696119",
+      "after_sha256": "b63bd622ec5f11d589c80cddf00fea46c7c1088b027e65b5d6dbc48d92e0fe23",
+      "kind": "modified"
+    },
+    {
+      "file": "third_branch/tactical_view.py",
+      "before_sha256": "9fe5409f7b66fa325d53ac47170ddb6facca0acef65b0415769c7d454d6f268b",
+      "after_sha256": "fbbd739329fe64ef7478bdd52cab877e966a985cf410d52c73ab063b58ac698c",
+      "kind": "modified"
+    },
+    {
+      "file": "tests/test_b5_exact_launcher_labels_20261102.py",
+      "before_sha256": null,
+      "after_sha256": "a1a8003b55bcaa66863524236f738fd5052f73694b74cacc8e2fc4a591e22b7f",
+      "kind": "added"
+    },
+    {
+      "file": "tests/test_build37_human_defender_controller.py",
+      "before_sha256": null,
+      "after_sha256": "02475587edbd5dba0d35e6dee7a48417fa6af0c0cf525432b64bf1189daa9755",
+      "kind": "added"
+    },
+    {
+      "file": "tests/test_build37_xvfb_defender_controller.py",
+      "before_sha256": null,
+      "after_sha256": "a41d27cf71407a212ed940014539ae7e6e37ac4e377bb13e87f38589fd300be0",
+      "kind": "added"
+    }
+  ],
+  "excluded": "No new-game China ruler setup or historical seed100005 schema migration; no 300 campaigns; no original ROM runtime parity; not a final release",
+  "windows_controller_baseline": "Director accepted, not reopened"
+}

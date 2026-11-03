@@ -1,0 +1,37 @@
+{
+  "schema": "KOEI_Build09_Source_Manifest_v1",
+  "date": "2026-11-01",
+  "origin": "Build08 reconstructed verified exact source SHA-256 00394bdc8e15b34902c99c2bd5cf9111d07752db2604f8248d8c7a3e02a99ed0",
+  "mode": "Build08 two-mode patched source, not Windows executable",
+  "patched_files": {
+    "third_branch/integrated.py": {
+      "sha256": "54d88a7909d75bc6aa3cfd7eb5c48b58ea8950e663acfd0c24abf0f2b7e3b626",
+      "size": 64702
+    },
+    "third_branch/rotk2_battle_core.py": {
+      "sha256": "81c383cf838b150e57342130a876cbefa820123e3e14d0c1c03ad9abd0e98bd1",
+      "size": 3917
+    },
+    "third_branch/tactical_view.py": {
+      "sha256": "a7f30b638f6ac450d0c063f276f2130f3b9ec49b635276f3b2d69ac84651694a",
+      "size": 11941
+    },
+    "tests/test_integrated_branch.py": {
+      "sha256": "b93a0ee5920ee1c14bc035630a81ad22628b22da16fc2ff5121c28e77381d9c1",
+      "size": 12765
+    },
+    "tests/test_p0_multistation_capture_fix_v3.py": {
+      "sha256": "d109ed728c5758e7a782a35923b137e1879d642976056327af5d11934b2f33d4",
+      "size": 4018
+    },
+    "tests/test_rotk2_battle_core_v14.py": {
+      "sha256": "a5492e257a8bfec025c292990c3f549b24fba19472f4608a5a716aada56575ab",
+      "size": 4907
+    },
+    "BUILD09_UNIFIED_COMBAT_RELEASE_NOTES.md": {
+      "sha256": "624a8a93e562ac3f9c44973231942f07c5511d3131138445f77ace9ed59bc2f3",
+      "size": 6189
+    }
+  },
+  "focused_tests": "128 PASS; Python Linux headless; Windows/Mesen runtime not run; parity partial"
+}

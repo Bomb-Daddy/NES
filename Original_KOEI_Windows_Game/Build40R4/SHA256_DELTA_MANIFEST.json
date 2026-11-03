@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-31",
+  "branch": "Fork4_Reward_Governor_Experimental_v2",
+  "baseline": "Fork4_Officer_Relationships_Experimental_v1_2026-10-31.zip",
+  "files": {
+    "third_branch/officer_relations.py": "5c91497f26b01004f206f460e63ddcdfda1c89a3ce1c057655f57cd37ae5311e",
+    "third_branch/orders_ui.py": "fd58734095dbdd58cf2a94ebb03b681517337af58110ec3adf631d21f03f6621",
+    "third_branch/strategic_game.py": "311e1bbd86e2c276b696576cacbf7358d51b35cd7a293cb0455480d79958c77a",
+    "third_branch/context_help.py": "14768b0ab16d9cb01ab243febb6a3363a4180b8e632d5dcbf8ec8607a34de3ef",
+    "tests/test_ui_integrity_v19.py": "156e59efd55b0432cd26cb73e701b57ecbc99702147a9e3f6c824ee89f4f37b4",
+    "tests/test_reward_governor_fork4.py": "cc7c171a9ddd6dc874bf90264ee5f1035098aa596e6b3bcf656332e7592f166f",
+    "README_OFFICER_RELATIONS_EXPERIMENTAL.md": "8f21bb5e3554b61c961592081a4f62d86fb9b2f143327f3aec40fac92a3bc71e",
+    "FULL_PYTEST.txt": "800c113d2159b2f7490274add764d39966d3d5495ba83ec45f0290e2814fa60a",
+    "hostile_probes.json": "efe0d8664364f21b60182662e3d28be42a9395478cce259511e6b186cbc0ed42",
+    "HOSTILE_QA_REPORT.md": "ed3481375083fcd25b3fcd32a111e770f793be09815a8c6320941a2516aa07c9"
+  },
+  "full_suite": "409 passed, 2 xfailed, 3 subtests passed",
+  "not_release_ready": true
+}

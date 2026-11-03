@@ -1,0 +1,96 @@
+{
+  "album": "Sangokushi II 1989 Soundware arranged",
+  "status": "15 Director-supplied tracks; private integration; no distribution license verified",
+  "tracks": [
+    {
+      "filename": "01. Opening ~Daybreak~.mp3",
+      "bytes": 6118426,
+      "sha256": "5971f3e8d78debe68433d2882d4fc7435c57c0afc6ca75105943019a04c418bb",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "02. Prologue.mp3",
+      "bytes": 7049786,
+      "sha256": "d6460ac45e34a6f0231de613f58a25e6f6e5bd3c0b87d6ff3e281c2ff0537117",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "03. Theme of the Kingdom of Shu.mp3",
+      "bytes": 7947813,
+      "sha256": "f76b37ff47a189208366fc11cff9cef20f5219bf79c2d53473880fe22b11d21b",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "04. States with Great Powers.mp3",
+      "bytes": 6018378,
+      "sha256": "3b9b82f7e325318199aaacfe855fba407ef9ec68cf97f01f425b212e577b2522",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "05. Defeat.mp3",
+      "bytes": 1569221,
+      "sha256": "8715c0ced00a83c07fa1b8cc5eb94c820de1ef50b6765734d22dd8fd7fef0001",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "06. Envoy Visit.mp3",
+      "bytes": 2028563,
+      "sha256": "58b0e36a0db9b27dc8a479e04a1846dc5ad6fe3bdef3945ab0242a5a725dc799",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "07. North China States.mp3",
+      "bytes": 6364854,
+      "sha256": "8dfac46685f65cd3700f89486d5911242d62e45e9679efd5b03327f79a35605b",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "08. The Ruler's Death in Battle.mp3",
+      "bytes": 4112207,
+      "sha256": "044c5569c2b4e8c0b82012dc60b1b4752a0da2ccf38bab7b1588306887445203",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "09. Theme of the Kingdom of Wu.mp3",
+      "bytes": 7163552,
+      "sha256": "ca1474a8b2fec32cd609922604a012070b2d4c93e3230fc539ca1d5e4d0d4040",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "10. Marriage Ceremony.mp3",
+      "bytes": 2928885,
+      "sha256": "db280191ca27c7188d0ce68040b7a972577f349412d85c885f5bf52c6e3b8209",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "11. Dance of Diaochan.mp3",
+      "bytes": 4552035,
+      "sha256": "ab7709a6272f3d15a00390ed2fe0a831b4feb701e9dc8d09aafffb8e420dbbac",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "12. The Demise of our Native Land.mp3",
+      "bytes": 3971839,
+      "sha256": "f2f4a75b5dab300c36727b9294265e7812bdb67579af1e942c725bc062f2e016",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "13. Theme of the Kingdom of Wei.mp3",
+      "bytes": 10845658,
+      "sha256": "32426f2ba827cc165190cfb373b09c10a5afd8c234511b7b9e59dd19b6cd785c",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "14. Military Expedition.mp3",
+      "bytes": 3171384,
+      "sha256": "7e53ed1a163eb1ff0e2d26ab457c03b60c0564396bd50f6bf4ea890e15c13ca3",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    },
+    {
+      "filename": "15. Unification in Troubled Times.mp3",
+      "bytes": 6902338,
+      "sha256": "7a3fa8a1c031419405df4ff4aba3bec4b485b28d4861a51a060d72afcc025951",
+      "provenance": "Director-supplied 1989 Koei Soundware arrangement; private reference use only"
+    }
+  ]
+}

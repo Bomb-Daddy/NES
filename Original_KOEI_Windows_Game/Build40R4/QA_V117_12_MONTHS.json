@@ -1,0 +1,123 @@
+{
+  "months": 12,
+  "final_fingerprint": "737823172fef5934673219c021b6c916ef8831fbc7df4353d705fca68fc954c8",
+  "events": [
+    {
+      "month": 1,
+      "hash": "c093eb2f2a564a433c163462312cc29b227b0165dd8d4a22fc390dcc8b64d78f",
+      "opponents": 14,
+      "committed": 14
+    },
+    {
+      "month": 2,
+      "hash": "8cb4a2e3ac79441a85042fd5993cbebefed35854689b40a6af05dfeeb4eac396",
+      "opponents": 14,
+      "committed": 12
+    },
+    {
+      "month": 3,
+      "hash": "b2069f45d0a30bdacc3da565aaeb598422c4d35af47074bc17a31b14ba97d28c",
+      "opponents": 14,
+      "committed": 13
+    },
+    {
+      "month": 4,
+      "hash": "1d4e5b52f842837e3a5ea97c692a19570b24a5de0d3f5b88d7a4928c38778962",
+      "opponents": 14,
+      "committed": 13
+    },
+    {
+      "month": 5,
+      "hash": "ec4f9af7bb65bf0a7572abf8155f3b7c10bafd75e4e8c6eec3d785069c29ffa1",
+      "opponents": 14,
+      "committed": 12
+    },
+    {
+      "month": 6,
+      "hash": "e3000d3178d50668b985deda60d14cb7106bb99201688a66e1fb7de9d13daf5e",
+      "opponents": 14,
+      "committed": 13
+    },
+    {
+      "month": 7,
+      "hash": "42e6575507eba53446628842373c2fa5f7a3224487bb23a9accef13d6ab481f2",
+      "opponents": 14,
+      "committed": 13
+    },
+    {
+      "month": 8,
+      "hash": "666b1397dd90809edf920f5f8e6391170af8f1a2d164ba77e288a380cbc19828",
+      "opponents": 14,
+      "committed": 12
+    },
+    {
+      "month": 9,
+      "hash": "515b89b16b0ff93b31736d43141998f83bea98c2f6a8cfe54edc4460421e9e7e",
+      "opponents": 14,
+      "committed": 13
+    },
+    {
+      "month": 10,
+      "hash": "9b1b7c25743be354ce635f8bab2f1334732a2ee1e6bf5eb8147e5ba20e234181",
+      "opponents": 14,
+      "committed": 13
+    },
+    {
+      "month": 11,
+      "hash": "ec218d80a2d5ce8b53c32c7b3fc06267e72044acc3d7f5a38e1a0b22081d2104",
+      "opponents": 14,
+      "committed": 12
+    },
+    {
+      "month": 12,
+      "hash": "08bd7656ac7ea56ab72952f3008c71b867f0be3d5884fc2659e4c1facc5ff804",
+      "opponents": 14,
+      "committed": 13
+    }
+  ],
+  "action_counts": {
+    "P02::recruit": 9,
+    "P11::appoint_governor": 1,
+    "P12::recruit": 6,
+    "P01::recruit": 5,
+    "P03::recruit": 12,
+    "P03::attack": 1,
+    "P04::allocate_workers": 4,
+    "P05::distribute_food": 5,
+    "P06::market": 6,
+    "P07::allocate_workers": 11,
+    "P08::allocate_workers": 6,
+    "P09::transport": 6,
+    "P10::Ally": 6,
+    "none::delegated_idle": 4,
+    "none::inactive": 11,
+    "P10::appoint_governor": 1,
+    "P11::recruit": 2,
+    "P12::market": 5,
+    "P10::recruit": 1,
+    "P02::allocate_workers": 7,
+    "P04::recruit": 4,
+    "P09::recruit": 3,
+    "P05::recruit": 3,
+    "P06::distribute_food": 3,
+    "P11::market": 2,
+    "P01::allocate_workers": 1,
+    "P06::allocate_workers": 3,
+    "P08::market": 6,
+    "P02::distribute_food": 5,
+    "P11::cultivate": 3,
+    "P01::market": 2,
+    "P09::allocate_workers": 3,
+    "P10::distribute_food": 4,
+    "P01::train": 4,
+    "P04::cultivate": 3,
+    "P05::allocate_workers": 3,
+    "P02::Ally": 1,
+    "P07::market": 1,
+    "P02::cultivate": 2,
+    "P12::allocate_workers": 1,
+    "P04::distribute_food": 1,
+    "P05::market": 1
+  },
+  "elapsed_seconds": 4.725
+}

@@ -1,0 +1,77 @@
+"""Historical Scenario 1 real Tk GUI: four prerequisite-gated legal order commits,
+and one honest unavailable marriage without invented genealogy.
+"""
+from pathlib import Path
+import pytest
+from third_branch.strategic_game import StrategicWindow
+from third_branch.historical_s1 import new_campaign_historical_s1
+from third_branch.integrated import load_file,save_file
+from third_branch.player_text import explain_error
+from og.core.fixed import CoreError
+
+@pytest.fixture
+def game(tmp_path,monkeypatch):
+    monkeypatch.setenv('KOEI_DISABLE_AUDIO','1')
+    g=StrategicWindow(str(tmp_path/'auto.ogsave'));g.root.update()
+    yield g
+    if g.root.winfo_exists():g.close()
+
+
+def prepare_friendly_border(g):
+    # All changes are real legal command-bus operations. R0 first transfers 20
+    # troops to another officer; that army then occupies a truly vacant p17.
+    g.c.do('assign_troops','nes:000',{'target_officer':'nes:033','count':20},'r4-pre-assign')
+    g.c.do('occupy_vacant','nes:033',{'target':'p17'},'r4-pre-occupy')
+    assert g.c.state['owners']['p17']=='R0'
+    assert g.c.state['core']['officers']['nes:000']['province_id']=='p9'
+    g.redraw()
+
+
+def prepare_alliance(g, joint):
+    # Deterministic seeded, legally negotiated alliance, no fixture-only edit
+    # to the treaty list. p7 is a real neighboring R11 province.
+    g.c=new_campaign_historical_s1(3,balance_policy='OG_1000_DIRECTOR_V2')
+    if joint:
+        g.c.do('plan_attack','nes:000',{'target':'p7'},'r4-pre-plan')
+    result=g.c.do('Ally','nes:000',{'target':'R8'},'r4-pre-ally')
+    assert result['accepted'] and 'R0|R8' in g.c.state['alliances']
+    g.redraw()
+
+
+@pytest.mark.parametrize('order,fields,setup',[
+    ('Move Army',{'target':'p17'},prepare_friendly_border),
+    ('Transport',{'target':'p17','commodity':'food','units':'1'},prepare_friendly_border),
+    ('Joint',{'target':'R8','objective':'p7','promised_troops':'1'},lambda g:prepare_alliance(g,True)),
+    ('Cancel Alliance',{'target':'R8'},lambda g:prepare_alliance(g,False)),
+])
+def test_historical_precondition_enables_real_tk_commit_and_cold_load(game,order,fields,setup):
+    setup(game)
+    game.orders();dlg=game.orders_dialog
+    dlg.actor.set('nes:000');dlg.order.set(order);dlg._fields()
+    for key,value in fields.items():dlg.fields[key].set(value)
+    before=game.c.fingerprint
+    dlg.submit();game.root.update()
+    assert dlg.pending is not None, (order,dlg.info.get())
+    assert game.c.fingerprint==before
+    dlg.confirm_order();game.root.update()
+    assert game.c.fingerprint!=before,(order,dlg.info.get())
+    assert load_file(game.path).fingerprint==game.c.fingerprint
+
+
+def test_unavailable_marriage_says_missing_evidence_not_engine_code(game):
+    game.orders();dlg=game.orders_dialog
+    dlg.actor.set('nes:000');dlg.order.set('Marry');dlg._fields()
+    dlg.fields['target'].set('R8')
+    before=game.c.fingerprint
+    dlg.submit();game.root.update()
+    assert dlg.pending is None
+    assert 'No eligible daughter' in dlg.info.get()
+    assert 'NO_DAUGHTER' not in dlg.info.get()
+    assert game.c.fingerprint==before
+
+
+def test_player_facing_rejections_have_no_raw_internal_codes():
+    for code in ('NO_DAUGHTER','NOT_ALLIED','NOT_FRIENDLY_ADJACENT','NO_BP','NO_STOCK',
+                 'NO_GOLD','STALE_QUOTE','NO_MARKET_STOCK','COOLDOWN'):
+        assert code not in explain_error(CoreError(code,code))
+    assert 'daughter' in explain_error(CoreError('NO_DAUGHTER'))

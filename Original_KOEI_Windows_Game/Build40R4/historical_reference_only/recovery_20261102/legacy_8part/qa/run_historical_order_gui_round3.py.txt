@@ -1,0 +1,53 @@
+"""Actual Tk OrderWindow -> two-button preview/commit in historical 41-province campaign.
+Unproven commands are reported as such, not silently counted green.
+"""
+import json,tempfile
+from pathlib import Path
+from third_branch.strategic_game import StrategicWindow
+from third_branch.orders_ui import SPECS
+from third_branch.historical_s1 import list_recruitable
+from third_branch.integrated import load_file
+
+params={
+ 'Cultivate':{},'Allocate Workers':{'source':'unassigned','target':'farmers','count':'1'},
+ 'Distribute Food':{'units':'1'},'Distribute Goods':{'units':'1'},'Recruit':{'count':'1'},
+ 'Recruit Officer':{'officer_id':'AUTO'},'Assign Troops':{'target_officer':'nes:033','count':'1'},
+ 'Disband Soldiers':{'count':'1'},'Move Army':{'target':'p17'},
+ 'Occupy Vacant Province':{'target':'p17'},'Market':{'commodity':'food','side':'buy','units':'1'},
+ 'Train Officer':{'trait':'war','effort':'1'},'Transport':{'target':'p17','commodity':'food','units':'1'},
+ 'Appoint Governor':{'officer':'nes:000','focus':'farms'},'Plan Attack':{'target':'p10'},
+ 'Attack':{'target':'p10','troops':'1'},'Ally':{'target':'R8'},
+ 'Joint':{'target':'R8','objective':'p10','promised_troops':'1'},
+ 'Marry':{'target':'R8'},'Give':{'target':'R8','gold_cents':'1'},
+ 'Cancel Alliance':{'target':'R8'},'Threat':{'target':'R8'},
+}
+report=[]
+for name in SPECS:
+ with tempfile.TemporaryDirectory() as td:
+  w=StrategicWindow(str(Path(td)/'auto.ogsave'))
+  try:
+   w.root.update();w.orders();d=w.orders_dialog
+   if d is None or not hasattr(d,'actor'):
+    report.append({'name':name,'status':'NO_PLAYER_OFFICER'});continue
+   d.actor.set('nes:000');d.order.set(name);d._fields()
+   given=dict(params[name]);
+   if given.get('officer_id')=='AUTO':given['officer_id']=list_recruitable(w.c.state,'p9')[0]
+   # Some legal commands need territory/diplomatic conditions not present at
+   # Scenario 1 launch; do not invent facts or treat their expected rejection as a pass.
+   for key,value in given.items():d.fields[key].set(value)
+   before=w.c.fingerprint
+   d.submit();w.root.update()
+   if d.pending is None:
+    report.append({'name':name,'status':'REJECTED_AT_PREVIEW','feedback':d.info.get()[:160]});continue
+   if w.c.fingerprint!=before:raise AssertionError((name,'preview committed state'))
+   d.confirm_order();w.root.update()
+   if w.c.fingerprint==before:
+    report.append({'name':name,'status':'NOT_COMMITTED','feedback':d.info.get()[:160]});continue
+   cold=load_file(w.path)
+   assert cold.fingerprint==w.c.fingerprint,(name,'saved bytes mismatch')
+   report.append({'name':name,'status':'COMMITTED_AND_COLDLOADED','feedback':d.info.get()[:110]})
+  finally:
+   w.close()
+print(json.dumps(report,indent=2))
+Path('/mnt/data/OG_R3_historical_gui_orders.json').write_text(json.dumps(report,indent=2))
+print('SUMMARY COMMITTED',sum(x['status']=='COMMITTED_AND_COLDLOADED' for x in report),'of',len(report),'historical orders')

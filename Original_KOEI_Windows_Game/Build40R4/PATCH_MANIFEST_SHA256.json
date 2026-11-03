@@ -1,0 +1,11 @@
+{
+  "branch": "isolated Fork4 v3",
+  "date": "2026-10-31",
+  "baseline_v2_sha256": "db4c9293a087bbf867663c10a7eea52eeb28bad8f3c54ec35e44e16235b8c61c",
+  "patched_v3_sha256": "6a6e003577162ee1559d194f4cf9c7c79e00d6d125ec6e2714151e8be8ad7aae",
+  "test_file_sha256": "5fe782333b84412a9e1801adc851e88c285b456d61976e5b146cc3459904abba",
+  "test_result": "413 passed, 2 xfailed, 3 subtests passed (independently rerun)",
+  "test_command": "python -m pytest -q -ra",
+  "parity_status": "PROVISIONAL - not original ROTK II 1:1 verified",
+  "replay_original_seed100005": "NOT EXECUTED; original month-47 snapshot not available locally in this turn"
+}

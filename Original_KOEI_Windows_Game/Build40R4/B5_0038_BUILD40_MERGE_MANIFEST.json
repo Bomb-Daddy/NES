@@ -1,0 +1,152 @@
+{
+  "candidate": "KOEI_ENHANCED_BUILD40R1_ZERO_LOSS_CAP_FIRST_RUN_CANDIDATE_20261102",
+  "classification": "LOCAL_INTEGRATION_CANDIDATE_NOT_CANONICAL_NOT_DIRECTOR_ACCEPTED",
+  "base": "Verified complete Enhanced Combat Build40",
+  "base_drive_folder": "https://drive.google.com/drive/folders/1ykrNe-O406sYcLGwk6tAFUO3txXcO3ne",
+  "base_sha256": "f5426f808d270abe6dd5f9d171b2fed4fbcfe4a9d149a3dce0dde4587f3ad759",
+  "base_entries": 509,
+  "donor": "B37R3 from B37R2 first-run and cap fix; Build40 Q03/Q17/Q19 kept unchanged",
+  "donor_sha256": "6586e7b99646ebef3dfef3955358fe25b0045f9da16304d704bda36de5d2af7f",
+  "changed_or_added": [
+    {
+      "path": "third_branch/army_cohorts.py",
+      "operation": "modified",
+      "parent_sha256": "c0fee971c49db400d3c9571998566352cdcd5d47f564a4f01ef830ef3447fc5f",
+      "merged_sha256": "576aa3bfb3ad791352006942ba99bc5211ef5b655b106aa77540bf86c076ba84"
+    },
+    {
+      "path": "third_branch/strategic_game.py",
+      "operation": "modified",
+      "parent_sha256": "c257cd2f1db8622308b46a2f07b75ffbde695ccdc8b4071dc62cc3a96313e9f0",
+      "merged_sha256": "80d5f01dbc16cfcf6a92e678444a3102f1881de09468eaf8eed83adc876682ad"
+    },
+    {
+      "path": "third_branch/integrated.py",
+      "operation": "modified",
+      "parent_sha256": "f7023fbccf13bef539562352f2d61db9ca68f5f222d3eae4d1695c062e778ed8",
+      "merged_sha256": "206579bfcc9b018c60821f49a2a4a6006eb49fa60256967c7de94ef215230118"
+    },
+    {
+      "path": "launcher/app.py",
+      "operation": "modified",
+      "parent_sha256": "5ea8bf042dad8290fdcd42a1a6a9cbfe4194ee068445c912e0dee05bc7015011",
+      "merged_sha256": "8daa887a017c1fcb49f267104b72b02627f71de0e8692afd81381a9defce70c4"
+    },
+    {
+      "path": "tests/test_build08_release_integration.py",
+      "operation": "modified",
+      "parent_sha256": "65aea6c551637a777372a587b7bc04d2eaf76411339314faaa0b1cdf27b9b469",
+      "merged_sha256": "76ceaf55063abdd23deeee13d13683058db24b77b4d51b501b93af3dd8eac221"
+    },
+    {
+      "path": "tests/test_build24_q04_original_rom_deployment.py",
+      "operation": "modified",
+      "parent_sha256": "ea6e89968796b459b6c83e81405b2278fe07fe012e85064946fd6b9e94091b91",
+      "merged_sha256": "61b4250bb628f44c26f12c2269d3ea58b82901445233ac50e8175dede7661a68"
+    },
+    {
+      "path": "tests/test_director_two_mode_launcher_build08.py",
+      "operation": "modified",
+      "parent_sha256": "aa96b0ab26e8051ca547b883066514816c3bdf8b5fef2dc6df43ea5dd40d7f8a",
+      "merged_sha256": "6b8b7cc3d391c21e37fe14005727504308e4379cd48fa9ae4adc82793c9d543e"
+    },
+    {
+      "path": "tests/test_b5_exact_launcher_labels_20261102.py",
+      "operation": "added",
+      "parent_sha256": null,
+      "merged_sha256": "a1a8003b55bcaa66863524236f738fd5052f73694b74cacc8e2fc4a591e22b7f"
+    },
+    {
+      "path": "tests/test_first_run_china_map_setup_b5.py",
+      "operation": "added",
+      "parent_sha256": null,
+      "merged_sha256": "eb15f4cd5f6a07b0cee026069a381fef128b6e15ef48e2f451e1eb90b5e51486"
+    },
+    {
+      "path": "tests/test_b5_0038_historical_capture_transaction.py",
+      "operation": "added",
+      "parent_sha256": null,
+      "merged_sha256": "142028e7059758a1e654442ac5e29fc94299167f045a723153112b81933a3e10"
+    },
+    {
+      "path": "tests/test_b5_0038_remote_cap_capture.py",
+      "operation": "added",
+      "parent_sha256": null,
+      "merged_sha256": "2ebb8cc11089346ea008a588e74a570f59d04ae4cb9db0a21579c13eb9c16fe9"
+    },
+    {
+      "path": "tools/audit_legacy_migration_readonly.py",
+      "operation": "added",
+      "parent_sha256": null,
+      "merged_sha256": "fced9fce062c93e939bcf5b5ec6266c3af92f51766627407bc218beec1b0cbe9"
+    },
+    {
+      "path": "B5_0037R2_MANIFEST.json",
+      "operation": "added",
+      "parent_sha256": null,
+      "merged_sha256": "8786b72a183a33f2cf53a29fbd3038d170f6f0f9312116e6841b8eb26cf70f4e"
+    },
+    {
+      "path": "B5_0038_MANIFEST.json",
+      "operation": "added",
+      "parent_sha256": null,
+      "merged_sha256": "20f199522dee570158715d456c1b596b39f0dfd8f391fa82ef1666a421a45df9"
+    },
+    {
+      "path": "B5_MERGE_MANIFEST_20261102.json",
+      "operation": "added",
+      "parent_sha256": null,
+      "merged_sha256": "dec0a2e85e3a59d3fb13ed985cc0aab4c0a476845439954e902d14f0ac6292a8"
+    },
+    {
+      "path": "README_B5_0037R2.txt",
+      "operation": "added",
+      "parent_sha256": null,
+      "merged_sha256": "6bdee5d2e6e1f03211aa73a4f89a854566d69d2444943dde14528ed5aab1df4d"
+    },
+    {
+      "path": "RECOVERY_CANDIDATE_README.md",
+      "operation": "added",
+      "parent_sha256": null,
+      "merged_sha256": "a5e183b93b9476b4c5d1508d33609b82dfe2dd8c72f50b7a52faf68fe9e70978"
+    },
+    {
+      "path": "SOURCE_RECOVERY_FILE_MANIFEST.json",
+      "operation": "added",
+      "parent_sha256": null,
+      "merged_sha256": "ff7f830e1b0bf45c5c32f43cab9add53a554ad0efc76fb95979f64d3ce4403a5"
+    },
+    {
+      "path": "SOURCE_RECOVERY_LOCK.json",
+      "operation": "added",
+      "parent_sha256": null,
+      "merged_sha256": "976d3312dddb1fe9ead12d8aab3faad43b9468331150641c010c3ccba35ce298"
+    },
+    {
+      "path": "pytest.ini",
+      "operation": "added",
+      "parent_sha256": null,
+      "merged_sha256": "402debe8808a44152f60fb6320c9aed95ea98862ab22fb0ce23dae78d2b3d348"
+    }
+  ],
+  "preserved_Build40_unique_tests": [
+    "tests/test_build38_q03_defender_second_list_rice.py",
+    "tests/test_build39_q17_weak_target_q18_reserve.py",
+    "tests/test_build40_q19_cpu_defender_help.py"
+  ],
+  "test_b37r3": "17 targeted pass; full CI aborted with Python 3.13/PIL/ddtrace threading fatal signal (not accepted as pass)",
+  "test_build40_merge": "21 targeted Linux Xvfb pass with ddtrace disabled; full CI pending",
+  "historical_save_sha256": "e2922d957ef4bfe3f23b3c6d7623be9beb9087af827a196a0d1fa2dd936c392e",
+  "historical_migration": "UNRESOLVED MISSING_UNIT_SKILL_ARMS and 22/52 month47 overcap armies",
+  "launcher": "exact Classic Game and Enhanced Game labels",
+  "baseline": "Windows install and Xbox controller DIRECTOR_ACCEPTED; no new hardware test",
+  "scope": "Original Enhanced PC only; canonical NES/DOS untouched; no agent communication or Collaboration publication",
+  "rollback_test_collection": {
+    "status": "EXCLUDED_EXACT_OBSOLETE_BUILD13_ROLLBACK",
+    "path": "tests/test_ui_integrity_v19_BUILD13.rollback.py",
+    "preserved_byte_exact_in": "historical_reference_only/rollback_build13/tests/test_ui_integrity_v19_BUILD13.rollback.py.txt",
+    "preserved_sha256": "1af8b9bcf1d7c0b709b1bf21a6dede2187684ddca78b4fe39c72caa9ebb0745b",
+    "live_test": "tests/test_ui_integrity_v19.py",
+    "collect_only": "659 collected, exit0, no other test excluded"
+  }
+}

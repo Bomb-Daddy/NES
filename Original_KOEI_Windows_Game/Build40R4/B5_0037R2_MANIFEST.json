@@ -1,0 +1,43 @@
+{
+  "project": "Original KOEI-inspired PC / Fork4 Enhanced Batch5 only",
+  "candidate": "B37R2_FIRST_RUN_CHINA_MAP_HISTORICAL_RULER_SETUP",
+  "status": "LOCAL_COMPLETE_SOURCE_CANDIDATE_NOT_CURRENT_RELEASE_NOT_DIRECTOR_ACCEPTED",
+  "parent_source_zip": "KOEI_ENHANCED_B37R1_MERGED_SOURCE_CANDIDATE_20261102.zip",
+  "parent_sha256": "24c79651666a2c08ad83839ebe555a714195cc63d625dd5264cca0db3c222ccb",
+  "parent_entries": 500,
+  "changed_paths": [
+    "third_branch/strategic_game.py"
+  ],
+  "new_paths": [
+    "tests/test_first_run_china_map_setup_b5.py",
+    "B5_0037R2_MANIFEST.json",
+    "README_B5_0037R2.txt"
+  ],
+  "implemented": [
+    "Fresh save no longer silently creates R0/Province9 province stage",
+    "Fresh game opens actual existing China overview in setup-only province-selection mode",
+    "D-pad 41-province wrap navigation, click target, vacant rejection, no provisional disk save",
+    "Historical ruler selection uses 15 real roster entries, rejects ruler not owning chosen province",
+    "Atomic save-before-live-adoption, disk failure/selection cancellation leaves campaign unchanged",
+    "Selected owned province and human faction persist through save/quit/cold-load",
+    "Existing saves resume ProvinceStage without rerunning first-run setup",
+    "Setup map cannot dispatch normal orders, advance turn or save provisional game"
+  ],
+  "not_claimed": [
+    "Custom/new ruler creation remains missing from current source (not simulated)",
+    "Actual geography hit regions beyond emblem centers not verified",
+    "Province-specific capital art still shared placeholder",
+    "Complete 4:3 live UI/menu acceptance not verified",
+    "Historical seed100005 month47 migration/replay not fixed",
+    "Original ROM one-to-one battle parity not established",
+    "300 frozen paired campaigns not run",
+    "No Windows or physical Xbox tests executed; Director baseline acceptance remains intact",
+    "No agent directives/Collaboration messages sent"
+  ],
+  "test_evidence": {
+    "targeted": "12 passed in 3.77s, exit 0 (Xvfb, KOEI_DISABLE_AUDIO=1)",
+    "full": "637 passed, 3 skipped, 2 xfailed, 3 subtests passed in 44.64s (Xvfb verbose log); exit 0",
+    "full_log": "B5_0037_DIAG.log"
+  },
+  "date": "2026-11-02"
+}

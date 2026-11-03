@@ -1,0 +1,60 @@
+"""Director DP-03/04: neutral Move Army, no obsolete AI actions, atomic rejection."""
+import copy
+import pytest
+from og.core.fixed import CoreError
+from third_branch.historical_s1 import new_campaign_historical_s1
+from third_branch.historical_ai_v3 import rank_choices
+from third_branch import army_cohorts as ac
+from third_branch.integrated import load_bytes, save_bytes
+
+
+def test_ai_never_offers_obsolete_cultivate_or_occupy():
+    c = new_campaign_historical_s1(100146)
+    for i, style in enumerate(('curious','cautious','aggressive','farmer','benevolent','trader',
+                              'industrialist','artisan','logistician','court','delegator','rules_lawyer')):
+        choices = rank_choices(c, f'R{i}', style)
+        assert not {ch.kind for _,ch in choices} & {'cultivate','occupy_vacant'}
+
+
+def test_neutral_move_relocates_real_army_preserves_source_and_coldloads():
+    c = new_campaign_historical_s1(100146)
+    s = c.state
+    assert s['owners']['p13'] is None
+    actor = 'nes:069'  # p14 second general: 10 groups, 110 remain
+    assert ac.strength(s, actor, 'p14') == 10
+    assert s['core']['provinces']['p14']['troops'] == 120
+    before = c.fingerprint
+    quote = c.preview('relocate_army', actor, {'target':'p13'}, 'b06:legal')
+    assert c.fingerprint == before
+    c.execute('relocate_army',actor,{'target':'p13'},'b06:legal',quote_id=quote['quote_id'],expected_revision=quote['revision'])
+    s=c.state
+    assert s['owners']['p13'] == 'R5'
+    assert s['core']['provinces']['p14']['troops'] == 110
+    assert s['core']['provinces']['p13']['troops'] == 10
+    assert s['core']['officers'][actor]['province_id'] == 'p13'
+    assert load_bytes(save_bytes(c)).fingerprint == c.fingerprint
+
+
+def test_suicidal_neutral_move_rejected_without_any_mutation():
+    c = new_campaign_historical_s1(100146)
+    actor = 'nes:009' # 100 groups; source p3 would retain 20, below reserve
+    before = c.fingerprint
+    with pytest.raises(CoreError, match='UNSAFE_SOURCE_GARRISON'):
+        c.preview('relocate_army',actor,{'target':'p2'},'b06:unsafe')
+    assert c.fingerprint == before
+    assert c.state['owners']['p2'] is None
+    assert c.state['core']['officers'][actor]['bp'] == 73
+    assert not c.state['processed']
+
+
+def test_ai_exposes_legal_neutral_move_from_original_start():
+    c = new_campaign_historical_s1(100146)
+    options=[]
+    for i, style in enumerate(('curious','cautious','aggressive','farmer','benevolent','trader',
+                              'industrialist','artisan','logistician','court','delegator','rules_lawyer')):
+        options.extend((f'R{i}',ch) for _,ch in rank_choices(c,f'R{i}',style) if ch.kind=='relocate_army')
+    assert options, 'Must offer at least one real, legal defensive neutral move'
+    for faction,ch in options:
+        before=c.fingerprint
+        c.preview(ch.kind,ch.actor,ch.params,'b06:rank:'+faction+':'+ch.actor)
+        assert c.fingerprint==before

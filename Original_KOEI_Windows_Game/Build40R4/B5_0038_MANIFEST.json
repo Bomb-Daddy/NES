@@ -1,0 +1,40 @@
+{
+  "candidate": "KOEI_ENHANCED_B37R3_REMOTE_CAPTURE_CAP_SAFETY_CANDIDATE_20261102",
+  "source_class": "LOCAL_COMPLETE_CANDIDATE_NOT_CANONICAL_NOT_DIRECTOR_ACCEPTED",
+  "parent": "B37R2",
+  "parent_zip_sha256": "7cc2c6310e161da5a221b4511cebd2d9f56de0fa0f503cb787bd5c42c6627d47",
+  "parent_zip_entries": 503,
+  "changes": [
+    {
+      "path": "third_branch/integrated.py",
+      "parent_sha256": "686f35f01db5b7349c3558d6a3aa3d9f62d68b682484a979525a25ec9a4cf4fc",
+      "candidate_sha256": "03aab8f9366b9a5988736db182da862f603a42745d5f432c29a807414cd9fd23"
+    },
+    {
+      "path": "third_branch/army_cohorts.py",
+      "parent_sha256": "c0fee971c49db400d3c9571998566352cdcd5d47f564a4f01ef830ef3447fc5f",
+      "candidate_sha256": "576aa3bfb3ad791352006942ba99bc5211ef5b655b106aa77540bf86c076ba84"
+    },
+    {
+      "path": "tests/test_b5_0038_remote_cap_capture.py",
+      "parent_sha256": null,
+      "candidate_sha256": "2ebb8cc11089346ea008a588e74a570f59d04ae4cb9db0a21579c13eb9c16fe9"
+    },
+    {
+      "path": "tests/test_b5_0038_historical_capture_transaction.py",
+      "parent_sha256": null,
+      "candidate_sha256": "142028e7059758a1e654442ac5e29fc94299167f045a723153112b81933a3e10"
+    },
+    {
+      "path": "tools/audit_legacy_migration_readonly.py",
+      "parent_sha256": null,
+      "candidate_sha256": "fced9fce062c93e939bcf5b5ec6266c3af92f51766627407bc218beec1b0cbe9"
+    }
+  ],
+  "historical_archive_sha256": "e2922d957ef4bfe3f23b3c6d7623be9beb9087af827a196a0d1fa2dd936c392e",
+  "historical_replay_status": "RED_MISSING_UNIT_SKILL_ARMS_UNRESOLVED; 22/52 over cap at month47; no original save altered",
+  "battle_fix": "cap-aware remote captured commander reassignment planning; refuses impossible capture; retains original 100-group per general invariant; interim campaign policy not original-ROM parity",
+  "evidence": "red/green historical-schema campaign transaction; read-only 48-snapshot audit; final full CI pending",
+  "windows_controller_baseline": "DIRECTOR_ACCEPTED; not reopened",
+  "prohibited_publication": "no agents, no Collaboration, no canonical NES/DOS modifications"
+}

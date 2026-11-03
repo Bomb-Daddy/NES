@@ -1,0 +1,12 @@
+{
+  "status": "development-only neutral role placeholders",
+  "source": "Cropped from a newly generated, original concept mockup; the unrelated mockup screen, numbers, names and layout are NOT imported or authoritative.",
+  "roles": {
+    "ruler": "9e2cdfea9b402264000f0d58865f5a7e0222c08595c26fe56c1618fa28e109bc",
+    "advisor": "f5a539435d8d6d584a28d33d2901a6a150cf6c445c8fb2a681b3c040d80e7c5c",
+    "general": "6c55cbd71c63bff202a1b6934559d77ea5eb48382c8cd02b8c4d2d196de1ddea"
+  },
+  "identity": "NONE; all portraits are generic role images, not historical people, officers or appointed ruler/advisor",
+  "usage": "ruler/advisor frames: generic art with Unassigned label; officers: same general icon; speaker general fallback; existing game campaign data unchanged",
+  "replacement": "Swap role-specific PNGs in this folder; speaker identity portraits may be data-bound later"
+}

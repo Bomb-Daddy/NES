@@ -1,0 +1,1225 @@
+{
+  "schemaVersion": "3.2",
+  "title": "KOEI 12 Han-Named AI Player Policies v3.2 (follow-through and logistics corrections)",
+  "date": "2026-10-30",
+  "status": "EXECUTABLE CANDIDATE; full game acceptance not established",
+  "scope": "Original KOEI PC third branch only; no NES/DOS changes",
+  "source_basis": "Adapted from the user-approved Koei_Windows_Game_Master_Project_Plan.md and Advisor_System_Module_Spec.md. Original-game player research is an intended later calibration source, not claimed complete.",
+  "priority_categories": [
+    "food",
+    "infrastructure",
+    "public_support",
+    "officers",
+    "trade",
+    "industry",
+    "military"
+  ],
+  "policy_contract": {
+    "decision_style": "Propose bounded legal actions, score visible public states, preserve strategic intent via prior public command journal, inspect nonmutating preview and commit exactly one ordinary command per current engine faction-month.",
+    "priority_scale": "Integer weights sum to 100. They are starting test preferences, not hard-coded game formulas or a fully defined decision algorithm.",
+    "attention_budget": "attention_actions_per_month limits voluntary tactical/administrative decisions; basic interface and automatic monthly processing do not spend budget. BP costs remain enforced separately.",
+    "mistakes": "Represent limited foresight and imperfect inspection, not hidden-information cheats or direct corruption of state. Mistakes chosen deterministically from fixed input/seed and profile.",
+    "legality": "Submit only commands available to an ordinary player at the same snapshot. No private economy, hidden enemy data, direct state writes, free supplies, or exempted BP.",
+    "advisor_boundary": "Advisor and spring/fall reports are read-only; monthly advice is menu-accessible, not a popup.",
+    "unimplemented_features": "Director explicitly removed naval gameplay. Other unimplemented commands remain UNAVAILABLE; cannot claim specialist behavior was tested for nonexistent mechanics."
+  },
+  "test_protocol": {
+    "campaigns": "Run each persona on the same scenario, faction, starting snapshot, seed, and rules version; include multiple starting regions, resource conditions, and difficulty settings as each feature becomes available.",
+    "durations_months": [
+      12,
+      24,
+      60,
+      120
+    ],
+    "paired_runs": "Compare same seed and setup across profiles. Repeat across independent fixed seeds to distinguish policy effects from random outcomes.",
+    "save_replay": "For every profile, preserve a verbatim action/event journal and verify that replay from the same save/RNG reproduces the same state checksum.",
+    "capture": [
+      "campaign survival and conquest",
+      "population/civilian labor/troop conservation",
+      "food stock and harvest coverage",
+      "gold balance and trade margin",
+      "public support and loyalty",
+      "cultivation and flood protection",
+      "officer actions/BP efficiency",
+      "input/output inventory and manufacturing cost",
+      "equipped troops vs. available arms",
+      "ship/cargo capacity and delivery",
+      "governor overrides and policy violations",
+      "monthly clicks, invalid commands, cancellations",
+      "advisor accuracy and seasonal report deduplication",
+      "player-persona goal completion and reasons for failure"
+    ],
+    "evaluate": "Report game-breaking invariant failures separately from legitimate strategic losses, tedious UX, dominant-strategy imbalance, and unmet persona goals.",
+    "required_skill_counterfactuals": "For each Pxx, create a temporary controlled clone of SAME personality/goal/weights/attention with competence lowered one or more tiers; compare legal visible-context decision quality on matched seeds, not just win rates. Do not publish clones as extra canonical players.",
+    "differentiation_assertions": [
+      "Each Pxx has a distinct signature plan, specialist mastery and weakness",
+      "No trained player is guaranteed best output outside specialty",
+      "Novice and expert obey identical game rules, resource and visibility constraints",
+      "More skill changes action evaluation not bonus resources",
+      "P11 can be effective with two decisions per month and P12 is an adversarial specialist"
+    ]
+  },
+  "profiles": [
+    {
+      "id": "P01",
+      "name": "Liu Shan",
+      "persona": "First-time player who learns by browsing and experimenting rather than optimizing.",
+      "skill": "novice",
+      "risk": "medium",
+      "horizon_months": 3,
+      "micro": "medium",
+      "advisor": "rarely",
+      "inspection": "inconsistent",
+      "attention_actions_per_month": 3,
+      "source_influences": [
+        "ROTK II",
+        "Genghis Khan I"
+      ],
+      "goal": "Make visible progress, try appealing commands, keep the campaign alive.",
+      "behaviors": [
+        "Favor recently discovered actions and visibly large immediate gains over incremental returns.",
+        "Try each newly unlocked menu at least once if a legal and affordable action is available.",
+        "Respond to red warnings after they appear; do not proactively audit every ledger.",
+        "Revisit a prior successful action even when local capacity has changed."
+      ],
+      "blind_spots": [
+        "Neglects long-range food forecasts and the distinction between stocks and deferred harvest.",
+        "May pay for superficially attractive projects with poor labor or material returns."
+      ],
+      "challenge": "Can a novice find the necessary information and recover from ordinary mistakes without external guidance?",
+      "failure_signatures": [
+        "Unexpected famine after apparent prosperity",
+        "Repeated invalid commands, menu loops, or unexplained BP depletion"
+      ],
+      "priority_weights": {
+        "food": 16,
+        "infrastructure": 10,
+        "public_support": 10,
+        "officers": 10,
+        "trade": 14,
+        "industry": 10,
+        "military": 30
+      },
+      "competence": {
+        "tier": "novice",
+        "candidate_limit": 3,
+        "mechanic_knowledge_pct": 35,
+        "opportunity_cost_pct": 15,
+        "downside_stress_pct": 10,
+        "evaluation_noise_bps": 1800,
+        "adaptation_pct": 20,
+        "cross_domain_skill_floor": 20,
+        "domain_mastery_pct": {
+          "military": 30,
+          "trade": 25
+        },
+        "planning_checks": 1,
+        "signature_plan": "Explore an unfamiliar menu; reward immediate, visible payoff",
+        "specialty_domains": [
+          "military",
+          "trade"
+        ],
+        "strategic_blindspot": "Delayed upkeep and seasonal production",
+        "behavioral_rules": [
+          "After first positive result, repeat a legal action once without comparing long-run alternatives",
+          "When food warning becomes explicit, switch to first affordable relief before checking underlying production",
+          "Inspect unknown menu on alternating months when no urgent warning exists"
+        ],
+        "adaptation_trigger": "After two visibly unproductive repeats, stop trying that action for three months"
+      },
+      "personality": {
+        "risk_preference": "medium",
+        "preferred_goal": "Make visible progress, try appealing commands, keep the campaign alive.",
+        "priority_weights_source": "v1.0 unchanged",
+        "attention_per_month": 3,
+        "bias_description": "Delayed upkeep and seasonal production"
+      },
+      "schema_note": "These competency fields are inert until a version 1.1 production-loader and action-selector adapter are installed; retain v1.0 legacy parser for v1.0 inputs.",
+      "legacy_name_v1_1": "The Curious Beginner",
+      "playstyle": "Curious Beginner",
+      "historical_name_note": "Historical Han-era names used as evocative test-agent labels; NOT assertions about these people's real personalities, capabilities, or presence in Scenario 1.",
+      "playstyle_intent": "Learning through experimentation; deliberately shortsighted",
+      "priority_weights_v1_1_naval_weight_excluded": 12,
+      "policy_v3": {
+        "goal_memory_months": 3,
+        "plan_commitment_months": 6,
+        "adapt_from_visible_journal": true,
+        "no_privileged_actions": true,
+        "no_naval_commands": true,
+        "max_orders_per_faction_month_in_current_engine": 1,
+        "offensive_initiative_rule": "Only military-first or clear, infrequent offensive windows; cooldown after unsuccessful recent campaigns.",
+        "avoid_wasteful_plan_attack": "Never issue repeated plan_attack when not an engine requirement; work on actual army readiness instead.",
+        "governor_role_stability": "Do not switch governors without a required focus change or role defect."
+      }
+    },
+    {
+      "id": "P02",
+      "name": "Liu Biao",
+      "persona": "Risk-averse player prioritizing resilience, reserves, and low regret.",
+      "skill": "intermediate",
+      "risk": "very_low",
+      "horizon_months": 24,
+      "micro": "medium",
+      "advisor": "frequently",
+      "inspection": "every_month",
+      "attention_actions_per_month": 4,
+      "source_influences": [
+        "ROTK II",
+        "Nobunaga II"
+      ],
+      "goal": "Survive bad harvests and external threats without catastrophic losses.",
+      "behaviors": [
+        "Keep a conservative food and gold buffer using available engine forecasts.",
+        "Raise flood protection or repair infrastructure when exposed even if weapons would yield faster conquest.",
+        "Avoid war without supplies, equipment, and a credible escape or defensive plan.",
+        "Only buy or build after verifying that upkeep does not endanger the next two seasons."
+      ],
+      "blind_spots": [
+        "Overinvests in insurance and may permanently miss favorable expansion windows.",
+        "Holds idle treasury and labor longer than necessary."
+      ],
+      "challenge": "Does patient defensive play remain viable and rewarding rather than a permanently losing trap?",
+      "failure_signatures": [
+        "Safe but stagnant campaign",
+        "Economic death spiral despite apparently prudent forecasts"
+      ],
+      "priority_weights": {
+        "food": 31,
+        "infrastructure": 18,
+        "public_support": 16,
+        "officers": 8,
+        "trade": 6,
+        "industry": 6,
+        "military": 15
+      },
+      "competence": {
+        "tier": "intermediate",
+        "candidate_limit": 6,
+        "mechanic_knowledge_pct": 68,
+        "opportunity_cost_pct": 58,
+        "downside_stress_pct": 70,
+        "evaluation_noise_bps": 850,
+        "adaptation_pct": 55,
+        "cross_domain_skill_floor": 48,
+        "domain_mastery_pct": {
+          "food": 82,
+          "infrastructure": 75
+        },
+        "planning_checks": 3,
+        "signature_plan": "Maintain two-season food buffer and a defensible frontier",
+        "specialty_domains": [
+          "food",
+          "infrastructure"
+        ],
+        "strategic_blindspot": "Forfeits timing windows through excess caution",
+        "behavioral_rules": [
+          "Reject legal offensive actions if visible reserves below a two-season cushion unless homeland is at immediate risk",
+          "Use the warning and reserve screens before high-cost orders",
+          "Reserve treasury for harvest failure and upkeep before optional projects"
+        ],
+        "adaptation_trigger": "If six months without improvement and no threat, release bounded reserve to the highest-risk-adjusted upgrade"
+      },
+      "personality": {
+        "risk_preference": "very_low",
+        "preferred_goal": "Survive bad harvests and external threats without catastrophic losses.",
+        "priority_weights_source": "v1.0 unchanged",
+        "attention_per_month": 4,
+        "bias_description": "Forfeits timing windows through excess caution"
+      },
+      "schema_note": "These competency fields are inert until a version 1.1 production-loader and action-selector adapter are installed; retain v1.0 legacy parser for v1.0 inputs.",
+      "legacy_name_v1_1": "The Careful Survivor",
+      "playstyle": "Careful Survivor",
+      "historical_name_note": "Historical Han-era names used as evocative test-agent labels; NOT assertions about these people's real personalities, capabilities, or presence in Scenario 1.",
+      "playstyle_intent": "Reserves, safety and defensive preparation",
+      "priority_weights_v1_1_naval_weight_excluded": 6,
+      "policy_v3": {
+        "goal_memory_months": 24,
+        "plan_commitment_months": 6,
+        "adapt_from_visible_journal": true,
+        "no_privileged_actions": true,
+        "no_naval_commands": true,
+        "max_orders_per_faction_month_in_current_engine": 1,
+        "offensive_initiative_rule": "Only military-first or clear, infrequent offensive windows; cooldown after unsuccessful recent campaigns.",
+        "avoid_wasteful_plan_attack": "Never issue repeated plan_attack when not an engine requirement; work on actual army readiness instead.",
+        "governor_role_stability": "Do not switch governors without a required focus change or role defect."
+      }
+    },
+    {
+      "id": "P03",
+      "name": "Sun Ce",
+      "persona": "Aggressive military player who seeks territory before a stable economic base.",
+      "skill": "intermediate",
+      "risk": "very_high",
+      "horizon_months": 6,
+      "micro": "high",
+      "advisor": "never",
+      "inspection": "military_only",
+      "attention_actions_per_month": 6,
+      "source_influences": [
+        "ROTK II",
+        "Bandit Kings"
+      ],
+      "goal": "Capture neighboring territory rapidly and keep the offensive moving.",
+      "behaviors": [
+        "Spend early surplus on recruitment, equipment, training, and near-term army supply.",
+        "Attack when local strength appears favorable instead of waiting for optimal industry.",
+        "Move troops and material aggressively between frontier provinces.",
+        "Treat morale/support and civilian labor as secondary unless unrest or shortages block orders."
+      ],
+      "blind_spots": [
+        "Underestimates seasonal harvest timing, attrition, opportunity cost of conscription.",
+        "May overextend supply chains or conquer unprofitable provinces."
+      ],
+      "challenge": "Are early wars possible without resource creation, but costly enough to discourage effortless snowballing?",
+      "failure_signatures": [
+        "Army supply collapse or mass demobilization",
+        "Runaway conquest with no meaningful economic tradeoff"
+      ],
+      "priority_weights": {
+        "food": 8,
+        "infrastructure": 4,
+        "public_support": 5,
+        "officers": 8,
+        "trade": 3,
+        "industry": 10,
+        "military": 62
+      },
+      "competence": {
+        "tier": "intermediate",
+        "candidate_limit": 7,
+        "mechanic_knowledge_pct": 65,
+        "opportunity_cost_pct": 42,
+        "downside_stress_pct": 43,
+        "evaluation_noise_bps": 850,
+        "adaptation_pct": 46,
+        "cross_domain_skill_floor": 40,
+        "domain_mastery_pct": {
+          "military": 83,
+          "industry": 58
+        },
+        "planning_checks": 3,
+        "signature_plan": "Attack strongest favorable frontier position before competitor consolidates",
+        "specialty_domains": [
+          "military",
+          "industry"
+        ],
+        "strategic_blindspot": "Supply, social support and occupation economics",
+        "behavioral_rules": [
+          "Use troop/equipment matchups and known terrain to pick among current targets",
+          "Accept near-term shortage if legal victory estimate crosses chosen threshold",
+          "Retain reserve troops for one counterattack but treat civil projects as secondary"
+        ],
+        "adaptation_trigger": "If two campaigns fail or force collapses, pause attacks and rebuild supplies for up to three months"
+      },
+      "personality": {
+        "risk_preference": "very_high",
+        "preferred_goal": "Capture neighboring territory rapidly and keep the offensive moving.",
+        "priority_weights_source": "v1.0 unchanged",
+        "attention_per_month": 6,
+        "bias_description": "Supply, social support and occupation economics"
+      },
+      "schema_note": "These competency fields are inert until a version 1.1 production-loader and action-selector adapter are installed; retain v1.0 legacy parser for v1.0 inputs.",
+      "legacy_name_v1_1": "The Impatient Conqueror",
+      "playstyle": "Impatient Conqueror",
+      "historical_name_note": "Historical Han-era names used as evocative test-agent labels; NOT assertions about these people's real personalities, capabilities, or presence in Scenario 1.",
+      "playstyle_intent": "Fast offensive plans with recovery after defeat",
+      "priority_weights_v1_1_naval_weight_excluded": 7,
+      "policy_v3": {
+        "goal_memory_months": 6,
+        "plan_commitment_months": 4,
+        "adapt_from_visible_journal": true,
+        "no_privileged_actions": true,
+        "no_naval_commands": true,
+        "max_orders_per_faction_month_in_current_engine": 1,
+        "offensive_initiative_rule": "Only military-first or clear, infrequent offensive windows; cooldown after unsuccessful recent campaigns.",
+        "avoid_wasteful_plan_attack": "Never issue repeated plan_attack when not an engine requirement; work on actual army readiness instead.",
+        "governor_role_stability": "Do not switch governors without a required focus change or role defect."
+      }
+    },
+    {
+      "id": "P04",
+      "name": "Zhao Guo",
+      "persona": "Development-focused administrator who sees cultivation and labor productivity as the path to power.",
+      "skill": "advanced",
+      "risk": "low",
+      "horizon_months": 60,
+      "micro": "high",
+      "advisor": "frequently",
+      "inspection": "every_month",
+      "attention_actions_per_month": 6,
+      "source_influences": [
+        "ROTK II",
+        "Genghis Khan I"
+      ],
+      "goal": "Grow a sustainable food surplus and productive civilian population over several years.",
+      "behaviors": [
+        "Assign enough farmers to meet long-run food goals before growing nonfarm sectors.",
+        "Invest in cultivation, flood protection, and land crews when marginal returns warrant it.",
+        "Plan around the specified annual harvest and tax dates, not instant monthly credits.",
+        "Expand industry only after verifying surplus labor and food."
+      ],
+      "blind_spots": [
+        "May underproduce equipment and lose to opportunistic neighbors.",
+        "Can mistake bigger harvest for better per-worker productivity."
+      ],
+      "challenge": "Does persistent labor outperform repeated direct investment where it should, and are tradeoffs visible?",
+      "failure_signatures": [
+        "Labor duplication or September staffing exploit",
+        "Investment dominates or is dominated regardless of local conditions"
+      ],
+      "priority_weights": {
+        "food": 30,
+        "infrastructure": 33,
+        "public_support": 13,
+        "officers": 8,
+        "trade": 3,
+        "industry": 6,
+        "military": 7
+      },
+      "competence": {
+        "tier": "advanced",
+        "candidate_limit": 11,
+        "mechanic_knowledge_pct": 86,
+        "opportunity_cost_pct": 85,
+        "downside_stress_pct": 82,
+        "evaluation_noise_bps": 330,
+        "adaptation_pct": 80,
+        "cross_domain_skill_floor": 63,
+        "domain_mastery_pct": {
+          "food": 93,
+          "infrastructure": 94
+        },
+        "planning_checks": 6,
+        "signature_plan": "Maximize multi-harvest per-worker yield, not gross harvest alone",
+        "specialty_domains": [
+          "food",
+          "infrastructure"
+        ],
+        "strategic_blindspot": "Defensive readiness and opportunistic wars",
+        "behavioral_rules": [
+          "Estimate marginal food per labor and action BP; compare sustained workforce versus one-off investment",
+          "Time staffing and projects around actual annual event calendar",
+          "Decline a high-output farm upgrade if reserve depletion creates unacceptable interharvest risk"
+        ],
+        "adaptation_trigger": "If production misses forecast by two observations, recalibrate yields and reallocate workforce next available turn"
+      },
+      "personality": {
+        "risk_preference": "low",
+        "preferred_goal": "Grow a sustainable food surplus and productive civilian population over several years.",
+        "priority_weights_source": "v1.0 unchanged",
+        "attention_per_month": 6,
+        "bias_description": "Defensive readiness and opportunistic wars"
+      },
+      "schema_note": "These competency fields are inert until a version 1.1 production-loader and action-selector adapter are installed; retain v1.0 legacy parser for v1.0 inputs.",
+      "legacy_name_v1_1": "The Agrarian Planner",
+      "playstyle": "Agrarian Planner",
+      "historical_name_note": "Historical Han-era names used as evocative test-agent labels; NOT assertions about these people's real personalities, capabilities, or presence in Scenario 1.",
+      "playstyle_intent": "Long-run yields and seasonal farming",
+      "priority_weights_v1_1_naval_weight_excluded": 2,
+      "policy_v3": {
+        "goal_memory_months": 24,
+        "plan_commitment_months": 12,
+        "adapt_from_visible_journal": true,
+        "no_privileged_actions": true,
+        "no_naval_commands": true,
+        "max_orders_per_faction_month_in_current_engine": 1,
+        "offensive_initiative_rule": "Only military-first or clear, infrequent offensive windows; cooldown after unsuccessful recent campaigns.",
+        "avoid_wasteful_plan_attack": "Never issue repeated plan_attack when not an engine requirement; work on actual army readiness instead.",
+        "governor_role_stability": "Do not switch governors without a required focus change or role defect."
+      }
+    },
+    {
+      "id": "P05",
+      "name": "Liu Chong",
+      "persona": "People-first player who protects popular support and accepts slower expansion.",
+      "skill": "intermediate",
+      "risk": "low",
+      "horizon_months": 36,
+      "micro": "medium",
+      "advisor": "frequently",
+      "inspection": "seasonal_reports",
+      "attention_actions_per_month": 4,
+      "source_influences": [
+        "Bandit Kings",
+        "Genghis Khan I",
+        "ROTK II"
+      ],
+      "goal": "Maintain high public support while improving food security and resilience.",
+      "behaviors": [
+        "Prefer relief, specialty-goods distribution, and fair policy over emergency requisition.",
+        "Treat loss of support as a real cost of resource collection and rapid recruitment.",
+        "Reject lucrative trade if it creates a credible local shortage or social crisis.",
+        "Prioritize recovery if support falls below a self-selected safe band."
+      ],
+      "blind_spots": [
+        "Can sacrifice military security and investment income to maintain high approval.",
+        "May use goods distribution excessively if its support gain is overstated."
+      ],
+      "challenge": "Are support-oriented decisions meaningful without turning gift distribution into infinite popularity?",
+      "failure_signatures": [
+        "Support farming or zero-cost gift exploit",
+        "Unrecoverable support-to-tax-to-famine spiral"
+      ],
+      "priority_weights": {
+        "food": 22,
+        "infrastructure": 10,
+        "public_support": 38,
+        "officers": 8,
+        "trade": 8,
+        "industry": 9,
+        "military": 5
+      },
+      "competence": {
+        "tier": "intermediate",
+        "candidate_limit": 6,
+        "mechanic_knowledge_pct": 67,
+        "opportunity_cost_pct": 62,
+        "downside_stress_pct": 63,
+        "evaluation_noise_bps": 850,
+        "adaptation_pct": 58,
+        "cross_domain_skill_floor": 46,
+        "domain_mastery_pct": {
+          "public_support": 88,
+          "food": 70
+        },
+        "planning_checks": 3,
+        "signature_plan": "Hold public support above the chosen floor without repetitive zero-cost gifts",
+        "specialty_domains": [
+          "public_support",
+          "food"
+        ],
+        "strategic_blindspot": "Overpays for immediate public approval",
+        "behavioral_rules": [
+          "Compare relief/support gain to actual stock cost and visible unrest risk",
+          "Maintain food before distributing discretionary goods",
+          "Do not recruit into visible starvation merely to meet an army target"
+        ],
+        "adaptation_trigger": "If support remains high for two reporting seasons, reduce discretionary distributions and fund essential defenses"
+      },
+      "personality": {
+        "risk_preference": "low",
+        "preferred_goal": "Maintain high public support while improving food security and resilience.",
+        "priority_weights_source": "v1.0 unchanged",
+        "attention_per_month": 4,
+        "bias_description": "Overpays for immediate public approval"
+      },
+      "schema_note": "These competency fields are inert until a version 1.1 production-loader and action-selector adapter are installed; retain v1.0 legacy parser for v1.0 inputs.",
+      "legacy_name_v1_1": "The Benevolent Governor",
+      "playstyle": "Benevolent Governor",
+      "historical_name_note": "Historical Han-era names used as evocative test-agent labels; NOT assertions about these people's real personalities, capabilities, or presence in Scenario 1.",
+      "playstyle_intent": "Civic welfare, fair distribution and support",
+      "priority_weights_v1_1_naval_weight_excluded": 3,
+      "policy_v3": {
+        "goal_memory_months": 24,
+        "plan_commitment_months": 6,
+        "adapt_from_visible_journal": true,
+        "no_privileged_actions": true,
+        "no_naval_commands": true,
+        "max_orders_per_faction_month_in_current_engine": 1,
+        "offensive_initiative_rule": "Only military-first or clear, infrequent offensive windows; cooldown after unsuccessful recent campaigns.",
+        "avoid_wasteful_plan_attack": "Never issue repeated plan_attack when not an engine requirement; work on actual army readiness instead.",
+        "governor_role_stability": "Do not switch governors without a required focus change or role defect."
+      }
+    },
+    {
+      "id": "P06",
+      "name": "Mi Zhu",
+      "persona": "Price-sensitive trader trying to finance state expansion through exchange.",
+      "skill": "advanced",
+      "risk": "medium_high",
+      "horizon_months": 12,
+      "micro": "very_high",
+      "advisor": "sometimes",
+      "inspection": "market_and_treasury",
+      "attention_actions_per_month": 7,
+      "source_influences": [
+        "Genghis Khan I",
+        "ROTK II"
+      ],
+      "goal": "Maximize sustainable trading profits net of BP, transport, and displaced labor.",
+      "behaviors": [
+        "Compare commodity prices, seasonal windows, local demand, and marginal 500-unit tiers.",
+        "Use an available high-Charisma negotiator when expected benefits exceed alternative officer work.",
+        "Split, combine, or stage trades to discover which legitimate pricing strategy is best.",
+        "Preserve sufficient local food and production inputs to avoid undermining next season."
+      ],
+      "blind_spots": [
+        "May spend excessive officer time to chase small margins.",
+        "Treats illiquid inventory as wealth and underestimates convoy risk."
+      ],
+      "challenge": "Are marginal tiers understandable and profitable without zero-price rounding or buy-sell arbitrage?",
+      "failure_signatures": [
+        "Profit from pure buy-sell loops",
+        "Single commodity or single merchant strategy always wins"
+      ],
+      "priority_weights": {
+        "food": 12,
+        "infrastructure": 3,
+        "public_support": 6,
+        "officers": 10,
+        "trade": 52,
+        "industry": 12,
+        "military": 5
+      },
+      "competence": {
+        "tier": "advanced",
+        "candidate_limit": 12,
+        "mechanic_knowledge_pct": 88,
+        "opportunity_cost_pct": 89,
+        "downside_stress_pct": 74,
+        "evaluation_noise_bps": 320,
+        "adaptation_pct": 78,
+        "cross_domain_skill_floor": 62,
+        "domain_mastery_pct": {
+          "trade": 96,
+          "officers": 72
+        },
+        "planning_checks": 6,
+        "signature_plan": "Profit from legal seasonal spreads after BP, officer and stock opportunity costs",
+        "specialty_domains": [
+          "trade",
+          "officers"
+        ],
+        "strategic_blindspot": "Counterparty risk and distant military implications",
+        "behavioral_rules": [
+          "Preview 499/500/501 marginal quantity steps where current engine supports them",
+          "Estimate net cash impact and next-month stock scarcity before trading",
+          "Use Charisma negotiator only when incremental expected benefit exceeds competing officer role"
+        ],
+        "adaptation_trigger": "After two weak-margin trades, switch commodity or wait for visible seasonal quote change"
+      },
+      "personality": {
+        "risk_preference": "medium_high",
+        "preferred_goal": "Maximize sustainable trading profits net of BP, transport, and displaced labor.",
+        "priority_weights_source": "v1.0 unchanged",
+        "attention_per_month": 7,
+        "bias_description": "Counterparty risk and distant military implications"
+      },
+      "schema_note": "These competency fields are inert until a version 1.1 production-loader and action-selector adapter are installed; retain v1.0 legacy parser for v1.0 inputs.",
+      "legacy_name_v1_1": "The Market Operator",
+      "playstyle": "Market Operator",
+      "historical_name_note": "Historical Han-era names used as evocative test-agent labels; NOT assertions about these people's real personalities, capabilities, or presence in Scenario 1.",
+      "playstyle_intent": "Profitable commerce and prudent inventory",
+      "priority_weights_v1_1_naval_weight_excluded": 5,
+      "policy_v3": {
+        "goal_memory_months": 12,
+        "plan_commitment_months": 3,
+        "adapt_from_visible_journal": true,
+        "no_privileged_actions": true,
+        "no_naval_commands": true,
+        "max_orders_per_faction_month_in_current_engine": 1,
+        "offensive_initiative_rule": "Only military-first or clear, infrequent offensive windows; cooldown after unsuccessful recent campaigns.",
+        "avoid_wasteful_plan_attack": "Never issue repeated plan_attack when not an engine requirement; work on actual army readiness instead.",
+        "governor_role_stability": "Do not switch governors without a required focus change or role defect."
+      }
+    },
+    {
+      "id": "P07",
+      "name": "Ma Jun",
+      "persona": "Resource-and-industry specialist focused on metal, timber, arms, and equipment readiness.",
+      "skill": "advanced",
+      "risk": "medium",
+      "horizon_months": 30,
+      "micro": "high",
+      "advisor": "sometimes",
+      "inspection": "production_and_inventory",
+      "attention_actions_per_month": 6,
+      "source_influences": [
+        "Bandit Kings",
+        "Genghis Khan I"
+      ],
+      "goal": "Maintain reliable domestic manufacture without exhausting strategic inputs.",
+      "behaviors": [
+        "Map finite deposits and renewable timber/fur yield before scaling production.",
+        "Reserve metal and other inputs for priority arms contracts before luxury craft.",
+        "Balance miners, foresters, smiths/artisans, and agriculture using one civilian workforce.",
+        "Avoid building equipment no army can use without an explicit future plan."
+      ],
+      "blind_spots": [
+        "May overbuild capacity before demand appears.",
+        "May keep too little gold for wages, trade, or development."
+      ],
+      "challenge": "Do recipes, scarce materials, worker opportunity costs, and equipment allocation stay coherent?",
+      "failure_signatures": [
+        "Same metal used in multiple production queues",
+        "Equipping more soldiers than arms actually exist"
+      ],
+      "priority_weights": {
+        "food": 12,
+        "infrastructure": 7,
+        "public_support": 6,
+        "officers": 8,
+        "trade": 7,
+        "industry": 46,
+        "military": 14
+      },
+      "competence": {
+        "tier": "advanced",
+        "candidate_limit": 11,
+        "mechanic_knowledge_pct": 88,
+        "opportunity_cost_pct": 89,
+        "downside_stress_pct": 85,
+        "evaluation_noise_bps": 320,
+        "adaptation_pct": 80,
+        "cross_domain_skill_floor": 65,
+        "domain_mastery_pct": {
+          "industry": 95,
+          "military": 81
+        },
+        "planning_checks": 6,
+        "signature_plan": "Remove the binding input or labor bottleneck in weapon production",
+        "specialty_domains": [
+          "industry",
+          "military"
+        ],
+        "strategic_blindspot": "Sunk industrial capacity and treasury liquidity",
+        "behavioral_rules": [
+          "Identify least available input at each planned recipe and reserve it once",
+          "Compare equipment utilization against current troop roster before committing a new run",
+          "Minimize idle industrial queues when a needed input can be acquired legally"
+        ],
+        "adaptation_trigger": "After two completed runs with unissued equipment, slow production and free labor for food/cash"
+      },
+      "personality": {
+        "risk_preference": "medium",
+        "preferred_goal": "Maintain reliable domestic manufacture without exhausting strategic inputs.",
+        "priority_weights_source": "v1.0 unchanged",
+        "attention_per_month": 6,
+        "bias_description": "Sunk industrial capacity and treasury liquidity"
+      },
+      "schema_note": "These competency fields are inert until a version 1.1 production-loader and action-selector adapter are installed; retain v1.0 legacy parser for v1.0 inputs.",
+      "legacy_name_v1_1": "The Arsenal Builder",
+      "playstyle": "Arsenal Builder",
+      "historical_name_note": "Historical Han-era names used as evocative test-agent labels; NOT assertions about these people's real personalities, capabilities, or presence in Scenario 1.",
+      "playstyle_intent": "Industrial efficiency and arms bottlenecks",
+      "priority_weights_v1_1_naval_weight_excluded": 4,
+      "policy_v3": {
+        "goal_memory_months": 24,
+        "plan_commitment_months": 6,
+        "adapt_from_visible_journal": true,
+        "no_privileged_actions": true,
+        "no_naval_commands": true,
+        "max_orders_per_faction_month_in_current_engine": 1,
+        "offensive_initiative_rule": "Only military-first or clear, infrequent offensive windows; cooldown after unsuccessful recent campaigns.",
+        "avoid_wasteful_plan_attack": "Never issue repeated plan_attack when not an engine requirement; work on actual army readiness instead.",
+        "governor_role_stability": "Do not switch governors without a required focus change or role defect."
+      }
+    },
+    {
+      "id": "P08",
+      "name": "Zhang Heng",
+      "persona": "Genghis-style specialist who builds prosperity through region-specific crafts.",
+      "skill": "advanced",
+      "risk": "medium",
+      "horizon_months": 36,
+      "micro": "high",
+      "advisor": "frequently",
+      "inspection": "production_and_market",
+      "attention_actions_per_month": 6,
+      "source_influences": [
+        "Genghis Khan I",
+        "Bandit Kings"
+      ],
+      "goal": "Create a diversified, profitable artisan economy whose goods have strategic uses.",
+      "behaviors": [
+        "Choose regional recipes based on accessible inputs, labor productivity, and local trade value.",
+        "Compare selling craft goods with distributing them for support or reserving them for projects.",
+        "Adjust artisan mix seasonally without assuming completed items are available early.",
+        "Diversify when a market becomes saturated or transport limits exports."
+      ],
+      "blind_spots": [
+        "Can chase luxury profitability while ignoring arms and defenses.",
+        "May neglect more profitable raw-material exports or farming."
+      ],
+      "challenge": "Are ten specialty goods differentiated and worth producing rather than decorative inventory?",
+      "failure_signatures": [
+        "Infinite value from input-free crafting",
+        "All artisan recipes reduce to the same optimal good"
+      ],
+      "priority_weights": {
+        "food": 14,
+        "infrastructure": 7,
+        "public_support": 11,
+        "officers": 6,
+        "trade": 25,
+        "industry": 34,
+        "military": 3
+      },
+      "competence": {
+        "tier": "advanced",
+        "candidate_limit": 11,
+        "mechanic_knowledge_pct": 87,
+        "opportunity_cost_pct": 85,
+        "downside_stress_pct": 75,
+        "evaluation_noise_bps": 350,
+        "adaptation_pct": 80,
+        "cross_domain_skill_floor": 63,
+        "domain_mastery_pct": {
+          "industry": 92,
+          "trade": 90
+        },
+        "planning_checks": 6,
+        "signature_plan": "Choose specialty goods by marginal labor-value, input availability and saturated demand",
+        "specialty_domains": [
+          "industry",
+          "trade"
+        ],
+        "strategic_blindspot": "Defense and supplies for prolonged campaigns",
+        "behavioral_rules": [
+          "Choose recipe based on current yield and net realizable price, not base nominal price",
+          "Test selling versus public-support distribution using actually visible cost",
+          "Diversify after visible market saturation rather than producing the single highest listed price item"
+        ],
+        "adaptation_trigger": "If exports miss seasonal net-profit target twice, move workforce to next feasible regional recipe"
+      },
+      "personality": {
+        "risk_preference": "medium",
+        "preferred_goal": "Create a diversified, profitable artisan economy whose goods have strategic uses.",
+        "priority_weights_source": "v1.0 unchanged",
+        "attention_per_month": 6,
+        "bias_description": "Defense and supplies for prolonged campaigns"
+      },
+      "schema_note": "These competency fields are inert until a version 1.1 production-loader and action-selector adapter are installed; retain v1.0 legacy parser for v1.0 inputs.",
+      "legacy_name_v1_1": "The Artisan Exporter",
+      "playstyle": "Artisan Exporter",
+      "historical_name_note": "Historical Han-era names used as evocative test-agent labels; NOT assertions about these people's real personalities, capabilities, or presence in Scenario 1.",
+      "playstyle_intent": "Technical crafts, specialty output and markets",
+      "priority_weights_v1_1_naval_weight_excluded": 2,
+      "policy_v3": {
+        "goal_memory_months": 24,
+        "plan_commitment_months": 6,
+        "adapt_from_visible_journal": true,
+        "no_privileged_actions": true,
+        "no_naval_commands": true,
+        "max_orders_per_faction_month_in_current_engine": 1,
+        "offensive_initiative_rule": "Only military-first or clear, infrequent offensive windows; cooldown after unsuccessful recent campaigns.",
+        "avoid_wasteful_plan_attack": "Never issue repeated plan_attack when not an engine requirement; work on actual army readiness instead.",
+        "governor_role_stability": "Do not switch governors without a required focus change or role defect."
+      }
+    },
+    {
+      "id": "P09",
+      "name": "Lu Su",
+      "persona": "Movement-focused ruler using ships, ports, and convoys to integrate provinces.",
+      "skill": "advanced",
+      "risk": "medium",
+      "horizon_months": 36,
+      "micro": "very_high",
+      "advisor": "sometimes",
+      "inspection": "routes_and_cargo",
+      "attention_actions_per_month": 7,
+      "source_influences": [
+        "Bandit Kings",
+        "Genghis Khan I",
+        "ROTK II"
+      ],
+      "goal": "Exploit geography with viable fleets and reliable interprovince supply routes.",
+      "behaviors": [
+        "Favor water-linked provinces and build ships only when actual routes need them.",
+        "Reserve crews and materials before committing hulls or shipments.",
+        "Measure delivery lead time, capacity, escort risk, and convoy loss instead of comparing local stocks alone.",
+        "Move food, metal, and arms where regional specialization creates the greatest benefit."
+      ],
+      "blind_spots": [
+        "Can overspend on hulls and route management.",
+        "Undervalues a simple overland solution when waterways are inconvenient."
+      ],
+      "challenge": "Are ships useful where geography justifies them without duplicated cargo or free transport?",
+      "failure_signatures": [
+        "Same hull or cargo committed twice",
+        "Maritime loop with no meaningful benefit or impossible route"
+      ],
+      "priority_weights": {
+        "food": 12,
+        "infrastructure": 33,
+        "public_support": 5,
+        "officers": 6,
+        "trade": 17,
+        "industry": 14,
+        "military": 13
+      },
+      "competence": {
+        "tier": "advanced",
+        "candidate_limit": 11,
+        "mechanic_knowledge_pct": 85,
+        "opportunity_cost_pct": 87,
+        "downside_stress_pct": 82,
+        "evaluation_noise_bps": 380,
+        "adaptation_pct": 78,
+        "cross_domain_skill_floor": 62,
+        "domain_mastery_pct": {
+          "naval": 97,
+          "trade": 82,
+          "military": 63
+        },
+        "planning_checks": 6,
+        "signature_plan": "Use shipping only when route benefit exceeds hull, crew, delivery and risk costs",
+        "specialty_domains": [
+          "naval",
+          "trade"
+        ],
+        "strategic_blindspot": "Overinvestment in fleet infrastructure",
+        "behavioral_rules": [
+          "Compare legal land versus water route on cost and arrival windows",
+          "Reserve ship and cargo exactly once through ordinary transaction APIs",
+          "Reject voyage whose visible carrying capacity cannot cover required cargo"
+        ],
+        "adaptation_trigger": "If two shipments lose money or miss timings, reroute to proven legal route or reduce fleet spend"
+      },
+      "personality": {
+        "risk_preference": "medium",
+        "preferred_goal": "Exploit geography with viable fleets and reliable interprovince supply routes.",
+        "priority_weights_source": "v1.0 unchanged",
+        "attention_per_month": 7,
+        "bias_description": "Overinvestment in fleet infrastructure"
+      },
+      "schema_note": "These competency fields are inert until a version 1.1 production-loader and action-selector adapter are installed; retain v1.0 legacy parser for v1.0 inputs.",
+      "legacy_name_v1_1": "The River-and-Sea Logistician",
+      "playstyle": "Logistician",
+      "historical_name_note": "Historical Han-era names used as evocative test-agent labels; NOT assertions about these people's real personalities, capabilities, or presence in Scenario 1.",
+      "playstyle_intent": "Overland supply and reserve transfers",
+      "priority_weights_v1_1_naval_weight_excluded": 25,
+      "policy_v3": {
+        "goal_memory_months": 24,
+        "plan_commitment_months": 4,
+        "adapt_from_visible_journal": true,
+        "no_privileged_actions": true,
+        "no_naval_commands": true,
+        "max_orders_per_faction_month_in_current_engine": 1,
+        "offensive_initiative_rule": "Only military-first or clear, infrequent offensive windows; cooldown after unsuccessful recent campaigns.",
+        "avoid_wasteful_plan_attack": "Never issue repeated plan_attack when not an engine requirement; work on actual army readiness instead.",
+        "governor_role_stability": "Do not switch governors without a required focus change or role defect."
+      }
+    },
+    {
+      "id": "P10",
+      "name": "Xun Yu",
+      "persona": "Officer-centric player who wins through administration, loyalty, tutoring, and diplomacy.",
+      "skill": "expert",
+      "risk": "medium_low",
+      "horizon_months": 48,
+      "micro": "high",
+      "advisor": "frequently",
+      "inspection": "officers_and_relations",
+      "attention_actions_per_month": 6,
+      "source_influences": [
+        "ROTK II",
+        "Nobunaga II"
+      ],
+      "goal": "Multiply the value of a small officer corps through good assignments and relationships.",
+      "behaviors": [
+        "Recruit or retain talented officers early when it is economically feasible.",
+        "Choose assignments by Politics/Charisma and total BP opportunity cost rather than stat alone.",
+        "Train/tutor where lifetime gains can plausibly recoup time, gold, and BP.",
+        "Prefer diplomacy or personnel gains to war when both can achieve strategic objectives."
+      ],
+      "blind_spots": [
+        "Overpays for elite personnel or training when the economy needs liquidity.",
+        "May postpone urgent recruitment of ordinary soldiers."
+      ],
+      "challenge": "Are officers, BP, loyalty, training, and diplomacy valuable but not mandatory min-max bottlenecks?",
+      "failure_signatures": [
+        "One high-stat officer can act indefinitely",
+        "Training benefits outrun costs or never repay"
+      ],
+      "priority_weights": {
+        "food": 12,
+        "infrastructure": 11,
+        "public_support": 9,
+        "officers": 44,
+        "trade": 6,
+        "industry": 6,
+        "military": 12
+      },
+      "competence": {
+        "tier": "expert",
+        "candidate_limit": 16,
+        "mechanic_knowledge_pct": 96,
+        "opportunity_cost_pct": 94,
+        "downside_stress_pct": 92,
+        "evaluation_noise_bps": 120,
+        "adaptation_pct": 91,
+        "cross_domain_skill_floor": 79,
+        "domain_mastery_pct": {
+          "officers": 99,
+          "public_support": 88,
+          "military": 80,
+          "trade": 79
+        },
+        "planning_checks": 9,
+        "signature_plan": "Sequence officer BP, loyalty and diplomacy as a constrained multi-turn schedule",
+        "specialty_domains": [
+          "officers",
+          "public_support"
+        ],
+        "strategic_blindspot": "Sometimes keeps elite officers training instead of acting",
+        "behavioral_rules": [
+          "Compare recruitment, training, reassignment and diplomacy by net lifetime payoff and BP lock",
+          "Protect critical upcoming officer commands before allocating optional BP",
+          "Reject a diplomatic gain requiring more than observed affordable treasury and loyalty buffer"
+        ],
+        "adaptation_trigger": "If negotiated outcome or tutor improvement underperforms two consecutive windows, revise assignments and plan horizon"
+      },
+      "personality": {
+        "risk_preference": "medium_low",
+        "preferred_goal": "Multiply the value of a small officer corps through good assignments and relationships.",
+        "priority_weights_source": "v1.0 unchanged",
+        "attention_per_month": 6,
+        "bias_description": "Sometimes keeps elite officers training instead of acting"
+      },
+      "schema_note": "These competency fields are inert until a version 1.1 production-loader and action-selector adapter are installed; retain v1.0 legacy parser for v1.0 inputs.",
+      "legacy_name_v1_1": "The Court Strategist",
+      "playstyle": "Court Strategist",
+      "historical_name_note": "Historical Han-era names used as evocative test-agent labels; NOT assertions about these people's real personalities, capabilities, or presence in Scenario 1.",
+      "playstyle_intent": "Officer development and diplomacy",
+      "priority_weights_v1_1_naval_weight_excluded": 4,
+      "policy_v3": {
+        "goal_memory_months": 24,
+        "plan_commitment_months": 6,
+        "adapt_from_visible_journal": true,
+        "no_privileged_actions": true,
+        "no_naval_commands": true,
+        "max_orders_per_faction_month_in_current_engine": 1,
+        "offensive_initiative_rule": "Only military-first or clear, infrequent offensive windows; cooldown after unsuccessful recent campaigns.",
+        "avoid_wasteful_plan_attack": "Never issue repeated plan_attack when not an engine requirement; work on actual army readiness instead.",
+        "governor_role_stability": "Do not switch governors without a required focus change or role defect."
+      }
+    },
+    {
+      "id": "P11",
+      "name": "Chen Qun",
+      "persona": "Time-constrained player who relies on sensible defaults and delegated governors.",
+      "skill": "casual_intermediate",
+      "risk": "medium",
+      "horizon_months": 24,
+      "micro": "very_low",
+      "advisor": "seasonal_only",
+      "inspection": "spring_and_fall",
+      "attention_actions_per_month": 2,
+      "source_influences": [
+        "Nobunaga II",
+        "Genghis Khan I",
+        "Bandit Kings"
+      ],
+      "goal": "Enjoy a functioning campaign with minimal monthly micromanagement.",
+      "behaviors": [
+        "Set a broad reserve-first governor policy, then mostly accept suggested allocations.",
+        "Open spring/fall numerical reports and the menu advisor rather than checking all screens monthly.",
+        "Issue direct orders primarily for war, urgent shortages, important projects, or major trades.",
+        "Leave standing assignments unchanged unless the result clearly deteriorates."
+      ],
+      "blind_spots": [
+        "Misses small persistent inefficiencies and late warning signs.",
+        "Can misunderstand what delegated governors may or may not decide."
+      ],
+      "challenge": "Can a low-click player succeed, understand delegation decisions, and retain real strategic control?",
+      "failure_signatures": [
+        "Governor consumes protected stockpiles",
+        "Unsolicited monthly popups, repeated busywork, no reason codes"
+      ],
+      "priority_weights": {
+        "food": 19,
+        "infrastructure": 23,
+        "public_support": 11,
+        "officers": 8,
+        "trade": 10,
+        "industry": 11,
+        "military": 18
+      },
+      "competence": {
+        "tier": "casual_intermediate",
+        "candidate_limit": 5,
+        "mechanic_knowledge_pct": 73,
+        "opportunity_cost_pct": 79,
+        "downside_stress_pct": 76,
+        "evaluation_noise_bps": 650,
+        "adaptation_pct": 64,
+        "cross_domain_skill_floor": 57,
+        "domain_mastery_pct": {
+          "food": 75,
+          "military": 70,
+          "infrastructure": 72
+        },
+        "planning_checks": 3,
+        "signature_plan": "Choose good persistent governor settings; intervene only for meaningful exceptions",
+        "specialty_domains": [
+          "food",
+          "military"
+        ],
+        "strategic_blindspot": "Lags subtle structural decline due to sparse inspections",
+        "behavioral_rules": [
+          "Prefer robust default that avoids starvation and unattended frontier collapse",
+          "Use the two monthly decisions on highest visible risk or highest durable payoff",
+          "Consult spring and fall reports and only audit key metrics on exception"
+        ],
+        "adaptation_trigger": "If advisor or governor flags two consecutive warnings, spend next action on permanent policy repair"
+      },
+      "personality": {
+        "risk_preference": "medium",
+        "preferred_goal": "Enjoy a functioning campaign with minimal monthly micromanagement.",
+        "priority_weights_source": "v1.0 unchanged",
+        "attention_per_month": 2,
+        "bias_description": "Lags subtle structural decline due to sparse inspections"
+      },
+      "schema_note": "These competency fields are inert until a version 1.1 production-loader and action-selector adapter are installed; retain v1.0 legacy parser for v1.0 inputs.",
+      "legacy_name_v1_1": "The Busy Delegator",
+      "playstyle": "Busy Delegator",
+      "historical_name_note": "Historical Han-era names used as evocative test-agent labels; NOT assertions about these people's real personalities, capabilities, or presence in Scenario 1.",
+      "playstyle_intent": "Governorships and low-attention administration",
+      "priority_weights_v1_1_naval_weight_excluded": 8,
+      "policy_v3": {
+        "goal_memory_months": 24,
+        "plan_commitment_months": 6,
+        "adapt_from_visible_journal": true,
+        "no_privileged_actions": true,
+        "no_naval_commands": true,
+        "max_orders_per_faction_month_in_current_engine": 1,
+        "offensive_initiative_rule": "Only military-first or clear, infrequent offensive windows; cooldown after unsuccessful recent campaigns.",
+        "avoid_wasteful_plan_attack": "Never issue repeated plan_attack when not an engine requirement; work on actual army readiness instead.",
+        "governor_role_stability": "Do not switch governors without a required focus change or role defect."
+      }
+    },
+    {
+      "id": "P12",
+      "name": "Yang Xiu",
+      "persona": "Adversarial power user who probes legal limits, asymmetries, and edge conditions.",
+      "skill": "expert_adversarial",
+      "risk": "variable",
+      "horizon_months": 12,
+      "micro": "very_high",
+      "advisor": "for_evidence_only",
+      "inspection": "all_ledgers",
+      "attention_actions_per_month": 12,
+      "source_influences": [
+        "ROTK II",
+        "Bandit Kings",
+        "Nobunaga II",
+        "Genghis Khan I"
+      ],
+      "goal": "Find repeatable profitable exploits or irreconcilable state changes, not maximize immersion.",
+      "behaviors": [
+        "Attempt recruit-dismiss, trade split-merge, buy-sell round trips, and zero/maximum order quantities.",
+        "Save and reload immediately before tax, harvest, conquest, shipment arrival, and advisor reports.",
+        "Attempt parallel reservations of the same people, metal, funds, and ship capacity through legal UI commands.",
+        "Use one-factor A/B runs and record exact steps; never edit game memory or cheat in normal test mode."
+      ],
+      "blind_spots": [
+        "Unrepresentative of ordinary players; exploit discovery is not evidence of general difficulty.",
+        "May ignore enjoyable but non-optimal play styles."
+      ],
+      "challenge": "Can the game reject illegal states and close dominant unintended loops without blocking legitimate play?",
+      "failure_signatures": [
+        "Resource or person duplication",
+        "Zero-price trades, repeat fiscal events, inconsistent save/replay"
+      ],
+      "priority_weights": {
+        "food": 10,
+        "infrastructure": 6,
+        "public_support": 6,
+        "officers": 10,
+        "trade": 32,
+        "industry": 18,
+        "military": 18
+      },
+      "competence": {
+        "tier": "expert_adversarial",
+        "candidate_limit": 18,
+        "mechanic_knowledge_pct": 97,
+        "opportunity_cost_pct": 96,
+        "downside_stress_pct": 94,
+        "evaluation_noise_bps": 90,
+        "adaptation_pct": 93,
+        "cross_domain_skill_floor": 83,
+        "domain_mastery_pct": {
+          "trade": 99,
+          "industry": 98,
+          "military": 88,
+          "officers": 94
+        },
+        "planning_checks": 10,
+        "signature_plan": "Find a legal-command exploit with matched controls, then attempt reproduction",
+        "specialty_domains": [
+          "trade",
+          "industry",
+          "officers"
+        ],
+        "strategic_blindspot": "Not a representative pursuit of enjoyable victory",
+        "behavioral_rules": [
+          "Probe boundary values and quote changes through the same legal UI/preview",
+          "Attempt save/reload, duplicate orders and split/merge operations but never use unauthorized tools",
+          "Keep exact expected/actual state deltas and distinguish rejected illegal command from an exploit"
+        ],
+        "adaptation_trigger": "If a suspected exploit fails twice with matching controls, move to next untested boundary without declaring success"
+      },
+      "personality": {
+        "risk_preference": "variable",
+        "preferred_goal": "Find repeatable profitable exploits or irreconcilable state changes, not maximize immersion.",
+        "priority_weights_source": "v1.0 unchanged",
+        "attention_per_month": 12,
+        "bias_description": "Not a representative pursuit of enjoyable victory"
+      },
+      "schema_note": "These competency fields are inert until a version 1.1 production-loader and action-selector adapter are installed; retain v1.0 legacy parser for v1.0 inputs.",
+      "legacy_name_v1_1": "The Rules Lawyer",
+      "playstyle": "Rules Lawyer",
+      "historical_name_note": "Historical Han-era names used as evocative test-agent labels; NOT assertions about these people's real personalities, capabilities, or presence in Scenario 1.",
+      "playstyle_intent": "Adversarial boundary checks and repeated verification",
+      "priority_weights_v1_1_naval_weight_excluded": 10,
+      "policy_v3": {
+        "goal_memory_months": 12,
+        "plan_commitment_months": 2,
+        "adapt_from_visible_journal": true,
+        "no_privileged_actions": true,
+        "no_naval_commands": true,
+        "max_orders_per_faction_month_in_current_engine": 1,
+        "offensive_initiative_rule": "Only military-first or clear, infrequent offensive windows; cooldown after unsuccessful recent campaigns.",
+        "avoid_wasteful_plan_attack": "Never issue repeated plan_attack when not an engine requirement; work on actual army readiness instead.",
+        "governor_role_stability": "Do not switch governors without a required focus change or role defect."
+      }
+    }
+  ],
+  "parent_source": {
+    "file": "KOEI_12_Player_Playtesting_Profiles_v1.json",
+    "sha256": "e422e74e90ce7cdb4e1678109411a4dd306dd2e6fea2607095df11b54b923323",
+    "preservation": "Unchanged baseline retained; this v1.1 file is a separate proposed implementation schema"
+  },
+  "provenance": "Director Oct 29 request: increase differentiation and make experienced simulated players more competent. Producer-designed synthetic policies; not validated against original-game after-action reports. Names inspired by historically attested Han-era people, not individual biography simulation. No current scenario character identities changed.",
+  "competence_contract": {
+    "separation": "personality goals, risk, values and attention are orthogonal to domain expertise and decision competence; skill is not a personality label or resource multiplier",
+    "skill_scales": "All numeric skill and evaluation parameters are TEST-HARNESS controls, not runtime economy effects or implicit legal permissions.",
+    "legal_information_only": "Never access private enemy state, future RNG, internal balances unavailable through the UI, nonplayer APIs, unimplemented modules, or arbitrary save mutations.",
+    "knowledge": "Known mechanic rules learned from visible game help, player reports, and prior observed effects. Domain expertise improves legal model use, never grants omniscience.",
+    "planning_horizon": "Effective horizon is min(original preferred horizon, available forecast depth); beyond-forecast scenarios remain uncertain. Expert does not know the future.",
+    "decision_pipeline": [
+      "derive observations consistent with persona inspection and attention",
+      "build all legal visible candidates via production enumerate/preview API",
+      "if no valid action or worth pursuing, skip month",
+      "apply identical non-negotiable preview/commit validator",
+      "calculate signed estimated action outcomes using implemented public model outputs",
+      "estimate consequence cost: food/treasury/BP/labor/upkeep and projected downside",
+      "use domain capability to compare legal alternatives",
+      "apply personality priority/risk and skill-limited decision noise with deterministic hashed tie and per-action seed",
+      "commit once through normal human command gateway; log chosen and runner-up and reason",
+      "update only observed post-commit memory; on new evidence revise plan based on adaptation parameter"
+    ],
+    "candidate_score": "PROPOSED ONLY. All action benefit signals must be normalized to documented [-1,1] per category/scenario using exposed pre-action previews, with +1 beneficial and -1 harmful; missing signal neutral and marked. Base utility=sum(weight[k]/100 * signal[k]); subtract observed opportunity costs and downside risk (not hidden actual outcome); add visible specialty fit. Rerank finite candidates. Deterministic skill-noise is applied to estimated utility, never to the legality/commit validator.",
+    "competence_dimensions": [
+      "candidate_limit",
+      "mechanic_knowledge_pct",
+      "opportunity_cost_pct",
+      "downside_stress_pct",
+      "evaluation_noise_bps",
+      "adaptation_pct",
+      "cross_domain_skill_floor",
+      "domain_mastery_pct",
+      "planning_checks"
+    ],
+    "critical_safety": "All skill tiers share the same mandatory legality and hard no-cheat checks. A novice may fail strategically, but cannot spend resources not owned or bypass engine validation.",
+    "available_feature_handling": "For absent systems log UNAVAILABLE and use an explicit immutable full-weight/no-opportunity mode. Never silently renormalize eight-category weights. Comparative runs must use one versioned availability policy.",
+    "difficulty_testing": "Evaluate each persona against its own stated goal and relative to SAME-GOAL weakened competence clone across matched fixtures/seeds; expert is expected to make fewer dominated decisions given the same visible information, not win every war.",
+    "test_predictions": "Ability to evaluate information and recover improves generally from novice through intermediate/advanced/expert within a matched persona; personality tradeoffs and specialties remain distinct."
+  },
+  "baselineProfileVersion": "1.1",
+  "humanHistoricalNames": false,
+  "navalGameplay": false,
+  "qa_revision_note": "v3.1 showed 60 repeated plan_attack, 80 governor-appointment churn, zero Lu Su transports in 120 months. v3.2 corrects those decision loops."
+}

@@ -1,0 +1,30 @@
+"""Actual 41-province player-runtime monthly AI/save/coldload (not player hardware)."""
+import json,hashlib,tempfile
+from pathlib import Path
+from third_branch.historical_s1 import new_campaign_historical_s1
+from third_branch.player_runtime import stage_month_with_opponents
+from third_branch.integrated import save_file,load_file
+
+out=Path('/mnt/data/OG_R3_MONTHS');out.mkdir(exist_ok=True)
+results=[]
+for seed in (17,23):
+    c=new_campaign_historical_s1(seed,balance_policy='OG_1000_DIRECTOR_V2')
+    c.state['human_faction']='R0'
+    for index in range(24):
+        proposed,summary=stage_month_with_opponents(c,player='R0')
+        assert c.state['month']==index+1
+        source_fingerprint=c.fingerprint
+        snap=out/f'seed{seed}_month{index+1:03d}.json'
+        save_file(proposed,snap)
+        loaded=load_file(snap)
+        assert loaded.fingerprint==proposed.fingerprint
+        assert loaded.state['human_faction']=='R0'
+        assert c.fingerprint==source_fingerprint
+        # Save and resume from actual disk every turn, not just same-process copies.
+        c=loaded
+        results.append({'seed':seed,'month':index+1,'factions':sum(x['alive'] for x in c.state['factions'].values()),
+                        'governed':sum(v is not None for v in c.state['owners'].values()),
+                        'opponent_orders':len(summary['opponents']),'fingerprint':c.fingerprint})
+(out/'summary.json').write_text(json.dumps({'kind':'real-41-province-ai-months','months':len(results), 'records':results},indent=2))
+print('PASS seed17,seed23 24x2 real staged AI months, saved and cold-loaded every month',len(results))
+print('END',[(r['seed'],r['month'],r['governed'],r['factions']) for r in results if r['month']==24])

@@ -1,0 +1,99 @@
+"""All 22 *real* primary Order menu actions: legal preview, commit, replay, rollback.
+Fixtures are declared. Special operations use actual historical 41-province scenario.
+This is engine + form-parameter coverage, NOT physical Windows controller acceptance.
+"""
+import copy
+import pytest
+from third_branch.integrated import new_campaign,load_bytes,save_bytes
+from third_branch.historical_s1 import new_campaign_historical_s1,list_recruitable
+from third_branch.orders_ui import SPECS,params_for_order
+from og.core.fixed import CoreError
+
+
+def proposed_order(name):
+    c=new_campaign(seed=27)
+    actor='A1'
+    data={
+        'Cultivate':('A1',{}),
+        'Allocate Workers':('A1',{'source':'unassigned','target':'farmers','count':'1'}),
+        'Distribute Food':('A1',{'units':'1'}),
+        'Distribute Goods':('A1',{'units':'1'}),
+        'Recruit':('A1',{'count':'1'}),
+        'Assign Troops':('A1',{'target_officer':'A2','count':'1'}),
+        'Disband Soldiers':('A1',{'count':'1'}),
+        'Move Army':('A1',{'target':'p2'}),
+        'Market':('A1',{'commodity':'food','side':'buy','units':'1'}),
+        'Train Officer':('A1',{'trait':'war','effort':'1'}),
+        'Transport':('A1',{'target':'p2','commodity':'food','units':'1'}),
+        'Appoint Governor':('A1',{'officer':'A1','focus':'farms'}),
+        'Plan Attack':('A3',{'target':'p4'}),
+        'Attack':('A3',{'target':'p4','troops':'1'}),
+        'Ally':('A1',{'target':'B'}),
+        'Joint':('A3',{'target':'C','objective':'p4','promised_troops':'1'}),
+        'Marry':('A1',{'target':'B'}),
+        'Give':('A1',{'target':'B','gold_cents':'1'}),
+        'Cancel Alliance':('A1',{'target':'B'}),
+        'Threat':('A3',{'target':'B'}),
+    }
+    if name=='Recruit Officer':
+        c=new_campaign_historical_s1(seed=27,balance_policy='OG_1000_DIRECTOR_V2')
+        actor='nes:000'
+        fields={'officer_id':list_recruitable(c.state,'p9')[0]}
+    elif name=='Occupy Vacant Province':
+        c=new_campaign_historical_s1(seed=27,balance_policy='OG_1000_DIRECTOR_V2')
+        actor='nes:000'
+        # Current human ruler R0 occupies p9, p17 is adjacent and vacant.
+        target=next(n for n in c.state['neighbors']['p9'] if c.state['owners'][n] is None)
+        fields={'target':target}
+    else:
+        actor,fields=data[name]
+    if name=='Assign Troops':
+        # A2 begins stationed at p2; a valid officer in the same province is
+        # necessary and we must preserve the army ledger. Use another officer
+        # already at p1, manually relocated with an empty army only if legal.
+        c=new_campaign_historical_s1(seed=27,balance_policy='OG_1000_DIRECTOR_V2')
+        actor='nes:000';fields={'target_officer':'nes:033','count':'1'}
+    if name=='Joint':
+        # The legal joint objective is an enemy province reachable from the
+        # ally; a war plan is a real state prerequisite and can be set via cmd.
+        c.do('plan_attack','A3',{'target':'p4'},'round3-pre-plan')
+        c.do('Ally','A1',{'target':'C'},'round3-pre-ally')
+        # RNG may reject Ally: use explicit valid fixture for this branch.
+        if 'A|C' not in c.state['alliances']:
+            c.state['alliances'].append('A|C');c.state['alliances'].sort()
+    if name=='Cancel Alliance':
+        c.state['alliances'].append('A|B')
+    return c,actor,fields
+
+
+@pytest.mark.parametrize('name',list(SPECS))
+def test_every_visible_order_actual_legal_preview_execute_rollback(name):
+    c,actor,fields=proposed_order(name)
+    province=c.state['core']['officers'][actor]['province_id']
+    command,params=params_for_order(name,fields,province)
+    assert SPECS[name][0]==command
+    previous=c.fingerprint
+    proposal=c.preview(command,actor,params,'round3:'+name)
+    assert c.fingerprint==previous, (name,'preview mutated the world')
+    saved=save_bytes(c)
+    assert load_bytes(saved).fingerprint==previous
+    result=c.execute(command,actor,params,'round3:'+name,proposal['quote_id'],proposal['revision'])
+    assert c.fingerprint!=previous,(name,'commit had no effect')
+    assert isinstance(result,dict)
+    assert load_bytes(save_bytes(c)).fingerprint==c.fingerprint
+    committed=c.fingerprint
+    with pytest.raises(CoreError):
+        c.execute(command,actor,params,'round3:'+name,proposal['quote_id'],proposal['revision'])
+    assert c.fingerprint==committed,(name,'replay altered state')
+
+@pytest.mark.parametrize('name',list(SPECS))
+def test_every_visible_order_invalid_field_rolls_back(name):
+    c,actor,fields=proposed_order(name)
+    province=c.state['core']['officers'][actor]['province_id']
+    bad=dict(fields)
+    if bad:
+        field=next(iter(bad));bad[field]=''  # empty inputs must never be accepted
+        with pytest.raises(ValueError):params_for_order(name,bad,province)
+    else:
+        with pytest.raises(ValueError):params_for_order(name,{'surprise':'1'},province)
+    assert load_bytes(save_bytes(c)).fingerprint==c.fingerprint

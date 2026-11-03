@@ -1,0 +1,1138 @@
+{
+  "version": "v1.13",
+  "branch": "Original KOEI-inspired Linux/Windows PC game",
+  "authority": "historical Scenario 1 / Director economy v1.12 unchanged / private audio added only",
+  "date": "2026-10-30",
+  "code_source": "v1.12 source ZIP; unchanged game rules except audio/UI routing",
+  "private_soundtrack_not_in_source_zip": true,
+  "entries": {
+    "BALANCE_1000_POLICY_README.md": {
+      "bytes": 3067,
+      "sha256": "5d8a81b717d1ea12f9f4478f96e5124c28fc936a3d5433d408ad785acad05aac"
+    },
+    "PRIVATE_AUDIO_INSTALL_AND_QA_v1_13.md": {
+      "bytes": 2595,
+      "sha256": "5bba48147b547d07d1113d71dfa73eeb6bb8ce6877a2f5b89a80f359af83cf6d"
+    },
+    "Play_Third_Branch_Linux.sh": {
+      "bytes": 65,
+      "sha256": "73036a62c59835d1ba8b6c7b935e0f79a491dd207aad19d4b913a3042c8f60a3"
+    },
+    "Play_Third_Branch_PC.bat": {
+      "bytes": 192,
+      "sha256": "dfbf2e69e9ef3d344c1c78c11d953d17918c5605b22cdaca08dc781fbc9ac102"
+    },
+    "README_INTEGRATED.md": {
+      "bytes": 8292,
+      "sha256": "4ff5425d44597a24c86e0b5e0afbadb3d850b42b6c6b0bf6912e15d3140b077c"
+    },
+    "REBALANCE_DIRECTOR_V112_README.md": {
+      "bytes": 2162,
+      "sha256": "1119f9ed1744ecb9a12287514fe1762dabfb8fab793980e0bd6d4f1f06b4502d"
+    },
+    "VERSION_DIRECTOR_v1_12.md": {
+      "bytes": 2211,
+      "sha256": "374da12ae596cdc6680383d8aefcef224e23eab5f35befba3585f68626be1a33"
+    },
+    "config/KOEI_12_Player_Playtesting_Profiles_v1_1.json": {
+      "bytes": 49027,
+      "sha256": "9b3f930b22c8ed213e3e265b26f1af2b4b94b89a6cc5c985abb5a59d75ea809e"
+    },
+    "og/__init__.py": {
+      "bytes": 73,
+      "sha256": "f2f97318f77c4c1330b803f83802350d963000dcdf8d2f4e5055293b5ba961c5"
+    },
+    "og/core/__init__.py": {
+      "bytes": 71,
+      "sha256": "fd13c262f1731716d2264d362d96919cf69bba49d33917b4a3f4772fee9d4de7"
+    },
+    "og/core/bp_policy.py": {
+      "bytes": 769,
+      "sha256": "e31826bdec8fe0a17acfcbbe44204436bb9dc5206a4f719539d074bb808dfe84"
+    },
+    "og/core/bus.py": {
+      "bytes": 3173,
+      "sha256": "bfd5a25c4c77954b41ff7269d975137f5401e2589b886dffe59893d1550a8f45"
+    },
+    "og/core/commands.py": {
+      "bytes": 6012,
+      "sha256": "435fda07dd5c333f8fa4f95772f06bd74bcdda5b1315baebef411d01fcf176af"
+    },
+    "og/core/economy.py": {
+      "bytes": 11339,
+      "sha256": "490135367a0701c50be8fa28f8332c23b4ff93835a6af71a25ca8db8ccc6016c"
+    },
+    "og/core/economy_slow1000.py": {
+      "bytes": 11696,
+      "sha256": "d1672eeee07503aa8746998105adee9ce28051cc7c25058cf00fd86490b7be67"
+    },
+    "og/core/fixed.py": {
+      "bytes": 1116,
+      "sha256": "62991f6358e35e6af89b5e2af213ac601c2b8529b0022714a374cd370f921279"
+    },
+    "og/core/rng.py": {
+      "bytes": 575,
+      "sha256": "7754aa664b334f57ed04226a4dd6819266455816f50cb157c3ca616156d95ac7"
+    },
+    "og/core/save.py": {
+      "bytes": 2210,
+      "sha256": "c9b9286372ef1d0079ad72c18561dd42304ff760ca6ebd49378f548931224b2b"
+    },
+    "og/core/scheduler.py": {
+      "bytes": 5233,
+      "sha256": "db1d7f783d0116f4e783c9d3c6a1b1b924e65ba8cd440cbfdcb54bc87557aa52"
+    },
+    "og/core/world.py": {
+      "bytes": 3447,
+      "sha256": "422b5529bf150c19bd274f5cc691c3fb1292589c4423ca092150edad722816cf"
+    },
+    "og/core/world2.py": {
+      "bytes": 12131,
+      "sha256": "879d7f542c93d7a90d69b0ced7a4e7d56a2ec3e29452eea427f0d94fd59920db"
+    },
+    "out/integrated_personas.json": {
+      "bytes": 7039,
+      "sha256": "bf357601467d4b5d9b2fd92083bcfc6027596e25df4d2590713b5012243389d9"
+    },
+    "out/personas_bp200_runtime.json": {
+      "bytes": 632509,
+      "sha256": "687b1e8f98037f8ef88d3a014a7daf1559112ec995b7fc88bc889ce8c31a1577"
+    },
+    "requirements-audio.txt": {
+      "bytes": 35,
+      "sha256": "141bf83662175b87802ee4a8ca8ccd301e51474abef994fb694ed72ac1665de6"
+    },
+    "requirements-test.txt": {
+      "bytes": 33,
+      "sha256": "ab7327ae0d4273d7f8d1b1e595fd2b91a2b8082c2e800ed599d43e0e78d994b6"
+    },
+    "requirements.txt": {
+      "bytes": 17,
+      "sha256": "a6aa4945334d7e5c05151676e8dfca726780a9e4d154310a34df06f4137f1c92"
+    },
+    "tests/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests/test_41_game.py": {
+      "bytes": 3610,
+      "sha256": "c548c7f1a5a20e25e1c9d9644225ba84ef47bf9d2c15269f9917e2fa0a17d4de"
+    },
+    "tests/test_army_cohorts_v18.py": {
+      "bytes": 10411,
+      "sha256": "fa703d541d8f4da182103161660d7e3f994ea522dd8202f1ecbb585fca6e7755"
+    },
+    "tests/test_battle_art_v14.py": {
+      "bytes": 4681,
+      "sha256": "b91a42d2d7ad5dfb313db90e2cbde67683ba89bb5620fb57d430ac939ae0472d"
+    },
+    "tests/test_bp200_na2.py": {
+      "bytes": 3872,
+      "sha256": "88fd31547b48b6121415e04c9f549c6bb72d93471db72ceaf66a0f0bdace948c"
+    },
+    "tests/test_core.py": {
+      "bytes": 11094,
+      "sha256": "2191ef625a853f8ef7d64298dc74483606874846809448d047244e28fecf86bd"
+    },
+    "tests/test_director_rules_v112.py": {
+      "bytes": 4468,
+      "sha256": "b3566759f6e06de13d874d322543a2717479ffd8528e6a440ce4873660b8a237"
+    },
+    "tests/test_features_q.py": {
+      "bytes": 28095,
+      "sha256": "9b2d1d074677b18edebbc30cb812c2a5557e6e4124e472aca2d618b62a3f55a8"
+    },
+    "tests/test_historical_s1.py": {
+      "bytes": 4704,
+      "sha256": "1f267f6ff62aa2f3c6ba5a8c90e9878cd369eb0f87f6712aa93163ce363bfa34"
+    },
+    "tests/test_integrated_branch.py": {
+      "bytes": 12620,
+      "sha256": "418fd6ec467cd05fe2328fbee61c50a924d41f199682026bc6b680dade3b559f"
+    },
+    "tests/test_live_orders_v13.py": {
+      "bytes": 3690,
+      "sha256": "206e0f851cef6d28128a8f2f0c4cce490f49658a397c99e20d0d7dd4e0f89917"
+    },
+    "tests/test_march_tax.py": {
+      "bytes": 9918,
+      "sha256": "e00f6c447dc29e5abcaafa2aa5e446f2224ac2d198fce80c612c2fdf5e772e3c"
+    },
+    "tests/test_multi_province.py": {
+      "bytes": 10146,
+      "sha256": "a5452cc1bd6372d44b98b4a87ad94f82e01dbd3e24fc5a5bcc978a03b929ea7d"
+    },
+    "tests/test_persona_engine_v11.py": {
+      "bytes": 6879,
+      "sha256": "6ff4433489e5685d3c93fac968a1b8c90002d7ce6f6c6d81a376792ec14df61f"
+    },
+    "tests/test_pop_support_alloc.py": {
+      "bytes": 10049,
+      "sha256": "f78fc5a5297e6787243d2d56de3614b45286175dc1bc38c9479ef316ba8024d6"
+    },
+    "tests/test_portrait_placeholders_v17.py": {
+      "bytes": 3065,
+      "sha256": "99823d4e1f51e26dbe9630bc6ef5176763c1a7e743731eabac5e1675c2da7e79"
+    },
+    "tests/test_private_music_and_sfx_v113.py": {
+      "bytes": 3314,
+      "sha256": "b774053f0fe28b76bc17c189037b47fdcea5993daf9f2043c4c9ec1e06b7cfbb"
+    },
+    "tests/test_province_stage_v16.py": {
+      "bytes": 3724,
+      "sha256": "8194a5484e96081e6b901770f7bdedabc23a5792df2c3ce8be352eaea6f36ad6"
+    },
+    "tests/test_scheduler.py": {
+      "bytes": 5418,
+      "sha256": "e3f7c1cfd936a0452b33800567e6f51de97f05bcd0d68a35e3ab9d2d0725673a"
+    },
+    "tests/test_schema_compat.py": {
+      "bytes": 6646,
+      "sha256": "53bb37679efad526e7cf5088fb383a7645571bfb52cc41d44ff65722a142bef3"
+    },
+    "tests/test_september.py": {
+      "bytes": 10575,
+      "sha256": "f5e67b18078843060f2481a823fa4a8302e74fbe759d98f5f502964feda0758a"
+    },
+    "tests/test_tactical_view.py": {
+      "bytes": 2030,
+      "sha256": "9da598f1a5a2c90ddf6ba0cc3b9fa5f319f30fb3de06be1c0b30d5a9b780382e"
+    },
+    "tests/test_ui_integrity_v19.py": {
+      "bytes": 1842,
+      "sha256": "0abb899f3d4d314e6382aca97d1368696f109ef24f684a8705bad2974e4cfbc7"
+    },
+    "tests/test_xbox_controller_v14.py": {
+      "bytes": 1800,
+      "sha256": "1cfd12bb54b58651476d5ab417228680832c33ed6d7e1a79fb3b3952ee3fad88"
+    },
+    "third_branch/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "third_branch/__main__.py": {
+      "bytes": 148,
+      "sha256": "f5bb16ad1cfb3b16727df72dc6b12dde6320c3b428a7935ee4cc34a520efd6bd"
+    },
+    "third_branch/ai.py": {
+      "bytes": 5526,
+      "sha256": "e8ea28edd46361ca95ba668e2731a9a6bed712461d2c9a53f2c0eb2c9fc5ebdc"
+    },
+    "third_branch/approved_distribution.py": {
+      "bytes": 1324,
+      "sha256": "024fb285cf3c61b88e77e0fc9b580225da0bf8831310e0b229291405d0d8e564"
+    },
+    "third_branch/army_cohorts.py": {
+      "bytes": 8526,
+      "sha256": "8ee6b33ab5c043b029ea3e2b121c301db77c53c953b7685b32749324ec1773f0"
+    },
+    "third_branch/assets/audio/sfx_manifest.json": {
+      "bytes": 2307,
+      "sha256": "b5f6d1b79230a72c0e0e0f1a6cb70b67d438f83ede70675363bf965b02f3eb2a"
+    },
+    "third_branch/assets/audio/sfx_original/battle.wav": {
+      "bytes": 19974,
+      "sha256": "86e96876036b63d3940f8320f957a60210f09b8d7e8495eb7358424fbe3b3de1"
+    },
+    "third_branch/assets/audio/sfx_original/cancel.wav": {
+      "bytes": 6082,
+      "sha256": "c6ff3461fc90aa91fb8b9e571f090913e99b7b04dc831da5f67b66525fa3c59b"
+    },
+    "third_branch/assets/audio/sfx_original/confirm.wav": {
+      "bytes": 6524,
+      "sha256": "da49353b8c979da45351e6881b243048c54408d656d03afa0d1e2e87296e2746"
+    },
+    "third_branch/assets/audio/sfx_original/cursor.wav": {
+      "bytes": 2246,
+      "sha256": "eccd6bcca2e9ff6df734815e454d655ed4a677a611ffc5c00627757239d8c471"
+    },
+    "third_branch/assets/audio/sfx_original/defeat.wav": {
+      "bytes": 20416,
+      "sha256": "7b29b6df6168f65b44b8b1c7a08d0309bc52276bfb7affa3ccd304f6cf831bb0"
+    },
+    "third_branch/assets/audio/sfx_original/dialog.wav": {
+      "bytes": 2556,
+      "sha256": "d7110e6c32f9cd9fe32cca57265fb95a9b96adb03d0a1f9fcf5a441fd2a97017"
+    },
+    "third_branch/assets/audio/sfx_original/invalid.wav": {
+      "bytes": 9390,
+      "sha256": "68e57684d7fba3a8100805664a76a91145a5ba7c966759aea3144beff740855a"
+    },
+    "third_branch/assets/audio/sfx_original/load.wav": {
+      "bytes": 9830,
+      "sha256": "4272edee26d050d36fbe56b7829872e8bb9f4669bbad22c90cd046700a6490e3"
+    },
+    "third_branch/assets/audio/sfx_original/month.wav": {
+      "bytes": 8508,
+      "sha256": "5d07d9502a7334640026ac499df9db84e5e671b3ce1fa28fa4b5c3989be333ec"
+    },
+    "third_branch/assets/audio/sfx_original/occupy.wav": {
+      "bytes": 12476,
+      "sha256": "4ac859f687d61ab04fae5605e7ed1bd12c71007441c24de2a210f52d5f7969e8"
+    },
+    "third_branch/assets/audio/sfx_original/order.wav": {
+      "bytes": 5642,
+      "sha256": "68442c30930472a0f793f6a877533645dcd234dc5e679c3956cd40bf334501fb"
+    },
+    "third_branch/assets/audio/sfx_original/save.wav": {
+      "bytes": 11154,
+      "sha256": "4ff379a5f7f81831667ce121ce9823696d632b0d2037361a3b90128b8766e945"
+    },
+    "third_branch/assets/audio/sfx_original/trade.wav": {
+      "bytes": 8726,
+      "sha256": "abcf274c60eb7605b6eb4e292220e9172a7768519873369cd9c8ffdb26dcc081"
+    },
+    "third_branch/assets/audio/sfx_original/victory.wav": {
+      "bytes": 21740,
+      "sha256": "1ceeeb269561887792071e204f94b9de7d61a16e9e4615a35b118e6491afe1e3"
+    },
+    "third_branch/assets/audio/soundware_manifest.json": {
+      "bytes": 4240,
+      "sha256": "3dacb3f2d7610e34b5a509ab2117e8c0e67394f67ff2b64394217b529fb68185"
+    },
+    "third_branch/assets/battlefields/Province_01_Autumn_Battlefield.png": {
+      "bytes": 287833,
+      "sha256": "2f3b6d55206ebea87dd9e3747f67fb856c37945829667dcd94a005dfddf06827"
+    },
+    "third_branch/assets/battlefields/Province_01_Spring_Battlefield.png": {
+      "bytes": 291692,
+      "sha256": "5d30aa8b2da810dc405d3f1c35ef3e79b10836a154dc0d9c4283aaacf7209dc0"
+    },
+    "third_branch/assets/battlefields/Province_01_Summer_Battlefield.png": {
+      "bytes": 286209,
+      "sha256": "0031057f9a7a644c3b6759af8892e4240fba715c02149f8161cabb4796f84ff9"
+    },
+    "third_branch/assets/battlefields/Province_01_Winter_Battlefield.png": {
+      "bytes": 290095,
+      "sha256": "656d926d127aaa1b4813b8c393c45731007f0b5a004d3679975b4d2db3319548"
+    },
+    "third_branch/assets/battlefields/Province_02_Autumn_Battlefield.png": {
+      "bytes": 301535,
+      "sha256": "a82d7e9cfe28d95c37f4282d187439a7e6b7bf5953a700f078468e1ebcae945f"
+    },
+    "third_branch/assets/battlefields/Province_02_Spring_Battlefield.png": {
+      "bytes": 306084,
+      "sha256": "ea5660e9eb8a36dc6113ee30d2d2ab682189b42b8a8c0454f85cd617d16e8662"
+    },
+    "third_branch/assets/battlefields/Province_02_Summer_Battlefield.png": {
+      "bytes": 300397,
+      "sha256": "0a8e276caee60d5f58e74bfa7e167cf71933def10bdf4026b8d61a9425741929"
+    },
+    "third_branch/assets/battlefields/Province_02_Winter_Battlefield.png": {
+      "bytes": 302262,
+      "sha256": "83d64e3b30a38595faa93ede2e90ba1ce528c4b5757f68f07501003359afc8c1"
+    },
+    "third_branch/assets/battlefields/Province_03_Autumn_Battlefield.png": {
+      "bytes": 295853,
+      "sha256": "1ae2b83b5c7028e01732a7ea5719381bf345a11ad4329dd0e6882bdb299fd16e"
+    },
+    "third_branch/assets/battlefields/Province_03_Spring_Battlefield.png": {
+      "bytes": 300558,
+      "sha256": "8dfc3c24935db919e194141a572bfb1c8e11aefb5dd6da5afbef288ee114cc13"
+    },
+    "third_branch/assets/battlefields/Province_03_Summer_Battlefield.png": {
+      "bytes": 295299,
+      "sha256": "a5a6c3b432c4e5e64ab7e83370ada5d242a19ed8d3a8b386c825ce09716b0483"
+    },
+    "third_branch/assets/battlefields/Province_03_Winter_Battlefield.png": {
+      "bytes": 294439,
+      "sha256": "b1eb86e959b993a05890b4a88c08e2c66db1e558509afb21552229bb989222e4"
+    },
+    "third_branch/assets/battlefields/Province_04_Autumn_Battlefield.png": {
+      "bytes": 337694,
+      "sha256": "f96e9e58f49a23a972ae486fe1c55113df819e692430289a9f6c575bf393681f"
+    },
+    "third_branch/assets/battlefields/Province_04_Spring_Battlefield.png": {
+      "bytes": 342718,
+      "sha256": "16acf595a39673e3c5a274d21ce1e0760c7169ce606a89c9121332cc97458565"
+    },
+    "third_branch/assets/battlefields/Province_04_Summer_Battlefield.png": {
+      "bytes": 336120,
+      "sha256": "ab9f010948c29302e65db1629e1a2a31f8d8375ea1f5024bf97cd12a73e3be31"
+    },
+    "third_branch/assets/battlefields/Province_04_Winter_Battlefield.png": {
+      "bytes": 340668,
+      "sha256": "e9f25ddbe8b6ce310725a1c41de7cffe0c3dceb4a3f5458b8117f10a8aff969b"
+    },
+    "third_branch/assets/battlefields/Province_05_Autumn_Battlefield.png": {
+      "bytes": 364383,
+      "sha256": "f12d2d623ed9840017b70eaf6e71e085b3d42c7afd82a70f3b035ac340977661"
+    },
+    "third_branch/assets/battlefields/Province_05_Spring_Battlefield.png": {
+      "bytes": 368929,
+      "sha256": "446acbd96b6443c8a524eae0308d56cd9cbf717a7c96bcf5c334b239a41caaba"
+    },
+    "third_branch/assets/battlefields/Province_05_Summer_Battlefield.png": {
+      "bytes": 362595,
+      "sha256": "0823c46ffec454eb247092d40a841efdfaf784b766f5da603eaf51cf41ace441"
+    },
+    "third_branch/assets/battlefields/Province_05_Winter_Battlefield.png": {
+      "bytes": 366683,
+      "sha256": "1f12fba1e512fc49335e55aea8111c7f93c4bd6206b9353746330f3bddfcd864"
+    },
+    "third_branch/assets/battlefields/Province_06_Autumn_Battlefield.png": {
+      "bytes": 246060,
+      "sha256": "5c20b7d20a759ce399c597323191a08481a8f3dcb292bbc50e5b503bc574fa21"
+    },
+    "third_branch/assets/battlefields/Province_06_Spring_Battlefield.png": {
+      "bytes": 246704,
+      "sha256": "4c61ee196f16b3890655c2cb6e86388603d6ea6b70a1db8be98f732a9d7d8498"
+    },
+    "third_branch/assets/battlefields/Province_06_Summer_Battlefield.png": {
+      "bytes": 243321,
+      "sha256": "05e9ae10c6b5da58781050046350bc5d9e259d29ac13423b16525ded0b41ccaf"
+    },
+    "third_branch/assets/battlefields/Province_06_Winter_Battlefield.png": {
+      "bytes": 248630,
+      "sha256": "1366e84599e5816be333d0fe7c5ed875f1052d99f7e888f81fb2c7ba701204e5"
+    },
+    "third_branch/assets/battlefields/Province_07_Autumn_Battlefield.png": {
+      "bytes": 326705,
+      "sha256": "740fae722d46bf98e0ed4db2c5209d1fa4f6d22006a5fe3939c769eab51632dd"
+    },
+    "third_branch/assets/battlefields/Province_07_Spring_Battlefield.png": {
+      "bytes": 329418,
+      "sha256": "56aa38ec098f5f2e25d41e2d942ff8ada6a75903eff52156e526efb2b72165cb"
+    },
+    "third_branch/assets/battlefields/Province_07_Summer_Battlefield.png": {
+      "bytes": 324068,
+      "sha256": "b10900779e7c633d17143d4c1e0d446c659b321a66eb0af6f997d3a793df3e39"
+    },
+    "third_branch/assets/battlefields/Province_07_Winter_Battlefield.png": {
+      "bytes": 330017,
+      "sha256": "b6a4cc983f7f502aba86deb8edcf9d64346041b51b9a31831026bc42779eadfd"
+    },
+    "third_branch/assets/battlefields/Province_08_Autumn_Battlefield.png": {
+      "bytes": 291204,
+      "sha256": "86d8d90dbcc6506bb00bdcc57845d9cb985912d8b6167803dffba49aaa00c8c0"
+    },
+    "third_branch/assets/battlefields/Province_08_Spring_Battlefield.png": {
+      "bytes": 293812,
+      "sha256": "b66c9078f278d2b41d55e6731d915039d982a961bfbcd7ae4a908b22d8e1809a"
+    },
+    "third_branch/assets/battlefields/Province_08_Summer_Battlefield.png": {
+      "bytes": 289198,
+      "sha256": "2c48bbb998370a8e68112ea95a2385810ce9ccb7126d95f2339f72c10786b4e9"
+    },
+    "third_branch/assets/battlefields/Province_08_Winter_Battlefield.png": {
+      "bytes": 292841,
+      "sha256": "2bc7516465e39916e77ad9b9b7cf14568d204ed29b94798c910942cdc363a4a1"
+    },
+    "third_branch/assets/battlefields/Province_09_Autumn_Battlefield.png": {
+      "bytes": 324703,
+      "sha256": "0b6ba4abffb025121fb5eb09c2e02291753242d10fbcf7f4b77fed81c5861f42"
+    },
+    "third_branch/assets/battlefields/Province_09_Spring_Battlefield.png": {
+      "bytes": 327305,
+      "sha256": "d38325820c3fc3a80f2e3a229e04acdfdf7bd87785de345c99bcd114eb7170a7"
+    },
+    "third_branch/assets/battlefields/Province_09_Summer_Battlefield.png": {
+      "bytes": 321870,
+      "sha256": "7713211d626c3ae1ce184ff6e2ce5a83bb4b4fbe3ceddf8bfbe654a995fba255"
+    },
+    "third_branch/assets/battlefields/Province_09_Winter_Battlefield.png": {
+      "bytes": 329168,
+      "sha256": "f8b097fa88e3a47159c4095d29ebe0a50586586ec410fb804d0d3a693be0a8ed"
+    },
+    "third_branch/assets/battlefields/Province_10_Autumn_Battlefield.png": {
+      "bytes": 376723,
+      "sha256": "d212ae7c239bb9f0962056784dc85a238e3ec4fc21b1ea31f90fea2ec91fc013"
+    },
+    "third_branch/assets/battlefields/Province_10_Spring_Battlefield.png": {
+      "bytes": 381720,
+      "sha256": "b61ec0f732f797abba7147ce393995d980238173709a1e8e7dbce2269f055704"
+    },
+    "third_branch/assets/battlefields/Province_10_Summer_Battlefield.png": {
+      "bytes": 375211,
+      "sha256": "5f402f9a846e020f91792207b391da453e343c831c3fb21a8fe30a76db9a8313"
+    },
+    "third_branch/assets/battlefields/Province_10_Winter_Battlefield.png": {
+      "bytes": 378496,
+      "sha256": "fa2a1826cd73bdbd139fa3cca2419d4915c241c8db068541a6c16ee6d4c6747f"
+    },
+    "third_branch/assets/battlefields/Province_11_Autumn_Battlefield.png": {
+      "bytes": 337865,
+      "sha256": "40a530af529c576fcc21d375fd0a8fb5bd9f242f8cac2a00b440ca37712e4980"
+    },
+    "third_branch/assets/battlefields/Province_11_Spring_Battlefield.png": {
+      "bytes": 341891,
+      "sha256": "0757c0b5819cd3462b2c2af71e6a6169382a7ffb92f52a4cbc6a3d1c0ab2591e"
+    },
+    "third_branch/assets/battlefields/Province_11_Summer_Battlefield.png": {
+      "bytes": 335961,
+      "sha256": "a643820bdeb9dd62756abccfc1948328c3cd563c4b406d98c9648c03031406e3"
+    },
+    "third_branch/assets/battlefields/Province_11_Winter_Battlefield.png": {
+      "bytes": 340514,
+      "sha256": "db0d7a1dd40edd3547721b605b2e5cae2d3c0c013fd08441d2d331f354a03d56"
+    },
+    "third_branch/assets/battlefields/Province_12_Autumn_Battlefield.png": {
+      "bytes": 345384,
+      "sha256": "86987b71e31585863839512e4dc656989c08e360a2944fadbfd3c419e4b8eadf"
+    },
+    "third_branch/assets/battlefields/Province_12_Spring_Battlefield.png": {
+      "bytes": 349779,
+      "sha256": "db4436df3bc42e02d35607141bf2f5596d8d0dddc05579d8b2ea8b30f8a6b9ea"
+    },
+    "third_branch/assets/battlefields/Province_12_Summer_Battlefield.png": {
+      "bytes": 344300,
+      "sha256": "e3b85d9562dbc4e2bd430e074b78fc75079af8b2dd5fbbcf0f3c8fad3fd75bb6"
+    },
+    "third_branch/assets/battlefields/Province_12_Winter_Battlefield.png": {
+      "bytes": 345329,
+      "sha256": "6035f2824f240d7657bd1e60ff4f08df3d1245fa59717d24f788b081f7bda790"
+    },
+    "third_branch/assets/battlefields/Province_13_Autumn_Battlefield.png": {
+      "bytes": 331871,
+      "sha256": "e738160f0fd984729d948831c4163dc3fdefa073fc9b335a16d6edb559c3887b"
+    },
+    "third_branch/assets/battlefields/Province_13_Spring_Battlefield.png": {
+      "bytes": 336065,
+      "sha256": "92d8bb9796d03ea8413dce2ad6ce9f0cdcbe551e642d2e3210928ea53c19d31c"
+    },
+    "third_branch/assets/battlefields/Province_13_Summer_Battlefield.png": {
+      "bytes": 330243,
+      "sha256": "ce32b41f9eb725510ff88a0b11730f6123e112d422690e90596b3411dd2eeae0"
+    },
+    "third_branch/assets/battlefields/Province_13_Winter_Battlefield.png": {
+      "bytes": 334758,
+      "sha256": "ef110593daa0194642532da260e560dd0732e74eefe672ea63098891b7211561"
+    },
+    "third_branch/assets/battlefields/Province_14_Autumn_Battlefield.png": {
+      "bytes": 297545,
+      "sha256": "b7d779d6dcd75fa87eebc68d07ae7716ab2b3bb74c6419e89ea3538453ee19f4"
+    },
+    "third_branch/assets/battlefields/Province_14_Spring_Battlefield.png": {
+      "bytes": 301012,
+      "sha256": "9aacc779f5df1676c5a93bfe3b0d34efdb9ef8c7553402fa7c4f3255e657c21a"
+    },
+    "third_branch/assets/battlefields/Province_14_Summer_Battlefield.png": {
+      "bytes": 295462,
+      "sha256": "5af63b9b605eb40ad15c8598565726fdf3740fae782aee28f98a9c365470a2fd"
+    },
+    "third_branch/assets/battlefields/Province_14_Winter_Battlefield.png": {
+      "bytes": 301636,
+      "sha256": "770f75a786abc0a03fcff4056132325f0cd0a805f0b7469b61be9a1c7c0f5429"
+    },
+    "third_branch/assets/battlefields/Province_15_Autumn_Battlefield.png": {
+      "bytes": 299845,
+      "sha256": "20c98391a338e873b7f17df956720adf8597b777d25e9a778588cd4762c8272e"
+    },
+    "third_branch/assets/battlefields/Province_15_Spring_Battlefield.png": {
+      "bytes": 304959,
+      "sha256": "aa96abdd3bcdcabbfbf3ec37a0205a3250b1d456db1eb674379b57b65dad3338"
+    },
+    "third_branch/assets/battlefields/Province_15_Summer_Battlefield.png": {
+      "bytes": 298678,
+      "sha256": "0f66e023bd7502da910b8ff763958cbc36f2065e93f52a8ee619305bc7fc029f"
+    },
+    "third_branch/assets/battlefields/Province_15_Winter_Battlefield.png": {
+      "bytes": 301784,
+      "sha256": "3334784fe25a39b01949446e076fc06deeee9878a13ea69a4460e9cfd4efc356"
+    },
+    "third_branch/assets/battlefields/Province_16_Autumn_Battlefield.png": {
+      "bytes": 290675,
+      "sha256": "4341e7640e0b6f515b45895dd37b81ebff0b8a4e0b3b4bd0890ee235733cfe92"
+    },
+    "third_branch/assets/battlefields/Province_16_Spring_Battlefield.png": {
+      "bytes": 292358,
+      "sha256": "0eaed8bc8814edc6b252aeba224feffee7927587244943c9a8335ec4910f5479"
+    },
+    "third_branch/assets/battlefields/Province_16_Summer_Battlefield.png": {
+      "bytes": 287791,
+      "sha256": "477d0fbfef62962990490fa3b4144175eca5ad4f876766beb709525918742817"
+    },
+    "third_branch/assets/battlefields/Province_16_Winter_Battlefield.png": {
+      "bytes": 294923,
+      "sha256": "d69285c86613bf880205d91712b5147be120c90fa79734cc5bb0637ae46bfd87"
+    },
+    "third_branch/assets/battlefields/Province_17_Autumn_Battlefield.png": {
+      "bytes": 299201,
+      "sha256": "52b8ee935adfa86b2667d77be4050b881b6576a14d8a2404f952901d638317ac"
+    },
+    "third_branch/assets/battlefields/Province_17_Spring_Battlefield.png": {
+      "bytes": 301887,
+      "sha256": "ecf70a15873a716913b1b6b8d10cb691ce9af3825b4c973f57e61620320a55a8"
+    },
+    "third_branch/assets/battlefields/Province_17_Summer_Battlefield.png": {
+      "bytes": 297109,
+      "sha256": "d08623a8bc6e16e783a9ec939219f86fe5760e4d19b23c175a09b104ff084c12"
+    },
+    "third_branch/assets/battlefields/Province_17_Winter_Battlefield.png": {
+      "bytes": 301154,
+      "sha256": "0039f693e2cf75f099686a312327d398da2c41cd6cea9663892ee33f001bc3ae"
+    },
+    "third_branch/assets/battlefields/Province_18_Autumn_Battlefield.png": {
+      "bytes": 249475,
+      "sha256": "311e3e02502e5ef6f0be6cc789280e0b7246455b9413b87cffc8a32758c8e2c5"
+    },
+    "third_branch/assets/battlefields/Province_18_Spring_Battlefield.png": {
+      "bytes": 252218,
+      "sha256": "d48b6036ba881afda20f258529e1e3baaaca09ecea7605cb636d905d25920565"
+    },
+    "third_branch/assets/battlefields/Province_18_Summer_Battlefield.png": {
+      "bytes": 247959,
+      "sha256": "c927c185c67bb7759db1eefdb55ccbc32464f2c27f9044cadb2ab21ee0a4cadc"
+    },
+    "third_branch/assets/battlefields/Province_18_Winter_Battlefield.png": {
+      "bytes": 251997,
+      "sha256": "b27687e230628f4d53f14209ae90160b12a2b99294da4319a6fe7bbc7457238d"
+    },
+    "third_branch/assets/battlefields/Province_19_Autumn_Battlefield.png": {
+      "bytes": 343994,
+      "sha256": "0cb780b877f84d7c57947e1a78389793ab666670117b7d7211443564b1f28af0"
+    },
+    "third_branch/assets/battlefields/Province_19_Spring_Battlefield.png": {
+      "bytes": 347511,
+      "sha256": "9a05a871239cd4e96034aa65f1501306421be5346e140eaeeb0209fb0c88e352"
+    },
+    "third_branch/assets/battlefields/Province_19_Summer_Battlefield.png": {
+      "bytes": 341749,
+      "sha256": "5398b73cc61b2654362185cc9311eef2f4f85300514887279b2477f5b7aad2ec"
+    },
+    "third_branch/assets/battlefields/Province_19_Winter_Battlefield.png": {
+      "bytes": 347054,
+      "sha256": "5b6ecabff9b10b7b9966c6c39f127773fe67bbbe9e48a06ad756d2d73e2dcb8a"
+    },
+    "third_branch/assets/battlefields/Province_20_Autumn_Battlefield.png": {
+      "bytes": 307743,
+      "sha256": "0fd042c32c0f7d54b794d6becdd1e90f4ccf2ee79c76d20a42e2cf42f08683ea"
+    },
+    "third_branch/assets/battlefields/Province_20_Spring_Battlefield.png": {
+      "bytes": 311649,
+      "sha256": "fe3a6985aaeff636db8e17ed38f348f417cfe5335b96d4f57572c3a75022fb73"
+    },
+    "third_branch/assets/battlefields/Province_20_Summer_Battlefield.png": {
+      "bytes": 306402,
+      "sha256": "31903729e6276a63c6edc18e8143f01a4f1d13e24959c009dadeb28da583537d"
+    },
+    "third_branch/assets/battlefields/Province_20_Winter_Battlefield.png": {
+      "bytes": 308493,
+      "sha256": "b860ee9df20bda8da1868b1b45144b5ffc8e919eb2bfaf5c5eb2ffd1e75d96ac"
+    },
+    "third_branch/assets/battlefields/Province_21_Autumn_Battlefield.png": {
+      "bytes": 323930,
+      "sha256": "64852496e3553b83b12933f41ab6c357ff79486713de5aaebf07b14237bf47c2"
+    },
+    "third_branch/assets/battlefields/Province_21_Spring_Battlefield.png": {
+      "bytes": 326493,
+      "sha256": "80ddc9fe09dba66ae6397eb3d6268f549df8850be94c9220ed2f9ca1fc3cff07"
+    },
+    "third_branch/assets/battlefields/Province_21_Summer_Battlefield.png": {
+      "bytes": 321296,
+      "sha256": "145cffe7c3b0fa91766ebc8bb2bb55aebee82e11d964b487da85a61986982d68"
+    },
+    "third_branch/assets/battlefields/Province_21_Winter_Battlefield.png": {
+      "bytes": 327125,
+      "sha256": "111d1b458509d74bc640bcb7063c57d5fb39333cec8bd889943ddf287875c6d3"
+    },
+    "third_branch/assets/battlefields/Province_22_Autumn_Battlefield.png": {
+      "bytes": 274510,
+      "sha256": "b76208b626a314c5b2819520cc256dae2dd56faca0a5288fba5003f2adfe9699"
+    },
+    "third_branch/assets/battlefields/Province_22_Spring_Battlefield.png": {
+      "bytes": 277712,
+      "sha256": "571be6e82c549473fcacc812ee02880094307a86131e96a430e145cf78b100cd"
+    },
+    "third_branch/assets/battlefields/Province_22_Summer_Battlefield.png": {
+      "bytes": 273301,
+      "sha256": "1c72e1ff96f7762ef35b8d62f49f3fb22d17b9530d98dd2ee4216ed4f1bfeaf6"
+    },
+    "third_branch/assets/battlefields/Province_22_Winter_Battlefield.png": {
+      "bytes": 275607,
+      "sha256": "cebf5a48648928f686e686eb89640659cbbb47598bcd6a99a7cd75544398264a"
+    },
+    "third_branch/assets/battlefields/Province_23_Autumn_Battlefield.png": {
+      "bytes": 313085,
+      "sha256": "7f76b8b9de02222ec540e1375c7b85780044a52607b58d55f25a7315d5869326"
+    },
+    "third_branch/assets/battlefields/Province_23_Spring_Battlefield.png": {
+      "bytes": 317212,
+      "sha256": "0cb03fb334724d75ac8a055b32b4323775a09d961060c1a0aaf312917ae3e3e7"
+    },
+    "third_branch/assets/battlefields/Province_23_Summer_Battlefield.png": {
+      "bytes": 311710,
+      "sha256": "6ad54653c5b0a202f54a393a41e581c70d4abea07d2a553193321ea2ee823ae7"
+    },
+    "third_branch/assets/battlefields/Province_23_Winter_Battlefield.png": {
+      "bytes": 314458,
+      "sha256": "a0fe728bee1a53da4acc6527b9bd6c2fc98ac8f3e2f2d68de056f73e37719785"
+    },
+    "third_branch/assets/battlefields/Province_24_Autumn_Battlefield.png": {
+      "bytes": 312868,
+      "sha256": "43f598d9494df1de9b26e6c85fa46c3100598fc957b487083fa97b125391158b"
+    },
+    "third_branch/assets/battlefields/Province_24_Spring_Battlefield.png": {
+      "bytes": 314707,
+      "sha256": "79c067139324793fb9daa8880948cdc803622b7503895da6e28e97ace5b4d977"
+    },
+    "third_branch/assets/battlefields/Province_24_Summer_Battlefield.png": {
+      "bytes": 309441,
+      "sha256": "8218847ba13daca4b13ec088f2ea2249e7b85871a95b25652c658c5e0cd5931a"
+    },
+    "third_branch/assets/battlefields/Province_24_Winter_Battlefield.png": {
+      "bytes": 318816,
+      "sha256": "1cd8f19915c577bf3674777abe114e9a25314c171440b851158af0d77992ddeb"
+    },
+    "third_branch/assets/battlefields/Province_25_Autumn_Battlefield.png": {
+      "bytes": 279928,
+      "sha256": "3bbff2710d9761b1c89751161fe164b9f8f265ac3104f26ed05e44b275f8ad27"
+    },
+    "third_branch/assets/battlefields/Province_25_Spring_Battlefield.png": {
+      "bytes": 281402,
+      "sha256": "ab6a5a27aeb0e82db7dbd084713c8a15128a77648ac7d87fcf2b045f97521427"
+    },
+    "third_branch/assets/battlefields/Province_25_Summer_Battlefield.png": {
+      "bytes": 277184,
+      "sha256": "842af23b302cec7e1e4a0f4853f647a4c278dc9c2904471648e596e32e0e26de"
+    },
+    "third_branch/assets/battlefields/Province_25_Winter_Battlefield.png": {
+      "bytes": 283095,
+      "sha256": "a3d54965b8ba45e4ff8eb6cab6ad2fff3894e36b320bd7ff04cd10e4e5402605"
+    },
+    "third_branch/assets/battlefields/Province_26_Autumn_Battlefield.png": {
+      "bytes": 243715,
+      "sha256": "613a18c6ac559901464a8d08f891325e0f6c913f1bed2223fbf7593e6d81c45b"
+    },
+    "third_branch/assets/battlefields/Province_26_Spring_Battlefield.png": {
+      "bytes": 244437,
+      "sha256": "6f892e1b3d50a52efdec3d2dd6be585e984c13b5bda0657e964cdd8bda00c866"
+    },
+    "third_branch/assets/battlefields/Province_26_Summer_Battlefield.png": {
+      "bytes": 240649,
+      "sha256": "95debfd47605007c48f7f6a7f7b088f3b38ab2f83657fb6c8a57df4d4cd71083"
+    },
+    "third_branch/assets/battlefields/Province_26_Winter_Battlefield.png": {
+      "bytes": 248652,
+      "sha256": "e821aaeb7c93ba94ceb8ef5ecdfe6285f2bd261d9762fcc8712f36c4e7ad18ab"
+    },
+    "third_branch/assets/battlefields/Province_27_Autumn_Battlefield.png": {
+      "bytes": 248551,
+      "sha256": "c1a5449b9f02c54753ddfcc5052eb2ed6718fedf067eaa8fc5e9f51abd440b8e"
+    },
+    "third_branch/assets/battlefields/Province_27_Spring_Battlefield.png": {
+      "bytes": 251205,
+      "sha256": "ff9831a83a81fce9be5030fafaae5cb887a4f8bcc1084aae65fb9d684b37ff89"
+    },
+    "third_branch/assets/battlefields/Province_27_Summer_Battlefield.png": {
+      "bytes": 247164,
+      "sha256": "d63996c8e493743f1b036d19b52c65dfad31492f4e39f1baf76b73e55998ecf3"
+    },
+    "third_branch/assets/battlefields/Province_27_Winter_Battlefield.png": {
+      "bytes": 249719,
+      "sha256": "2429c33a85e186ebcd5f63db2c72118a3405a9dfb26ba0aa7b48934ccb95ed2d"
+    },
+    "third_branch/assets/battlefields/Province_28_Autumn_Battlefield.png": {
+      "bytes": 229766,
+      "sha256": "fa4d66afcd9183cebf63d9d23c8fb37f3772a41d0dda5caed466de7da2d78baf"
+    },
+    "third_branch/assets/battlefields/Province_28_Spring_Battlefield.png": {
+      "bytes": 232214,
+      "sha256": "4bf7d2daf44b08d0667bebf0d9c6e62fd443b66419352a2e141f9248ea5ab67f"
+    },
+    "third_branch/assets/battlefields/Province_28_Summer_Battlefield.png": {
+      "bytes": 228098,
+      "sha256": "2a3772d09f83f03160e0e5a266fbad5ac918019d47435f326ff87f881614b1e7"
+    },
+    "third_branch/assets/battlefields/Province_28_Winter_Battlefield.png": {
+      "bytes": 231928,
+      "sha256": "49017e20070357dd4e6126eca32b602894681d25380673f6b033c0d45fc37ae8"
+    },
+    "third_branch/assets/battlefields/Province_29_Autumn_Battlefield.png": {
+      "bytes": 286821,
+      "sha256": "f8c2557538d478e7fb23d33397f5b857a9aeb1f2e4e25ec497b8f71f4eb8ccab"
+    },
+    "third_branch/assets/battlefields/Province_29_Spring_Battlefield.png": {
+      "bytes": 290076,
+      "sha256": "e3adb353993dbd7600ca0656dc78bf829bdeb12b00beee44df2027d4c9cf36d3"
+    },
+    "third_branch/assets/battlefields/Province_29_Summer_Battlefield.png": {
+      "bytes": 285794,
+      "sha256": "dd1961ad7d413d057db2ce59da6459fd6dbd2292e600b7f0090194c6988718e2"
+    },
+    "third_branch/assets/battlefields/Province_29_Winter_Battlefield.png": {
+      "bytes": 286183,
+      "sha256": "dc4613aa52929cc800f8f18a6387189008073747fb60fc9d956cb620c3a75322"
+    },
+    "third_branch/assets/battlefields/Province_30_Autumn_Battlefield.png": {
+      "bytes": 322125,
+      "sha256": "c69b2313c1e2fc11fc3dd8380bdb5bb4d62b22f224769c6a50baec3e97e47491"
+    },
+    "third_branch/assets/battlefields/Province_30_Spring_Battlefield.png": {
+      "bytes": 326907,
+      "sha256": "358205df3a3023101db60ae7f449abd5d302a499e6df275a9c7be4222e0533e2"
+    },
+    "third_branch/assets/battlefields/Province_30_Summer_Battlefield.png": {
+      "bytes": 320863,
+      "sha256": "bf6d105927a7486bf77041d5e3856aba6150c7df13f9d929226dfc2870e6f010"
+    },
+    "third_branch/assets/battlefields/Province_30_Winter_Battlefield.png": {
+      "bytes": 323488,
+      "sha256": "9a223a1ef4167bef43ada2bf2c62e25a6fe6fc9330a3ecd530fadc04bece1d93"
+    },
+    "third_branch/assets/battlefields/Province_31_Autumn_Battlefield.png": {
+      "bytes": 303800,
+      "sha256": "4ca841ea3cf2d292b6fb04037601a8066441d1262effcf30126cc917d80ee4a3"
+    },
+    "third_branch/assets/battlefields/Province_31_Spring_Battlefield.png": {
+      "bytes": 307630,
+      "sha256": "faee62e9eb86114a8609ab9e8745cef04ba3235572ffcafa3e7f37cfcb004233"
+    },
+    "third_branch/assets/battlefields/Province_31_Summer_Battlefield.png": {
+      "bytes": 302769,
+      "sha256": "b526956676ac61926dc9f0f7505f3f16a82ce4eacae17cc68d07738e6c0a24d7"
+    },
+    "third_branch/assets/battlefields/Province_31_Winter_Battlefield.png": {
+      "bytes": 303235,
+      "sha256": "f8d810ffc1aa3b065c3ce06f743902d5cc20209c315919c7109bae4000e44a57"
+    },
+    "third_branch/assets/battlefields/Province_32_Autumn_Battlefield.png": {
+      "bytes": 319116,
+      "sha256": "b19066dcffdb65e9ca3a6b821d44e1bb72d8b92b83c5adcf6e96f8e2d1438c9c"
+    },
+    "third_branch/assets/battlefields/Province_32_Spring_Battlefield.png": {
+      "bytes": 322485,
+      "sha256": "4377f2072bd75c1b66e36d070b627b618ed0d78d379b2f0b198c0356fff358d7"
+    },
+    "third_branch/assets/battlefields/Province_32_Summer_Battlefield.png": {
+      "bytes": 317274,
+      "sha256": "e0f3e4229787296358c6e5ddbaed2880543935aced1db851128fca0e517afe48"
+    },
+    "third_branch/assets/battlefields/Province_32_Winter_Battlefield.png": {
+      "bytes": 320907,
+      "sha256": "0c594286c0c0e9c11afb70dd2313216f4f6b93a3e89fda726a9297ea6fec0867"
+    },
+    "third_branch/assets/battlefields/Province_33_Autumn_Battlefield.png": {
+      "bytes": 332107,
+      "sha256": "6b84b38b43847381ad31aae2cab0df72c7217de3f5424a0ea5440f21102e2779"
+    },
+    "third_branch/assets/battlefields/Province_33_Spring_Battlefield.png": {
+      "bytes": 335545,
+      "sha256": "3be9ed33f527c7df6320501b96aa0bdc162f4da1a1e92134181a4cf543482c6c"
+    },
+    "third_branch/assets/battlefields/Province_33_Summer_Battlefield.png": {
+      "bytes": 330414,
+      "sha256": "0e25be0b42841d6ad6a51c14176f94d53ca0004dc0a9add9e1cc96e3f0e95231"
+    },
+    "third_branch/assets/battlefields/Province_33_Winter_Battlefield.png": {
+      "bytes": 333393,
+      "sha256": "d48c2dd2494787b673d1606a66d86969d8ac2545757d8875d1793988ccb59f63"
+    },
+    "third_branch/assets/battlefields/Province_34_Autumn_Battlefield.png": {
+      "bytes": 331256,
+      "sha256": "db3133e0acc34745dedf38a09991f39ad16dcaca6ec669a404476f4db5804cd0"
+    },
+    "third_branch/assets/battlefields/Province_34_Spring_Battlefield.png": {
+      "bytes": 334953,
+      "sha256": "4deb7a45a89e06ce0ed9eca907aa99ecc709adfe70c78fb6254c0bae52b7054a"
+    },
+    "third_branch/assets/battlefields/Province_34_Summer_Battlefield.png": {
+      "bytes": 329855,
+      "sha256": "04e05369bae6b46aa9d62a94c064eb24f24261332ba5e5001685d39e1f2ced3a"
+    },
+    "third_branch/assets/battlefields/Province_34_Winter_Battlefield.png": {
+      "bytes": 332069,
+      "sha256": "7530d825afa27d1376371a273b92686a2e6cb59eb8fa71e7acb6f1bc7d1544c8"
+    },
+    "third_branch/assets/battlefields/Province_35_Autumn_Battlefield.png": {
+      "bytes": 352327,
+      "sha256": "653dbb0eb6c377aa2fb36a131958766a1bb5b07f521b9db0b88c94f64d31a008"
+    },
+    "third_branch/assets/battlefields/Province_35_Spring_Battlefield.png": {
+      "bytes": 356243,
+      "sha256": "487b2faaaa922f65ea58e545123db87db291cb92cb0a6c3954a9adc46e53205d"
+    },
+    "third_branch/assets/battlefields/Province_35_Summer_Battlefield.png": {
+      "bytes": 350110,
+      "sha256": "dee0c2ac9379cff4cdbaad619ffe9eee005eb407a3550320ef6e47a83b72044d"
+    },
+    "third_branch/assets/battlefields/Province_35_Winter_Battlefield.png": {
+      "bytes": 356060,
+      "sha256": "98580cfeb147439f692df2720a73115b0e9759d5a0b5a962d472469005c7f20b"
+    },
+    "third_branch/assets/battlefields/Province_36_Autumn_Battlefield.png": {
+      "bytes": 291151,
+      "sha256": "c57c88f6a4035409d2c33e4e30827ca58c7240d6ec7ef8000ccaaeba5477202d"
+    },
+    "third_branch/assets/battlefields/Province_36_Spring_Battlefield.png": {
+      "bytes": 295505,
+      "sha256": "9f62f1f5a8c46819297870ff146b7f156e39779e3fdef84f851095de683acc47"
+    },
+    "third_branch/assets/battlefields/Province_36_Summer_Battlefield.png": {
+      "bytes": 290033,
+      "sha256": "cd6a49f8d23f6233c58688138f9db16d095f9191a98427d63eb67c9f35e71b46"
+    },
+    "third_branch/assets/battlefields/Province_36_Winter_Battlefield.png": {
+      "bytes": 292311,
+      "sha256": "3891da66f7ed7b0fc173a7becc3ffe2e39460542f960920bd8aa052249719c40"
+    },
+    "third_branch/assets/battlefields/Province_37_Autumn_Battlefield.png": {
+      "bytes": 215325,
+      "sha256": "d33defe0787281fbb4dc3b214619d00c827ff563eff2f253031fbfd8dff309a5"
+    },
+    "third_branch/assets/battlefields/Province_37_Spring_Battlefield.png": {
+      "bytes": 216663,
+      "sha256": "b698cfa07a6587e6db9760e3295952504a7a30d20d42584081d4511d53e27da5"
+    },
+    "third_branch/assets/battlefields/Province_37_Summer_Battlefield.png": {
+      "bytes": 213288,
+      "sha256": "537e4b5f00a783ff042a989ecdc4ebfb678258e68f8c8633d32099407dae5f31"
+    },
+    "third_branch/assets/battlefields/Province_37_Winter_Battlefield.png": {
+      "bytes": 217175,
+      "sha256": "7a0e0828995d05641c1cf5c61a21164d1c1e502dbed38e122633ea4b2eb20167"
+    },
+    "third_branch/assets/battlefields/Province_38_Autumn_Battlefield.png": {
+      "bytes": 264477,
+      "sha256": "92ba8d4d07fe18b0f4b731d96a0d740795b03c08d072dc55eb597d36c4ef0cf6"
+    },
+    "third_branch/assets/battlefields/Province_38_Spring_Battlefield.png": {
+      "bytes": 266483,
+      "sha256": "f3ecf5afcaa8438654da23c0dabba5ef90d333c56cc6b3ded7f4164dd1cee0d0"
+    },
+    "third_branch/assets/battlefields/Province_38_Summer_Battlefield.png": {
+      "bytes": 262235,
+      "sha256": "7767e55913e22bfaddcd7adf11007e1a8baee43bcb332b8772a3f22e8eab20e8"
+    },
+    "third_branch/assets/battlefields/Province_38_Winter_Battlefield.png": {
+      "bytes": 266846,
+      "sha256": "2d15ac51ca6bfbd11b263b4e09e148ca48395cf1a10bc4d202a054078cdf0b90"
+    },
+    "third_branch/assets/battlefields/Province_39_Autumn_Battlefield.png": {
+      "bytes": 225745,
+      "sha256": "8df7cdc0d4c43e18baea18de2536e637e02c12872f4461323c69ec6d985f388b"
+    },
+    "third_branch/assets/battlefields/Province_39_Spring_Battlefield.png": {
+      "bytes": 226375,
+      "sha256": "3cdd72554d126eed824fdd0f44acf9e1bbdf5ef903f7b915a131823ff7bd48d2"
+    },
+    "third_branch/assets/battlefields/Province_39_Summer_Battlefield.png": {
+      "bytes": 222986,
+      "sha256": "f29e683c7a649bdc093e77643a61612d71927f8d7f7c53e39161aecc007c3085"
+    },
+    "third_branch/assets/battlefields/Province_39_Winter_Battlefield.png": {
+      "bytes": 229629,
+      "sha256": "14d52bacfca8d947550226a49527b9bfb54cebcb72675cfd9bd54e56ffaee21f"
+    },
+    "third_branch/assets/battlefields/Province_40_Autumn_Battlefield.png": {
+      "bytes": 267774,
+      "sha256": "68cae1f7671c9f091e77bfbda04bed3bc4b6a442edc73d5fbe0ef8b669a1878b"
+    },
+    "third_branch/assets/battlefields/Province_40_Spring_Battlefield.png": {
+      "bytes": 271986,
+      "sha256": "2803808bacc90261ff90ec01452300b992e55489f69d09da9ad4f8b5d650cff9"
+    },
+    "third_branch/assets/battlefields/Province_40_Summer_Battlefield.png": {
+      "bytes": 266518,
+      "sha256": "166ec5d66eb7d98b6bd1f5c2462d0eb28e198f868839a22c547b3e90941083a2"
+    },
+    "third_branch/assets/battlefields/Province_40_Winter_Battlefield.png": {
+      "bytes": 270408,
+      "sha256": "4376001726d1c6d83eee2a520a924270bc4ea7f3b6b806f363634fa37af83cc0"
+    },
+    "third_branch/assets/battlefields/Province_41_Autumn_Battlefield.png": {
+      "bytes": 282645,
+      "sha256": "582b180300cc86494a6eb98edcb23f60a1b9b7ad83c269df3a16798f986c6251"
+    },
+    "third_branch/assets/battlefields/Province_41_Spring_Battlefield.png": {
+      "bytes": 285555,
+      "sha256": "5ad66913d018fad03195707a7d5643e854001a4bee9583c66debff774b9e1885"
+    },
+    "third_branch/assets/battlefields/Province_41_Summer_Battlefield.png": {
+      "bytes": 281056,
+      "sha256": "a686771afd2daf0990b3f87368702ef9c91535db2787e4946d30fe78493ac961"
+    },
+    "third_branch/assets/battlefields/Province_41_Winter_Battlefield.png": {
+      "bytes": 284118,
+      "sha256": "8d5444b672bb953346098d9f6d80f6294685d76a197fbba72e824be578aa7503"
+    },
+    "third_branch/assets/battlefields/terrain_grids.json": {
+      "bytes": 118045,
+      "sha256": "da4bb924a114da75272d92c9c6c88a2159f72a9c3dd84a792b6a401d12a04a36"
+    },
+    "third_branch/assets/province_ui/PORTRAIT_PROVENANCE.json": {
+      "bytes": 883,
+      "sha256": "a831d8c51d8a882843a4d57497e1197fd8284f5d0fd731584921f3504e4b2f0b"
+    },
+    "third_branch/assets/province_ui/advisor_placeholder.png": {
+      "bytes": 11629,
+      "sha256": "f5a539435d8d6d584a28d33d2901a6a150cf6c445c8fb2a681b3c040d80e7c5c"
+    },
+    "third_branch/assets/province_ui/general_placeholder.png": {
+      "bytes": 12867,
+      "sha256": "6c55cbd71c63bff202a1b6934559d77ea5eb48382c8cd02b8c4d2d196de1ddea"
+    },
+    "third_branch/assets/province_ui/province_capital_placeholder.png": {
+      "bytes": 3939,
+      "sha256": "6433a2050b2d4d040622825b52db319547e16caca5fa68973027730bad265e56"
+    },
+    "third_branch/assets/province_ui/ruler_placeholder.png": {
+      "bytes": 11302,
+      "sha256": "9e2cdfea9b402264000f0d58865f5a7e0222c08595c26fe56c1618fa28e109bc"
+    },
+    "third_branch/assets/strategic/autumn_clean_41.png": {
+      "bytes": 3377964,
+      "sha256": "81194bde18e12738aa6d10426c1cca5a8ff88428528cf2903e80aca277d4576e"
+    },
+    "third_branch/assets/strategic/province_slots_41.json": {
+      "bytes": 13880,
+      "sha256": "f654257b62ccca47b9325640906307602ff643aeafb36ed21843bb5ddce0f797"
+    },
+    "third_branch/assets/strategic/spring_clean_41.png": {
+      "bytes": 3520006,
+      "sha256": "34b1b1545092c73e89be53e8615633e60ad44df7202d1aa62749f8e11459ff5f"
+    },
+    "third_branch/assets/strategic/summer_clean_41.png": {
+      "bytes": 3470110,
+      "sha256": "0b8d47d136cbfb67a350181daba526426dccd9f18f7fec97d0a3210705af1740"
+    },
+    "third_branch/assets/strategic/winter_clean_41.png": {
+      "bytes": 3443042,
+      "sha256": "c2a10683e23310e20540d6f9ccca2cd85748f7ef9011ad7cc32f83b653a7292c"
+    },
+    "third_branch/audio_system.py": {
+      "bytes": 11917,
+      "sha256": "bd4ddc2608b2c239de361acfac45ee21c6f9dc33468ba97d4f4248b5f0950193"
+    },
+    "third_branch/balance_ai_candidate.py": {
+      "bytes": 10477,
+      "sha256": "05fb17538f6664da3c716824146195b87907f96dee85573f9130720bf8769c6f"
+    },
+    "third_branch/balance_ai_candidate_v2.py": {
+      "bytes": 12408,
+      "sha256": "1db1d6e65af31aecb9f9612a056298ad15885341fd66403ded935ed325547175"
+    },
+    "third_branch/balance_policy_1000.py": {
+      "bytes": 3835,
+      "sha256": "889f3c49f5158c199b84817f7398cef9309fd5742d612d41436a62200b2ba14c"
+    },
+    "third_branch/battle_assets.py": {
+      "bytes": 3741,
+      "sha256": "c2cc443ca82f0288b59827681940726dfd175736ca4aec87e2d720c5b2656980"
+    },
+    "third_branch/console.py": {
+      "bytes": 6035,
+      "sha256": "de571809d04a9f5369ec0c7f8274a7e2253a0651cb647d7411e18315d4b0d951"
+    },
+    "third_branch/data/historical_s1.json": {
+      "bytes": 196302,
+      "sha256": "2015ace1842cc7e835f3dd30d4ff204357cc6bfb04fc550a9c3377834be6688c"
+    },
+    "third_branch/graph41.py": {
+      "bytes": 2319,
+      "sha256": "00d1bbdd39f9dfe4c145b960c73c316ca14a9a76cc0f8a139edd47124265ef95"
+    },
+    "third_branch/historical_ai.py": {
+      "bytes": 8406,
+      "sha256": "16b0f62bfda5dd0b319883fc185070cd4ef830ed3c02db370b64a57f1d173c55"
+    },
+    "third_branch/historical_ai_before.py": {
+      "bytes": 4868,
+      "sha256": "fccf58eaa482f935a110d8db53517c8e45339eff482a9c86c580bd76e88813e0"
+    },
+    "third_branch/historical_s1.py": {
+      "bytes": 10861,
+      "sha256": "6be6b456c5d3ceaea136c3fb4f0e1214343a46fb9105ac73f5b004cc8d1cd510"
+    },
+    "third_branch/integrated.py": {
+      "bytes": 43691,
+      "sha256": "22a1089a9410088a4e1b71a3b3d190672137d68e25979520cccfa7ab90d79381"
+    },
+    "third_branch/orders_ui.py": {
+      "bytes": 13237,
+      "sha256": "d098ad026b30b2f8f22c6fff81d05eb1afdfd05de7a58340f88f171b5ccf0b73"
+    },
+    "third_branch/player_runtime.py": {
+      "bytes": 2004,
+      "sha256": "5581ee045cf7ff7ba0cfc2f642213c6bbe7c4a3d9de0e3b363b9b18c13dc4c29"
+    },
+    "third_branch/province_stage.py": {
+      "bytes": 15482,
+      "sha256": "26cae6a82343d0c530abe7958b8e8f4cf7631ab288b1fccf75f4f6e7f21c41b2"
+    },
+    "third_branch/strategic_game.py": {
+      "bytes": 28711,
+      "sha256": "daa39f19c0e988e4bc308a8907921f82b0775ef4b4c2e3db75e538e28fdc3d54"
+    },
+    "third_branch/tactical_view.py": {
+      "bytes": 11563,
+      "sha256": "9a48ae1291640724f4604249a4c8e57bd7af356240476113bc95d54af9902cd5"
+    },
+    "third_branch/troop_assignments_ui.py": {
+      "bytes": 10124,
+      "sha256": "436b25846781fe0f11938f937181b6e8c29a87eff882fb6b78fa5329f7b90567"
+    },
+    "third_branch/xbox_controller.py": {
+      "bytes": 6457,
+      "sha256": "a45a5512c4042a23ec5af6d6a109f90ed8268308cf6f939fec18c90347fb7757"
+    },
+    "tools/balance_1000_ten_year.py": {
+      "bytes": 5938,
+      "sha256": "45004d5b05a5e88c3b716bbc3b3a4794a6b23733392683493f29f129d2b52452"
+    },
+    "tools/balance_ten_year_resume.py": {
+      "bytes": 5837,
+      "sha256": "f950579e53535604e4ba3e87a4a0f681cead520a29f00a126b03272ddadec967"
+    },
+    "tools/balance_ten_year_resume_v2.py": {
+      "bytes": 5971,
+      "sha256": "8b9b77807211ce378be9e026fba5377c45dd48c955b290982117ba26320e8f77"
+    },
+    "tools/battlefield_source_inputs/PM_REVIEW_Seasonal_Battlefield_28_Tile_Source_Pack_2026-10-28.zip": {
+      "bytes": 3393789,
+      "sha256": "f87cf3ae0113dc19fef9bff129055f8e582dded7a95572169eeebe63e9b1f10a"
+    },
+    "tools/battlefield_source_inputs/ROTK2_41_Provinces_Original_Static_Terrain_Maps_and_Art_Prototypes_SOURCE.zip": {
+      "bytes": 1557987,
+      "sha256": "04561f76a38deb612fee03b0dcd8834f0936eda96f344bea72e600902538151a"
+    },
+    "tools/build_battlefields_v14.py": {
+      "bytes": 4151,
+      "sha256": "701ffe36a1d1481b9491f677c7bc1fe7165ea6d29657aadd82dfe34de728709e"
+    },
+    "tools/contract_probes.py": {
+      "bytes": 2993,
+      "sha256": "71a96bc36e12baa424435d2b53b418bfd1ba4f6d8bb105a432b10735fa2af364"
+    },
+    "tools/determinism36.py": {
+      "bytes": 4243,
+      "sha256": "7461405631ab2074b7b847799ac95c2da5309609c8aba0fac5c2ebd25087d169"
+    },
+    "tools/director_v2_independent_qa.py": {
+      "bytes": 4761,
+      "sha256": "2b1934f83a66506b3a9a8029f908504393b8f7667de8e59f964b5e5f914d3ae9"
+    },
+    "tools/historical_ten_year_qa.py": {
+      "bytes": 6295,
+      "sha256": "35795aa2ed6647d1caa6590743655202d2f45156fc86ec40a64de78bf03c2fe1"
+    },
+    "tools/historical_ten_year_resume.py": {
+      "bytes": 5778,
+      "sha256": "682842c347f3707f2f28abcf5437b7001a5ce69bd2d90016bac0bc1e4f526f5d"
+    },
+    "tools/longer_sim.py": {
+      "bytes": 1949,
+      "sha256": "c1df38cee1c99e3c6c3529f0d2a0fd6de18a1e1994018792dfab8e490b18d315"
+    },
+    "tools/persona_campaigns.py": {
+      "bytes": 10473,
+      "sha256": "250585c0c5b8a9c2e06c0ae1ed78d5e37d2f487c24b68313397ddd9cd3798b2a"
+    },
+    "tools/persona_campaigns_full.py": {
+      "bytes": 10480,
+      "sha256": "61cac4869a7eda7200e750ed3bae5949919560989b96dd545d40f8f6d04aec7d"
+    },
+    "tools/persona_engine_v11.py": {
+      "bytes": 19905,
+      "sha256": "fb4110aac3da90ed2312859c956a6a4c75c74ff37366c5aa3fb24f528258c919"
+    },
+    "tools/provinces41.py": {
+      "bytes": 1811,
+      "sha256": "b6586a1ab96f157cbc9666dc284e8626cc79ca7f02224dfcb421903838c9fe4f"
+    },
+    "tools/run_integrated_matrix.py": {
+      "bytes": 1473,
+      "sha256": "18b061be201aacc26a386fd0aa376ba920c531d7d21974ac409c8a841c030224"
+    }
+  }
+}
