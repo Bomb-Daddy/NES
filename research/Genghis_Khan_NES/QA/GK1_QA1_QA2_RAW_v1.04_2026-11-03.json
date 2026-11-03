@@ -1,0 +1,174 @@
+{
+  "tests": {
+    "QA1_ALL_167_AND_COMMANDS": [
+      {
+        "test": "all four documents exist and nonempty",
+        "pass": true
+      },
+      {
+        "test": "exactly 167 source rows",
+        "pass": true
+      },
+      {
+        "test": "exactly 167 exported rows",
+        "pass": true
+      },
+      {
+        "test": "unique proof IDs",
+        "pass": true
+      },
+      {
+        "test": "source ID/order match",
+        "pass": true
+      },
+      {
+        "test": "all source requirements preserved",
+        "pass": true
+      },
+      {
+        "test": "all proof requirements preserved",
+        "pass": true
+      },
+      {
+        "test": "static v1.03 addenda preserved",
+        "pass": true
+      },
+      {
+        "test": "B7 helper static addenda preserved",
+        "pass": true
+      },
+      {
+        "test": "status is still 58 PARTIAL 109 NOT RUN",
+        "pass": true
+      },
+      {
+        "test": "no accepted rows",
+        "pass": true
+      },
+      {
+        "test": "all newly appended v1.04 dispositions say OPEN",
+        "pass": true
+      },
+      {
+        "test": "all proof IDs represented as headings in master",
+        "pass": true
+      },
+      {
+        "test": "every source subsystem group appears",
+        "pass": true
+      },
+      {
+        "test": "all 14 main command rows appear",
+        "pass": true
+      },
+      {
+        "test": "all 14 source crosswalk sections retained",
+        "pass": true
+      },
+      {
+        "test": "crosswalk v1.00 fully included verbatim",
+        "pass": true
+      },
+      {
+        "test": "tactical battle commands called out",
+        "pass": true
+      },
+      {
+        "test": "future-port rows retained",
+        "pass": true
+      }
+    ],
+    "QA2_SOURCE_FIDELITY_AND_PRIVACY": [
+      {
+        "test": "private original ROM hash verified",
+        "pass": true
+      },
+      {
+        "test": "same ROM hash documented",
+        "pass": true
+      },
+      {
+        "test": "ROM file never selected for upload",
+        "pass": true
+      },
+      {
+        "test": "all files are UTF-8",
+        "pass": true
+      },
+      {
+        "test": "NOT RUN and PARTIAL distinctions disclosed",
+        "pass": true
+      },
+      {
+        "test": "source differences preserved",
+        "pass": true
+      },
+      {
+        "test": "market Rate not confused with tax percentage",
+        "pass": true
+      },
+      {
+        "test": "Genghis distinct from other projects",
+        "pass": true
+      },
+      {
+        "test": "no gameplay claims from bounded CPU replay",
+        "pass": true
+      },
+      {
+        "test": "market buy labeled NOT completed",
+        "pass": true
+      },
+      {
+        "test": "war labeled incomplete",
+        "pass": true
+      },
+      {
+        "test": "save cold-load labeled unverified",
+        "pass": true
+      },
+      {
+        "test": "verified technical handler counts stated",
+        "pass": true
+      },
+      {
+        "test": "new B7 helper sequence represented",
+        "pass": true
+      },
+      {
+        "test": "multiple Rate math pathways retained",
+        "pass": true
+      },
+      {
+        "test": "income and production not claimed proven",
+        "pass": true
+      },
+      {
+        "test": "source citations include archived v1.02 and v1.03",
+        "pass": true
+      },
+      {
+        "test": "all critical raw outcome numbers retained",
+        "pass": true
+      },
+      {
+        "test": "published artifact metadata correct",
+        "pass": true
+      },
+      {
+        "test": "production/resale proof stays open",
+        "pass": true
+      }
+    ]
+  },
+  "summary": {
+    "QA1_ALL_167_AND_COMMANDS": {
+      "pass": 19,
+      "total": 19
+    },
+    "QA2_SOURCE_FIDELITY_AND_PRIVACY": {
+      "pass": 20,
+      "total": 20
+    }
+  }
+}
