@@ -1,0 +1,49 @@
+family,drive_items,folders,zip_parts,whole_zips,other_files,total_bytes,created_min,modified_max,first_item_id,first_item_title,drive_id_exists,sha256,zip_crc
+B36R1,1,1,0,0,0,0,2026-11-02T11:43:51,2026-11-02T11:43:51,14fHS9_WJ_VOWc1fgi8hTbiYQCYxX-u-h,RECOVERY_CANDIDATE_B36R1_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build01,1,0,0,1,0,28107,2026-11-01T02:13:20,2026-11-01T02:13:20,1WikxIHNDP6-5o2YC3tnh5fcLYdh3of1e,Fork4_Build01_Governor_Hotfix_Delta_and_QA_20261031.zip,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build02,7,0,0,6,1,141047354,2026-11-01T02:22:27,2026-11-01T02:30:04,1evr6FQ6_8YiyrLioDTA42TktTlQMdRd9,Build02_FiveCampaign_HostileQA_Summary_20261031.md,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build03,38,0,18,1,19,318186568,2026-11-01T02:53:13,2026-11-01T03:04:33,18mhlDM5aJ_CBDAJRLQgpPCl7uoNzHDrC,Build03C_5x120_Independent_Archive_Audit.py,YES,NOT COMPUTED (needs download of 18 parts; no hash stated in listing),NOT COMPUTED
+Build04,16,0,6,7,3,289801996,2026-11-01T03:07:47,2026-11-01T03:16:09,12okz80DHYMoz6Nv7WbyfVtWMCTvJYLaf,Fork4_BUILD04_120Month_Seed100131_Raw_Evidence.zip,YES,NOT COMPUTED (needs download of 6 parts; no hash stated in listing),NOT COMPUTED
+Build06,4,0,0,3,1,412395,2026-11-01T04:19:53,2026-11-01T04:36:06,11VWI6spUR-Ynhztauih6e2-J-sCukwJy,Fork4_Build06B_ObsoleteCommands_CleanSource_Delta_QA_20261101.zip,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build07,26,1,20,0,5,297338003,2026-11-01T05:12:56,2026-11-01T05:20:20,1SzujliAAv6-fS7eQmR-4GTSg8dhvI-9n,Build07_FULL_Source_SHA256_Manifest.json,YES,NOT COMPUTED (needs download of 20 parts; no hash stated in listing),NOT COMPUTED
+Build08,13,0,12,0,1,148447659,2026-11-01T05:47:40,2026-11-01T05:50:16,1kKDORhJriqqp-RKee26UyJhTMxvgjmoa,Build08_FULL_TwoMode_GameSource_Drive_Reassembly_Manifest.json,YES,NOT COMPUTED (needs download of 12 parts; no hash stated in listing),NOT COMPUTED
+Build09,16,0,12,1,3,148501860,2026-11-01T12:15:25,2026-11-01T12:24:04,1WXSdIN151dU-dKv_cPf9Ur6ePMRUkC4X,BUILD09_UNIFIED_COMBAT_RELEASE_NOTES.md,YES,NOT COMPUTED (needs download of 12 parts; no hash stated in listing),NOT COMPUTED
+Build13,14,0,12,1,1,148664996,2026-11-01T13:50:46,2026-11-01T13:52:50,11dkcWjDQ9MT7j52u8fsBPvIF1MLLD0Ot,KOEI_Build13_FULL_Source.zip.part01,YES,NOT COMPUTED (needs download of 12 parts; no hash stated in listing),NOT COMPUTED
+Build14,14,0,12,1,1,148502264,2026-11-01T14:01:51,2026-11-01T14:03:42,1eFopyMo6AFzN9fRm_X4U1dEXjXCQvJNZ,KOEI_Build14_FULL_Source.zip.part01,YES,NOT COMPUTED (needs download of 12 parts; no hash stated in listing),NOT COMPUTED
+Build2026,1,1,0,0,0,0,2026-10-28T21:09:49,2026-10-28T21:09:49,1vd-MQyRUKakBLI7gWpY98pbHwzmb2HJz,ECON_R1_Q1_Q9_BUILD_2026-10-28,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build25,1,1,0,0,0,0,2026-11-02T00:44:28,2026-11-02T00:44:28,1ghAGc3hHumAiBLK7QumgHpQVoEx96LSq,Combat_Build25_Q04_Q09_20261101,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build26,1,1,0,0,0,0,2026-11-02T01:45:31,2026-11-02T01:45:31,1Th1f4dmSHaRNJcrWScucKmAgw0hnNgbr,Combat_Build26_Q09_20261101,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build27,1,1,0,0,0,0,2026-11-02T02:55:25,2026-11-02T02:55:25,1oyob8bxpk6Bp3KQT9dHEk7nKrXziqr9v,Combat_Build27_Q04_Q09_Q10_20261101,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build28,1,1,0,0,0,0,2026-11-02T03:45:32,2026-11-02T03:45:32,1ADmNq_Zzklu6gR1DW9s1VzqOetlkGUpr,COMBAT_ENHANCED_BUILD28_20261101,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build29,1,1,0,0,0,0,2026-11-02T04:54:49,2026-11-02T04:54:49,1wYbW6lTRE4AnRDaELADiu0dwpEwgy3ad,COMBAT_ENHANCED_BUILD29_20261101,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build30,1,1,0,0,0,0,2026-11-02T05:46:58,2026-11-02T05:46:58,1wm8ukH3tWb5aAZvShpEoOVMvohw2HTw_,Combat_Build30_20261102_Q11,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build31,1,1,0,0,0,0,2026-11-02T07:00:25,2026-11-02T07:00:25,1X91B7Bf4sTVJSiFFI8-lUT2nT5RT20yB,Combat_Build31_20261102_Q11_Opening,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build32,1,1,0,0,0,0,2026-11-02T07:28:53,2026-11-02T07:28:53,19iqgDZh8Xf0iUfhMHiTrQsxYId3qBE5n,Combat_Enhanced_Build32_Q11_Hostile_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build33,1,1,0,0,0,0,2026-11-02T07:50:56,2026-11-02T07:50:56,1x83UJEPAgX8HdtOfg0vkuKp_fweOQm2O,Combat_Enhanced_Build33_Q17_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build34,1,1,0,0,0,0,2026-11-02T08:54:00,2026-11-02T08:54:00,1Qko8-KCBkDn7h6hxvVCXNm8pl5EEExCN,Combat_Enhanced_Build34_Q08_Q17_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build35,1,1,0,0,0,0,2026-11-02T09:51:15,2026-11-02T09:51:15,1GflodyRLP_4a_9bxbx_G3XI0K333jffx,Combat_Enhanced_Build35_Q14_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build36,1,1,0,0,0,0,2026-11-02T10:44:30,2026-11-02T10:44:30,1nUi9voVbZlQfbVsF8xuFNRklbtZOQvPE,Combat_Enhanced_Build36_Q14_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build37,1,1,0,0,0,0,2026-11-02T11:51:47,2026-11-02T11:51:47,16JyWxfETSQ4nU7AOo-t4tTazXq5QsCrq,Combat_Enhanced_Build37_Human_Defender_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build38,1,1,0,0,0,0,2026-11-02T12:52:42,2026-11-02T12:52:42,1JQyw7WGo5n96sIFzB_dDOMa0F9MIw20l,Combat_Enhanced_Build38_Merged_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build39,1,1,0,0,0,0,2026-11-02T13:20:10,2026-11-02T13:20:10,1aQIypUFWs_YEl_6vIrTtqYZw2llJz62Y,Combat_Enhanced_Build39_Q17_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build40,1,1,0,0,0,0,2026-11-02T13:53:36,2026-11-02T13:53:36,1ykrNe-O406sYcLGwk6tAFUO3txXcO3ne,Combat_Enhanced_Build40_Q19_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build40R3,1,0,0,1,0,68112121,2026-11-02T18:55:20,2026-11-02T18:55:20,1h9m1-uoaUtm2vZrEqSwg6avN6n1PnKMs,KOEI_ENHANCED_BUILD40R3_NO_MUSIC_20261102.zip,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build41,1,1,0,0,0,0,2026-11-02T14:57:38,2026-11-02T14:57:38,1nseDR5jjpnmkTjgeYZGisMsZa6so7AQ3,Combat_Enhanced_Build41_Q08_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build42,1,1,0,0,0,0,2026-11-02T15:50:43,2026-11-02T15:50:43,1Rb6iFVC1vNHG1R7YA813AYk3iHIG6e_l,Combat_Build42_Q09_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build43,1,1,0,0,0,0,2026-11-02T16:43:48,2026-11-02T16:43:48,1IeRHwydEzUXWVqXWRyG0AeAA_G--LYXJ,Enhanced_Build43_Q06_CANDIDATE_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build44,1,1,0,0,0,0,2026-11-02T17:48:10,2026-11-02T17:48:10,1NUq1h6ijK428HyK8pvAd6-9JdGGpIZfY,Enhanced_Build44_Q05_CANDIDATE_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build45,1,1,0,0,0,0,2026-11-02T18:49:24,2026-11-02T18:49:24,1dv4GH5G4ejBfWZKdW5lguzi7PmETV82Q,Combat_Enhanced_Build45_Q09_CANDIDATE_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build46,1,1,0,0,0,0,2026-11-02T19:47:35,2026-11-02T19:47:35,1WNTj0MA47d6sbibdSWaMSPl2PGjP6edr,Combat_Build46_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Build47,1,1,0,0,0,0,2026-11-02T20:52:17,2026-11-02T20:52:17,1QZj8zuQwwEJ_t9lvQTXrCV1A5S12fOZM,Combat_Build47_Q05_Q06_Q08_20261102,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+Round4,6,0,0,1,5,148517846,2026-10-31T19:59:45,2026-10-31T20:00:19,1VwKm7JKIHdsOZuZw8yhClvfLMompz0tm,KOEI_OG_ROUND4_SOURCE_MANIFEST.json,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+v1.19,8,0,0,1,7,458338382,2026-10-30T18:22:54,2026-10-31T19:53:48,1KN5N7SGzueH4kBUFmv-Jlqcvv_vN7Rjd,KOEI_OG_v119_120_MONTH_SEED17_AND_GUI_EVIDENCE_2026-10-30.zip,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+v1.20,1,0,0,1,0,25533,2026-10-31T10:03:04,2026-10-31T10:03:04,1ndqnU0UogzfaGqmTCoY1PWHYPQ0Coywt,KOEI_ORIGINAL_v120_UI_AUDIO_BUILD012_INTEGRATION_PATCH_2026-10-31.zip,YES,NOT COMPUTED (needs download of the item; no hash stated in listing),NOT COMPUTED
+B37R1,0,0,0,0,0,0,,,,,NO,UNAVAILABLE,UNAVAILABLE
+B37R2,0,0,0,0,0,0,,,,,NO,UNAVAILABLE,UNAVAILABLE
+B37R3,0,0,0,0,0,0,,,,,NO,UNAVAILABLE,UNAVAILABLE
+B40R1,0,0,0,0,0,0,,,,,NO,UNAVAILABLE,UNAVAILABLE
+B40R2,0,0,0,0,0,0,,,,,NO,UNAVAILABLE,UNAVAILABLE
+Build05_UI,0,0,0,0,0,0,,,,,NO,UNAVAILABLE,UNAVAILABLE
+Enhanced37-43_mapping,0,0,0,0,0,0,,,,,NO,UNAVAILABLE,UNAVAILABLE
+Build40R3_local_pinned_tree,512,,,,512,,,,,$S/b40r3 (extracted from Build40R3 ZIP),YES (zip 1h9m1-uoaUtm2vZrEqSwg6avN6n1PnKMs),46a1ecd70c39a75b849fb57f9c3397d1937e71e16f91e09ee5a755190fececff,"n/a (tree hash: path+file SHA-256, excl. pyc)"
+Build40R4_local_working_tree,520,,,,520,,,,,$S/work/b40r4,n/a,056c0f87103f59f72b1fd0ef2ada5da672f3c8936428e8d93e540644930bee51,n/a

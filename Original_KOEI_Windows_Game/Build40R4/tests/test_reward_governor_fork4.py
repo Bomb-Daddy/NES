@@ -96,6 +96,7 @@ def test_real_game_ui_issue_permits_ruler_from_other_owned_province_and_saves(c,
     fake.path=tmp_path/'campaign.sav'
     fake.audio=Audio();fake.msg=Message()
     fake.redraw=lambda:None
+    fake.autosave=lambda:None  # the real window rotates autosaves; this double only exercises the commit path
     fake._show_committed_events=lambda events:None
     before=c.state['officer_loyalty']['A2']
     assert StrategicWindow.issue(fake,'reward_governor',{'target_governor':'A2','method':'gold','gold':1},actor='A1',confirm=False)

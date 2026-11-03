@@ -39,7 +39,7 @@ class TroopAssignmentsWindow:
         self.root=tk.Toplevel(self.stage.root)
         self.root.title('Troop Assignments — Real Army Ledger')
         self.root.geometry('900x675')
-        self.root.minsize(650,550)
+        self.root.resizable(False,False)  # fixed 4:3
         self.root.configure(bg='#101c30')
         self.root.protocol('WM_DELETE_WINDOW',self.close)
         self.officers=self._officers()

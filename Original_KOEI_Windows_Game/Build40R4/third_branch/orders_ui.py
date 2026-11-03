@@ -268,7 +268,7 @@ class OrdersWindow:
         for idx,(name,choices,default) in enumerate(spec):
             value=default
             if name in ('officer','general'):value=self.actor.get()
-            elif name=='target' and name not in ('faction',):
+            elif name=='target' and not choices:  # a target WITH a fixed choice list (Allocate Workers job) keeps its own default
                 command=SPECS[self.order.get()][0]
                 if command in DIPLO:
                     owner=self.parent.player
@@ -317,7 +317,6 @@ class OrdersWindow:
             elif choices:self.ttk.Combobox(self.fieldframe,textvariable=var,values=choices,state='readonly',width=24).grid(row=idx,column=1,pady=5)
             else:self.tk.Entry(self.fieldframe,textvariable=var,width=28).grid(row=idx,column=1,pady=5)
     def submit(self):
-        from tkinter import messagebox
         try:
             kind,params=params_for_order(self.order.get(),{k:v.get() for k,v in self.fields.items()},self.pid)
             self.parent.issue(kind,params,actor=self.actor.get(),confirm=True)
