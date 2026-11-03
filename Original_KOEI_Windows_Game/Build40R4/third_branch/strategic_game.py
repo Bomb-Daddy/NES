@@ -351,6 +351,24 @@ class StrategicWindow:
         if button=='start':self.audio.effect('confirm');return self.pause()
         if button in ('b','select'):return self.return_to_province()
         return None  # No map command cursor, ever.
+    def confirm_dialog(self,title,text):
+        """In-game 4:3 Yes/No dialog (replaces the OS message box). Returns True/False."""
+        import tkinter as tk
+        win=tk.Toplevel(self.root);win.title(title);win.geometry(self._centered(640,480))
+        win.transient(self.root);win.configure(bg='#111e32');win.resizable(False,False)
+        out={'v':False}
+        tk.Label(win,text=title,font=('Arial',15,'bold'),bg='#111e32',fg='#f5db99').pack(pady=12)
+        tk.Label(win,text=text,bg='#111e32',fg='#e8eef8',wraplength=580,justify='left').pack(padx=20,pady=8,fill='both',expand=True)
+        def done(v):
+            out['v']=v;win.destroy()
+        row=tk.Frame(win,bg='#111e32');row.pack(pady=14)
+        yes=tk.Button(row,text='Yes (A / Enter)',width=16,command=lambda:done(True));yes.pack(side='left',padx=12)
+        tk.Button(row,text='No (B / Esc)',width=16,command=lambda:done(False)).pack(side='left',padx=12)
+        win.bind('<Return>',lambda _e:done(True));win.bind('<Escape>',lambda _e:done(False))
+        win.protocol('WM_DELETE_WINDOW',lambda:done(False))
+        self.confirm_win=win;yes.focus_set();win.grab_set();win.wait_window()
+        self.confirm_win=None
+        return out['v']
     def _centered(self,w,h):
         """4:3 dialog geometry centred over the main window."""
         x=self.root.winfo_rootx()+max(0,(self.root.winfo_width()-w)//2);y=self.root.winfo_rooty()+max(0,(self.root.winfo_height()-h)//2)
@@ -497,9 +515,8 @@ class StrategicWindow:
                 raise CoreError('BAD_ACTOR','Actor must be an officer of the player in the selected province')
             quote=self.c.preview(kind,chosen,params,rid)
             if confirm:
-                from tkinter import messagebox
-                if not messagebox.askyesno('Confirm live order',
-                      f'{kind}: {params}\n\nPREVIEW: {quote["result"]}\n\nCommit this game-state change?',parent=self.root):
+                if not self.confirm_dialog('Confirm live order',
+                      f'{kind}: {params}\n\nPREVIEW: {quote["result"]}\n\nCommit this game-state change?'):
                     self.audio.effect('cancel')
                     self.msg.set('Order cancelled without changes')
                     return False
@@ -507,7 +524,7 @@ class StrategicWindow:
             result=staged.execute(kind,chosen,params,rid,quote['quote_id'],quote['revision'])
             save_file(staged,self.path)  # Disk commit BEFORE activating staged state
             old_event_count=len(self.c.state.get('event_history',[]))
-            self.c=staged
+            self.c=staged;self.autosave()
             new_events=self.c.state.get('event_history',[])[old_event_count:]
             self.audio.effect('trade' if kind=='market' else 'order')
             if kind in ('Ally','Joint','Marry','Give','Cancel','Threat'):
@@ -612,6 +629,16 @@ class StrategicWindow:
         from .tactical_view import TacticalWindow
         self.audio.play('battle');self.audio.effect('battle')
         self.tactical=TacticalWindow(self)
+    AUTOSAVES=3
+    def autosave_path(self,n):
+        return self.path.with_name(self.path.stem+f'_auto{n}'+self.path.suffix)
+    def autosave(self):
+        """Rolling autosaves, separate from the five manual slots: auto1 is newest, auto3 oldest. Never raises."""
+        try:
+            for n in range(self.AUTOSAVES,1,-1):
+                if self.autosave_path(n-1).exists():os.replace(self.autosave_path(n-1),self.autosave_path(n))
+            save_file(self.c,self.autosave_path(1))
+        except OSError:pass
     def month(self):
         from .player_runtime import stage_month_with_opponents
         stage=getattr(self,'province_stage',None)
@@ -623,7 +650,7 @@ class StrategicWindow:
             staged,result=stage_month_with_opponents(self.c,player=self.player)
             save_file(staged,self.path)  # Do not advance in memory if disk commit fails
             old_event_count=len(self.c.state.get('event_history',[]))
-            self.c=staged
+            self.c=staged;self.autosave()
             new_events=self.c.state.get('event_history',[])[old_event_count:]
             self.last_opponent_actions=result['opponents']
             self.msg.set(readable_month_summary(result['opponents'], self.c.state['month']))
@@ -771,7 +798,10 @@ class NesPauseMenu:
             labels=[f'{n:02d} '+(TRACKS[n].stem[4:] if n in TRACKS else 'MISSING') for n in nums]
             return labels+(['Next Page'] if self.library_page==0 else ['Previous Page','Back'])
         if self.mode in ('save','load'):
-            return [f'Slot {n}: '+('Occupied' if self.slot_path(n).exists() else 'Empty') for n in range(1,6)]+['Back']
+            rows=[f'Slot {n}: '+('Occupied' if self.slot_path(n).exists() else 'Empty') for n in range(1,6)]
+            if self.mode=='load':   # rolling autosaves are loadable, never manually writable
+                rows+=[f'Autosave {n}: '+('Occupied' if self.parent.autosave_path(n).exists() else 'Empty') for n in range(1,self.parent.AUTOSAVES+1)]
+            return rows+['Back']
         return ['Confirm','Cancel']
     def refresh(self):
         labels=self.entries();self.index%=len(labels)
@@ -822,7 +852,10 @@ class NesPauseMenu:
             elif self.index==7:self.library_page=0;self.index=0
             else:self.mode='main';self.index=9;self.parent.audio.play('map',self.parent.selected)
         elif self.mode in ('save','load'):
-            if self.index==5:self.mode='main';self.index=0
+            back=5 if self.mode=='save' else 5+self.parent.AUTOSAVES
+            if self.index==back:self.mode='main';self.index=0
+            elif self.index>=5:   # load mode only: Autosave 1..3
+                return self.load_path(self.parent.autosave_path(self.index-4))
             else:
                 self.slot=self.index+1
                 if self.mode=='save' and self.slot_path(self.slot).exists():self.mode='overwrite_confirm';self.index=1

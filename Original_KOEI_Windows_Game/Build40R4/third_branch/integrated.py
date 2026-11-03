@@ -248,6 +248,7 @@ class Campaign:
         if expected_revision is not None and expected_revision!=self.state['revision']:reject('STALE_REVISION')
         if quote_id is not None and quote_id!=self._quote(cmd):reject('STALE_QUOTE')
         staged=copy.deepcopy(self.state)
+        rev_before=staged['revision'];events_before=len(staged.get('event_history',[]))
         result=self._step(staged,cmd)
         staged['revision']+=1
         staged['processed'].append(request_id)
@@ -261,6 +262,11 @@ class Campaign:
             sync(staged,'command:'+kind)
         validate(staged)
         self.state=staged
+        # Explicit commit contract: one command = 1 journal entry + one entry per courier/event record it
+        # triggered (e.g. Ally/Joint in the historical scenario), so revision_after-revision_before = 1+event_records.
+        self.last_commit={'request_id':request_id,'kind':kind,'revision_before':rev_before,
+                          'revision_after':staged['revision'],
+                          'event_records':len(staged.get('event_history',[]))-events_before}
         return result
     def do(self,kind,actor,params,request_id):
         q=self.preview(kind,actor,params,request_id)

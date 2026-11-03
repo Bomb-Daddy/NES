@@ -270,8 +270,7 @@ class ProvinceStage:
         self.root=self.tk.Toplevel(parent.root)
         self.root.title('KOEI Enhanced — Province')
         self.root.geometry('1024x768')
-        self.root.minsize(800,600)
-        self.root.resizable(True,True)
+        self.root.resizable(False,False)  # fixed 4:3
         self.canvas=self.tk.Canvas(self.root,bg='#030a11',highlightthickness=0)
         self.canvas.pack(fill='both',expand=True)
         self.canvas.bind('<Configure>',lambda _:self.redraw())

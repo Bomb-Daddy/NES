@@ -379,17 +379,11 @@ class TacticalWindow:
                                      'whole_army':self.withdraw_whole})
 
     def move_enemy(self):
-        from tkinter import simpledialog
-        b=self.parent.c.state.get('battle')
-        if not b:return
+        # In-window D-pad targeting (same path as the controller); no OS dialog.
+        if not self.parent.c.state.get('battle'):return
         if not self.selected_target:
             self.message.set('Select an enemy with Next Target first');return
-        u=next((x for x in b.get('officer_units',[]) if x['id']==self.selected_officer),None)
-        if u is None:return
-        q=simpledialog.askinteger('Move Enemy','Destination column 0-12',parent=self.root,initialvalue=u['q'],minvalue=0,maxvalue=12)
-        if q is None:return
-        r=simpledialog.askinteger('Move Enemy','Destination row 0-11',parent=self.root,initialvalue=u['r'],minvalue=0,maxvalue=11)
-        if r is not None:self._issue('battle_move_enemy',{'q':q,'r':r})
+        self.start_target('battle_move_enemy')
     def wait(self):
         self._issue('battle_wait',{})
     def duel(self):
@@ -422,14 +416,9 @@ class TacticalWindow:
             self.message.set('Select enemy with Next Target first');return
         self._issue('battle_bribe',{'gold':self.bribe_gold})
     def move(self):
-        from tkinter import simpledialog
-        if not self.parent.c.state['battle']:return
-        b=self.parent.c.state['battle']
-        u=next((x for x in b.get('officer_units',[]) if x['id']==self.selected_officer),b['a'])
-        q=simpledialog.askinteger('Army move','Destination column 0-12',parent=self.root,initialvalue=u['q'],minvalue=0,maxvalue=12)
-        if q is None:return
-        r=simpledialog.askinteger('Army move','Destination row 0-11',parent=self.root,initialvalue=u['r'],minvalue=0,maxvalue=11)
-        if r is not None:self._issue('battle_move',{'q':q,'r':r})
+        # In-window D-pad targeting (same path as the controller); no OS dialog.
+        if not self.parent.c.state.get('battle'):return
+        self.start_target()
     def attack(self):self._issue('battle_attack',{'mode':'normal'})
     def charge(self):self._issue('battle_attack',{'mode':'charge'})
     def simult(self):self._issue('battle_attack',{'mode':'simult'})
@@ -460,4 +449,5 @@ class TacticalWindow:
             self.canvas.create_rectangle(x+1,y+1,x+CELL-2,y+CELL-2,outline='#fff37d',width=4)
     def close(self):
         self.root.destroy()
+        if getattr(self.parent,'tactical',None) is self:self.parent.tactical=None  # no stale reference to a destroyed window
         self.parent.audio.play('map',self.parent.selected)

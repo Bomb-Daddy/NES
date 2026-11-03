@@ -143,3 +143,27 @@ class SurvivingMutantKillers(unittest.TestCase):
             self.assertEqual(cm.exception.code,'JOURNAL_MISMATCH')
 
 if __name__=='__main__':unittest.main()
+
+class CommitContractIsExplicit(unittest.TestCase):
+    """Clients must not assume +1 per command: Campaign.last_commit states exactly what the commit did."""
+    def test_last_commit_reports_revision_span_and_event_records(self):
+        spans=set()
+        for seed in range(1,80):
+            c=new_campaign_historical_s1(seed);s=c.state;f=s['officer_faction']
+            a=next(iter(f));t=next(x for x in sorted(s['factions']) if x!=f[a])
+            before=s['revision']
+            try:c.do('Ally',a,{'target':t},'ally-1')
+            except CoreError:continue
+            lc=c.last_commit
+            self.assertEqual(lc['revision_before'],before)
+            self.assertEqual(lc['revision_after'],c.state['revision'])
+            self.assertEqual(lc['revision_after']-lc['revision_before'],1+lc['event_records'])
+            self.assertEqual((lc['kind'],lc['request_id']),('Ally','ally-1'))
+            spans.add(lc['event_records'])
+        self.assertEqual(spans,{0,1},'both a plain Ally and an Ally with a courier event must be observed')
+    def test_ordinary_command_is_exactly_one_revision(self):
+        c=new_campaign_41(7);s=c.state;a=next(iter(s['officer_faction']))
+        pid=s['core']['officers'][a]['province_id']
+        r=s['revision']
+        c.do('rest',a,{},'rest-1')
+        self.assertEqual(c.last_commit['revision_after']-r,1);self.assertEqual(c.last_commit['event_records'],0)
