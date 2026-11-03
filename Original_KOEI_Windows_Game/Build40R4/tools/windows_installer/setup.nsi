@@ -24,6 +24,19 @@ FunctionEnd
 Section "Install"
   nsExec::Exec 'powershell.exe -NoProfile -WindowStyle Hidden -Command "Get-Process pythonw,python,Mesen -ErrorAction SilentlyContinue | Where-Object { $$_.Path -like \"$INSTDIR\*\" } | Stop-Process -Force"'
   Sleep 1500
+  ; ---- remove older installs (program files only; saves are never touched) ----
+  nsExec::Exec 'powershell.exe -NoProfile -WindowStyle Hidden -Command "Get-Process pythonw,python,Mesen -ErrorAction SilentlyContinue | Where-Object { $$_.Path -like \"$LOCALAPPDATA\ROTK2Windows\*\" -or $$_.Path -like \"$LOCALAPPDATA\KOEI_Original_Third_Branch\python_runtime\*\" -or $$_.Path -like \"$LOCALAPPDATA\Programs\KOEI_Classic_Enhanced\*\" } | Stop-Process -Force"'
+  Sleep 1500
+  RMDir /r "$LOCALAPPDATA\ROTK2Windows\python"
+  RMDir /r "$LOCALAPPDATA\ROTK2Windows\app"
+  Delete "$LOCALAPPDATA\ROTK2Windows\Uninstall.exe"
+  RMDir "$LOCALAPPDATA\ROTK2Windows"
+  Delete "$DESKTOP\ROTK2.lnk"
+  RMDir /r "$SMPROGRAMS\ROTK2"
+  DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\ROTK2Windows"
+  RMDir /r "$LOCALAPPDATA\KOEI_Original_Third_Branch\python_runtime"
+  RMDir /r "$LOCALAPPDATA\Programs\KOEI_Classic_Enhanced"
+  ; ---- remove this app's previous install ----
   RMDir /r "$INSTDIR\app"
   RMDir /r "$INSTDIR\python"
   SetOutPath "$INSTDIR"
