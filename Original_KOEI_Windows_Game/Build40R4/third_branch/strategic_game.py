@@ -133,7 +133,19 @@ class StrategicWindow:
         from .platform_paths import prepare_save_path
         self.path=prepare_save_path(save_path)
         self.new_game_pending=not self.path.exists()
-        self.c=load_file(self.path) if not self.new_game_pending else new_campaign_historical_s1(balance_policy='OG_1000_DIRECTOR_V2')
+        self.save_notice=''
+        if not self.new_game_pending:
+            try:self.c=load_file(self.path)
+            except Exception as exc:
+                # A save from an older build (or a damaged file) must never stop the game from starting.
+                # Keep it (renamed, not deleted) and begin a new game.
+                import time
+                aside=self.path.with_name(self.path.name+'.incompatible-'+time.strftime('%Y%m%d-%H%M%S'))
+                try:self.path.replace(aside)
+                except OSError:pass
+                self.new_game_pending=True
+                self.save_notice=f'Your old save could not be loaded ({type(exc).__name__}) and was kept as {aside.name}. Starting a new game. '
+        if self.new_game_pending:self.c=new_campaign_historical_s1(balance_policy='OG_1000_DIRECTOR_V2')
         self.audio=GameAudio()
         initial='R0' if self.c.state.get('source_label')=='ORIGINAL_GAME_HISTORICAL_S1_PROPOSED' else 'A'
         self.player=self.c.state.get('human_faction',initial)
@@ -165,7 +177,7 @@ class StrategicWindow:
         self.map_target_dialog=None
         self.map_target_field=None
         self.map_return_selected=None
-        self.msg=tk.StringVar(value='Select a ruler and province. View: focus commands | Y: Help | A: choose | B: back. '+self.audio.status())
+        self.msg=tk.StringVar(value=self.save_notice+'Select a ruler and province. View: focus commands | Y: Help | A: choose | B: back. '+self.audio.status())
         self.message_widget=tk.Label(self.root,textvariable=self.msg,anchor='nw',justify='left',wraplength=285,
                  fg='#f4d5a5',bg='#0e1723')
         # Hide the old command/status strip from the map, including message hints.
@@ -178,7 +190,7 @@ class StrategicWindow:
         # Existing saves resume directly into the Province UI.
         self.root.after_idle(self._start_new_game_setup if self.new_game_pending else self.open_province)
     def _start_new_game_setup(self):
-        self.msg.set('NEW GAME: Select a province on China map (D-pad or click, A confirm). Vacant provinces cannot start a historical ruler.')
+        self.msg.set(self.save_notice+'NEW GAME: Select a province on China map (D-pad or click, A confirm). Vacant provinces cannot start a historical ruler.')
         self.redraw();self.root.lift();self.root.focus_force()
 
     def _adopt_loaded(self,loaded):
