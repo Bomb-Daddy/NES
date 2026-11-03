@@ -28,5 +28,10 @@ def test_windows_and_linux_packagers_include_resources():
         assert 'tools' in s and 'bundle_mesen.py' in s
         assert 'PyInstaller' in s
         assert 'KOEI_Classic_Enhanced' in s
-    assert 'KOEI_Classic_Enhanced.exe' in (ROOT/'INSTALL_WINDOWS.bat').read_text()
+    bat=(ROOT/'INSTALL_WINDOWS.bat').read_text()
+    assert 'KOEI_Classic_Enhanced_Setup.exe' in bat and 'start ""' in bat  # one step: the bat only launches the one-click installer
+    nsi=(ROOT/'tools'/'windows_installer'/'setup.nsi').read_text()
+    assert 'OutFile "KOEI_Classic_Enhanced_Setup.exe"' in nsi
+    assert 'CreateShortcut "$DESKTOP' in nsi and 'run_game.pyw' in nsi and 'WriteUninstaller' in nsi
+    assert (ROOT/'tools'/'windows_installer'/'build_installer.sh').is_file() and (ROOT/'tools'/'windows_installer'/'run_game.pyw').is_file()
     assert 'LAUNCH_INSTALLED_LINUX.sh' in (ROOT/'INSTALL_LINUX.sh').read_text()
