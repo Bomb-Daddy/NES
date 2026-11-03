@@ -34,6 +34,10 @@ class Launcher:
                          bg='#283a50',fg='#e9e5d6',bd=3,relief='ridge')
             widget.pack(pady=8)
             self.buttons.append(widget)
+        for i,widget in enumerate(self.buttons):
+            widget.bind('<Button-1>',lambda e,i=i:self.click(i))
+            widget.bind('<Enter>',lambda e,i=i:self.hover(i))
+        self.root.bind('<Button-1>',lambda e:self.root.focus_force(),add='+')
         self.tk.Label(self.root,textvariable=self.status,bg='#17273a',fg='#f0dd9f',wraplength=820,
                       font=('Courier New',12),justify='center').pack(pady=(40,10))
         self.root.bind_all('<KeyPress>',self.keypress)
@@ -43,7 +47,28 @@ class Launcher:
             from third_branch.xbox_controller import NesInputRouter
             self.controller=NesInputRouter(self.action)
         self._after=self.root.after(80,self.poll)
-        self.root.focus_force()
+        self.result=None
+        self.take_focus()
+    def take_focus(self):
+        # A freshly started Windows program is often not the foreground window, so
+        # it receives no keyboard events. Raise it briefly and take focus.
+        try:
+            self.root.update_idletasks();self.root.lift()
+            self.root.attributes('-topmost',True)
+            self.root.after(400,lambda:self._release_topmost())
+        except Exception:pass
+        try:self.root.focus_force()
+        except Exception:pass
+    def _release_topmost(self):
+        try:
+            if self.root.winfo_exists():self.root.attributes('-topmost',False);self.root.focus_force()
+        except Exception:pass
+    def hover(self,i):
+        if self.picker is not None and self.picker.root.winfo_exists():return
+        self.index=i;self.refresh()
+    def click(self,i):
+        if self.picker is not None and self.picker.root.winfo_exists():return
+        self.index=i;self.refresh();self.choose()
     def poll(self):
         if not self.root.winfo_exists():return
         if self.controller is not None:self.controller.poll()
@@ -91,6 +116,10 @@ class Launcher:
                 self.status.set(str(exc)+' Use View/Tab to configure.');return
             self.close()
         else:
+            if sys.platform=='win32':
+                # Windows: run the game in this same process (no child process to fail silently);
+                # main() starts it after this window closes.
+                self.result='enhanced';self.close();return
             self.close()
             launch_enhanced()
     def close(self):
@@ -125,5 +154,9 @@ def main(argv=None):
     if args.mode=='classic':
         try:launch_classic();return 0
         except ClassicUnavailable as exc:print(str(exc),file=sys.stderr);return 2
-    Launcher().run()
+    launcher=Launcher();launcher.run()
+    if launcher.result=='enhanced':
+        from third_branch.strategic_game import main as game_main
+        sys.argv=[sys.argv[0]]
+        return game_main()
     return 0
