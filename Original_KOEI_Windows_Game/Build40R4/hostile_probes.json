@@ -1,0 +1,89 @@
+[
+  {
+    "name": "unauthorized_governor_appointment",
+    "status": "observed",
+    "evidence": {
+      "before": {},
+      "after": {
+        "p2": {
+          "officer": "A2",
+          "focus": "personnel"
+        }
+      },
+      "actor": "A2",
+      "ruler": "A1",
+      "result": {
+        "governor": "A2",
+        "province": "p2",
+        "focus": "personnel"
+      }
+    }
+  },
+  {
+    "name": "writings_inventory_bypass",
+    "status": "observed",
+    "evidence": {
+      "int_before": 1,
+      "int_after": 31,
+      "gold_spent": 0,
+      "bp_spent": 180,
+      "writings_inventory": null,
+      "steps": 30
+    }
+  },
+  {
+    "name": "combat_split_capture_deadlock",
+    "status": "observed",
+    "evidence": {
+      "attack": {
+        "battle_started": true,
+        "from": "p3",
+        "to": "p5",
+        "attackers": 200,
+        "allied_support": 0,
+        "defenders": 1,
+        "map": "legacy-seven-province-synthetic"
+      },
+      "auto_error": "ENEMY_ARMY_STATION",
+      "battle_active": true,
+      "advance": "BATTLE_ACTIVE",
+      "p4_owner": "B",
+      "p5_owner": "B",
+      "B2_army": {
+        "commander": "B2",
+        "stations": {
+          "p5": 1,
+          "p4": 10
+        },
+        "engaged": 0
+      },
+      "month": 1
+    }
+  },
+  {
+    "name": "unlimited_gold_reward_commands",
+    "status": "observed",
+    "evidence": {
+      "start": 65,
+      "gifts": 13,
+      "end": 100,
+      "reason": "NO_BP"
+    }
+  },
+  {
+    "name": "brotherhood_difficulty_cap_validation",
+    "status": "observed",
+    "evidence": {
+      "six_on_maxfive_pass_validation": true
+    }
+  },
+  {
+    "name": "field_commander_model",
+    "status": "observed",
+    "evidence": {
+      "battle_initial_fields": [],
+      "governor_count": 0,
+      "personnel_ai_recommend": false
+    }
+  }
+]

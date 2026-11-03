@@ -1,0 +1,257 @@
+{
+  "scenario": 1,
+  "source_drive_file_id": "1djHGWgymdouc6qb4-SlFfFRepfybJ7Wy",
+  "source_type": "RECORDED_ROM_BYTES_WORKBOOK_VERIFIED_STATIC_IN_HANDOFF",
+  "original_rom_sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a",
+  "fresh_rom_boot_verified": false,
+  "provisional_save_armies_are_separate": true,
+  "units": "displayed civilian population / 10 = strategic workforce; army group = 100 soldiers",
+  "rows": [
+    {
+      "province_id": 1,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 650,
+      "assignment_units": 65
+    },
+    {
+      "province_id": 2,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 700,
+      "assignment_units": 70
+    },
+    {
+      "province_id": 3,
+      "starting_owner": "Gongsun Zan",
+      "rom_displayed_civilian_population_hundreds": 1000,
+      "assignment_units": 100
+    },
+    {
+      "province_id": 4,
+      "starting_owner": "Liu Bei",
+      "rom_displayed_civilian_population_hundreds": 1000,
+      "assignment_units": 100
+    },
+    {
+      "province_id": 5,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 700,
+      "assignment_units": 70
+    },
+    {
+      "province_id": 6,
+      "starting_owner": "Yuan Shao",
+      "rom_displayed_civilian_population_hundreds": 5000,
+      "assignment_units": 500
+    },
+    {
+      "province_id": 7,
+      "starting_owner": "Hain Fu",
+      "rom_displayed_civilian_population_hundreds": 1200,
+      "assignment_units": 120
+    },
+    {
+      "province_id": 8,
+      "starting_owner": "Kong Rong",
+      "rom_displayed_civilian_population_hundreds": 800,
+      "assignment_units": 80
+    },
+    {
+      "province_id": 9,
+      "starting_owner": "Cao Cao",
+      "rom_displayed_civilian_population_hundreds": 3500,
+      "assignment_units": 350
+    },
+    {
+      "province_id": 10,
+      "starting_owner": "Dong Zhuo",
+      "rom_displayed_civilian_population_hundreds": 8000,
+      "assignment_units": 800
+    },
+    {
+      "province_id": 11,
+      "starting_owner": "Dong Zhuo",
+      "rom_displayed_civilian_population_hundreds": 4500,
+      "assignment_units": 450
+    },
+    {
+      "province_id": 12,
+      "starting_owner": "Dong Zhuo",
+      "rom_displayed_civilian_population_hundreds": 2500,
+      "assignment_units": 250
+    },
+    {
+      "province_id": 13,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 2400,
+      "assignment_units": 240
+    },
+    {
+      "province_id": 14,
+      "starting_owner": "Ma Teng",
+      "rom_displayed_civilian_population_hundreds": 2300,
+      "assignment_units": 230
+    },
+    {
+      "province_id": 15,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 800,
+      "assignment_units": 80
+    },
+    {
+      "province_id": 16,
+      "starting_owner": "Tao Quian",
+      "rom_displayed_civilian_population_hundreds": 1500,
+      "assignment_units": 150
+    },
+    {
+      "province_id": 17,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 2000,
+      "assignment_units": 200
+    },
+    {
+      "province_id": 18,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 2500,
+      "assignment_units": 250
+    },
+    {
+      "province_id": 19,
+      "starting_owner": "Yuan Shu",
+      "rom_displayed_civilian_population_hundreds": 9000,
+      "assignment_units": 900
+    },
+    {
+      "province_id": 20,
+      "starting_owner": "Liu Biao",
+      "rom_displayed_civilian_population_hundreds": 8000,
+      "assignment_units": 800
+    },
+    {
+      "province_id": 21,
+      "starting_owner": "Sun Jian",
+      "rom_displayed_civilian_population_hundreds": 6000,
+      "assignment_units": 600
+    },
+    {
+      "province_id": 22,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 5000,
+      "assignment_units": 500
+    },
+    {
+      "province_id": 23,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 6500,
+      "assignment_units": 650
+    },
+    {
+      "province_id": 24,
+      "starting_owner": "Wang Lang",
+      "rom_displayed_civilian_population_hundreds": 3500,
+      "assignment_units": 350
+    },
+    {
+      "province_id": 25,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 1500,
+      "assignment_units": 150
+    },
+    {
+      "province_id": 26,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 700,
+      "assignment_units": 70
+    },
+    {
+      "province_id": 27,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 800,
+      "assignment_units": 80
+    },
+    {
+      "province_id": 28,
+      "starting_owner": "Liu Yong",
+      "rom_displayed_civilian_population_hundreds": 1500,
+      "assignment_units": 150
+    },
+    {
+      "province_id": 29,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 3000,
+      "assignment_units": 300
+    },
+    {
+      "province_id": 30,
+      "starting_owner": "Liu Yan (1)",
+      "rom_displayed_civilian_population_hundreds": 3000,
+      "assignment_units": 300
+    },
+    {
+      "province_id": 31,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 3000,
+      "assignment_units": 300
+    },
+    {
+      "province_id": 32,
+      "starting_owner": "Liu Yan (1)",
+      "rom_displayed_civilian_population_hundreds": 2500,
+      "assignment_units": 250
+    },
+    {
+      "province_id": 33,
+      "starting_owner": "Liu Yan (1)",
+      "rom_displayed_civilian_population_hundreds": 3500,
+      "assignment_units": 350
+    },
+    {
+      "province_id": 34,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 1500,
+      "assignment_units": 150
+    },
+    {
+      "province_id": 35,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 800,
+      "assignment_units": 80
+    },
+    {
+      "province_id": 36,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 850,
+      "assignment_units": 85
+    },
+    {
+      "province_id": 37,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 600,
+      "assignment_units": 60
+    },
+    {
+      "province_id": 38,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 550,
+      "assignment_units": 55
+    },
+    {
+      "province_id": 39,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 600,
+      "assignment_units": 60
+    },
+    {
+      "province_id": 40,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 650,
+      "assignment_units": 65
+    },
+    {
+      "province_id": 41,
+      "starting_owner": "Vacant",
+      "rom_displayed_civilian_population_hundreds": 800,
+      "assignment_units": 80
+    }
+  ]
+}

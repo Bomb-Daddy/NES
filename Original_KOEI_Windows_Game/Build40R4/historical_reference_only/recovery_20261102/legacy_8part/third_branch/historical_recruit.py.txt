@@ -1,0 +1,60 @@
+"""Scenario 1 civilian-to-army recruitment on seven actual approved jobs.
+
+The legacy `og.core.commands.h_recruit` remains available for old synthetic
+worlds; Campaign supplies this Bus handler ONLY for the ROM historical workforce.
+A missing worker_source means deterministic largest-pool-first allocation, while
+an explicit worker_source debits exactly the named job. No phantom unassigned pool.
+"""
+from og.core.commands import _officer_in
+from og.core.fixed import CoreError, check_tree
+from og.core.world2 import FIXTURE_V1
+from .scenario1_workforce import JOBS
+
+
+def recruit(world, actor, params):
+    check_tree(params)
+    if (world.get('schema_version') != 2 or not isinstance(params,dict)
+            or set(params) not in ({'province_id','count'}, {'province_id','count','worker_source'})
+            or not isinstance(params.get('province_id'),str)
+            or type(params.get('count')) is not int or params['count']<1):
+        raise CoreError('BAD_PARAMS','historical recruit needs province_id/count and optional worker_source')
+    source=params.get('worker_source')
+    if source is not None and (type(source) is not str or source not in JOBS):
+        raise CoreError('BAD_PARAMS','worker_source must be one of seven approved jobs')
+    oid,cost=_officer_in(world,actor,params['province_id'])
+    province=world['provinces'][params['province_id']]
+    workers=province['workers']
+    n=params['count']
+    if workers.get('unassigned',0):
+        raise CoreError('BAD_CIVILIAN_WORKFORCE','historical unassigned workers forbidden')
+    if source is not None:
+        if workers[source]<n:
+            raise CoreError('NOT_ENOUGH_WORKERS',f'{source} has {workers[source]}')
+        taken={source:n}
+    else:
+        if sum(workers[k] for k in JOBS)<n:
+            raise CoreError('NOT_ENOUGH_WORKERS','insufficient civilian workforce')
+        # Largest existing job first; deterministic original seven-job tie order.
+        left=n;taken={}
+        for job in sorted(JOBS,key=lambda k:(-workers[k],JOBS.index(k))):
+            qty=min(left,workers[job])
+            if qty:taken[job]=qty;left-=qty
+            if not left:break
+        assert left==0
+    for job,qty in taken.items():workers[job]-=qty
+    oid['bp']-=cost
+    province['troops']+=n
+    province['support_ticks']=max(0,province['support_ticks']-n*FIXTURE_V1['recruit_support_loss_ticks_per_troop'])
+    return {'province_id':params['province_id'],'troops_after':province['troops'],
+            'support_ticks_after':province['support_ticks'],'bp_after':oid['bp'],
+            'worker_sources':taken,'civilians_converted':n}
+
+
+def allocate(world,actor,params):
+    from og.core.commands import h_allocate_workers
+    if (not isinstance(params,dict) or params.get('source') not in JOBS
+            or params.get('target') not in JOBS):
+        raise CoreError('BAD_PARAMS','only the seven historical civilian jobs are assignable')
+    return h_allocate_workers(world,actor,params)
+
+HANDLERS={'recruit':recruit,'allocate_workers':allocate}

@@ -1,0 +1,170 @@
+"""New player-path regressions for D-O1..D-O17 (real Tk under Xvfb where noted)."""
+import os
+os.environ['KOEI_DISABLE_AUDIO']='1'
+import pytest
+from pathlib import Path
+from third_branch.strategic_game import SLOTS,province_at_pixel,StrategicWindow
+from third_branch.historical_s1 import new_campaign_historical_s1
+from third_branch.player_text import province_name,officer_name,advisor_text,describe_effects,journal_entry
+from third_branch.province_stage import render_province,snapshot
+
+@pytest.fixture
+def game(tmp_path):
+    window=StrategicWindow(str(tmp_path/'auto.ogsave'))
+    window.root.update()
+    yield window
+    if window.root.winfo_exists():window.close()
+
+def test_d01_map_41_and_farther_click():
+    for pid in range(1,42):
+        x,y,w,h=SLOTS[str(pid)]['rect_px']
+        center=((x+w/2)*960/1448,(y+h/2)*720/1086)
+        assert province_at_pixel(*center)==pid
+    assert province_at_pixel(970,200) is None
+    assert province_at_pixel(-1,10) is None
+    # Province 1 is isolated enough to include a click 25px away from marker.
+    x,y,w,h=SLOTS['1']['rect_px']
+    center=((x+w/2)*960/1448,(y+h/2)*720/1086)
+    assert province_at_pixel(center[0]+25,center[1])==1
+
+def test_d07_manual_slot_not_overwritten_by_auto_advance(game):
+    old_hash=game.c.fingerprint;old_month=game.c.state['month'];owner=game.player
+    game.save()
+    manual=game.manual_path();assert manual.exists()
+    assert game.path!=manual
+    game.month()
+    assert game.c.state['month']==old_month+1
+    assert game.path.exists() and manual.exists()
+    assert game.load() is True
+    assert game.c.state['month']==old_month
+    assert game.c.fingerprint==old_hash
+    assert game.player==owner
+
+def test_d08_event_dialog_blocks_load_without_mutating(game):
+    import tkinter as tk
+    game.save()
+    modal=tk.Toplevel(game.root);game.event_dialog=modal
+    before=game.c.fingerprint
+    assert game.load() is False
+    assert game.c.fingerprint==before
+    assert 'Dismiss' in game.msg.get()
+    modal.destroy();game.event_dialog=None
+    assert game.load() is True
+
+def test_d02_d03_d04_quick_buttons_display_actor_and_preview(game):
+    before=game.c.fingerprint
+    game.cultivate()
+    dialog=game.orders_dialog;game.root.update()
+    assert dialog.order.get()=='Cultivate'
+    assert not dialog.actor.get()  # Explicit officer selection, no silent default
+    dialog.on_nes_button('right')  # D-pad selects first eligible officer
+    assert dialog.actor_labels[dialog.actor.get()].startswith(officer_name(game.c.state,dialog.actor.get()))
+    assert 'BP ' in dialog.actor_display.get()
+    assert game.c.fingerprint==before
+    dialog.submit()
+    assert dialog.pending is not None
+    assert 'Body Points' in dialog.info.get()
+    assert game.c.fingerprint==before
+    dialog.on_nes_button('b')
+    assert game.c.fingerprint==before
+    assert dialog.pending is None
+    dialog.close()
+
+def test_d02_amount_is_editable_and_preview_is_pure(game):
+    game.feed();dialog=game.orders_dialog
+    assert dialog.order.get()=='Distribute Food'
+    assert 'units' in dialog.fields
+    dialog.actor.set(dialog.available_officers[0]);dialog.fields['units'].set('2')
+    before=game.c.fingerprint
+    dialog.submit()
+    # Whether 2 is legal depends on current resources; if valid preview has no mutation.
+    assert game.c.fingerprint==before
+    dialog.close()
+
+def test_d05_d06_d13_d16_readable_projections():
+    campaign=new_campaign_historical_s1(balance_policy='OG_1000_DIRECTOR_V2')
+    state=campaign.state
+    assert province_name(state,'p12')=='Province 12'
+    assert 'Public support' in describe_effects(state,{'support_ticks':-25000})
+    report=advisor_text(state,campaign.advice('R0'))
+    assert 'Cao Cao' in report and 'Province' in report and '{' not in report
+    human=journal_entry(state,{'kind':'recruit','actor':'nes:000','month':1,'result':{'troops_after':100}})
+    assert 'nes:' not in human and '{' not in human
+
+def test_d11_d14_province_seasonal_art_and_human_names():
+    campaign=new_campaign_historical_s1(balance_policy='OG_1000_DIRECTOR_V2')
+    vm=snapshot(campaign,1)
+    assert len(vm.officer_names)==len(vm.officers)
+    assert all(not name.startswith('nes:') for name in vm.officer_names)
+    image=render_province(vm)
+    assert image.size==(960,720)
+
+def test_d17_audio_patch_readable_status():
+    from third_branch.audio_system import GameAudio
+    audio=GameAudio(backend='mock')
+    assert 'NOT audible' in audio.status()
+    audio.close()
+
+def test_d07_corrupt_slot_rejected_without_state_mutation(game):
+    game.save()
+    before=game.c.fingerprint
+    with game.manual_path().open('ab') as f:f.write(b'BAD-TRAILING')
+    assert game.load() is False
+    assert game.c.fingerprint==before
+    assert 'rejected' in game.msg.get().lower()
+
+def test_d15_player_ruler_choice_save_and_replay(game):
+    original=game.player
+    choices=sorted(game.c.state['factions'],key=lambda x:int(x[1:]))
+    assert len(choices)==15
+    target=next(x for x in choices if x!=original)
+    game.choose_ruler()
+    i=choices.index(target)
+    game.ruler_listbox.selection_clear(0,'end')
+    game.ruler_listbox.selection_set(i)
+    game.ruler_confirm()
+    assert game.player==target
+    # Ruler choice save uses autosave; manual save must also preserve identity.
+    game.save()
+    game._adopt_loaded(__import__('third_branch.integrated',fromlist=['load_file']).load_file(game.manual_path()))
+    assert game.player==target
+
+def test_d06_event_popup_shows_no_code_dict(game):
+    event={'kind':'epidemic','province_id':'p12','month':1,
+           'result':{'text':'An epidemic has affected local households.',
+                     'effects':{'support_ticks':-25000,'unassigned_workers_lost':2}}}
+    game._show_committed_events([event])
+    game.root.update()
+    win=game.event_dialog
+    assert win is not None and win.winfo_exists()
+    labels=[x.cget('text') for x in win.winfo_children() if x.winfo_class()=='Label' and 'text' in x.keys()]
+    shown=' '.join(labels)
+    assert 'Province 12' in shown and 'Public support' in shown
+    assert "{'" not in shown and 'p12' not in shown and 'support_ticks' not in shown
+    game._close_event_dialog()
+
+def test_d12_22_order_forms_open_without_code_crash(game):
+    from third_branch.orders_ui import SPECS
+    game.orders()
+    dialog=game.orders_dialog
+    assert len(SPECS)==22
+    for name,(cmd,fields) in SPECS.items():
+        dialog.order.set(name)
+        dialog._fields()
+        assert set(dialog.fields)=={field[0] for field in fields}
+        assert dialog.pending is None
+    dialog.close()
+
+def test_d03_cancelled_or_repeated_preview_cannot_commit(game):
+    game.cultivate()
+    dialog=game.orders_dialog
+    before=game.c.fingerprint
+    dialog.confirm_order()
+    assert game.c.fingerprint==before
+    dialog.actor.set(dialog.available_officers[0]);dialog.submit()
+    assert dialog.pending is not None
+    dialog.submit()  # a double click on Preview never commits
+    assert game.c.fingerprint==before
+    dialog.on_nes_button('b')
+    assert dialog.pending is None and game.c.fingerprint==before
+    dialog.close()

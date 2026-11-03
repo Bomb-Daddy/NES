@@ -1,0 +1,1541 @@
+{
+  "schema": 1,
+  "scenario": 1,
+  "start": {
+    "year": 189,
+    "month": 1
+  },
+  "source_profile": "UNMODIFIED_ROTK2_USA_NES_MESEN_2_1_X",
+  "rom_name": "Romance of The Three Kingdoms II (U).nes",
+  "original_rom_sha256_guide_recorded": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a",
+  "save_a": {
+    "url": "https://drive.google.com/file/d/1rHJxzomsNydqicQpAqL8eJxcl8-WIjEJ/view",
+    "sha256": "042f88308bffa783be2891bc56a5956b9e4201b2962a3a65bb3fae918e9eea8f"
+  },
+  "save_b": {
+    "url": "https://drive.google.com/file/d/12Uz8oGctv4NvfTg4tSSuUxR1Qa_c4ib4/view",
+    "sha256": "cff626e0c89675fad29702321aafdaeb36e020effe1bd633a809a63ca13fd0e0"
+  },
+  "both_saveRAM_sha256": "1c5491d8b28e60fc859f06b373ca441de1ac14cb328cc2d91c951c8154443dc8",
+  "active_officers": 107,
+  "custom_rulers": 0,
+  "soldier_troop_groups": 2670,
+  "soldier_people_estimated": 267000,
+  "province_population_mismatches": [
+    {
+      "province": 19,
+      "original_save_population": 9070,
+      "recorded_ROM_baseline": 9000
+    }
+  ],
+  "units": "100 men per displayed troop unit",
+  "officers": [
+    {
+      "scenario": 1,
+      "province": 3,
+      "nes_id": 9,
+      "name": "Gongsun Zan",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 3,
+      "nes_id": 19,
+      "name": "Gongsun Yue",
+      "troop_groups_100_men": 20,
+      "soldier_people": 2000,
+      "arms_raw": 200,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 4,
+      "nes_id": 1,
+      "name": "Liu Bei",
+      "troop_groups_100_men": 72,
+      "soldier_people": 7200,
+      "arms_raw": 1000,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 4,
+      "nes_id": 40,
+      "name": "Guan Yu",
+      "troop_groups_100_men": 33,
+      "soldier_people": 3300,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 4,
+      "nes_id": 41,
+      "name": "Zhang Fei",
+      "troop_groups_100_men": 15,
+      "soldier_people": 1500,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 3,
+      "name": "Yuan Shao",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 20,
+      "name": "Tian Feng",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 21,
+      "name": "Yuan Xi",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 22,
+      "name": "Yuan Tan",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 23,
+      "name": "Yuan Shang",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 24,
+      "name": "Guo Tu",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 25,
+      "name": "Yan Liang",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 26,
+      "name": "Gao Gan",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 27,
+      "name": "Gao Lan",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 28,
+      "name": "Jiao Chu",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 30,
+      "name": "Shen Pei",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 31,
+      "name": "Zhang Yi (1)",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 32,
+      "name": "Ju Shou",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 92,
+      "name": "Chen Zhen",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 97,
+      "name": "Ma Yan",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 100,
+      "name": "Wen Chou",
+      "troop_groups_100_men": 20,
+      "soldier_people": 2000,
+      "arms_raw": 200,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 6,
+      "nes_id": 106,
+      "name": "Feng Ji",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 7,
+      "nes_id": 11,
+      "name": "Hain Fu",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 7,
+      "nes_id": 111,
+      "name": "Zhang He (1)",
+      "troop_groups_100_men": 20,
+      "soldier_people": 2000,
+      "arms_raw": 200,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 7,
+      "nes_id": 66,
+      "name": "Xin Ping",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 7,
+      "nes_id": 29,
+      "name": "Pan Feng",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 8,
+      "nes_id": 12,
+      "name": "Kong Rong",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 8,
+      "nes_id": 125,
+      "name": "Liang Gang",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 8,
+      "nes_id": 115,
+      "name": "Wu Anquo",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 9,
+      "nes_id": 0,
+      "name": "Cao Cao",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 80,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 9,
+      "nes_id": 33,
+      "name": "Chen Gong",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 80,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 9,
+      "nes_id": 34,
+      "name": "Xiahou Yuan",
+      "troop_groups_100_men": 20,
+      "soldier_people": 2000,
+      "arms_raw": 200,
+      "training_raw": 80,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 9,
+      "nes_id": 35,
+      "name": "Xiahou Dun",
+      "troop_groups_100_men": 20,
+      "soldier_people": 2000,
+      "arms_raw": 200,
+      "training_raw": 80,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 9,
+      "nes_id": 36,
+      "name": "Cao Hong",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 80,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 9,
+      "nes_id": 37,
+      "name": "Cao Ang",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 80,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 9,
+      "nes_id": 38,
+      "name": "Cao Ren",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 80,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 9,
+      "nes_id": 39,
+      "name": "Yue Jin",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 80,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 9,
+      "nes_id": 45,
+      "name": "Cao Chun",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 80,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 10,
+      "nes_id": 8,
+      "name": "Dong Zhuo",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 10,
+      "nes_id": 46,
+      "name": "Jia Xue",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 10,
+      "nes_id": 52,
+      "name": "Lu Bu",
+      "troop_groups_100_men": 50,
+      "soldier_people": 5000,
+      "arms_raw": 500,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 10,
+      "nes_id": 77,
+      "name": "Hua Xiong",
+      "troop_groups_100_men": 20,
+      "soldier_people": 2000,
+      "arms_raw": 200,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 10,
+      "nes_id": 95,
+      "name": "Li Ru",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 10,
+      "nes_id": 110,
+      "name": "Li Su",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 10,
+      "nes_id": 117,
+      "name": "Fan Chou",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 10,
+      "nes_id": 129,
+      "name": "Hu Zhen",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 11,
+      "nes_id": 15,
+      "name": "Xu Rong",
+      "troop_groups_100_men": 50,
+      "soldier_people": 5000,
+      "arms_raw": 500,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 11,
+      "nes_id": 82,
+      "name": "Guo Si",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 11,
+      "nes_id": 109,
+      "name": "Dong Min",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 11,
+      "nes_id": 144,
+      "name": "Zhang Ji",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 11,
+      "nes_id": 146,
+      "name": "Zhang Xiu",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 12,
+      "nes_id": 16,
+      "name": "Li Jue",
+      "troop_groups_100_men": 50,
+      "soldier_people": 5000,
+      "arms_raw": 500,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 12,
+      "nes_id": 67,
+      "name": "Zhang Zi",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 12,
+      "nes_id": 93,
+      "name": "Zhao Cen",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 14,
+      "nes_id": 5,
+      "name": "Ma Teng",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 39,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 14,
+      "nes_id": 84,
+      "name": "Cheng Yin",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 39,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 14,
+      "nes_id": 69,
+      "name": "Hou Xuan",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 39,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 16,
+      "nes_id": 10,
+      "name": "Tao Quian",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 20,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 16,
+      "nes_id": 88,
+      "name": "Sun Qian",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 20,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 16,
+      "nes_id": 113,
+      "name": "Mi Zhu",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 1000,
+      "training_raw": 20,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 16,
+      "nes_id": 101,
+      "name": "Chen Deng",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 1000,
+      "training_raw": 20,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 16,
+      "nes_id": 87,
+      "name": "Cao Bao",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 20,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 16,
+      "nes_id": 114,
+      "name": "Mi Fang",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 20,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 19,
+      "nes_id": 4,
+      "name": "Yuan Shu",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 9,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 19,
+      "nes_id": 43,
+      "name": "Yuan Yin",
+      "troop_groups_100_men": 0,
+      "soldier_people": 0,
+      "arms_raw": 100,
+      "training_raw": 100,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 19,
+      "nes_id": 60,
+      "name": "Ji Ling",
+      "troop_groups_100_men": 0,
+      "soldier_people": 0,
+      "arms_raw": 100,
+      "training_raw": 100,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 19,
+      "nes_id": 83,
+      "name": "Yue Jiou",
+      "troop_groups_100_men": 0,
+      "soldier_people": 0,
+      "arms_raw": 100,
+      "training_raw": 100,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 19,
+      "nes_id": 91,
+      "name": "Zhang Xun",
+      "troop_groups_100_men": 0,
+      "soldier_people": 0,
+      "arms_raw": 100,
+      "training_raw": 100,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 19,
+      "nes_id": 103,
+      "name": "Chen Lan",
+      "troop_groups_100_men": 0,
+      "soldier_people": 0,
+      "arms_raw": 100,
+      "training_raw": 100,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 19,
+      "nes_id": 136,
+      "name": "Li Feng",
+      "troop_groups_100_men": 0,
+      "soldier_people": 0,
+      "arms_raw": 100,
+      "training_raw": 100,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 19,
+      "nes_id": 137,
+      "name": "Lei Bo",
+      "troop_groups_100_men": 0,
+      "soldier_people": 0,
+      "arms_raw": 100,
+      "training_raw": 100,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 20,
+      "nes_id": 7,
+      "name": "Liu Biao",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 20,
+      "nes_id": 42,
+      "name": "Kuai Liang",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 20,
+      "nes_id": 44,
+      "name": "Kuai Yue",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 20,
+      "nes_id": 48,
+      "name": "Han Song",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 20,
+      "nes_id": 50,
+      "name": "Huang Zhu",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 20,
+      "nes_id": 61,
+      "name": "Cai Mao",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 20,
+      "nes_id": 65,
+      "name": "Song Zhong",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 20,
+      "nes_id": 70,
+      "name": "Deng Yi",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 20,
+      "nes_id": 71,
+      "name": "Wen Pin",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 20,
+      "nes_id": 76,
+      "name": "Liu Pan",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 20,
+      "nes_id": 86,
+      "name": "Lu Gong",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 21,
+      "nes_id": 2,
+      "name": "Sun Jian",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 21,
+      "nes_id": 54,
+      "name": "Cheng Pu",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 21,
+      "nes_id": 55,
+      "name": "Sun Ce",
+      "troop_groups_100_men": 50,
+      "soldier_people": 5000,
+      "arms_raw": 500,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 21,
+      "nes_id": 56,
+      "name": "Huang Gai",
+      "troop_groups_100_men": 20,
+      "soldier_people": 2000,
+      "arms_raw": 200,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 21,
+      "nes_id": 58,
+      "name": "Han Dang",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 21,
+      "nes_id": 59,
+      "name": "Han Ze",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 21,
+      "nes_id": 63,
+      "name": "Zhu Zhi",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 24,
+      "nes_id": 13,
+      "name": "Wang Lang",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 24,
+      "nes_id": 53,
+      "name": "Yu Fan",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 28,
+      "nes_id": 14,
+      "name": "Liu Yong",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 28,
+      "nes_id": 89,
+      "name": "Taishi Ci",
+      "troop_groups_100_men": 20,
+      "soldier_people": 2000,
+      "arms_raw": 200,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 28,
+      "nes_id": 90,
+      "name": "Zhang Ying",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 28,
+      "nes_id": 102,
+      "name": "Chen Wu",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 30,
+      "nes_id": 18,
+      "name": "Liu Zhang",
+      "troop_groups_100_men": 50,
+      "soldier_people": 5000,
+      "arms_raw": 500,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 30,
+      "nes_id": 131,
+      "name": "Leng Bao",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 32,
+      "nes_id": 17,
+      "name": "Gao Pei",
+      "troop_groups_100_men": 50,
+      "soldier_people": 5000,
+      "arms_raw": 500,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 32,
+      "nes_id": 120,
+      "name": "Yang Huai",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 33,
+      "nes_id": 6,
+      "name": "Liu Yan (1)",
+      "troop_groups_100_men": 100,
+      "soldier_people": 10000,
+      "arms_raw": 1000,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 33,
+      "nes_id": 62,
+      "name": "Yan Yan",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 33,
+      "nes_id": 74,
+      "name": "Wu Lan",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 33,
+      "nes_id": 94,
+      "name": "Wu Yi",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 33,
+      "nes_id": 96,
+      "name": "Zhang Ren",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 33,
+      "nes_id": 107,
+      "name": "Dong He",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 33,
+      "nes_id": 121,
+      "name": "Liu Gui",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    },
+    {
+      "scenario": 1,
+      "province": 33,
+      "nes_id": 122,
+      "name": "Lei Tong",
+      "troop_groups_100_men": 10,
+      "soldier_people": 1000,
+      "arms_raw": 100,
+      "training_raw": 10,
+      "source_class": "VERIFIED_STATIC_EARLY_UNMODIFIED_189_01_SAVESTATE_NOT_PROVEN_UNTOUCHED_START"
+    }
+  ],
+  "provinces": [
+    {
+      "province": 1,
+      "civilian_display_population": 650,
+      "civilian_allocation_units": 65,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 2,
+      "civilian_display_population": 700,
+      "civilian_allocation_units": 70,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 3,
+      "civilian_display_population": 1000,
+      "civilian_allocation_units": 100,
+      "military_troop_groups": 120,
+      "military_soldier_people": 12000,
+      "officer_count": 2
+    },
+    {
+      "province": 4,
+      "civilian_display_population": 1000,
+      "civilian_allocation_units": 100,
+      "military_troop_groups": 120,
+      "military_soldier_people": 12000,
+      "officer_count": 3
+    },
+    {
+      "province": 5,
+      "civilian_display_population": 700,
+      "civilian_allocation_units": 70,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 6,
+      "civilian_display_population": 5000,
+      "civilian_allocation_units": 500,
+      "military_troop_groups": 270,
+      "military_soldier_people": 27000,
+      "officer_count": 17
+    },
+    {
+      "province": 7,
+      "civilian_display_population": 1200,
+      "civilian_allocation_units": 120,
+      "military_troop_groups": 140,
+      "military_soldier_people": 14000,
+      "officer_count": 4
+    },
+    {
+      "province": 8,
+      "civilian_display_population": 800,
+      "civilian_allocation_units": 80,
+      "military_troop_groups": 120,
+      "military_soldier_people": 12000,
+      "officer_count": 3
+    },
+    {
+      "province": 9,
+      "civilian_display_population": 3500,
+      "civilian_allocation_units": 350,
+      "military_troop_groups": 200,
+      "military_soldier_people": 20000,
+      "officer_count": 9
+    },
+    {
+      "province": 10,
+      "civilian_display_population": 8000,
+      "civilian_allocation_units": 800,
+      "military_troop_groups": 220,
+      "military_soldier_people": 22000,
+      "officer_count": 8
+    },
+    {
+      "province": 11,
+      "civilian_display_population": 4500,
+      "civilian_allocation_units": 450,
+      "military_troop_groups": 90,
+      "military_soldier_people": 9000,
+      "officer_count": 5
+    },
+    {
+      "province": 12,
+      "civilian_display_population": 2500,
+      "civilian_allocation_units": 250,
+      "military_troop_groups": 70,
+      "military_soldier_people": 7000,
+      "officer_count": 3
+    },
+    {
+      "province": 13,
+      "civilian_display_population": 2400,
+      "civilian_allocation_units": 240,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 14,
+      "civilian_display_population": 2300,
+      "civilian_allocation_units": 230,
+      "military_troop_groups": 120,
+      "military_soldier_people": 12000,
+      "officer_count": 3
+    },
+    {
+      "province": 15,
+      "civilian_display_population": 800,
+      "civilian_allocation_units": 80,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 16,
+      "civilian_display_population": 1500,
+      "civilian_allocation_units": 150,
+      "military_troop_groups": 150,
+      "military_soldier_people": 15000,
+      "officer_count": 6
+    },
+    {
+      "province": 17,
+      "civilian_display_population": 2000,
+      "civilian_allocation_units": 200,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 18,
+      "civilian_display_population": 2500,
+      "civilian_allocation_units": 250,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 19,
+      "civilian_display_population": 9070,
+      "civilian_allocation_units": 907,
+      "military_troop_groups": 100,
+      "military_soldier_people": 10000,
+      "officer_count": 8
+    },
+    {
+      "province": 20,
+      "civilian_display_population": 8000,
+      "civilian_allocation_units": 800,
+      "military_troop_groups": 200,
+      "military_soldier_people": 20000,
+      "officer_count": 11
+    },
+    {
+      "province": 21,
+      "civilian_display_population": 6000,
+      "civilian_allocation_units": 600,
+      "military_troop_groups": 210,
+      "military_soldier_people": 21000,
+      "officer_count": 7
+    },
+    {
+      "province": 22,
+      "civilian_display_population": 5000,
+      "civilian_allocation_units": 500,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 23,
+      "civilian_display_population": 6500,
+      "civilian_allocation_units": 650,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 24,
+      "civilian_display_population": 3500,
+      "civilian_allocation_units": 350,
+      "military_troop_groups": 110,
+      "military_soldier_people": 11000,
+      "officer_count": 2
+    },
+    {
+      "province": 25,
+      "civilian_display_population": 1500,
+      "civilian_allocation_units": 150,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 26,
+      "civilian_display_population": 700,
+      "civilian_allocation_units": 70,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 27,
+      "civilian_display_population": 800,
+      "civilian_allocation_units": 80,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 28,
+      "civilian_display_population": 1500,
+      "civilian_allocation_units": 150,
+      "military_troop_groups": 140,
+      "military_soldier_people": 14000,
+      "officer_count": 4
+    },
+    {
+      "province": 29,
+      "civilian_display_population": 3000,
+      "civilian_allocation_units": 300,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 30,
+      "civilian_display_population": 3000,
+      "civilian_allocation_units": 300,
+      "military_troop_groups": 60,
+      "military_soldier_people": 6000,
+      "officer_count": 2
+    },
+    {
+      "province": 31,
+      "civilian_display_population": 3000,
+      "civilian_allocation_units": 300,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 32,
+      "civilian_display_population": 2500,
+      "civilian_allocation_units": 250,
+      "military_troop_groups": 60,
+      "military_soldier_people": 6000,
+      "officer_count": 2
+    },
+    {
+      "province": 33,
+      "civilian_display_population": 3500,
+      "civilian_allocation_units": 350,
+      "military_troop_groups": 170,
+      "military_soldier_people": 17000,
+      "officer_count": 8
+    },
+    {
+      "province": 34,
+      "civilian_display_population": 1500,
+      "civilian_allocation_units": 150,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 35,
+      "civilian_display_population": 800,
+      "civilian_allocation_units": 80,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 36,
+      "civilian_display_population": 850,
+      "civilian_allocation_units": 85,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 37,
+      "civilian_display_population": 600,
+      "civilian_allocation_units": 60,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 38,
+      "civilian_display_population": 550,
+      "civilian_allocation_units": 55,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 39,
+      "civilian_display_population": 600,
+      "civilian_allocation_units": 60,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 40,
+      "civilian_display_population": 650,
+      "civilian_allocation_units": 65,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    },
+    {
+      "province": 41,
+      "civilian_display_population": 800,
+      "civilian_allocation_units": 80,
+      "military_troop_groups": 0,
+      "military_soldier_people": 0,
+      "officer_count": 0
+    }
+  ]
+}

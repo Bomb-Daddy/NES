@@ -1,0 +1,50 @@
+name: Build KOEI Classic Enhanced Windows and Linux
+on:
+  workflow_dispatch:
+  push:
+    tags: ['koei-v*']
+permissions:
+  contents: read
+jobs:
+  verify-and-package:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            executable: dist/KOEI_Classic_Enhanced/KOEI_Classic_Enhanced.exe
+          - os: ubuntu-latest
+            executable: dist/KOEI_Classic_Enhanced/KOEI_Classic_Enhanced
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Linux native libraries for Tk and SDL2
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libgl1 libsdl2-2.0-0 python3-tk xvfb
+      - name: Install compiler and runtime dependencies
+        run: python -m pip install -r requirements-windows-build.txt -r requirements-test.txt
+      - name: Complete regression suite
+        run: python -m pytest -q --tb=short
+      - name: Verify precisely two launch choices
+        run: python -m launcher --verify-modes
+      - name: Download verified licensed emulator binaries
+        run: python tools/bundle_mesen.py
+      - name: Bundle native Windows executable
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: BUILD_WINDOWS_EXE.bat
+      - name: Bundle native Linux executable
+        if: runner.os == 'Linux'
+        run: bash BUILD_LINUX_EXE.sh
+      - name: Check packaged binary really has only two choices
+        run: ${{ matrix.executable }} --verify-modes
+      - name: Release package
+        uses: actions/upload-artifact@v4
+        with:
+          name: KOEI-Classic-Enhanced-${{ runner.os }}
+          path: dist/KOEI_Classic_Enhanced/
+          if-no-files-found: error

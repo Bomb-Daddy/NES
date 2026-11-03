@@ -1,0 +1,49 @@
+"""Regression tests for producer-discovered v1.8 UI defects and source coverage."""
+from third_branch.integrated import COMMANDS, new_campaign_41
+from third_branch.orders_ui import SPECS, OrdersWindow, params_for_order
+from third_branch.province_stage import render_province, snapshot
+
+
+def test_every_existing_nonbattle_engine_kind_has_an_orders_entry():
+    tactical={'battle_move','battle_attack','battle_end_turn','battle_auto'}
+    assert {kind for kind,_ in SPECS.values()} == COMMANDS - tactical
+    # Director v1.2 explicitly adds original NES Army→Train Troops and unit
+    # Arms equipment to the preexisting 29 experimental/legacy UI entries.
+    # Do not pass this merely by removing unfinished required commands.
+    assert {'Train Troops','Equip Arms'}.issubset(SPECS)
+    assert len(SPECS)==29  # exactly two obsolete orders are retired
+    assert len(set(SPECS))==29
+    assert 'Cultivate' not in SPECS and 'Occupy Vacant Province' not in SPECS
+
+
+def test_information_message_must_be_rendered_in_visible_image():
+    campaign=new_campaign_41()
+    vm=snapshot(campaign,1)
+    base=render_province(vm,7)
+    info=render_province(vm,7,'Faction A; month 1; revision 0.')
+    assert base.tobytes()!=info.tobytes()
+    assert campaign.fingerprint==vm.fingerprint
+
+
+def test_orders_start_routes_to_save_load_not_implicit_commit():
+    class FakeParent:
+        def __init__(self):self.pauses=0
+        def pause(self):self.pauses+=1
+    class FakeOrders:pass
+    o=FakeOrders();o.parent=FakeParent();o.pending=None
+    OrdersWindow.on_nes_button(o,'start')
+    assert o.parent.pauses==1
+    assert o.pending is None
+
+
+def test_province_projection_is_live_and_missing_values_are_marked():
+    c=new_campaign_41()
+    for p in range(1,42):
+        vm=snapshot(c,p)
+        source=c.state['core']['provinces'][f'p{p}']
+        actual=dict(vm.metrics)
+        assert actual['Food']==source['food_units']
+        assert actual['Soldiers']==source['troops']
+        assert actual['Gold']==source['treasury_gold_cents']/100
+        assert 'Unassigned' not in dict(vm.workers)
+        assert all(k not in actual for k in ('Residents','Dependents','Masons','Defense'))

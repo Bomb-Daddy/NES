@@ -1,0 +1,79 @@
+--- v2/third_branch/integrated.py
++++ v3/third_branch/integrated.py
+@@ -613,13 +613,60 @@
+                 else:s['extras'][b['dst']]['prisoners']+=count
+             s['governors'].pop(b['dst'],None)
+             s.get('appointed_advisors',{}).pop(b['dst'],None)
+-            for oid,off in s['core']['officers'].items():
+-                if off['province_id']==b['dst'] and s['officer_faction'][oid]==b['defender']:
+-                    home=retreat
+-                    if home:off['province_id']=home
+-                    else:
+-                        s['officer_faction'][oid]=b['attacker'];s['officer_loyalty'][oid]=25
+-                        relations.drop_binding(s,oid)
++            # A commander may have *other* garrisons outside this battlefield.
++            # Capturing him without reassigning those troops makes a foreign army
++            # appear inside friendly territory (ENEMY_ARMY_STATION) and stalls
++            # battle_auto. This is an interim campaign-ledger safety policy,
++            # NOT a claim of verified original ROTK II prisoner/retreat logic.
++            # First try a real officer from the defending side to take each
++            # off-field detachment. If none exists, the commander can withdraw
++            # to his own surviving distant garrison instead of being captured.
++            dispositions=[]
++            for oid,off in sorted(s['core']['officers'].items()):
++                if off['province_id']!=b['dst'] or s['officer_faction'][oid]!=b['defender']:
++                    continue
++                if retreat:
++                    off['province_id']=retreat
++                    dispositions.append({'officer':oid,'status':'retreated','province':retreat})
++                    continue
++                army=s['armies'].get(ac.army_id(oid))
++                stations=sorted(army['stations'].items()) if army else []
++                can_capture=True
++                reassign=[]
++                for remote_pid,n in stations:
++                    if s['owners'].get(remote_pid)!=b['defender']:
++                        reject('ENEMY_ARMY_STATION')
++                    # Prefer an officer physically at the remote garrison;
++                    # otherwise another surviving officer of the original side.
++                    peers=sorted(other for other,v in s['core']['officers'].items()
++                                 if other!=oid and s['officer_faction'].get(other)==b['defender']
++                                 and s['owners'].get(v['province_id'])==b['defender']
++                                 and v['province_id']!=b['dst'])
++                    if not peers:
++                        can_capture=False
++                        break
++                    target=min(peers,key=lambda other:(
++                        s['core']['officers'][other]['province_id']!=remote_pid,other))
++                    reassign.append((remote_pid,n,target))
++                if not can_capture:
++                    # No legal replacement commander: retain the original
++                    # faction/army and withdraw to the staffed distant post.
++                    # Do not conjure an officer or delete living soldiers.
++                    home=stations[0][0]
++                    off['province_id']=home
++                    dispositions.append({'officer':oid,'status':'escaped_to_distant_garrison','province':home})
++                    continue
++                for remote_pid,n,target in reassign:
++                    ac.ensure(s,target)['stations'][remote_pid]=(
++                        ac.ensure(s,target)['stations'].get(remote_pid,0)+n)
++                    del army['stations'][remote_pid]
++                    dispositions.append({'officer':oid,'status':'remote_troops_reassigned',
++                                         'province':remote_pid,'troops':n,'new_commander':target})
++                s['officer_faction'][oid]=b['attacker']
++                s['officer_loyalty'][oid]=25
++                relations.drop_binding(s,oid)
++                dispositions.append({'officer':oid,'status':'captured_then_joined_winner',
++                                     'province':b['dst']})
+             if not any(o==b['defender'] for o in s['owners'].values()):
+                 s['factions'][b['defender']]['alive']=False
+                 s['alliances']=[z for z in s['alliances'] if b['defender'] not in z.split('|')]
+@@ -641,6 +688,8 @@
+            'start_defender':b.get('initial_defender',previous),
+            'defender_captured_prisoners':b['d']['troops'] if winner=='ATTACKER' and not retreat else 0,
+            'allied_survivors':ally_survivors}
++        if winner=='ATTACKER':
++            h['defender_officer_dispositions']=dispositions
+         s['history'].append(h)
+         s['battle']=None
+     def advance_month(self):

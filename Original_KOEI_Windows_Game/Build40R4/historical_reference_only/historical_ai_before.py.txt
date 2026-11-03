@@ -1,0 +1,94 @@
+"""Twelve differentiated, legal-command AI player policies for historical Scenario 1.
+
+Policies are explicit, reversible balance candidates. Nothing here mutates world
+state directly; all actions go through Campaign.preview/execute/validation.
+"""
+from __future__ import annotations
+from collections import Counter
+from og.core.fixed import CoreError
+from .historical_s1 import list_recruitable
+
+STYLES=('aggressive','diplomatic','farmer','industrialist','trader','recruiter',
+        'scholar','defender','logistician','delegator','opportunist','balanced')
+
+def _options(c,faction,style,month):
+    s=c.state
+    officers=sorted((k for k,v in s['officer_faction'].items() if v==faction),
+                    key=lambda k:(-s['core']['officers'][k]['bp'],-s['core']['officers'][k]['politics'],k))
+    border=[];friendly=[]
+    for oid in officers:
+        p=s['core']['officers'][oid]['province_id']
+        for dest in s['neighbors'][p]:
+            if s['owners'][dest] not in (faction,None):border.append((oid,p,dest))
+            elif s['owners'][dest]==faction:friendly.append((oid,p,dest))
+    foes=sorted(f for f,z in s['factions'].items() if f!=faction and z['alive'])
+    opts=[]
+    for oid in officers[:5]:
+        p=s['core']['officers'][oid]['province_id'];v=s['core']['provinces'][p]
+        home=[
+            ('cultivate',{'province_id':p}),
+            ('allocate_workers',{'province_id':p,'source':'unassigned','target':'farmers','count':2}),
+            ('allocate_workers',{'province_id':p,'source':'unassigned','target':'metalworkers','count':2}),
+            ('allocate_workers',{'province_id':p,'source':'unassigned','target':'resources','count':2}),
+            ('distribute_food',{'province_id':p,'units':1}),
+            ('recruit',{'province_id':p,'count':3}),
+            ('train',{'trait':'intelligence','effort':1}),
+            ('train',{'trait':'war','effort':1}),
+            ('market',{'commodity':'furs','side':'sell','units':1}),
+            ('market',{'commodity':'metal','side':'buy','units':2}),
+            ('appoint_governor',{'officer':oid,'focus':'farms'}),
+        ]
+        style_order={
+            'farmer':[0,1,4,8], 'industrialist':[2,3,9,0], 'trader':[8,9,4,0],
+            'recruiter':[5,0,7], 'scholar':[6,7,0], 'defender':[7,5,0],
+            'logistician':[4,1,0], 'delegator':[10,1,0],
+            'aggressive':[7,5,0], 'diplomatic':[4,6,0],
+            'opportunist':[5,7,0], 'balanced':[0,8,4,5]}
+        for i in style_order[style]:opts.append((oid,*home[i]))
+    if style in ('diplomatic','balanced','trader'):
+        for oid in officers[:2]:
+            for f in foes[:4]:opts.insert(0,(oid,'Ally',{'target':f}))
+    if style=='opportunist' and border:
+        for oid,p,dest in sorted(border):
+            if s['core']['provinces'][p]['troops']>=40:
+                opts.insert(0,(oid,'plan_attack',{'target':dest}))
+                break
+    if style=='aggressive' and border:
+        for oid,p,dest in sorted(border):
+            pstate=s['core']['provinces'][p]
+            a=s.get('armies',{}).get('army:'+oid,{})
+            n=min(60,a.get('stations',{}).get(p,0))
+            if n>=20 and pstate['food_units']>30:
+                opts.insert(0,(oid,'attack',{'target':dest,'troops':n}))
+                break
+    if style=='logistician' and friendly:
+        oid,p,d=sorted(friendly)[0]
+        opts.insert(0,(oid,'transport',{'target':d,'commodity':'food','units':2}))
+    if style in ('opportunist','balanced','scholar'):
+        for oid in officers[:4]:
+            pid=s['core']['officers'][oid]['province_id']
+            for free in list_recruitable(s,pid)[:1]:
+                opts.insert(0,(oid,'recruit_officer',{'officer_id':free}))
+    return opts
+
+def take_turn(c,faction,style,month=None,prefix='historical-ai'):
+    if style not in STYLES:raise ValueError('Unknown AI style')
+    s=c.state
+    month=s['month'] if month is None else month
+    if not s['factions'][faction]['alive']:return {'kind':'inactive','faction':faction}
+    attempted=0
+    for i,(oid,kind,p) in enumerate(_options(c,faction,style,month)):
+        request=f'{prefix}:{month}:{faction}:{style}:{i}'
+        attempted+=1
+        try:
+            quote=c.preview(kind,oid,p,request)
+            result=c.execute(kind,oid,p,request,quote_id=quote['quote_id'],expected_revision=quote['revision'])
+            # Never leave unresolved battles blocking monthly persistence.
+            if c.state['battle']:
+                req=request+':auto'
+                q=c.preview('battle_auto',oid,{},req)
+                c.execute('battle_auto',oid,{},req,quote_id=q['quote_id'],expected_revision=q['revision'])
+            return {'kind':kind,'faction':faction,'actor':oid,'attempted':attempted,'result':result}
+        except CoreError:
+            continue
+    return {'kind':'idle','faction':faction,'attempted':attempted}

@@ -1,0 +1,90 @@
+"""Round 3: saved-history advisor, honest source UI and Windows offline-bundle inventory.
+The tested PyInstaller *recipe* isn't a Windows-installed executable acceptance.
+"""
+from pathlib import Path
+from third_branch.integrated import new_campaign,new_campaign_41,save_bytes,load_bytes
+from third_branch.player_text import advisor_text
+from third_branch.strategic_game import render
+
+ROOT=Path(__file__).resolve().parents[1]
+
+
+def test_advisor_ten_real_measures_read_only_and_saved_six_months():
+    c=new_campaign(seed=33)
+    start=c.fingerprint
+    initial=c.advice('A')
+    assert initial['six_month_review']==[]
+    assert c.fingerprint==start
+    assert 'yet' in advisor_text(c.state,initial)
+    assert 'Ten domestic measures:' in advisor_text(c.state,initial)
+    for _ in range(6):c.advance_month()
+    before=c.fingerprint
+    info=c.advice('A')
+    assert len(info['six_month_review'])==3
+    assert info['observed_months']==6
+    visible=advisor_text(c.state,info)
+    for name in ('troops','food','gold','public support','metal','arms','cultivation','flood control','wealth','assigned workforce'):
+        assert name in visible.lower(),name
+    assert 'Six-month change' in visible
+    assert c.fingerprint==before
+    restored=load_bytes(save_bytes(c))
+    assert advisor_text(restored.state,restored.advice('A'))==visible
+
+
+def test_advisor_fractional_support_and_avoid_false_conquest_growth():
+    c=new_campaign(seed=43)
+    for _ in range(6):c.advance_month()
+    original=c.fingerprint
+    c.state['core']['provinces']['p1']['support_ticks']+=25000
+    s=c.advice('A')
+    text=advisor_text(c.state,s)
+    assert 'Support +0.5' in text
+    # Older province under another owner is not a 6-month baseline for A.
+    c.state['advisor_snapshots'][-6]['owners']['p1']='B'
+    info=c.advice('A')
+    assert len(info['six_month_review'])==2
+    assert info['excluded_new_provinces']==1
+    assert 'recently gained' in advisor_text(c.state,info)
+    assert original!=c.fingerprint
+
+
+def test_windows_bundler_includes_historical_roster_and_personality_config():
+    cmd=(ROOT/'BUILD_WINDOWS_EXE.bat').read_text()
+    assert '--onedir' in cmd and '--windowed' in cmd
+    for path in ('third_branch\\assets','third_branch\\data','config'):
+        assert path in cmd,path
+    assert (ROOT/'third_branch/data/historical_s1.json').is_file()
+    assert (ROOT/'config/KOEI_12_Han_AI_Profiles_v3_2.json').is_file()
+    assert (ROOT/'third_branch/assets/strategic/province_slots_41.json').is_file()
+    assert (ROOT/'third_branch/assets/audio/soundware_manifest.json').is_file()
+    assert (ROOT/'windows_entry.py').is_file()
+
+
+def test_render_stays_1280x720_and_displays_all_four_seasons():
+    c=new_campaign_41(seed=3)
+    h=c.fingerprint
+    for season in ('spring','summer','autumn','winter'):
+        image=render(c,9,season)
+        assert image.size==(1280,720) and image.mode=='RGB'
+    assert c.fingerprint==h
+
+
+def test_controller_ui_button_grid_not_clipped(tmp_path,monkeypatch):
+    monkeypatch.setenv('KOEI_DISABLE_AUDIO','1')
+    from third_branch.strategic_game import StrategicWindow
+    g=StrategicWindow(str(tmp_path/'auto.ogsave'))
+    try:
+        g.root.update()
+        assert len(g.action_buttons)==15
+        root_x=g.root.winfo_rootx();root_y=g.root.winfo_rooty()
+        rects=[]
+        for button in g.action_buttons:
+            x=button.winfo_rootx()-root_x;y=button.winfo_rooty()-root_y
+            w=button.winfo_width();h=button.winfo_height()
+            assert 960<=x and x+w<=1280,(x,w)
+            assert 438<=y and y+h<=720,(y,h)
+            rects.append((x,y,x+w,y+h))
+        for i,a in enumerate(rects):
+            for b in rects[i+1:]:
+                assert a[2]<=b[0] or b[2]<=a[0] or a[3]<=b[1] or b[3]<=a[1],(a,b)
+    finally:g.close()

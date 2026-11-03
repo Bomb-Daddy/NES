@@ -1,0 +1,78 @@
+{
+  "type": "original_novel_sound_effects",
+  "author": "OpenAI for Director private KOEI original-game branch",
+  "source": "programmatic original waveform; not NES ROM-derived, not a copyrighted musical composition",
+  "format": "WAV PCM16 mono 22050Hz",
+  "assets": [
+    {
+      "name": "battle.wav",
+      "bytes": 19974,
+      "sha256": "86e96876036b63d3940f8320f957a60210f09b8d7e8495eb7358424fbe3b3de1"
+    },
+    {
+      "name": "cancel.wav",
+      "bytes": 6082,
+      "sha256": "c6ff3461fc90aa91fb8b9e571f090913e99b7b04dc831da5f67b66525fa3c59b"
+    },
+    {
+      "name": "confirm.wav",
+      "bytes": 6524,
+      "sha256": "da49353b8c979da45351e6881b243048c54408d656d03afa0d1e2e87296e2746"
+    },
+    {
+      "name": "cursor.wav",
+      "bytes": 2246,
+      "sha256": "eccd6bcca2e9ff6df734815e454d655ed4a677a611ffc5c00627757239d8c471"
+    },
+    {
+      "name": "defeat.wav",
+      "bytes": 20416,
+      "sha256": "7b29b6df6168f65b44b8b1c7a08d0309bc52276bfb7affa3ccd304f6cf831bb0"
+    },
+    {
+      "name": "dialog.wav",
+      "bytes": 2556,
+      "sha256": "d7110e6c32f9cd9fe32cca57265fb95a9b96adb03d0a1f9fcf5a441fd2a97017"
+    },
+    {
+      "name": "invalid.wav",
+      "bytes": 9390,
+      "sha256": "68e57684d7fba3a8100805664a76a91145a5ba7c966759aea3144beff740855a"
+    },
+    {
+      "name": "load.wav",
+      "bytes": 9830,
+      "sha256": "4272edee26d050d36fbe56b7829872e8bb9f4669bbad22c90cd046700a6490e3"
+    },
+    {
+      "name": "month.wav",
+      "bytes": 8508,
+      "sha256": "5d07d9502a7334640026ac499df9db84e5e671b3ce1fa28fa4b5c3989be333ec"
+    },
+    {
+      "name": "occupy.wav",
+      "bytes": 12476,
+      "sha256": "4ac859f687d61ab04fae5605e7ed1bd12c71007441c24de2a210f52d5f7969e8"
+    },
+    {
+      "name": "order.wav",
+      "bytes": 5642,
+      "sha256": "68442c30930472a0f793f6a877533645dcd234dc5e679c3956cd40bf334501fb"
+    },
+    {
+      "name": "save.wav",
+      "bytes": 11154,
+      "sha256": "4ff379a5f7f81831667ce121ce9823696d632b0d2037361a3b90128b8766e945"
+    },
+    {
+      "name": "trade.wav",
+      "bytes": 8726,
+      "sha256": "abcf274c60eb7605b6eb4e292220e9172a7768519873369cd9c8ffdb26dcc081"
+    },
+    {
+      "name": "victory.wav",
+      "bytes": 21740,
+      "sha256": "1ceeeb269561887792071e204f94b9de7d61a16e9e4615a35b118e6491afe1e3"
+    }
+  ]
+}

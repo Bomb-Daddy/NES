@@ -1,0 +1,109 @@
+"""Q05/Q07 difficulty is based on actual human control, not attacker/defender labels."""
+from unittest.mock import patch
+from third_branch.integrated import new_campaign, save_bytes, load_bytes
+from third_branch import officer_battle_adapter as ba
+
+
+def _pair(player):
+    c = new_campaign(2905)
+    s = c.state
+    s['human_faction'] = player
+    b = {'terrain':['.'*13 for _ in range(12)], 'officer_units':[],
+         'combat_events':[], 'attacker':'A', 'defender':'B'}
+    u = ba._unit(s,'A3','A',2,100,1,6)
+    v = ba._unit(s,'B2','D',0,100,2,7)
+    b['officer_units'] = [u,v]
+    return c,s,b,u,v
+
+
+def test_q05_human_defender_difficulty_is_not_assumed_cpu():
+    c,s,b,u,v = _pair('B')
+    original = ba.core.exchange
+    with patch.object(ba.core,'exchange',wraps=original) as spy:
+        ba._exchange(s,b,u,v)
+    assert spy.call_args.kwargs['att_ai'] is True
+    assert spy.call_args.kwargs['dfn_ai'] is False
+    assert load_bytes(save_bytes(c)).fingerprint == c.fingerprint
+
+
+def test_q05_human_attacker_difficulty_is_not_assumed_cpu():
+    _,s,b,u,v = _pair('A')
+    original = ba.core.exchange
+    with patch.object(ba.core,'exchange',wraps=original) as spy:
+        ba._exchange(s,b,u,v)
+    assert spy.call_args.kwargs['att_ai'] is False
+    assert spy.call_args.kwargs['dfn_ai'] is True
+
+
+def test_q07_human_defender_ambush_uses_original_cpu_loss_divisor():
+    _,s,b,u,v = _pair('B')
+    u.update(war=10,morale=50,intel=40,troops100=10000,troop_ratio=100)
+    v.update(war=100,morale=50,troops100=10000,troop_ratio=100)
+    row=list(b['terrain'][7]);row[2]='F';b['terrain'][7]=''.join(row)
+    with patch.object(ba,'randrange',return_value=0):
+        dealt=ba._forest_reaction(s,b,u,(0,6))
+    # Receiver power 180 vs enemy 450 => -2700 / (grass 10 * level 2),
+    # then original Q07 3x damage = 405 hundredths.
+    assert dealt == 405
+    assert u['troops100']==9595
+
+
+def test_q07_cpu_cpu_ambush_has_no_human_difficulty_bonus():
+    _,s,b,u,v = _pair('C')
+    u.update(war=10,morale=50,intel=40,troops100=10000,troop_ratio=100)
+    v.update(war=100,morale=50,troops100=10000,troop_ratio=100)
+    row=list(b['terrain'][7]);row[2]='F';b['terrain'][7]=''.join(row)
+    with patch.object(ba,'randrange',return_value=0):
+        dealt=ba._forest_reaction(s,b,u,(0,6))
+    assert dealt == 810
+
+
+def test_q05_invalid_level_rejects_before_rng_or_troop_mutation():
+    from og.core.fixed import CoreError
+    import copy
+    c,s,b,u,v = _pair('B')
+    b['difficulty'] = 0
+    before_u,before_v=copy.deepcopy(u),copy.deepcopy(v)
+    before_rng=c.fingerprint
+    try:
+        ba._exchange(s,b,u,v)
+    except CoreError as e:
+        assert e.code=='BAD_BATTLE_DIFFICULTY'
+    else:
+        raise AssertionError('invalid battle level accepted')
+    assert (u,v)==(before_u,before_v)
+    assert c.fingerprint==before_rng
+
+
+def test_q05_real_campaign_battle_transaction_human_defender_cold_load():
+    c=new_campaign(2907)
+    c.state['human_faction']='B'
+    c.do('attack','A3',{'target':'p5','troops':120},'q05:begin')
+    b=c.state['battle']
+    actor=ba.find(b,'A','A3');target=ba.find(b,'D','B2')
+    # Put a real defender one hex away in the already started tactical battle.
+    target['q'],target['r']=2,6
+    actor['q'],actor['r']=1,6
+    from third_branch.integrated import validate
+    assert validate(c.state)
+    out=c.do('battle_attack','A3',{'officer_id':'A3','target_officer_id':'B2','mode':'normal'},'q05:exchange')
+    assert out['losses'] and validate(c.state)
+    assert load_bytes(save_bytes(c)).fingerprint==c.fingerprint
+
+
+def test_q05_cpu_cpu_neither_side_receives_player_difficulty():
+    _,s,b,u,v=_pair('C')
+    original=ba.core.exchange
+    with patch.object(ba.core,'exchange',wraps=original) as spy:
+        ba._exchange(s,b,u,v)
+    assert spy.call_args.kwargs['att_ai'] is True
+    assert spy.call_args.kwargs['dfn_ai'] is True
+
+
+def test_q05_configurable_level_is_forwarded_to_original_formula():
+    _,s,b,u,v=_pair('B')
+    b['difficulty']=4
+    original=ba.core.exchange
+    with patch.object(ba.core,'exchange',wraps=original) as spy:
+        ba._exchange(s,b,u,v)
+    assert spy.call_args.kwargs['difficulty']==4

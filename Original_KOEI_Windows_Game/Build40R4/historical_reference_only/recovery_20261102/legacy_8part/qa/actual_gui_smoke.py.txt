@@ -1,0 +1,42 @@
+"""Xvfb Tk real game interface trace; no physical Xbox or Windows claims."""
+import os,json,tempfile
+from pathlib import Path
+os.environ['KOEI_DISABLE_AUDIO']='1'
+from PIL import ImageGrab
+from third_branch.strategic_game import StrategicWindow,SLOTS
+from third_branch.integrated import load_file
+
+out=Path(os.environ.get('KOEI_QA_OUT',tempfile.mkdtemp()));out.mkdir(parents=True,exist_ok=True)
+for prior in out.glob('auto*.ogsave'):
+    prior.unlink()  # disposable QA fixture only, never a user's real save
+w=StrategicWindow(str(out/'auto.ogsave'))
+w.root.update();b=w.c.fingerprint;old=w.c.state['month']
+w.root.lift();w.root.update()
+ImageGrab.grab(bbox=(0,0,1280,720)).save(out/'screen_map.png')
+w.save();assert w.manual_path().exists()
+w.cultivate();d=w.orders_dialog;assert not d.actor.get()
+d.actor.set(d.available_officers[0]);w.root.update()
+ImageGrab.grab(bbox=(0,0,1280,720)).save(out/'screen_order_preview.png')
+d.submit();assert d.pending is not None and w.c.fingerprint==b
+p=w.c.fingerprint
+d.submit();assert d.pending is not None and w.c.fingerprint==p
+d.confirm_order();assert d.pending is None and w.c.fingerprint!=p
+assert load_file(w.path).fingerprint==w.c.fingerprint
+committed=w.c.fingerprint
+# No accidental third commit; third press only previews next order.
+d.submit();assert d.pending is not None and w.c.fingerprint==committed
+d.close();w.month();assert w.c.state['month']==old+1
+while getattr(w,'event_dialog',None) is not None and w.event_dialog.winfo_exists():
+    w._close_event_dialog()
+assert w.load() is True and w.c.fingerprint==b
+# TRUE PROCESS BOUNDARY: next process reads manual slot.
+expected=w.c.fingerprint
+w.close()
+from subprocess import run
+import sys
+cmd=[sys.executable,'-c',"from third_branch.integrated import load_file;import sys;print(load_file(sys.argv[1]).fingerprint)",str(out/'auto_slot1.ogsave')]
+r=run(cmd,capture_output=True,text=True)
+assert r.returncode==0 and r.stdout.strip()==expected,(r.returncode,r.stdout,r.stderr)
+print(json.dumps({'result':'PASS','manual_save_before_month':old,'after_commit':committed,
+  'after_month_before_load':old+1,'manual_cold_load':old,'hash':expected,
+  'screens':['screen_map.png','screen_order_preview.png'], 'python_process_exit':r.returncode},indent=2))

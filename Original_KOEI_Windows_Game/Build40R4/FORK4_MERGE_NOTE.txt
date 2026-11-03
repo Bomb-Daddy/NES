@@ -1,0 +1,3 @@
+Fork Four source = verified v1.19 complete source + safe v1.20 audio and manually rebased v1.20 journal text/UI + new `fork4` batch and `fork4_advisor` AI model.
+Original v1.20 strategic_game.py candidate not copied byte-for-byte due to mismatched expected SHA-256 baseline.
+The game engine rules and original v1.19 P0 source occupancy/castle fixes remain untouched.
