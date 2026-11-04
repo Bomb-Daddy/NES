@@ -2,7 +2,7 @@
 
 Canonical rendered copy: [GitHub](https://github.com/Bomb-Daddy/NES/blob/main/research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_MAPPING_COMPLETION_AND_REPRODUCTION_v1.07_2026-11-04.md). Relative document links resolve there or in a local checkout.
 
-**Record:** GK1-ECON-CLOSE-0007. **Author/owner:** Zhuge Liang / Codex. **Recipients:** Director; shared reference for Nobunaga and Cao Cao. **Date:** 2026-11-04 UTC. **Execution status: PASS VERIFIED. Publication readback is recorded separately below.**
+**Record:** GK1-ECON-CLOSE-0007. **Author/owner:** Zhuge Liang / Codex. **Recipients:** Director; shared reference for Nobunaga and Cao Cao. **Date:** 2026-11-04 UTC. **Execution status: PASS VERIFIED. Delivery status: PUBLISHED / CONTENT VERIFIED.**
 
 ## Delivered research scope
 
@@ -104,3 +104,9 @@ The following raw files were saved in their actual project folders and downloade
 - [This completion and reproduction record on Drive](https://drive.google.com/file/d/15HCTLAv2JiYGio94ICXBn5CjnYBiTfx3/view) — Collaboration.
 
 The [publication receipt](PUBLICATION_RECEIPT_v1.07.json) records the exact verified revisions and GitHub delivery state. The [public file manifest](PUBLIC_FILE_MANIFEST_v1.07.json) identifies the versioned authored files by SHA-256 and Git blob hash. It explicitly excludes itself to avoid a circular hash. Outside-agent read acknowledgment and implementation are not claimed.
+
+## Delivery closure
+
+All 11 economic batches E01–E11 are PASS VERIFIED. The original 167-row register retains 61 PASS VERIFIED, 40 PARTIAL and 66 NOT RUN across its full-game scope; all 94 populated economic-status entries are PASS VERIFIED. The preserved independent review predates publication, so its RE14 IN PROGRESS notation describes the review checkpoint. RE14 is now closed by the versioned manifest and verified delivery evidence; the review itself remains unchanged.
+
+The research commit [fa324155766b980c63d0d6dee52d348fe7c9d422](https://github.com/Bomb-Daddy/NES/commit/fa324155766b980c63d0d6dee52d348fe7c9d422) passed branch readback, full master-document comparison and all 242 expected Git blob checks. All 567 earlier repository blobs outside this update remained identical. A following documentation-only commit records this closure and the updated registers. Publication does not claim outside-agent read acknowledgment or implementation.

@@ -2,7 +2,7 @@
   "record": "GK1-ECON-CLOSE-0007",
   "version": "1.07",
   "execution_status": "PASS VERIFIED",
-  "publication_status": "Drive initial documents and all private evidence verified; GitHub publication in progress",
+  "publication_status": "PUBLISHED / CONTENT VERIFIED",
   "scope": "All economic mapping batches listed in v1.06 section 9; not all 167 full-game obligations",
   "drive_initial_readback": [
     {
@@ -54,5 +54,68 @@
     "original_rom_sha256": "ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3"
   },
   "outside_agent_read_acknowledgment": "NOT CLAIMED",
-  "windows_port_or_physical_controller_acceptance": "NOT CLAIMED"
+  "windows_port_or_physical_controller_acceptance": "NOT CLAIMED",
+  "github_research_publication": {
+    "files_verified": 242,
+    "previous_blobs_preserved": 567,
+    "candidate_tree": "0d074a3a425a64b281acd0206b528a9342712b0e",
+    "commit": "fa324155766b980c63d0d6dee52d348fe7c9d422",
+    "branch": "main",
+    "branch_readback": "PASS",
+    "master_byte_readback": "PASS"
+  },
+  "closure_note": "The following documentation-only commit records RE14/E11 closure and final Drive revisions. Its own commit hash is discoverable from Git history; no self-referential hash is claimed.",
+  "register_counts": {
+    "economic_batches_pass_verified": 11,
+    "economic_status_entries_pass_verified": 94,
+    "full_game_current_status": {
+      "PARTIAL": 40,
+      "PASS VERIFIED": 61,
+      "NOT RUN": 66
+    },
+    "original_rows_preserved": 167,
+    "original_columns_preserved": 19
+  },
+  "drive_final_readback": [
+    {
+      "path": "/workspace/scratch/c266d767c7ca/output/research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_MAPPING_v1.07_2026-11-04.md",
+      "id": "1AC7h5seTDE4-KdAK7rP3Nv_g-bMJO5xk",
+      "parent": "1i7WyCAj4-GcVew7knSlDKxa5UqvOxmRF",
+      "mime": "text/markdown",
+      "sha256": "6c1acae449b98ce0ec8df71c0f5ec6e2e83a12df1f2ed8f664f76aa57f05cd12",
+      "bytes": 37679,
+      "status": "CONTENT VERIFIED",
+      "verified_utc": "2026-11-04T14:39:39.717859+00:00"
+    },
+    {
+      "path": "/workspace/scratch/c266d767c7ca/output/research/Genghis_Khan_NES/v1.07/GK1_COMPLETE_167_PROOF_MATRIX_v1.07_2026-11-04.csv",
+      "id": "1IDPGgaFVjw9_kPdAWKVSVWS2v3dzlH9H",
+      "parent": "1i7WyCAj4-GcVew7knSlDKxa5UqvOxmRF",
+      "mime": "text/csv",
+      "sha256": "c97e4f438b0e011b7ad36e0dc68d25d6cb48c4a1735f2d9268a3c4f097b3e445",
+      "bytes": 243274,
+      "status": "CONTENT VERIFIED",
+      "verified_utc": "2026-11-04T14:45:35.278809+00:00"
+    },
+    {
+      "path": "/workspace/scratch/c266d767c7ca/output/research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_MAPPING_COMPLETION_AND_REPRODUCTION_v1.07_2026-11-04.md",
+      "id": "15HCTLAv2JiYGio94ICXBn5CjnYBiTfx3",
+      "parent": "1d0TA1lgqsVA3AWQQ9o0FZgmvao90oCeT",
+      "mime": "text/markdown",
+      "sha256": "89faf251fdf5caf4d51dbc4d000828c58062b20d496a904eb46e6eaea6b6aaa8",
+      "bytes": 11302,
+      "status": "CONTENT VERIFIED",
+      "verified_utc": "2026-11-04T14:45:35.581688+00:00"
+    },
+    {
+      "path": "/workspace/scratch/c266d767c7ca/output/research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_BATCH_COMPLETION_REGISTER_v1.07.csv",
+      "id": "1xxjar1h0ZotiSPsO1V7ghCnnrmUVFB8T",
+      "parent": "1i7WyCAj4-GcVew7knSlDKxa5UqvOxmRF",
+      "mime": "text/csv",
+      "sha256": "738727c2fd64ed95d7d018cde64620dc13c045332f3177a23aaf7c7d0572d691",
+      "bytes": 3924,
+      "status": "CONTENT VERIFIED",
+      "verified_utc": "2026-11-04T14:45:35.730010+00:00"
+    }
+  ]
 }

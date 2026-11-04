@@ -25,21 +25,21 @@
     },
     {
       "path": "research/Genghis_Khan_NES/v1.07/GK1_COMPLETE_167_PROOF_MATRIX_v1.07_2026-11-04.csv",
-      "bytes": 242769,
-      "sha256": "fab28012021a3fa9aead46a65d5610f5f529f65e6772cbcdce2d83469b733944",
-      "git_blob_sha1": "935db6df0b33d026357af40fb7a715f992709007"
+      "bytes": 243274,
+      "sha256": "c97e4f438b0e011b7ad36e0dc68d25d6cb48c4a1735f2d9268a3c4f097b3e445",
+      "git_blob_sha1": "42f0e801e0208dbc3444fc5fbc3ab7fb82ad8dde"
     },
     {
       "path": "research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_BATCH_COMPLETION_REGISTER_v1.07.csv",
-      "bytes": 3818,
-      "sha256": "8cc66bbf085c52578fbc3a45981ad76e32b773ecfff279ade5a1c80469114470",
-      "git_blob_sha1": "1c346f63ea6503e6d0219e5b02199914a5f4803c"
+      "bytes": 3924,
+      "sha256": "738727c2fd64ed95d7d018cde64620dc13c045332f3177a23aaf7c7d0572d691",
+      "git_blob_sha1": "93804e5c236a8cb8aa24495716f853106ab606d0"
     },
     {
       "path": "research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_MAPPING_COMPLETION_AND_REPRODUCTION_v1.07_2026-11-04.md",
-      "bytes": 10346,
-      "sha256": "6eb312633c415e5e30ea57d09b68b56a0e956d26f0527c71818cd29f19f09b96",
-      "git_blob_sha1": "cb47227cf32527f493ef7d0c92fcee15350fc712"
+      "bytes": 11302,
+      "sha256": "89faf251fdf5caf4d51dbc4d000828c58062b20d496a904eb46e6eaea6b6aaa8",
+      "git_blob_sha1": "2926d8c36120b31949a51aa1f33ca3fe9ac4a610"
     },
     {
       "path": "research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_MAPPING_v1.07_2026-11-04.md",
@@ -73,9 +73,9 @@
     },
     {
       "path": "research/Genghis_Khan_NES/v1.07/PUBLICATION_RECEIPT_v1.07.json",
-      "bytes": 2641,
-      "sha256": "5006e02f5aa494f6bc80f83d34d9d2e418027e4230a0adb67752bbec75e68887",
-      "git_blob_sha1": "a4ec1d2dc02f72f9f8aa9a2bdc0f946e8bb7544e"
+      "bytes": 5365,
+      "sha256": "589c897c84bcdfd75f4773593330aa24a99f466ed634c50526d8f3a730e3c176",
+      "git_blob_sha1": "d33588f9f0b603c26954c9cd2d3f9cafb710e3cb"
     },
     {
       "path": "research/Genghis_Khan_NES/v1.07/QA/INDEPENDENT_REVIEW.md",
