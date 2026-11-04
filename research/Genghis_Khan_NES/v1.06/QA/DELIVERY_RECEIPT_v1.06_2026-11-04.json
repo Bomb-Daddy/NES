@@ -1,0 +1,64 @@
+{
+  "artifact_version": "1.06",
+  "date_utc": "2026-11-04",
+  "project": "Original English NES Genghis Khan economic research",
+  "delivery_status": "PUBLISHED",
+  "research_status": "PARTIAL / INCOMPLETE",
+  "read_acknowledged": false,
+  "downstream_executed": false,
+  "research_commit": "f57572b1179e3b78d43e8009879b9d39c82d13f1",
+  "public_blobs_exact_sha_verified": 19,
+  "github_report_and_handoff_full_text_readback": true,
+  "drive": [
+    {
+      "id": "1WA2epgCG-Y0Zk-blToeO2bojupUibFJB",
+      "role": "economic report",
+      "mime": "text/markdown",
+      "parent": "1i7WyCAj4-GcVew7knSlDKxa5UqvOxmRF",
+      "full_text_matches": true
+    },
+    {
+      "id": "1HgC4aL2XT6iSQGwxOwsNBitqifSVrSpU",
+      "role": "167-item register",
+      "mime": "text/csv",
+      "parent": "1i7WyCAj4-GcVew7knSlDKxa5UqvOxmRF",
+      "raw_bytes": 181133,
+      "sha256": "4a97af31100013e37e7da82b4b1e875f8bc6bf14b07b820acbded16f4c387346",
+      "exact_readback_match": true
+    },
+    {
+      "id": "1AynqzvQmBiUBttURf2Yy0LP296Y9_bbj",
+      "role": "Collaboration handoff 006",
+      "mime": "text/markdown",
+      "parent": "1d0TA1lgqsVA3AWQQ9o0FZgmvao90oCeT",
+      "full_text_matches": true
+    },
+    {
+      "id": "1e_Prnv32dmszNZjhg_nYfF4bnlnFpT-J",
+      "role": "private runtime evidence",
+      "mime": "application/zip",
+      "parent": "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7",
+      "bytes": 1109966,
+      "sha256": "927028490b1d0bc26d87dadaffa8f43500d2ea8aa8f1e8c73d46da2a08761e2b",
+      "exact_readback_match": true,
+      "zip_crc_pass": true,
+      "manifest_hashes_verified": 405
+    }
+  ],
+  "validation": {
+    "methods": 72,
+    "result": "OK",
+    "exit": 0,
+    "independent_reviewer_rerun": "72 methods, OK, exit 0"
+  },
+  "open_requirements": {
+    "partial": 62,
+    "not_run": 105,
+    "newly_completed": 0
+  },
+  "corrections": [
+    "Corrected actual emulator SHA-256 in report",
+    "Excluded mismatched menu trials; reran Rate190 from clean boot",
+    "Rebuilt and verified initially truncated archive before final delivery"
+  ]
+}
