@@ -1,0 +1,85 @@
+{
+  "suite": "base_relocation_additive",
+  "expected_methods": 19,
+  "integration_author": "Codex trade_source_completion, 2026-11-04",
+  "original_package_modified": false,
+  "script_adaptation_count": 0,
+  "records": [
+    {
+      "author": "Codex trade_source_completion, 2026-11-04",
+      "source_snapshot": "originals/batches/base_relocation/replay_base.py",
+      "executable_or_report_copy": "batches/base_relocation/replay_base.py",
+      "original_sha256": "1536528acd4f0ad6413866748cc8a3f0992ca884cd4a69a62bf452da91e1d1fe",
+      "copy_sha256": "1536528acd4f0ad6413866748cc8a3f0992ca884cd4a69a62bf452da91e1d1fe",
+      "changed": false,
+      "adaptation": "No script change. Existing relative imports resolve to already-adapted portable logistics/trade/CPU dependencies."
+    },
+    {
+      "author": "Codex trade_source_completion, 2026-11-04",
+      "source_snapshot": "originals/batches/base_relocation/test_base.py",
+      "executable_or_report_copy": "batches/base_relocation/test_base.py",
+      "original_sha256": "b30c870d7c40cee37331ae17c902d122f24ed036c5a868bf4797ab1873d606ba",
+      "copy_sha256": "b30c870d7c40cee37331ae17c902d122f24ed036c5a868bf4797ab1873d606ba",
+      "changed": false,
+      "adaptation": "No script change. Existing relative imports resolve to already-adapted portable logistics/trade/CPU dependencies."
+    },
+    {
+      "author": "Codex trade_source_completion, 2026-11-04",
+      "source_snapshot": "originals/batches/base_relocation/BASE_RELOCATION_SOURCE_2026-11-04.md",
+      "executable_or_report_copy": "batches/base_relocation/BASE_RELOCATION_SOURCE_2026-11-04.md",
+      "original_sha256": "c9c9821ebcaa7cdf460669a0b19357e22c828a02d1fa08194b3e16d07344e228",
+      "copy_sha256": "ecd4b4413f730fe5d8e9259e012cf3602b98e6419a9e260d5b59fb5cad24e8be",
+      "changed": true,
+      "adaptation": "Add current native controlled-runtime evidence addendum; original source-only body retained."
+    }
+  ],
+  "executed_sources": [
+    {
+      "relative": "batches/base_relocation/replay_base.py",
+      "sha256": "1536528acd4f0ad6413866748cc8a3f0992ca884cd4a69a62bf452da91e1d1fe"
+    },
+    {
+      "relative": "batches/base_relocation/test_base.py",
+      "sha256": "b30c870d7c40cee37331ae17c902d122f24ed036c5a868bf4797ab1873d606ba"
+    },
+    {
+      "relative": "batches/base_relocation/run_base.py",
+      "sha256": "2eaac5d1909fe28b2124d54eb9eb2bed139b52d9791029872127fdba3e6fd22e"
+    },
+    {
+      "relative": "batches/logistics_source/replay_logistics.py",
+      "sha256": "bcc9b12d6f7fad2676dd0322cf3ff7caa9326f895fa67b03cd382690b827cf69"
+    },
+    {
+      "relative": "batches/trade_source/replay_trade.py",
+      "sha256": "0c9594126b2cd0493bbc0212ca48bea30b364104b4d05a0445bf694bfc70bcc1"
+    },
+    {
+      "relative": "batches/trade_source/inspect_source.py",
+      "sha256": "7107dd62c8eeb33a725ceb782e8b2190b79899b79d7b54708fa242fe0be2ac29"
+    },
+    {
+      "relative": "output/research/Genghis_Khan_NES/v1.06/tools/replay_b7_arithmetic.py",
+      "sha256": "73891b90520f8f575f8b93e14a0af0273ffbddc7c64f32e9176332f4e012123f"
+    },
+    {
+      "relative": "output/research/Genghis_Khan_NES/v1.06/tools/vm_selected_cpu_replay.py",
+      "sha256": "c4c8e3980039e484e804e2ceb048776be7b9e51db3062e00f2e6a14bb1b21964"
+    },
+    {
+      "relative": "recovery/static_dependencies/gk_static_forensics.py",
+      "sha256": "7f41922269aabf5819661d89656865bccfb6cbb9188ced8552a9855f591d91f5"
+    }
+  ],
+  "private_input_contract": {
+    "GK_ROM": {
+      "bytes": 262160,
+      "sha256": "ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3"
+    },
+    "GK_SRAM": {
+      "bytes": 8192,
+      "sha256": "dd22847140cc0397ab8f42e29f1832681628ed52bfa17e95041c288afc4ef773"
+    }
+  },
+  "scope": "Original source methods remain VERIFIED_STATIC. Runtime addendum is a separate review of root-captured controlled Mesen evidence, not newly executed by this suite."
+}

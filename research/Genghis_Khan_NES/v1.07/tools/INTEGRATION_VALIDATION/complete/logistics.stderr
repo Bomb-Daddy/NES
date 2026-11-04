@@ -1,0 +1,42 @@
+test_ability_boundaries_each_required_attribute (__main__.LogisticsChecks.test_ability_boundaries_each_required_attribute) ... ok
+test_ability_pointer_uses_7b34_not_7b66 (__main__.LogisticsChecks.test_ability_pointer_uses_7b34_not_7b66) ... ok
+test_actor_cost_independent_of_transport_quantity (__main__.LogisticsChecks.test_actor_cost_independent_of_transport_quantity) ... ok
+test_adjacency_early_sentinel_and_last_slot (__main__.LogisticsChecks.test_adjacency_early_sentinel_and_last_slot) ... ok
+test_any_friendly_neighbor_preflight (__main__.LogisticsChecks.test_any_friendly_neighbor_preflight) ... ok
+test_cancel_does_not_write_sram (__main__.LogisticsChecks.test_cancel_does_not_write_sram) ... ok
+test_cancel_has_zero_ability_and_order_cost (__main__.LogisticsChecks.test_cancel_has_zero_ability_and_order_cost) ... ok
+test_capacity_operand_negative_control (__main__.LogisticsChecks.test_capacity_operand_negative_control) ... ok
+test_destination_full14country_adjacency_matrix (__main__.LogisticsChecks.test_destination_full14country_adjacency_matrix) ... ok
+test_destination_picker_restores_original_active_country (__main__.LogisticsChecks.test_destination_picker_restores_original_active_country) ... ok
+test_direction_uses_source_list (__main__.LogisticsChecks.test_direction_uses_source_list) ... ok
+test_enemy_adjacent_rejected_and_friend_accepted (__main__.LogisticsChecks.test_enemy_adjacent_rejected_and_friend_accepted) ... ok
+test_friend_nonadjacent_rejected (__main__.LogisticsChecks.test_friend_nonadjacent_rejected) ... ok
+test_gold_food_all_commodity_conservation (__main__.LogisticsChecks.test_gold_food_all_commodity_conservation) ... ok
+test_initial_only_base_count_and_control (__main__.LogisticsChecks.test_initial_only_base_count_and_control) ... ok
+test_main_move_requires_ruler_role100 (__main__.LogisticsChecks.test_main_move_requires_ruler_role100) ... ok
+test_no_scalar_random_transport_loss (__main__.LogisticsChecks.test_no_scalar_random_transport_loss) ... ok
+test_no_specialty_gate_for_generic_stock_pointer (__main__.LogisticsChecks.test_no_specialty_gate_for_generic_stock_pointer) ... ok
+test_original_ability_rows (__main__.LogisticsChecks.test_original_ability_rows) ... ok
+test_original_ownership_country2_intervention (__main__.LogisticsChecks.test_original_ownership_country2_intervention) ... ok
+test_people_all_five_categories_conserved (__main__.LogisticsChecks.test_people_all_five_categories_conserved) ... ok
+test_people_and_scalar_switch_targets (__main__.LogisticsChecks.test_people_and_scalar_switch_targets) ... ok
+test_people_both_source_and_destination_empty_after_full_migration_case (__main__.LogisticsChecks.test_people_both_source_and_destination_empty_after_full_migration_case) ... ok
+test_people_destination_total_capacity_not_category (__main__.LogisticsChecks.test_people_destination_total_capacity_not_category) ... ok
+test_people_empty_destination (__main__.LogisticsChecks.test_people_empty_destination) ... ok
+test_people_empty_source_zeroes_arms_skill_before_average (__main__.LogisticsChecks.test_people_empty_source_zeroes_arms_skill_before_average) ... ok
+test_people_nonempty_other_workforce_retains_source_quality (__main__.LogisticsChecks.test_people_nonempty_other_workforce_retains_source_quality) ... ok
+test_people_quality_mutation_detected (__main__.LogisticsChecks.test_people_quality_mutation_detected) ... ok
+test_population_ledger_and_production_history_conservation (__main__.LogisticsChecks.test_population_ledger_and_production_history_conservation) ... ok
+test_quantity_min_max_and_cancel_source_gate (__main__.LogisticsChecks.test_quantity_min_max_and_cancel_source_gate) ... ok
+test_return_transfer_reverses_scalar_ledger (__main__.LogisticsChecks.test_return_transfer_reverses_scalar_ledger) ... ok
+test_rom_and_baseline_hashes (__main__.LogisticsChecks.test_rom_and_baseline_hashes) ... ok
+test_scalar_capacity_all_boundaries (__main__.LogisticsChecks.test_scalar_capacity_all_boundaries) ... ok
+test_self_destination_rejected_by_adjacency (__main__.LogisticsChecks.test_self_destination_rejected_by_adjacency) ... ok
+test_source_picker_all_friendly_not_limited_to_neighbors (__main__.LogisticsChecks.test_source_picker_all_friendly_not_limited_to_neighbors) ... ok
+test_success_costs_and_one_order (__main__.LogisticsChecks.test_success_costs_and_one_order) ... ok
+test_transfer_mutated_add_to_subtract_detected (__main__.LogisticsChecks.test_transfer_mutated_add_to_subtract_detected) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 2.529s
+
+OK

@@ -1,0 +1,29 @@
+test_01_popular_revolt_gates (__main__.Dependencies.test_01_popular_revolt_gates) ... ok
+test_02_theft_gates_and_loss (__main__.Dependencies.test_02_theft_gates_and_loss) ... ok
+test_03_theft_gold_and_history_negative (__main__.Dependencies.test_03_theft_gold_and_history_negative) ... ok
+test_04_revolt_mutation_control (__main__.Dependencies.test_04_revolt_mutation_control) ... ok
+test_05_ai_labor_rows_and_conservation (__main__.Dependencies.test_05_ai_labor_rows_and_conservation) ... ok
+test_06_ai_labor_human_flag_blocks_special_row (__main__.Dependencies.test_06_ai_labor_human_flag_blocks_special_row) ... ok
+test_07_ai_winter_tax_free_set (__main__.Dependencies.test_07_ai_winter_tax_free_set) ... ok
+test_08_ai_tax_normal_band_noop (__main__.Dependencies.test_08_ai_tax_normal_band_noop) ... ok
+test_09_ai_tax_lowering (__main__.Dependencies.test_09_ai_tax_lowering) ... ok
+test_10_ai_tax_increase_limited_by_ruler (__main__.Dependencies.test_10_ai_tax_increase_limited_by_ruler) ... ok
+test_11_ai_hire_price_quality_and_capacity (__main__.Dependencies.test_11_ai_hire_price_quality_and_capacity) ... ok
+test_12_ai_arms_buy_fixed_column_and_gain (__main__.Dependencies.test_12_ai_arms_buy_fixed_column_and_gain) ... ok
+test_13_ai_gifts_extra_morale_bonus (__main__.Dependencies.test_13_ai_gifts_extra_morale_bonus) ... ok
+test_14_ai_gift_selects_largest_good_and_spends_entire_stock (__main__.Dependencies.test_14_ai_gift_selects_largest_good_and_spends_entire_stock) ... ok
+test_15_major_epidemic_bounded_economic_effect (__main__.Dependencies.test_15_major_epidemic_bounded_economic_effect) ... ok
+test_16_ai_summer_draft_trained_percentage_literal_division (__main__.Dependencies.test_16_ai_summer_draft_trained_percentage_literal_division) ... ok
+test_17_ai_summer_commodity_supplement_gate (__main__.Dependencies.test_17_ai_summer_commodity_supplement_gate) ... ok
+test_18_extra_levy_allocated_loss_no_resident_restoration (__main__.Dependencies.test_18_extra_levy_allocated_loss_no_resident_restoration) ... ok
+test_19_player_draft_ledger_effect_only (__main__.Dependencies.test_19_player_draft_ledger_effect_only) ... ok
+test_20_zero_allocated_cleanup_not_reserve (__main__.Dependencies.test_20_zero_allocated_cleanup_not_reserve) ... ok
+test_21_person_revolt_attribute_gate (__main__.Dependencies.test_21_person_revolt_attribute_gate) ... ok
+test_22_ai_training_source_without_gold_cost (__main__.Dependencies.test_22_ai_training_source_without_gold_cost) ... ok
+test_23_ai_summer_draft_eligibility_gate (__main__.Dependencies.test_23_ai_summer_draft_eligibility_gate) ... ok
+test_24_theft_positive_and_negative_seed_grid (__main__.Dependencies.test_24_theft_positive_and_negative_seed_grid) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 5.991s
+
+OK

@@ -1,0 +1,37 @@
+{
+  "package_path": "/workspace/scratch/c266d767c7ca/batches/source_package/clean_validation_jt2bpw3_/package",
+  "interpreter": "/usr/bin/python3",
+  "environment_keys": [
+    "GK_ARCHIVED_CAPTURES",
+    "GK_EVIDENCE",
+    "GK_MANUAL",
+    "GK_ROI_EVIDENCE",
+    "GK_ROM",
+    "GK_SRAM",
+    "LC_ALL",
+    "PATH",
+    "PYTHONDONTWRITEBYTECODE"
+  ],
+  "runs": [
+    {
+      "name": "missing_inputs",
+      "expected_exit": 2,
+      "exit": 2,
+      "pass": true,
+      "stderr": "Missing required environment variable GK_ROM\nMissing required environment variable GK_SRAM\n"
+    },
+    {
+      "name": "bad_input_hash",
+      "expected_exit": 2,
+      "exit": 2,
+      "pass": true,
+      "stderr": "GK_SRAM: SHA-256 mismatch for baseline.sram\n"
+    },
+    {
+      "name": "complete",
+      "exit": 0,
+      "seconds": 30.132802486419678
+    }
+  ],
+  "results_file": "validation_results/RUN_RECEIPT.json"
+}

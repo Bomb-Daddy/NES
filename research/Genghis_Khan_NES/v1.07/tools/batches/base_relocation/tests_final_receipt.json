@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "batches/base_relocation/test_base.py"
+  ],
+  "cwd": "/workspace/scratch/c266d767c7ca",
+  "exit": 0,
+  "seconds": 0.519770622253418,
+  "complete": true
+}

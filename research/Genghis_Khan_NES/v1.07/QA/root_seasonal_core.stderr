@@ -1,0 +1,31 @@
+test_01_rom_hash (__main__.Annual.test_01_rom_hash) ... ok
+test_02_random_service_original_native (__main__.Annual.test_02_random_service_original_native) ... ok
+test_03_seasonal_rate_decay_and_floor (__main__.Annual.test_03_seasonal_rate_decay_and_floor) ... ok
+test_04_spring_rate_generation (__main__.Annual.test_04_spring_rate_generation) ... ok
+test_05_decay_random_mod1_mutation (__main__.Annual.test_05_decay_random_mod1_mutation) ... ok
+test_06_seasonal_labor_history_and_development (__main__.Annual.test_06_seasonal_labor_history_and_development) ... ok
+test_07_four_season_history_not_only_final_staff (__main__.Annual.test_07_four_season_history_not_only_final_staff) ... ok
+test_08_harvest_caps_specialty_reset_controls (__main__.Annual.test_08_harvest_caps_specialty_reset_controls) ... ok
+test_09_food_consumption_shortage_rounding (__main__.Annual.test_09_food_consumption_shortage_rounding) ... ok
+test_10_spring_tax_payroll (__main__.Annual.test_10_spring_tax_payroll) ... ok
+test_11_tax_ruler_population_negative_controls (__main__.Annual.test_11_tax_ruler_population_negative_controls) ... ok
+test_12_annual_morale_tax_effect (__main__.Annual.test_12_annual_morale_tax_effect) ... ok
+test_13_population_growth_cap_and_distribution (__main__.Annual.test_13_population_growth_cap_and_distribution) ... ok
+test_14_growth_officer_vs_distance_ownership_control (__main__.Annual.test_14_growth_officer_vs_distance_ownership_control) ... ok
+test_15_instruction_mutation_development (__main__.Annual.test_15_instruction_mutation_development) ... ok
+test_16_annual_trained_resident_percentage (__main__.Annual.test_16_annual_trained_resident_percentage) ... ok
+test_17_summer_and_winter_depreciation (__main__.Annual.test_17_summer_and_winter_depreciation) ... ok
+test_18_disaster_effect_slices (__main__.Annual.test_18_disaster_effect_slices) ... ok
+test_19_sickness_workforce_reduction (__main__.Annual.test_19_sickness_workforce_reduction) ... ok
+test_20_ai_food_purchase_and_human_exclusion (__main__.Annual.test_20_ai_food_purchase_and_human_exclusion) ... ok
+test_21_country_count_growth_both_scenarios (__main__.Annual.test_21_country_count_growth_both_scenarios) ... ok
+test_22_ai_seasonal_gold_subsidy_both_scenarios (__main__.Annual.test_22_ai_seasonal_gold_subsidy_both_scenarios) ... ok
+test_23_no_humans_no_ai_subsidy (__main__.Annual.test_23_no_humans_no_ai_subsidy) ... ok
+test_24_rng_adjacent_byte_negative_control (__main__.Annual.test_24_rng_adjacent_byte_negative_control) ... ok
+test_25_per_country_merchant_flags (__main__.Annual.test_25_per_country_merchant_flags) ... ok
+test_26_global_offer_mask_refresh (__main__.Annual.test_26_global_offer_mask_refresh) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 6.674s
+
+OK

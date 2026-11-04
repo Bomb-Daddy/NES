@@ -1,0 +1,215 @@
+--- original/output/research/Genghis_Khan_NES/v1.06/tools/vm_selected_cpu_replay.py
++++ portable/output/research/Genghis_Khan_NES/v1.06/tools/vm_selected_cpu_replay.py
+@@ -5,7 +5,7 @@
+ """
+ import os, csv, hashlib, json, unittest, sys
+ from pathlib import Path
+-ROM=Path(os.environ.get('GK_ROM','/mnt/data/Genghis Khan (USA).nes'))
++ROM=Path(os.environ['GK_ROM'])
+ EXPECTED='ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3'
+ DATA=ROM.read_bytes(); PRG=DATA[16:]; OUT=Path(__file__).resolve().parent; OUT.mkdir(exist_ok=True)
+ B2=PRG[2*0x4000:3*0x4000]; FIX=PRG[15*0x4000:16*0x4000]
+--- original/output/research/Genghis_Khan_NES/v1.06/tools/replay_dcea.py
++++ portable/output/research/Genghis_Khan_NES/v1.06/tools/replay_dcea.py
+@@ -11,12 +11,8 @@
+ START=0xDCEA; STOP=0xDD00; TABLE_BASE=0x7DE5
+ F=h.FIX; FUNCTION=bytes.fromhex('a4 8a 7a 8f 64 b3 0c 8b 11 b5 1d bb 8c e5 7d bb d3 b3 e9 8b da 04 cf')
+ assert F[START-0xc000:START-0xc000+len(FUNCTION)]==FUNCTION
+-ARCHIVE=Path(os.environ.get('GK_ARCHIVE','GENGHIS_KHAN_NES_COMMAND_CROSSWALK_AND_MESEN_EVIDENCE_v1.02.zip'))
+-MEMBER='Genghis_Khan_NES_Research_v1.02/captures/give_food8_v102/before.sram'
+-if os.environ.get('GK_SRAM'):
+- RAM=Path(os.environ['GK_SRAM']).read_bytes()
+-else:
+- with zipfile.ZipFile(ARCHIVE) as za: RAM=za.read(MEMBER)
++MEMBER='External baseline supplied by GK_SRAM'
++RAM=Path(os.environ['GK_SRAM']).read_bytes()
+ assert len(RAM)==8192
+ EXPECTED='dd22847140cc0397ab8f42e29f1832681628ed52bfa17e95041c288afc4ef773'
+ RAM_TABLE=RAM[TABLE_BASE-0x6000:]
+--- original/batches/economic_roi/roi_model.py
++++ portable/batches/economic_roi/roi_model.py
+@@ -6,7 +6,7 @@
+ from pathlib import Path
+ sys.dont_write_bytecode=True
+ ROOT=Path(__file__).resolve().parent;BASE=ROOT.parents[1]
+-os.environ.setdefault('GK_ROM',str(BASE/'private/Genghis Khan (USA).nes'))
++assert os.environ.get('GK_ROM'), 'Set GK_ROM explicitly'
+ sys.path.insert(0,str(BASE/'batches/seasonal_source'))
+ from source_cpu import Cpu
+ from inspect_source import prg
+@@ -14,7 +14,7 @@
+ FIELDS={'arms':0x14,'skill':0x16,'troops':0x18,'economy':0x1a,'town':0x1c,'defense':0x1e,'masons':0x20,'fur':0x22,'food':0x36,'commodity_history':0x38,'artisans':0x3a,'food_history':0x3c,'foodworkers':0x3e,'gold':0x40,'morale':0x42,'tax':0x44,'extra_used':0x46,'residents':0x49}
+ POOL=['troops','town','masons','artisans','foodworkers']
+ NAMES=['baseline','summer_step3','fall1175_ready','winter_step2','spring1176_step1'];RATES=[101,99,91,85,110]
+-RAW=(BASE/'batches/runtime/live/baseline.sram').read_bytes()
++RAW=(Path(os.environ['GK_ROI_EVIDENCE'])/'baseline.sram').read_bytes()
+ word=lambda d,a:int.from_bytes(d[a-0x6000:a-0x6000+2],'little')
+ COSTS={i:list(RAW[0x1e18+6*i:0x1e1e+6*i]) for i in range(32)}
+ PRICE=[list(RAW[0x1de5+17*m:0x1de5+17*(m+1)]) for m in range(3)]
+--- original/batches/economic_roi/test_roi.py
++++ portable/batches/economic_roi/test_roi.py
+@@ -5,7 +5,7 @@
+  def test_01_runtime_capture_chain_reconciled(self):
+   predicted=simulate(PLANS[0])['seasons']
+   for i,n in enumerate(NAMES):
+-   d=(BASE/'batches/runtime/live'/f'{n}.sram').read_bytes();expected=state(d)
++   d=(Path(os.environ['GK_ROI_EVIDENCE'])/f'{n}.sram').read_bytes();expected=state(d)
+    self.assertEqual(predicted[i],expected,n);self.assertEqual(word(d,0x7a8a),RATES[i])
+  def test_02_every_policy_and_season_bound_to_original_cpu(self):
+   records=[]
+@@ -29,7 +29,7 @@
+   self.assertEqual(sold['transactions'][-1]['gold_credit'],34);self.assertEqual(sold['orders_total'],stored['orders_total']+1)
+   self.assertEqual(sold['ability_cost_total'][1],stored['ability_cost_total'][1]+5)
+  def test_05_observed_offer_and_quote_feasibility(self):
+-  summer=(BASE/'batches/runtime/live/summer_step3.sram').read_bytes();fall=(BASE/'batches/runtime/live/fall1175_ready.sram').read_bytes()
++  summer=(Path(os.environ['GK_ROI_EVIDENCE'])/'summer_step3.sram').read_bytes();fall=(Path(os.environ['GK_ROI_EVIDENCE'])/'fall1175_ready.sram').read_bytes()
+   for d,i,buy in ((summer,10,True),(fall,0,False)):
+    self.assertNotEqual(word(d,B+0x4b),0);self.assertEqual(word(d,(0x7ace if buy else 0x7a8c)+2*i),1)
+   self.assertEqual(quote(99,0,10),19);self.assertEqual(quote(91,0,0,True),17)
+--- original/batches/trade_source/inspect_source.py
++++ portable/batches/trade_source/inspect_source.py
+@@ -1,8 +1,7 @@
+ from pathlib import Path
+ import os,importlib.util
+ ROOT=Path(__file__).resolve().parents[2]
+-os.environ.setdefault('GK_ROM',str(ROOT/'private/Genghis Khan (USA).nes'))
+-os.environ.setdefault('GK_SRAM',str(ROOT/'evidence/roundtrip/baseline.sram'))
++assert os.environ.get('GK_ROM') and os.environ.get('GK_SRAM'), 'Set GK_ROM and GK_SRAM explicitly'
+ spec=importlib.util.spec_from_file_location('h',ROOT/'output/research/Genghis_Khan_NES/v1.06/tools/replay_b7_arithmetic.py');h=importlib.util.module_from_spec(spec);spec.loader.exec_module(h)
+ PRG=h.PRG
+ mem=bytearray(65536);mem[0x8000:0xc000]=PRG[3*16384:4*16384];mem[0xc000:]=PRG[15*16384:]
+--- original/batches/trade_source/test_trade.py
++++ portable/batches/trade_source/test_trade.py
+@@ -83,7 +83,7 @@
+  def test_merchant_presence_mongol_formula(self):
+   for e,m in ((0,0),(185,118),(999,999)):
+    seed=0x010203040506;expected=[]
+-   for cutoff in (25,15,40):seed,r=next_rng(seed);expected.append(int(r%100>cutoff+(e*m)//50000))
++   for cutoff in (25,15,40):seed,r=next_rng(seed);expected.append(int(r%100>cutoff+(e*m)//20000))
+    got=presence(e,m);self.assertEqual((got['flags'],got['seed']),(expected,seed))
+  def test_merchant_presence_world_table_countdown(self):
+   for remaining in (1,14,26,27):
+@@ -101,7 +101,7 @@
+  def test_trade_cancel_skips_ability_and_orders(self):
+   c=prepare(0x8e38,words={0x7b36:3});put(c,8,255);run(c,0x8e50);self.assertEqual(word(c,0x7b36),3)
+  def test_original_baseline_ability_table(self):
+-  b=(ROOT/'evidence/roundtrip/baseline.sram').read_bytes();self.assertEqual(hashlib.sha256(b).hexdigest(),'dd22847140cc0397ab8f42e29f1832681628ed52bfa17e95041c288afc4ef773');self.assertEqual(list(b[0x7e4e-0x6000:0x7e54-0x6000]),[0,5,0,0,0,0])
++  b=Path(os.environ['GK_SRAM']).read_bytes();self.assertEqual(hashlib.sha256(b).hexdigest(),'dd22847140cc0397ab8f42e29f1832681628ed52bfa17e95041c288afc4ef773');self.assertEqual(list(b[0x7e4e-0x6000:0x7e54-0x6000]),[0,5,0,0,0,0])
+  def test_offer_threshold_negative_control(self):
+   for chance in (0,100):
+    mutation={}
+@@ -135,4 +135,11 @@
+      if c.pc==0xefc9 and c.stream() in (0x8dff,0x8e14):break
+      c.step()
+     self.assertEqual(c.stream()==0x8e14,bool(enabled))
++ def test_merchant_presence_divisor_discriminating_regression(self):
++  # Integration correction: source immediate $4E20 is decimal20000.
++  # Seed1408 produces first rand100=26; with economy333,morale118,
++  # correct cutoff26 rejects merchant0 while wrong50000 cutoff25 accepts it.
++  self.assertEqual(presence(333,118,seed=1408)['flags'][0],0)
++  _,draw=next_rng(1408);self.assertEqual(draw%100,26)
++  self.assertNotEqual(int(draw%100>25+(333*118)//20000),int(draw%100>25+(333*118)//50000))
+ if __name__=='__main__':unittest.main(verbosity=2)
+--- original/batches/domestic_source/replay_domestic.py
++++ portable/batches/domestic_source/replay_domestic.py
+@@ -5,10 +5,9 @@
+ sys.dont_write_bytecode=True
+ ROOT=Path(__file__).resolve().parent
+ BASE=ROOT.parents[1]
+-os.environ.setdefault('GK_ROM',str(BASE/'private/Genghis Khan (USA).nes'))
++assert os.environ.get('GK_ROM'), 'Set GK_ROM explicitly'
+ s=importlib.util.spec_from_file_location('original_helper',BASE/'output/research/Genghis_Khan_NES/v1.06/tools/replay_b7_arithmetic.py');h=importlib.util.module_from_spec(s);s.loader.exec_module(h)
+-SRAM=BASE/'evidence/roundtrip/baseline.sram'
+-if not SRAM.exists(): SRAM=BASE/'recovery/runtime/Genghis_Khan_NES_Research_v1.02/captures/give_food1_v102/before.sram'
++SRAM=Path(os.environ['GK_SRAM'])
+ class DomesticCpu(h.HelperCpu):
+  def step(self):
+   if self.m[self.pc] in (0x50,0x70):
+--- original/batches/domestic_source/test_domestic.py
++++ portable/batches/domestic_source/test_domestic.py
+@@ -15,7 +15,7 @@
+  def test_tax_against_archived_country_fields(self):
+   for q in (1,2,9):
+    r=run(0x89a1,0x8a04,[COUNTRY],locals_={-2:q},rng=[11])
+-   b=(BASE/f'recovery/runtime/Genghis_Khan_NES_Research_v1.02/captures/tax_extra_{q}_v102/after.sram').read_bytes()
++   b=(Path(os.environ['GK_ARCHIVED_CAPTURES'])/f'tax_extra_{q}_v102/after.sram').read_bytes()
+    for k,o in FIELDS.items():self.assertEqual(r['fields'][k],b[COUNTRY+o-0x6000] if k=='eligibility' else int.from_bytes(b[COUNTRY+o-0x6000:COUNTRY+o-0x6000+2],'little'),(q,k))
+  def test_tax_food_rng_boundaries_and_caps(self):
+   for q in (1,9,185):
+@@ -59,7 +59,7 @@
+   for kind,idx in [('food',10),('gold',255)]:
+    for q in (1,8,9):
+     name=f'give_food{q}_v102' if kind=='food' else f'give_gold{q}_done'
+-    b=(BASE/'recovery/runtime/Genghis_Khan_NES_Research_v1.02/captures'/name/'after.sram').read_bytes()
++    b=(Path(os.environ['GK_ARCHIVED_CAPTURES'])/name/'after.sram').read_bytes()
+     r=run(0x8a85,0x8ad3,[COUNTRY,idx,q]);self.assertEqual(r['fields']['morale'],int.from_bytes(b[0xe0f:0xe11],'little'))
+  def test_gift_caps_and_mutation(self):
+   a=run(0x8a85,0x8ad3,[COUNTRY,255,100],fields={'morale':998})
+@@ -128,7 +128,7 @@
+  def test_train_troops_mutation_and_archive(self):
+   a=run(0xa4f9,0xa50d,[COUNTRY],bank=2,rng=[0]);b=run(0xa4f9,0xa50d,[COUNTRY],bank=2,rng=[0],mutations={0xa2bc:0x7e})
+   self.assertEqual(a['fields']['skill'],143);self.assertNotEqual(a['fields']['skill'],b['fields']['skill'])
+-  b=(BASE/'recovery/runtime/Genghis_Khan_NES_Research_v1.02/captures/train_troops_complete_v102/after.sram').read_bytes()
++  b=(Path(os.environ['GK_ARCHIVED_CAPTURES'])/'train_troops_complete_v102/after.sram').read_bytes()
+   self.assertEqual(a['fields']['skill'],int.from_bytes(b[0xde3:0xde5],'little'))
+  def test_economic_ability_gates_and_saturation(self):
+   data=SRAM.read_bytes()
+--- original/batches/seasonal_source/inspect_source.py
++++ portable/batches/seasonal_source/inspect_source.py
+@@ -1,7 +1,7 @@
+ """Bank-aware inspection helpers; private ROM supplied by GK_ROM."""
+ from pathlib import Path
+ import os,hashlib
+-ROM=Path(os.environ.get('GK_ROM',str(Path(__file__).resolve().parent.parents[1]/'private/Genghis Khan (USA).nes')))
++ROM=Path(os.environ['GK_ROM'])
+ raw=ROM.read_bytes()
+ assert hashlib.sha256(raw).hexdigest()=='ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3'
+ prg=raw[16:];bank15=prg[-16384:]
+--- original/batches/logistics_source/replay_logistics.py
++++ portable/batches/logistics_source/replay_logistics.py
+@@ -2,12 +2,12 @@
+ Synthetic original-6502 execution only; no Mesen, UI or port acceptance claims.
+ """
+ from pathlib import Path
+-import sys,json,hashlib
++import sys,json,hashlib,os
+ ROOT=Path(__file__).resolve().parents[2]
+ sys.path.insert(0,str(ROOT/'batches/trade_source'))
+ import replay_trade as t
+ FRAME=0x5a00;STACK=0x5f00;SRC=0x6dcd;DST=SRC+83
+-BASELINE=(ROOT/'evidence/roundtrip/baseline.sram').read_bytes()
++BASELINE=Path(os.environ['GK_SRAM']).read_bytes()
+ word=t.word;put=t.put
+ class Cpu(t.Cpu):
+  def step(self):
+--- original/batches/commodity_identity/replay_identity.py
++++ portable/batches/commodity_identity/replay_identity.py
+@@ -4,7 +4,7 @@
+ from pathlib import Path
+ ROOT=Path(__file__).resolve().parent
+ BASE=ROOT.parents[1]
+-os.environ['GK_ROM']=str(BASE/'private/Genghis Khan (USA).nes')
++assert os.environ.get('GK_ROM'), 'Set GK_ROM explicitly'
+ p=BASE/'output/research/Genghis_Khan_NES/v1.06/tools/replay_b7_arithmetic.py'
+ spec=importlib.util.spec_from_file_location('helpers',p);h=importlib.util.module_from_spec(spec);spec.loader.exec_module(h)
+ 
+--- original/batches/commodity_identity/test_identity.py
++++ portable/batches/commodity_identity/test_identity.py
+@@ -8,7 +8,7 @@
+  def test_rom_identity(self):
+   self.assertEqual(hashlib.sha256(r.h.ROM.read_bytes()).hexdigest(),'ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3')
+  def test_manual_identity(self):
+-  self.assertEqual(hashlib.sha256((ROOT/'Genghis_Khan_NES_USA_manual_archive.pdf').read_bytes()).hexdigest(),'ecc2150b0ef43861b3590fa8d1671b99fe5f486894b1289836eb77265f49d0ae')
++  self.assertEqual(hashlib.sha256(Path(os.environ['GK_MANUAL']).read_bytes()).hexdigest(),'ecc2150b0ef43861b3590fa8d1671b99fe5f486894b1289836eb77265f49d0ae')
+  def test_original_stock_address_bytes(self):
+   self.assertEqual(r.h.FIX[0xdf05-0xc000:0xdf11-0xc000],bytes.fromhex('20 85 ef 00 00 0d d2 1c bb 8f 22 cf'))
+  def test_all_eleven_stock_addresses(self):
+@@ -37,7 +37,7 @@
+   self.assertNotEqual(int.from_bytes(c.m[0x71f8:0x71fa],'little'),r.run_layout(11)['quote_x_tile'])
+  def test_known_runtime_transactions_match_addresses(self):
+   def word(file,address):
+-   b=(BASE/'evidence/roundtrip'/file).read_bytes();return int.from_bytes(b[address-0x6000:address-0x6000+2],'little')
++   b=(Path(os.environ['GK_EVIDENCE'])/'roundtrip'/file).read_bytes();return int.from_bytes(b[address-0x6000:address-0x6000+2],'little')
+   self.assertEqual((word('baseline.sram',0x6df3),word('buy1_result.sram',0x6df3)),(26,27))
+   self.assertEqual((word('baseline.sram',0x6df9),word('food_settled.sram',0x6df9)),(50,51))
+   self.assertEqual((word('baseline.sram',0x6e03),word('food_settled.sram',0x6e03)),(208,208))

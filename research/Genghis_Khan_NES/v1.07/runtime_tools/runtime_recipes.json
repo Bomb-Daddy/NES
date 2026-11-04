@@ -1,0 +1,2961 @@
+{
+  "instructions": "Data only; does not start or control Mesen. Root applies these through its existing session. Physical nesPrgRom offsets exclude the16-byte iNES header.",
+  "recipes": [
+    {
+      "name": "storm_positive",
+      "scenario": "World27",
+      "required_target_ownership": "AI country2",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 17933,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "860D"
+      },
+      "entry_writes": [
+        {
+          "field": "arms",
+          "address": 28212,
+          "address_hex": "6E34",
+          "bytes": [
+            106,
+            0
+          ],
+          "value": 106
+        },
+        {
+          "field": "skill",
+          "address": 28214,
+          "address_hex": "6E36",
+          "bytes": [
+            115,
+            0
+          ],
+          "value": 115
+        },
+        {
+          "field": "troops",
+          "address": 28216,
+          "address_hex": "6E38",
+          "bytes": [
+            100,
+            0
+          ],
+          "value": 100
+        },
+        {
+          "field": "economy",
+          "address": 28218,
+          "address_hex": "6E3A",
+          "bytes": [
+            77,
+            1
+          ],
+          "value": 333
+        },
+        {
+          "field": "town",
+          "address": 28220,
+          "address_hex": "6E3C",
+          "bytes": [
+            200,
+            0
+          ],
+          "value": 200
+        },
+        {
+          "field": "defense",
+          "address": 28222,
+          "address_hex": "6E3E",
+          "bytes": [
+            9,
+            3
+          ],
+          "value": 777
+        },
+        {
+          "field": "masons",
+          "address": 28224,
+          "address_hex": "6E40",
+          "bytes": [
+            50,
+            0
+          ],
+          "value": 50
+        },
+        {
+          "field": "good0",
+          "address": 28226,
+          "address_hex": "6E42",
+          "bytes": [
+            73,
+            0
+          ],
+          "value": 73
+        },
+        {
+          "field": "food",
+          "address": 28246,
+          "address_hex": "6E56",
+          "bytes": [
+            33,
+            1
+          ],
+          "value": 289
+        },
+        {
+          "field": "commodity_history",
+          "address": 28248,
+          "address_hex": "6E58",
+          "bytes": [
+            44,
+            1
+          ],
+          "value": 300
+        },
+        {
+          "field": "artisans",
+          "address": 28250,
+          "address_hex": "6E5A",
+          "bytes": [
+            80,
+            0
+          ],
+          "value": 80
+        },
+        {
+          "field": "food_history",
+          "address": 28252,
+          "address_hex": "6E5C",
+          "bytes": [
+            144,
+            1
+          ],
+          "value": 400
+        },
+        {
+          "field": "foodworkers",
+          "address": 28254,
+          "address_hex": "6E5E",
+          "bytes": [
+            70,
+            0
+          ],
+          "value": 70
+        },
+        {
+          "field": "gold",
+          "address": 28256,
+          "address_hex": "6E60",
+          "bytes": [
+            193,
+            1
+          ],
+          "value": 449
+        },
+        {
+          "field": "morale",
+          "address": 28258,
+          "address_hex": "6E62",
+          "bytes": [
+            140,
+            0
+          ],
+          "value": 140
+        },
+        {
+          "field": "tax",
+          "address": 28260,
+          "address_hex": "6E64",
+          "bytes": [
+            35,
+            0
+          ],
+          "value": 35
+        },
+        {
+          "field": "extra_used",
+          "address": 28262,
+          "address_hex": "6E66",
+          "bytes": [
+            1,
+            0
+          ],
+          "value": 1
+        },
+        {
+          "field": "residents",
+          "address": 28265,
+          "address_hex": "6E69",
+          "bytes": [
+            244,
+            1
+          ],
+          "value": 500
+        },
+        {
+          "field": "trained",
+          "address": 28264,
+          "address_hex": "6E68",
+          "bytes": [
+            40
+          ],
+          "value": 40
+        },
+        {
+          "field": "difficulty",
+          "address": 31368,
+          "bytes": [
+            1,
+            0
+          ]
+        },
+        {
+          "field": "gate_seed_big_endian",
+          "address": 132,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            206
+          ]
+        },
+        {
+          "field": "NMI_rng_increment_guard",
+          "address": 138,
+          "bytes": [
+            1
+          ]
+        }
+      ],
+      "expected_event_flags": {
+        "address": 31612,
+        "words": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "first_effect_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 17802,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "858A"
+      },
+      "first_effect_seed_write": {
+        "address": 132,
+        "bytes": [
+          18,
+          52,
+          86,
+          120,
+          154,
+          188
+        ]
+      },
+      "remove_first_effect_breakpoint_after_first_hit": true,
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 17713,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "8531"
+      },
+      "expected_after": {
+        "arms": 106,
+        "skill": 115,
+        "troops": 100,
+        "economy": 244,
+        "town": 200,
+        "defense": 583,
+        "masons": 50,
+        "good0": 73,
+        "food": 289,
+        "commodity_history": 300,
+        "artisans": 80,
+        "food_history": 400,
+        "foodworkers": 70,
+        "gold": 449,
+        "morale": 140,
+        "tax": 35,
+        "extra_used": 1,
+        "residents": 405,
+        "trained": 34
+      },
+      "sickness_year_note": null,
+      "restore_note": "Record old byte$8A before patch; restore after final capture or restore fullcheckpoint. Original NMI seed increments skipped while8A nonzero; native RNG still runs."
+    },
+    {
+      "name": "storm_negative",
+      "scenario": "World27",
+      "required_target_ownership": "AI country2",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 17933,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "860D"
+      },
+      "entry_writes": [
+        {
+          "field": "arms",
+          "address": 28212,
+          "address_hex": "6E34",
+          "bytes": [
+            106,
+            0
+          ],
+          "value": 106
+        },
+        {
+          "field": "skill",
+          "address": 28214,
+          "address_hex": "6E36",
+          "bytes": [
+            115,
+            0
+          ],
+          "value": 115
+        },
+        {
+          "field": "troops",
+          "address": 28216,
+          "address_hex": "6E38",
+          "bytes": [
+            100,
+            0
+          ],
+          "value": 100
+        },
+        {
+          "field": "economy",
+          "address": 28218,
+          "address_hex": "6E3A",
+          "bytes": [
+            77,
+            1
+          ],
+          "value": 333
+        },
+        {
+          "field": "town",
+          "address": 28220,
+          "address_hex": "6E3C",
+          "bytes": [
+            200,
+            0
+          ],
+          "value": 200
+        },
+        {
+          "field": "defense",
+          "address": 28222,
+          "address_hex": "6E3E",
+          "bytes": [
+            9,
+            3
+          ],
+          "value": 777
+        },
+        {
+          "field": "masons",
+          "address": 28224,
+          "address_hex": "6E40",
+          "bytes": [
+            50,
+            0
+          ],
+          "value": 50
+        },
+        {
+          "field": "good0",
+          "address": 28226,
+          "address_hex": "6E42",
+          "bytes": [
+            73,
+            0
+          ],
+          "value": 73
+        },
+        {
+          "field": "food",
+          "address": 28246,
+          "address_hex": "6E56",
+          "bytes": [
+            33,
+            1
+          ],
+          "value": 289
+        },
+        {
+          "field": "commodity_history",
+          "address": 28248,
+          "address_hex": "6E58",
+          "bytes": [
+            44,
+            1
+          ],
+          "value": 300
+        },
+        {
+          "field": "artisans",
+          "address": 28250,
+          "address_hex": "6E5A",
+          "bytes": [
+            80,
+            0
+          ],
+          "value": 80
+        },
+        {
+          "field": "food_history",
+          "address": 28252,
+          "address_hex": "6E5C",
+          "bytes": [
+            144,
+            1
+          ],
+          "value": 400
+        },
+        {
+          "field": "foodworkers",
+          "address": 28254,
+          "address_hex": "6E5E",
+          "bytes": [
+            70,
+            0
+          ],
+          "value": 70
+        },
+        {
+          "field": "gold",
+          "address": 28256,
+          "address_hex": "6E60",
+          "bytes": [
+            193,
+            1
+          ],
+          "value": 449
+        },
+        {
+          "field": "morale",
+          "address": 28258,
+          "address_hex": "6E62",
+          "bytes": [
+            140,
+            0
+          ],
+          "value": 140
+        },
+        {
+          "field": "tax",
+          "address": 28260,
+          "address_hex": "6E64",
+          "bytes": [
+            35,
+            0
+          ],
+          "value": 35
+        },
+        {
+          "field": "extra_used",
+          "address": 28262,
+          "address_hex": "6E66",
+          "bytes": [
+            1,
+            0
+          ],
+          "value": 1
+        },
+        {
+          "field": "residents",
+          "address": 28265,
+          "address_hex": "6E69",
+          "bytes": [
+            244,
+            1
+          ],
+          "value": 500
+        },
+        {
+          "field": "trained",
+          "address": 28264,
+          "address_hex": "6E68",
+          "bytes": [
+            40
+          ],
+          "value": 40
+        },
+        {
+          "field": "difficulty",
+          "address": 31368,
+          "bytes": [
+            1,
+            0
+          ]
+        },
+        {
+          "field": "gate_seed_big_endian",
+          "address": 132,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "field": "NMI_rng_increment_guard",
+          "address": 138,
+          "bytes": [
+            1
+          ]
+        }
+      ],
+      "expected_event_flags": "Global gate returns; no new event flag writes required. Existing flags may be stale.",
+      "first_effect_breakpoint": null,
+      "first_effect_seed_write": null,
+      "remove_first_effect_breakpoint_after_first_hit": null,
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 17062,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "82A6"
+      },
+      "expected_after": {
+        "arms": 106,
+        "skill": 115,
+        "troops": 100,
+        "economy": 333,
+        "town": 200,
+        "defense": 777,
+        "masons": 50,
+        "good0": 73,
+        "food": 289,
+        "commodity_history": 300,
+        "artisans": 80,
+        "food_history": 400,
+        "foodworkers": 70,
+        "gold": 449,
+        "morale": 140,
+        "tax": 35,
+        "extra_used": 1,
+        "residents": 500,
+        "trained": 40
+      },
+      "sickness_year_note": null,
+      "restore_note": "Record old byte$8A before patch; restore after final capture or restore fullcheckpoint. Original NMI seed increments skipped while8A nonzero; native RNG still runs."
+    },
+    {
+      "name": "cold_positive",
+      "scenario": "Mongol14",
+      "required_target_ownership": "human country1",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 18124,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "86CC"
+      },
+      "entry_writes": [
+        {
+          "field": "arms",
+          "address": 28129,
+          "address_hex": "6DE1",
+          "bytes": [
+            106,
+            0
+          ],
+          "value": 106
+        },
+        {
+          "field": "skill",
+          "address": 28131,
+          "address_hex": "6DE3",
+          "bytes": [
+            115,
+            0
+          ],
+          "value": 115
+        },
+        {
+          "field": "troops",
+          "address": 28133,
+          "address_hex": "6DE5",
+          "bytes": [
+            100,
+            0
+          ],
+          "value": 100
+        },
+        {
+          "field": "economy",
+          "address": 28135,
+          "address_hex": "6DE7",
+          "bytes": [
+            77,
+            1
+          ],
+          "value": 333
+        },
+        {
+          "field": "town",
+          "address": 28137,
+          "address_hex": "6DE9",
+          "bytes": [
+            200,
+            0
+          ],
+          "value": 200
+        },
+        {
+          "field": "defense",
+          "address": 28139,
+          "address_hex": "6DEB",
+          "bytes": [
+            9,
+            3
+          ],
+          "value": 777
+        },
+        {
+          "field": "masons",
+          "address": 28141,
+          "address_hex": "6DED",
+          "bytes": [
+            50,
+            0
+          ],
+          "value": 50
+        },
+        {
+          "field": "good0",
+          "address": 28143,
+          "address_hex": "6DEF",
+          "bytes": [
+            73,
+            0
+          ],
+          "value": 73
+        },
+        {
+          "field": "food",
+          "address": 28163,
+          "address_hex": "6E03",
+          "bytes": [
+            33,
+            1
+          ],
+          "value": 289
+        },
+        {
+          "field": "commodity_history",
+          "address": 28165,
+          "address_hex": "6E05",
+          "bytes": [
+            44,
+            1
+          ],
+          "value": 300
+        },
+        {
+          "field": "artisans",
+          "address": 28167,
+          "address_hex": "6E07",
+          "bytes": [
+            80,
+            0
+          ],
+          "value": 80
+        },
+        {
+          "field": "food_history",
+          "address": 28169,
+          "address_hex": "6E09",
+          "bytes": [
+            144,
+            1
+          ],
+          "value": 400
+        },
+        {
+          "field": "foodworkers",
+          "address": 28171,
+          "address_hex": "6E0B",
+          "bytes": [
+            70,
+            0
+          ],
+          "value": 70
+        },
+        {
+          "field": "gold",
+          "address": 28173,
+          "address_hex": "6E0D",
+          "bytes": [
+            193,
+            1
+          ],
+          "value": 449
+        },
+        {
+          "field": "morale",
+          "address": 28175,
+          "address_hex": "6E0F",
+          "bytes": [
+            140,
+            0
+          ],
+          "value": 140
+        },
+        {
+          "field": "tax",
+          "address": 28177,
+          "address_hex": "6E11",
+          "bytes": [
+            35,
+            0
+          ],
+          "value": 35
+        },
+        {
+          "field": "extra_used",
+          "address": 28179,
+          "address_hex": "6E13",
+          "bytes": [
+            1,
+            0
+          ],
+          "value": 1
+        },
+        {
+          "field": "residents",
+          "address": 28182,
+          "address_hex": "6E16",
+          "bytes": [
+            244,
+            1
+          ],
+          "value": 500
+        },
+        {
+          "field": "trained",
+          "address": 28181,
+          "address_hex": "6E15",
+          "bytes": [
+            40
+          ],
+          "value": 40
+        },
+        {
+          "field": "difficulty",
+          "address": 31368,
+          "bytes": [
+            1,
+            0
+          ]
+        },
+        {
+          "field": "gate_seed_big_endian",
+          "address": 132,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            206
+          ]
+        },
+        {
+          "field": "NMI_rng_increment_guard",
+          "address": 138,
+          "bytes": [
+            1
+          ]
+        }
+      ],
+      "expected_event_flags": {
+        "address": 31612,
+        "words": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "first_effect_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 17802,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "858A"
+      },
+      "first_effect_seed_write": {
+        "address": 132,
+        "bytes": [
+          18,
+          52,
+          86,
+          120,
+          154,
+          188
+        ]
+      },
+      "remove_first_effect_breakpoint_after_first_hit": true,
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 17713,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "8531"
+      },
+      "expected_after": {
+        "arms": 106,
+        "skill": 115,
+        "troops": 100,
+        "economy": 264,
+        "town": 200,
+        "defense": 777,
+        "masons": 50,
+        "good0": 73,
+        "food": 289,
+        "commodity_history": 0,
+        "artisans": 80,
+        "food_history": 0,
+        "foodworkers": 70,
+        "gold": 449,
+        "morale": 140,
+        "tax": 35,
+        "extra_used": 1,
+        "residents": 400,
+        "trained": 32
+      },
+      "sickness_year_note": null,
+      "restore_note": "Record old byte$8A before patch; restore after final capture or restore fullcheckpoint. Original NMI seed increments skipped while8A nonzero; native RNG still runs."
+    },
+    {
+      "name": "cold_negative",
+      "scenario": "Mongol14",
+      "required_target_ownership": "human country1",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 18124,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "86CC"
+      },
+      "entry_writes": [
+        {
+          "field": "arms",
+          "address": 28129,
+          "address_hex": "6DE1",
+          "bytes": [
+            106,
+            0
+          ],
+          "value": 106
+        },
+        {
+          "field": "skill",
+          "address": 28131,
+          "address_hex": "6DE3",
+          "bytes": [
+            115,
+            0
+          ],
+          "value": 115
+        },
+        {
+          "field": "troops",
+          "address": 28133,
+          "address_hex": "6DE5",
+          "bytes": [
+            100,
+            0
+          ],
+          "value": 100
+        },
+        {
+          "field": "economy",
+          "address": 28135,
+          "address_hex": "6DE7",
+          "bytes": [
+            77,
+            1
+          ],
+          "value": 333
+        },
+        {
+          "field": "town",
+          "address": 28137,
+          "address_hex": "6DE9",
+          "bytes": [
+            200,
+            0
+          ],
+          "value": 200
+        },
+        {
+          "field": "defense",
+          "address": 28139,
+          "address_hex": "6DEB",
+          "bytes": [
+            9,
+            3
+          ],
+          "value": 777
+        },
+        {
+          "field": "masons",
+          "address": 28141,
+          "address_hex": "6DED",
+          "bytes": [
+            50,
+            0
+          ],
+          "value": 50
+        },
+        {
+          "field": "good0",
+          "address": 28143,
+          "address_hex": "6DEF",
+          "bytes": [
+            73,
+            0
+          ],
+          "value": 73
+        },
+        {
+          "field": "food",
+          "address": 28163,
+          "address_hex": "6E03",
+          "bytes": [
+            33,
+            1
+          ],
+          "value": 289
+        },
+        {
+          "field": "commodity_history",
+          "address": 28165,
+          "address_hex": "6E05",
+          "bytes": [
+            44,
+            1
+          ],
+          "value": 300
+        },
+        {
+          "field": "artisans",
+          "address": 28167,
+          "address_hex": "6E07",
+          "bytes": [
+            80,
+            0
+          ],
+          "value": 80
+        },
+        {
+          "field": "food_history",
+          "address": 28169,
+          "address_hex": "6E09",
+          "bytes": [
+            144,
+            1
+          ],
+          "value": 400
+        },
+        {
+          "field": "foodworkers",
+          "address": 28171,
+          "address_hex": "6E0B",
+          "bytes": [
+            70,
+            0
+          ],
+          "value": 70
+        },
+        {
+          "field": "gold",
+          "address": 28173,
+          "address_hex": "6E0D",
+          "bytes": [
+            193,
+            1
+          ],
+          "value": 449
+        },
+        {
+          "field": "morale",
+          "address": 28175,
+          "address_hex": "6E0F",
+          "bytes": [
+            140,
+            0
+          ],
+          "value": 140
+        },
+        {
+          "field": "tax",
+          "address": 28177,
+          "address_hex": "6E11",
+          "bytes": [
+            35,
+            0
+          ],
+          "value": 35
+        },
+        {
+          "field": "extra_used",
+          "address": 28179,
+          "address_hex": "6E13",
+          "bytes": [
+            1,
+            0
+          ],
+          "value": 1
+        },
+        {
+          "field": "residents",
+          "address": 28182,
+          "address_hex": "6E16",
+          "bytes": [
+            244,
+            1
+          ],
+          "value": 500
+        },
+        {
+          "field": "trained",
+          "address": 28181,
+          "address_hex": "6E15",
+          "bytes": [
+            40
+          ],
+          "value": 40
+        },
+        {
+          "field": "difficulty",
+          "address": 31368,
+          "bytes": [
+            1,
+            0
+          ]
+        },
+        {
+          "field": "gate_seed_big_endian",
+          "address": 132,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "field": "NMI_rng_increment_guard",
+          "address": 138,
+          "bytes": [
+            1
+          ]
+        }
+      ],
+      "expected_event_flags": "Global gate returns; no new event flag writes required. Existing flags may be stale.",
+      "first_effect_breakpoint": null,
+      "first_effect_seed_write": null,
+      "remove_first_effect_breakpoint_after_first_hit": null,
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 17062,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "82A6"
+      },
+      "expected_after": {
+        "arms": 106,
+        "skill": 115,
+        "troops": 100,
+        "economy": 333,
+        "town": 200,
+        "defense": 777,
+        "masons": 50,
+        "good0": 73,
+        "food": 289,
+        "commodity_history": 300,
+        "artisans": 80,
+        "food_history": 400,
+        "foodworkers": 70,
+        "gold": 449,
+        "morale": 140,
+        "tax": 35,
+        "extra_used": 1,
+        "residents": 500,
+        "trained": 40
+      },
+      "sickness_year_note": null,
+      "restore_note": "Record old byte$8A before patch; restore after final capture or restore fullcheckpoint. Original NMI seed increments skipped while8A nonzero; native RNG still runs."
+    },
+    {
+      "name": "sickness_positive",
+      "scenario": "Mongol14",
+      "required_target_ownership": "human country1",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 18609,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "88B1"
+      },
+      "entry_writes": [
+        {
+          "field": "arms",
+          "address": 28129,
+          "address_hex": "6DE1",
+          "bytes": [
+            106,
+            0
+          ],
+          "value": 106
+        },
+        {
+          "field": "skill",
+          "address": 28131,
+          "address_hex": "6DE3",
+          "bytes": [
+            115,
+            0
+          ],
+          "value": 115
+        },
+        {
+          "field": "troops",
+          "address": 28133,
+          "address_hex": "6DE5",
+          "bytes": [
+            100,
+            0
+          ],
+          "value": 100
+        },
+        {
+          "field": "economy",
+          "address": 28135,
+          "address_hex": "6DE7",
+          "bytes": [
+            77,
+            1
+          ],
+          "value": 333
+        },
+        {
+          "field": "town",
+          "address": 28137,
+          "address_hex": "6DE9",
+          "bytes": [
+            200,
+            0
+          ],
+          "value": 200
+        },
+        {
+          "field": "defense",
+          "address": 28139,
+          "address_hex": "6DEB",
+          "bytes": [
+            9,
+            3
+          ],
+          "value": 777
+        },
+        {
+          "field": "masons",
+          "address": 28141,
+          "address_hex": "6DED",
+          "bytes": [
+            50,
+            0
+          ],
+          "value": 50
+        },
+        {
+          "field": "good0",
+          "address": 28143,
+          "address_hex": "6DEF",
+          "bytes": [
+            73,
+            0
+          ],
+          "value": 73
+        },
+        {
+          "field": "food",
+          "address": 28163,
+          "address_hex": "6E03",
+          "bytes": [
+            33,
+            1
+          ],
+          "value": 289
+        },
+        {
+          "field": "commodity_history",
+          "address": 28165,
+          "address_hex": "6E05",
+          "bytes": [
+            44,
+            1
+          ],
+          "value": 300
+        },
+        {
+          "field": "artisans",
+          "address": 28167,
+          "address_hex": "6E07",
+          "bytes": [
+            80,
+            0
+          ],
+          "value": 80
+        },
+        {
+          "field": "food_history",
+          "address": 28169,
+          "address_hex": "6E09",
+          "bytes": [
+            144,
+            1
+          ],
+          "value": 400
+        },
+        {
+          "field": "foodworkers",
+          "address": 28171,
+          "address_hex": "6E0B",
+          "bytes": [
+            70,
+            0
+          ],
+          "value": 70
+        },
+        {
+          "field": "gold",
+          "address": 28173,
+          "address_hex": "6E0D",
+          "bytes": [
+            193,
+            1
+          ],
+          "value": 449
+        },
+        {
+          "field": "morale",
+          "address": 28175,
+          "address_hex": "6E0F",
+          "bytes": [
+            140,
+            0
+          ],
+          "value": 140
+        },
+        {
+          "field": "tax",
+          "address": 28177,
+          "address_hex": "6E11",
+          "bytes": [
+            35,
+            0
+          ],
+          "value": 35
+        },
+        {
+          "field": "extra_used",
+          "address": 28179,
+          "address_hex": "6E13",
+          "bytes": [
+            1,
+            0
+          ],
+          "value": 1
+        },
+        {
+          "field": "residents",
+          "address": 28182,
+          "address_hex": "6E16",
+          "bytes": [
+            244,
+            1
+          ],
+          "value": 500
+        },
+        {
+          "field": "trained",
+          "address": 28181,
+          "address_hex": "6E15",
+          "bytes": [
+            40
+          ],
+          "value": 40
+        },
+        {
+          "field": "difficulty",
+          "address": 31368,
+          "bytes": [
+            1,
+            0
+          ]
+        },
+        {
+          "field": "gate_seed_big_endian",
+          "address": 132,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            206
+          ]
+        },
+        {
+          "field": "NMI_rng_increment_guard",
+          "address": 138,
+          "bytes": [
+            1
+          ]
+        }
+      ],
+      "expected_event_flags": {
+        "address": 31612,
+        "words": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "first_effect_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 17802,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "858A"
+      },
+      "first_effect_seed_write": {
+        "address": 132,
+        "bytes": [
+          18,
+          52,
+          86,
+          120,
+          154,
+          188
+        ]
+      },
+      "remove_first_effect_breakpoint_after_first_hit": true,
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 17713,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "8531"
+      },
+      "expected_after": {
+        "arms": 106,
+        "skill": 115,
+        "troops": 84,
+        "economy": 297,
+        "town": 168,
+        "defense": 777,
+        "masons": 42,
+        "good0": 73,
+        "food": 289,
+        "commodity_history": 300,
+        "artisans": 68,
+        "food_history": 400,
+        "foodworkers": 59,
+        "gold": 449,
+        "morale": 108,
+        "tax": 35,
+        "extra_used": 1,
+        "residents": 425,
+        "trained": 32
+      },
+      "sickness_year_note": "Use1175 Fall or1176 Spring; special epidemic gate is bypassed.",
+      "restore_note": "Record old byte$8A before patch; restore after final capture or restore fullcheckpoint. Original NMI seed increments skipped while8A nonzero; native RNG still runs."
+    },
+    {
+      "name": "sickness_negative",
+      "scenario": "Mongol14",
+      "required_target_ownership": "human country1",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 18609,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "88B1"
+      },
+      "entry_writes": [
+        {
+          "field": "arms",
+          "address": 28129,
+          "address_hex": "6DE1",
+          "bytes": [
+            106,
+            0
+          ],
+          "value": 106
+        },
+        {
+          "field": "skill",
+          "address": 28131,
+          "address_hex": "6DE3",
+          "bytes": [
+            115,
+            0
+          ],
+          "value": 115
+        },
+        {
+          "field": "troops",
+          "address": 28133,
+          "address_hex": "6DE5",
+          "bytes": [
+            100,
+            0
+          ],
+          "value": 100
+        },
+        {
+          "field": "economy",
+          "address": 28135,
+          "address_hex": "6DE7",
+          "bytes": [
+            77,
+            1
+          ],
+          "value": 333
+        },
+        {
+          "field": "town",
+          "address": 28137,
+          "address_hex": "6DE9",
+          "bytes": [
+            200,
+            0
+          ],
+          "value": 200
+        },
+        {
+          "field": "defense",
+          "address": 28139,
+          "address_hex": "6DEB",
+          "bytes": [
+            9,
+            3
+          ],
+          "value": 777
+        },
+        {
+          "field": "masons",
+          "address": 28141,
+          "address_hex": "6DED",
+          "bytes": [
+            50,
+            0
+          ],
+          "value": 50
+        },
+        {
+          "field": "good0",
+          "address": 28143,
+          "address_hex": "6DEF",
+          "bytes": [
+            73,
+            0
+          ],
+          "value": 73
+        },
+        {
+          "field": "food",
+          "address": 28163,
+          "address_hex": "6E03",
+          "bytes": [
+            33,
+            1
+          ],
+          "value": 289
+        },
+        {
+          "field": "commodity_history",
+          "address": 28165,
+          "address_hex": "6E05",
+          "bytes": [
+            44,
+            1
+          ],
+          "value": 300
+        },
+        {
+          "field": "artisans",
+          "address": 28167,
+          "address_hex": "6E07",
+          "bytes": [
+            80,
+            0
+          ],
+          "value": 80
+        },
+        {
+          "field": "food_history",
+          "address": 28169,
+          "address_hex": "6E09",
+          "bytes": [
+            144,
+            1
+          ],
+          "value": 400
+        },
+        {
+          "field": "foodworkers",
+          "address": 28171,
+          "address_hex": "6E0B",
+          "bytes": [
+            70,
+            0
+          ],
+          "value": 70
+        },
+        {
+          "field": "gold",
+          "address": 28173,
+          "address_hex": "6E0D",
+          "bytes": [
+            193,
+            1
+          ],
+          "value": 449
+        },
+        {
+          "field": "morale",
+          "address": 28175,
+          "address_hex": "6E0F",
+          "bytes": [
+            140,
+            0
+          ],
+          "value": 140
+        },
+        {
+          "field": "tax",
+          "address": 28177,
+          "address_hex": "6E11",
+          "bytes": [
+            35,
+            0
+          ],
+          "value": 35
+        },
+        {
+          "field": "extra_used",
+          "address": 28179,
+          "address_hex": "6E13",
+          "bytes": [
+            1,
+            0
+          ],
+          "value": 1
+        },
+        {
+          "field": "residents",
+          "address": 28182,
+          "address_hex": "6E16",
+          "bytes": [
+            244,
+            1
+          ],
+          "value": 500
+        },
+        {
+          "field": "trained",
+          "address": 28181,
+          "address_hex": "6E15",
+          "bytes": [
+            40
+          ],
+          "value": 40
+        },
+        {
+          "field": "difficulty",
+          "address": 31368,
+          "bytes": [
+            1,
+            0
+          ]
+        },
+        {
+          "field": "gate_seed_big_endian",
+          "address": 132,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            8
+          ]
+        },
+        {
+          "field": "NMI_rng_increment_guard",
+          "address": 138,
+          "bytes": [
+            1
+          ]
+        }
+      ],
+      "expected_event_flags": "Global gate returns; no new event flag writes required. Existing flags may be stale.",
+      "first_effect_breakpoint": null,
+      "first_effect_seed_write": null,
+      "remove_first_effect_breakpoint_after_first_hit": null,
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 17073,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "82B1"
+      },
+      "expected_after": {
+        "arms": 106,
+        "skill": 115,
+        "troops": 100,
+        "economy": 333,
+        "town": 200,
+        "defense": 777,
+        "masons": 50,
+        "good0": 73,
+        "food": 289,
+        "commodity_history": 300,
+        "artisans": 80,
+        "food_history": 400,
+        "foodworkers": 70,
+        "gold": 449,
+        "morale": 140,
+        "tax": 35,
+        "extra_used": 1,
+        "residents": 500,
+        "trained": 40
+      },
+      "sickness_year_note": "Use1175 Fall or1176 Spring; special epidemic gate is bypassed.",
+      "note": "Use Fall1175 for the stated next-routine capture breakpoint82B1; Spring resumes family/aging instead.",
+      "restore_note": "Record old byte$8A before patch; restore after final capture or restore fullcheckpoint. Original NMI seed increments skipped while8A nonzero; native RNG still runs."
+    },
+    {
+      "name": "theft_positive",
+      "scenario": "Mongol14",
+      "target": "country1; native entry8295 when current-country $7B34=0",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 661,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 0,
+        "cpu_address_hex": "8295"
+      },
+      "entry_writes": [
+        {
+          "field": "troops",
+          "address": 28133,
+          "address_hex": "6DE5",
+          "bytes": [
+            61,
+            0
+          ],
+          "value": 61
+        },
+        {
+          "field": "town",
+          "address": 28137,
+          "address_hex": "6DE9",
+          "bytes": [
+            5,
+            0
+          ],
+          "value": 5
+        },
+        {
+          "field": "masons",
+          "address": 28141,
+          "address_hex": "6DED",
+          "bytes": [
+            4,
+            0
+          ],
+          "value": 4
+        },
+        {
+          "field": "artisans",
+          "address": 28167,
+          "address_hex": "6E07",
+          "bytes": [
+            6,
+            0
+          ],
+          "value": 6
+        },
+        {
+          "field": "foodworkers",
+          "address": 28171,
+          "address_hex": "6E0B",
+          "bytes": [
+            27,
+            0
+          ],
+          "value": 27
+        },
+        {
+          "field": "morale",
+          "address": 28175,
+          "address_hex": "6E0F",
+          "bytes": [
+            118,
+            0
+          ],
+          "value": 118
+        },
+        {
+          "field": "trained",
+          "address": 28181,
+          "address_hex": "6E15",
+          "bytes": [
+            32
+          ],
+          "value": 32
+        },
+        {
+          "field": "food",
+          "address": 28163,
+          "address_hex": "6E03",
+          "bytes": [
+            231,
+            3
+          ],
+          "value": 999
+        },
+        {
+          "field": "gold",
+          "address": 28173,
+          "address_hex": "6E0D",
+          "bytes": [
+            193,
+            1
+          ],
+          "value": 449
+        },
+        {
+          "field": "commodity_history",
+          "address": 28165,
+          "address_hex": "6E05",
+          "bytes": [
+            6,
+            0
+          ],
+          "value": 6
+        },
+        {
+          "field": "food_history",
+          "address": 28169,
+          "address_hex": "6E09",
+          "bytes": [
+            27,
+            0
+          ],
+          "value": 27
+        },
+        {
+          "field": "difficulty",
+          "address": 31368,
+          "bytes": [
+            1,
+            0
+          ]
+        },
+        {
+          "field": "seed",
+          "address": 132,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            6
+          ]
+        },
+        {
+          "field": "NMI_rng_increment_guard",
+          "address": 138,
+          "bytes": [
+            1
+          ]
+        }
+      ],
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 253452,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 15,
+        "cpu_address_hex": "DE0C"
+      },
+      "expected_food": 730,
+      "note": "Positive capture before UI; negative capture at following low-Morale warning native entry.",
+      "restore_note": "Record old byte$8A before patch; restore after final capture or restore fullcheckpoint. Original NMI seed increments skipped while8A nonzero; native RNG still runs."
+    },
+    {
+      "name": "theft_negative",
+      "scenario": "Mongol14",
+      "target": "country1; native entry8295 when current-country $7B34=0",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 661,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 0,
+        "cpu_address_hex": "8295"
+      },
+      "entry_writes": [
+        {
+          "field": "troops",
+          "address": 28133,
+          "address_hex": "6DE5",
+          "bytes": [
+            61,
+            0
+          ],
+          "value": 61
+        },
+        {
+          "field": "town",
+          "address": 28137,
+          "address_hex": "6DE9",
+          "bytes": [
+            5,
+            0
+          ],
+          "value": 5
+        },
+        {
+          "field": "masons",
+          "address": 28141,
+          "address_hex": "6DED",
+          "bytes": [
+            4,
+            0
+          ],
+          "value": 4
+        },
+        {
+          "field": "artisans",
+          "address": 28167,
+          "address_hex": "6E07",
+          "bytes": [
+            6,
+            0
+          ],
+          "value": 6
+        },
+        {
+          "field": "foodworkers",
+          "address": 28171,
+          "address_hex": "6E0B",
+          "bytes": [
+            27,
+            0
+          ],
+          "value": 27
+        },
+        {
+          "field": "morale",
+          "address": 28175,
+          "address_hex": "6E0F",
+          "bytes": [
+            118,
+            0
+          ],
+          "value": 118
+        },
+        {
+          "field": "trained",
+          "address": 28181,
+          "address_hex": "6E15",
+          "bytes": [
+            32
+          ],
+          "value": 32
+        },
+        {
+          "field": "food",
+          "address": 28163,
+          "address_hex": "6E03",
+          "bytes": [
+            231,
+            3
+          ],
+          "value": 999
+        },
+        {
+          "field": "gold",
+          "address": 28173,
+          "address_hex": "6E0D",
+          "bytes": [
+            193,
+            1
+          ],
+          "value": 449
+        },
+        {
+          "field": "commodity_history",
+          "address": 28165,
+          "address_hex": "6E05",
+          "bytes": [
+            6,
+            0
+          ],
+          "value": 6
+        },
+        {
+          "field": "food_history",
+          "address": 28169,
+          "address_hex": "6E09",
+          "bytes": [
+            27,
+            0
+          ],
+          "value": 27
+        },
+        {
+          "field": "difficulty",
+          "address": 31368,
+          "bytes": [
+            1,
+            0
+          ]
+        },
+        {
+          "field": "seed",
+          "address": 132,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "field": "NMI_rng_increment_guard",
+          "address": 138,
+          "bytes": [
+            1
+          ]
+        }
+      ],
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 838,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 0,
+        "cpu_address_hex": "8346"
+      },
+      "expected_food": 999,
+      "note": "Positive capture before UI; negative capture at following low-Morale warning native entry.",
+      "restore_note": "Record old byte$8A before patch; restore after final capture or restore fullcheckpoint. Original NMI seed increments skipped while8A nonzero; native RNG still runs."
+    },
+    {
+      "name": "spring_food_10",
+      "scenario": "Mongol14",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 16537,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "8099"
+      },
+      "entry_writes": [
+        {
+          "field": "troops",
+          "address": 28133,
+          "address_hex": "6DE5",
+          "bytes": [
+            61,
+            0
+          ],
+          "value": 61
+        },
+        {
+          "field": "town",
+          "address": 28137,
+          "address_hex": "6DE9",
+          "bytes": [
+            5,
+            0
+          ],
+          "value": 5
+        },
+        {
+          "field": "masons",
+          "address": 28141,
+          "address_hex": "6DED",
+          "bytes": [
+            4,
+            0
+          ],
+          "value": 4
+        },
+        {
+          "field": "artisans",
+          "address": 28167,
+          "address_hex": "6E07",
+          "bytes": [
+            6,
+            0
+          ],
+          "value": 6
+        },
+        {
+          "field": "foodworkers",
+          "address": 28171,
+          "address_hex": "6E0B",
+          "bytes": [
+            27,
+            0
+          ],
+          "value": 27
+        },
+        {
+          "field": "economy",
+          "address": 28135,
+          "address_hex": "6DE7",
+          "bytes": [
+            177,
+            0
+          ],
+          "value": 177
+        },
+        {
+          "field": "morale",
+          "address": 28175,
+          "address_hex": "6E0F",
+          "bytes": [
+            118,
+            0
+          ],
+          "value": 118
+        },
+        {
+          "field": "tax",
+          "address": 28177,
+          "address_hex": "6E11",
+          "bytes": [
+            35,
+            0
+          ],
+          "value": 35
+        },
+        {
+          "field": "gold",
+          "address": 28173,
+          "address_hex": "6E0D",
+          "bytes": [
+            193,
+            1
+          ],
+          "value": 449
+        },
+        {
+          "field": "food",
+          "address": 28163,
+          "address_hex": "6E03",
+          "bytes": [
+            10,
+            0
+          ],
+          "value": 10
+        },
+        {
+          "field": "residents",
+          "address": 28182,
+          "address_hex": "6E16",
+          "bytes": [
+            34,
+            0
+          ],
+          "value": 34
+        },
+        {
+          "field": "trained",
+          "address": 28181,
+          "address_hex": "6E15",
+          "bytes": [
+            32
+          ],
+          "value": 32
+        },
+        {
+          "field": "commodity_history",
+          "address": 28165,
+          "address_hex": "6E05",
+          "bytes": [
+            12,
+            0
+          ],
+          "value": 12
+        },
+        {
+          "field": "food_history",
+          "address": 28169,
+          "address_hex": "6E09",
+          "bytes": [
+            54,
+            0
+          ],
+          "value": 54
+        }
+      ],
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 16646,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "8106"
+      },
+      "expected_after_upkeep": {
+        "arms": 0,
+        "skill": 0,
+        "troops": 11,
+        "economy": 177,
+        "town": 0,
+        "defense": 0,
+        "masons": 0,
+        "good0": 0,
+        "food": 0,
+        "commodity_history": 12,
+        "artisans": 1,
+        "food_history": 54,
+        "foodworkers": 5,
+        "gold": 449,
+        "morale": 118,
+        "tax": 35,
+        "extra_used": 0,
+        "residents": 34,
+        "trained": 32
+      },
+      "note": "Stop firstcountry1 Food call after1176 Spring sickness; capture before payroll. No seed intervention required."
+    },
+    {
+      "name": "spring_food_51",
+      "scenario": "Mongol14",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 16537,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "8099"
+      },
+      "entry_writes": [
+        {
+          "field": "troops",
+          "address": 28133,
+          "address_hex": "6DE5",
+          "bytes": [
+            61,
+            0
+          ],
+          "value": 61
+        },
+        {
+          "field": "town",
+          "address": 28137,
+          "address_hex": "6DE9",
+          "bytes": [
+            5,
+            0
+          ],
+          "value": 5
+        },
+        {
+          "field": "masons",
+          "address": 28141,
+          "address_hex": "6DED",
+          "bytes": [
+            4,
+            0
+          ],
+          "value": 4
+        },
+        {
+          "field": "artisans",
+          "address": 28167,
+          "address_hex": "6E07",
+          "bytes": [
+            6,
+            0
+          ],
+          "value": 6
+        },
+        {
+          "field": "foodworkers",
+          "address": 28171,
+          "address_hex": "6E0B",
+          "bytes": [
+            27,
+            0
+          ],
+          "value": 27
+        },
+        {
+          "field": "economy",
+          "address": 28135,
+          "address_hex": "6DE7",
+          "bytes": [
+            177,
+            0
+          ],
+          "value": 177
+        },
+        {
+          "field": "morale",
+          "address": 28175,
+          "address_hex": "6E0F",
+          "bytes": [
+            118,
+            0
+          ],
+          "value": 118
+        },
+        {
+          "field": "tax",
+          "address": 28177,
+          "address_hex": "6E11",
+          "bytes": [
+            35,
+            0
+          ],
+          "value": 35
+        },
+        {
+          "field": "gold",
+          "address": 28173,
+          "address_hex": "6E0D",
+          "bytes": [
+            193,
+            1
+          ],
+          "value": 449
+        },
+        {
+          "field": "food",
+          "address": 28163,
+          "address_hex": "6E03",
+          "bytes": [
+            51,
+            0
+          ],
+          "value": 51
+        },
+        {
+          "field": "residents",
+          "address": 28182,
+          "address_hex": "6E16",
+          "bytes": [
+            34,
+            0
+          ],
+          "value": 34
+        },
+        {
+          "field": "trained",
+          "address": 28181,
+          "address_hex": "6E15",
+          "bytes": [
+            32
+          ],
+          "value": 32
+        },
+        {
+          "field": "commodity_history",
+          "address": 28165,
+          "address_hex": "6E05",
+          "bytes": [
+            12,
+            0
+          ],
+          "value": 12
+        },
+        {
+          "field": "food_history",
+          "address": 28169,
+          "address_hex": "6E09",
+          "bytes": [
+            54,
+            0
+          ],
+          "value": 54
+        }
+      ],
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 16646,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "8106"
+      },
+      "expected_after_upkeep": {
+        "arms": 0,
+        "skill": 0,
+        "troops": 60,
+        "economy": 177,
+        "town": 4,
+        "defense": 0,
+        "masons": 3,
+        "good0": 0,
+        "food": 0,
+        "commodity_history": 12,
+        "artisans": 5,
+        "food_history": 54,
+        "foodworkers": 26,
+        "gold": 449,
+        "morale": 118,
+        "tax": 35,
+        "extra_used": 0,
+        "residents": 34,
+        "trained": 32
+      },
+      "note": "Stop firstcountry1 Food call after1176 Spring sickness; capture before payroll. No seed intervention required."
+    },
+    {
+      "name": "spring_food_52",
+      "scenario": "Mongol14",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 16537,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "8099"
+      },
+      "entry_writes": [
+        {
+          "field": "troops",
+          "address": 28133,
+          "address_hex": "6DE5",
+          "bytes": [
+            61,
+            0
+          ],
+          "value": 61
+        },
+        {
+          "field": "town",
+          "address": 28137,
+          "address_hex": "6DE9",
+          "bytes": [
+            5,
+            0
+          ],
+          "value": 5
+        },
+        {
+          "field": "masons",
+          "address": 28141,
+          "address_hex": "6DED",
+          "bytes": [
+            4,
+            0
+          ],
+          "value": 4
+        },
+        {
+          "field": "artisans",
+          "address": 28167,
+          "address_hex": "6E07",
+          "bytes": [
+            6,
+            0
+          ],
+          "value": 6
+        },
+        {
+          "field": "foodworkers",
+          "address": 28171,
+          "address_hex": "6E0B",
+          "bytes": [
+            27,
+            0
+          ],
+          "value": 27
+        },
+        {
+          "field": "economy",
+          "address": 28135,
+          "address_hex": "6DE7",
+          "bytes": [
+            177,
+            0
+          ],
+          "value": 177
+        },
+        {
+          "field": "morale",
+          "address": 28175,
+          "address_hex": "6E0F",
+          "bytes": [
+            118,
+            0
+          ],
+          "value": 118
+        },
+        {
+          "field": "tax",
+          "address": 28177,
+          "address_hex": "6E11",
+          "bytes": [
+            35,
+            0
+          ],
+          "value": 35
+        },
+        {
+          "field": "gold",
+          "address": 28173,
+          "address_hex": "6E0D",
+          "bytes": [
+            193,
+            1
+          ],
+          "value": 449
+        },
+        {
+          "field": "food",
+          "address": 28163,
+          "address_hex": "6E03",
+          "bytes": [
+            52,
+            0
+          ],
+          "value": 52
+        },
+        {
+          "field": "residents",
+          "address": 28182,
+          "address_hex": "6E16",
+          "bytes": [
+            34,
+            0
+          ],
+          "value": 34
+        },
+        {
+          "field": "trained",
+          "address": 28181,
+          "address_hex": "6E15",
+          "bytes": [
+            32
+          ],
+          "value": 32
+        },
+        {
+          "field": "commodity_history",
+          "address": 28165,
+          "address_hex": "6E05",
+          "bytes": [
+            12,
+            0
+          ],
+          "value": 12
+        },
+        {
+          "field": "food_history",
+          "address": 28169,
+          "address_hex": "6E09",
+          "bytes": [
+            54,
+            0
+          ],
+          "value": 54
+        }
+      ],
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 16646,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "8106"
+      },
+      "expected_after_upkeep": {
+        "arms": 0,
+        "skill": 0,
+        "troops": 61,
+        "economy": 177,
+        "town": 5,
+        "defense": 0,
+        "masons": 4,
+        "good0": 0,
+        "food": 1,
+        "commodity_history": 12,
+        "artisans": 6,
+        "food_history": 54,
+        "foodworkers": 27,
+        "gold": 449,
+        "morale": 118,
+        "tax": 35,
+        "extra_used": 0,
+        "residents": 34,
+        "trained": 32
+      },
+      "note": "Stop firstcountry1 Food call after1176 Spring sickness; capture before payroll. No seed intervention required."
+    },
+    {
+      "name": "harvest_0",
+      "scenario": "Mongol14",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 20048,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "8E50"
+      },
+      "entry_writes": [
+        {
+          "field": "food",
+          "address": 28163,
+          "address_hex": "6E03",
+          "bytes": [
+            208,
+            0
+          ],
+          "value": 208
+        },
+        {
+          "field": "good0",
+          "address": 28143,
+          "address_hex": "6DEF",
+          "bytes": [
+            73,
+            0
+          ],
+          "value": 73
+        },
+        {
+          "field": "food_history",
+          "address": 28169,
+          "address_hex": "6E09",
+          "bytes": [
+            40,
+            0
+          ],
+          "value": 40
+        },
+        {
+          "field": "commodity_history",
+          "address": 28165,
+          "address_hex": "6E05",
+          "bytes": [
+            40,
+            0
+          ],
+          "value": 40
+        },
+        {
+          "field": "foodworkers",
+          "address": 28171,
+          "address_hex": "6E0B",
+          "bytes": [
+            27,
+            0
+          ],
+          "value": 27
+        },
+        {
+          "field": "artisans",
+          "address": 28167,
+          "address_hex": "6E07",
+          "bytes": [
+            6,
+            0
+          ],
+          "value": 6
+        },
+        {
+          "field": "extra_used",
+          "address": 28179,
+          "address_hex": "6E13",
+          "bytes": [
+            1,
+            0
+          ],
+          "value": 1
+        }
+      ],
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 18609,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "88B1"
+      },
+      "expected_after": {
+        "food": 248,
+        "good0": 113,
+        "food_history": 0,
+        "commodity_history": 0,
+        "foodworkers": 27,
+        "artisans": 6,
+        "extra_used": 0
+      },
+      "note": "Entry is after seasonal worker accumulation. Verify country1 specialty byte$7692=0. Capture before Autumn sickness."
+    },
+    {
+      "name": "harvest_1",
+      "scenario": "Mongol14",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 20048,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "8E50"
+      },
+      "entry_writes": [
+        {
+          "field": "food",
+          "address": 28163,
+          "address_hex": "6E03",
+          "bytes": [
+            208,
+            0
+          ],
+          "value": 208
+        },
+        {
+          "field": "good0",
+          "address": 28143,
+          "address_hex": "6DEF",
+          "bytes": [
+            73,
+            0
+          ],
+          "value": 73
+        },
+        {
+          "field": "food_history",
+          "address": 28169,
+          "address_hex": "6E09",
+          "bytes": [
+            100,
+            0
+          ],
+          "value": 100
+        },
+        {
+          "field": "commodity_history",
+          "address": 28165,
+          "address_hex": "6E05",
+          "bytes": [
+            100,
+            0
+          ],
+          "value": 100
+        },
+        {
+          "field": "foodworkers",
+          "address": 28171,
+          "address_hex": "6E0B",
+          "bytes": [
+            27,
+            0
+          ],
+          "value": 27
+        },
+        {
+          "field": "artisans",
+          "address": 28167,
+          "address_hex": "6E07",
+          "bytes": [
+            6,
+            0
+          ],
+          "value": 6
+        },
+        {
+          "field": "extra_used",
+          "address": 28179,
+          "address_hex": "6E13",
+          "bytes": [
+            1,
+            0
+          ],
+          "value": 1
+        }
+      ],
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 18609,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "88B1"
+      },
+      "expected_after": {
+        "food": 308,
+        "good0": 173,
+        "food_history": 0,
+        "commodity_history": 0,
+        "foodworkers": 27,
+        "artisans": 6,
+        "extra_used": 0
+      },
+      "note": "Entry is after seasonal worker accumulation. Verify country1 specialty byte$7692=0. Capture before Autumn sickness."
+    },
+    {
+      "name": "harvest_2",
+      "scenario": "Mongol14",
+      "entry_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 20048,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "8E50"
+      },
+      "entry_writes": [
+        {
+          "field": "food",
+          "address": 28163,
+          "address_hex": "6E03",
+          "bytes": [
+            132,
+            3
+          ],
+          "value": 900
+        },
+        {
+          "field": "good0",
+          "address": 28143,
+          "address_hex": "6DEF",
+          "bytes": [
+            132,
+            3
+          ],
+          "value": 900
+        },
+        {
+          "field": "food_history",
+          "address": 28169,
+          "address_hex": "6E09",
+          "bytes": [
+            150,
+            0
+          ],
+          "value": 150
+        },
+        {
+          "field": "commodity_history",
+          "address": 28165,
+          "address_hex": "6E05",
+          "bytes": [
+            125,
+            0
+          ],
+          "value": 125
+        },
+        {
+          "field": "foodworkers",
+          "address": 28171,
+          "address_hex": "6E0B",
+          "bytes": [
+            27,
+            0
+          ],
+          "value": 27
+        },
+        {
+          "field": "artisans",
+          "address": 28167,
+          "address_hex": "6E07",
+          "bytes": [
+            6,
+            0
+          ],
+          "value": 6
+        },
+        {
+          "field": "extra_used",
+          "address": 28179,
+          "address_hex": "6E13",
+          "bytes": [
+            1,
+            0
+          ],
+          "value": 1
+        }
+      ],
+      "capture_after_breakpoint": {
+        "tool": "breakpoint.create",
+        "memoryType": "nesPrgRom",
+        "address": 18609,
+        "length": 1,
+        "access": "exec",
+        "cpuType": "nes",
+        "physical_bank": 1,
+        "cpu_address_hex": "88B1"
+      },
+      "expected_after": {
+        "food": 999,
+        "good0": 999,
+        "food_history": 0,
+        "commodity_history": 0,
+        "foodworkers": 27,
+        "artisans": 6,
+        "extra_used": 0
+      },
+      "note": "Entry is after seasonal worker accumulation. Verify country1 specialty byte$7692=0. Capture before Autumn sickness."
+    }
+  ]
+}

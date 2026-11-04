@@ -1,0 +1,1449 @@
+{
+  "version": "1.07",
+  "scope": "Public authored research files; private original-game evidence is indexed separately.",
+  "exclusions": [
+    "PUBLIC_FILE_MANIFEST_v1.07.json (self hash)"
+  ],
+  "files": [
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv",
+      "bytes": 10345,
+      "sha256": "fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581",
+      "git_blob_sha1": "82126d270f45f3addcbebfd2bd196d5323476f9d"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/GK1_COMMAND_COST_MATRIX_v1.07.csv",
+      "bytes": 1209,
+      "sha256": "4f2561e887635178b26822a9fc8f98cbf7c97e14a68b3cb7dcdffdbdc1032468",
+      "git_blob_sha1": "4cd74e706c263c5b1e395cf0da71850686429c89"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/GK1_COMMODITY_CROSSWALK_v1.07.csv",
+      "bytes": 5129,
+      "sha256": "2128c483b939d51fa1094aabd84460c49d969ee7da70be3a307c494a8aa0ba7d",
+      "git_blob_sha1": "9d75d958a3715a161d60b7deaa8e652d975fd5ac"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/GK1_COMPLETE_167_PROOF_MATRIX_v1.07_2026-11-04.csv",
+      "bytes": 242769,
+      "sha256": "fab28012021a3fa9aead46a65d5610f5f529f65e6772cbcdce2d83469b733944",
+      "git_blob_sha1": "935db6df0b33d026357af40fb7a715f992709007"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_BATCH_COMPLETION_REGISTER_v1.07.csv",
+      "bytes": 3818,
+      "sha256": "8cc66bbf085c52578fbc3a45981ad76e32b773ecfff279ade5a1c80469114470",
+      "git_blob_sha1": "1c346f63ea6503e6d0219e5b02199914a5f4803c"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_MAPPING_COMPLETION_AND_REPRODUCTION_v1.07_2026-11-04.md",
+      "bytes": 10346,
+      "sha256": "6eb312633c415e5e30ea57d09b68b56a0e956d26f0527c71818cd29f19f09b96",
+      "git_blob_sha1": "cb47227cf32527f493ef7d0c92fcee15350fc712"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_MAPPING_v1.07_2026-11-04.md",
+      "bytes": 37679,
+      "sha256": "6c1acae449b98ce0ec8df71c0f5ec6e2e83a12df1f2ed8f664f76aa57f05cd12",
+      "git_blob_sha1": "8baf229c8b2f6a3e6f14eb09047011708b892c3f"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/GK1_Evidence_Parts_v1.07.json",
+      "bytes": 8114,
+      "sha256": "c823e4dc2e0f0c6fb7aebc7e57bf86b0e8ebd659422aae146c3b6cb6ff5bb1e1",
+      "git_blob_sha1": "0ddb249c6aac6c49d3b5aad7a83b9c91bf669f5a"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/GK1_OBSERVED_LEVY_YEAR_LEDGER_v1.07.csv",
+      "bytes": 761,
+      "sha256": "16c7b93bc5e57c3d10c1edffc2a11b038f4cd559657882af6b96b21588efb2f4",
+      "git_blob_sha1": "d904f890ca07ae5fc5d459f7c73b3607682fe778"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/GK1_WORLD_FIRST_TURN_ECONOMIC_DATA_v1.07.csv",
+      "bytes": 8928,
+      "sha256": "00de78de74302bb6a26e4c7ff552419e17a0e0a61f1880ceccfc0c60fb0f6448",
+      "git_blob_sha1": "e6e9f3a7e1b3febb3809b3795016a984a5ca2f4d"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/GK1_YEARLY_ROI_COMPARISON_v1.07.csv",
+      "bytes": 1048,
+      "sha256": "d1ccd738be2fe6e970d92cf25a67224421df5a27e24c0f832aa86dccfb2f044d",
+      "git_blob_sha1": "29bfaf6e39d73be45d47ff4352470b4229769fa8"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/PUBLICATION_RECEIPT_v1.07.json",
+      "bytes": 2641,
+      "sha256": "5006e02f5aa494f6bc80f83d34d9d2e418027e4230a0adb67752bbec75e68887",
+      "git_blob_sha1": "a4ec1d2dc02f72f9f8aa9a2bdc0f946e8bb7544e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/INDEPENDENT_REVIEW.md",
+      "bytes": 12848,
+      "sha256": "19085867255d531f806ed560364301060a6709bd8ba3d54c04c918bdfdc302ed",
+      "git_blob_sha1": "7cdc5c85b55e5be841eccaeb576e848a5ca8f6f4"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/INDEPENDENT_REVIEW_RECEIPT.json",
+      "bytes": 2664,
+      "sha256": "02ed579354e641a6769728c942107f082b36e158e336135b8ea0ea7cd23190d2",
+      "git_blob_sha1": "ce4708a0edd750842ce470d1d0d8b248824999aa"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/NATIVE_VERIFICATION_SUMMARY.json",
+      "bytes": 3944,
+      "sha256": "c3dc37589c2472e0f52633e56c1d23fdcc519220bb8a7c6f4db9d6f1d7a64ebc",
+      "git_blob_sha1": "607b54f6188e3b8b18f0172055113cda7e150ce4"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/ROOT_INDEPENDENT_SOURCE_VERIFICATION.json",
+      "bytes": 57880,
+      "sha256": "f60f673f42ce39246b7ad3818879099c862213a5f261bf6c714bc0bfd69a2acf",
+      "git_blob_sha1": "10bd70d575561bb4491e0b44f7aade009225075b"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/root_base_relocation.stderr",
+      "bytes": 2193,
+      "sha256": "c58946068bb77213ecad1b6047b744fd04a8fcf27ec220e30f338d82a710464b",
+      "git_blob_sha1": "184c7cfb9f982dec754cf711b967bca99b9a97e1"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/root_commodity.stderr",
+      "bytes": 1365,
+      "sha256": "be43075b6a6a50fe9245da7dea63d932590034d67903367654386140e0aad8fb",
+      "git_blob_sha1": "28d88a709ca4bc16c87996c3a54cfe24f2300abd"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/root_domestic.stderr",
+      "bytes": 2677,
+      "sha256": "64601ddaf99f16e4072289de2a54e675d8fb284a2e7dd8499ec29c7a5c390b2e",
+      "git_blob_sha1": "8119ba6fe7a0c89762138c222d84e576c636bf86"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/root_logistics.stderr",
+      "bytes": 4591,
+      "sha256": "a70574f612101f420d09ea05694649612d2ce0d88b1c4218259df547ff70c959",
+      "git_blob_sha1": "5726f3eff5a7fef57fe042b56d1a849a73bee2f4"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/root_native_verification.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/root_native_verification.stdout",
+      "bytes": 8309,
+      "sha256": "444d3a9107c788c49f83ff5e07608e52031c40eae27fde30c3954e42fd7d9c40",
+      "git_blob_sha1": "0b06be930423700315e653c66fc6ec5c0de06cec"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/root_roi.stderr",
+      "bytes": 1684,
+      "sha256": "5ebfcf737ada2bbd8b7aab8c0409931ceadef0f62fa50a6d38c0726626dfe1d1",
+      "git_blob_sha1": "aef491e4ee715d822e5c5684078c6c26b4cec242"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/root_scenario.stderr",
+      "bytes": 1455,
+      "sha256": "497d441d50add78fb5290c84c9fd69df0374cf824231203617e695c789b25837",
+      "git_blob_sha1": "57a4e6791e702554b7cd6985315b08cf9c81ae00"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/root_scenario_setup.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/root_seasonal_core.stderr",
+      "bytes": 2797,
+      "sha256": "e3473ea56a6ffe53c923064dc9770a028c12852d4c23a11d7e5c6d91ac206ad4",
+      "git_blob_sha1": "37178cf2b180d1dd32241d6578956e643fd6456e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/root_seasonal_extension.stderr",
+      "bytes": 2817,
+      "sha256": "a178e2d7b4cfc7224ae943a8426d3fc313f2fde7a8cea5bfc045d213ce96e6f5",
+      "git_blob_sha1": "7ce84723ac4bf7ba18c83151d51dc41cd9404267"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/root_trade.stderr",
+      "bytes": 4045,
+      "sha256": "d0303f4cb4d940d1eb12d66fa75d22b8d3763d9c596b657fc6fda4e53d520a35",
+      "git_blob_sha1": "0544fd1f33c94a64e55600dab0fae8563dd6a559"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/QA/root_v106_full.stderr",
+      "bytes": 7662,
+      "sha256": "d3127b7004fa361165bf203c1a969376a1b76b6d4f6b568469b1563150c6f99b",
+      "git_blob_sha1": "15992f522917b6020f2aafe250f3575bb93e240e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/appendices/01_Commodity_identity.md",
+      "bytes": 9454,
+      "sha256": "6c45b9e41d497c7251c75418fbe7e71b45a9893c0e3202673a62322cd3127390",
+      "git_blob_sha1": "a21ad43ccb95899bb46a8d23540ce1696aa13833"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/appendices/02_Trade_hire_weapons.md",
+      "bytes": 13181,
+      "sha256": "366bcf5b016e6105727b1027ab51af04bf107f39f97e8c1716283c7eccb5abb4",
+      "git_blob_sha1": "8ee0ebd3d793a6eb63b75ec890a7eca993c5678f"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/appendices/03_Domestic_commands.md",
+      "bytes": 21956,
+      "sha256": "ae5c8cb6d70c7229aac29cc803bb15359d705e22d5898e244e9aebf8f01d3a84",
+      "git_blob_sha1": "255f2f8ee1cc21bd9748ebc94a5a7da4e99c03cf"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/appendices/04_Annual_engine.md",
+      "bytes": 18576,
+      "sha256": "230a8d43e90af653d695ebc97843e569eeea54049912a843c207f4f5bda9f62c",
+      "git_blob_sha1": "e1072bbcbdb0bd95a26da952152a014eb643a2aa"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/appendices/05_AI_and_unrest.md",
+      "bytes": 16469,
+      "sha256": "cedfad8e9454ca1daf5082065dba1d903c7228b57b8a5f18428a83c8d5c0a83b",
+      "git_blob_sha1": "d8f16e130e93895df85cd52ea890440e38bd221b"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/appendices/06_Logistics.md",
+      "bytes": 13974,
+      "sha256": "471f129e5969aea4b82012899d18badc6c99232dd7296786ecb233c9cb5a1ec4",
+      "git_blob_sha1": "9ebada1b9444e34373cd19cf247450378a663e86"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/appendices/07_Scenario_data.md",
+      "bytes": 15931,
+      "sha256": "72eac75ead20aec354a84b70978ff0aa0c7ffc5db7dc004203f4546d876136e8",
+      "git_blob_sha1": "bd09b2b78c26658d8b4ecca53eed2dcf867e3f1c"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/appendices/08_Economic_ROI.md",
+      "bytes": 15259,
+      "sha256": "3da045e78469e15b8c5f032d14afb69c3ba2b9c2ac215ba67da43f1a1ec65814",
+      "git_blob_sha1": "dddf56b34b58a4ddddf59d7592f8a5a739d5108e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/appendices/09_Annual_runtime_audit.md",
+      "bytes": 13195,
+      "sha256": "49e8a10d434606ba9e355a1805c87a456f191232ed2b4ef2cf21403c8686396a",
+      "git_blob_sha1": "a4bde8b713643965151e8a97e704d05d5b31f459"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/appendices/10_Base_relocation.md",
+      "bytes": 10916,
+      "sha256": "ecd4b4413f730fe5d8e9259e012cf3602b98e6419a9e260d5b59fb5cad24e8be",
+      "git_blob_sha1": "3bb8b7bd6db2c50dd814d8bf0930d3cdbb163efc"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/reassemble_evidence.py",
+      "bytes": 1137,
+      "sha256": "c5eb6686253905bca8360d39cc519d4ec7977155201aab6bc266417dceb5cd52",
+      "git_blob_sha1": "1bf036b131b4702c7a314c9f0d4d642baf893a64"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/MANIFEST.json",
+      "bytes": 4867,
+      "sha256": "f8aefce5d6bc4b430ca5c64c3a04cc1834fc1d33da381020b19b43f606eb5ae7",
+      "git_blob_sha1": "020db9213a8f06de208ca82a3e6fd83abca773d9"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/README.md",
+      "bytes": 3295,
+      "sha256": "1aaf7dae0c6cfd619a522c3ea35be009a81b8a52163a989fa139eeb61b9a6d3a",
+      "git_blob_sha1": "a03437810afd328b53700856db2733708700ce0f"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/ai_completion.py",
+      "bytes": 7404,
+      "sha256": "be4af5cf5d002f5794edb2a33d0df44ce86e41cc4ccd639d606dd04947d576f1",
+      "git_blob_sha1": "50d8255d3d9da24a5561a665ce1918ed10cb7eed"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/ally_gold_trace.py",
+      "bytes": 793,
+      "sha256": "9e1f421292c5e491ff8397228e8865959494b0587f3be1cf215971f6cc83f378",
+      "git_blob_sha1": "bd41bb740e4db1a4cfccca74ef96023de9e64e7d"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/assign_probes.py",
+      "bytes": 810,
+      "sha256": "9d18744a102662542124f0721138f0819dc0c1277e001c6feece92b98f609f67",
+      "git_blob_sha1": "bb1b874d0543437b953db3f8551079b369b091ce"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/crosscountry_sale.py",
+      "bytes": 940,
+      "sha256": "96d2de85667efd5ff0f1974e69a7098d5803d5852aeaa9471eabb088fa44aaee",
+      "git_blob_sha1": "6be1be25b75bc6757ec17d4a6791c465d18e9a76"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/domestic_completion.py",
+      "bytes": 16252,
+      "sha256": "2bca5bea1bb0b0f34fae8d8edd0b54ff59d24181bb430ba275f9227d31fa0c2e",
+      "git_blob_sha1": "0730fbfe7f77d860294a2334264510970b349a37"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/domestic_probes.py",
+      "bytes": 1075,
+      "sha256": "dad247795fc333d966eaa44647f77135338485134bb321e738c2ef04b197e227",
+      "git_blob_sha1": "7ce12320f4225f15a96810bac5099db839d673d4"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/event_helpers.py",
+      "bytes": 2419,
+      "sha256": "ac0499ebdb5b5ea6a04bf33c8ec722fd70886ced9c9fd55ba81fa0aa1774c4b7",
+      "git_blob_sha1": "21c3320596d74e8b1ce6bcb91767efc25776678c"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/events_mongol.py",
+      "bytes": 855,
+      "sha256": "21b86a9d05878aec776b2af1ace8d7b069a7d920ec50809c07f20787da3dd7b5",
+      "git_blob_sha1": "aa71b0731c8b0186c9382bb44a1347815aa7999a"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/events_world.py",
+      "bytes": 485,
+      "sha256": "0b6f8fe1ceacbdec12e99b0bb0fef61af8697540ceff8d6886596deca02ce029",
+      "git_blob_sha1": "0eb51f63f6dbbd5ca48ffb0c18371df32ff87d55"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/extra_tax_repeat_fixed.py",
+      "bytes": 898,
+      "sha256": "1ca06c3a5c918b2c08ca2579611dae59d2fff8f98c43f3ef9eafc2c04633e3a9",
+      "git_blob_sha1": "5681923542b83c3f0fd4e66abc73d652e2202a99"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/extra_tax_runtime.py",
+      "bytes": 771,
+      "sha256": "4aeda95f8e7e675847567743368f7216d13bedc977a8460299dc3d000a511137",
+      "git_blob_sha1": "859903d09ec3c4246c7d58e2ad7f2cf12b843385"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/give_train_runtime.py",
+      "bytes": 1158,
+      "sha256": "6fa2155c741fa07427f691c22581a34677c3a0985e5c215fd676c00d87b1e892",
+      "git_blob_sha1": "a36b9a8818ee31d9d228c943371078c58be01b0d"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/hire_and_arms.py",
+      "bytes": 978,
+      "sha256": "be825aacc5389599600ba669480e5dbafafae0a28fdb25374c17736cd56ed1ac",
+      "git_blob_sha1": "022ba3aa89e77bbf2064ac0872ff08d37deaacab"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/levy_denial_breakpoint.py",
+      "bytes": 1319,
+      "sha256": "7f3ff6000a2e95325e084ec7521377e63f9ed7aa33831ef18ec09a7a9c6cb772",
+      "git_blob_sha1": "46ee9bd49cbe72b34dd61b197affe833e228e9dc"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/levy_year.py",
+      "bytes": 2083,
+      "sha256": "816c9ac183d006eacca20b3a451a1fcb4c597bcc33663ddf5aa19f0b8062436c",
+      "git_blob_sha1": "ada53c198100f538b3cbd48ae2744ee820297cb0"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/levy_year_finish.py",
+      "bytes": 1794,
+      "sha256": "d52a7c3577e834ae454ce685f34947c7ac0dd458f56d0474e56e9762961f8ed2",
+      "git_blob_sha1": "4e958405001c0ac2189c90b1fb7493e184e0cd7d"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/logistics_all.py",
+      "bytes": 2234,
+      "sha256": "d3ac36daa03a42e2131d2d560754df9b379658eaeee53220048dd37d0cfc5c04",
+      "git_blob_sha1": "e20992f02c54792d2edd25a88b08524d625ace76"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/logistics_matrix.py",
+      "bytes": 1184,
+      "sha256": "c5689e2f17c958c9b6225485b0eef5db42079f736da07f930519a366a3af9186",
+      "git_blob_sha1": "dd9289e6b92b3f7ece5301c6919eb2258ad252de"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/matched_annual.py",
+      "bytes": 1228,
+      "sha256": "b436d5a9fc2b0d83caa898135801b8e91b249b8e828a615c2dfd4f68cfea5c90",
+      "git_blob_sha1": "fefa06166440c4385df52d9d0ca6e6f554588b53"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/mesen_research_bridge.patch",
+      "bytes": 4236,
+      "sha256": "ed6d5f4ea761d5fd4833acf54470eec83054833fd3f0051c828241928a822655",
+      "git_blob_sha1": "50ce9007e9f016f13b765ac330fab4df6603c28e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/named_roundtrip_continue.py",
+      "bytes": 579,
+      "sha256": "4a0e093b045e9d4701a7eff33020486b92970ab6a8de50674a0bfeeb638d74b4",
+      "git_blob_sha1": "82850fecdd2b6f795cdd872ad060b71856a357fa"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/named_roundtrip_finish.py",
+      "bytes": 1389,
+      "sha256": "426f4f89435d19276455a2d7cc3c12822d6d64dabc355c7a0535028cbb7370e4",
+      "git_blob_sha1": "4620f1fc63d74c8d5cdaa9a18d700e2cf8d09214"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/named_roundtrip_start.py",
+      "bytes": 857,
+      "sha256": "b8bf3435e34bc01e7b2614fa13c32612ba27ec100b0ae62774a6c69212c76c2f",
+      "git_blob_sha1": "20577cccaf9ce76efff346affe13529b01a717b1"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/research_session_v107.py",
+      "bytes": 3810,
+      "sha256": "1cf55de116071a6e8565ecc632ff3cc80d32848165d26e9ec5f5d0ae23590a2b",
+      "git_blob_sha1": "567e1cabd3606a122613c7ec6bbea1d235fc48fc"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/runtime_helpers.py",
+      "bytes": 1750,
+      "sha256": "2ba0e0b70b5d8dc1770a358aba9d9322d126e07ce0a76f9bb81d59877efe39d7",
+      "git_blob_sha1": "8d4223857456999a463bf20e65e8350b68f44e42"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/runtime_recipes.json",
+      "bytes": 64488,
+      "sha256": "75d4b3f15367ac20e7337c8a206e74fc2222311b4f3ab5eb3d116a1e7736fb89",
+      "git_blob_sha1": "97b4334e95812aaad64fabad217dcccbcfc2bfef"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/tax100_corrected.py",
+      "bytes": 488,
+      "sha256": "94e1be02b1011f6ef9e4923cdac6f2ec440bda41fcafdfa039032338edf662ec",
+      "git_blob_sha1": "182321e0b5e8811a1704379dd1e8d6acd2e69f32"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/theft_runtime.py",
+      "bytes": 1429,
+      "sha256": "d75368e525cfe5e756070ac87f15b883b89648981b3b160dddd71694def5cd52",
+      "git_blob_sha1": "e9e7343b87e4c9cf01e9542368de92330175f4de"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/trade_matrix.py",
+      "bytes": 1879,
+      "sha256": "dc2510b4c26920357c36389a70647fd8d4229a1d3c626b463a659db58959405c",
+      "git_blob_sha1": "11e810a3df2929cb8489579144c4251fc06498ee"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/trade_negative.py",
+      "bytes": 1173,
+      "sha256": "a0fd1cfdea9751119f4a0e8b6c33d4473a0731c86f7ca009f76d734dbe43b0dc",
+      "git_blob_sha1": "3bba5ffe1c62e1c0f6f7f5f1d54432afd0cc8729"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/transfer_relocate.py",
+      "bytes": 1003,
+      "sha256": "f700574241aade9e80e2bbbbd1da72e2e9ae3c2fd7a1451da01b287a084a034d",
+      "git_blob_sha1": "cb6d7f920b72dd4e56e98a538d16cde829d8833e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/verify_native.py",
+      "bytes": 59780,
+      "sha256": "f19afb745a30b6d306c42c93db651db232dc4a77206efb3b5ac21718bc6b32a2",
+      "git_blob_sha1": "0123191a883c56e4341881c30f1c9e69a005d232"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/world_year_repeat.py",
+      "bytes": 905,
+      "sha256": "2f38c6fc6dd65255faad841595b1f7562427e174dbc633560e61ecd7b763cfc6",
+      "git_blob_sha1": "1101dd2e4a048339989af4af423009649c9d9252"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/year2_finish.py",
+      "bytes": 436,
+      "sha256": "57638acaf98b2ec3c696c45ddfed48ce409c9099f1676ce0aa57599467d19096",
+      "git_blob_sha1": "3ea2d6bfc92e34c09ac7fcd858a3a3baa61b2605"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/year2_mongol.py",
+      "bytes": 822,
+      "sha256": "8b46b2bb32628b3218ddd263b4d561c5ebc801b001d184d5f6fad6a60a6a2189",
+      "git_blob_sha1": "b212be88c742d3dd86eee5c36de7a5e8014b5bac"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/runtime_tools/year2_theft_trace.py",
+      "bytes": 1767,
+      "sha256": "8a2f8e090b5cb562be9e59af654c9b577b86c82df4734824c9b8f2d8bbfc1277",
+      "git_blob_sha1": "193f2c4c505c4fc6e83df2e1922bd77dbda9344d"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/CLEAN_VALIDATION_RECEIPT.json",
+      "bytes": 906,
+      "sha256": "7b84263a1c4a713a47da1705afa88778257a1c954a613b0979ae5f718e913f25",
+      "git_blob_sha1": "d8da415122cefcdd027662eee903284fb1c699b8"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/RUNNER_GUARD_RECEIPT.json",
+      "bytes": 1810,
+      "sha256": "175399a7395c26df0fc08c40d6fab52f8cdf250f07849d1575870f4439444964",
+      "git_blob_sha1": "befb9a8bbd91068092ee8c072fa2fad99f0ff664"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/bad_input_hash.stderr",
+      "bytes": 44,
+      "sha256": "0875240e18880e4618a217f38a542adcd3edbb670f2782cf98da8fc6a300c66f",
+      "git_blob_sha1": "437cf6159f99777b1ae23f3c4598dab3cf4f06a7"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/bad_input_hash.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/clean_validation.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/clean_validation.stdout",
+      "bytes": 386,
+      "sha256": "522d7a065966254a0f755e0a0da3462e2b28081d46a035ebe5bc20f19216c7b6",
+      "git_blob_sha1": "04d4b46a80265f376b665d31568c7506090668e4"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/RUN_RECEIPT.json",
+      "bytes": 58137,
+      "sha256": "4e558d648d927ae607ca5dd615ae3a01d088f22c14a5edef7c2d65f7f8abd4ca",
+      "git_blob_sha1": "1282c8d56bbe2929b3cbb34ef98132a7fba7f231"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/commodity.stderr",
+      "bytes": 1365,
+      "sha256": "1e9f95e14bb41e230fa7d7d0d7cfe8c8d72b5464f78d0c29137e9a265c65f7a0",
+      "git_blob_sha1": "d87f54e91c9426a8486a1d59df3a890bd834e0c8"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/commodity.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/domestic.stderr",
+      "bytes": 2677,
+      "sha256": "a9523ab7ffacdf8f709901d3cc2c09b9271e53ab7655050f840614d3810e003d",
+      "git_blob_sha1": "18b70387f55122685e38b56b5515509f5307160d"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/domestic.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/logistics.stderr",
+      "bytes": 4591,
+      "sha256": "f3596f48090572b0e03338762339554e4661c7605675e6e9b30c5a7bf040d158",
+      "git_blob_sha1": "a342f401f980d377feb1fe2127a7808dd299fba7"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/logistics.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/roi.stderr",
+      "bytes": 1684,
+      "sha256": "be326c3e2783daeff834ef8b725307d387b266e54f5bcccf92054e7c9d9cd1af",
+      "git_blob_sha1": "d91f2d28368593b54aebca3173a03c09c14e5f4d"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/roi.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/scenario.stderr",
+      "bytes": 1455,
+      "sha256": "690841a9bd0acf958e8010908a93d479eaecab5980b5f982f85f3690482a9a3d",
+      "git_blob_sha1": "326b07b98b9e97696f2d65d8f97ccbe8a6ea7a0d"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/scenario.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/scenario_setup.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/scenario_setup.stdout",
+      "bytes": 661,
+      "sha256": "8ed3004d74073f70b13eee2cb673123a90c0c4365e76d1d82ac473fc2edb736f",
+      "git_blob_sha1": "9ef4dcca40f6f9840430f2a50b40e652f310b097"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/seasonal_core.stderr",
+      "bytes": 2797,
+      "sha256": "f020d277336ff2a1f1a938f81f7780ddb111eb60330bf6803fd36eabbe1049b3",
+      "git_blob_sha1": "fae21a301a4eb5b12a96b29ba211b06ac9bcec56"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/seasonal_core.stdout",
+      "bytes": 80,
+      "sha256": "6816980ba094834ec2fef0cdcc89d73f9c3b8b3d075a708cb66773c7a99583e9",
+      "git_blob_sha1": "2387f01b0e00e77de82a0c44dcec2fa57f853f2e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/seasonal_extension.stderr",
+      "bytes": 2817,
+      "sha256": "32f11acb655bdf87094f21c280cd6fdc3b2e377110e925275ffb0febd7572e97",
+      "git_blob_sha1": "9c9bd22f408951444de4e5b4c852c78e77110fbd"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/seasonal_extension.stdout",
+      "bytes": 35,
+      "sha256": "2e50beed7422b54999835f9c9d99a98006393e1ac2c7f0a745b361b3be07fa15",
+      "git_blob_sha1": "c63ec630b9af9af3f475683f5ef84b91835db5e5"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/trade.stderr",
+      "bytes": 4045,
+      "sha256": "8ba38a7e463915a9262b71baf5b815270ac24389041daa4137606081721e11f6",
+      "git_blob_sha1": "e641493ab9f04a269209d623ebb7b24234e06f2c"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/trade.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/v106_full.stderr",
+      "bytes": 7662,
+      "sha256": "71699873a1b2821fa3310df511c7c1cc463ca83cc53859da018abc2ef65b243a",
+      "git_blob_sha1": "83be77add4171f8db0275ae92a378d8c43bb80c1"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/complete/v106_full.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/CLEAN_VALIDATION_RECEIPT.json",
+      "bytes": 907,
+      "sha256": "99cfea49cdb26ad3657c3c54ad3bf8dd487c991d6878aaeb68998f2d9f1d8693",
+      "git_blob_sha1": "790beb782e64475d88f4b61038f84620f19065c3"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/bad_input_hash.stderr",
+      "bytes": 44,
+      "sha256": "0875240e18880e4618a217f38a542adcd3edbb670f2782cf98da8fc6a300c66f",
+      "git_blob_sha1": "437cf6159f99777b1ae23f3c4598dab3cf4f06a7"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/bad_input_hash.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/clean_validation.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/clean_validation.stdout",
+      "bytes": 343,
+      "sha256": "6236092a5a45b85eee27c68f20ea1e2a16d7d6632cff2e08cb286fa463737547",
+      "git_blob_sha1": "8e61db0871d64cca48bcfc42604f3db25523a0f2"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/missing_inputs.stderr",
+      "bytes": 91,
+      "sha256": "8b56e5ba061ab37b942ed10e1e0e1fa68c44b0b57380aa1b4e13ebee2cb1dba4",
+      "git_blob_sha1": "22f535dda5327abfc8bcbdd2bc7dae80972cb811"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/missing_inputs.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/RUN_RECEIPT.json",
+      "bytes": 57133,
+      "sha256": "4c6f7ed504b314fff3dd895a57a00e1fac0a424685626855aab5fff0094106e1",
+      "git_blob_sha1": "949e2b4e166e68b2f8eba839de1732653177dc74"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/commodity.stderr",
+      "bytes": 1365,
+      "sha256": "1277ed60be3fbbb39b411cfcd7f9b458ae780aaa13aa694b8ea741775b31a49b",
+      "git_blob_sha1": "af619400d39906ec0af6f29246be5f281771721e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/commodity.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/domestic.stderr",
+      "bytes": 2677,
+      "sha256": "2c647b0f62b87af33a451fd57b8c1b7b7c7b4e56acb4f046673c93d48ca948d8",
+      "git_blob_sha1": "21fef13736e829f6bd691f8be9b55c1404369725"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/domestic.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/logistics.stderr",
+      "bytes": 4591,
+      "sha256": "4c29d6d3d6b399385d4a166c07e4e7b13049c6378326809fb7dcf8738ca7bf54",
+      "git_blob_sha1": "bfc52433ca65094b6a5213d4cc8cb09246090ea1"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/logistics.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/roi.stderr",
+      "bytes": 1684,
+      "sha256": "9d4211f6f6c09b99e6d5060a889efbcc09fe268c8037aabe4610510428c54be5",
+      "git_blob_sha1": "2072507c72faf7e077a5562b7d2f4131bd77ba5c"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/roi.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/scenario.stderr",
+      "bytes": 1455,
+      "sha256": "b5035006381c2b915fe679845dc0d4c6cb23350adca1c9cf5392a4a597f8b590",
+      "git_blob_sha1": "44ae93cce47b90ec09d2bd3970cd1c3bca0d7ceb"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/scenario.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/seasonal_core.stderr",
+      "bytes": 2797,
+      "sha256": "01ffb821fd53b885bd69657e3f64860bdb9b82a9f59f047b4bc622ea404e605b",
+      "git_blob_sha1": "cca36a23f5cb4e20ae0e89e75df169f38569064c"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/seasonal_core.stdout",
+      "bytes": 80,
+      "sha256": "6816980ba094834ec2fef0cdcc89d73f9c3b8b3d075a708cb66773c7a99583e9",
+      "git_blob_sha1": "2387f01b0e00e77de82a0c44dcec2fa57f853f2e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/seasonal_extension.stderr",
+      "bytes": 2817,
+      "sha256": "9255fd4da4881b5f4965e59c9a972a77650825e10fa4d99c1fd21071218b0fbb",
+      "git_blob_sha1": "797c74f48083e5c5b302cb044f19960ff85e9671"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/seasonal_extension.stdout",
+      "bytes": 35,
+      "sha256": "2e50beed7422b54999835f9c9d99a98006393e1ac2c7f0a745b361b3be07fa15",
+      "git_blob_sha1": "c63ec630b9af9af3f475683f5ef84b91835db5e5"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/trade.stderr",
+      "bytes": 4045,
+      "sha256": "59c128f8e1fcfbccee16655251ad3752699db8d6d10244a8c422e079628e4861",
+      "git_blob_sha1": "994fc404809b8b6a371097d9449a0c667e001a31"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/trade.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/v106_full.stderr",
+      "bytes": 7662,
+      "sha256": "d9c7117568cdb7482a83789f2d8d45b512341e721e0a62095c4475dc9ff76c4a",
+      "git_blob_sha1": "54b82fea7ae36041564096e1a66468d45af64c57"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/initial/validation_results/v106_full.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/missing_inputs.stderr",
+      "bytes": 91,
+      "sha256": "8b56e5ba061ab37b942ed10e1e0e1fa68c44b0b57380aa1b4e13ebee2cb1dba4",
+      "git_blob_sha1": "22f535dda5327abfc8bcbdd2bc7dae80972cb811"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/missing_inputs.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/runner_guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/INTEGRATION_VALIDATION/runner_guard.stdout",
+      "bytes": 42,
+      "sha256": "91928c73fb479f748331598ef7a8739554edffcf04631e9392db32bf14a7cf4f",
+      "git_blob_sha1": "4ffaa25ebe806c5743e97c74529415cda4d29ac0"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/PACKAGE_MANIFEST.json",
+      "bytes": 22224,
+      "sha256": "dfa77369a06fd9c1e537604bf56e41161020a606853e70ba51a63938e9ecf9a5",
+      "git_blob_sha1": "467cad1837be11528925fdae1b493acc84d08a54"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/PRIVATE_INPUT_REQUIREMENTS.json",
+      "bytes": 51405,
+      "sha256": "d6bdd7c7e4b4f405f2451a440cc1588a6bdfe2208fde33e6ef318ca5037497f8",
+      "git_blob_sha1": "b27e98ac0a66a372ead6daa6dbad7e725278e6a9"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/README.md",
+      "bytes": 5690,
+      "sha256": "e68ed5af6bf847ba19213c65d55af9b27809fde85776a88db87db62a29e8c468",
+      "git_blob_sha1": "86c20f9da3f54b77653aaaa2d2f22d458513368d"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/SOURCE_PROVENANCE.json",
+      "bytes": 8659,
+      "sha256": "14ceb89a8f01ad0c1812d9661fa630ef51bb81ea0ae98ad45e73309a744d3afa",
+      "git_blob_sha1": "864ac7812138c077ac9b9452901d2cd6e5f8f038"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/adaptations.patch",
+      "bytes": 13264,
+      "sha256": "f6a870501497788b140ac562be147922419361bd42e0c06615be28dd6af788a4",
+      "git_blob_sha1": "38789330bd72551adc29d3ce8a50e9b8b9787da2"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/ADDON_MANIFEST.json",
+      "bytes": 8112,
+      "sha256": "104d895b45b9cea6ba2175e864070c8d7258b9ebbab3e24dc9571c7c44f43054",
+      "git_blob_sha1": "3a2b92d77604cb10c494967fc021478a747d4bc1"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/BASE_RELOCATION_SOURCE_2026-11-04.md",
+      "bytes": 10916,
+      "sha256": "ecd4b4413f730fe5d8e9259e012cf3602b98e6419a9e260d5b59fb5cad24e8be",
+      "git_blob_sha1": "3bb8b7bd6db2c50dd814d8bf0930d3cdbb163efc"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/PRIOR_PACKAGE_GUARD.json",
+      "bytes": 14991,
+      "sha256": "e9555038159e28798c28aad47f923904c89e64e1611a13ead4e74c1a15fbe5c7",
+      "git_blob_sha1": "a8bfb8d400321f2e4c5175b3490c2833cb75f232"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/README.md",
+      "bytes": 2428,
+      "sha256": "5e39f09c88d4b8fb443b6308db2654941fac02046b37405755efc836ac8ba04b",
+      "git_blob_sha1": "8bba3b770a7f8cb453bf81f69d617ae80bf9f674"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/SOURCE_PROVENANCE.json",
+      "bytes": 3929,
+      "sha256": "f89507cd67537490a24f1d010f8a2999257b193d4bece53cd8e38e6bda58d5b7",
+      "git_blob_sha1": "2fbaa53b2d1514d9454345e7004b04a70faab7a6"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/VALIDATION/VALIDATION_RECEIPT.json",
+      "bytes": 3628,
+      "sha256": "7d1b620738672a86cd66bdc917653e2a67190e407fecbe87084a220b93836aa8",
+      "git_blob_sha1": "e57f638ea0347971deb8f5743a96dd67e2e90067"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/VALIDATION/bad_input_hash.stderr",
+      "bytes": 30,
+      "sha256": "b9c1d2b33c4130a4a02fb25f061df9db83d12da24e782389e5786ecae5a94e0a",
+      "git_blob_sha1": "aa81a404c780653dcd87084b558f71abab71cb3f"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/VALIDATION/bad_input_hash.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/VALIDATION/bad_source_hash.stderr",
+      "bytes": 71,
+      "sha256": "9663869b651008b529c8f231aea1fbe2a7b936c720ec03a0ab5399c6ed26aaf0",
+      "git_blob_sha1": "218681dbbb3a351c9dc1ae1fcb03a4091da06328"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/VALIDATION/bad_source_hash.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/VALIDATION/clean_copy.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/VALIDATION/clean_copy.stdout",
+      "bytes": 44,
+      "sha256": "6dfca136cbe7ea3fbe394d74268df9db4b817631d3faf9a2d747ff9e32c82e08",
+      "git_blob_sha1": "8ef9e6d9e0dadccaa901faf65f2b3ef0d439c9b9"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/VALIDATION/clean_copy_results/RUN_RECEIPT.json",
+      "bytes": 2193,
+      "sha256": "71fc84f9ded94ad29564af94e3a49c4c87c56fd478cbc0b974b7cf83a3c6291a",
+      "git_blob_sha1": "28f3405f5b8b197972e702aff8c1ca3c155a82db"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/VALIDATION/clean_copy_results/base_relocation.stderr",
+      "bytes": 2174,
+      "sha256": "cfc76cc922efd96ec8057af18d658ee46bf2d28411a90b0da96bdffe862afaab",
+      "git_blob_sha1": "e093680114b1e9cd646829caa1a9da00b2443e45"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/VALIDATION/clean_copy_results/base_relocation.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/VALIDATION/missing_rom.stderr",
+      "bytes": 45,
+      "sha256": "a7ced43ebd0bcee017ae13d788b53ee29dd2be3c83ceda961326466a760c9060",
+      "git_blob_sha1": "1500f35b6b602e3bb4af36fb22c32fc55b760cfc"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/VALIDATION/missing_rom.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/adaptations.patch",
+      "bytes": 3379,
+      "sha256": "9ec684b32cf0c919c6ecfee75a6aa39243ea36d7629325879d7ae5dda0b48c5d",
+      "git_blob_sha1": "6ccba5faf7acb0abf9efcf6dcb93ccaee64ed559"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/replay_base.py",
+      "bytes": 4405,
+      "sha256": "1536528acd4f0ad6413866748cc8a3f0992ca884cd4a69a62bf452da91e1d1fe",
+      "git_blob_sha1": "2268c64465642e71ab6520664819b3019a831038"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/root_final.stderr",
+      "bytes": 2193,
+      "sha256": "c58946068bb77213ecad1b6047b744fd04a8fcf27ec220e30f338d82a710464b",
+      "git_blob_sha1": "184c7cfb9f982dec754cf711b967bca99b9a97e1"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/root_final.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/run_base.py",
+      "bytes": 3396,
+      "sha256": "2eaac5d1909fe28b2124d54eb9eb2bed139b52d9791029872127fdba3e6fd22e",
+      "git_blob_sha1": "7ba63da83f64d543cdae1101bf18968ab837bcfd"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/runtime_capture_verification.json",
+      "bytes": 3660,
+      "sha256": "adb9564ed7a55b35e5a81c50020d72284589ca15677c9471adec71575fb2eb4f",
+      "git_blob_sha1": "c83b43c264577ac304b6344893228669e040adf8"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/source_chain_replays.json",
+      "bytes": 4157,
+      "sha256": "abbd836ca61c8d448af1b2d27636aa5d8298bf302b0368e6a656c94f61bcb2fa",
+      "git_blob_sha1": "9e1955de59b8365ccbbf83b0fc560295feda59d4"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/test_base.py",
+      "bytes": 4892,
+      "sha256": "b30c870d7c40cee37331ae17c902d122f24ed036c5a868bf4797ab1873d606ba",
+      "git_blob_sha1": "22642d0cec9c8b491c02f9d401b87a110be9c416"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/tests_final.stderr",
+      "bytes": 2174,
+      "sha256": "9162519e4075269498460142a84f0beb61f0978e8f6c5b83995c54e5a5cbc4ef",
+      "git_blob_sha1": "fcc57cf89f16a341e721bdf5dd4a43b61b0e98c8"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/tests_final.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/base_relocation/tests_final_receipt.json",
+      "bytes": 198,
+      "sha256": "7a3494342515bf74ed23a9ea3adedcc7b663620b9fbf633a18f7d595546a2f66",
+      "git_blob_sha1": "aa0e5fb5eba267b341f360f26b70ba047a1f69b9"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/commodity_identity/replay_identity.py",
+      "bytes": 3206,
+      "sha256": "ace630ad60d9ca37fab78a3b8d2315c399a52bafdad9010e32b91f3a704f70bb",
+      "git_blob_sha1": "0669397f6949a66c9e8bcb4c9ca68e0ab470adbf"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/commodity_identity/test_identity.py",
+      "bytes": 3128,
+      "sha256": "62351858e93c4623157b67953958255ef41a4b5324b0454f006d03a4bd0b5c66",
+      "git_blob_sha1": "0be07b42c4534b004d8a11ccaa8e559ef3e0200c"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/domestic_source/replay_domestic.py",
+      "bytes": 3529,
+      "sha256": "d78b0b3aa988f51abd297d5d8a46929312c1d8ca292499ae5c168e377943c830",
+      "git_blob_sha1": "98e651433c7c6bef8036b01f0d34ccd62f7b64f2"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/domestic_source/test_domestic.py",
+      "bytes": 10911,
+      "sha256": "8f45aef02fe8894d888194870dd3e3b921fa03447d1fc60144bfa2d18ea2035d",
+      "git_blob_sha1": "f994fb6c6e6f608f93ac7c6462a464176ddd40cd"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/economic_roi/roi_model.py",
+      "bytes": 9442,
+      "sha256": "04c6ce39404b19e2ea946958a1d14cabac44188b1ab8b6063bf4d93c6837b74f",
+      "git_blob_sha1": "a0935787df60f9ec90ba079e5bc523cf82d34061"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/economic_roi/test_roi.py",
+      "bytes": 6257,
+      "sha256": "f2410a2e931e4f95bb6ee4aa6c50cd8a6d31df5a5c0b0c6394685dcf560225be",
+      "git_blob_sha1": "c8cb582b8ba32ffb50cd295bb7e218f17e63f5bd"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/logistics_source/replay_logistics.py",
+      "bytes": 5632,
+      "sha256": "bcc9b12d6f7fad2676dd0322cf3ff7caa9326f895fa67b03cd382690b827cf69",
+      "git_blob_sha1": "8829534f1b28ac424a938cc90ac3ab17f189bdf5"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/logistics_source/test_logistics.py",
+      "bytes": 9416,
+      "sha256": "69619157e6149c055c7a5412f3525f22b13145cf2c43a567f59dd26b481334ab",
+      "git_blob_sha1": "87bc20c3d9a0c23cfab874c6cd8200dc472a005e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/scenario_economy_data/extract_scenarios.py",
+      "bytes": 4312,
+      "sha256": "050f7e378f893994b02d3c3e568900b9b3054b92765e4ab9e9bb118c21986bf9",
+      "git_blob_sha1": "18e910da2c15fc8c9b670cafb7bb738201c25020"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/scenario_economy_data/replay_setup.py",
+      "bytes": 1849,
+      "sha256": "641e22405d34212e766805f010637396b11297ba2407f4e4f8d319c2f1ef3e1a",
+      "git_blob_sha1": "9ea3d26fe4aa351448150aa8fad7a66df3d72cbb"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/scenario_economy_data/scenario_economy_data.json",
+      "bytes": 48694,
+      "sha256": "44f04c2f24fb0db72add5a370b4b980a3f780d217289eb3b7963014823fd7a37",
+      "git_blob_sha1": "7d99fbf739fcb09572bbc49742e755570c17e69d"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/scenario_economy_data/test_scenarios.py",
+      "bytes": 5189,
+      "sha256": "6e485eedd3152e027c669b1a04e93e8614831a2f6048bb6aac4f8b34df90106f",
+      "git_blob_sha1": "6977ecc6604da16f38ea0a4a892965e07a01df20"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/seasonal_source/inspect_source.py",
+      "bytes": 3853,
+      "sha256": "b582c3981c3e71cbd7fcb27ea900b10869d5ab876358c1a20f2ad8f6ef1d156e",
+      "git_blob_sha1": "5922d0df73d01a1f286558b7017fa5f148949189"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/seasonal_source/source_cpu.py",
+      "bytes": 5092,
+      "sha256": "4aa6e60d37558d905247ca91d74a0aaf84245f65776cb1e5a2c97c1d11d5ee34",
+      "git_blob_sha1": "fa12c26b4409b22dd3ad9d54fa6d3de109a5a36a"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/seasonal_source/test_annual.py",
+      "bytes": 15977,
+      "sha256": "3407892804ca0be7da029347628fee3c26c81e8c5a917c68fc96807cc5f6a474",
+      "git_blob_sha1": "f04a02a79da2b9f6041b0a214a053bafca56b190"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/seasonal_source/test_dependencies.py",
+      "bytes": 13994,
+      "sha256": "f3c8dea5ef4c161f4f1a40aa2e5cad3be7c7324708a1aff2da732da4fa400129",
+      "git_blob_sha1": "9e3a2c913f19ab1fa05a25fa2daf2fe8775ace7a"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/trade_source/inspect_source.py",
+      "bytes": 2497,
+      "sha256": "7107dd62c8eeb33a725ceb782e8b2190b79899b79d7b54708fa242fe0be2ac29",
+      "git_blob_sha1": "4a26dead34a5c496dfab1b8cdc7dcf63f8b7a35e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/trade_source/replay_trade.py",
+      "bytes": 7415,
+      "sha256": "0c9594126b2cd0493bbc0212ca48bea30b364104b4d05a0445bf694bfc70bcc1",
+      "git_blob_sha1": "265c44ff7b5e59e7d8e61ce475866819b70b5d6e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/batches/trade_source/test_trade.py",
+      "bytes": 9147,
+      "sha256": "5d97161795b2f3b2f64759fdb85022bb228d4c01dcffaa94577838007abe4c2c",
+      "git_blob_sha1": "90891d4ccd2bced654a322b5eb96eca240e9e514"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/BASE_RELOCATION_SOURCE_2026-11-04.md",
+      "bytes": 8194,
+      "sha256": "c9c9821ebcaa7cdf460669a0b19357e22c828a02d1fa08194b3e16d07344e228",
+      "git_blob_sha1": "a97b4efbca882288de33565ad1e7d5cabc1a19d1"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/HASHES.json",
+      "bytes": 1044,
+      "sha256": "4b4609724cf20366b3e041511dc2b62497589c3477e27a5c26e0470adaac5270",
+      "git_blob_sha1": "730205e651f65e99035f1cc86ec84a74e22b7ab0"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/replay_base.py",
+      "bytes": 4405,
+      "sha256": "1536528acd4f0ad6413866748cc8a3f0992ca884cd4a69a62bf452da91e1d1fe",
+      "git_blob_sha1": "2268c64465642e71ab6520664819b3019a831038"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/replays.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/root_final.stderr",
+      "bytes": 2193,
+      "sha256": "c58946068bb77213ecad1b6047b744fd04a8fcf27ec220e30f338d82a710464b",
+      "git_blob_sha1": "184c7cfb9f982dec754cf711b967bca99b9a97e1"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/root_final.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/runtime_capture_verification.json",
+      "bytes": 3660,
+      "sha256": "adb9564ed7a55b35e5a81c50020d72284589ca15677c9471adec71575fb2eb4f",
+      "git_blob_sha1": "c83b43c264577ac304b6344893228669e040adf8"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/source_chain_replays.json",
+      "bytes": 4157,
+      "sha256": "abbd836ca61c8d448af1b2d27636aa5d8298bf302b0368e6a656c94f61bcb2fa",
+      "git_blob_sha1": "9e1955de59b8365ccbbf83b0fc560295feda59d4"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/test_base.py",
+      "bytes": 4892,
+      "sha256": "b30c870d7c40cee37331ae17c902d122f24ed036c5a868bf4797ab1873d606ba",
+      "git_blob_sha1": "22642d0cec9c8b491c02f9d401b87a110be9c416"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/tests_final.stderr",
+      "bytes": 2174,
+      "sha256": "9162519e4075269498460142a84f0beb61f0978e8f6c5b83995c54e5a5cbc4ef",
+      "git_blob_sha1": "fcc57cf89f16a341e721bdf5dd4a43b61b0e98c8"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/tests_final.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/tests_final_receipt.json",
+      "bytes": 198,
+      "sha256": "7a3494342515bf74ed23a9ea3adedcc7b663620b9fbf633a18f7d595546a2f66",
+      "git_blob_sha1": "aa0e5fb5eba267b341f360f26b70ba047a1f69b9"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/tests_initial.stderr",
+      "bytes": 2035,
+      "sha256": "a5ed20409eca26406264742efab93ab5bfe19f126edaed7c6b8482c5d3adff92",
+      "git_blob_sha1": "a49b1f44c1e54b016e7ae8bc95e136e33f4b4876"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/tests_initial.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/base_relocation/tests_initial_receipt.json",
+      "bytes": 135,
+      "sha256": "593f1d18a5572156430b77e4f36c36306c7796953040ff5993bdab53b68483b5",
+      "git_blob_sha1": "3fc500c6a892a2fec59daab64e3f2c6ba324aac5"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/commodity_identity/replay_identity.py",
+      "bytes": 3213,
+      "sha256": "e5b652d435b37977a599b49b50a1a11db336dad12e7056098ec80a10cd017454",
+      "git_blob_sha1": "ed56167d78fc0c5773c2a2d5b072482a069edfdd"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/commodity_identity/test_identity.py",
+      "bytes": 3129,
+      "sha256": "25d042716cad7dbecbf16dad8ea7d1ec9110139f83f1d27ea4d52a4011834a2e",
+      "git_blob_sha1": "69a884a36c494a15a31aa503be4e84d6a7e9f905"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/domestic_source/replay_domestic.py",
+      "bytes": 3679,
+      "sha256": "840354b79c3d7c9bfed18f26ea8502e664a343f9f49e5c9943cb444ca7064ad7",
+      "git_blob_sha1": "edc039bf81486be753b27850b8d3ec89dd47e925"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/domestic_source/test_domestic.py",
+      "bytes": 10979,
+      "sha256": "3a435e103d872024856f4b3088f0af6ac87932a214723aaa325649173573467f",
+      "git_blob_sha1": "fde6c112b4038b99645bcc2175498820a7cd3948"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/economic_roi/roi_model.py",
+      "bytes": 9450,
+      "sha256": "a945217b7fafcf704557dd462c743bf2f52a92a6e6a3bcba85ba95afb922c4f4",
+      "git_blob_sha1": "24d2cac7b84b64b193c2b1baf751f2eeab7a77a8"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/economic_roi/test_roi.py",
+      "bytes": 6229,
+      "sha256": "e5b569350b981468979d2385b189393037885891625a3381172fc0e0f97e45cd",
+      "git_blob_sha1": "f52a2003c089f3c0bbb2fd5c484ab670ae52a48c"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/logistics_source/replay_logistics.py",
+      "bytes": 5643,
+      "sha256": "5431d3c3d583da8d4e2895eef9bcaf060bfea8f03be51c7b3ce7608d8a635072",
+      "git_blob_sha1": "5af5b754e344471b1e765976adcf3cbf7ee09f0f"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/logistics_source/test_logistics.py",
+      "bytes": 9416,
+      "sha256": "69619157e6149c055c7a5412f3525f22b13145cf2c43a567f59dd26b481334ab",
+      "git_blob_sha1": "87bc20c3d9a0c23cfab874c6cd8200dc472a005e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/scenario_economy_data/extract_scenarios.py",
+      "bytes": 4312,
+      "sha256": "050f7e378f893994b02d3c3e568900b9b3054b92765e4ab9e9bb118c21986bf9",
+      "git_blob_sha1": "18e910da2c15fc8c9b670cafb7bb738201c25020"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/scenario_economy_data/replay_setup.py",
+      "bytes": 1849,
+      "sha256": "641e22405d34212e766805f010637396b11297ba2407f4e4f8d319c2f1ef3e1a",
+      "git_blob_sha1": "9ea3d26fe4aa351448150aa8fad7a66df3d72cbb"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/scenario_economy_data/scenario_economy_data.json",
+      "bytes": 48694,
+      "sha256": "44f04c2f24fb0db72add5a370b4b980a3f780d217289eb3b7963014823fd7a37",
+      "git_blob_sha1": "7d99fbf739fcb09572bbc49742e755570c17e69d"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/scenario_economy_data/test_scenarios.py",
+      "bytes": 5189,
+      "sha256": "6e485eedd3152e027c669b1a04e93e8614831a2f6048bb6aac4f8b34df90106f",
+      "git_blob_sha1": "6977ecc6604da16f38ea0a4a892965e07a01df20"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/seasonal_source/inspect_source.py",
+      "bytes": 3938,
+      "sha256": "192e7f44776639b7ad0af43d207ece839de138e545d430dd6aa1604c63d60032",
+      "git_blob_sha1": "83129e1ad713784a8e322bba68e0779e9c91382d"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/seasonal_source/source_cpu.py",
+      "bytes": 5092,
+      "sha256": "4aa6e60d37558d905247ca91d74a0aaf84245f65776cb1e5a2c97c1d11d5ee34",
+      "git_blob_sha1": "fa12c26b4409b22dd3ad9d54fa6d3de109a5a36a"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/seasonal_source/test_annual.py",
+      "bytes": 15977,
+      "sha256": "3407892804ca0be7da029347628fee3c26c81e8c5a917c68fc96807cc5f6a474",
+      "git_blob_sha1": "f04a02a79da2b9f6041b0a214a053bafca56b190"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/seasonal_source/test_dependencies.py",
+      "bytes": 13994,
+      "sha256": "f3c8dea5ef4c161f4f1a40aa2e5cad3be7c7324708a1aff2da732da4fa400129",
+      "git_blob_sha1": "9e3a2c913f19ab1fa05a25fa2daf2fe8775ace7a"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/trade_source/inspect_source.py",
+      "bytes": 2551,
+      "sha256": "c8de02dbcd09cc0876511da678f77b035ddf4d5c02bb792c84ed09d2b47da5e9",
+      "git_blob_sha1": "f43c5aa40a0aa83a720be36e4cb0606c9306a9a2"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/trade_source/replay_trade.py",
+      "bytes": 7415,
+      "sha256": "0c9594126b2cd0493bbc0212ca48bea30b364104b4d05a0445bf694bfc70bcc1",
+      "git_blob_sha1": "265c44ff7b5e59e7d8e61ce475866819b70b5d6e"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/batches/trade_source/test_trade.py",
+      "bytes": 8673,
+      "sha256": "ef8a25ee053592add95b9a5ed7e579121b6da7f3641c29e508969a5dbfc84f25",
+      "git_blob_sha1": "7657ecd6dd4a2a091140852e84bdd835dcee3d5c"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/output/research/Genghis_Khan_NES/v1.06/tools/replay_b7_arithmetic.py",
+      "bytes": 8222,
+      "sha256": "73891b90520f8f575f8b93e14a0af0273ffbddc7c64f32e9176332f4e012123f",
+      "git_blob_sha1": "313f566faa396dda061fbf585f072356a00425ef"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/output/research/Genghis_Khan_NES/v1.06/tools/replay_da67.py",
+      "bytes": 5657,
+      "sha256": "bfa0c1e871c8ee893fcf5bec66f9b2c195a88658ca5f4d3a6ba1b7d3259cd413",
+      "git_blob_sha1": "8dbca4de890fca078d0560930b297500ccf0aa25"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/output/research/Genghis_Khan_NES/v1.06/tools/replay_da8b.py",
+      "bytes": 3740,
+      "sha256": "3c1ecb2f5a67c3fa111f2054fae5a5e4d06c0b26a2b059559914badb99bf810c",
+      "git_blob_sha1": "83de6bcf1d14424495ee7213765282558a7bff75"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/output/research/Genghis_Khan_NES/v1.06/tools/replay_dcea.py",
+      "bytes": 5442,
+      "sha256": "488294ac0f303a7fc6344fc668092303885a94a62a8a683a7fcc8983f639f5c7",
+      "git_blob_sha1": "1c5d5251e078603a3fd4cdfa8eb30de6892c920b"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/output/research/Genghis_Khan_NES/v1.06/tools/run_all.py",
+      "bytes": 499,
+      "sha256": "047c2612abfb282195b89b661ebaa69d33cc04dcb3ed71683c3ec0b519c99672",
+      "git_blob_sha1": "fe023b671d32afb051df09e8599c955dc3c6cd68"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/output/research/Genghis_Khan_NES/v1.06/tools/verify_live_evidence.py",
+      "bytes": 4463,
+      "sha256": "94554d9a9e021fe4786b8ad5b605d694aeee859a4176732badd6699ebb37cc42",
+      "git_blob_sha1": "2e6de4ec6f2e1f30046358bc7386df5506e5de25"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/output/research/Genghis_Khan_NES/v1.06/tools/verify_price_paths.py",
+      "bytes": 3322,
+      "sha256": "6396b3c7a83fe62d1987c84dc981541c129d38d5e475370719165c20a9b74729",
+      "git_blob_sha1": "789531616b3f2ec2543baa5be769266057a90d73"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/output/research/Genghis_Khan_NES/v1.06/tools/vm_selected_cpu_replay.py",
+      "bytes": 10419,
+      "sha256": "e1fa50abec19c786b9644bc9f300b7a2183d15fbbc741ba2736fbdf323f863dd",
+      "git_blob_sha1": "cbddc6b51439f2c0f121c4712cb0be36a1049b84"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/originals/recovery/static_dependencies/gk_static_forensics.py",
+      "bytes": 15461,
+      "sha256": "7f41922269aabf5819661d89656865bccfb6cbb9188ced8552a9855f591d91f5",
+      "git_blob_sha1": "bb99deea90d2427ac18707cec38ec59e18fbbc49"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/output/research/Genghis_Khan_NES/v1.06/tools/replay_b7_arithmetic.py",
+      "bytes": 8222,
+      "sha256": "73891b90520f8f575f8b93e14a0af0273ffbddc7c64f32e9176332f4e012123f",
+      "git_blob_sha1": "313f566faa396dda061fbf585f072356a00425ef"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/output/research/Genghis_Khan_NES/v1.06/tools/replay_da67.py",
+      "bytes": 5657,
+      "sha256": "bfa0c1e871c8ee893fcf5bec66f9b2c195a88658ca5f4d3a6ba1b7d3259cd413",
+      "git_blob_sha1": "8dbca4de890fca078d0560930b297500ccf0aa25"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/output/research/Genghis_Khan_NES/v1.06/tools/replay_da8b.py",
+      "bytes": 3740,
+      "sha256": "3c1ecb2f5a67c3fa111f2054fae5a5e4d06c0b26a2b059559914badb99bf810c",
+      "git_blob_sha1": "83de6bcf1d14424495ee7213765282558a7bff75"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/output/research/Genghis_Khan_NES/v1.06/tools/replay_dcea.py",
+      "bytes": 5207,
+      "sha256": "20fa13abbc2b5ac8284c5d6a8f328884377ebf69bc31439eb7c5cafa604906bc",
+      "git_blob_sha1": "a97656ce78d36a162a02b9ab910ab18738d640cc"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/output/research/Genghis_Khan_NES/v1.06/tools/run_all.py",
+      "bytes": 499,
+      "sha256": "047c2612abfb282195b89b661ebaa69d33cc04dcb3ed71683c3ec0b519c99672",
+      "git_blob_sha1": "fe023b671d32afb051df09e8599c955dc3c6cd68"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/output/research/Genghis_Khan_NES/v1.06/tools/verify_live_evidence.py",
+      "bytes": 4463,
+      "sha256": "94554d9a9e021fe4786b8ad5b605d694aeee859a4176732badd6699ebb37cc42",
+      "git_blob_sha1": "2e6de4ec6f2e1f30046358bc7386df5506e5de25"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/output/research/Genghis_Khan_NES/v1.06/tools/verify_price_paths.py",
+      "bytes": 3322,
+      "sha256": "6396b3c7a83fe62d1987c84dc981541c129d38d5e475370719165c20a9b74729",
+      "git_blob_sha1": "789531616b3f2ec2543baa5be769266057a90d73"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/output/research/Genghis_Khan_NES/v1.06/tools/vm_selected_cpu_replay.py",
+      "bytes": 10380,
+      "sha256": "c4c8e3980039e484e804e2ceb048776be7b9e51db3062e00f2e6a14bb1b21964",
+      "git_blob_sha1": "00403d40331e047091f40b128706114ba5dce645"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/recovery/static_dependencies/gk_static_forensics.py",
+      "bytes": 15461,
+      "sha256": "7f41922269aabf5819661d89656865bccfb6cbb9188ced8552a9855f591d91f5",
+      "git_blob_sha1": "bb99deea90d2427ac18707cec38ec59e18fbbc49"
+    },
+    {
+      "path": "research/Genghis_Khan_NES/v1.07/tools/run_package.py",
+      "bytes": 5149,
+      "sha256": "b13f26b96455e6173e78cb6a50278a5272024f160a27643c6650145d154b03c6",
+      "git_blob_sha1": "f9adc5d3f941f84dfb882548ae6102de645646ed"
+    }
+  ]
+}

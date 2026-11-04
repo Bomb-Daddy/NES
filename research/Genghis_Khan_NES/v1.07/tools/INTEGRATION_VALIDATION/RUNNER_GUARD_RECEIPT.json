@@ -1,0 +1,52 @@
+{
+  "negative_control": "Replace suite with exit0 and OK but no completed unittest count",
+  "expected_exit": 1,
+  "actual_exit": 1,
+  "suite_receipt": {
+    "python": "3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]",
+    "executable": "/usr/bin/python3",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+    "working_directory": "/workspace/scratch/c266d767c7ca/batches/source_package/runner_guard_zuju02_7/package",
+    "input_hashes": {
+      "GK_ROM": [
+        {
+          "relative": "Genghis Khan (USA).nes",
+          "bytes": 262160,
+          "sha256": "ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3"
+        }
+      ],
+      "GK_SRAM": [
+        {
+          "relative": "baseline.sram",
+          "bytes": 8192,
+          "sha256": "dd22847140cc0397ab8f42e29f1832681628ed52bfa17e95041c288afc4ef773"
+        }
+      ]
+    },
+    "selected": [
+      "v106_source"
+    ],
+    "results": [
+      {
+        "suite": "v106_source",
+        "command": [
+          "/usr/bin/python3",
+          "/workspace/scratch/c266d767c7ca/batches/source_package/runner_guard_zuju02_7/package/output/research/Genghis_Khan_NES/v1.06/tools/run_all.py"
+        ],
+        "exit_code": 0,
+        "count_kind": "unittest_methods",
+        "expected_count": 63,
+        "observed_count": null,
+        "unittest_ok_line": true,
+        "pass": false,
+        "seconds": 0.017830443001003005,
+        "stdout_sha256": "a12b7cb43c9d9134b5bb1b35e9096b66775d9e92e7611d1cc92b02edd6782a87",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "evidence_scope": "Source replay and explicitly included archived-evidence checks; not new emulator or port validation",
+    "total_methods": 0,
+    "total_setup_cases": 0,
+    "all_pass": false
+  }
+}

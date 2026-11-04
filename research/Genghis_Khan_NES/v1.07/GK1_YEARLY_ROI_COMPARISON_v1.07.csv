@@ -1,0 +1,11 @@
+scenario,gold_spring1176,gold_delta,food_spring1176,food_delta,fur_spring1176,fur_delta,economy,troops,total_drafted,food_history,commodity_history,orders_used,leadership_cost,judgment_cost,planning_cost,charm_cost,body_cost,battle_cost,gross_tax,spring_payroll,spring_food_used
+no_change,449,0,238,0,91,0,177,62,106,54,12,0,0,0,0,0,0,0,61,61,51
+reassign_artisans,459,10,238,0,111,20,177,52,106,54,32,1,5,0,5,0,0,0,61,51,51
+reassign_food,459,10,258,20,91,0,177,52,106,74,12,1,5,0,5,0,0,0,61,51,51
+reassign_town,473,24,238,0,91,0,215,52,106,54,12,1,5,0,5,0,0,0,75,51,51
+hire_artisans,326,-123,233,-5,111,20,177,62,116,54,32,2,5,5,5,0,0,0,58,61,56
+hire_food,326,-123,253,15,91,0,177,62,116,74,12,2,5,5,5,0,0,0,58,61,56
+hire_town,340,-109,233,-5,91,0,215,62,116,54,12,2,5,5,5,0,0,0,72,61,56
+buy_food_summer,411,-38,258,20,91,0,177,62,106,54,12,1,0,5,0,0,0,0,61,61,51
+reassign_artisans_sell_extra,493,44,238,0,91,0,177,52,106,54,32,2,5,5,5,0,0,0,61,51,51
+hire_artisans_sell_extra,360,-89,233,-5,91,0,177,62,116,54,32,3,5,10,5,0,0,0,58,61,56

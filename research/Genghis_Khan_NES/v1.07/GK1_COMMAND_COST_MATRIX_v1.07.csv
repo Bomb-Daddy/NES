@@ -1,0 +1,33 @@
+command_code,identity_source_mapped_or_unmapped,leadership_pos0,pos1,planning_pos2,charm_pos3,pos4,pos5,economic_gate_debit_tested
+0,Tax rate,5,0,0,5,0,0,True
+1,Extra Tax,10,0,0,10,0,0,True
+2,Assign Labor,5,0,5,0,0,0,True
+3,Assign Army,5,0,5,0,0,0,True
+4,Give Gold/Food/Item,0,0,5,0,0,0,True
+5,Train Troops,5,0,0,0,0,0,True
+6,Train Prince,0,0,0,5,0,0,True
+7,Train Self,0,0,0,0,0,0,True
+8,Train People,0,0,0,5,0,0,True
+9,Trade Buy/Sell/Hire,0,5,0,0,0,0,True
+10,UNMAPPED,5,10,5,0,0,0,False
+11,UNMAPPED,5,10,5,0,0,0,False
+12,UNMAPPED,5,10,5,0,0,0,False
+13,UNMAPPED,5,10,5,0,0,0,False
+14,UNMAPPED,0,10,10,0,0,0,False
+15,People Draft,20,0,0,10,0,10,True
+16,UNMAPPED,0,0,0,5,10,0,False
+17,UNMAPPED,0,0,5,5,10,0,False
+18,UNMAPPED,0,0,0,5,10,5,False
+19,UNMAPPED,0,0,0,5,10,0,False
+20,UNMAPPED,0,5,0,0,0,0,False
+21,Move Base,0,0,0,0,20,0,False
+22,Move People,10,0,0,10,0,0,True
+23,Move Gold/Food/Item,5,5,5,0,0,0,True
+24,UNMAPPED,5,5,0,5,0,0,False
+25,UNMAPPED,0,0,0,25,5,10,False
+26,UNMAPPED,0,0,0,15,5,5,False
+27,UNMAPPED,0,0,0,5,5,0,False
+28,Spy View Report,0,0,5,0,0,0,False
+29,Spy Wreak Havoc,0,0,0,0,20,0,False
+30,Spy Kill,0,0,0,0,0,20,False
+31,Spy Search State,5,0,5,0,0,0,False

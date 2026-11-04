@@ -1,0 +1,41 @@
+{
+  "suite": "base_relocation_additive",
+  "scope": "VERIFIED_STATIC bounded original-instruction suite; no new emulator execution",
+  "python": "3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]",
+  "executable": "/usr/bin/python3",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "command": [
+    "/usr/bin/python3",
+    "/tmp/gk_base_portable__2ckyjxs/tools/batches/base_relocation/test_base.py"
+  ],
+  "cwd": "/tmp/gk_base_portable__2ckyjxs/tools",
+  "input_hashes": {
+    "GK_ROM": {
+      "bytes": 262160,
+      "sha256": "ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3"
+    },
+    "GK_SRAM": {
+      "bytes": 8192,
+      "sha256": "dd22847140cc0397ab8f42e29f1832681628ed52bfa17e95041c288afc4ef773"
+    }
+  },
+  "executed_source_hashes": {
+    "batches/base_relocation/replay_base.py": "1536528acd4f0ad6413866748cc8a3f0992ca884cd4a69a62bf452da91e1d1fe",
+    "batches/base_relocation/test_base.py": "b30c870d7c40cee37331ae17c902d122f24ed036c5a868bf4797ab1873d606ba",
+    "batches/base_relocation/run_base.py": "2eaac5d1909fe28b2124d54eb9eb2bed139b52d9791029872127fdba3e6fd22e",
+    "batches/logistics_source/replay_logistics.py": "bcc9b12d6f7fad2676dd0322cf3ff7caa9326f895fa67b03cd382690b827cf69",
+    "batches/trade_source/replay_trade.py": "0c9594126b2cd0493bbc0212ca48bea30b364104b4d05a0445bf694bfc70bcc1",
+    "batches/trade_source/inspect_source.py": "7107dd62c8eeb33a725ceb782e8b2190b79899b79d7b54708fa242fe0be2ac29",
+    "output/research/Genghis_Khan_NES/v1.06/tools/replay_b7_arithmetic.py": "73891b90520f8f575f8b93e14a0af0273ffbddc7c64f32e9176332f4e012123f",
+    "output/research/Genghis_Khan_NES/v1.06/tools/vm_selected_cpu_replay.py": "c4c8e3980039e484e804e2ceb048776be7b9e51db3062e00f2e6a14bb1b21964",
+    "recovery/static_dependencies/gk_static_forensics.py": "7f41922269aabf5819661d89656865bccfb6cbb9188ced8552a9855f591d91f5"
+  },
+  "exit_code": 0,
+  "seconds": 0.5433285979961511,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "cfc76cc922efd96ec8057af18d658ee46bf2d28411a90b0da96bdffe862afaab",
+  "expected_count": 19,
+  "observed_count": 19,
+  "unittest_ok_line": true,
+  "pass": true
+}

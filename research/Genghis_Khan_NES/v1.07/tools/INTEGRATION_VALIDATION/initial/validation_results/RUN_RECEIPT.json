@@ -1,0 +1,1591 @@
+{
+  "python": "3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]",
+  "executable": "/usr/bin/python3",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "working_directory": "/workspace/scratch/c266d767c7ca/batches/source_package/clean_validation_jt2bpw3_/package",
+  "input_hashes": {
+    "GK_ARCHIVED_CAPTURES": [
+      {
+        "relative": "tax_extra_1_v102/after.sram",
+        "bytes": 8192,
+        "sha256": "0f07f3d6250ea9845a11222aa2184ec7d4f5d10386ad5969f56e1e9ae1b0587a"
+      },
+      {
+        "relative": "tax_extra_2_v102/after.sram",
+        "bytes": 8192,
+        "sha256": "a5c4b28bf2080ab1a141c0aae2635a61ff37d2ba0691fd1bdcd4b9af80efca2d"
+      },
+      {
+        "relative": "tax_extra_9_v102/after.sram",
+        "bytes": 8192,
+        "sha256": "621a9c2e8929e100998fb6893fb555982bff760f37e411de4eba2d2a6c8881fb"
+      },
+      {
+        "relative": "give_food1_v102/after.sram",
+        "bytes": 8192,
+        "sha256": "465dda6094375643ccfab9d1d92618498d88aa8c63c607ee0ceb174c3c2ad817"
+      },
+      {
+        "relative": "give_food8_v102/after.sram",
+        "bytes": 8192,
+        "sha256": "df4f3323d0e633489ebe03cc604907f645eec0f6c816116c504d926424235691"
+      },
+      {
+        "relative": "give_food9_v102/after.sram",
+        "bytes": 8192,
+        "sha256": "a69b556d02001102e403f11d1274290664ff69de296f30278e61f9453c84f389"
+      },
+      {
+        "relative": "give_gold1_done/after.sram",
+        "bytes": 8192,
+        "sha256": "521ac7c8b977f30064ffe403ddd3037b91aacc127c62376a6c582be66f9b87b4"
+      },
+      {
+        "relative": "give_gold8_done/after.sram",
+        "bytes": 8192,
+        "sha256": "1f5bc404c332592b1a192174ba886e1ff6d1e7a0e6af9bb6c30c43bbfca94e3b"
+      },
+      {
+        "relative": "give_gold9_done/after.sram",
+        "bytes": 8192,
+        "sha256": "b69966cfb3eb886c30294d39a5ac2dfd404bd1678f370f3eb50b544885eca0ef"
+      },
+      {
+        "relative": "train_troops_complete_v102/after.sram",
+        "bytes": 8192,
+        "sha256": "877b6bbee2819b92e780ce2f1bc0e9d2806ea81face62dc91bd2602fa78706dd"
+      }
+    ],
+    "GK_EVIDENCE": [
+      {
+        "relative": "live_sale/baseline.json",
+        "bytes": 294,
+        "sha256": "d4dd8a06a866a5247d94f0f1d446bb583d9223b3a5950a0cd9a1e4341df2bddc"
+      },
+      {
+        "relative": "live_sale/baseline.sram",
+        "bytes": 8192,
+        "sha256": "dd22847140cc0397ab8f42e29f1832681628ed52bfa17e95041c288afc4ef773"
+      },
+      {
+        "relative": "live_sale/baseline.png",
+        "bytes": 5634,
+        "sha256": "24d0fc2521f75ebc96cdbb87cd01f04744d9fdcd6f725e8103ca5e74e334b10b"
+      },
+      {
+        "relative": "live_sale/cancel_sale_noop.json",
+        "bytes": 310,
+        "sha256": "efa66ccbbd2994d6c4abbbd70c4df23971767d8563b85d7ca8b9bd6cf7f15045"
+      },
+      {
+        "relative": "live_sale/cancel_sale_noop.sram",
+        "bytes": 8192,
+        "sha256": "c4a9f7b8049212b279aadd99b22fcafefb7be31ea23423b8892d42c041fb627e"
+      },
+      {
+        "relative": "live_sale/cancel_sale_noop.png",
+        "bytes": 2897,
+        "sha256": "324c7913ef3f912e1ca52d1a5ee212f814507385b690c4dee3a851af7a6df29b"
+      },
+      {
+        "relative": "live_sale/cancel_sale_settled.json",
+        "bytes": 316,
+        "sha256": "1b469dc38dd594d02484a13ca5aea26cda5eeb6cdc04046d79784b9ee8236926"
+      },
+      {
+        "relative": "live_sale/cancel_sale_settled.sram",
+        "bytes": 8192,
+        "sha256": "fbf0649da24ef35932ae78f888fc3470daef2592748fdf6529ea48d313614b7d"
+      },
+      {
+        "relative": "live_sale/cancel_sale_settled.png",
+        "bytes": 5559,
+        "sha256": "406497b399cc4079a213f154f5eba54b7602f09d689f402ff115f4ff10569063"
+      },
+      {
+        "relative": "live_sale/china_sell_quotes.json",
+        "bytes": 312,
+        "sha256": "d7a6e7fdce0b5b9c1cdd0cdebd0cf5f936fae1d59f219d9c4a5bd55c46fa5b5b"
+      },
+      {
+        "relative": "live_sale/china_sell_quotes.sram",
+        "bytes": 8192,
+        "sha256": "7968e0bfa9b94d15db99f267884c4b7009a263f9cbf1dba4a940647f9b974587"
+      },
+      {
+        "relative": "live_sale/china_sell_quotes.png",
+        "bytes": 4526,
+        "sha256": "cbacd2d97a806f5c7fab7d0e1c4f457619c2eb27acdec7524f96ab1714f09d9e"
+      },
+      {
+        "relative": "live_sale/islam_chosen.json",
+        "bytes": 302,
+        "sha256": "cb5251ec0e90db71369876d18eb111223282cf053fc95d62221f9c0a256b406d"
+      },
+      {
+        "relative": "live_sale/islam_chosen.sram",
+        "bytes": 8192,
+        "sha256": "3f537bc768fe92f62ff2417a32d1b7e78d6e2130095e89513c8f46ac46c07005"
+      },
+      {
+        "relative": "live_sale/islam_chosen.png",
+        "bytes": 5404,
+        "sha256": "2b10f3a0d1767e7f8cb7ac32b455d0b5eeda26054060adabb23a55014f6f05cc"
+      },
+      {
+        "relative": "live_sale/islam_fur_quantity.json",
+        "bytes": 314,
+        "sha256": "a300b821a9711e20461691d5445e3e03d24e08c76acc3cf654ccdc79574db6dc"
+      },
+      {
+        "relative": "live_sale/islam_fur_quantity.sram",
+        "bytes": 8192,
+        "sha256": "f4a02ff36d30462099cdfd43e6bdb0cc3a40ea1da78ce9b034c89306441c6c56"
+      },
+      {
+        "relative": "live_sale/islam_fur_quantity.png",
+        "bytes": 4637,
+        "sha256": "af0b984db0d283d6aaae09c49b9bc959d00da49df8f6b5b52cc6ce55a4964024"
+      },
+      {
+        "relative": "live_sale/islam_jewel_quantity.json",
+        "bytes": 318,
+        "sha256": "4c07b6a59e64366d6cf7ea32fd61a96ac3243b46969c231a580c596830446cc4"
+      },
+      {
+        "relative": "live_sale/islam_jewel_quantity.sram",
+        "bytes": 8192,
+        "sha256": "ccddd257e27770c429bd2f9256f8fac3f825bfac2358676fc738f86211e99dad"
+      },
+      {
+        "relative": "live_sale/islam_jewel_quantity.png",
+        "bytes": 4760,
+        "sha256": "7cb000b89821164c35d4a2e393f5516d028f414a5f4089b52d7bc7004630c806"
+      },
+      {
+        "relative": "live_sale/islam_prices.json",
+        "bytes": 302,
+        "sha256": "24bf9b4bc2b79e0b2899392afddce8fdfb7c4b55520576bfce9bd667234c0b6e"
+      },
+      {
+        "relative": "live_sale/islam_prices.sram",
+        "bytes": 8192,
+        "sha256": "6e959fdd5d8cd3f9bf5e9b6e644be4bf3f9b59a387bc23c64cecfb75769f07ca"
+      },
+      {
+        "relative": "live_sale/islam_prices.png",
+        "bytes": 4652,
+        "sha256": "4ff22b51d2ac8cf9b789e424b6edc73b99f2176c85be979c95b3171e6d366c55"
+      },
+      {
+        "relative": "live_sale/islam_sell.json",
+        "bytes": 298,
+        "sha256": "675625d3c884ec8e48a2f6776307e0f537dce4d6782cdd142086eccb0b4027fb"
+      },
+      {
+        "relative": "live_sale/islam_sell.sram",
+        "bytes": 8192,
+        "sha256": "c526904871c3eb2fa834291e52607cf86882def3fc1d7ebe250567cfe933c62b"
+      },
+      {
+        "relative": "live_sale/islam_sell.png",
+        "bytes": 2840,
+        "sha256": "d3a4e64783646326b227ceed5fabcb84808cab427b0061585ed6a5c8c9c6a439"
+      },
+      {
+        "relative": "live_sale/islam_sell_quotes.json",
+        "bytes": 312,
+        "sha256": "6963da337c98853dac5473310445b37349ef77f8b4618cdefaa67e68dfe91c5a"
+      },
+      {
+        "relative": "live_sale/islam_sell_quotes.sram",
+        "bytes": 8192,
+        "sha256": "73860e288665f7581dd3c20ef9549fd2980684db1eb02751ad9a56c7e37a86fb"
+      },
+      {
+        "relative": "live_sale/islam_sell_quotes.png",
+        "bytes": 5252,
+        "sha256": "46d9e4af437c740d891982363d39078ed96599e9e2fabc92645fd7a93208e2d5"
+      },
+      {
+        "relative": "live_sale/islam_sell_wait.json",
+        "bytes": 308,
+        "sha256": "a698704e1948c9c9dbb6de65947a8632ad398c6037ced509041edb87e8ed3aac"
+      },
+      {
+        "relative": "live_sale/islam_sell_wait.sram",
+        "bytes": 8192,
+        "sha256": "f664f878a30d115f1588c21c3f79bd40ae568a9ad2507f194d4e3ca94ba4f985"
+      },
+      {
+        "relative": "live_sale/islam_sell_wait.png",
+        "bytes": 5539,
+        "sha256": "8245f78e7e1bcbf1f6d5be85decdfe75e084be270995e651446c9e0da77c9b33"
+      },
+      {
+        "relative": "live_sale/jewel_sell_quantity.json",
+        "bytes": 316,
+        "sha256": "d8ed0f2aa2e00c25481a232b9ec3bc8a60c124f0ab04a59bfe828cb7dbff3409"
+      },
+      {
+        "relative": "live_sale/jewel_sell_quantity.sram",
+        "bytes": 8192,
+        "sha256": "b9383367d6ed9e608766c011578261bef5ebbed57e11a9e8fd06648d3193d773"
+      },
+      {
+        "relative": "live_sale/jewel_sell_quantity.png",
+        "bytes": 4660,
+        "sha256": "897da7331294abcc1f220b0c2657c254ab16fdc6dfcf66d7a553b3d3c13ce963"
+      },
+      {
+        "relative": "live_sale/sell_next_vendor.json",
+        "bytes": 310,
+        "sha256": "ff601aa35bec8856edb67393395614ff41516e0a2089178a9a6f99d21b911f70"
+      },
+      {
+        "relative": "live_sale/sell_next_vendor.sram",
+        "bytes": 8192,
+        "sha256": "7129e8fb16eb6ed7d982eaaebef6b6ec71d8333164c7d76fb826b23208f90478"
+      },
+      {
+        "relative": "live_sale/sell_next_vendor.png",
+        "bytes": 4021,
+        "sha256": "838be15409236614036f6f65d841704a4cebd9b35b14474065574ce9cd49a841"
+      },
+      {
+        "relative": "live_sale/sell_quotes_wait.json",
+        "bytes": 310,
+        "sha256": "fda21dbe7a8069cd59d46a046f62e19f39694db77d5bd0d37ef7c573aac8bac2"
+      },
+      {
+        "relative": "live_sale/sell_quotes_wait.sram",
+        "bytes": 8192,
+        "sha256": "def8f55cb7586c8ed75bac0dd69358c5d1a1819acc3772e1511af0cb050795df"
+      },
+      {
+        "relative": "live_sale/sell_quotes_wait.png",
+        "bytes": 4680,
+        "sha256": "14c9a90ca191d52a6b686f057a7c82b67a2897a072c7972cb3facaf73c7f001b"
+      },
+      {
+        "relative": "live_sale/sell_vendor.json",
+        "bytes": 300,
+        "sha256": "9a0e8007e805602575f09b1adbcdb7ed94f70de255ad7225b9b58a6b6520b707"
+      },
+      {
+        "relative": "live_sale/sell_vendor.sram",
+        "bytes": 8192,
+        "sha256": "c3d4ea2344937b1ce34353e1893ce21618ab2fb96fa250dee8ce2738b94486c9"
+      },
+      {
+        "relative": "live_sale/sell_vendor.png",
+        "bytes": 2848,
+        "sha256": "2eb83fb150fb65a20dcfef33c503676e95b50f132a9065109f32e8c1a1b26b0b"
+      },
+      {
+        "relative": "live_sale/trade_submenu.json",
+        "bytes": 304,
+        "sha256": "bc487bfda0ec0e63881365d8028d7f911c149739b6d15bcc279eeb3930c76ce8"
+      },
+      {
+        "relative": "live_sale/trade_submenu.sram",
+        "bytes": 8192,
+        "sha256": "4304257e45a16747e33bdbf7141346c151c4e7048c524d89a5f4b22cdcaf1be8"
+      },
+      {
+        "relative": "live_sale/trade_submenu.png",
+        "bytes": 5404,
+        "sha256": "2b10f3a0d1767e7f8cb7ac32b455d0b5eeda26054060adabb23a55014f6f05cc"
+      },
+      {
+        "relative": "live_trace/assign_rejected.json",
+        "bytes": 309,
+        "sha256": "b86dd24a204eefc8502cfe04edb80b1344f9c2679b0261a6f26351eb732ce6f9"
+      },
+      {
+        "relative": "live_trace/assign_rejected.sram",
+        "bytes": 8192,
+        "sha256": "81e033c7dd858a2cc7af24dfa936852e3d045e4ed38f123143eecde544832c90"
+      },
+      {
+        "relative": "live_trace/assign_rejected.png",
+        "bytes": 3488,
+        "sha256": "4e2f93e07b322935a352100827af545a01244906b4abd439535f584fec7d05a3"
+      },
+      {
+        "relative": "live_trace/baseline.json",
+        "bytes": 295,
+        "sha256": "c13a9986d421f273717729915c1fe3f8b0e6beefbf88ea0f7db3944728a90830"
+      },
+      {
+        "relative": "live_trace/baseline.sram",
+        "bytes": 8192,
+        "sha256": "dd22847140cc0397ab8f42e29f1832681628ed52bfa17e95041c288afc4ef773"
+      },
+      {
+        "relative": "live_trace/baseline.png",
+        "bytes": 5634,
+        "sha256": "24d0fc2521f75ebc96cdbb87cd01f04744d9fdcd6f725e8103ca5e74e334b10b"
+      },
+      {
+        "relative": "live_trace/buy_jewels_quantity_ready.json",
+        "bytes": 329,
+        "sha256": "9b09209e4891cd982419249498e5e3d65ff63dfe57d06ab5856f5cedbd6397ab"
+      },
+      {
+        "relative": "live_trace/buy_jewels_quantity_ready.sram",
+        "bytes": 8192,
+        "sha256": "ccddd257e27770c429bd2f9256f8fac3f825bfac2358676fc738f86211e99dad"
+      },
+      {
+        "relative": "live_trace/buy_jewels_quantity_ready.png",
+        "bytes": 5286,
+        "sha256": "88c4b241826385f3d0acb03e483b873155784820fa462fba251677d9468021ad"
+      },
+      {
+        "relative": "live_trace/buy_one_ack.json",
+        "bytes": 301,
+        "sha256": "97f286d7ec842d3173dd41cb6580029cd732ae91f9b4f392810ff255b0d4bceb"
+      },
+      {
+        "relative": "live_trace/buy_one_ack.sram",
+        "bytes": 8192,
+        "sha256": "c4a711e8c1116397d73c6bdb1eaa301b304296f338e0f244bb3f07b6e4b6fa22"
+      },
+      {
+        "relative": "live_trace/buy_one_ack.png",
+        "bytes": 5404,
+        "sha256": "7abc76b59a05d6c3c19b00ecf192155dac7ce95afd458ec0f315bb478569d6fe"
+      },
+      {
+        "relative": "live_trace/buy_one_committed.json",
+        "bytes": 313,
+        "sha256": "83d24dd4468bf8890b4e2300d13f2e845beaf336d5a88d0a5cca5527d3a05f74"
+      },
+      {
+        "relative": "live_trace/buy_one_committed.sram",
+        "bytes": 8192,
+        "sha256": "6af32ef024e020cefed1b29d682776f91421c9b9e189f5ba634a1b95b42ec75a"
+      },
+      {
+        "relative": "live_trace/buy_one_committed.png",
+        "bytes": 2883,
+        "sha256": "7fa3dc2185c2b89c1d3aacb42c5686c6eb6ab27dad6a1f73e562f651c5affacb"
+      },
+      {
+        "relative": "live_trace/buy_one_settled.json",
+        "bytes": 309,
+        "sha256": "301c34d48a3c8c353e9f02ddcfd5e0e169cac77a11603fcb628f606cd2ce9bb7"
+      },
+      {
+        "relative": "live_trace/buy_one_settled.sram",
+        "bytes": 8192,
+        "sha256": "4215c6bdf7a54d8030519c09636a700386a1e56abd8c7d84e0cca7298dd887a3"
+      },
+      {
+        "relative": "live_trace/buy_one_settled.png",
+        "bytes": 5557,
+        "sha256": "64a77700563a153ab98eba07dc696a439bdf503973d48a0eaaa5d20e2b19761e"
+      },
+      {
+        "relative": "live_trace/cancel_to_merchants.json",
+        "bytes": 317,
+        "sha256": "66cfb42bb2348e9b98c94876a239b70adef1307f92068859e3afb6a9861d570a"
+      },
+      {
+        "relative": "live_trace/cancel_to_merchants.sram",
+        "bytes": 8192,
+        "sha256": "8a565efcd0b2f55d0324dd0ca6642949d80d051b541c939ff88e7b94ed56e7bb"
+      },
+      {
+        "relative": "live_trace/cancel_to_merchants.png",
+        "bytes": 5646,
+        "sha256": "c8d2cf2f32a94c3be3debdfb2a9707f3ab4f21c3c752a90509afb36bdc04ef30"
+      },
+      {
+        "relative": "live_trace/current_trace.json",
+        "bytes": 305,
+        "sha256": "e5f259b455fe3fe2ee44fa40b77027522f6606bdaf5e3f4461895730039c01b2"
+      },
+      {
+        "relative": "live_trace/current_trace.sram",
+        "bytes": 8192,
+        "sha256": "2a085856f3666a6968c306c92b69825a0e16426ac5dfe03bb7ba645273091a92"
+      },
+      {
+        "relative": "live_trace/current_trace.png",
+        "bytes": 3526,
+        "sha256": "1515449fe29ebdd0c2dac9ac3d03267a80fb5f7736598aa4c6ce405c7b26df9e"
+      },
+      {
+        "relative": "live_trace/exit_assign.json",
+        "bytes": 301,
+        "sha256": "cf9eb15f1b29ed821c4ee1231b22f9287f1ea137c83c587ba77bdab97d9bbc65"
+      },
+      {
+        "relative": "live_trace/exit_assign.sram",
+        "bytes": 8192,
+        "sha256": "cd6105a3a417df6e6b2649a6499727c1fa3ffce9a390ad60fd4bbb04414bfa4f"
+      },
+      {
+        "relative": "live_trace/exit_assign.png",
+        "bytes": 3552,
+        "sha256": "2b69f8c3160d6936278837f3507c21cd8a5b60984c9df6102045a439f5853d57"
+      },
+      {
+        "relative": "live_trace/islam_after_buy.json",
+        "bytes": 309,
+        "sha256": "2a740eb104110ef5e0670f3c46798caf80cf35280611f583cf4deed47d7e454e"
+      },
+      {
+        "relative": "live_trace/islam_after_buy.sram",
+        "bytes": 8192,
+        "sha256": "04c28d34b1e0e07b7957184fc732836a4c21c8e3bad9ad34da64969cfb2c9a2c"
+      },
+      {
+        "relative": "live_trace/islam_after_buy.png",
+        "bytes": 5604,
+        "sha256": "63a4bdf731a54cc8ea60e06a6f64c6215e874cf5f01490f8d7a0985d44d98207"
+      },
+      {
+        "relative": "live_trace/islam_quotes_after_buy.json",
+        "bytes": 323,
+        "sha256": "47a5cfc24eaa72c7a54319d196b8c197f8bf8382aabfcd92c51dbf32eb9d3eea"
+      },
+      {
+        "relative": "live_trace/islam_quotes_after_buy.sram",
+        "bytes": 8192,
+        "sha256": "d7afecd3f6df77d4d6d6c774b04236ab00e4caedbbe7c76620ce4c54458fadc9"
+      },
+      {
+        "relative": "live_trace/islam_quotes_after_buy.png",
+        "bytes": 3536,
+        "sha256": "bdd9a9b691692ca534773abadba7981d41a032edfc304198c461c3ca61aef4f4"
+      },
+      {
+        "relative": "live_trace/islam_sell_after_buy.json",
+        "bytes": 319,
+        "sha256": "6081dce8650bc172c73cb4b72fdcc4e69810f96af3ad0be1e8351a23e8d52010"
+      },
+      {
+        "relative": "live_trace/islam_sell_after_buy.sram",
+        "bytes": 8192,
+        "sha256": "38077adfab759674a118aba7b6105fbae23ea42cf039ec9ce064bf43bf173511"
+      },
+      {
+        "relative": "live_trace/islam_sell_after_buy.png",
+        "bytes": 3251,
+        "sha256": "b994b5fbd5f5717e7fbc5d75488d55254f68e2123fb257ef04faf6b9b39ca750"
+      },
+      {
+        "relative": "live_trace/jewel_quantity.json",
+        "bytes": 307,
+        "sha256": "554b52f07ee7397c35874094836394eb4e22958b2caefe6b5adc7c7e3075a09e"
+      },
+      {
+        "relative": "live_trace/jewel_quantity.sram",
+        "bytes": 8192,
+        "sha256": "b9383367d6ed9e608766c011578261bef5ebbed57e11a9e8fd06648d3193d773"
+      },
+      {
+        "relative": "live_trace/jewel_quantity.png",
+        "bytes": 5173,
+        "sha256": "a688d7b2d92e458bc7cf998d5507f337872cdbe914501463c9331f6bff73db67"
+      },
+      {
+        "relative": "live_trace/post_buy_menu.json",
+        "bytes": 305,
+        "sha256": "8c46ee3516f5d417bc3e54045bddfab3c8fcb0035d099e49a647f15a69979b51"
+      },
+      {
+        "relative": "live_trace/post_buy_menu.sram",
+        "bytes": 8192,
+        "sha256": "a371d151f86aa4358bf9a7f6ddb6ce359e395d1b430dfa10c804b1087ad9f564"
+      },
+      {
+        "relative": "live_trace/post_buy_menu.png",
+        "bytes": 5386,
+        "sha256": "849a5eab472fcf525d8dea719e501f17116c19102b199c037545588ca8e465e6"
+      },
+      {
+        "relative": "live_trace/quantity_confirm_open.json",
+        "bytes": 321,
+        "sha256": "a4f169f18aba805a13aa60d0ad9781da5c20492d89f864d1d4708f3f67da9d7d"
+      },
+      {
+        "relative": "live_trace/quantity_confirm_open.sram",
+        "bytes": 8192,
+        "sha256": "b9383367d6ed9e608766c011578261bef5ebbed57e11a9e8fd06648d3193d773"
+      },
+      {
+        "relative": "live_trace/quantity_confirm_open.png",
+        "bytes": 5173,
+        "sha256": "a688d7b2d92e458bc7cf998d5507f337872cdbe914501463c9331f6bff73db67"
+      },
+      {
+        "relative": "live_trace/resell_acquired_commit.json",
+        "bytes": 323,
+        "sha256": "84c1f59a24935a9b376ce5a7e490125dba316e3b97355a4c3d3c377d3a822a6d"
+      },
+      {
+        "relative": "live_trace/resell_acquired_commit.sram",
+        "bytes": 8192,
+        "sha256": "55d93974c5bcdad6afe385917804aff38c3b35cc79ec41980bc89c3328fc7158"
+      },
+      {
+        "relative": "live_trace/resell_acquired_commit.png",
+        "bytes": 3526,
+        "sha256": "1515449fe29ebdd0c2dac9ac3d03267a80fb5f7736598aa4c6ce405c7b26df9e"
+      },
+      {
+        "relative": "live_trace/resell_acquired_quantity.json",
+        "bytes": 327,
+        "sha256": "7b4420a146e51dfa26a5163c2f1a5e61353365497159ca7a7e2734f01725dbb4"
+      },
+      {
+        "relative": "live_trace/resell_acquired_quantity.sram",
+        "bytes": 8192,
+        "sha256": "e07fb50155d9cbc2a22ea0154011824e9c884f6f5dfb27847071044540a24141"
+      },
+      {
+        "relative": "live_trace/resell_acquired_quantity.png",
+        "bytes": 3602,
+        "sha256": "cac59516e9d6999943d3e2df4d343b56e44b08caf5c4a89f1a7f1de1ec92d397"
+      },
+      {
+        "relative": "live_trace/resell_acquired_settled.json",
+        "bytes": 325,
+        "sha256": "4819332b8eb7ab626cb9482d8e8582b22b970a123a23989281cae301a7b7c68a"
+      },
+      {
+        "relative": "live_trace/resell_acquired_settled.sram",
+        "bytes": 8192,
+        "sha256": "2a085856f3666a6968c306c92b69825a0e16426ac5dfe03bb7ba645273091a92"
+      },
+      {
+        "relative": "live_trace/resell_acquired_settled.png",
+        "bytes": 3526,
+        "sha256": "1515449fe29ebdd0c2dac9ac3d03267a80fb5f7736598aa4c6ce405c7b26df9e"
+      },
+      {
+        "relative": "live_trace/root_after_assign.json",
+        "bytes": 313,
+        "sha256": "28b548a1942c3b6995a14730e62f809d2f15ebca774896394c892881af921726"
+      },
+      {
+        "relative": "live_trace/root_after_assign.sram",
+        "bytes": 8192,
+        "sha256": "ec2a385803440a7ac0eb6493f9418a63f8f73cc02c33bf8dce88687eb6e2a529"
+      },
+      {
+        "relative": "live_trace/root_after_assign.png",
+        "bytes": 3526,
+        "sha256": "1515449fe29ebdd0c2dac9ac3d03267a80fb5f7736598aa4c6ce405c7b26df9e"
+      },
+      {
+        "relative": "live_trade/after_purchase_return.json",
+        "bytes": 321,
+        "sha256": "d3db5772fd779946cce4d4a91e61b4c02f39355a564c7bb77d740c6a6424605b"
+      },
+      {
+        "relative": "live_trade/after_purchase_return.sram",
+        "bytes": 8192,
+        "sha256": "0386b63c2c61a022d17fc651dd9c23554c0d3d4748a74ace06e29bf70a4bb28a"
+      },
+      {
+        "relative": "live_trade/after_purchase_return.png",
+        "bytes": 5595,
+        "sha256": "0b978912dcbe1de15f87651dcce26a67f9f0974a6fada546b4fa3e4b480c7de4"
+      },
+      {
+        "relative": "live_trade/baseline.json",
+        "bytes": 295,
+        "sha256": "5cd9881f2dcd7bf9d8c22901269752226b2df4047a40bed8ff42be973acfd952"
+      },
+      {
+        "relative": "live_trade/baseline.sram",
+        "bytes": 8192,
+        "sha256": "dd22847140cc0397ab8f42e29f1832681628ed52bfa17e95041c288afc4ef773"
+      },
+      {
+        "relative": "live_trade/baseline.png",
+        "bytes": 5634,
+        "sha256": "24d0fc2521f75ebc96cdbb87cd01f04744d9fdcd6f725e8103ca5e74e334b10b"
+      },
+      {
+        "relative": "live_trade/buy_confirm.json",
+        "bytes": 301,
+        "sha256": "1117e7cd9015d49ec336280ab02001c8b3903d31f9d47e23014763f04f5464cf"
+      },
+      {
+        "relative": "live_trade/buy_confirm.sram",
+        "bytes": 8192,
+        "sha256": "2593d46a7e59139efa9dc15514b04816f97cdc2fb80e388e9f2ba1e1c4aa7ebc"
+      },
+      {
+        "relative": "live_trade/buy_confirm.png",
+        "bytes": 2761,
+        "sha256": "9edc566874509e2227a29985fb8e97ac7924c5fcc160f576fec2d1c1ac5f6038"
+      },
+      {
+        "relative": "live_trade/buy_down2_a.json",
+        "bytes": 301,
+        "sha256": "ad88752cd9bb1c751e416903e2c7207d198ef47fe92cbdac59d20d8ae0ce9b5f"
+      },
+      {
+        "relative": "live_trade/buy_down2_a.sram",
+        "bytes": 8192,
+        "sha256": "ccddd257e27770c429bd2f9256f8fac3f825bfac2358676fc738f86211e99dad"
+      },
+      {
+        "relative": "live_trade/buy_down2_a.png",
+        "bytes": 5286,
+        "sha256": "88c4b241826385f3d0acb03e483b873155784820fa462fba251677d9468021ad"
+      },
+      {
+        "relative": "live_trade/buy_left.json",
+        "bytes": 295,
+        "sha256": "80e04ed50a24b015ee2e608a63fed1d995570745c0ebfedaa73790e11ad78fdb"
+      },
+      {
+        "relative": "live_trade/buy_left.sram",
+        "bytes": 8192,
+        "sha256": "5f46e7e1bf97d84c6b9202825a4c9222e14a79c779bd7e0335802f4c67ba4083"
+      },
+      {
+        "relative": "live_trade/buy_left.png",
+        "bytes": 5284,
+        "sha256": "01c54be3eab74297a765a92407fe43ea23aa8989aa948fc4291af1c15da87321"
+      },
+      {
+        "relative": "live_trade/buy_right_a.json",
+        "bytes": 301,
+        "sha256": "7b851109faec8672e0abfe621f03e2acb12cd1083f6007bde936105a2095535b"
+      },
+      {
+        "relative": "live_trade/buy_right_a.sram",
+        "bytes": 8192,
+        "sha256": "f4a02ff36d30462099cdfd43e6bdb0cc3a40ea1da78ce9b034c89306441c6c56"
+      },
+      {
+        "relative": "live_trade/buy_right_a.png",
+        "bytes": 5173,
+        "sha256": "a688d7b2d92e458bc7cf998d5507f337872cdbe914501463c9331f6bff73db67"
+      },
+      {
+        "relative": "live_trade/china_buy.json",
+        "bytes": 297,
+        "sha256": "6618bf6a04dee97e5f5ce24f93682643a99f66165352e65a9c9b27f658ebc641"
+      },
+      {
+        "relative": "live_trade/china_buy.sram",
+        "bytes": 8192,
+        "sha256": "8ccf46c26be22ad5f30469e4136a30ddcba373674d7cbb584cc7d2c21deca182"
+      },
+      {
+        "relative": "live_trade/china_buy.png",
+        "bytes": 2815,
+        "sha256": "d6928c80e10c6723f7d3d7149cbb0a82dc8efdf035d65a5ecc882fa6ed4cad3a"
+      },
+      {
+        "relative": "live_trade/china_buy_wait.json",
+        "bytes": 307,
+        "sha256": "2dde4654227d2c2e135b1835a7912f12f65fc5f21614f5aab267e11ff0f181f8"
+      },
+      {
+        "relative": "live_trade/china_buy_wait.sram",
+        "bytes": 8192,
+        "sha256": "8ccf46c26be22ad5f30469e4136a30ddcba373674d7cbb584cc7d2c21deca182"
+      },
+      {
+        "relative": "live_trade/china_buy_wait.png",
+        "bytes": 4703,
+        "sha256": "3bba170fe31d35145aa448e7cbb9d2847cae9751d27437f7dc862fba0e30a7b3"
+      },
+      {
+        "relative": "live_trade/hire8_result.json",
+        "bytes": 303,
+        "sha256": "658c53a96871797a4db7c4180f98f0cf38b2b517eea17cfaf7f4336571b4cd3b"
+      },
+      {
+        "relative": "live_trade/hire8_result.sram",
+        "bytes": 8192,
+        "sha256": "ea31f6d57f8e47e7189179967d483d2688e38a212be776e80e2c638b766bea56"
+      },
+      {
+        "relative": "live_trade/hire8_result.png",
+        "bytes": 5331,
+        "sha256": "dee0756e5e0ba5bf9c81ddc44d9630534565fc6c553b64b25e2b02a06b1621dd"
+      },
+      {
+        "relative": "live_trade/quantity_up.json",
+        "bytes": 301,
+        "sha256": "0f1140185106667e9b479608df5eb7777cfefa78f85cbbdba471f5d5306b1487"
+      },
+      {
+        "relative": "live_trade/quantity_up.sram",
+        "bytes": 8192,
+        "sha256": "5f46e7e1bf97d84c6b9202825a4c9222e14a79c779bd7e0335802f4c67ba4083"
+      },
+      {
+        "relative": "live_trade/quantity_up.png",
+        "bytes": 5280,
+        "sha256": "8dd9d5723df74d98faf1d111500672126222271a6127de524b5e1a9174062173"
+      },
+      {
+        "relative": "live_trade/resale_entry.json",
+        "bytes": 303,
+        "sha256": "07bdc6ec1075c6b9cc3c8046e523e0d29deb770f336cd5a218ce2905fe9aa3e1"
+      },
+      {
+        "relative": "live_trade/resale_entry.sram",
+        "bytes": 8192,
+        "sha256": "40add09fad9a4d559051052a5b98abe13260febc3e4e4d64d1fc98298c3d35dd"
+      },
+      {
+        "relative": "live_trade/resale_entry.png",
+        "bytes": 5384,
+        "sha256": "a38f8ffb38181f73f2f9a05a323e9cb53ee6c7e969a105d1647e3402c012c40d"
+      },
+      {
+        "relative": "live_trade/resale_item.json",
+        "bytes": 301,
+        "sha256": "20c2b679dfe458bbcaaa1ee83627d2ead0e5409bac014f847a71ebcdced3a9af"
+      },
+      {
+        "relative": "live_trade/resale_item.sram",
+        "bytes": 8192,
+        "sha256": "4c52be14454175233c36d72ec65b7ff458fd890f15cad0e7c9f9d58b982f5cd6"
+      },
+      {
+        "relative": "live_trade/resale_item.png",
+        "bytes": 5551,
+        "sha256": "9db5cb3075d815703668c96ebe7e7602e75b4fd401c058950601cd849bdc9a11"
+      },
+      {
+        "relative": "live_trade/resale_market.json",
+        "bytes": 305,
+        "sha256": "dc004a1668ff71c4952d362b40a0a06ac591a4d25ef59554c4f7f403fc1e3939"
+      },
+      {
+        "relative": "live_trade/resale_market.sram",
+        "bytes": 8192,
+        "sha256": "0abd67e23f6988c4621de09a0900db33fffeac84ec4e3d51bde5bf7780d2b4a0"
+      },
+      {
+        "relative": "live_trade/resale_market.png",
+        "bytes": 5775,
+        "sha256": "997b42d49306a69b65d12c147b5803bf4a37d5e7c47b42b89649d6c55ef65592"
+      },
+      {
+        "relative": "live_trade/return_menu.json",
+        "bytes": 301,
+        "sha256": "af5a9c4cc186f1b2a2df4e0557f02da359a313f77fcb09d485663d998acba73c"
+      },
+      {
+        "relative": "live_trade/return_menu.sram",
+        "bytes": 8192,
+        "sha256": "0386b63c2c61a022d17fc651dd9c23554c0d3d4748a74ace06e29bf70a4bb28a"
+      },
+      {
+        "relative": "live_trade/return_menu.png",
+        "bytes": 5595,
+        "sha256": "0b978912dcbe1de15f87651dcce26a67f9f0974a6fada546b4fa3e4b480c7de4"
+      },
+      {
+        "relative": "rate190/baseline.json",
+        "bytes": 292,
+        "sha256": "93a617e2af291f8e4bf4f2bfe85e58efcf2e88266cd30cd82878e8a7f9d66ecc"
+      },
+      {
+        "relative": "rate190/baseline.sram",
+        "bytes": 8192,
+        "sha256": "dd22847140cc0397ab8f42e29f1832681628ed52bfa17e95041c288afc4ef773"
+      },
+      {
+        "relative": "rate190/baseline.png",
+        "bytes": 5634,
+        "sha256": "24d0fc2521f75ebc96cdbb87cd01f04744d9fdcd6f725e8103ca5e74e334b10b"
+      },
+      {
+        "relative": "rate190/china_buy_rate190.json",
+        "bytes": 310,
+        "sha256": "1ff88f62e45d135246c08f5bc4943194efc5e47ff2c374ad26aaaf5a73787887"
+      },
+      {
+        "relative": "rate190/china_buy_rate190.sram",
+        "bytes": 8192,
+        "sha256": "4e68c2332745a9987c8319fe75f65671daa6d675eaafec0b87dd2139e97584be"
+      },
+      {
+        "relative": "rate190/china_buy_rate190.png",
+        "bytes": 5184,
+        "sha256": "02c3426214be9461e7536be35cda403a137aa5a92374d9e0cc7ce64823d78f51"
+      },
+      {
+        "relative": "rate190/trade_selected_rate190.json",
+        "bytes": 320,
+        "sha256": "244e67cfeed720b286999599984eaae7f74ef5608db8657f4ea69048f16adbab"
+      },
+      {
+        "relative": "rate190/trade_selected_rate190.sram",
+        "bytes": 8192,
+        "sha256": "0c3f79b2b003d70f71f09c90a89131610b6d5d6e2d5a40a00632441f24735637"
+      },
+      {
+        "relative": "rate190/trade_selected_rate190.png",
+        "bytes": 5613,
+        "sha256": "3f2eac3fd7bc6390a91774472c3d4f4482af96dd664833d92e1ad43df1fe34a1"
+      },
+      {
+        "relative": "roundtrip/after_buy_ready.json",
+        "bytes": 308,
+        "sha256": "5631b0205329b5b1937bbb066031e058337b64af4cc91a46fe7830d4e98057be"
+      },
+      {
+        "relative": "roundtrip/after_buy_ready.sram",
+        "bytes": 8192,
+        "sha256": "fc9e83da469b8a1176407a31b5756ff45eaabc20f81a8f822986b98f671665f5"
+      },
+      {
+        "relative": "roundtrip/after_buy_ready.png",
+        "bytes": 5557,
+        "sha256": "64a77700563a153ab98eba07dc696a439bdf503973d48a0eaaa5d20e2b19761e"
+      },
+      {
+        "relative": "roundtrip/after_trade_exit.json",
+        "bytes": 310,
+        "sha256": "b1c8b6ad8d7433ed4a17f6f7b5eb6380312b87af2408f2c3957ddffb640499a2"
+      },
+      {
+        "relative": "roundtrip/after_trade_exit.sram",
+        "bytes": 8192,
+        "sha256": "3f990a98443074882e6861d15b482eef24cd5465cd88a37088d1ea15f0f4874c"
+      },
+      {
+        "relative": "roundtrip/after_trade_exit.png",
+        "bytes": 8073,
+        "sha256": "74661c76ad0ef21db4e8d9c533f9c68785d157ad89253d21aec8d71da4b30ccb"
+      },
+      {
+        "relative": "roundtrip/baseline.json",
+        "bytes": 294,
+        "sha256": "575a5be95cdad2fc230aaad5c76889486a0d68dcf9ae9ee24c4b8510e90fa1b0"
+      },
+      {
+        "relative": "roundtrip/baseline.sram",
+        "bytes": 8192,
+        "sha256": "dd22847140cc0397ab8f42e29f1832681628ed52bfa17e95041c288afc4ef773"
+      },
+      {
+        "relative": "roundtrip/baseline.png",
+        "bytes": 5634,
+        "sha256": "24d0fc2521f75ebc96cdbb87cd01f04744d9fdcd6f725e8103ca5e74e334b10b"
+      },
+      {
+        "relative": "roundtrip/buy1_result.json",
+        "bytes": 300,
+        "sha256": "a8ba0e48a998d8790970332b8edb9dadec02ab58a827e561140e867d21bb98d7"
+      },
+      {
+        "relative": "roundtrip/buy1_result.sram",
+        "bytes": 8192,
+        "sha256": "fc9e83da469b8a1176407a31b5756ff45eaabc20f81a8f822986b98f671665f5"
+      },
+      {
+        "relative": "roundtrip/buy1_result.png",
+        "bytes": 5557,
+        "sha256": "64a77700563a153ab98eba07dc696a439bdf503973d48a0eaaa5d20e2b19761e"
+      },
+      {
+        "relative": "roundtrip/buy_quantity.json",
+        "bytes": 302,
+        "sha256": "ee548eea9ac7d5f94c81f4a4610a5ab624d1adbf33917014b0bff20dd1f00646"
+      },
+      {
+        "relative": "roundtrip/buy_quantity.sram",
+        "bytes": 8192,
+        "sha256": "1a0a603524aa6bb45479062277eeff684071c0c062ec1fec860f4ba2bb545e34"
+      },
+      {
+        "relative": "roundtrip/buy_quantity.png",
+        "bytes": 5284,
+        "sha256": "01c54be3eab74297a765a92407fe43ea23aa8989aa948fc4291af1c15da87321"
+      },
+      {
+        "relative": "roundtrip/buy_quotes.json",
+        "bytes": 298,
+        "sha256": "31e8f9afe1290fdd41feb5d98b17c80695aa7cdbf1edfe2fec27fb598b365db3"
+      },
+      {
+        "relative": "roundtrip/buy_quotes.sram",
+        "bytes": 8192,
+        "sha256": "957797e12e034378c07d4edadb736d61165066186eed4d8d6f9aa8cd899bc874"
+      },
+      {
+        "relative": "roundtrip/buy_quotes.png",
+        "bytes": 5189,
+        "sha256": "45fb2bfaf6361fb94e4a554f214c3a720b753a1a8ce94e75396a8ccdf3bb62ca"
+      },
+      {
+        "relative": "roundtrip/china_submenu.json",
+        "bytes": 304,
+        "sha256": "91974af9692dfea21d804cee4e54c507c900bbe5dc3c39c3c26faf2e84229ab0"
+      },
+      {
+        "relative": "roundtrip/china_submenu.sram",
+        "bytes": 8192,
+        "sha256": "8e699a2ed1ee2240aefa3fce0355fb678843462fef9851d0a436cc3399fb24ac"
+      },
+      {
+        "relative": "roundtrip/china_submenu.png",
+        "bytes": 5404,
+        "sha256": "2b10f3a0d1767e7f8cb7ac32b455d0b5eeda26054060adabb23a55014f6f05cc"
+      },
+      {
+        "relative": "roundtrip/controlled_china_buy_rate190_verified.json",
+        "bytes": 353,
+        "sha256": "cd3face198c735d68221c1d5a6c987baf824834b72dbaaa4051203eb8881cde7"
+      },
+      {
+        "relative": "roundtrip/controlled_china_buy_rate190_verified.sram",
+        "bytes": 8192,
+        "sha256": "00bb8014b7586030da45326a5dec6b54f8e38d2aa8b3f84af83dadf77a7d0072"
+      },
+      {
+        "relative": "roundtrip/controlled_china_buy_rate190_verified.png",
+        "bytes": 5744,
+        "sha256": "15d60c4ee2f8524e37e89c44811b1e015514331670c3be170060a0227e3d37ff"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate0.json",
+        "bytes": 329,
+        "sha256": "ba375a897d83d93e2bdede8ecb110a50daa3c17b24028d7924f4942d5b4e4d57"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate0.sram",
+        "bytes": 8192,
+        "sha256": "f36d164a27dbfd56e940ad2412be6210e644c68ea4eb522160d933245cae7bf4"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate0.png",
+        "bytes": 5192,
+        "sha256": "05ae2863154766ff9b4d39fbc635f0f013b3ee13ffde0510e256fd58b08e4e05"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate101.json",
+        "bytes": 335,
+        "sha256": "3af24303fd09e1c9a4e65520800112bd416551868e0e19aaab32e1772d4b22ca"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate101.sram",
+        "bytes": 8192,
+        "sha256": "0fd9714c26f0fc265993a03639c4ba9c7dc81d84492b1184cd7fe387cd6e50f0"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate101.png",
+        "bytes": 5201,
+        "sha256": "5e1a3a918f9845fa98f8a1e2441d7686a412dbd11f9dd15848e08aa67180c7a4"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate123.json",
+        "bytes": 335,
+        "sha256": "0134e937873e73d199fbbd314395e197f71bb3650f10fd0481c5f48ab22a3105"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate123.sram",
+        "bytes": 8192,
+        "sha256": "b17fce2004d31bb1c71ccef36997c286b5dd24cd46b6959cd0072bff2e58b2d8"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate123.png",
+        "bytes": 5044,
+        "sha256": "4cafc7b15e41d9dba0590bc9dfc5aaaed48631da094695c1ac960abd6f06e587"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate190.json",
+        "bytes": 335,
+        "sha256": "4d46f8ed9e05ede4c540863ef4e7f8b873f3ee5267d8d012d313c13b4d58035c"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate190.sram",
+        "bytes": 8192,
+        "sha256": "854773e972bc6204d061bf53ffe4e1e081ec101f4e54b10b56473d414041bcb1"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate190.png",
+        "bytes": 5209,
+        "sha256": "8aef70fff5e6af98f0fcc4477d436085df93afd2d1fdae97994cc4ff33234913"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate69.json",
+        "bytes": 332,
+        "sha256": "72f38d2822b877dd7059b507c04ef619a0b133986701ecd44b99250b9b4eeaaf"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate69.sram",
+        "bytes": 8192,
+        "sha256": "397f2568f27220f670b8d32265dc1cdd76fbcc1808f2798c9098b6e542e9881d"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate69.png",
+        "bytes": 5377,
+        "sha256": "58a4aa97ad4e375c94e5e584cc56ee5245bc773e21c8709701ca23f4ad5ce7fc"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate69_actual.json",
+        "bytes": 346,
+        "sha256": "21f7d817ddc605866b39713c1666cfb4f100e8399383c81d562c952007f5daf5"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate69_actual.sram",
+        "bytes": 8192,
+        "sha256": "16a02dc67170b729d597cf3c26159f3eacd55f428b5164ed197411f3acee984e"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate69_actual.png",
+        "bytes": 5183,
+        "sha256": "82806ff43db844f0e5fb11aebf3d79cc040dbc9b422644790206f56ae933b579"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate69_repeat.json",
+        "bytes": 346,
+        "sha256": "19e88f8f48c41ddfa9df30346a4ef083040f08686470bc9ba01800e46965d3f2"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate69_repeat.sram",
+        "bytes": 8192,
+        "sha256": "86d79adbbe6a67b9e490bc5f21b6701bd3fc84dca22f8b30f768c5631b6ab6f7"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate69_repeat.png",
+        "bytes": 5200,
+        "sha256": "c0babb5f34285c2938fcac8bc6e76274976befd3cdb6c1dad61ef320beeed899"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate93_restored.json",
+        "bytes": 350,
+        "sha256": "34522f6dcd12fb0e7b4acf594efce40f97326ded83e3034060ff8ae29140927f"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate93_restored.sram",
+        "bytes": 8192,
+        "sha256": "6e7f3e499ddde57576742c754510a8c402e85773fc8c38dd05cc4e6680e3ec04"
+      },
+      {
+        "relative": "roundtrip/controlled_islam_buy_rate93_restored.png",
+        "bytes": 5046,
+        "sha256": "e48094047e2c6a5a0e7460909d6dbe1a504a48ac1b0bbd34a8fd0b87c9943dbf"
+      },
+      {
+        "relative": "roundtrip/food1_commit.json",
+        "bytes": 302,
+        "sha256": "ab2018f8109952ec0db39ad77d975bcfcd84083e1fdc47851f3dc3f29359aa05"
+      },
+      {
+        "relative": "roundtrip/food1_commit.sram",
+        "bytes": 8192,
+        "sha256": "5c515deb471c3d02c1249772008021ecb2dee4a6022ebbf4edc2ed9882974ce2"
+      },
+      {
+        "relative": "roundtrip/food1_commit.png",
+        "bytes": 2878,
+        "sha256": "62c43511eb537f1eed74d56f5c5e50a0202a8e66c7218a8543c2b81d694ca4aa"
+      },
+      {
+        "relative": "roundtrip/food_buy_quotes.json",
+        "bytes": 308,
+        "sha256": "2c1b9cecd8ce8cf0c15635daa14f5ceb5fa642c4b4e75e83c3ea727d0a4db76b"
+      },
+      {
+        "relative": "roundtrip/food_buy_quotes.sram",
+        "bytes": 8192,
+        "sha256": "699ee9bdbddf8155ae3adb2da20a7cfd6b074562119580ed10fb329fa9065e31"
+      },
+      {
+        "relative": "roundtrip/food_buy_quotes.png",
+        "bytes": 5183,
+        "sha256": "a73a9322a92e28891d9460954fe031590a558411e5625585bc44676e7eda7162"
+      },
+      {
+        "relative": "roundtrip/food_quantity.json",
+        "bytes": 304,
+        "sha256": "6cda41fc7a87c2aced1006b57945493650ccf099786e69e927c769997f2ea3a1"
+      },
+      {
+        "relative": "roundtrip/food_quantity.sram",
+        "bytes": 8192,
+        "sha256": "94a7471903e97c95d255bc8c0ce305de7ce94b2a8c04ec78ab04faea0d94ff5c"
+      },
+      {
+        "relative": "roundtrip/food_quantity.png",
+        "bytes": 5272,
+        "sha256": "92bb6ee3b1e6c575845968cc85df29d61862815aa0447189e432b71f25e9f465"
+      },
+      {
+        "relative": "roundtrip/food_quotes_ready.json",
+        "bytes": 312,
+        "sha256": "c3ac7ef9dd322d2a908fdd8e79857b524f503970610cdbe287ae50b548b8a2f8"
+      },
+      {
+        "relative": "roundtrip/food_quotes_ready.sram",
+        "bytes": 8192,
+        "sha256": "699ee9bdbddf8155ae3adb2da20a7cfd6b074562119580ed10fb329fa9065e31"
+      },
+      {
+        "relative": "roundtrip/food_quotes_ready.png",
+        "bytes": 5183,
+        "sha256": "a73a9322a92e28891d9460954fe031590a558411e5625585bc44676e7eda7162"
+      },
+      {
+        "relative": "roundtrip/food_selected.json",
+        "bytes": 304,
+        "sha256": "4016bf6f982a7ad0b171cfe7df6883595935fc41f775e9834aefeaa008c5abd9"
+      },
+      {
+        "relative": "roundtrip/food_selected.sram",
+        "bytes": 8192,
+        "sha256": "56079fa8744dc5de9ac4170c26ee629e35dc9c48cb76f6f76acb95e4dd291e69"
+      },
+      {
+        "relative": "roundtrip/food_selected.png",
+        "bytes": 5165,
+        "sha256": "fd60bfee2254d744a956940c2ffda8b88e12a38716f7bf2564f30411ca942a12"
+      },
+      {
+        "relative": "roundtrip/food_settled.json",
+        "bytes": 302,
+        "sha256": "3d5e2297b7d447c81eb3ebe680397107c0baf9362dd2a42c6f43f82ee1429279"
+      },
+      {
+        "relative": "roundtrip/food_settled.sram",
+        "bytes": 8192,
+        "sha256": "f0e70f4ac45c0d04c64cb2b59e61b64f5dbeffe9bb07b136724cc033acd494be"
+      },
+      {
+        "relative": "roundtrip/food_settled.png",
+        "bytes": 4555,
+        "sha256": "250608d22b2b8813b657476d8008175ea1721d1c930e934d7f54ab4ff7d34378"
+      },
+      {
+        "relative": "roundtrip/islam_sale_quotes.json",
+        "bytes": 312,
+        "sha256": "5a0ec984541e1f0110995ed1a18f3a51101d5633126b3883e0d342a5c7377117"
+      },
+      {
+        "relative": "roundtrip/islam_sale_quotes.sram",
+        "bytes": 8192,
+        "sha256": "46382fec7e1b7b95d6df25a2d6ad5bcc56b0987ce2a8574b512676ac6dfb07a2"
+      },
+      {
+        "relative": "roundtrip/islam_sale_quotes.png",
+        "bytes": 4650,
+        "sha256": "df3d30d2e45f6ec673afe25059cc5d1265536e5706231641b20f95d39e045c56"
+      },
+      {
+        "relative": "roundtrip/islam_submenu.json",
+        "bytes": 304,
+        "sha256": "f84ff33b2707ca1204024fd8cfe31131735ff500ca9cd29d538ce3e29783fcf6"
+      },
+      {
+        "relative": "roundtrip/islam_submenu.sram",
+        "bytes": 8192,
+        "sha256": "eb9d5da43caac91b41bcaf34db340f156f0d1cc2bf6ede8715401414bd2d8905"
+      },
+      {
+        "relative": "roundtrip/islam_submenu.png",
+        "bytes": 5404,
+        "sha256": "7abc76b59a05d6c3c19b00ecf192155dac7ce95afd458ec0f315bb478569d6fe"
+      },
+      {
+        "relative": "roundtrip/merchants.json",
+        "bytes": 296,
+        "sha256": "926d21f7a8bf6f62722f172d63b2bb05864c094c4921d85514dc6334d554d179"
+      },
+      {
+        "relative": "roundtrip/merchants.sram",
+        "bytes": 8192,
+        "sha256": "1089831de3033a6351ef35ecb944f40cc7ce6426905f725015a6b212dd8fbee1"
+      },
+      {
+        "relative": "roundtrip/merchants.png",
+        "bytes": 5539,
+        "sha256": "8245f78e7e1bcbf1f6d5be85decdfe75e084be270995e651446c9e0da77c9b33"
+      },
+      {
+        "relative": "roundtrip/rate190_retry_exit.json",
+        "bytes": 314,
+        "sha256": "c8d192c60dfe40dd0d53694af7f2205b33693da7f683311f8918d6360ce19b36"
+      },
+      {
+        "relative": "roundtrip/rate190_retry_exit.sram",
+        "bytes": 8192,
+        "sha256": "004e9a133981679aa5de887dd7c7b60d7bf2e84acfa936c3eebd65cf8642375f"
+      },
+      {
+        "relative": "roundtrip/rate190_retry_exit.png",
+        "bytes": 5539,
+        "sha256": "25838ab120d17e80160942ee74deb5100145dd8caecd784b77c1d91fe15440f1"
+      },
+      {
+        "relative": "roundtrip/rate190_retry_menu.json",
+        "bytes": 315,
+        "sha256": "49616d6b6c350a0b6fae0bbdd4fec323029fe4c35095a06b6a55a98852593b0c"
+      },
+      {
+        "relative": "roundtrip/rate190_retry_menu.sram",
+        "bytes": 8192,
+        "sha256": "8ba1680a502d7f74318b7a13358e104e93b8ee11feedff685e698e7127c2786e"
+      },
+      {
+        "relative": "roundtrip/rate190_retry_menu.png",
+        "bytes": 5360,
+        "sha256": "fb03c74ffc83f4c75526e4e5dee4f71ff8076392f2467cb697734b4a34a42162"
+      },
+      {
+        "relative": "roundtrip/sale1_result.json",
+        "bytes": 302,
+        "sha256": "b6f6c167e90c86b212494e8aa8d62a82f34364b2b0f012aa1f114a749383d021"
+      },
+      {
+        "relative": "roundtrip/sale1_result.sram",
+        "bytes": 8192,
+        "sha256": "5738c76e028fa1cddbf789482ca2b3c497eaa5b386fba8e4cde6f868ff254cbf"
+      },
+      {
+        "relative": "roundtrip/sale1_result.png",
+        "bytes": 5551,
+        "sha256": "44868e72aca7b53692207f025c61560b1b2faf4688081acb7371a83151bf544c"
+      },
+      {
+        "relative": "roundtrip/sale_quantity.json",
+        "bytes": 304,
+        "sha256": "925ac53ef807d78022709df539df4eb0c6c4e9a63eb5b158a246ea59809596e9"
+      },
+      {
+        "relative": "roundtrip/sale_quantity.sram",
+        "bytes": 8192,
+        "sha256": "720a9f4b05aaaa42d78be499268de4437bfdc903d41f1f70847064ba7e93f1d4"
+      },
+      {
+        "relative": "roundtrip/sale_quantity.png",
+        "bytes": 4755,
+        "sha256": "171b30e092ded26e410ab85ffc24476645a70cb7df180442bcacad3fc0ed7c12"
+      },
+      {
+        "relative": "roundtrip/season_progress1.json",
+        "bytes": 309,
+        "sha256": "f7e04deaf3baddb6a88b5ef5a1516e3e819ed62c6bd3ef1c87904297a54a5249"
+      },
+      {
+        "relative": "roundtrip/season_progress1.sram",
+        "bytes": 8192,
+        "sha256": "22e110fc0f3ecb56643ef8747c01b4a77164c658dd6a2903703dc6a63949f120"
+      },
+      {
+        "relative": "roundtrip/season_progress1.png",
+        "bytes": 8070,
+        "sha256": "81f46c0db729606e54b7cc63f132051b81ec897164863263323d31313b546319"
+      },
+      {
+        "relative": "roundtrip/summer_buy_vendor_select.json",
+        "bytes": 326,
+        "sha256": "2760e24cfd32d88fec7fc0556b2068998570c891ec66bf727eba26677dc69ba7"
+      },
+      {
+        "relative": "roundtrip/summer_buy_vendor_select.sram",
+        "bytes": 8192,
+        "sha256": "da8e5ad158d87e38a4c3f98739edd4491b13c0e681160217104f7360f0402c55"
+      },
+      {
+        "relative": "roundtrip/summer_buy_vendor_select.png",
+        "bytes": 5044,
+        "sha256": "edf130226c8058ed50fe9575a702077c4adb93fe7c54c4534b2e44e6a0b72b16"
+      },
+      {
+        "relative": "roundtrip/summer_merchants.json",
+        "bytes": 310,
+        "sha256": "f730e7c655bb3bcd26c3e1591e2e754de6ccb0cc0e5203e96eca1080f9800df0"
+      },
+      {
+        "relative": "roundtrip/summer_merchants.sram",
+        "bytes": 8192,
+        "sha256": "981742b53e44f46627d371438c8c76c0ec320d6de761d19fc3ebdeb1fb04edc4"
+      },
+      {
+        "relative": "roundtrip/summer_merchants.png",
+        "bytes": 5360,
+        "sha256": "fb03c74ffc83f4c75526e4e5dee4f71ff8076392f2467cb697734b4a34a42162"
+      },
+      {
+        "relative": "roundtrip/summer_progress2.json",
+        "bytes": 309,
+        "sha256": "31b5fe3805fd6416fc119969b665c3686975bae95780d4991363c024754210f9"
+      },
+      {
+        "relative": "roundtrip/summer_progress2.sram",
+        "bytes": 8192,
+        "sha256": "6f5bfecc697692439bd6308adf50de878fdc6bb9a36d7d8161b3ef4abb1e51a4"
+      },
+      {
+        "relative": "roundtrip/summer_progress2.png",
+        "bytes": 5599,
+        "sha256": "3e8519af72a0f04ea9d196479f017d48ebfcd85254bc5fa66ecb2723ad3683dc"
+      },
+      {
+        "relative": "roundtrip/summer_trade_select.json",
+        "bytes": 315,
+        "sha256": "c1074cd068b5dffd14fb7783f697729c8c417b4f7ff4adabfa8bd4cb12ce2ab5"
+      },
+      {
+        "relative": "roundtrip/summer_trade_select.sram",
+        "bytes": 8192,
+        "sha256": "dc1b2b9ce06fd3e826d9d0eed4c690ec676a6deef3d0124ecf5aa4424c26eba3"
+      },
+      {
+        "relative": "roundtrip/summer_trade_select.png",
+        "bytes": 5599,
+        "sha256": "3e8519af72a0f04ea9d196479f017d48ebfcd85254bc5fa66ecb2723ad3683dc"
+      },
+      {
+        "relative": "roundtrip/summer_trade_select2.json",
+        "bytes": 317,
+        "sha256": "aaa60f15be82705220013b01ffd09c16ce8262bb470f6ffc18f5f4c02a089367"
+      },
+      {
+        "relative": "roundtrip/summer_trade_select2.sram",
+        "bytes": 8192,
+        "sha256": "86a23c62a9ba45d94df822255c2d829d96d317322fcca51aeba0e120b61edb49"
+      },
+      {
+        "relative": "roundtrip/summer_trade_select2.png",
+        "bytes": 5519,
+        "sha256": "faaf33633b4023c76fb0ba15c2abfcd41a1f3b94c95993659612629b9ac69930"
+      },
+      {
+        "relative": "roundtrip/trade_selected.json",
+        "bytes": 306,
+        "sha256": "ea3e3278bfc4a43a351314e65df2e492decda0aa32faf4c7e992a982e1ac8310"
+      },
+      {
+        "relative": "roundtrip/trade_selected.sram",
+        "bytes": 8192,
+        "sha256": "3052a80ce172aa47123089a9c2c9226e0bfb36a331b27f70a79af52a00e9d705"
+      },
+      {
+        "relative": "roundtrip/trade_selected.png",
+        "bytes": 5613,
+        "sha256": "3f2eac3fd7bc6390a91774472c3d4f4482af96dd664833d92e1ad43df1fe34a1"
+      },
+      {
+        "relative": "roundtrip_vm_trace.jsonl",
+        "bytes": 108572,
+        "sha256": "9fce55a1e768e1cae3f11d9f6f181d7ca39f91fced5d21c1245b30432fc0e5d0"
+      },
+      {
+        "relative": "rate190_vm_trace.jsonl",
+        "bytes": 1170,
+        "sha256": "02d89b6ecaabd2b70d75b70e22613e274a734c9e54ac47534df8d6d508e703c0"
+      }
+    ],
+    "GK_MANUAL": [
+      {
+        "relative": "Genghis_Khan_NES_USA_manual_archive.pdf",
+        "bytes": 18062394,
+        "sha256": "ecc2150b0ef43861b3590fa8d1671b99fe5f486894b1289836eb77265f49d0ae"
+      }
+    ],
+    "GK_ROI_EVIDENCE": [
+      {
+        "relative": "baseline.sram",
+        "bytes": 8192,
+        "sha256": "dd22847140cc0397ab8f42e29f1832681628ed52bfa17e95041c288afc4ef773"
+      },
+      {
+        "relative": "summer_step3.sram",
+        "bytes": 8192,
+        "sha256": "b1bc1a27707d9346f39d460710c1fd182182fad60d4cfa3bead481a96c42596c"
+      },
+      {
+        "relative": "fall1175_ready.sram",
+        "bytes": 8192,
+        "sha256": "ddc375a785b1d403334858abb1c5c25b76dcfc26a48896b49cecc52fb4d5745e"
+      },
+      {
+        "relative": "winter_step2.sram",
+        "bytes": 8192,
+        "sha256": "885258d8fa94027d92184abc8a2113786da538707519c8b8055545529e98aaa1"
+      },
+      {
+        "relative": "spring1176_step1.sram",
+        "bytes": 8192,
+        "sha256": "653af154ff76bdb9194cea329b1688ade58651c39a60b80fd026381ab1de7871"
+      }
+    ],
+    "GK_ROM": [
+      {
+        "relative": "Genghis Khan (USA).nes",
+        "bytes": 262160,
+        "sha256": "ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3"
+      }
+    ],
+    "GK_SRAM": [
+      {
+        "relative": "baseline.sram",
+        "bytes": 8192,
+        "sha256": "dd22847140cc0397ab8f42e29f1832681628ed52bfa17e95041c288afc4ef773"
+      }
+    ]
+  },
+  "selected": [
+    "v106_full",
+    "domestic",
+    "trade",
+    "seasonal_core",
+    "seasonal_extension",
+    "logistics",
+    "commodity",
+    "scenario",
+    "roi"
+  ],
+  "results": [
+    {
+      "suite": "v106_full",
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/scratch/c266d767c7ca/batches/source_package/clean_validation_jt2bpw3_/package/output/research/Genghis_Khan_NES/v1.06/tools/run_all.py"
+      ],
+      "exit_code": 0,
+      "expected_methods": 72,
+      "observed_methods": 72,
+      "unittest_ok_line": true,
+      "pass": true,
+      "seconds": 5.749873970999033,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "d9c7117568cdb7482a83789f2d8d45b512341e721e0a62095c4475dc9ff76c4a"
+    },
+    {
+      "suite": "domestic",
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/scratch/c266d767c7ca/batches/source_package/clean_validation_jt2bpw3_/package/batches/domestic_source/test_domestic.py"
+      ],
+      "exit_code": 0,
+      "expected_methods": 27,
+      "observed_methods": 27,
+      "unittest_ok_line": true,
+      "pass": true,
+      "seconds": 2.969548039000074,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2c647b0f62b87af33a451fd57b8c1b7b7c7b4e56acb4f046673c93d48ca948d8"
+    },
+    {
+      "suite": "trade",
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/scratch/c266d767c7ca/batches/source_package/clean_validation_jt2bpw3_/package/batches/trade_source/test_trade.py"
+      ],
+      "exit_code": 0,
+      "expected_methods": 38,
+      "observed_methods": 38,
+      "unittest_ok_line": true,
+      "pass": true,
+      "seconds": 4.080341294997197,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "59c128f8e1fcfbccee16655251ad3752699db8d6d10244a8c422e079628e4861"
+    },
+    {
+      "suite": "seasonal_core",
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/scratch/c266d767c7ca/batches/source_package/clean_validation_jt2bpw3_/package/batches/seasonal_source/test_annual.py"
+      ],
+      "exit_code": 0,
+      "expected_methods": 26,
+      "observed_methods": 26,
+      "unittest_ok_line": true,
+      "pass": true,
+      "seconds": 6.737352618998557,
+      "stdout_sha256": "6816980ba094834ec2fef0cdcc89d73f9c3b8b3d075a708cb66773c7a99583e9",
+      "stderr_sha256": "01ffb821fd53b885bd69657e3f64860bdb9b82a9f59f047b4bc622ea404e605b"
+    },
+    {
+      "suite": "seasonal_extension",
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/scratch/c266d767c7ca/batches/source_package/clean_validation_jt2bpw3_/package/batches/seasonal_source/test_dependencies.py"
+      ],
+      "exit_code": 0,
+      "expected_methods": 24,
+      "observed_methods": 24,
+      "unittest_ok_line": true,
+      "pass": true,
+      "seconds": 5.968338895996567,
+      "stdout_sha256": "2e50beed7422b54999835f9c9d99a98006393e1ac2c7f0a745b361b3be07fa15",
+      "stderr_sha256": "9255fd4da4881b5f4965e59c9a972a77650825e10fa4d99c1fd21071218b0fbb"
+    },
+    {
+      "suite": "logistics",
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/scratch/c266d767c7ca/batches/source_package/clean_validation_jt2bpw3_/package/batches/logistics_source/test_logistics.py"
+      ],
+      "exit_code": 0,
+      "expected_methods": 37,
+      "observed_methods": 37,
+      "unittest_ok_line": true,
+      "pass": true,
+      "seconds": 2.166933483997127,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "4c29d6d3d6b399385d4a166c07e4e7b13049c6378326809fb7dcf8738ca7bf54"
+    },
+    {
+      "suite": "commodity",
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/scratch/c266d767c7ca/batches/source_package/clean_validation_jt2bpw3_/package/batches/commodity_identity/test_identity.py"
+      ],
+      "exit_code": 0,
+      "expected_methods": 12,
+      "observed_methods": 12,
+      "unittest_ok_line": true,
+      "pass": true,
+      "seconds": 0.10609797799406806,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1277ed60be3fbbb39b411cfcd7f9b458ae780aaa13aa694b8ea741775b31a49b"
+    },
+    {
+      "suite": "scenario",
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/scratch/c266d767c7ca/batches/source_package/clean_validation_jt2bpw3_/package/batches/scenario_economy_data/test_scenarios.py"
+      ],
+      "exit_code": 0,
+      "expected_methods": 13,
+      "observed_methods": 13,
+      "unittest_ok_line": true,
+      "pass": true,
+      "seconds": 1.2263829039948178,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b5035006381c2b915fe679845dc0d4c6cb23350adca1c9cf5392a4a597f8b590"
+    },
+    {
+      "suite": "roi",
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/scratch/c266d767c7ca/batches/source_package/clean_validation_jt2bpw3_/package/batches/economic_roi/test_roi.py"
+      ],
+      "exit_code": 0,
+      "expected_methods": 13,
+      "observed_methods": 13,
+      "unittest_ok_line": true,
+      "pass": true,
+      "seconds": 0.9591113709975616,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "9d4211f6f6c09b99e6d5060a889efbcc09fe268c8037aabe4610510428c54be5"
+    }
+  ],
+  "evidence_scope": "Source replay and explicitly included archived-evidence checks; not new emulator or port validation",
+  "total_methods": 262,
+  "all_pass": true
+}

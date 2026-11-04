@@ -1,0 +1,16 @@
+1 1 1 561139 PASS stockwords invariant
+1 1 3 638568 PASS stockwords invariant
+1 1 5 676487 PASS stockwords invariant
+2 1 1 1071966 PASS stockwords invariant
+2 1 3 1152614 PASS stockwords invariant
+2 1 5 1192449 PASS stockwords invariant
+2 7 1 1097807 PASS stockwords invariant
+2 7 3 1178255 PASS stockwords invariant
+2 7 5 1218509 PASS stockwords invariant
+2 11 1 1097807 PASS stockwords invariant
+2 11 3 1178255 PASS stockwords invariant
+2 11 5 1218509 PASS stockwords invariant
+2 19 1 1097807 PASS stockwords invariant
+2 19 3 1178255 PASS stockwords invariant
+2 19 5 1218509 PASS stockwords invariant
+PASS 15 condition-labelled original country setup replays

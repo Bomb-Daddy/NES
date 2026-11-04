@@ -1,0 +1,180 @@
+{
+  "author": "Zhuge Liang/Codex research team",
+  "integration_owner": "trade_source_completion",
+  "files": [
+    {
+      "original_path": "output/research/Genghis_Khan_NES/v1.06/tools/vm_selected_cpu_replay.py",
+      "original_sha256": "e1fa50abec19c786b9644bc9f300b7a2183d15fbbc741ba2736fbdf323f863dd",
+      "package_sha256": "c4c8e3980039e484e804e2ceb048776be7b9e51db3062e00f2e6a14bb1b21964",
+      "changed": true
+    },
+    {
+      "original_path": "output/research/Genghis_Khan_NES/v1.06/tools/replay_b7_arithmetic.py",
+      "original_sha256": "73891b90520f8f575f8b93e14a0af0273ffbddc7c64f32e9176332f4e012123f",
+      "package_sha256": "73891b90520f8f575f8b93e14a0af0273ffbddc7c64f32e9176332f4e012123f",
+      "changed": false
+    },
+    {
+      "original_path": "output/research/Genghis_Khan_NES/v1.06/tools/replay_da67.py",
+      "original_sha256": "bfa0c1e871c8ee893fcf5bec66f9b2c195a88658ca5f4d3a6ba1b7d3259cd413",
+      "package_sha256": "bfa0c1e871c8ee893fcf5bec66f9b2c195a88658ca5f4d3a6ba1b7d3259cd413",
+      "changed": false
+    },
+    {
+      "original_path": "output/research/Genghis_Khan_NES/v1.06/tools/replay_da8b.py",
+      "original_sha256": "3c1ecb2f5a67c3fa111f2054fae5a5e4d06c0b26a2b059559914badb99bf810c",
+      "package_sha256": "3c1ecb2f5a67c3fa111f2054fae5a5e4d06c0b26a2b059559914badb99bf810c",
+      "changed": false
+    },
+    {
+      "original_path": "output/research/Genghis_Khan_NES/v1.06/tools/replay_dcea.py",
+      "original_sha256": "488294ac0f303a7fc6344fc668092303885a94a62a8a683a7fcc8983f639f5c7",
+      "package_sha256": "20fa13abbc2b5ac8284c5d6a8f328884377ebf69bc31439eb7c5cafa604906bc",
+      "changed": true
+    },
+    {
+      "original_path": "output/research/Genghis_Khan_NES/v1.06/tools/verify_price_paths.py",
+      "original_sha256": "6396b3c7a83fe62d1987c84dc981541c129d38d5e475370719165c20a9b74729",
+      "package_sha256": "6396b3c7a83fe62d1987c84dc981541c129d38d5e475370719165c20a9b74729",
+      "changed": false
+    },
+    {
+      "original_path": "output/research/Genghis_Khan_NES/v1.06/tools/verify_live_evidence.py",
+      "original_sha256": "94554d9a9e021fe4786b8ad5b605d694aeee859a4176732badd6699ebb37cc42",
+      "package_sha256": "94554d9a9e021fe4786b8ad5b605d694aeee859a4176732badd6699ebb37cc42",
+      "changed": false
+    },
+    {
+      "original_path": "output/research/Genghis_Khan_NES/v1.06/tools/run_all.py",
+      "original_sha256": "047c2612abfb282195b89b661ebaa69d33cc04dcb3ed71683c3ec0b519c99672",
+      "package_sha256": "047c2612abfb282195b89b661ebaa69d33cc04dcb3ed71683c3ec0b519c99672",
+      "changed": false
+    },
+    {
+      "original_path": "recovery/static_dependencies/gk_static_forensics.py",
+      "original_sha256": "7f41922269aabf5819661d89656865bccfb6cbb9188ced8552a9855f591d91f5",
+      "package_sha256": "7f41922269aabf5819661d89656865bccfb6cbb9188ced8552a9855f591d91f5",
+      "changed": false
+    },
+    {
+      "original_path": "batches/economic_roi/roi_model.py",
+      "original_sha256": "a945217b7fafcf704557dd462c743bf2f52a92a6e6a3bcba85ba95afb922c4f4",
+      "package_sha256": "04c6ce39404b19e2ea946958a1d14cabac44188b1ab8b6063bf4d93c6837b74f",
+      "changed": true
+    },
+    {
+      "original_path": "batches/economic_roi/test_roi.py",
+      "original_sha256": "e5b569350b981468979d2385b189393037885891625a3381172fc0e0f97e45cd",
+      "package_sha256": "f2410a2e931e4f95bb6ee4aa6c50cd8a6d31df5a5c0b0c6394685dcf560225be",
+      "changed": true
+    },
+    {
+      "original_path": "batches/trade_source/inspect_source.py",
+      "original_sha256": "c8de02dbcd09cc0876511da678f77b035ddf4d5c02bb792c84ed09d2b47da5e9",
+      "package_sha256": "7107dd62c8eeb33a725ceb782e8b2190b79899b79d7b54708fa242fe0be2ac29",
+      "changed": true
+    },
+    {
+      "original_path": "batches/trade_source/replay_trade.py",
+      "original_sha256": "0c9594126b2cd0493bbc0212ca48bea30b364104b4d05a0445bf694bfc70bcc1",
+      "package_sha256": "0c9594126b2cd0493bbc0212ca48bea30b364104b4d05a0445bf694bfc70bcc1",
+      "changed": false
+    },
+    {
+      "original_path": "batches/trade_source/test_trade.py",
+      "original_sha256": "ef8a25ee053592add95b9a5ed7e579121b6da7f3641c29e508969a5dbfc84f25",
+      "package_sha256": "5d97161795b2f3b2f64759fdb85022bb228d4c01dcffaa94577838007abe4c2c",
+      "changed": true
+    },
+    {
+      "original_path": "batches/domestic_source/replay_domestic.py",
+      "original_sha256": "840354b79c3d7c9bfed18f26ea8502e664a343f9f49e5c9943cb444ca7064ad7",
+      "package_sha256": "d78b0b3aa988f51abd297d5d8a46929312c1d8ca292499ae5c168e377943c830",
+      "changed": true
+    },
+    {
+      "original_path": "batches/domestic_source/test_domestic.py",
+      "original_sha256": "3a435e103d872024856f4b3088f0af6ac87932a214723aaa325649173573467f",
+      "package_sha256": "8f45aef02fe8894d888194870dd3e3b921fa03447d1fc60144bfa2d18ea2035d",
+      "changed": true
+    },
+    {
+      "original_path": "batches/seasonal_source/inspect_source.py",
+      "original_sha256": "192e7f44776639b7ad0af43d207ece839de138e545d430dd6aa1604c63d60032",
+      "package_sha256": "b582c3981c3e71cbd7fcb27ea900b10869d5ab876358c1a20f2ad8f6ef1d156e",
+      "changed": true
+    },
+    {
+      "original_path": "batches/seasonal_source/source_cpu.py",
+      "original_sha256": "4aa6e60d37558d905247ca91d74a0aaf84245f65776cb1e5a2c97c1d11d5ee34",
+      "package_sha256": "4aa6e60d37558d905247ca91d74a0aaf84245f65776cb1e5a2c97c1d11d5ee34",
+      "changed": false
+    },
+    {
+      "original_path": "batches/seasonal_source/test_annual.py",
+      "original_sha256": "3407892804ca0be7da029347628fee3c26c81e8c5a917c68fc96807cc5f6a474",
+      "package_sha256": "3407892804ca0be7da029347628fee3c26c81e8c5a917c68fc96807cc5f6a474",
+      "changed": false
+    },
+    {
+      "original_path": "batches/seasonal_source/test_dependencies.py",
+      "original_sha256": "f3c8dea5ef4c161f4f1a40aa2e5cad3be7c7324708a1aff2da732da4fa400129",
+      "package_sha256": "f3c8dea5ef4c161f4f1a40aa2e5cad3be7c7324708a1aff2da732da4fa400129",
+      "changed": false
+    },
+    {
+      "original_path": "batches/logistics_source/replay_logistics.py",
+      "original_sha256": "5431d3c3d583da8d4e2895eef9bcaf060bfea8f03be51c7b3ce7608d8a635072",
+      "package_sha256": "bcc9b12d6f7fad2676dd0322cf3ff7caa9326f895fa67b03cd382690b827cf69",
+      "changed": true
+    },
+    {
+      "original_path": "batches/logistics_source/test_logistics.py",
+      "original_sha256": "69619157e6149c055c7a5412f3525f22b13145cf2c43a567f59dd26b481334ab",
+      "package_sha256": "69619157e6149c055c7a5412f3525f22b13145cf2c43a567f59dd26b481334ab",
+      "changed": false
+    },
+    {
+      "original_path": "batches/commodity_identity/replay_identity.py",
+      "original_sha256": "e5b652d435b37977a599b49b50a1a11db336dad12e7056098ec80a10cd017454",
+      "package_sha256": "ace630ad60d9ca37fab78a3b8d2315c399a52bafdad9010e32b91f3a704f70bb",
+      "changed": true
+    },
+    {
+      "original_path": "batches/commodity_identity/test_identity.py",
+      "original_sha256": "25d042716cad7dbecbf16dad8ea7d1ec9110139f83f1d27ea4d52a4011834a2e",
+      "package_sha256": "62351858e93c4623157b67953958255ef41a4b5324b0454f006d03a4bd0b5c66",
+      "changed": true
+    },
+    {
+      "original_path": "batches/scenario_economy_data/extract_scenarios.py",
+      "original_sha256": "050f7e378f893994b02d3c3e568900b9b3054b92765e4ab9e9bb118c21986bf9",
+      "package_sha256": "050f7e378f893994b02d3c3e568900b9b3054b92765e4ab9e9bb118c21986bf9",
+      "changed": false
+    },
+    {
+      "original_path": "batches/scenario_economy_data/test_scenarios.py",
+      "original_sha256": "6e485eedd3152e027c669b1a04e93e8614831a2f6048bb6aac4f8b34df90106f",
+      "package_sha256": "6e485eedd3152e027c669b1a04e93e8614831a2f6048bb6aac4f8b34df90106f",
+      "changed": false
+    },
+    {
+      "original_path": "batches/scenario_economy_data/replay_setup.py",
+      "original_sha256": "641e22405d34212e766805f010637396b11297ba2407f4e4f8d319c2f1ef3e1a",
+      "package_sha256": "641e22405d34212e766805f010637396b11297ba2407f4e4f8d319c2f1ef3e1a",
+      "changed": false
+    },
+    {
+      "original_path": "batches/scenario_economy_data/scenario_economy_data.json",
+      "original_sha256": "44f04c2f24fb0db72add5a370b4b980a3f780d217289eb3b7963014823fd7a37",
+      "package_sha256": "44f04c2f24fb0db72add5a370b4b980a3f780d217289eb3b7963014823fd7a37",
+      "changed": false
+    }
+  ],
+  "substantive_corrections": [
+    {
+      "file": "batches/trade_source/test_trade.py",
+      "detail": "Fix independently modeled presence divisor50000 to20000; add discriminator seed1408. Original CPU replay already used correct original immediate$4E20."
+    }
+  ]
+}

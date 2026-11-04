@@ -1,0 +1,24 @@
+test_all_remaining_orders_consumed (__main__.BaseChecks.test_all_remaining_orders_consumed) ... ok
+test_already_processed_destination_waits_for_next_schedule (__main__.BaseChecks.test_already_processed_destination_waits_for_next_schedule) ... ok
+test_body_cost_table_mutation_detected (__main__.BaseChecks.test_body_cost_table_mutation_detected) ... ok
+test_cancel_before_commit_no_persistent_write (__main__.BaseChecks.test_cancel_before_commit_no_persistent_write) ... ok
+test_cost_row_and_body_threshold (__main__.BaseChecks.test_cost_row_and_body_threshold) ... ok
+test_delegated_role101_dispatch_negative_control (__main__.BaseChecks.test_delegated_role101_dispatch_negative_control) ... ok
+test_dispatch_tracks_swapped_ruler (__main__.BaseChecks.test_dispatch_tracks_swapped_ruler) ... ok
+test_new_base_ability_pointer_resolves_temujin (__main__.BaseChecks.test_new_base_ability_pointer_resolves_temujin) ... ok
+test_new_base_sale_uses_destination_stock_and_gold (__main__.BaseChecks.test_new_base_sale_uses_destination_stock_and_gold) ... ok
+test_no_duplicate_general_command_cost (__main__.BaseChecks.test_no_duplicate_general_command_cost) ... ok
+test_original_later_country2_slot (__main__.BaseChecks.test_original_later_country2_slot) ... ok
+test_owner_adjacency_gate (__main__.BaseChecks.test_owner_adjacency_gate) ... ok
+test_private_input_hashes (__main__.BaseChecks.test_private_input_hashes) ... ok
+test_record_words_cleared (__main__.BaseChecks.test_record_words_cleared) ... ok
+test_remaining_order_clear_mutation_detected (__main__.BaseChecks.test_remaining_order_clear_mutation_detected) ... ok
+test_resources_do_not_move_with_ruler (__main__.BaseChecks.test_resources_do_not_move_with_ruler) ... ok
+test_role100_duplicate_not_automatically_repaired (__main__.BaseChecks.test_role100_duplicate_not_automatically_repaired) ... ok
+test_swap_and_body_deduction (__main__.BaseChecks.test_swap_and_body_deduction) ... ok
+test_transfer_relocate_sell_full_selected_source_chain (__main__.BaseChecks.test_transfer_relocate_sell_full_selected_source_chain) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.428s
+
+OK

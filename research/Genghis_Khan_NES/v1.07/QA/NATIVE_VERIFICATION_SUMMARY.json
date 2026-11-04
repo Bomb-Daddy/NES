@@ -1,0 +1,109 @@
+{
+  "created_utc": "2026-11-04T14:18:14.885812+00:00",
+  "invocation": [
+    "batches/native_verification/verify_native.py",
+    "--evidence-root",
+    "batches/runtime/final_replay",
+    "--historic-root",
+    "batches/runtime/live",
+    "--boundary-root",
+    "batches/runtime/boundary_completion",
+    "--require-complete-log"
+  ],
+  "environment": {
+    "python_executable": "/usr/bin/python3",
+    "python_version": "3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.39"
+  },
+  "verification_scope": "OFFLINE captured-state integrity and independent source-formula checks. No native emulator/bridge/Windows calls. PNG presence/dimensions/hash are not screen-content proof.",
+  "root_separation": "Primary and boundary strict logs bind only their own artifacts. Historical snapshots never substitute for absent fresh cases. Historical raw-log omissions are reported separately and not required complete.",
+  "case_counts": {
+    "PASS": 245
+  },
+  "snapshot_integrity_counts": {
+    "PASS": 1388
+  },
+  "corruption_negative_controls": [
+    {
+      "test": "one_captured_byte_changed_original_digest",
+      "status": "PASS",
+      "detected": "deliberate_one_byte_corruption SRAM SHA256: observed '20f37afb65340700e2d43a72103b400d1e63e0194187fbdee69e5c092329e787', expected '26d4abb440dd794c929d824a64c3ad54fc937b0cf19b1c9d29b7eff991c39155'",
+      "mutation_sram_address": "6E0D",
+      "original_files_modified": false
+    },
+    {
+      "test": "changed_Gold_with_recomputed_digest_and_JSON_metadata",
+      "status": "PASS",
+      "detected_by": "independent full-economic-state trade formula",
+      "original_files_modified": false
+    }
+  ],
+  "verifier_sha256": "f19afb745a30b6d306c42c93db651db232dc4a77206efb3b5ac21718bc6b32a2",
+  "exit_code": 0,
+  "delivery_status": "STATE_VERIFICATION_PASSED_HISTORICAL_LOG_LIMITATIONS_REMAIN",
+  "visual_limitations": [
+    "No-op equality proves captured state nonmutation, not menu refusal text.",
+    "The legacy levy_repeat_v2 denial_message images show Tax submenu; their filenames alone do not establish a displayed denial."
+  ],
+  "natural_event_attribution": "When boundary natural_theft_trace1 passes, the separate reproduced natural Year2 Food346\u2192214 trace is OBSERVED_RUNTIME and exactly matches RNG and theft arithmetic; historical broad snapshots alone remain compatibility evidence.",
+  "label": "Public summary; complete raw receipt, all logs and old failed attempts preserved privately.",
+  "sections": {
+    "primary": {
+      "case_counts": {
+        "PASS": 172
+      },
+      "snapshot_integrity_counts": {
+        "PASS": 490
+      },
+      "strict_log_required": true,
+      "raw_records": 32100,
+      "used_captures_bound": 351,
+      "missing_exports": [],
+      "missing_memory": [],
+      "mismatches": [],
+      "historical_errors_retained": 0
+    },
+    "historical": {
+      "case_counts": {
+        "PASS": 12
+      },
+      "snapshot_integrity_counts": {
+        "PASS": 549
+      },
+      "strict_log_required": false,
+      "raw_records": 6097,
+      "used_captures_bound": 6,
+      "missing_exports": [
+        "world_fall_player",
+        "world_fall_step1",
+        "world_first_turn_step2",
+        "world_spring1207_step1",
+        "world_summer_step1",
+        "world_winter_step1",
+        "year2_fall1176",
+        "year2_spring1176_before",
+        "year2_spring1177",
+        "year2_summer1176",
+        "year2_winter1176"
+      ],
+      "missing_memory": [],
+      "mismatches": [],
+      "historical_errors_retained": 1
+    },
+    "boundary": {
+      "case_counts": {
+        "PASS": 61
+      },
+      "snapshot_integrity_counts": {
+        "PASS": 349
+      },
+      "strict_log_required": true,
+      "raw_records": 14632,
+      "used_captures_bound": 300,
+      "missing_exports": [],
+      "missing_memory": [],
+      "mismatches": [],
+      "historical_errors_retained": 6
+    }
+  }
+}

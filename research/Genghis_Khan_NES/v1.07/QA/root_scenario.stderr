@@ -1,0 +1,18 @@
+test_all_copied_bytes_and_relocated_lord_pointers (__main__.Tests.test_all_copied_bytes_and_relocated_lord_pointers) ... ok
+test_all_country_address_index_and_specialty_helpers (__main__.Tests.test_all_country_address_index_and_specialty_helpers) ... ok
+test_all_specialties (__main__.Tests.test_all_specialties) ... ok
+test_copy_bounds_canaries (__main__.Tests.test_copy_bounds_canaries) ... ok
+test_draft_capacity_boundary (__main__.Tests.test_draft_capacity_boundary) ... ok
+test_drafted_sum_excludes_undrafted_negative_control (__main__.Tests.test_drafted_sum_excludes_undrafted_negative_control) ... ok
+test_eligibility_is_byte_and_residents_are_adjacent_word (__main__.Tests.test_eligibility_is_byte_and_residents_are_adjacent_word) ... ok
+test_every_csv_value_against_rom_offset (__main__.Tests.test_every_csv_value_against_rom_offset) ... ok
+test_original_drafted_sum_and_draft_limit_all_countries (__main__.Tests.test_original_drafted_sum_and_draft_limit_all_countries) ... ok
+test_rom_hash (__main__.Tests.test_rom_hash) ... ok
+test_scenario_metadata_and_banks (__main__.Tests.test_scenario_metadata_and_banks) ... ok
+test_specialty_mutation_follows_native_lookup (__main__.Tests.test_specialty_mutation_follows_native_lookup) ... ok
+test_template_stock_mutation_follows_loader (__main__.Tests.test_template_stock_mutation_follows_loader) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 1.252s
+
+OK

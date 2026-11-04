@@ -1,0 +1,189 @@
+{
+  "archive": "GK1_Economic_Evidence_v1.07_2026-11-04.zip",
+  "archive_bytes": 97949707,
+  "archive_sha256": "d8b8290fa9195c9b99137e8c1f0fe6cf09e0494b728553a5236217a27682e0c6",
+  "parts": [
+    {
+      "name": "GK1_Economic_Evidence_v1.07_2026-11-04.zip.part01",
+      "bytes": 8388608,
+      "sha256": "b234295256a53ba7a85f529013810e3bb0ca61171930ee9857432407fbf21f5b",
+      "volume": "GK1_Evidence_v1.07_volume01.zip",
+      "volume_bytes": 8388804,
+      "volume_sha256": "4d8e755bbe38cb15327296ac461fb4d04240c376f435f93193016587e9fc33a3",
+      "drive_file_id": "1t2ysBjVGecdwuLndUMujKNc4edagHXJs",
+      "url": "https://drive.google.com/file/d/1t2ysBjVGecdwuLndUMujKNc4edagHXJs/view",
+      "remote_verified": true,
+      "mime_type": "application/zip",
+      "parent_ids": [
+        "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7"
+      ]
+    },
+    {
+      "name": "GK1_Economic_Evidence_v1.07_2026-11-04.zip.part02",
+      "bytes": 8388608,
+      "sha256": "887053d01c03e8306a9a6f0bc91c64a80aee4cb632e7c975be9c5a9e0fcdbc0f",
+      "volume": "GK1_Evidence_v1.07_volume02.zip",
+      "volume_bytes": 8388804,
+      "volume_sha256": "cf96aef2004de6deb0c3fef3721e25c7292467d85dcf5efb69b5a540497510b9",
+      "drive_file_id": "1n7sGut9QzDAunRDEf35dl1Ki4rZNrguZ",
+      "url": "https://drive.google.com/file/d/1n7sGut9QzDAunRDEf35dl1Ki4rZNrguZ/view",
+      "remote_verified": true,
+      "mime_type": "application/zip",
+      "parent_ids": [
+        "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7"
+      ]
+    },
+    {
+      "name": "GK1_Economic_Evidence_v1.07_2026-11-04.zip.part03",
+      "bytes": 8388608,
+      "sha256": "9fd49a2ea13b54669a7f907dd6fbbc1db7363f6f40f5766b4806d529e2040384",
+      "volume": "GK1_Evidence_v1.07_volume03.zip",
+      "volume_bytes": 8388804,
+      "volume_sha256": "42cb0e7241cfe9b1e9e45f09266f37d1d9f7978f2758041987fe9fb961072aba",
+      "drive_file_id": "1W2asGbC7gD4pQFrvxCc8MTuw-4aDeige",
+      "url": "https://drive.google.com/file/d/1W2asGbC7gD4pQFrvxCc8MTuw-4aDeige/view",
+      "remote_verified": true,
+      "mime_type": "application/zip",
+      "parent_ids": [
+        "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7"
+      ]
+    },
+    {
+      "name": "GK1_Economic_Evidence_v1.07_2026-11-04.zip.part04",
+      "bytes": 8388608,
+      "sha256": "34732ea6cf7892608061966768d5e3cfb4fbce752e7e5b6ace008a214bb8329e",
+      "volume": "GK1_Evidence_v1.07_volume04.zip",
+      "volume_bytes": 8388804,
+      "volume_sha256": "3036c5f4e21c36a7f02f6a61fcb15a69910175e2404224b53f6a41a3e50696bf",
+      "drive_file_id": "1F1vUjuQgw-ed_Sf2BPt6l_NVlw_7vLHW",
+      "url": "https://drive.google.com/file/d/1F1vUjuQgw-ed_Sf2BPt6l_NVlw_7vLHW/view",
+      "remote_verified": true,
+      "mime_type": "application/zip",
+      "parent_ids": [
+        "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7"
+      ]
+    },
+    {
+      "name": "GK1_Economic_Evidence_v1.07_2026-11-04.zip.part05",
+      "bytes": 8388608,
+      "sha256": "c33f5f9bd9e961f807d6887b39f7e99f3c566b103dc5fbfa25afc25fb4a22e90",
+      "volume": "GK1_Evidence_v1.07_volume05.zip",
+      "volume_bytes": 8388804,
+      "volume_sha256": "1bbb9e0a40d9ba032ba03902ad938102fcb37c799ff76f9598ee70d0d5baf3c6",
+      "drive_file_id": "19gk0H6l8c6y2KcH3M7Ol8KA2KqIR3m8l",
+      "url": "https://drive.google.com/file/d/19gk0H6l8c6y2KcH3M7Ol8KA2KqIR3m8l/view",
+      "remote_verified": true,
+      "mime_type": "application/zip",
+      "parent_ids": [
+        "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7"
+      ]
+    },
+    {
+      "name": "GK1_Economic_Evidence_v1.07_2026-11-04.zip.part06",
+      "bytes": 8388608,
+      "sha256": "5478876ab47f74b91eae81acc538715807cefa42ce2604bd88de80e63c5cdf58",
+      "volume": "GK1_Evidence_v1.07_volume06.zip",
+      "volume_bytes": 8388804,
+      "volume_sha256": "9ea1c5ef359e8fde2a66fa29c45a8290559a2e485a8b724b95c859c05c432d5e",
+      "drive_file_id": "1O5hZEia2TMnoZk1Qn9o8-g1v8vDW4KPs",
+      "url": "https://drive.google.com/file/d/1O5hZEia2TMnoZk1Qn9o8-g1v8vDW4KPs/view",
+      "remote_verified": true,
+      "mime_type": "application/zip",
+      "parent_ids": [
+        "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7"
+      ]
+    },
+    {
+      "name": "GK1_Economic_Evidence_v1.07_2026-11-04.zip.part07",
+      "bytes": 8388608,
+      "sha256": "3c22ac5fafdd0537cae2872edb26f580937cfa74991f52111020c8b2ba46838e",
+      "volume": "GK1_Evidence_v1.07_volume07.zip",
+      "volume_bytes": 8388804,
+      "volume_sha256": "c9efa7d0351d38f3c9774d4cc41a23bf61ceca39dc901c41efb3a465a176ae66",
+      "drive_file_id": "1bjEBj69-3_k_5p8uoS7l4UbYKfe0IsjF",
+      "url": "https://drive.google.com/file/d/1bjEBj69-3_k_5p8uoS7l4UbYKfe0IsjF/view",
+      "remote_verified": true,
+      "mime_type": "application/zip",
+      "parent_ids": [
+        "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7"
+      ]
+    },
+    {
+      "name": "GK1_Economic_Evidence_v1.07_2026-11-04.zip.part08",
+      "bytes": 8388608,
+      "sha256": "62d369f075f548c92ca006047ceca54399655394c0900bd673a2de0d1db3252a",
+      "volume": "GK1_Evidence_v1.07_volume08.zip",
+      "volume_bytes": 8388804,
+      "volume_sha256": "9d2022051ea5379d04cb3ec8fd5bc7ed904a4fe6d637b3e0c031c1a5ac9593b5",
+      "drive_file_id": "1S1NxU4N6Pj2zalIR03pjM1aPreNlrAdq",
+      "url": "https://drive.google.com/file/d/1S1NxU4N6Pj2zalIR03pjM1aPreNlrAdq/view",
+      "remote_verified": true,
+      "mime_type": "application/zip",
+      "parent_ids": [
+        "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7"
+      ]
+    },
+    {
+      "name": "GK1_Economic_Evidence_v1.07_2026-11-04.zip.part09",
+      "bytes": 8388608,
+      "sha256": "c856c7046dd8aa611554e81bb6f2b1d2c980fbb494e76b245acdcd27e41f98f7",
+      "volume": "GK1_Evidence_v1.07_volume09.zip",
+      "volume_bytes": 8388804,
+      "volume_sha256": "e1f5677eb19cb363c208a9e54d5761293689a22034b33eeda4929cb172653667",
+      "drive_file_id": "1LTYXP32v6DPPdJxBdepmyMEud_1da3pi",
+      "url": "https://drive.google.com/file/d/1LTYXP32v6DPPdJxBdepmyMEud_1da3pi/view",
+      "remote_verified": true,
+      "mime_type": "application/zip",
+      "parent_ids": [
+        "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7"
+      ]
+    },
+    {
+      "name": "GK1_Economic_Evidence_v1.07_2026-11-04.zip.part10",
+      "bytes": 8388608,
+      "sha256": "b6d5bf79f629a9841035632e827e8c0de16ab85e781c5fe1235bc7b0bbae442f",
+      "volume": "GK1_Evidence_v1.07_volume10.zip",
+      "volume_bytes": 8388804,
+      "volume_sha256": "c84e0267c5f68600e69ab751c5e9dfae0e00105bca360d3b89069ae004372252",
+      "drive_file_id": "1tp1mEeQ8axof8fHY0UCoYk9qjbM9Xm17",
+      "url": "https://drive.google.com/file/d/1tp1mEeQ8axof8fHY0UCoYk9qjbM9Xm17/view",
+      "remote_verified": true,
+      "mime_type": "application/zip",
+      "parent_ids": [
+        "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7"
+      ]
+    },
+    {
+      "name": "GK1_Economic_Evidence_v1.07_2026-11-04.zip.part11",
+      "bytes": 8388608,
+      "sha256": "f0e93c9490aa7def220c8859aaf9bb1a8797133e073061e5bf59d2ea91a1ff54",
+      "volume": "GK1_Evidence_v1.07_volume11.zip",
+      "volume_bytes": 8388804,
+      "volume_sha256": "f609f28b785b42094bb75853a49c5e5021d5eca192c96abd061a14365a0b88f9",
+      "drive_file_id": "1ok1QctCWG_kqy5fCDD35kvH3gvpGS5cM",
+      "url": "https://drive.google.com/file/d/1ok1QctCWG_kqy5fCDD35kvH3gvpGS5cM/view",
+      "remote_verified": true,
+      "mime_type": "application/zip",
+      "parent_ids": [
+        "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7"
+      ]
+    },
+    {
+      "name": "GK1_Economic_Evidence_v1.07_2026-11-04.zip.part12",
+      "bytes": 5675019,
+      "sha256": "4c6aad8d8ac6d14b9d2e581e0f3c9c207eadee752c20a165c0aadd7ea624ff1d",
+      "volume": "GK1_Evidence_v1.07_volume12.zip",
+      "volume_bytes": 5675215,
+      "volume_sha256": "263c01ce2c3fab36475e462747ed8c8631b3cee09a1137fa6facd088abd445c5",
+      "drive_file_id": "1U-bu2N2aAejN5FzrNgUtx_oOB0ou7MJn",
+      "url": "https://drive.google.com/file/d/1U-bu2N2aAejN5FzrNgUtx_oOB0ou7MJn/view",
+      "remote_verified": true,
+      "mime_type": "application/zip",
+      "parent_ids": [
+        "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7"
+      ]
+    }
+  ],
+  "readback_verified_utc": "2026-11-04T14:32:58.339683+00:00",
+  "remote_archive_entries_verified": 9230
+}

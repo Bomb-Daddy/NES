@@ -1,0 +1,9 @@
+label,year,season,gold,food,troops,town,masons,artisans,farmers,reserve,eligible_percent,morale,economy,tax,tax_used,food_history,item_history,orders
+levy_year_start,1175,0,439,208,61,5,4,6,27,34,32,118,185,35,0,27,6,3
+levy_year_first_levy,1175,0,440,208,39,3,2,3,17,34,32,64,184,35,1,27,6,2
+levy_year_summer1175,1175,1,440,208,39,3,2,3,17,34,32,64,180,35,1,44,9,3
+levy_year_fall1175,1175,2,440,269,39,3,2,3,17,34,32,64,176,35,0,0,0,3
+levy_year_autumn_reuse,1175,2,441,269,27,2,1,2,11,34,32,45,175,35,1,0,0,2
+levy_year_winter1175_player,1175,3,451,269,27,2,1,2,11,34,32,45,170,35,1,11,2,3
+levy_year_spring1176_player,1176,0,463,248,28,2,1,2,11,36,33,45,166,35,1,22,4,3
+levy_year_spring_repeat_denied,1176,0,463,248,28,2,1,2,11,36,33,45,166,35,1,22,4,3

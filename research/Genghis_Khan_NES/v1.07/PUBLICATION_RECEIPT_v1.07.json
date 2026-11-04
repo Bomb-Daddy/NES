@@ -1,0 +1,58 @@
+{
+  "record": "GK1-ECON-CLOSE-0007",
+  "version": "1.07",
+  "execution_status": "PASS VERIFIED",
+  "publication_status": "Drive initial documents and all private evidence verified; GitHub publication in progress",
+  "scope": "All economic mapping batches listed in v1.06 section 9; not all 167 full-game obligations",
+  "drive_initial_readback": [
+    {
+      "path": "/workspace/scratch/c266d767c7ca/output/research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_MAPPING_v1.07_2026-11-04.md",
+      "id": "1AC7h5seTDE4-KdAK7rP3Nv_g-bMJO5xk",
+      "parent": "1i7WyCAj4-GcVew7knSlDKxa5UqvOxmRF",
+      "mime": "text/markdown",
+      "sha256": "6c1acae449b98ce0ec8df71c0f5ec6e2e83a12df1f2ed8f664f76aa57f05cd12",
+      "bytes": 37679,
+      "status": "CONTENT VERIFIED",
+      "verified_utc": "2026-11-04T14:39:39.717859+00:00"
+    },
+    {
+      "path": "/workspace/scratch/c266d767c7ca/output/research/Genghis_Khan_NES/v1.07/GK1_COMPLETE_167_PROOF_MATRIX_v1.07_2026-11-04.csv",
+      "id": "1IDPGgaFVjw9_kPdAWKVSVWS2v3dzlH9H",
+      "parent": "1i7WyCAj4-GcVew7knSlDKxa5UqvOxmRF",
+      "mime": "text/csv",
+      "sha256": "fab28012021a3fa9aead46a65d5610f5f529f65e6772cbcdce2d83469b733944",
+      "bytes": 242769,
+      "status": "CONTENT VERIFIED",
+      "verified_utc": "2026-11-04T14:39:40.152839+00:00"
+    },
+    {
+      "path": "/workspace/scratch/c266d767c7ca/output/research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_MAPPING_COMPLETION_AND_REPRODUCTION_v1.07_2026-11-04.md",
+      "id": "15HCTLAv2JiYGio94ICXBn5CjnYBiTfx3",
+      "parent": "1d0TA1lgqsVA3AWQQ9o0FZgmvao90oCeT",
+      "mime": "text/markdown",
+      "sha256": "af7279273976e4b2189055865cc4e1daae7e48b6661fe9e3705d1343d5c21224",
+      "bytes": 9329,
+      "status": "CONTENT VERIFIED",
+      "verified_utc": "2026-11-04T14:39:40.321630+00:00"
+    }
+  ],
+  "private_evidence": {
+    "archive": "GK1_Economic_Evidence_v1.07_2026-11-04.zip",
+    "archive_bytes": 97949707,
+    "archive_sha256": "d8b8290fa9195c9b99137e8c1f0fe6cf09e0494b728553a5236217a27682e0c6",
+    "readback_verified_utc": "2026-11-04T14:32:58.339683+00:00",
+    "remote_archive_entries_verified": 9230
+  },
+  "private_manifest_files_verified": 9229,
+  "verification": {
+    "source_unittest_methods": 281,
+    "source_setup_cases": 15,
+    "native_accepted_checks": 245,
+    "snapshot_integrity_pairs": 1388,
+    "corruption_controls_passed": 2,
+    "independent_review": "QA/INDEPENDENT_REVIEW.md",
+    "original_rom_sha256": "ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3"
+  },
+  "outside_agent_read_acknowledgment": "NOT CLAIMED",
+  "windows_port_or_physical_controller_acceptance": "NOT CLAIMED"
+}

@@ -1,0 +1,27 @@
+--- originals/batches/base_relocation/BASE_RELOCATION_SOURCE_2026-11-04.md
++++ batches/base_relocation/BASE_RELOCATION_SOURCE_2026-11-04.md
+@@ -1,6 +1,24 @@
+ # Move Base → later-country Trade
+ 
+ Author: Codex trade/logistics source subagent. Date: 2026-11-04 UTC.
++
++## Current evidence update: native controlled route verified
++
++This addendum supersedes the earlier runtime-pending limitation below for the specific controlled country1→country2 path. The root researcher executed the native original-game UI sequence in Mesen: transfer Jewels1, Move Base, ordinary intervening turns, then Trade → Islam → Sell Jewels1 from country2 later in the same Spring1175. Ownership/status were explicitly controlled at `$65FB=0,$65FC=101`; this is **OBSERVED_RUNTIME under controlled setup**, not naturally won territory or Windows-port proof. No active-country intervention was needed to reach the new base's turn.
++
++I independently read the six captured SRAM files and checked their hashes against their capture metadata; `runtime_capture_verification.json` records the decoded fields. I also inspected the sale-after image, which displays country2, Spring1175, Gold71 and2 orders. The original capture producer's generic `abilities` array still follows country1's officer after the swap; the verification instead reads Temujin's six words at `$65CD..65D7` explicitly. Thus the delegated officer's attributes are not mistaken for Temujin's.
++
++| Captured stage | Source / destination Jewels | Source / destination Gold | Orders | Temujin Body / Judgment |
++|---|---|---|---:|---|
++| Before transfer |26 /29|439 /66|3|170 /77|
++| Transfer committed |25 /30|439 /66|2|170 /72|
++| Relocation result |25 /30|439 /66|0|150 /72|
++| New base's later turn |25 /30|439 /66|3|150 /72|
++| Islam sale1 committed |25 /29|439 /71|2|150 /67|
++
++New-base and sale captures both have active country index1, schedule slot10 and season0. The relocation-result capture already has index3/slot7 because native scheduling had advanced when it was taken; it is not an instruction-exact immediate postcommit snapshot. The pointer swap, Body deduction and cleared orders remain visible there. Full final Temujin vector is `[84,67,107,61,150,129]`. Root's summaries are `batches/runtime/live/transfer_relocation_results.json` and `crosscountry_sale_results.json`; underlying captures share `crosscountry_*` prefixes in that directory.
++
++The original19 source tests still establish only bounded **VERIFIED_STATIC** behavior. Root independently reran those19 methods (`root_final.stderr`, complete OK footer). An additive portable copy and strict19-method runner now live under `v1.07/tools/batches/base_relocation`; the original262-test package runner, manifest and receipt remain unchanged. The historical source-only report follows without changing its earlier chronology. Its last-paragraph runtime dependency is now closed for this captured controlled path; the broader meaning of the cleared record word remains unassigned.
+ 
+ **VERIFIED_STATIC:** original 6502/VM instructions and original callees executed in bounded synthetic states. No Mesen, full country scheduler, screen/controller, Windows, or naturally acquired second-country claim. The parent owns original-emulator validation. Private ROM and baseline hashes are checked by the test suite; neither private input is distributed here.
+ 

@@ -1,0 +1,8 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "batches/base_relocation/test_base.py"
+  ],
+  "exit": 0,
+  "seconds": 0.3529393672943115
+}

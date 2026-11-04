@@ -1,0 +1,18 @@
+test_01_runtime_capture_chain_reconciled (__main__.RoiTests.test_01_runtime_capture_chain_reconciled) ... ok
+test_02_every_policy_and_season_bound_to_original_cpu (__main__.RoiTests.test_02_every_policy_and_season_bound_to_original_cpu) ... ok
+test_03_history_timing_and_troop_conservation (__main__.RoiTests.test_03_history_timing_and_troop_conservation) ... ok
+test_04_money_is_not_imputed_stock_value (__main__.RoiTests.test_04_money_is_not_imputed_stock_value) ... ok
+test_05_observed_offer_and_quote_feasibility (__main__.RoiTests.test_05_observed_offer_and_quote_feasibility) ... ok
+test_06_hire_is_costed_and_morale_changes_tax (__main__.RoiTests.test_06_hire_is_costed_and_morale_changes_tax) ... ok
+test_07_caps_and_sales_limit_negative_controls (__main__.RoiTests.test_07_caps_and_sales_limit_negative_controls) ... ok
+test_08_mysterious_gold10_is_explicit_exogenous_not_production (__main__.RoiTests.test_08_mysterious_gold10_is_explicit_exogenous_not_production) ... ok
+test_09_order_budget_and_costs (__main__.RoiTests.test_09_order_budget_and_costs) ... ok
+test_10_food_shortage_changes_payroll_dependency (__main__.RoiTests.test_10_food_shortage_changes_payroll_dependency) ... ok
+test_11_source_mutation_breaks_modeled_town_projection (__main__.RoiTests.test_11_source_mutation_breaks_modeled_town_projection) ... ok
+test_12_price_quotes_executed_at_observed_rates (__main__.RoiTests.test_12_price_quotes_executed_at_observed_rates) ... ok
+test_13_economy_cap_can_remove_marginal_town_yield (__main__.RoiTests.test_13_economy_cap_can_remove_marginal_town_yield) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.902s
+
+OK

@@ -1,0 +1,77 @@
+{
+  "audit_utc": "2026-11-04T14:23:09.424966+00:00",
+  "technical_disposition": "PASS VERIFIED: scoped economic mapping ready for publication",
+  "publication": "NOT INDEPENDENTLY VERIFIED; RE14 remains IN PROGRESS",
+  "files": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 12848,
+      "sha256": "19085867255d531f806ed560364301060a6709bd8ba3d54c04c918bdfdc302ed"
+    },
+    {
+      "path": "PROPOSED_GK1_COMPLETE_167_PROOF_MATRIX_v1.07.csv",
+      "bytes": 242769,
+      "sha256": "fab28012021a3fa9aead46a65d5610f5f529f65e6772cbcdce2d83469b733944"
+    },
+    {
+      "path": "MATRIX_VALIDATION.json",
+      "bytes": 319,
+      "sha256": "6c36657c3a50cd109b1838263cbbe1baa2f3418cd6bf7c625dc81a8d215b2efe"
+    },
+    {
+      "path": "final_status_updates.json",
+      "bytes": 8237,
+      "sha256": "0490e2d1824051ffa380f6626e90a0a443510bffa1580ed6b08c90559ed46c5e"
+    },
+    {
+      "path": "FINAL_REPLAY_CAPTURE_AUDIT.json",
+      "bytes": 56419,
+      "sha256": "4d85b4e2f414dec5ccc9d0ad7449aa81317b36b436998bfb0de1e209222cf5ad"
+    },
+    {
+      "path": "MAIN_LOG_FINAL_AUDIT.json",
+      "bytes": 158085,
+      "sha256": "ec68b6a00beb5d160a4e78fb49bc8c42de64905378e1089c0ebfccf66ea49fe8"
+    },
+    {
+      "path": "BOUNDARY_LOG_FINAL_AUDIT.json",
+      "bytes": 135243,
+      "sha256": "3278e5b1492de84ff8f42a2482470c3c183cffed8718a97fbe4da5e43d00839a"
+    },
+    {
+      "path": "AI_NATIVE_INDEPENDENT_AUDIT.json",
+      "bytes": 7888,
+      "sha256": "3e9a5cbb268340e3a1dab51e883ea273d2f8b98d5371428c1823b9ab9fcd5f63"
+    },
+    {
+      "path": "DOMESTIC_NATIVE_INDEPENDENT_AUDIT.json",
+      "bytes": 9912,
+      "sha256": "7708be620e1dbe7a6b74fc1ba0be34a516f1c918146be1435d40013fd7871d4b"
+    },
+    {
+      "path": "LEVY_YEAR_INDEPENDENT_AUDIT.json",
+      "bytes": 5969,
+      "sha256": "6b37a39938f7ac46c2860c3ffee3bfaf9fe1797abc2069ff2b60d4956e2619f5"
+    },
+    {
+      "path": "YEAR2_NATIVE_INDEPENDENT_AUDIT.json",
+      "bytes": 5824,
+      "sha256": "34765e6f573898b66d3b5df6c56d6e6aaa37e6ede5bdace01c214058b58d50ad"
+    },
+    {
+      "path": "PUBLIC_MASTER_LINK_CHECK.json",
+      "bytes": 1953,
+      "sha256": "768cfbca4255501331bab605c73c076f7af2f45101d0773b082e31337eaa0648"
+    }
+  ],
+  "master_content_review": [
+    {
+      "path": "output/research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_MAPPING_v1.07_2026-11-04.md",
+      "sha256": "f3febb132150b20b7baed775fbd7a1ff9bd687e8bc7cf0831fdeb51a558a9262"
+    },
+    {
+      "path": "output/research/Genghis_Khan_NES/v1.07/GK1_ECONOMIC_MAPPING_COMPLETION_AND_REPRODUCTION_v1.07_2026-11-04.md",
+      "sha256": "40acca42305e63b6ca4dee4fdf3d98affd392603a8e8791fe48c9eeb3ad7d88e"
+    }
+  ]
+}

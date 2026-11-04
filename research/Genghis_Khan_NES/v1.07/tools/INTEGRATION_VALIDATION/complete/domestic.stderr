@@ -1,0 +1,32 @@
+test_ability_costs_original_replay (__main__.DomesticTests.test_ability_costs_original_replay) ... ok
+test_ability_table_mutation_is_detected (__main__.DomesticTests.test_ability_table_mutation_is_detected) ... ok
+test_draft_limit_and_conservation (__main__.DomesticTests.test_draft_limit_and_conservation) ... ok
+test_economic_ability_gates_and_saturation (__main__.DomesticTests.test_economic_ability_gates_and_saturation) ... ok
+test_extra_tax_once_used_guard (__main__.DomesticTests.test_extra_tax_once_used_guard) ... ok
+test_extra_tax_wrap_formula (__main__.DomesticTests.test_extra_tax_wrap_formula) ... ok
+test_gift_caps_and_mutation (__main__.DomesticTests.test_gift_caps_and_mutation) ... ok
+test_gift_runtime_cases (__main__.DomesticTests.test_gift_runtime_cases) ... ok
+test_give_gold_food_item (__main__.DomesticTests.test_give_gold_food_item) ... ok
+test_identity (__main__.DomesticTests.test_identity) ... ok
+test_labor_morale_threshold (__main__.DomesticTests.test_labor_morale_threshold) ... ok
+test_labor_penalty_mutation (__main__.DomesticTests.test_labor_penalty_mutation) ... ok
+test_labor_transfer_conservation (__main__.DomesticTests.test_labor_transfer_conservation) ... ok
+test_lower_tax (__main__.DomesticTests.test_lower_tax) ... ok
+test_raise_tax_all_resistance_branches (__main__.DomesticTests.test_raise_tax_all_resistance_branches) ... ok
+test_skill_seasonal_leaf_after_training (__main__.DomesticTests.test_skill_seasonal_leaf_after_training) ... ok
+test_tax_against_archived_country_fields (__main__.DomesticTests.test_tax_against_archived_country_fields) ... ok
+test_tax_food_rng_boundaries_and_caps (__main__.DomesticTests.test_tax_food_rng_boundaries_and_caps) ... ok
+test_tax_limit_original_path (__main__.DomesticTests.test_tax_limit_original_path) ... ok
+test_tax_loss_mutation (__main__.DomesticTests.test_tax_loss_mutation) ... ok
+test_train_people_gain_and_cap (__main__.DomesticTests.test_train_people_gain_and_cap) ... ok
+test_train_people_guards (__main__.DomesticTests.test_train_people_guards) ... ok
+test_train_people_mutation (__main__.DomesticTests.test_train_people_mutation) ... ok
+test_train_troops_gain_caps_and_stored_word (__main__.DomesticTests.test_train_troops_gain_caps_and_stored_word) ... ok
+test_train_troops_mutation_and_archive (__main__.DomesticTests.test_train_troops_mutation_and_archive) ... ok
+test_train_troops_repetition_with_leadership_cost (__main__.DomesticTests.test_train_troops_repetition_with_leadership_cost) ... ok
+test_workforce_reduction (__main__.DomesticTests.test_workforce_reduction) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 2.916s
+
+OK

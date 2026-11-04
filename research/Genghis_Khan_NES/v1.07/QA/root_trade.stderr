@@ -1,0 +1,43 @@
+test_any_merchant_present_gate (__main__.TradeChecks.test_any_merchant_present_gate) ... ok
+test_average_uses_all_five_manpower_fields (__main__.TradeChecks.test_average_uses_all_five_manpower_fields) ... ok
+test_buy_affordability_grid (__main__.TradeChecks.test_buy_affordability_grid) ... ok
+test_buy_complete_commodity_commit (__main__.TradeChecks.test_buy_complete_commodity_commit) ... ok
+test_buy_complete_weapon_commit (__main__.TradeChecks.test_buy_complete_weapon_commit) ... ok
+test_hire_complete_commit_reproduces_observed_state (__main__.TradeChecks.test_hire_complete_commit_reproduces_observed_state) ... ok
+test_hire_morale_seed_grid (__main__.TradeChecks.test_hire_morale_seed_grid) ... ok
+test_hire_mutated_incoming_arms (__main__.TradeChecks.test_hire_mutated_incoming_arms) ... ok
+test_hire_total_cap (__main__.TradeChecks.test_hire_total_cap) ... ok
+test_hire_zero_old_manpower (__main__.TradeChecks.test_hire_zero_old_manpower) ... ok
+test_judgment_cost_and_saturating_debit (__main__.TradeChecks.test_judgment_cost_and_saturating_debit) ... ok
+test_judgment_eligibility_boundary (__main__.TradeChecks.test_judgment_eligibility_boundary) ... ok
+test_merchant_presence_divisor_discriminating_regression (__main__.TradeChecks.test_merchant_presence_divisor_discriminating_regression) ... ok
+test_merchant_presence_mongol_formula (__main__.TradeChecks.test_merchant_presence_mongol_formula) ... ok
+test_merchant_presence_world_table_countdown (__main__.TradeChecks.test_merchant_presence_world_table_countdown) ... ok
+test_offer_at_least_one_and_boolean (__main__.TradeChecks.test_offer_at_least_one_and_boolean) ... ok
+test_offer_masks_are_unchanged_by_sale_commit (__main__.TradeChecks.test_offer_masks_are_unchanged_by_sale_commit) ... ok
+test_offer_source_arrays_vs_independent_model (__main__.TradeChecks.test_offer_source_arrays_vs_independent_model) ... ok
+test_offer_threshold_negative_control (__main__.TradeChecks.test_offer_threshold_negative_control) ... ok
+test_original_baseline_ability_table (__main__.TradeChecks.test_original_baseline_ability_table) ... ok
+test_private_source_hash (__main__.TradeChecks.test_private_source_hash) ... ok
+test_quantity_lower_upper_and_cancel_gate (__main__.TradeChecks.test_quantity_lower_upper_and_cancel_gate) ... ok
+test_rng_source_vs_independent_48bit_model (__main__.TradeChecks.test_rng_source_vs_independent_48bit_model) ... ok
+test_rng_zero_bound_does_not_advance_seed (__main__.TradeChecks.test_rng_zero_bound_does_not_advance_seed) ... ok
+test_sale_counterexample_zero_gold_capacity (__main__.TradeChecks.test_sale_counterexample_zero_gold_capacity) ... ok
+test_sale_max_stock_constrains_quantity (__main__.TradeChecks.test_sale_max_stock_constrains_quantity) ... ok
+test_sale_mutated_divisor (__main__.TradeChecks.test_sale_mutated_divisor) ... ok
+test_sale_observed_fur_examples (__main__.TradeChecks.test_sale_observed_fur_examples) ... ok
+test_sale_rounding_grid_and_cap (__main__.TradeChecks.test_sale_rounding_grid_and_cap) ... ok
+test_sale_unreachable_overcap_saturates_credit (__main__.TradeChecks.test_sale_unreachable_overcap_saturates_credit) ... ok
+test_selected_merchant_present_gate (__main__.TradeChecks.test_selected_merchant_present_gate) ... ok
+test_trade_cancel_skips_ability_and_orders (__main__.TradeChecks.test_trade_cancel_skips_ability_and_orders) ... ok
+test_trade_result_code_orders_cost (__main__.TradeChecks.test_trade_result_code_orders_cost) ... ok
+test_weapon_capacity_and_gold_bound (__main__.TradeChecks.test_weapon_capacity_and_gold_bound) ... ok
+test_weapon_plus_one_matters (__main__.TradeChecks.test_weapon_plus_one_matters) ... ok
+test_weapon_quantity_plus_one_mutation (__main__.TradeChecks.test_weapon_quantity_plus_one_mutation) ... ok
+test_weapons_all_six_base_values (__main__.TradeChecks.test_weapons_all_six_base_values) ... ok
+test_weighted_average_boundaries (__main__.TradeChecks.test_weighted_average_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 3.973s
+
+OK
