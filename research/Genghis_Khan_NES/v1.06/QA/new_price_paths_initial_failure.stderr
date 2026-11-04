@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/c266d767c7ca/verify_price_paths.py", line 47, in <module>
+    print(json.dumps({'sell101_row0_col0':run(101,0,0),'hire101':run(101,kind='hire')},indent=2))
+                                                                 ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c266d767c7ca/verify_price_paths.py", line 24, in run
+    c.step()
+  File "/workspace/scratch/c266d767c7ca/recovery/static/GK1_Rate_VM_v1.05/replay_b7_arithmetic.py", line 20, in step
+    return super().step()
+           ^^^^^^^^^^^^^^
+  File "/workspace/scratch/c266d767c7ca/recovery/static/gk_static_v1_04/vm_selected_cpu_replay.py", line 108, in step
+    else:raise RuntimeError(f'UNSUPPORTED CPU OPCODE {op:02X} AT ${pc:04X} after {self.count} instructions')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: UNSUPPORTED CPU OPCODE 00 AT $0001 after 2346 instructions
