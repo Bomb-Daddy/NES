@@ -1,0 +1,36 @@
+{
+  "record": "ZL-GK1-EXEC-0018",
+  "version": "1.00",
+  "date": "2026-11-05",
+  "rom_sha256": "4764d46359581be1e7d12bcb85bd375c84cd4497d1084d9d306a6e884afbe7c5",
+  "environment": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "native": {
+    "processes": 2,
+    "attacks": 9,
+    "cancellation_controls": 1,
+    "snapshots": 32,
+    "complete_request_response_pairs": 456,
+    "input_memory_writes": 18,
+    "new_cue": 41,
+    "cue_watch_cases": 8,
+    "cue_requests_per_attack": 5
+  },
+  "new_component": {
+    "unit_test_methods": 9,
+    "native_arithmetic_fixtures": 9,
+    "source_instruction_vectors": 44,
+    "capture_verifier_methods": 3,
+    "negative_controls": [
+      "incorrect matchup coefficient",
+      "changed troop byte plus recomputed metadata hash",
+      "missing raw native response"
+    ],
+    "result": "PASS"
+  },
+  "windows_execution": "NOT RUN",
+  "whole_tactical_system": "PARTIAL",
+  "source_cpu_replay": "numeric source instructions, synthetic RAM; no UI/PPU/NMI claim",
+  "audio_gate_41": "UNKNOWN; both settings On in captured cases",
+  "publication": "Pending delivery receipt; not recipient acknowledgment"
+}
