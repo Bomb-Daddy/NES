@@ -325,7 +325,7 @@ Separate evidence classes and acceptance:
 
 ### 10.1 Tests performed while preparing this reference (November 5, 2026)
 
-- **PASS — source/static:** `python -m py_compile .../headless_mesen_campaign_test.py` and the accompanying standard-library `unittest` suite (**13 PASS**, including negative asynchronous-restore controls). These do not run a ROM.
+- **PASS — source/static:** `python -m py_compile .../headless_mesen_campaign_test.py` and the accompanying standard-library `unittest` suite (**14 PASS**, including negative asynchronous-restore controls). These do not run a ROM.
 - **FAIL, retained — runtime startup:** native MesenCE opened the first-run setup wizard and did not start the bridge when only the wrong host profile was seeded.
 - **FAIL, retained — restore path:** after repairing the profile, `state.restore` acknowledged `pending` at a cold title screen; year/cash/orders remained zero. This ruled out declaring success on a pending operation.
 - **PASS — actual original ROM:** after performing GK1 bootstrap, the custom bridge returned `state.status.operation=loaded`, restored Spring 1186, Gold 832, Orders 3, Leadership 137, and rendered 256×240 P6 frame. No strategic order committed.
