@@ -5,7 +5,7 @@
 Files:
 
 - [`headless_mesen_campaign_test.py`](headless_mesen_campaign_test.py): executable Python 3.11+ smoke and private `.mss` checkpoint verifier. Verifies ROM/emulator/bridge SHA, Mesen bridge activation, real NES SRAM, ruler/country state, real PPM frame and optional noncommitting D-pad input. Can produce and cold-reload a **new** state, but does not play entire campaigns. Preserves original state; no game RAM writing.
-- [`test_headless_mesen_campaign_test.py`](test_headless_mesen_campaign_test.py): 13 `unittest` cases (synthetic RAM parsing, Year1/12/19 army targets, expected-state negative controls, pending/saved/loaded callback states, screenshots, CLI validation, output no-overwrite).
+- [`test_headless_mesen_campaign_test.py`](test_headless_mesen_campaign_test.py): 14 `unittest` cases (synthetic RAM parsing, Year1/12/19 army targets, expected-state negative controls, pending/saved/loaded callback states, screenshots, CLI validation, output no-overwrite).
 
 ```sh
 python3 research/Genghis_Khan_NES/tools/headless_mesen_campaign_test.py --mode doctor
