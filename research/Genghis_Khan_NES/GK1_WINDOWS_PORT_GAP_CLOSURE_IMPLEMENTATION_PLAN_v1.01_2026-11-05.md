@@ -500,7 +500,7 @@ Cao Cao returns discrepancies with minimal reproduction to Zhuge Liang; Nobunaga
 
 ## Appendix C — hostile QA closure and next executable extraction
 
-**Execution QA ID:** ZL-GK1-PORT-HQA-0010. The complete hostile report is \`GK1_WINDOWS_PORT_MOD_SOURCE_HOSTILE_QA_v1.00_2026-11-05.md\`. There were **16 issues in how v1.00 consumed/qualified mod findings** (6 P0 hard prerequisites, 8 P1 integration/source-gate risks, 2 P2/documentary controls; exact severities and dispositions in the HQA report). This v1.01 now explicitly assigns the missing *investigation tasks*. It does not claim original technical gaps magically closed.
+**Execution QA ID:** ZL-GK1-PORT-HQA-0010. The complete hostile report is \`GK1_WINDOWS_PORT_MOD_SOURCE_HOSTILE_QA_v1.00_2026-11-05.md\`. There were **16 issues in how v1.00 consumed/qualified mod findings** (9 P0 source/behavior gates, 6 P1 integration/source-reuse risks, and 1 P2 documentary integrity control; exact severities and dispositions in the HQA report). This v1.01 now explicitly assigns the missing *investigation tasks*. It does not claim original technical gaps magically closed.
 
 **Smallest next practical research batch:** execute stock-original extraction in this order:
 1. Recover exact stock ROM with hash and corrected Mesen SOROM profile; extract \`command_costs_classic.csv\` (all 34 6-byte rows) and actor/payer entry map from source addresses and original game commands.
