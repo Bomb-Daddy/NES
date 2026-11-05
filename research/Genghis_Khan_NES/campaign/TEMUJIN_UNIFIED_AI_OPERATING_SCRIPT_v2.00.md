@@ -1,6 +1,6 @@
 <!-- Public readable mirror of the Director-approved native Google Doc, not executable Python. -->
 <!-- Source of truth: https://docs.google.com/document/d/1Tn4xeiCFIUCl6eDgu4DLZKuby65mT_AdMRlV8IQDeko/edit -->
-<!-- Mesen runner: ../../tools/headless_mesen_campaign_test.py ; Headless guide: ../../../reference/MESEN_HEADLESS_CHATGPT_OPERATIONS_v1.00.md -->
+<!-- Mesen runner: ../tools/headless_mesen_campaign_test.py ; Headless guide: ../../../reference/MESEN_HEADLESS_CHATGPT_OPERATIONS_v1.00.md -->
 
 # TEMUJIN — UNIFIED CAMPAIGN AI OPERATING SCRIPT v2.00
 
