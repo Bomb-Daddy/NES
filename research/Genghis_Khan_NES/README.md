@@ -1,5 +1,15 @@
 # Genghis Khan NES research
 
+## Audio implementation and new native captures — published 2026-11-05
+
+[Verified Drive/GitHub publication index](AUDIO_EXECUTION_PUBLICATION_2026-11-05.md) supersedes the historical NOT DELIVERED text retained in the original EXEC0013/0014 reports.
+
+- [EXEC0015 invasion/retreat and uninterrupted native Save/cold-Load](execution_015/ZL-GK1-EXEC-0015_Invasion_Audio_Save_Report_v1.00.md), with [Windows event/state contract](execution_015/battle_audio_and_save_contract_v1.00.json): four more cue entries identified, 9 of52 now event-mapped;43 remain.
+- [EXEC0014 independent sound sequencer and verifier](execution_014/): implemented note/duration/channel/loop/interrupt logic; ordered APU-register output, not PCM or a complete Windows game.
+- [EXEC0013 audio settings/training capture](execution_002/GK1_EXEC_0013_AUDIO_CAPTURE_v1.00_2026-11-05.md): independent Music/Sound settings, training-result trigger and native saved settings.
+
+The publication index links the private evidence archives and Collaboration handoffs. Private ROM/game imagery/sound data/raw memory remain off the public repository. Native modified-ROM evidence is valid for the matching modified build; Windows integration remains a separate execution gate.
+
 ## ChatGPT headless Mesen execution — verified 2026-11-05
 
 - **[ChatGPT headless emulator operations & recovery guide](../../reference/MESEN_HEADLESS_CHATGPT_OPERATIONS_v1.00.md)** — reproducible setup, source versioning, first-run wizard fix, game-specific asynchronous checkpoint restores, controller pitfalls, evidence and QA.
