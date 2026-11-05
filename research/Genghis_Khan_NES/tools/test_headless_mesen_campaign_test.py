@@ -55,6 +55,12 @@ class Decoder(unittest.TestCase):
         with self.assertRaises(ValueError): m.decode_gk1(b"\x00"*8191)
         with self.assertRaises(ValueError): m.w(fixture(),0x5fff)
 
+    def test_near_end_officer_pointer_safe(self):
+        data=bytearray(fixture())
+        offset=0x6DCD+0x51-0x6000
+        data[offset:offset+2]=(0x7FE7).to_bytes(2,"little")
+        self.assertIsNone(m.decode_gk1(bytes(data))["ruler_abilities"])
+
     def test_invalid_officer_pointer_safe(self):
         b=bytearray(fixture())
         pos=0x6DCD+0x51-0x6000
