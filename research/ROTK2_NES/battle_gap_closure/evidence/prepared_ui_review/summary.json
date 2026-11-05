@@ -1,0 +1,2847 @@
+{
+  "version": "1.00",
+  "reviewer": "battle_gap_audit",
+  "date": "2026-11-05",
+  "status": "PASS_VERIFIED_BOUNDED_UI_AND_RECORD_EFFECTS; RULER_DEATH_PERSISTENCE_PARTIAL",
+  "mode": "READ_ONLY_RETAINED_NATIVE_ARTIFACT_REVIEW",
+  "emulator_executed_by_reviewer": false,
+  "classification": "OBSERVED_RUNTIME_FROM_DECLARED_PREPARED_FIXTURE",
+  "ordinary_play_reachability": "NOT_ESTABLISHED",
+  "Windows_or_physical_controller_acceptance": "NOT_RUN",
+  "campaign_save_coldload_completion": "NOT_ESTABLISHED",
+  "counts": {
+    "runs": 10,
+    "products": 202,
+    "pngs": 97,
+    "snapshot_frames": 31
+  },
+  "findings": {
+    "prepared_native_capture": "OBSERVED_RUNTIME: 100 to 0 troops, off-field FF, result bytes 1/1; capture text visually reviewed",
+    "ordinary_recruit": "P20 serving list; allegiance7 to4; loyalty80 to54; verified at frames200 and900",
+    "ordinary_release": "P29 serving list; allegiance7 and loyalty80 retained; verified at frames200 and900",
+    "ordinary_behead": "Name-ID word0030 toFFFF; absent all41 province serving/free lists at frames200 and900",
+    "release_chain": "Song Zhong, Liu Pan and Lu Gong each inserted into P29 serving list; ruler two-choice UI visually reviewed",
+    "ruler_release": "P29 serving head67FC to67E7; Liu Biao next67FC, valid nameID0007; native writes frame109; snapshots120/200/300",
+    "ruler_behead": "Death message visually reviewed at frame300; officer/ruler7/P29 persistent records unchanged through frame300; deletion/succession NOT_OBSERVED",
+    "complete_aftermath_campaign_and_save_reload": "NOT_RUN by this audit; not established by these bounded cases",
+    "normal_gameplay_reachability_of_prepared_fixture": "NOT_ESTABLISHED",
+    "ruler_death_followup": "Succession announcement observed; no officer/province table changes yet. Ruler7+07 becomes01, but its officer-head remains67E7 and Liu Biao name-ID remains0007. Persistent replacement/deletion not yet observed."
+  },
+  "death_followup_table_changes": [
+    {
+      "table": "ruler",
+      "record_index": 7,
+      "pointer": "72C2",
+      "offset": "07",
+      "old": 0,
+      "new": 1
+    }
+  ],
+  "private_audit_identities": {
+    "audit.json": {
+      "bytes": 247413,
+      "sha256": "c738c54fb0c1146a2e17acf13aab1bf33dfab0aec8514e440ae3b43cbf4a52ec"
+    },
+    "death_followup_audit.json": {
+      "bytes": 26790,
+      "sha256": "ff0486baf425e2ff64c0772c20ac541e1e32de32d87ad32bc164285204422624"
+    }
+  },
+  "runs": [
+    {
+      "run": "prepared_ruler_capture_001",
+      "status": "PASS_VERIFIED_ARTIFACT_AUDIT",
+      "evidence": "OBSERVED_RUNTIME_FROM_PREPARED_FIXTURE",
+      "preparation": "DIRECT",
+      "prepared_root": "prepared_ruler_capture_001",
+      "ordinary_play_reachability": "NOT_ESTABLISHED",
+      "parent": {
+        "run": "forest_ready_001",
+        "file": "state_002200.b64",
+        "payload_sha256": "2eee61249fb6759508c0d12c28dd0567ad01b5373290ddadc3288a9cf82c9d73",
+        "product_sha256": "87064a429b4210ac1c266e080f4751e2c36b85a872e86a45cab30d0c2b2cde64"
+      },
+      "receipt_identity": {
+        "bytes": 5484,
+        "sha256": "bc4356c9062a7375ac59a785cff9e5486e958fba7d6f9c6aa2a67e321ff07411"
+      },
+      "native_receipt_identity": {
+        "bytes": 2789,
+        "sha256": "222bf524cccdacac4a789827a125a7d0d46551d87dc10838c637308bd1c8205e"
+      },
+      "schedule_identity": {
+        "bytes": 1149,
+        "sha256": "239f22a0c354d6ec5ab396b8779c051f2516d6411a3ac899d0d887e773487180"
+      },
+      "identities": {
+        "rom": {
+          "bytes": 524304,
+          "sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a"
+        },
+        "mesen": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "core": {
+          "bytes": 14675504,
+          "sha256": "9d21269be65268c1f56543b83e2f10650f3a28ef2566a4acd861615ecc6ed189"
+        },
+        "script": {
+          "bytes": 25378,
+          "sha256": "f944449ad1a4f15e7da24ee78e87829ff90cfdf1d9446cec6800f2e0c4bf032e"
+        },
+        "settings": {
+          "bytes": 478,
+          "sha256": "d8c5c019637436a1e6e54752ab4dc4f9202849b36d5169e397899bb834eff525"
+        },
+        "mesen_after": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "stdout": {
+          "bytes": 492979,
+          "sha256": "30cb990382330af99b0780c2fe38f7b1b3fbdb75bca6ef367c23027d4acbb00f"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "stop": 2010,
+      "png_count": 14,
+      "product_count": 32,
+      "all_declared_products_equal_raw_logged_payloads": true,
+      "all_pngs_pass_complete_native_validation": true,
+      "checkpoint_matches_parent_and_embedded_script": true,
+      "script_regeneration_identical": true,
+      "snapshot_frames": [
+        15,
+        550,
+        650,
+        1000,
+        2000
+      ],
+      "source_snapshots": [
+        {
+          "file": "memory_000015_save0000.bin",
+          "bytes": 32768,
+          "sha256": "e636cd16b7caffa357b96d8f185e59f22728a34ebdbd1c7c7495cc5e5f0259ad"
+        },
+        {
+          "file": "memory_002000_save0000.bin",
+          "bytes": 32768,
+          "sha256": "f768dec0cc49af3588224ce4169668f23b429e0777f210c1447c7d30e7ce7e62"
+        }
+      ],
+      "target_officers_before_after": {
+        "Liu Biao": {
+          "before": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "67FC",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 100,
+            "position_raw": 180,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Han Song": {
+          "before": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "683B",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 149,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Song Zhong": {
+          "before": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "687A",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 1000,
+            "position_raw": 117,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Liu Pan": {
+          "before": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 135,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Lu Gong": {
+          "before": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 20,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        }
+      },
+      "province_before_after": {
+        "20": {
+          "before": {
+            "owner": 7,
+            "serving_head": "68B9",
+            "serving_officer_names": [
+              "Lu Gong"
+            ]
+          },
+          "after": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          }
+        },
+        "29": {
+          "before": {
+            "owner": 255,
+            "serving_head": "0000",
+            "serving_officer_names": []
+          },
+          "after": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin"
+            ]
+          }
+        }
+      },
+      "ruler7_heads_before_after": {
+        "before": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "75CF"
+        },
+        "after": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        }
+      },
+      "all_snapshot_province_lists_valid": true
+    },
+    {
+      "run": "prepared_recruit_001",
+      "status": "PASS_VERIFIED_ARTIFACT_AUDIT",
+      "evidence": "OBSERVED_RUNTIME_FROM_PREPARED_FIXTURE",
+      "preparation": "INHERITED",
+      "prepared_root": "prepared_ruler_capture_001",
+      "ordinary_play_reachability": "NOT_ESTABLISHED",
+      "parent": {
+        "run": "prepared_ruler_capture_001",
+        "file": "state_002000.b64",
+        "payload_sha256": "1e24de044913dbd9a8b23f3108afa7c9e06722ed3e936d0f580ca04d9e9416d0",
+        "product_sha256": "d0f7828d07a5e3c93ac7d67dd6f98b55833bfb5854f7ce25f25a5a6ebcd95a03"
+      },
+      "receipt_identity": {
+        "bytes": 3720,
+        "sha256": "120ed438cfdbf5633e0908c5be2adaac6031e5f8c7641d09c987d250fee9be34"
+      },
+      "native_receipt_identity": {
+        "bytes": 2729,
+        "sha256": "76e1f29e438aa768be658d0b4935e35fb036f4014a6a1fbfebc0687c100fcce1"
+      },
+      "schedule_identity": {
+        "bytes": 527,
+        "sha256": "95ba5de1ba86e3e08f6cf1ecaee6049ec7fddf3a5c116f9bb169524ae76b461f"
+      },
+      "identities": {
+        "rom": {
+          "bytes": 524304,
+          "sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a"
+        },
+        "mesen": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "core": {
+          "bytes": 14675504,
+          "sha256": "9d21269be65268c1f56543b83e2f10650f3a28ef2566a4acd861615ecc6ed189"
+        },
+        "script": {
+          "bytes": 26742,
+          "sha256": "eda57e4a661119f5f1a31d0483483115827abba645291f2351b24a022da8186a"
+        },
+        "settings": {
+          "bytes": 478,
+          "sha256": "d8c5c019637436a1e6e54752ab4dc4f9202849b36d5169e397899bb834eff525"
+        },
+        "mesen_after": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "stdout": {
+          "bytes": 338035,
+          "sha256": "7fe9633a4dcc15a2c53f645aca5b06d7f3838e88f2f32921a1d4c3625eaa5d5f"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "stop": 910,
+      "png_count": 12,
+      "product_count": 22,
+      "all_declared_products_equal_raw_logged_payloads": true,
+      "all_pngs_pass_complete_native_validation": true,
+      "checkpoint_matches_parent_and_embedded_script": true,
+      "script_regeneration_identical": true,
+      "snapshot_frames": [
+        10,
+        200,
+        900
+      ],
+      "source_snapshots": [
+        {
+          "file": "memory_000010_save0000.bin",
+          "bytes": 32768,
+          "sha256": "f768dec0cc49af3588224ce4169668f23b429e0777f210c1447c7d30e7ce7e62"
+        },
+        {
+          "file": "memory_000900_save0000.bin",
+          "bytes": 32768,
+          "sha256": "5e0dc62cd49dae7e341f71a9e92ad1e0424613b5b5b74c5e248b1414799f952a"
+        }
+      ],
+      "target_officers_before_after": {
+        "Liu Biao": {
+          "before": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Han Song": {
+          "before": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "0000",
+            "allegiance": 4,
+            "loyalty": 54,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 20,
+              "list": "serving"
+            }
+          }
+        },
+        "Song Zhong": {
+          "before": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Liu Pan": {
+          "before": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Lu Gong": {
+          "before": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        }
+      },
+      "province_before_after": {
+        "20": {
+          "before": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          },
+          "after": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu",
+              "Han Song"
+            ]
+          }
+        },
+        "29": {
+          "before": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin"
+            ]
+          },
+          "after": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin"
+            ]
+          }
+        }
+      },
+      "ruler7_heads_before_after": {
+        "before": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        },
+        "after": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        }
+      },
+      "all_snapshot_province_lists_valid": true
+    },
+    {
+      "run": "prepared_release_001",
+      "status": "PASS_VERIFIED_ARTIFACT_AUDIT",
+      "evidence": "OBSERVED_RUNTIME_FROM_PREPARED_FIXTURE",
+      "preparation": "INHERITED",
+      "prepared_root": "prepared_ruler_capture_001",
+      "ordinary_play_reachability": "NOT_ESTABLISHED",
+      "parent": {
+        "run": "prepared_ruler_capture_001",
+        "file": "state_002000.b64",
+        "payload_sha256": "1e24de044913dbd9a8b23f3108afa7c9e06722ed3e936d0f580ca04d9e9416d0",
+        "product_sha256": "d0f7828d07a5e3c93ac7d67dd6f98b55833bfb5854f7ce25f25a5a6ebcd95a03"
+      },
+      "receipt_identity": {
+        "bytes": 3720,
+        "sha256": "16308220244c83e05b1d5e0067d331d1a0ab2eb3dbd7a60a96069ebfe1cf9757"
+      },
+      "native_receipt_identity": {
+        "bytes": 2729,
+        "sha256": "554255e92960709d7d297979ec884b58ba70a459abd2247c243cca473e143faf"
+      },
+      "schedule_identity": {
+        "bytes": 572,
+        "sha256": "25abe54019c6f44a6ec1f7f527d1e7182b96b380fbf87108d04a0a99bdddcbfc"
+      },
+      "identities": {
+        "rom": {
+          "bytes": 524304,
+          "sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a"
+        },
+        "mesen": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "core": {
+          "bytes": 14675504,
+          "sha256": "9d21269be65268c1f56543b83e2f10650f3a28ef2566a4acd861615ecc6ed189"
+        },
+        "script": {
+          "bytes": 26756,
+          "sha256": "d60962c637dc542398a892441df06330d543ea5e950083b756c8e0a160c29e28"
+        },
+        "settings": {
+          "bytes": 478,
+          "sha256": "d8c5c019637436a1e6e54752ab4dc4f9202849b36d5169e397899bb834eff525"
+        },
+        "mesen_after": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "stdout": {
+          "bytes": 337682,
+          "sha256": "2e5a3c094c984c308fa2912c74eb59dcb5f8aefd8d1572e5f33836688fcca0cc"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "stop": 910,
+      "png_count": 12,
+      "product_count": 22,
+      "all_declared_products_equal_raw_logged_payloads": true,
+      "all_pngs_pass_complete_native_validation": true,
+      "checkpoint_matches_parent_and_embedded_script": true,
+      "script_regeneration_identical": true,
+      "snapshot_frames": [
+        10,
+        200,
+        900
+      ],
+      "source_snapshots": [
+        {
+          "file": "memory_000010_save0000.bin",
+          "bytes": 32768,
+          "sha256": "f768dec0cc49af3588224ce4169668f23b429e0777f210c1447c7d30e7ce7e62"
+        },
+        {
+          "file": "memory_000900_save0000.bin",
+          "bytes": 32768,
+          "sha256": "65d21ece2fa850980dbd4cc77366fe9036e3e84ff411d6852042e168a2780821"
+        }
+      ],
+      "target_officers_before_after": {
+        "Liu Biao": {
+          "before": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Han Song": {
+          "before": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Song Zhong": {
+          "before": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Liu Pan": {
+          "before": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Lu Gong": {
+          "before": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        }
+      },
+      "province_before_after": {
+        "20": {
+          "before": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          },
+          "after": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          }
+        },
+        "29": {
+          "before": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin"
+            ]
+          },
+          "after": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin",
+              "Han Song"
+            ]
+          }
+        }
+      },
+      "ruler7_heads_before_after": {
+        "before": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        },
+        "after": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        }
+      },
+      "all_snapshot_province_lists_valid": true
+    },
+    {
+      "run": "prepared_behead_001",
+      "status": "PASS_VERIFIED_ARTIFACT_AUDIT",
+      "evidence": "OBSERVED_RUNTIME_FROM_PREPARED_FIXTURE",
+      "preparation": "INHERITED",
+      "prepared_root": "prepared_ruler_capture_001",
+      "ordinary_play_reachability": "NOT_ESTABLISHED",
+      "parent": {
+        "run": "prepared_ruler_capture_001",
+        "file": "state_002000.b64",
+        "payload_sha256": "1e24de044913dbd9a8b23f3108afa7c9e06722ed3e936d0f580ca04d9e9416d0",
+        "product_sha256": "d0f7828d07a5e3c93ac7d67dd6f98b55833bfb5854f7ce25f25a5a6ebcd95a03"
+      },
+      "receipt_identity": {
+        "bytes": 3720,
+        "sha256": "20f111372e6d1c684e59391a1cddcf1a5ec05a68385d6e6db12a3c497bf39e29"
+      },
+      "native_receipt_identity": {
+        "bytes": 2718,
+        "sha256": "a08111bae32cb6097ecfb9352ffc32e0f4e15a3f261bc5c001d9058717c5536b"
+      },
+      "schedule_identity": {
+        "bytes": 616,
+        "sha256": "eda0200e0de06692c0f0bf4358723059e8fd23193c090c5d09c5817c2522cb02"
+      },
+      "identities": {
+        "rom": {
+          "bytes": 524304,
+          "sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a"
+        },
+        "mesen": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "core": {
+          "bytes": 14675504,
+          "sha256": "9d21269be65268c1f56543b83e2f10650f3a28ef2566a4acd861615ecc6ed189"
+        },
+        "script": {
+          "bytes": 26770,
+          "sha256": "91690dafa30265c9161ad4a7320228f30be1cec94dc7d1d3a91aab586c2bbe76"
+        },
+        "settings": {
+          "bytes": 478,
+          "sha256": "d8c5c019637436a1e6e54752ab4dc4f9202849b36d5169e397899bb834eff525"
+        },
+        "mesen_after": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "stdout": {
+          "bytes": 338059,
+          "sha256": "6a5445d84c02f52bc319ce991f5ace46666ffd259e27ef6aa2b0c4c4a46af774"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "stop": 910,
+      "png_count": 12,
+      "product_count": 22,
+      "all_declared_products_equal_raw_logged_payloads": true,
+      "all_pngs_pass_complete_native_validation": true,
+      "checkpoint_matches_parent_and_embedded_script": true,
+      "script_regeneration_identical": true,
+      "snapshot_frames": [
+        10,
+        200,
+        900
+      ],
+      "source_snapshots": [
+        {
+          "file": "memory_000010_save0000.bin",
+          "bytes": 32768,
+          "sha256": "f768dec0cc49af3588224ce4169668f23b429e0777f210c1447c7d30e7ce7e62"
+        },
+        {
+          "file": "memory_000900_save0000.bin",
+          "bytes": 32768,
+          "sha256": "597506b66b7cd094661c2ab60aa3d86295020011970655eeab99a6949a4f812f"
+        }
+      ],
+      "target_officers_before_after": {
+        "Liu Biao": {
+          "before": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Han Song": {
+          "before": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "6826",
+            "name_id": 65535,
+            "name": null,
+            "next": "6C7F",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Song Zhong": {
+          "before": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Liu Pan": {
+          "before": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Lu Gong": {
+          "before": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        }
+      },
+      "province_before_after": {
+        "20": {
+          "before": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          },
+          "after": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          }
+        },
+        "29": {
+          "before": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin"
+            ]
+          },
+          "after": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin"
+            ]
+          }
+        }
+      },
+      "ruler7_heads_before_after": {
+        "before": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        },
+        "after": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        }
+      },
+      "all_snapshot_province_lists_valid": true
+    },
+    {
+      "run": "prepared_release_next_002",
+      "status": "PASS_VERIFIED_ARTIFACT_AUDIT",
+      "evidence": "OBSERVED_RUNTIME_FROM_PREPARED_FIXTURE",
+      "preparation": "INHERITED",
+      "prepared_root": "prepared_ruler_capture_001",
+      "ordinary_play_reachability": "NOT_ESTABLISHED",
+      "parent": {
+        "run": "prepared_release_001",
+        "file": "state_000900.b64",
+        "payload_sha256": "b162a36ac7f444d04cdbda45402eb73ea0b98c281be6a877683731d4dbb5af03",
+        "product_sha256": "0d00c24e379257f05c047ef2eea518af1aecedcce6082f86d3f05b69fc944fdf"
+      },
+      "receipt_identity": {
+        "bytes": 2362,
+        "sha256": "dded264205fa35dd9635d945cb05b58a7c379c74d638521af7cbba6c6c27ec75"
+      },
+      "native_receipt_identity": {
+        "bytes": 2779,
+        "sha256": "8a35735eb0a87251a3cc2a61f929f926056348fc888233a6cd6192d5d28cf151"
+      },
+      "schedule_identity": {
+        "bytes": 355,
+        "sha256": "e7fac243a6fe25662ea18e2a5f01a6a883fe0eb45b1a90d0d33549fba3315518"
+      },
+      "identities": {
+        "rom": {
+          "bytes": 524304,
+          "sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a"
+        },
+        "mesen": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "core": {
+          "bytes": 14675504,
+          "sha256": "9d21269be65268c1f56543b83e2f10650f3a28ef2566a4acd861615ecc6ed189"
+        },
+        "script": {
+          "bytes": 26798,
+          "sha256": "faba6242b90a2224a59c2bb9cb82dc64e62d54ee846c5c31ff7f056457618350"
+        },
+        "settings": {
+          "bytes": 478,
+          "sha256": "d8c5c019637436a1e6e54752ab4dc4f9202849b36d5169e397899bb834eff525"
+        },
+        "mesen_after": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "stdout": {
+          "bytes": 216699,
+          "sha256": "0c130983a403c32edd40f14c07fb176608c9bae4070d2c49551858fe9e9f71cc"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "stop": 410,
+      "png_count": 6,
+      "product_count": 13,
+      "all_declared_products_equal_raw_logged_payloads": true,
+      "all_pngs_pass_complete_native_validation": true,
+      "checkpoint_matches_parent_and_embedded_script": true,
+      "script_regeneration_identical": true,
+      "snapshot_frames": [
+        10,
+        400
+      ],
+      "source_snapshots": [
+        {
+          "file": "memory_000010_save0000.bin",
+          "bytes": 32768,
+          "sha256": "65d21ece2fa850980dbd4cc77366fe9036e3e84ff411d6852042e168a2780821"
+        },
+        {
+          "file": "memory_000400_save0000.bin",
+          "bytes": 32768,
+          "sha256": "f337bb052c221d3417ab964394461d8b15e550ef5aac5f199768e3b8ab8dd53b"
+        }
+      ],
+      "target_officers_before_after": {
+        "Liu Biao": {
+          "before": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Han Song": {
+          "before": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Song Zhong": {
+          "before": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Liu Pan": {
+          "before": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Lu Gong": {
+          "before": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        }
+      },
+      "province_before_after": {
+        "20": {
+          "before": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          },
+          "after": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          }
+        },
+        "29": {
+          "before": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin",
+              "Han Song"
+            ]
+          },
+          "after": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin",
+              "Han Song",
+              "Song Zhong"
+            ]
+          }
+        }
+      },
+      "ruler7_heads_before_after": {
+        "before": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        },
+        "after": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        }
+      },
+      "all_snapshot_province_lists_valid": true
+    },
+    {
+      "run": "prepared_release_next_003",
+      "status": "PASS_VERIFIED_ARTIFACT_AUDIT",
+      "evidence": "OBSERVED_RUNTIME_FROM_PREPARED_FIXTURE",
+      "preparation": "INHERITED",
+      "prepared_root": "prepared_ruler_capture_001",
+      "ordinary_play_reachability": "NOT_ESTABLISHED",
+      "parent": {
+        "run": "prepared_release_next_002",
+        "file": "state_000400.b64",
+        "payload_sha256": "cf83a162a2db320e37364d1ae9cbf402b28080bd5ed7024b42329ca7c331b895",
+        "product_sha256": "473de520938031a4f0bcdfd6d4d2fcaad2d27f835801924359422de354448a4a"
+      },
+      "receipt_identity": {
+        "bytes": 2508,
+        "sha256": "462ce60ba3b657827466131aa64908d001636b005a0c362d2a251ccbcceef5dd"
+      },
+      "native_receipt_identity": {
+        "bytes": 2778,
+        "sha256": "640277287948272f09a589ab2c4d0030a9daf04d47943dd0c605cfcf5561cc6d"
+      },
+      "schedule_identity": {
+        "bytes": 371,
+        "sha256": "298031cd3875bb71e6eab3e741430631fef992f99c9bd03620dc18379d9c95f4"
+      },
+      "identities": {
+        "rom": {
+          "bytes": 524304,
+          "sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a"
+        },
+        "mesen": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "core": {
+          "bytes": 14675504,
+          "sha256": "9d21269be65268c1f56543b83e2f10650f3a28ef2566a4acd861615ecc6ed189"
+        },
+        "script": {
+          "bytes": 26736,
+          "sha256": "fd551f0739bec290ea0cf08200e890c251f45a62e5e3901f9e0201342bce9ef1"
+        },
+        "settings": {
+          "bytes": 478,
+          "sha256": "d8c5c019637436a1e6e54752ab4dc4f9202849b36d5169e397899bb834eff525"
+        },
+        "mesen_after": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "stdout": {
+          "bytes": 226531,
+          "sha256": "980937f0924304e1e6a9f9a77f47af7c4b93ac31ab67a4675aff89789ecf1ac7"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "stop": 310,
+      "png_count": 7,
+      "product_count": 14,
+      "all_declared_products_equal_raw_logged_payloads": true,
+      "all_pngs_pass_complete_native_validation": true,
+      "checkpoint_matches_parent_and_embedded_script": true,
+      "script_regeneration_identical": true,
+      "snapshot_frames": [
+        10,
+        300
+      ],
+      "source_snapshots": [
+        {
+          "file": "memory_000010_save0000.bin",
+          "bytes": 32768,
+          "sha256": "f337bb052c221d3417ab964394461d8b15e550ef5aac5f199768e3b8ab8dd53b"
+        },
+        {
+          "file": "memory_000300_save0000.bin",
+          "bytes": 32768,
+          "sha256": "07333167e12dd2647ded447e0f26c1c1b5c697fdcdadb255aec4d73d57e406be"
+        }
+      ],
+      "target_officers_before_after": {
+        "Liu Biao": {
+          "before": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Han Song": {
+          "before": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Song Zhong": {
+          "before": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Liu Pan": {
+          "before": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Lu Gong": {
+          "before": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 1000,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        }
+      },
+      "province_before_after": {
+        "20": {
+          "before": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          },
+          "after": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          }
+        },
+        "29": {
+          "before": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin",
+              "Han Song",
+              "Song Zhong"
+            ]
+          },
+          "after": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin",
+              "Han Song",
+              "Song Zhong",
+              "Liu Pan"
+            ]
+          }
+        }
+      },
+      "ruler7_heads_before_after": {
+        "before": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        },
+        "after": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        }
+      },
+      "all_snapshot_province_lists_valid": true
+    },
+    {
+      "run": "prepared_release_next_004",
+      "status": "PASS_VERIFIED_ARTIFACT_AUDIT",
+      "evidence": "OBSERVED_RUNTIME_FROM_PREPARED_FIXTURE",
+      "preparation": "INHERITED",
+      "prepared_root": "prepared_ruler_capture_001",
+      "ordinary_play_reachability": "NOT_ESTABLISHED",
+      "parent": {
+        "run": "prepared_release_next_003",
+        "file": "state_000300.b64",
+        "payload_sha256": "3d7cbcd95b618ab583a71a74d6322ea853cc427e3aa2d86e76f8fa960bd95fe4",
+        "product_sha256": "7a887a71d6a025740517eac82ee3e665746853a4ad01527ff25c658575a2e393"
+      },
+      "receipt_identity": {
+        "bytes": 2508,
+        "sha256": "00e41846b2ee89ab8878f94813df5cd3ab8daa5ae893fe4401fb16ef7d60d679"
+      },
+      "native_receipt_identity": {
+        "bytes": 2777,
+        "sha256": "13965c1898e293e1e5a3f60f911fe98711e39a562310d8e169cf9408bcbc6a0e"
+      },
+      "schedule_identity": {
+        "bytes": 370,
+        "sha256": "69fe3799ee61b61502782f4dd46e37505cd4369f1e404ff40262c7afb312f3e0"
+      },
+      "identities": {
+        "rom": {
+          "bytes": 524304,
+          "sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a"
+        },
+        "mesen": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "core": {
+          "bytes": 14675504,
+          "sha256": "9d21269be65268c1f56543b83e2f10650f3a28ef2566a4acd861615ecc6ed189"
+        },
+        "script": {
+          "bytes": 26620,
+          "sha256": "41dafad6dba7711d14042d350e20f8541dde375125e673ad7dc3181564f54777"
+        },
+        "settings": {
+          "bytes": 478,
+          "sha256": "d8c5c019637436a1e6e54752ab4dc4f9202849b36d5169e397899bb834eff525"
+        },
+        "mesen_after": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "stdout": {
+          "bytes": 224554,
+          "sha256": "22b217948e9601112ac8c291b909923724f4ef3cf32a0d0bcb2e702bafdebf94"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "stop": 270,
+      "png_count": 7,
+      "product_count": 14,
+      "all_declared_products_equal_raw_logged_payloads": true,
+      "all_pngs_pass_complete_native_validation": true,
+      "checkpoint_matches_parent_and_embedded_script": true,
+      "script_regeneration_identical": true,
+      "snapshot_frames": [
+        10,
+        260
+      ],
+      "source_snapshots": [
+        {
+          "file": "memory_000010_save0000.bin",
+          "bytes": 32768,
+          "sha256": "07333167e12dd2647ded447e0f26c1c1b5c697fdcdadb255aec4d73d57e406be"
+        },
+        {
+          "file": "memory_000260_save0000.bin",
+          "bytes": 32768,
+          "sha256": "75388badc5d00e55a8920efd6795b08a4d0d8354ce6b3704ee18882c64104062"
+        }
+      ],
+      "target_officers_before_after": {
+        "Liu Biao": {
+          "before": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Han Song": {
+          "before": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Song Zhong": {
+          "before": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Liu Pan": {
+          "before": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Lu Gong": {
+          "before": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        }
+      },
+      "province_before_after": {
+        "20": {
+          "before": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          },
+          "after": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          }
+        },
+        "29": {
+          "before": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin",
+              "Han Song",
+              "Song Zhong",
+              "Liu Pan"
+            ]
+          },
+          "after": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin",
+              "Han Song",
+              "Song Zhong",
+              "Liu Pan",
+              "Lu Gong"
+            ]
+          }
+        }
+      },
+      "ruler7_heads_before_after": {
+        "before": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        },
+        "after": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        }
+      },
+      "all_snapshot_province_lists_valid": true
+    },
+    {
+      "run": "prepared_ruler_release_001",
+      "status": "PASS_VERIFIED_ARTIFACT_AUDIT",
+      "evidence": "OBSERVED_RUNTIME_FROM_PREPARED_FIXTURE",
+      "preparation": "INHERITED",
+      "prepared_root": "prepared_ruler_capture_001",
+      "ordinary_play_reachability": "NOT_ESTABLISHED",
+      "parent": {
+        "run": "prepared_release_next_004",
+        "file": "state_000260.b64",
+        "payload_sha256": "f4fecb829805fb6fc21746a968f19fba78e4fbdb0a71d9100f047fd977737f92",
+        "product_sha256": "217707b56097ae5d091277bcc9c3caa50d12cb665939cd3083886a7c7a637f3f"
+      },
+      "receipt_identity": {
+        "bytes": 3909,
+        "sha256": "2186970bd603f469f3cf1e0fb593a3e3b9cf74e6aa8c97cd8e016d2e390a20b8"
+      },
+      "native_receipt_identity": {
+        "bytes": 2788,
+        "sha256": "782af0826f6d50937cc5319d17c460ab2e32929dc0866e05644a568f7ee9f304"
+      },
+      "schedule_identity": {
+        "bytes": 504,
+        "sha256": "a860833d126206b9d8f2dfc9ac0c0a12ce91cd3c1db8e70092105c812385dc9e"
+      },
+      "identities": {
+        "rom": {
+          "bytes": 524304,
+          "sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a"
+        },
+        "mesen": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "core": {
+          "bytes": 14675504,
+          "sha256": "9d21269be65268c1f56543b83e2f10650f3a28ef2566a4acd861615ecc6ed189"
+        },
+        "script": {
+          "bytes": 26452,
+          "sha256": "00e470be4a2149334f04ed96604f26218f269290ba5ccafa8c91e34f4edb9770"
+        },
+        "settings": {
+          "bytes": 478,
+          "sha256": "d8c5c019637436a1e6e54752ab4dc4f9202849b36d5169e397899bb834eff525"
+        },
+        "mesen_after": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "stdout": {
+          "bytes": 358522,
+          "sha256": "444275fa5e37f2187ba504bddefc5ae6c7f3313f2ea4a0fe087b6766d64307c4"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "stop": 310,
+      "png_count": 10,
+      "product_count": 23,
+      "all_declared_products_equal_raw_logged_payloads": true,
+      "all_pngs_pass_complete_native_validation": true,
+      "checkpoint_matches_parent_and_embedded_script": true,
+      "script_regeneration_identical": true,
+      "snapshot_frames": [
+        10,
+        120,
+        200,
+        300
+      ],
+      "source_snapshots": [
+        {
+          "file": "memory_000010_save0000.bin",
+          "bytes": 32768,
+          "sha256": "75388badc5d00e55a8920efd6795b08a4d0d8354ce6b3704ee18882c64104062"
+        },
+        {
+          "file": "memory_000300_save0000.bin",
+          "bytes": 32768,
+          "sha256": "843a76beed0f098f6d32e726f711de7bd157d623a6a3e97cc9306d9cf880faaa"
+        }
+      ],
+      "target_officers_before_after": {
+        "Liu Biao": {
+          "before": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "67FC",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Han Song": {
+          "before": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Song Zhong": {
+          "before": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Liu Pan": {
+          "before": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Lu Gong": {
+          "before": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        }
+      },
+      "province_before_after": {
+        "20": {
+          "before": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          },
+          "after": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          }
+        },
+        "29": {
+          "before": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin",
+              "Han Song",
+              "Song Zhong",
+              "Liu Pan",
+              "Lu Gong"
+            ]
+          },
+          "after": {
+            "owner": 7,
+            "serving_head": "67E7",
+            "serving_officer_names": [
+              "Liu Biao",
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin",
+              "Han Song",
+              "Song Zhong",
+              "Liu Pan",
+              "Lu Gong"
+            ]
+          }
+        }
+      },
+      "ruler7_heads_before_after": {
+        "before": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        },
+        "after": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        }
+      },
+      "all_snapshot_province_lists_valid": true
+    },
+    {
+      "run": "prepared_ruler_behead_001",
+      "status": "PASS_VERIFIED_ARTIFACT_AUDIT",
+      "evidence": "OBSERVED_RUNTIME_FROM_PREPARED_FIXTURE",
+      "preparation": "INHERITED",
+      "prepared_root": "prepared_ruler_capture_001",
+      "ordinary_play_reachability": "NOT_ESTABLISHED",
+      "parent": {
+        "run": "prepared_release_next_004",
+        "file": "state_000260.b64",
+        "payload_sha256": "f4fecb829805fb6fc21746a968f19fba78e4fbdb0a71d9100f047fd977737f92",
+        "product_sha256": "217707b56097ae5d091277bcc9c3caa50d12cb665939cd3083886a7c7a637f3f"
+      },
+      "receipt_identity": {
+        "bytes": 3910,
+        "sha256": "6f697ad8eb84a74c175b5a1978aaaa1a80cb539a229279132109b774f98c6267"
+      },
+      "native_receipt_identity": {
+        "bytes": 2778,
+        "sha256": "b08b64fa4b4d3a5f63402e3d6af4a6358656be67db355f88af4e94c4af51289b"
+      },
+      "schedule_identity": {
+        "bytes": 548,
+        "sha256": "39bc54e2ae4bbc0a03080e81ea211a9e318cd39a749f46b5ea2993d32553ca42"
+      },
+      "identities": {
+        "rom": {
+          "bytes": 524304,
+          "sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a"
+        },
+        "mesen": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "core": {
+          "bytes": 14675504,
+          "sha256": "9d21269be65268c1f56543b83e2f10650f3a28ef2566a4acd861615ecc6ed189"
+        },
+        "script": {
+          "bytes": 26466,
+          "sha256": "155e04af091890fd86b09ddc2082ab875d7886f99704c35a486183ceee59afb9"
+        },
+        "settings": {
+          "bytes": 478,
+          "sha256": "d8c5c019637436a1e6e54752ab4dc4f9202849b36d5169e397899bb834eff525"
+        },
+        "mesen_after": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "stdout": {
+          "bytes": 379778,
+          "sha256": "180cc174913649a1ee5143fda5e46d6e646ec93572ce65e12f013b7274fddc82"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "stop": 310,
+      "png_count": 10,
+      "product_count": 23,
+      "all_declared_products_equal_raw_logged_payloads": true,
+      "all_pngs_pass_complete_native_validation": true,
+      "checkpoint_matches_parent_and_embedded_script": true,
+      "script_regeneration_identical": true,
+      "snapshot_frames": [
+        10,
+        120,
+        200,
+        300
+      ],
+      "source_snapshots": [
+        {
+          "file": "memory_000010_save0000.bin",
+          "bytes": 32768,
+          "sha256": "75388badc5d00e55a8920efd6795b08a4d0d8354ce6b3704ee18882c64104062"
+        },
+        {
+          "file": "memory_000300_save0000.bin",
+          "bytes": 32768,
+          "sha256": "bba03717114c98099b0994218e8f0ba734bbfed49d1d986f2fc61ea21e711280"
+        }
+      ],
+      "target_officers_before_after": {
+        "Liu Biao": {
+          "before": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Han Song": {
+          "before": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Song Zhong": {
+          "before": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Liu Pan": {
+          "before": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Lu Gong": {
+          "before": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        }
+      },
+      "province_before_after": {
+        "20": {
+          "before": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          },
+          "after": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          }
+        },
+        "29": {
+          "before": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin",
+              "Han Song",
+              "Song Zhong",
+              "Liu Pan",
+              "Lu Gong"
+            ]
+          },
+          "after": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin",
+              "Han Song",
+              "Song Zhong",
+              "Liu Pan",
+              "Lu Gong"
+            ]
+          }
+        }
+      },
+      "ruler7_heads_before_after": {
+        "before": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        },
+        "after": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        }
+      },
+      "all_snapshot_province_lists_valid": true
+    },
+    {
+      "run": "prepared_ruler_death_continue_001",
+      "status": "PASS_VERIFIED_ARTIFACT_AUDIT",
+      "evidence": "OBSERVED_RUNTIME_FROM_PREPARED_FIXTURE",
+      "preparation": "INHERITED",
+      "prepared_root": "prepared_ruler_capture_001",
+      "ordinary_play_reachability": "NOT_ESTABLISHED",
+      "parent": {
+        "run": "prepared_ruler_behead_001",
+        "file": "state_000300.b64",
+        "payload_sha256": "96decef81a3f09e894ba88abb454753a52c5033ee2f9f4dd86190ee22d5b32cf",
+        "product_sha256": "bb8445ac9ba6c154228d4eb7b0796e9da7e364197f2efae3ed12d894cec3fc7f"
+      },
+      "receipt_identity": {
+        "bytes": 2990,
+        "sha256": "c1a23180eea609d030bc4388ef53b2bcd0e474e4934ce01669526ad6c6fc148a"
+      },
+      "native_receipt_identity": {
+        "bytes": 2858,
+        "sha256": "74c772667917e811df6cc51e97250ae5d6002903799e50f19125855d3f039bc8"
+      },
+      "schedule_identity": {
+        "bytes": 497,
+        "sha256": "3e92999f280881614276534b85fe255a809dea66bb6ef63d952d26fec8481103"
+      },
+      "identities": {
+        "rom": {
+          "bytes": 524304,
+          "sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a"
+        },
+        "mesen": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "core": {
+          "bytes": 14675504,
+          "sha256": "9d21269be65268c1f56543b83e2f10650f3a28ef2566a4acd861615ecc6ed189"
+        },
+        "script": {
+          "bytes": 26565,
+          "sha256": "d8cdafd1511c1dcf24bbf7cc0595b9c013b8bc81773e28680929f5a36f11bbda"
+        },
+        "settings": {
+          "bytes": 478,
+          "sha256": "d8c5c019637436a1e6e54752ab4dc4f9202849b36d5169e397899bb834eff525"
+        },
+        "mesen_after": {
+          "bytes": 69697976,
+          "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+        },
+        "stdout": {
+          "bytes": 288594,
+          "sha256": "c5c8cc32db2fd116e1f30c475a149ba53af57cc33f86f4c6d91c194845006500"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "stop": 410,
+      "png_count": 7,
+      "product_count": 17,
+      "all_declared_products_equal_raw_logged_payloads": true,
+      "all_pngs_pass_complete_native_validation": true,
+      "checkpoint_matches_parent_and_embedded_script": true,
+      "script_regeneration_identical": true,
+      "snapshot_frames": [
+        10,
+        100,
+        400
+      ],
+      "source_snapshots": [
+        {
+          "file": "memory_000010_save0000.bin",
+          "bytes": 32768,
+          "sha256": "bba03717114c98099b0994218e8f0ba734bbfed49d1d986f2fc61ea21e711280"
+        },
+        {
+          "file": "memory_000400_save0000.bin",
+          "bytes": 32768,
+          "sha256": "67ab30419ac380c1fa4633734e26cf0fb05635d764c1ee5bb7bd90913c7cee8e"
+        }
+      ],
+      "target_officers_before_after": {
+        "Liu Biao": {
+          "before": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          },
+          "after": {
+            "pointer": "67E7",
+            "name_id": 7,
+            "name": "Liu Biao",
+            "next": "6826",
+            "allegiance": 7,
+            "loyalty": 255,
+            "troops_raw": 0,
+            "position_raw": 255,
+            "province_membership": null
+          }
+        },
+        "Han Song": {
+          "before": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "6826",
+            "name_id": 48,
+            "name": "Han Song",
+            "next": "6865",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Song Zhong": {
+          "before": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "6865",
+            "name_id": 65,
+            "name": "Song Zhong",
+            "next": "68A4",
+            "allegiance": 7,
+            "loyalty": 78,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Liu Pan": {
+          "before": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "68A4",
+            "name_id": 76,
+            "name": "Liu Pan",
+            "next": "68B9",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        },
+        "Lu Gong": {
+          "before": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          },
+          "after": {
+            "pointer": "68B9",
+            "name_id": 86,
+            "name": "Lu Gong",
+            "next": "0000",
+            "allegiance": 7,
+            "loyalty": 80,
+            "troops_raw": 10,
+            "position_raw": 255,
+            "province_membership": {
+              "province": 29,
+              "list": "serving"
+            }
+          }
+        }
+      },
+      "province_before_after": {
+        "20": {
+          "before": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          },
+          "after": {
+            "owner": 4,
+            "serving_head": "672A",
+            "serving_officer_names": [
+              "Yuan Shu"
+            ]
+          }
+        },
+        "29": {
+          "before": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin",
+              "Han Song",
+              "Song Zhong",
+              "Liu Pan",
+              "Lu Gong"
+            ]
+          },
+          "after": {
+            "owner": 7,
+            "serving_head": "67FC",
+            "serving_officer_names": [
+              "Kuai Liang",
+              "Kuai Yue",
+              "Huang Zhu",
+              "Cai Mao",
+              "Deng Yi",
+              "Wen Pin",
+              "Han Song",
+              "Song Zhong",
+              "Liu Pan",
+              "Lu Gong"
+            ]
+          }
+        }
+      },
+      "ruler7_heads_before_after": {
+        "before": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        },
+        "after": {
+          "pointer": "72C2",
+          "officer_head": "67E7",
+          "owned_province_head": "76B0"
+        }
+      },
+      "all_snapshot_province_lists_valid": true
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "classification": "Post-run artifact-integrity limitation; time of truncation and cause UNKNOWN",
+  "recorded_at_utc": "2026-11-05T19:02:51.237287+00:00",
+  "reviewer_actions": "Read and hashed files only; did not alter retained executables, logs, states, or screenshots. Root reports no intentional cleanup/truncation.",
+  "recorded_pre_run_executable_sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676",
+  "recorded_exit_code": 0,
+  "recorded_runtime_identity_passed": true,
+  "truncated_executable_equals_canonical_prefix": true,
+  "bytes_missing_from_tail": 20152760,
+  "files": [
+    {
+      "path": "/workspace/scratch/efe8e2e6cf8d/runtime/mesen/Mesen",
+      "bytes": 69697976,
+      "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676",
+      "mode": "0o755",
+      "mtime_utc": "2026-11-05T18:27:13.473743+00:00",
+      "ctime_utc": "2026-11-05T18:27:13.843198+00:00",
+      "inode": 2107435
+    },
+    {
+      "path": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/weather_day3/process/portable/Mesen",
+      "bytes": 49545216,
+      "sha256": "132ba0f7ced50d94c8e165cf55b0998ad5526a8421d8c8ba4a3159c56c05a599",
+      "mode": "0o644",
+      "mtime_utc": "2026-11-05T18:48:49.395121+00:00",
+      "ctime_utc": "2026-11-05T18:48:52.274980+00:00",
+      "inode": 2228575
+    },
+    {
+      "path": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/weather_day3/process/receipt.json",
+      "bytes": 2402,
+      "sha256": "d25cc2de356ef45a6dfc82e4aae7c6af9299df3d72603b67a53421e073b1b6c0",
+      "mode": "0o644",
+      "mtime_utc": "2026-11-05T18:48:53.090514+00:00",
+      "ctime_utc": "2026-11-05T18:48:53.090514+00:00",
+      "inode": 2228529
+    },
+    {
+      "path": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/weather_day3/process/stdout.log",
+      "bytes": 134553,
+      "sha256": "b3cde74ac269ccc265951b3e784974b1b8768211c950cc858d0f60e102feae4a",
+      "mode": "0o644",
+      "mtime_utc": "2026-11-05T18:48:52.886950+00:00",
+      "ctime_utc": "2026-11-05T18:48:52.886950+00:00",
+      "inode": 2228531
+    },
+    {
+      "path": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/weather_day3/probe_receipt.json",
+      "bytes": 1442,
+      "sha256": "856b5e9b3c74d93ed22735e63dffd73ef03d7cc9ccbe4a950c1c864035dadef2",
+      "mode": "0o644",
+      "mtime_utc": "2026-11-05T18:48:53.095744+00:00",
+      "ctime_utc": "2026-11-05T18:48:53.095744+00:00",
+      "inode": 2228603
+    },
+    {
+      "path": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/weather_day3/process/portable/MesenCore.so",
+      "bytes": 14675504,
+      "sha256": "9d21269be65268c1f56543b83e2f10650f3a28ef2566a4acd861615ecc6ed189",
+      "mode": "0o644",
+      "mtime_utc": "2026-10-07T16:57:50+00:00",
+      "ctime_utc": "2026-11-05T18:48:50.487068+00:00",
+      "inode": 2228537
+    }
+  ]
+}

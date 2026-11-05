@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/static_sources/q19/build_source_manifest.py", line 104, in <module>
+    main()
+  File "/workspace/scratch/efe8e2e6cf8d/static_sources/q19/build_source_manifest.py", line 82, in main
+    assert len(seen) == len(payload), (mod, "size mismatch", len(seen), len(payload))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('root', 'size mismatch', 20248, 20978)

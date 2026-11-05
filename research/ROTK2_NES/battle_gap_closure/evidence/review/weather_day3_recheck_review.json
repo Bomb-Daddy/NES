@@ -1,0 +1,146 @@
+{
+  "run": "weather_day3_recheck",
+  "process_exit": 0,
+  "timeout": false,
+  "runtime_identity_original": true,
+  "probe_failures": [],
+  "products": [
+    {
+      "file": "f000010.png",
+      "bytes": 7418,
+      "sha256": "a7e599236b6acc1b851c0dbf376584ba2e4e7d26931a78f84cd04dfdae58a846",
+      "receipt_matches": true,
+      "strong_png_gate": "PASS"
+    },
+    {
+      "file": "memory_000010_cpu0000.bin",
+      "bytes": 2048,
+      "sha256": "e67576e2c9c3914e30a6ca9b8b0861f2e646e715588e5a2b2014f90627d98f6f",
+      "receipt_matches": true
+    },
+    {
+      "file": "memory_000010_cpu6000.bin",
+      "bytes": 8192,
+      "sha256": "5aed338759d3922c787404bcb26f067e1cd0357f1e06729a3e4050cc8005b226",
+      "receipt_matches": true
+    },
+    {
+      "file": "memory_000010_save0000.bin",
+      "bytes": 32768,
+      "sha256": "6e2461a73826b654967986a03b5dcb42ed686b9f4cf351766ece7ec983eda02e",
+      "receipt_matches": true
+    },
+    {
+      "file": "f000200.png",
+      "bytes": 6651,
+      "sha256": "cb7d0f7186b9f1512776cd8b7803ce5fcf5e1baad99a8f72c1226978d8718725",
+      "receipt_matches": true,
+      "strong_png_gate": "PASS"
+    },
+    {
+      "file": "f000300.png",
+      "bytes": 6664,
+      "sha256": "d88be12573e8bb8b392bc7de84684db79c07ef5856e1dfee894c3b448eff009a",
+      "receipt_matches": true,
+      "strong_png_gate": "PASS"
+    },
+    {
+      "file": "memory_000300_cpu0000.bin",
+      "bytes": 2048,
+      "sha256": "421aaeb7c224ac991273e66f6239bf602e8ee75a552b27d27c4542a25ece3ae8",
+      "receipt_matches": true
+    },
+    {
+      "file": "memory_000300_cpu6000.bin",
+      "bytes": 8192,
+      "sha256": "a0e54981bccc7caa186d4b2603f85932500f2223f92abf88a15df72eaa89d907",
+      "receipt_matches": true
+    },
+    {
+      "file": "memory_000300_save0000.bin",
+      "bytes": 32768,
+      "sha256": "e3013494f07cd47eab84041f62cc4a84383817deb65a37c39e25779d70a1bcaf",
+      "receipt_matches": true
+    }
+  ],
+  "note": "Read-only post-hoc review; runner receipt predates the new post-execution identity gate.",
+  "canonical": {
+    "bytes": 69697976,
+    "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676",
+    "mtime_ns": 1793903233473743062,
+    "ctime_ns": 1793903233843198399
+  },
+  "copied": {
+    "bytes": 69697976,
+    "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676",
+    "mtime_ns": 1793903233473743062,
+    "ctime_ns": 1793905463224728444
+  },
+  "copied_matches_canonical_and_receipt": true,
+  "frame_10": {
+    "day": 3,
+    "weather": 3,
+    "wind": 4,
+    "window_equals_sram_bank1": true
+  },
+  "frame_300": {
+    "day": 3,
+    "weather": 3,
+    "wind": 4,
+    "window_equals_sram_bank1": true
+  },
+  "same_products_as_prior": {
+    "f000010.png": true,
+    "memory_000010_cpu0000.bin": false,
+    "memory_000010_cpu6000.bin": false,
+    "memory_000010_save0000.bin": false,
+    "f000200.png": false,
+    "f000300.png": false,
+    "memory_000300_cpu0000.bin": false,
+    "memory_000300_cpu6000.bin": true,
+    "memory_000300_save0000.bin": true
+  },
+  "stdout_payload_matches": [
+    {
+      "file": "f000010.png",
+      "matches_stdout_payload": true
+    },
+    {
+      "file": "memory_000010_cpu0000.bin",
+      "matches_stdout_payload": true
+    },
+    {
+      "file": "memory_000010_cpu6000.bin",
+      "matches_stdout_payload": true
+    },
+    {
+      "file": "memory_000010_save0000.bin",
+      "matches_stdout_payload": true
+    },
+    {
+      "file": "f000200.png",
+      "matches_stdout_payload": true
+    },
+    {
+      "file": "f000300.png",
+      "matches_stdout_payload": true
+    },
+    {
+      "file": "memory_000300_cpu0000.bin",
+      "matches_stdout_payload": true
+    },
+    {
+      "file": "memory_000300_cpu6000.bin",
+      "matches_stdout_payload": true
+    },
+    {
+      "file": "memory_000300_save0000.bin",
+      "matches_stdout_payload": true
+    }
+  ],
+  "loaded_count": 1,
+  "done_lines": [
+    "DONE 310"
+  ],
+  "error_lines": []
+}

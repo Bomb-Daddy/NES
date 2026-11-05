@@ -1,0 +1,177 @@
+test_complete_native_rgb_png_and_split_idat_are_accepted (test_battle_probe.ProbeGates.test_complete_native_rgb_png_and_split_idat_are_accepted) ... ok
+test_early_exit_cannot_be_reported_success (test_battle_probe.ProbeGates.test_early_exit_cannot_be_reported_success) ... ok
+test_empty_native_screenshot_is_not_evidence (test_battle_probe.ProbeGates.test_empty_native_screenshot_is_not_evidence) ... ok
+test_empty_or_invalid_checkpoint_rejected (test_battle_probe.ProbeGates.test_empty_or_invalid_checkpoint_rejected) ... ok
+test_error_exit_cannot_be_reported_success (test_battle_probe.ProbeGates.test_error_exit_cannot_be_reported_success) ... ok
+test_nonempty_output_refused_without_removing_evidence (test_battle_probe.ProbeGates.test_nonempty_output_refused_without_removing_evidence) ... ok
+test_pending_restore_cannot_be_reported_success (test_battle_probe.ProbeGates.test_pending_restore_cannot_be_reported_success) ... ok
+test_png_chunk_order_and_critical_chunks_are_validated (test_battle_probe.ProbeGates.test_png_chunk_order_and_critical_chunks_are_validated) ... 
+  test_png_chunk_order_and_critical_chunks_are_validated (test_battle_probe.ProbeGates.test_png_chunk_order_and_critical_chunks_are_validated) (name='missing_IDAT') ... FAIL
+  test_png_chunk_order_and_critical_chunks_are_validated (test_battle_probe.ProbeGates.test_png_chunk_order_and_critical_chunks_are_validated) (name='missing_IEND') ... FAIL
+  test_png_chunk_order_and_critical_chunks_are_validated (test_battle_probe.ProbeGates.test_png_chunk_order_and_critical_chunks_are_validated) (name='duplicate_IHDR') ... FAIL
+  test_png_chunk_order_and_critical_chunks_are_validated (test_battle_probe.ProbeGates.test_png_chunk_order_and_critical_chunks_are_validated) (name='unknown_critical_chunk') ... FAIL
+  test_png_chunk_order_and_critical_chunks_are_validated (test_battle_probe.ProbeGates.test_png_chunk_order_and_critical_chunks_are_validated) (name='noncontiguous_IDAT') ... FAIL
+test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) ... 
+  test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='empty_IDAT') ... FAIL
+  test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='invalid_zlib') ... FAIL
+  test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='truncated_zlib') ... FAIL
+  test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='missing_scanline') ... FAIL
+  test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='extra_scanline') ... FAIL
+  test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='second_zlib_stream') ... FAIL
+  test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='invalid_row_filter') ... FAIL
+test_png_header_without_image_is_not_evidence (test_battle_probe.ProbeGates.test_png_header_without_image_is_not_evidence) ... FAIL
+test_png_truncation_crc_and_trailing_bytes_are_rejected (test_battle_probe.ProbeGates.test_png_truncation_crc_and_trailing_bytes_are_rejected) ... 
+  test_png_truncation_crc_and_trailing_bytes_are_rejected (test_battle_probe.ProbeGates.test_png_truncation_crc_and_trailing_bytes_are_rejected) (name='truncated_chunk') ... FAIL
+  test_png_truncation_crc_and_trailing_bytes_are_rejected (test_battle_probe.ProbeGates.test_png_truncation_crc_and_trailing_bytes_are_rejected) (name='bad_crc') ... FAIL
+  test_png_truncation_crc_and_trailing_bytes_are_rejected (test_battle_probe.ProbeGates.test_png_truncation_crc_and_trailing_bytes_are_rejected) (name='trailing_bytes') ... FAIL
+test_valid_completion_receipt_accepted (test_battle_probe.ProbeGates.test_valid_completion_receipt_accepted) ... ok
+test_wrong_rom_rejected_before_output_creation (test_battle_probe.ProbeGates.test_wrong_rom_rejected_before_output_creation) ... ok
+
+======================================================================
+FAIL: test_png_chunk_order_and_critical_chunks_are_validated (test_battle_probe.ProbeGates.test_png_chunk_order_and_critical_chunks_are_validated) (name='missing_IDAT')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 69, in test_png_chunk_order_and_critical_chunks_are_validated
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_chunk_order_and_critical_chunks_are_validated (test_battle_probe.ProbeGates.test_png_chunk_order_and_critical_chunks_are_validated) (name='missing_IEND')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 69, in test_png_chunk_order_and_critical_chunks_are_validated
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_chunk_order_and_critical_chunks_are_validated (test_battle_probe.ProbeGates.test_png_chunk_order_and_critical_chunks_are_validated) (name='duplicate_IHDR')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 69, in test_png_chunk_order_and_critical_chunks_are_validated
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_chunk_order_and_critical_chunks_are_validated (test_battle_probe.ProbeGates.test_png_chunk_order_and_critical_chunks_are_validated) (name='unknown_critical_chunk')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 69, in test_png_chunk_order_and_critical_chunks_are_validated
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_chunk_order_and_critical_chunks_are_validated (test_battle_probe.ProbeGates.test_png_chunk_order_and_critical_chunks_are_validated) (name='noncontiguous_IDAT')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 69, in test_png_chunk_order_and_critical_chunks_are_validated
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='empty_IDAT')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 55, in test_png_compressed_data_must_be_complete_and_bounded
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='invalid_zlib')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 55, in test_png_compressed_data_must_be_complete_and_bounded
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='truncated_zlib')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 55, in test_png_compressed_data_must_be_complete_and_bounded
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='missing_scanline')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 55, in test_png_compressed_data_must_be_complete_and_bounded
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='extra_scanline')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 55, in test_png_compressed_data_must_be_complete_and_bounded
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='second_zlib_stream')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 55, in test_png_compressed_data_must_be_complete_and_bounded
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) (name='invalid_row_filter')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 55, in test_png_compressed_data_must_be_complete_and_bounded
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_header_without_image_is_not_evidence (test_battle_probe.ProbeGates.test_png_header_without_image_is_not_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 31, in test_png_header_without_image_is_not_evidence
+    with self.assertRaisesRegex(ValueError, 'PNG'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_truncation_crc_and_trailing_bytes_are_rejected (test_battle_probe.ProbeGates.test_png_truncation_crc_and_trailing_bytes_are_rejected) (name='truncated_chunk')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 40, in test_png_truncation_crc_and_trailing_bytes_are_rejected
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_truncation_crc_and_trailing_bytes_are_rejected (test_battle_probe.ProbeGates.test_png_truncation_crc_and_trailing_bytes_are_rejected) (name='bad_crc')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 40, in test_png_truncation_crc_and_trailing_bytes_are_rejected
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_png_truncation_crc_and_trailing_bytes_are_rejected (test_battle_probe.ProbeGates.test_png_truncation_crc_and_trailing_bytes_are_rejected) (name='trailing_bytes')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools/test_battle_probe.py", line 40, in test_png_truncation_crc_and_trailing_bytes_are_rejected
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'PNG'):
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.015s
+
+FAILED (failures=16)

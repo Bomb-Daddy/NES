@@ -1,0 +1,1841 @@
+{
+  "evidence_class": "VERIFIED_STATIC",
+  "ordinary_play_reachability_proved": false,
+  "original_game_executed": false,
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/scratch/efe8e2e6cf8d/static_sources/q14_q09/audit_troop_writers.py",
+    "--rom",
+    "/workspace/scratch/efe8e2e6cf8d/private_sources/Romance of the Three Kingdoms II (USA).sfc",
+    "--listings",
+    "/workspace/scratch/efe8e2e6cf8d/static_sources/regenerated/src",
+    "--out",
+    "/workspace/scratch/efe8e2e6cf8d/static_sources/q14_q09/g09_writer_and_map_audit.json"
+  ],
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "rom_sha256": "815bfcf4fd6eb23a20c2e50dde023c210b273ffb6cd86a93909d803c3643ce46",
+  "search_scope": "All 29 lifted modules: literal +C word assignments and calls to root 6703/6730 with literal +C arguments; manual record-type review.",
+  "limitations": [
+    "A syntax search is not a proof that every aliased or bulk memory write has been discovered.",
+    "Direct list splices such as hsovl3 D900 can change the scale interpretation without writing officer+C.",
+    "Byte agreement establishes source identity, not full decoder or semantic correctness.",
+    "No CPU/VM, original emulator, Windows implementation, or complete campaign was executed."
+  ],
+  "reviewed_writer_matches": [
+    {
+      "module": "comroot",
+      "routine_entry": "0x8c11",
+      "private_lifted_c_line": 1700,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "zero"
+    },
+    {
+      "module": "comroot",
+      "routine_entry": "0x9a45",
+      "private_lifted_c_line": 2513,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_entry_mul100"
+    },
+    {
+      "module": "comroot",
+      "routine_entry": "0x9ba1",
+      "private_lifted_c_line": 2613,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "assignment_cap100"
+    },
+    {
+      "module": "comroot",
+      "routine_entry": "0xaf28",
+      "private_lifted_c_line": 3966,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_return_udiv100"
+    },
+    {
+      "module": "comroot",
+      "routine_entry": "0xb522",
+      "private_lifted_c_line": 4448,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_reentry_mul100"
+    },
+    {
+      "module": "comroot",
+      "routine_entry": "0xb836",
+      "private_lifted_c_line": 4596,
+      "record_field": "province_population",
+      "reviewed_effect_category": "recruitment_deduction"
+    },
+    {
+      "module": "csovl2",
+      "routine_entry": "0xd336",
+      "private_lifted_c_line": 453,
+      "record_field": "province_population",
+      "reviewed_effect_category": "return_to_population_cap30000"
+    },
+    {
+      "module": "csovl2",
+      "routine_entry": "0xd584",
+      "private_lifted_c_line": 594,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "assignment_constant100"
+    },
+    {
+      "module": "csovl2",
+      "routine_entry": "0xd5ba",
+      "private_lifted_c_line": 623,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "recruitment_add_cap100"
+    },
+    {
+      "module": "csovl3",
+      "routine_entry": "0xcd67",
+      "private_lifted_c_line": 52,
+      "record_field": "province_population",
+      "reviewed_effect_category": "dismissal_return_cap30000"
+    },
+    {
+      "module": "excsub2",
+      "routine_entry": "0xc580",
+      "private_lifted_c_line": 157,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_entry_mul100"
+    },
+    {
+      "module": "excsub3",
+      "routine_entry": "0xc6c3",
+      "private_lifted_c_line": 304,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_entry_mul100"
+    },
+    {
+      "module": "excsub3",
+      "routine_entry": "0xc794",
+      "private_lifted_c_line": 365,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_entry_mul100"
+    },
+    {
+      "module": "excsub4",
+      "routine_entry": "0xc3aa",
+      "private_lifted_c_line": 53,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "zero_for_redistribution"
+    },
+    {
+      "module": "excsub4",
+      "routine_entry": "0xc3f0",
+      "private_lifted_c_line": 92,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "redistribution_cap100"
+    },
+    {
+      "module": "excsub5",
+      "routine_entry": "0xc30d",
+      "private_lifted_c_line": 12,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "clear_then_refill_at_most100"
+    },
+    {
+      "module": "excsub5",
+      "routine_entry": "0xc30d",
+      "private_lifted_c_line": 20,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "clear_then_refill_at_most100"
+    },
+    {
+      "module": "excsub6",
+      "routine_entry": "0xc30c",
+      "private_lifted_c_line": 24,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "saturating_subtraction"
+    },
+    {
+      "module": "excsub6",
+      "routine_entry": "0xc5e2",
+      "private_lifted_c_line": 212,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_return_udiv100"
+    },
+    {
+      "module": "excsub6",
+      "routine_entry": "0xc5e2",
+      "private_lifted_c_line": 225,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_return_udiv100"
+    },
+    {
+      "module": "excsub6",
+      "routine_entry": "0xcb4b",
+      "private_lifted_c_line": 574,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_entry_mul100"
+    },
+    {
+      "module": "hex",
+      "routine_entry": "0x7585",
+      "private_lifted_c_line": 252,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_subtraction"
+    },
+    {
+      "module": "hex",
+      "routine_entry": "0x75ec",
+      "private_lifted_c_line": 301,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_subtraction"
+    },
+    {
+      "module": "hex",
+      "routine_entry": "0x7e2d",
+      "private_lifted_c_line": 759,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "zero"
+    },
+    {
+      "module": "hex",
+      "routine_entry": "0xb75c",
+      "private_lifted_c_line": 3980,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_subtraction"
+    },
+    {
+      "module": "hex",
+      "routine_entry": "0xb7d5",
+      "private_lifted_c_line": 4080,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_subtraction"
+    },
+    {
+      "module": "hex",
+      "routine_entry": "0xb7d5",
+      "private_lifted_c_line": 4081,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_subtraction"
+    },
+    {
+      "module": "hsovl2",
+      "routine_entry": "0xd648",
+      "private_lifted_c_line": 541,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "peaceful_return_udiv100"
+    },
+    {
+      "module": "hsovl3",
+      "routine_entry": "0xd693",
+      "private_lifted_c_line": 547,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "new_battle_entry_mul100"
+    },
+    {
+      "module": "hsovl4",
+      "routine_entry": "0xce27",
+      "private_lifted_c_line": 162,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "peaceful_return_udiv100"
+    },
+    {
+      "module": "hsovl5",
+      "routine_entry": "0xd367",
+      "private_lifted_c_line": 461,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_percentage_reduction"
+    },
+    {
+      "module": "kisetsu",
+      "routine_entry": "0x7670",
+      "private_lifted_c_line": 392,
+      "record_field": "ruler_troop_aggregate",
+      "reviewed_effect_category": "aggregate_write"
+    },
+    {
+      "module": "kisetsu",
+      "routine_entry": "0x7e73",
+      "private_lifted_c_line": 895,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "event_percentage_reduction"
+    },
+    {
+      "module": "kisetsu",
+      "routine_entry": "0x7e73",
+      "private_lifted_c_line": 906,
+      "record_field": "province_population",
+      "reviewed_effect_category": "event_population_transfer"
+    },
+    {
+      "module": "kisetsu",
+      "routine_entry": "0x7e73",
+      "private_lifted_c_line": 910,
+      "record_field": "province_population",
+      "reviewed_effect_category": "event_population_transfer"
+    },
+    {
+      "module": "kisetsu",
+      "routine_entry": "0x81b4",
+      "private_lifted_c_line": 1060,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "peaceful_event_percentage"
+    },
+    {
+      "module": "kisetsu",
+      "routine_entry": "0x821b",
+      "private_lifted_c_line": 1102,
+      "record_field": "province_population",
+      "reviewed_effect_category": "event_population_change"
+    },
+    {
+      "module": "kisetsu",
+      "routine_entry": "0x821b",
+      "private_lifted_c_line": 1110,
+      "record_field": "province_population",
+      "reviewed_effect_category": "event_population_change"
+    },
+    {
+      "module": "kisetsu",
+      "routine_entry": "0x8c39",
+      "private_lifted_c_line": 1649,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "event_percentage_reduction"
+    },
+    {
+      "module": "kisetsu",
+      "routine_entry": "0x8f31",
+      "private_lifted_c_line": 1821,
+      "record_field": "province_population",
+      "reviewed_effect_category": "population_growth_cap30000"
+    },
+    {
+      "module": "root",
+      "routine_entry": "0x4eb0",
+      "private_lifted_c_line": 3032,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "zero"
+    },
+    {
+      "module": "root",
+      "routine_entry": "0x5122",
+      "private_lifted_c_line": 3192,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "zero"
+    },
+    {
+      "module": "sengo",
+      "routine_entry": "0x721a",
+      "private_lifted_c_line": 50,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "peaceful_return_udiv100"
+    },
+    {
+      "module": "sengo",
+      "routine_entry": "0x735c",
+      "private_lifted_c_line": 122,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_result_udiv100"
+    },
+    {
+      "module": "sengo",
+      "routine_entry": "0x82a4",
+      "private_lifted_c_line": 1161,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_return_udiv100"
+    },
+    {
+      "module": "sengo",
+      "routine_entry": "0x82a4",
+      "private_lifted_c_line": 1167,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_return_udiv100"
+    },
+    {
+      "module": "sengo",
+      "routine_entry": "0x837d",
+      "private_lifted_c_line": 1222,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "battle_reentry_mul100"
+    },
+    {
+      "module": "sengo",
+      "routine_entry": "0x85fe",
+      "private_lifted_c_line": 1408,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "prisoner_udiv100"
+    },
+    {
+      "module": "sengo",
+      "routine_entry": "0x8749",
+      "private_lifted_c_line": 1511,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "prisoner_udiv100_or_battle_reentry_mul100"
+    },
+    {
+      "module": "sengo",
+      "routine_entry": "0x8749",
+      "private_lifted_c_line": 1524,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "prisoner_udiv100_or_battle_reentry_mul100"
+    },
+    {
+      "module": "settei",
+      "routine_entry": "0x7370",
+      "private_lifted_c_line": 158,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "new_ruler_constant100_or10"
+    },
+    {
+      "module": "settei",
+      "routine_entry": "0x7370",
+      "private_lifted_c_line": 183,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "new_ruler_constant100_or10"
+    },
+    {
+      "module": "settei",
+      "routine_entry": "0x7ab6",
+      "private_lifted_c_line": 534,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "scenario_multiplier2_3_or5"
+    },
+    {
+      "module": "settei",
+      "routine_entry": "0x932c",
+      "private_lifted_c_line": 2005,
+      "record_field": "ruler_troop_aggregate",
+      "reviewed_effect_category": "initialize_zero"
+    },
+    {
+      "module": "settei",
+      "routine_entry": "0x93d6",
+      "private_lifted_c_line": 2061,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "scenario_constant100_50_or10"
+    },
+    {
+      "module": "settei",
+      "routine_entry": "0x93d6",
+      "private_lifted_c_line": 2066,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "scenario_constant100_50_or10"
+    },
+    {
+      "module": "settei",
+      "routine_entry": "0x93d6",
+      "private_lifted_c_line": 2070,
+      "record_field": "officer_troops",
+      "reviewed_effect_category": "scenario_constant100_50_or10"
+    }
+  ],
+  "writer_match_counts_by_record_field": {
+    "officer_troops": 47,
+    "province_population": 8,
+    "ruler_troop_aggregate": 2
+  },
+  "private_source_hashes": [
+    {
+      "module": "comroot",
+      "c_sha256": "98601c99b6937380dd61900c17a08330d9208b3b2a6647596c8d0769508a5c91",
+      "src_sha256": "1207bf986a16baba0b13a909d351600c16c77d6ef26a8c4f255fd3d56bd25201"
+    },
+    {
+      "module": "csovl1",
+      "c_sha256": "583c40d1ad4568be26ba49df2c44f6689ae2f3c39ba73c3c9820a3e5de7c8d18",
+      "src_sha256": "2652c6556d1a0a755b7c54e4a0889209b2aa0d7006a4ccee864ffff41e3a24a1"
+    },
+    {
+      "module": "csovl2",
+      "c_sha256": "ca09d046cb76328f135c1ec3f20ee23c4e2895723e9a511ad83dff17a0587fb3",
+      "src_sha256": "0c5b15c5dd70455b1ae5bebade3ac39aaf968016f86cd2d07abab3cdfb1b01e0"
+    },
+    {
+      "module": "csovl3",
+      "c_sha256": "86899b54781e656718d75e62e9bd20c818772d314412c72a8257b861b72c496a",
+      "src_sha256": "89eb3e9a31eb28b4b639d4dc2d0e8d5251ab1aed6a850fc0d9cf91b7236ae5dd"
+    },
+    {
+      "module": "csovl4",
+      "c_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src_sha256": "aed742831ee66cce427b21089b1dd2cb9f05fa5205ce96f03a89fee2abfd6c97"
+    },
+    {
+      "module": "csovl5",
+      "c_sha256": "1ca6fd85c1aba67369b42803745409a52ad379db3ba299b179ed45be928373fc",
+      "src_sha256": "10733009d50c7c9e7f911853cf3f1f9983728073dff5fd623bd02cc8422762ef"
+    },
+    {
+      "module": "csovl6",
+      "c_sha256": "db8fcc27c4a82fae6315a18eb6b39522e4b4ed3860a203a20cf1a3561a3ef346",
+      "src_sha256": "f5c02ce2f65a36a490294e38fa60483e03b9eb08406aaafeb4dc284e57258abb"
+    },
+    {
+      "module": "csovl7",
+      "c_sha256": "ba64c1b6c18d49cec762708d81734bd3b66fcbd2cbfca43c83f1b5eae64d12eb",
+      "src_sha256": "ce0e5910fc0f9e0db79b301e81fa78131559de907ac6c83751805be8af881776"
+    },
+    {
+      "module": "excsub1",
+      "c_sha256": "de0b5feba577b39e94c2c73a473a6e8444683863472b0bba465ad70de209bca7",
+      "src_sha256": "7645f1738e1eb853dd662456b784069dc9549c5e6b4f236f22220047d487da84"
+    },
+    {
+      "module": "excsub2",
+      "c_sha256": "57a594faf1ef06b684b9046c9069cd1f692498a8857fba97a09a0b40f11f0c53",
+      "src_sha256": "f792f5941a7efc7733f0c36faf10f35798383eecfc2d7e6f8b221c127d887e16"
+    },
+    {
+      "module": "excsub3",
+      "c_sha256": "b4aedde6eb54776799bd4c80fecd4e3a3a0a9603505e41f3447338952ca40139",
+      "src_sha256": "27818cc8e3b55b5dad32cd33e6242dd4245783be76376862f19f6b47e2989a3b"
+    },
+    {
+      "module": "excsub4",
+      "c_sha256": "2f4003e73e8e5ec7c88df53f9bf59e711696080fc83d5ed5a6f5d723698a1110",
+      "src_sha256": "ddcfb7c592fc923b3bb910a844c34fc4a860e8fbdfd2f765b41f65e3b5f6a715"
+    },
+    {
+      "module": "excsub5",
+      "c_sha256": "922b1c9df05d8a41ed18f967c9e9165090234a94b553aeae1ea3679e9fea71bb",
+      "src_sha256": "de0c61b7fef5b44fde034d3f78076c5d123da3c5e60d0d81e06c96c3067c70b2"
+    },
+    {
+      "module": "excsub6",
+      "c_sha256": "f41534bfdbb824e1827bf8d931fb8b59abb504ee8378c6031cc62f52690bfd4a",
+      "src_sha256": "080a2192f5ea2c158ccf8b2aa3960ed4c27aeab2e9de894bd7de8f215412cbdb"
+    },
+    {
+      "module": "hex",
+      "c_sha256": "3dd9c67fd4954fb5aeca9a25c75f9cf106f2e55379d9551aa30bd2f80bb705a3",
+      "src_sha256": "3460942ce72ba9c06d84237d5f273355c55ce42e3100388f5fd60045714ce71b"
+    },
+    {
+      "module": "hsovl1",
+      "c_sha256": "5917c7d4aca6b51cbc63ff1637ef8d2e8a1323cf1a340a269ea240114bea4bbc",
+      "src_sha256": "0c0aa5bd7d6a54cabfc7b03d6788c818ca135196575b69ccdc56117deb012035"
+    },
+    {
+      "module": "hsovl2",
+      "c_sha256": "e8ec1041f3a822d0b2d5f0eabf2a4cbef1e35d92e719009676515f37cee24c19",
+      "src_sha256": "49ba9cdb351c4314df51c56382f5d18fca9f355304fa1ebf2ce5a1c4952b9d3d"
+    },
+    {
+      "module": "hsovl3",
+      "c_sha256": "40dc0f3fa19c342f832c9f3f119a11a403a98ae4d71eb58747bf0ee6dfb41ba9",
+      "src_sha256": "076713044b5dd3b39db4d1a0b63355670e5dbfc39d929ad330f07a691e86b319"
+    },
+    {
+      "module": "hsovl4",
+      "c_sha256": "f2329ddce7d261a4f774486b5180f4dc973e6b88635bbd7d21761bee0fab86d9",
+      "src_sha256": "14bdd2f9c078fdc8cbc86393dd27669efb659010f396056f6410283436868a07"
+    },
+    {
+      "module": "hsovl5",
+      "c_sha256": "846dbabc4b17a26faaa730dd2c43395f829d5b310c65b53829673172aee049aa",
+      "src_sha256": "784b99805f98501e68ff9d6371ca521b4ada714fd155bb930df5df55c1c85e86"
+    },
+    {
+      "module": "hsovl51",
+      "c_sha256": "ed795511d19fc4c1596d7689d584e181fcedc5ec935888f002fa2b168b651d08",
+      "src_sha256": "de429e2808f64404a06cc471a635754fbeea07857ee597cf17a1cca3d34ca5d5"
+    },
+    {
+      "module": "hsovl52",
+      "c_sha256": "a81bb18df0422ca21d0eb1c8a3c8635cef62eae28e0e54a7b165361845e52bcc",
+      "src_sha256": "7893aebc57b4553aa75754193c1b09786c02f6022d039a5d6bd5245a02fe5e9e"
+    },
+    {
+      "module": "hsovl53",
+      "c_sha256": "fba6d08762a2d5412639c809ae3f89352bddbb6e43a3515d6028f945e7c7bb0a",
+      "src_sha256": "795f3387fa14bf5f76356092489a75037f6a554331fd7fdd641bb3f71b0adb11"
+    },
+    {
+      "module": "hsovl6",
+      "c_sha256": "cbce0e07661b43593b431d2e2c5bc82ba63aa2b77ec3cae9d9a74377143e1ac5",
+      "src_sha256": "8f814463ae3ab4a142e9efe69c3b24ed1f9e16c33d39d822641abfd737f54e20"
+    },
+    {
+      "module": "kisetsu",
+      "c_sha256": "bd054f2a2bf3ddfbff9c22b07b7488d24b8c45ec706c5f9f64d035b4c495f0a2",
+      "src_sha256": "cd1a93e6eb5ac2c79751f6d7634792b6f9524039acd2aac170204c5a514dc4f9"
+    },
+    {
+      "module": "opend",
+      "c_sha256": "ff67319a1880afea182fe47efb9b95a989116c9fb62de5c2e76696fa03e0ce58",
+      "src_sha256": "9a08c4529fc17d3ef9a3f373894691864549999fc78dcb11e7b6fd98980c7cf2"
+    },
+    {
+      "module": "root",
+      "c_sha256": "5b8fc0f6f3f3358200a32aa2c3c7d84149eca5fbd40fc1f94434f05a9d9caa7a",
+      "src_sha256": "596647b2271e0cc4e23b1b8cc55c90d6d9ff5600a5173c53aa9f44eb89cf50b0"
+    },
+    {
+      "module": "sengo",
+      "c_sha256": "988d8e2928a38d640145e1168163a46f04bf8ac7ff3111fd2c1a78e565ac28dd",
+      "src_sha256": "c85eaa37efe7ab7004d86d7c81c0a790dac6fe6272cad818e9646921330f645d"
+    },
+    {
+      "module": "settei",
+      "c_sha256": "a1ce6979fd06f4601c959ce3cacb7df6da3bd05abf535d37aee9852eb295bb31",
+      "src_sha256": "4923a0bee978a6a656c18ba1a898aee480dc25093ff396ee2e0e4cf92a91a500"
+    }
+  ],
+  "reviewed_transition_ranges": [
+    {
+      "module": "root",
+      "purpose": "alliance_bit_test",
+      "start": "0x4072",
+      "end_exclusive": "0x408f",
+      "file_offset": "0xa072",
+      "bytes": 29,
+      "sha256": "c46c589da1a310a8159ec9c5c757fcde8d5e4ed98f5a08121a3610a3f1b046b0",
+      "listing_matches_rom": true
+    },
+    {
+      "module": "root",
+      "purpose": "continued_battle_scheduler",
+      "start": "0x4820",
+      "end_exclusive": "0x48c0",
+      "file_offset": "0xa820",
+      "bytes": 160,
+      "sha256": "df0b5734fa56710a2c842191ede96370ec6cdd348e68240ccfa652936105df24",
+      "listing_matches_rom": true
+    },
+    {
+      "module": "root",
+      "purpose": "resident_officer_insertion",
+      "start": "0x5154",
+      "end_exclusive": "0x51cc",
+      "file_offset": "0xb154",
+      "bytes": 120,
+      "sha256": "2aa87c0e4ad069d3891cbd66c38c6c3682e70f09457c2aca492367e8424b034d",
+      "listing_matches_rom": true
+    },
+    {
+      "module": "comroot",
+      "purpose": "strategic_source_scheduler",
+      "start": "0x7487",
+      "end_exclusive": "0x7675",
+      "file_offset": "0x22dfd",
+      "bytes": 494,
+      "sha256": "bce32e2dd62b91556606251f6438ef3c3486c36dc5ae6c710832311b7c550b14",
+      "listing_matches_rom": true
+    },
+    {
+      "module": "comroot",
+      "purpose": "mutual_alliance_clear",
+      "start": "0x8522",
+      "end_exclusive": "0x85cc",
+      "file_offset": "0x23e98",
+      "bytes": 170,
+      "sha256": "ee8c857bb29c792921a662407bad9e61637e367d326900b5adb4c25ae68affda",
+      "listing_matches_rom": true
+    },
+    {
+      "module": "comroot",
+      "purpose": "allied_send_and_scale",
+      "start": "0x9a45",
+      "end_exclusive": "0x9b3a",
+      "file_offset": "0x253bb",
+      "bytes": 245,
+      "sha256": "87156bbc0329361472aa3712019f9916c995a5f3b81a711658cfb4f76492f13a",
+      "listing_matches_rom": true
+    },
+    {
+      "module": "hsovl3",
+      "purpose": "entry_region_decode",
+      "start": "0xd31e",
+      "end_exclusive": "0xd362",
+      "file_offset": "0x3e0d2",
+      "bytes": 68,
+      "sha256": "9e1a4b656968f2eb998b0dba0a0238d751bf7a64a895703a7761cdca87afd4d7",
+      "listing_matches_rom": true
+    },
+    {
+      "module": "hsovl3",
+      "purpose": "battle_map_load",
+      "start": "0xd362",
+      "end_exclusive": "0xd48c",
+      "file_offset": "0x3e116",
+      "bytes": 298,
+      "sha256": "4db86c34a472f07e6f32d90203f65fb0b741ebe598d663c47575b04f1560422a",
+      "listing_matches_rom": true
+    },
+    {
+      "module": "hsovl3",
+      "purpose": "pending_ally_return_without_troop_write",
+      "start": "0xd900",
+      "end_exclusive": "0xd9f8",
+      "file_offset": "0x3e6b4",
+      "bytes": 248,
+      "sha256": "b92ff7f4c28e24a4cf8dd16690ee11ed2219dbeaa25a11362c3868892e3e4617",
+      "listing_matches_rom": true
+    },
+    {
+      "module": "hsovl3",
+      "purpose": "new_vs_resumed_setup",
+      "start": "0xda43",
+      "end_exclusive": "0xdac7",
+      "file_offset": "0x3e7f7",
+      "bytes": 132,
+      "sha256": "6acf3da18feae5b63cb09a0d355bf82be0a3c9b174b8a959a7eb7137d8ec562a",
+      "listing_matches_rom": true
+    },
+    {
+      "module": "hsovl6",
+      "purpose": "stop_placement_when_no_cell",
+      "start": "0xcdf6",
+      "end_exclusive": "0xce45",
+      "file_offset": "0x416b4",
+      "bytes": 79,
+      "sha256": "10fdb779df77178460ed6b3bf400fd96b75c1542330139761e7941ee888b1f34",
+      "listing_matches_rom": true
+    },
+    {
+      "module": "hsovl6",
+      "purpose": "commit_only_placed_auxiliaries",
+      "start": "0xcf94",
+      "end_exclusive": "0xd016",
+      "file_offset": "0x41852",
+      "bytes": 130,
+      "sha256": "76c006a40d5aa898f4bb68f742effaf1bc7c498fa0149bdd155d5862b19b95f1",
+      "listing_matches_rom": true
+    },
+    {
+      "module": "hex",
+      "purpose": "native_available_entry_cells",
+      "start": "0xbeb9",
+      "end_exclusive": "0xbf79",
+      "file_offset": "0x3aa3b",
+      "bytes": 192,
+      "sha256": "4e846af40d822d3dfcb3001e12c6ba46cdde779eaf7aff4ba2a8c37162d9fba6",
+      "listing_matches_rom": true
+    }
+  ],
+  "short_original_byte_anchors": [
+    {
+      "module": "comroot",
+      "address": "0x752e",
+      "file_offset": "0x22ea4",
+      "purpose": "source_battle_marker_test",
+      "bytes": "a4 5f f8 7f d3 8c ff 00 c1",
+      "verified": true
+    },
+    {
+      "module": "comroot",
+      "address": "0x753f",
+      "file_offset": "0x22eb5",
+      "purpose": "enter_command_path_only_when_peaceful",
+      "bytes": "d8 7d 75",
+      "verified": true
+    },
+    {
+      "module": "comroot",
+      "address": "0x9a94",
+      "file_offset": "0x2540a",
+      "purpose": "pending_ally_troop_mul100",
+      "bytes": "8d 64 0a 7c b4 b3 b0 b5 b1",
+      "verified": true
+    },
+    {
+      "module": "hsovl3",
+      "address": "0xd946",
+      "file_offset": "0x3e6fa",
+      "purpose": "alliance_present_skips_return",
+      "bytes": "e9 72 40 04 d7 dd d9",
+      "verified": true
+    },
+    {
+      "module": "hsovl3",
+      "address": "0xd9b3",
+      "file_offset": "0x3e767",
+      "purpose": "append_pending_to_resident_tail",
+      "bytes": "e9 d0 69 02 27 37 08 b1",
+      "verified": true
+    },
+    {
+      "module": "hsovl3",
+      "address": "0xd9db",
+      "file_offset": "0x3e78f",
+      "purpose": "clear_pending_head",
+      "bytes": "40 b1",
+      "verified": true
+    },
+    {
+      "module": "hsovl3",
+      "address": "0xda72",
+      "file_offset": "0x3e826",
+      "purpose": "resume_calls_pending_return",
+      "bytes": "ac 00 d9",
+      "verified": true
+    },
+    {
+      "module": "hex",
+      "address": "0xbf0d",
+      "file_offset": "0x3aa8f",
+      "purpose": "entry_cell_exclusion_mask",
+      "bytes": "b1 12 29 2f d0 1b",
+      "verified": true
+    },
+    {
+      "module": "hsovl6",
+      "address": "0xcfa1",
+      "file_offset": "0x4185f",
+      "purpose": "unplaced_first_auxiliary_kept_pending",
+      "bytes": "8c ff 00 c0 d8 a9 cf cf",
+      "verified": true
+    }
+  ],
+  "map_resource": {
+    "name": "hpoint",
+    "archive_row_file_offset": 31024,
+    "rom_bank": 6,
+    "rom_address": 40210,
+    "file_offset": 204050,
+    "size": 16496,
+    "sha256": "a3df8f0c3f5b538c8b7958d756382edbc3e9b3580dbb4bdfaa8cb71000462ccb"
+  },
+  "adjacency_resource": {
+    "name": "sdata",
+    "archive_row_file_offset": 30752,
+    "rom_bank": 1,
+    "rom_address": 64562,
+    "file_offset": 64562,
+    "size": 57658,
+    "sha256": "250a0902225cc316e694c13a71062cb67bf02c1905163b824d65f80abd53c9e9"
+  },
+  "entry_region_summary": {
+    "maps": 41,
+    "valid_neighbor_regions": 186,
+    "all_valid_neighbor_regions_have_five_cells": true,
+    "all_home_regions_have_twenty_cells": true
+  },
+  "entry_region_counts": [
+    {
+      "province_number": 1,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 2,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "9226269bfc5a2c947fabf3433ab48c0e22d7ccb6751962fe2b6c92bc38fe66bb"
+    },
+    {
+      "province_number": 2,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 3,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 6,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 1,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "28405974f2fbd3daae9b58c0b73019a95471db3a39a322aa3e8589c0f8d0073d"
+    },
+    {
+      "province_number": 3,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 4,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 7,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 6,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 2,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "3e25b38f0c3c617e80d89c4047f7ae10f32284604942d9d4a4344fbe7c92508c"
+    },
+    {
+      "province_number": 4,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 5,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 7,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 3,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "0b4f5782306a04924bf422ce9103d01ebdddae93b8a2ab1b96abaf63d59301b4"
+    },
+    {
+      "province_number": 5,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 11,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 10,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 4,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 7,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "1fa46db0bdfc663dc5f82446980af9438b1e9f8f46e02341bb1b48820e5af40d"
+    },
+    {
+      "province_number": 6,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 7,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 9,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 8,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 3,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 2,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "9f356bb9f28221126610ec47a2a9653d2b1de50391861bde12a8440092e3f89c"
+    },
+    {
+      "province_number": 7,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 5,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 10,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 9,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 4,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 3,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 6,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "220160a0ec35dc08eb8f86391e0fb37695790dbc3e8c6d9bdffce94f86cdd618"
+    },
+    {
+      "province_number": 8,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 9,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 16,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 6,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "c7d99d3170e8a5f83426e5e8591fd3da1037381e9f682e701540b61e4717eae1"
+    },
+    {
+      "province_number": 9,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 10,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 17,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 16,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 7,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 6,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 8,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "ce760b4bf361de04cb0702e62365ca72db549626179ca6b5c4644e8d3770a1ea"
+    },
+    {
+      "province_number": 10,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 11,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 19,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 17,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 5,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 7,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 9,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "cacac201def01cd4ca094c3aa005b1a1682901fa2368f57c49c7295620d5f9a7"
+    },
+    {
+      "province_number": 11,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 12,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 20,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 19,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 5,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 10,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "f0db719dc54b2bec9b242974cdc9a8a8342202c6a71ecb448cfe05e65e4bede2"
+    },
+    {
+      "province_number": 12,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 13,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 29,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 20,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 11,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "92e6dc7acc583466343222741999bbde482cc599e7fe8ad280e561d800f59be9"
+    },
+    {
+      "province_number": 13,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 30,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 29,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 14,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 12,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "b7101701afa8f811e73a11631cfe6f4e165c154b174048b84012117cc9ba7198"
+    },
+    {
+      "province_number": 14,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 13,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 15,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "b88c2f7c75c208bc6083b688bc33f4bcd32e288c7f8f4ff2cee97ed886e6f073"
+    },
+    {
+      "province_number": 15,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 14,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "f8ce12c7f76fc6478f874b0e7ecd44d08e4e6b89962e0aa48b6cd4acdb02f7df"
+    },
+    {
+      "province_number": 16,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 17,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 18,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 24,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 9,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 8,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "d8d8989137327973b3950f7138438bbfd4dbec72f4a0c9cb5cc575135c8385c0"
+    },
+    {
+      "province_number": 17,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 19,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 28,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 18,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 10,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 9,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 16,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "6ec45522fc0b3caf4025447ec82eb97e90ebc83a1ce42d7bfa01c353f93c715b"
+    },
+    {
+      "province_number": 18,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 28,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 27,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 25,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 17,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 16,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 24,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "375ccba5c7247d5184b2a961e61013cd62dc13483d31a54d4b56601f15a124d5"
+    },
+    {
+      "province_number": 19,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 20,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 21,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 28,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 11,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 10,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 17,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "88f5640dfd41c303be1ee30d0820727e81f668aeb9228cb3efa40318a30efc3a"
+    },
+    {
+      "province_number": 20,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 29,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 31,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 21,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 12,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 11,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 19,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "0ae07df4d3405801329a61ccbee2f866d868ff14d593b8dd577ac20dc7972edb"
+    },
+    {
+      "province_number": 21,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 31,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 23,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 22,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 20,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 19,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 28,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "d20416c6537ddf816f16df9e21ac2b5f63bbd09490af4f13add3e694747d01d8"
+    },
+    {
+      "province_number": 22,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 23,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 38,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 37,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 21,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 28,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 27,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "826b69c3953e5e1b9732f817ee4c919d326a67c5863894b9603e0fd663656fd7"
+    },
+    {
+      "province_number": 23,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 40,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 39,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 38,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 31,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 21,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 22,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "3a44a07af2027c4cc2003fd4b36de8a1d61d5102adb0c55be556186885a43a9b"
+    },
+    {
+      "province_number": 24,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 18,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 25,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 16,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "605aa8ca15c0eccbdf4060c58af3d75a630845eea476a765ce005426b4295d22"
+    },
+    {
+      "province_number": 25,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 27,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 26,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 18,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 24,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "9acebe76214851ea2ebb26a7002fb9802b81399bf4c3f8fd8c1d59cb60869a04"
+    },
+    {
+      "province_number": 26,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 37,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 27,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 25,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "032d69fd165205442393e756d0907796f417b2ede78ac3e439280be6d33fe042"
+    },
+    {
+      "province_number": 27,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 22,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 37,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 26,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 28,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 18,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 25,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "cd9054587fa2d8102149a1519693bfdd216fe67297ec57e6009fe09905a46040"
+    },
+    {
+      "province_number": 28,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 21,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 22,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 27,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 19,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 17,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 18,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "a8c1529dc509ff27da3500b67899955bf2f6f20006e8b250ef8e87f6b8661bed"
+    },
+    {
+      "province_number": 29,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 30,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 32,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 31,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 13,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 12,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 20,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "fe409e50c297e7c533256e04a81a1b9b1ba8525a90260c2bd2cd7a7526aaa814"
+    },
+    {
+      "province_number": 30,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 33,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 32,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 13,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 29,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "b941c026510857e69e4c0fefe4165ba22cb7aabb9730ac9c118a04683bb3b88a"
+    },
+    {
+      "province_number": 31,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 32,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 40,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 23,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 29,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 20,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 21,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "5271cd2f54d4370ef09056a257cccfd752d03b7e1ef85953f1acfc862b6709cd"
+    },
+    {
+      "province_number": 32,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 33,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 34,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 40,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 30,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 29,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 31,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "e7e51a22cff20bc6f9dabbc45ddbf3da744292be5ff932d7f9be420b8627b4af"
+    },
+    {
+      "province_number": 33,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 35,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 34,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 30,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 32,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "1f2e0df51a7f7da7e6eac0b99c382506ca1d0023d4d5c6ff286d339b80ce73b5"
+    },
+    {
+      "province_number": 34,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 35,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 36,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 41,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 33,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 32,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 40,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "1190a7a367ddcf2c5301d23a87db7b84e32c3fe55665f2aa306d66dfac75eef7"
+    },
+    {
+      "province_number": 35,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 36,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 33,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 34,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "2815c2e19169f0f119d71c60ad0bf6a6a23fd2a4c397032d173274ea86e2cf4f"
+    },
+    {
+      "province_number": 36,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 35,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 34,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 41,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "226b90874621bfbe02a298ba7d34b515e3445f4b139f58c9643a593e1b72f05f"
+    },
+    {
+      "province_number": 37,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 38,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 22,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 27,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 26,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "e8134571595b0590c0ba14cc2447b056b97e2f51b99ef81dbd04c5ec2fb51a31"
+    },
+    {
+      "province_number": 38,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 39,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 23,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 22,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 37,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "54eaf9051d776236617a2051d84c66aef4b40ea493161de9e8dccf3faa208351"
+    },
+    {
+      "province_number": 39,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 41,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 40,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 23,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 38,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "4aee2493e9ac5bcd5069d0eb5c2a2fb026057302892e3be710e353284aabd4c6"
+    },
+    {
+      "province_number": 40,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 34,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 41,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 39,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 32,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 31,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 23,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "e46a0253e282defed804c90d9c9cb440548cfc94ff49057f83c9758c77e292eb"
+    },
+    {
+      "province_number": 41,
+      "home_cells": 20,
+      "neighbor_regions": [
+        {
+          "adjacent_province_number": 36,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 34,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 40,
+          "entry_cells": 5
+        },
+        {
+          "adjacent_province_number": 39,
+          "entry_cells": 5
+        }
+      ],
+      "packed_entry_map_sha256": "330b01592e10e81c70053f9030474f0505cdb105678651213705ee9ca035e3db"
+    }
+  ]
+}

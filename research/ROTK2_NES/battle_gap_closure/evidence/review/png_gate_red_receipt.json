@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-v"
+  ],
+  "cwd": "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools",
+  "exit_code": 1,
+  "date_utc": "2026-11-05T19:04:53.693256+00:00",
+  "files": {
+    "battle_probe.py": "15450f826ab591582d478b491a268752e67b7d4c534f630e4021dc46c9da5dac",
+    "test_battle_probe.py": "bac75b96f06cf3e070bc4f72132237badd75165f62b3b79d8d9364e325820271"
+  }
+}

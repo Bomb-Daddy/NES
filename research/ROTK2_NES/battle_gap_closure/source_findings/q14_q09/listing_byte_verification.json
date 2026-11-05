@@ -1,0 +1,97 @@
+{
+  "rom_sha256": "815bfcf4fd6eb23a20c2e50dde023c210b273ffb6cd86a93909d803c3643ce46",
+  "rom_bytes": 1048576,
+  "archive_directory_file_offset": 30720,
+  "modules": {
+    "comroot": {
+      "directory_file_offset": 30800,
+      "rom_bank": 4,
+      "rom_address": 43894,
+      "rom_offset": 142198,
+      "length": 20072,
+      "wram_base": 29184,
+      "module_sha256": "b3c15c77fa89093c81ba9abf535343ed5c84c7ba640902f29f4c0de837b83150",
+      "listing_sha256": "1207bf986a16baba0b13a909d351600c16c77d6ef26a8c4f255fd3d56bd25201",
+      "verification": {
+        "listed_bytes": 20072,
+        "mismatches": [],
+        "overlaps": [],
+        "missing_bytes": 0,
+        "first_missing": []
+      },
+      "negative_control_detected": true
+    },
+    "csovl1": {
+      "directory_file_offset": 30912,
+      "rom_bank": 5,
+      "rom_address": 42428,
+      "rom_offset": 173500,
+      "length": 4134,
+      "wram_base": 52480,
+      "module_sha256": "3b71333745bf32d14cbdacde8f14bb4b4e288230721ede4024cab5c250ffa7c6",
+      "listing_sha256": "2652c6556d1a0a755b7c54e4a0889209b2aa0d7006a4ccee864ffff41e3a24a1",
+      "verification": {
+        "listed_bytes": 4134,
+        "mismatches": [],
+        "overlaps": [],
+        "missing_bytes": 0,
+        "first_missing": []
+      },
+      "negative_control_detected": true
+    },
+    "hsovl2": {
+      "directory_file_offset": 31072,
+      "rom_bank": 7,
+      "rom_address": 51468,
+      "rom_offset": 248076,
+      "length": 4264,
+      "wram_base": 52224,
+      "module_sha256": "167c0899e75add751046d59f0481d1f318bbbf76dd23740ec3d63f5d21e716e9",
+      "listing_sha256": "49ba9cdb351c4314df51c56382f5d18fca9f355304fa1ebf2ce5a1c4952b9d3d",
+      "verification": {
+        "listed_bytes": 4264,
+        "mismatches": [],
+        "overlaps": [],
+        "missing_bytes": 0,
+        "first_missing": []
+      },
+      "negative_control_detected": true
+    },
+    "root": {
+      "directory_file_offset": 30720,
+      "rom_bank": 1,
+      "rom_address": 32768,
+      "rom_offset": 32768,
+      "length": 20978,
+      "wram_base": 8192,
+      "module_sha256": "05aa376c9855c6b64251e2b3cbabf066a1af009baed062fd1733763b26af6ffb",
+      "listing_sha256": "596647b2271e0cc4e23b1b8cc55c90d6d9ff5600a5173c53aa9f44eb89cf50b0",
+      "verification": {
+        "listed_bytes": 20978,
+        "mismatches": [],
+        "overlaps": [],
+        "missing_bytes": 0,
+        "first_missing": []
+      },
+      "negative_control_detected": true
+    },
+    "sengo": {
+      "directory_file_offset": 31200,
+      "rom_bank": 8,
+      "rom_address": 40966,
+      "rom_offset": 270342,
+      "length": 12078,
+      "wram_base": 29184,
+      "module_sha256": "a30e682028a2fde093672cc01c6d9f7866a435ff28a7c984b2a1bce315d20026",
+      "listing_sha256": "c85eaa37efe7ab7004d86d7c81c0a790dac6fe6272cad818e9646921330f645d",
+      "verification": {
+        "listed_bytes": 12078,
+        "mismatches": [],
+        "overlaps": [],
+        "missing_bytes": 0,
+        "first_missing": []
+      },
+      "negative_control_detected": true
+    }
+  }
+}

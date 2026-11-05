@@ -1,0 +1,72 @@
+{
+  "evidence_class": "VERIFIED_STATIC",
+  "original_runtime_executed": false,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "runs": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/efe8e2e6cf8d/static_sources/q14_q09/verify_listing_bytes.py",
+        "--rom",
+        "/workspace/scratch/efe8e2e6cf8d/private_sources/Romance of the Three Kingdoms II (USA).sfc",
+        "--listings",
+        "/workspace/scratch/efe8e2e6cf8d/static_sources/regenerated/src",
+        "--out",
+        "/workspace/scratch/efe8e2e6cf8d/static_sources/q14_q09/all_listing_byte_verification.json"
+      ],
+      "cwd": "/workspace/scratch/efe8e2e6cf8d",
+      "started_utc": "2026-11-05T18:46:24.001273+00:00",
+      "finished_utc": "2026-11-05T18:46:24.800799+00:00",
+      "stdout": "{\n  \"comroot\": {\n    \"module_bytes\": 20072,\n    \"listed_bytes\": 20072,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"csovl1\": {\n    \"module_bytes\": 4134,\n    \"listed_bytes\": 4134,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"csovl2\": {\n    \"module_bytes\": 4118,\n    \"listed_bytes\": 4118,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"csovl3\": {\n    \"module_bytes\": 4640,\n    \"listed_bytes\": 4640,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"csovl4\": {\n    \"module_bytes\": 4552,\n    \"listed_bytes\": 4552,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"csovl5\": {\n    \"module_bytes\": 4402,\n    \"listed_bytes\": 4402,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"csovl6\": {\n    \"module_bytes\": 3846,\n    \"listed_bytes\": 3846,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"csovl7\": {\n    \"module_bytes\": 4858,\n    \"listed_bytes\": 4858,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"excsub1\": {\n    \"module_bytes\": 2456,\n    \"listed_bytes\": 2456,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"excsub2\": {\n    \"module_bytes\": 1876,\n    \"listed_bytes\": 1876,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"excsub3\": {\n    \"module_bytes\": 1820,\n    \"listed_bytes\": 1820,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"excsub4\": {\n    \"module_bytes\": 1810,\n    \"listed_bytes\": 1810,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"excsub5\": {\n    \"module_bytes\": 880,\n    \"listed_bytes\": 880,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"excsub6\": {\n    \"module_bytes\": 2388,\n    \"listed_bytes\": 2388,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"hex\": {\n    \"module_bytes\": 22898,\n    \"listed_bytes\": 22898,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"hsovl1\": {\n    \"module_bytes\": 4632,\n    \"listed_bytes\": 4632,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"hsovl2\": {\n    \"module_bytes\": 4264,\n    \"listed_bytes\": 4264,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"hsovl3\": {\n    \"module_bytes\": 4054,\n    \"listed_bytes\": 4054,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"hsovl4\": {\n    \"module_bytes\": 4222,\n    \"listed_bytes\": 4222,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"hsovl5\": {\n    \"module_bytes\": 3052,\n    \"listed_bytes\": 3052,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"hsovl51\": {\n    \"module_bytes\": 1806,\n    \"listed_bytes\": 1806,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"hsovl52\": {\n    \"module_bytes\": 1634,\n    \"listed_bytes\": 1634,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"hsovl53\": {\n    \"module_bytes\": 346,\n    \"listed_bytes\": 346,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"hsovl6\": {\n    \"module_bytes\": 2888,\n    \"listed_bytes\": 2888,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"kisetsu\": {\n    \"module_bytes\": 11178,\n    \"listed_bytes\": 11178,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"opend\": {\n    \"module_bytes\": 11284,\n    \"listed_bytes\": 11284,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"root\": {\n    \"module_bytes\": 20978,\n    \"listed_bytes\": 20978,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"sengo\": {\n    \"module_bytes\": 12078,\n    \"listed_bytes\": 12078,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  },\n  \"settei\": {\n    \"module_bytes\": 10816,\n    \"listed_bytes\": 10816,\n    \"mismatches\": [],\n    \"overlaps\": [],\n    \"missing_bytes\": 0,\n    \"first_missing\": [],\n    \"negative_control_detected\": true\n  }\n}\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/efe8e2e6cf8d/static_sources/q14_q09/collect_static_evidence.py",
+        "--rom",
+        "/workspace/scratch/efe8e2e6cf8d/private_sources/Romance of the Three Kingdoms II (USA).sfc",
+        "--out",
+        "/workspace/scratch/efe8e2e6cf8d/static_sources/q14_q09/key_static_evidence.json"
+      ],
+      "cwd": "/workspace/scratch/efe8e2e6cf8d",
+      "started_utc": "2026-11-05T18:46:24.800827+00:00",
+      "finished_utc": "2026-11-05T18:46:25.035991+00:00",
+      "stdout": "{\"anchors_verified\": 23, \"scenario_rows\": 14, \"max_multiplier\": 5, \"global_reachability_proved\": false}\n",
+      "stderr": "",
+      "exit_code": 0
+    }
+  ],
+  "files": {
+    "STATIC_FINDINGS_v1.00.md": {
+      "bytes": 19409,
+      "sha256": "c03d4ef9cd16864a70b76e071bb265c64b0dd8d982599d5a3d68103ed77415c8"
+    },
+    "all_listing_byte_verification.json": {
+      "bytes": 16945,
+      "sha256": "9be49a5377667ae48921b6517215f0cd4ed3db6d1c2cb2793eed0e1751c8494e"
+    },
+    "collect_static_evidence.py": {
+      "bytes": 6624,
+      "sha256": "1ecbe12b428d5d9d75a3a6487c20ed703527edc74c585065d0d1ea5432314f55"
+    },
+    "key_static_evidence.json": {
+      "bytes": 9684,
+      "sha256": "3e77c41e5af34a22550516e650965a2bd383919daf5d75cf0174e7b746b98c40"
+    },
+    "listing_byte_verification.json": {
+      "bytes": 3064,
+      "sha256": "043f771c69d04f756a46f63cdb9088b024efd91c5da04702bf46901a68504a6d"
+    },
+    "run_source_probe.py": {
+      "bytes": 3030,
+      "sha256": "d19200ed41665dde8b4df57c55ca7ad386e20f254b27b41c6cb10d664d75d2b0"
+    },
+    "verify_listing_bytes.py": {
+      "bytes": 3647,
+      "sha256": "7b5609d006f53698c25c5d967424d49eb804b133595c2465dcaedebe8197767f"
+    }
+  }
+}

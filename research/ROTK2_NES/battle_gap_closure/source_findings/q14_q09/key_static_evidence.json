@@ -1,0 +1,361 @@
+{
+  "evidence_class": "VERIFIED_STATIC",
+  "runtime_executed": false,
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "/workspace/scratch/efe8e2e6cf8d/static_sources/q14_q09/collect_static_evidence.py",
+    "--rom",
+    "/workspace/scratch/efe8e2e6cf8d/private_sources/Romance of the Three Kingdoms II (USA).sfc",
+    "--out",
+    "/workspace/scratch/efe8e2e6cf8d/static_sources/q14_q09/key_static_evidence.json"
+  ],
+  "rom_sha256": "815bfcf4fd6eb23a20c2e50dde023c210b273ffb6cd86a93909d803c3643ce46",
+  "rom_bytes": 1048576,
+  "anchors": [
+    {
+      "id": "q14_fallback_return",
+      "module": "sengo",
+      "module_wram_base": "0x7200",
+      "wram_address": "0x8462",
+      "file_offset": "0x43268",
+      "bytes": "0c 72 b0 cf",
+      "verified": true
+    },
+    {
+      "id": "q14_owned_province_head_insert",
+      "module": "root",
+      "module_wram_base": "0x2000",
+      "wram_address": "0x5091",
+      "file_offset": "0xb091",
+      "bytes": "0c 72 b3 0d b1 3d 40 b1",
+      "verified": true
+    },
+    {
+      "id": "q14_ruler_province_prepend",
+      "module": "root",
+      "module_wram_base": "0x2000",
+      "wram_address": "0x51c1",
+      "file_offset": "0xb1c1",
+      "bytes": "3c 09 72 b0 b1 09 72 b3 0c b1",
+      "verified": true
+    },
+    {
+      "id": "province_owner_field",
+      "module": "root",
+      "module_wram_base": "0x2000",
+      "wram_address": "0x69c9",
+      "file_offset": "0xc9c9",
+      "bytes": "a0 0e b1 0e 4c 90 69",
+      "verified": true
+    },
+    {
+      "id": "officer_liege_field",
+      "module": "root",
+      "module_wram_base": "0x2000",
+      "wram_address": "0x698c",
+      "file_offset": "0xc98c",
+      "bytes": "a0 07 b1 0e aa c9 ff",
+      "verified": true
+    },
+    {
+      "id": "q14_ordinary_no_destination",
+      "module": "sengo",
+      "module_wram_base": "0x7200",
+      "wram_address": "0x84f6",
+      "file_offset": "0x432fc",
+      "bytes": "3c aa 28 fc e9 b0 4e 04",
+      "verified": true
+    },
+    {
+      "id": "q14_defeated_ruler_zero_return_branch",
+      "module": "sengo",
+      "module_wram_base": "0x7200",
+      "wram_address": "0x868d",
+      "file_offset": "0x43493",
+      "bytes": "d8 cb 86",
+      "verified": true
+    },
+    {
+      "id": "q09_individual_destination_prompt",
+      "module": "hsovl2",
+      "module_wram_base": "0xcc00",
+      "wram_address": "0xd989",
+      "file_offset": "0x3d695",
+      "bytes": "e9 8c d7 06",
+      "verified": true
+    },
+    {
+      "id": "q09_individual_writer_call",
+      "module": "hsovl2",
+      "module_wram_base": "0xcc00",
+      "wram_address": "0xd9aa",
+      "file_offset": "0x3d6b6",
+      "bytes": "e9 48 d6 06",
+      "verified": true
+    },
+    {
+      "id": "q09_whole_army_writer_call",
+      "module": "hsovl2",
+      "module_wram_base": "0xcc00",
+      "wram_address": "0xd8f2",
+      "file_offset": "0x3d5fe",
+      "bytes": "e9 48 d6 06",
+      "verified": true
+    },
+    {
+      "id": "q09_detach_battle_list",
+      "module": "hsovl2",
+      "module_wram_base": "0xcc00",
+      "wram_address": "0xd679",
+      "file_offset": "0x3d385",
+      "bytes": "e9 70 7d 04",
+      "verified": true
+    },
+    {
+      "id": "q09_clear_battle_hex",
+      "module": "hsovl2",
+      "module_wram_base": "0xcc00",
+      "wram_address": "0xd67e",
+      "file_offset": "0x3d38a",
+      "bytes": "e9 95 93 02",
+      "verified": true
+    },
+    {
+      "id": "q09_peaceful_destination_troop_division",
+      "module": "hsovl2",
+      "module_wram_base": "0xcc00",
+      "wram_address": "0xd69a",
+      "file_offset": "0x3d3a6",
+      "bytes": "8d 64 0c 7c b4 b3 b0 b8 b1",
+      "verified": true
+    },
+    {
+      "id": "q09_destination_province_insertion",
+      "module": "hsovl2",
+      "module_wram_base": "0xcc00",
+      "wram_address": "0xd6a5",
+      "file_offset": "0x3d3b1",
+      "bytes": "e9 54 51 04",
+      "verified": true
+    },
+    {
+      "id": "q09_failed_escape_capture_call",
+      "module": "hsovl2",
+      "module_wram_base": "0xcc00",
+      "wram_address": "0xd6c8",
+      "file_offset": "0x3d3d4",
+      "bytes": "e9 2d 7e 08",
+      "verified": true
+    },
+    {
+      "id": "scenario_officer_table_base",
+      "module": "settei",
+      "module_wram_base": "0x7200",
+      "wram_address": "0x93f3",
+      "file_offset": "0xf3e5",
+      "bytes": "8a 4c e0",
+      "verified": true
+    },
+    {
+      "id": "scenario_officer_stride",
+      "module": "settei",
+      "module_wram_base": "0x7200",
+      "wram_address": "0x9564",
+      "file_offset": "0xf556",
+      "bytes": "81 d7 8f 15",
+      "verified": true
+    },
+    {
+      "id": "g09_player_assignment_limit",
+      "module": "comroot",
+      "module_wram_base": "0x7200",
+      "wram_address": "0x9bb5",
+      "file_offset": "0x2552b",
+      "bytes": "8b 64 c8 d8 c0 9b 89 64",
+      "verified": true
+    },
+    {
+      "id": "g09_player_assignment_write",
+      "module": "comroot",
+      "module_wram_base": "0x7200",
+      "wram_address": "0x9c80",
+      "file_offset": "0x255f6",
+      "bytes": "0c 7c b3 0b b1 cf",
+      "verified": true
+    },
+    {
+      "id": "g09_scenario_multiplier_offset",
+      "module": "settei",
+      "module_wram_base": "0x7200",
+      "wram_address": "0x7b1f",
+      "file_offset": "0xdb11",
+      "bytes": "8c ce 1f",
+      "verified": true
+    },
+    {
+      "id": "g09_scenario_multiply",
+      "module": "settei",
+      "module_wram_base": "0x7200",
+      "wram_address": "0x7ade",
+      "file_offset": "0xdad0",
+      "bytes": "0b 7c b4 b3 b0 b5 b1",
+      "verified": true
+    },
+    {
+      "id": "q03_defending_province_pointer_write",
+      "module": "excsub2",
+      "module_wram_base": "0xc300",
+      "wram_address": "0xc54e",
+      "file_offset": "0x285c4",
+      "bytes": "a4 28 fc a8 2d fc",
+      "verified": true
+    },
+    {
+      "id": "q03_defending_resident_list_read",
+      "module": "hsovl3",
+      "module_wram_base": "0xcc00",
+      "wram_address": "0xd614",
+      "file_offset": "0x3e3c8",
+      "bytes": "0b 72 b0 72 b0",
+      "verified": true
+    }
+  ],
+  "scenario_resource": {
+    "name": "sdata",
+    "archive_row_file_offset": 30752,
+    "rom_bank": 1,
+    "rom_address": 64562,
+    "file_offset": 64562,
+    "size": 57658,
+    "sha256": "250a0902225cc316e694c13a71062cb67bf02c1905163b824d65f80abd53c9e9"
+  },
+  "scenario_multiplier_table": {
+    "resource_offset": "0x1fce",
+    "file_offset": "0x11c00",
+    "bytes": 56,
+    "sha256": "06ded317527335caaba2725406242690d67f431bbbffa50a6f480eddf99f3028",
+    "rows": [
+      {
+        "row": 0,
+        "scenario_index": 0,
+        "file_offset": "0x11c00",
+        "province_index_zero_based": 2,
+        "officer_id": 19,
+        "multiplier": 2
+      },
+      {
+        "row": 1,
+        "scenario_index": 0,
+        "file_offset": "0x11c04",
+        "province_index_zero_based": 5,
+        "officer_id": 100,
+        "multiplier": 2
+      },
+      {
+        "row": 2,
+        "scenario_index": 0,
+        "file_offset": "0x11c08",
+        "province_index_zero_based": 6,
+        "officer_id": 111,
+        "multiplier": 2
+      },
+      {
+        "row": 3,
+        "scenario_index": 0,
+        "file_offset": "0x11c0c",
+        "province_index_zero_based": 8,
+        "officer_id": 34,
+        "multiplier": 2
+      },
+      {
+        "row": 4,
+        "scenario_index": 0,
+        "file_offset": "0x11c10",
+        "province_index_zero_based": 8,
+        "officer_id": 35,
+        "multiplier": 2
+      },
+      {
+        "row": 5,
+        "scenario_index": 0,
+        "file_offset": "0x11c14",
+        "province_index_zero_based": 9,
+        "officer_id": 52,
+        "multiplier": 5
+      },
+      {
+        "row": 6,
+        "scenario_index": 0,
+        "file_offset": "0x11c18",
+        "province_index_zero_based": 9,
+        "officer_id": 77,
+        "multiplier": 2
+      },
+      {
+        "row": 7,
+        "scenario_index": 0,
+        "file_offset": "0x11c1c",
+        "province_index_zero_based": 20,
+        "officer_id": 55,
+        "multiplier": 5
+      },
+      {
+        "row": 8,
+        "scenario_index": 0,
+        "file_offset": "0x11c20",
+        "province_index_zero_based": 20,
+        "officer_id": 56,
+        "multiplier": 2
+      },
+      {
+        "row": 9,
+        "scenario_index": 0,
+        "file_offset": "0x11c24",
+        "province_index_zero_based": 27,
+        "officer_id": 89,
+        "multiplier": 2
+      },
+      {
+        "row": 10,
+        "scenario_index": 1,
+        "file_offset": "0x11c28",
+        "province_index_zero_based": 2,
+        "officer_id": 182,
+        "multiplier": 2
+      },
+      {
+        "row": 11,
+        "scenario_index": 1,
+        "file_offset": "0x11c2c",
+        "province_index_zero_based": 4,
+        "officer_id": 161,
+        "multiplier": 2
+      },
+      {
+        "row": 12,
+        "scenario_index": 1,
+        "file_offset": "0x11c30",
+        "province_index_zero_based": 13,
+        "officer_id": 168,
+        "multiplier": 2
+      },
+      {
+        "row": 13,
+        "scenario_index": 1,
+        "file_offset": "0x11c34",
+        "province_index_zero_based": 27,
+        "officer_id": 89,
+        "multiplier": 3
+      }
+    ],
+    "max_multiplier": 5,
+    "unique_officer_ids_within_each_scenario_subset": true,
+    "conservative_initialization_bound_given_max_base_100": 500,
+    "global_reachability_proved": false
+  },
+  "limitations": [
+    "No emulator or original VM execution is performed.",
+    "Instruction meaning is a manual static interpretation, not inferred from symbol names.",
+    "Initialization bound does not prove the bound over every reachable strategic state."
+  ]
+}

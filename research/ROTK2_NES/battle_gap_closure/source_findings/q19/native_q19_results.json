@@ -1,0 +1,658 @@
+{
+  "evidence": "VERIFIED_STATIC: bounded execution of original native instruction bytes against synthetic RAM; NOT OBSERVED_RUNTIME, NOT an original emulator run",
+  "scope": "comroot 7E:BBA3-BC77; CPU 00:9EAA-9EF8; no game startup, graphics, hardware, full VM, or RNG",
+  "rom_sha256": "815bfcf4fd6eb23a20c2e50dde023c210b273ffb6cd86a93909d803c3643ce46",
+  "rom_size": 1048576,
+  "comroot": {
+    "resource": "comroot",
+    "directory_offset": "0x7850",
+    "rom_address": "04:AB76",
+    "file_offset": "0x22b76",
+    "size": 20072,
+    "sha256": "b3c15c77fa89093c81ba9abf535343ed5c84c7ba640902f29f4c0de837b83150"
+  },
+  "queue_code_sha256": "cb3aa4746c8b110e919b847dd9d87c1ae277600b28fe5a817f98b7c9b03a1078",
+  "arithmetic_code_sha256": "661b7efd79e863a29d3b33670f47b26986cd715b70a0389c1e5e37ab0d2b8039",
+  "vm_native_handlers": {
+    "B5": "00:9EAA",
+    "B8": "00:9EC8"
+  },
+  "synthetic_officer_pointers": {
+    "governor": 53248,
+    "first_subordinate": 53280,
+    "second_subordinate": 53312
+  },
+  "queue_fixtures": [
+    {
+      "name": "empty_next_ends",
+      "entry": "BBA3",
+      "input": {
+        "next_actor": 0,
+        "officer_flags_byte2_byte3": {},
+        "successors": {
+          "53248": 53280,
+          "53280": 53312,
+          "53312": 0
+        }
+      },
+      "expected": [
+        1,
+        0,
+        0
+      ],
+      "result": {
+        "return": 1,
+        "actor": 0,
+        "next_actor": 0,
+        "steps": 22,
+        "ram_before_sha256": "ed8129fb5ca427c192931d8f6d3622c7eb12d08c2b6d399df11c3cd6c9b1030e",
+        "ram_after_sha256": "45fec28ca4a65ecbb35b6d9ff6b20286dc7c6c410a468e49acb64487e5da6dae",
+        "changed_addresses": [
+          "000A",
+          "000D",
+          "000E",
+          "000F",
+          "0010",
+          "0011",
+          "001A",
+          "001B"
+        ],
+        "executed_address_sha256": "4659829de3d76e44aecafb60297ae5e8fb436f590da9f02c6885d15c2db3d00f"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "pick_subordinate",
+      "entry": "BBA3",
+      "input": {
+        "next_actor": 53280,
+        "officer_flags_byte2_byte3": {},
+        "successors": {
+          "53248": 53280,
+          "53280": 53312,
+          "53312": 0
+        }
+      },
+      "expected": [
+        0,
+        53280,
+        53312
+      ],
+      "result": {
+        "return": 0,
+        "actor": 53280,
+        "next_actor": 53312,
+        "steps": 52,
+        "ram_before_sha256": "4160a38122f0e48544fbc06a2e06a49235d8c0fa4ccb557dbce8523080facc3f",
+        "ram_after_sha256": "5ccd5a46fb75eaada4930928e03e03701c815f51211d27aa6bf4d2819711a29b",
+        "changed_addresses": [
+          "000D",
+          "000E",
+          "000F",
+          "0010",
+          "0011",
+          "001A",
+          "001B",
+          "001C",
+          "FD9E",
+          "FD9F",
+          "FDFA"
+        ],
+        "executed_address_sha256": "8885cdee53e12480b2782b809320c6d41a4cc45a2fa28eb541724914dde0dfd9"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "advance_skips_acted",
+      "entry": "BBA3",
+      "input": {
+        "next_actor": 53248,
+        "officer_flags_byte2_byte3": {
+          "53280": [
+            1,
+            0
+          ]
+        },
+        "successors": {
+          "53248": 53280,
+          "53280": 53312,
+          "53312": 0
+        }
+      },
+      "expected": [
+        0,
+        53248,
+        53312
+      ],
+      "result": {
+        "return": 0,
+        "actor": 53248,
+        "next_actor": 53312,
+        "steps": 68,
+        "ram_before_sha256": "7f1c7bb64911fb5e0e9291b0b8ac77cbdef408cf29a71236f6b4ffc5b33a5889",
+        "ram_after_sha256": "ebb1d3b0c955ac1a48709ff12cb07b9c5b6a4b86985d2462766b42749f7d334d",
+        "changed_addresses": [
+          "000D",
+          "000E",
+          "000F",
+          "0010",
+          "0011",
+          "001B",
+          "001C",
+          "FD9F",
+          "FDFA"
+        ],
+        "executed_address_sha256": "0a37c2db77af3ecc4245b4ff64df20ab87a9745208cc2b5462d7f314a527ea00"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "advance_skips_low_status",
+      "entry": "BBA3",
+      "input": {
+        "next_actor": 53248,
+        "officer_flags_byte2_byte3": {
+          "53280": [
+            0,
+            2
+          ]
+        },
+        "successors": {
+          "53248": 53280,
+          "53280": 53312,
+          "53312": 0
+        }
+      },
+      "expected": [
+        0,
+        53248,
+        53312
+      ],
+      "result": {
+        "return": 0,
+        "actor": 53248,
+        "next_actor": 53312,
+        "steps": 72,
+        "ram_before_sha256": "3ee88a8d5000c1863794d695abf595b49cbab54ae26534578fca0cd8d0e7a34c",
+        "ram_after_sha256": "704e096aad0971afdc23e3c4ffa855fab60f7077a0fb4cc061a9b3038dc06db4",
+        "changed_addresses": [
+          "000D",
+          "000E",
+          "000F",
+          "0010",
+          "0011",
+          "001B",
+          "001C",
+          "FD9F",
+          "FDFA"
+        ],
+        "executed_address_sha256": "234c105a35226603f20f0d618415593c5ba5b92052a4c46500e90297c23363bb"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "advance_accepts_high_status",
+      "entry": "BBA3",
+      "input": {
+        "next_actor": 53248,
+        "officer_flags_byte2_byte3": {
+          "53280": [
+            0,
+            240
+          ]
+        },
+        "successors": {
+          "53248": 53280,
+          "53280": 53312,
+          "53312": 0
+        }
+      },
+      "expected": [
+        0,
+        53248,
+        53280
+      ],
+      "result": {
+        "return": 0,
+        "actor": 53248,
+        "next_actor": 53280,
+        "steps": 52,
+        "ram_before_sha256": "37b81a45b94ba72c67336fdf60f28e731ca22f9a5c0baeb0d6636641a659f5ac",
+        "ram_after_sha256": "2aa90799f0bba834fe4b1a505a3d9a25c099ffdd7478fd82694f405b7f3a6b40",
+        "changed_addresses": [
+          "000D",
+          "000E",
+          "000F",
+          "0010",
+          "0011",
+          "001B",
+          "001C",
+          "FD9F",
+          "FDFA"
+        ],
+        "executed_address_sha256": "8885cdee53e12480b2782b809320c6d41a4cc45a2fa28eb541724914dde0dfd9"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "wrap_to_eligible_governor",
+      "entry": "BBA3",
+      "input": {
+        "next_actor": 53312,
+        "officer_flags_byte2_byte3": {},
+        "successors": {
+          "53248": 53280,
+          "53280": 53312,
+          "53312": 0
+        }
+      },
+      "expected": [
+        0,
+        53312,
+        53248
+      ],
+      "result": {
+        "return": 0,
+        "actor": 53312,
+        "next_actor": 53248,
+        "steps": 61,
+        "ram_before_sha256": "5ec03bf32a13a13790bf3b3ff479fbbf322ea70e4f844711cf65d92b6d2fdd39",
+        "ram_after_sha256": "660d5f6e06a871c00a292a03f95be69000a39bcc56450724c8522feeb3be7968",
+        "changed_addresses": [
+          "000D",
+          "000E",
+          "000F",
+          "0010",
+          "0011",
+          "001A",
+          "001B",
+          "001C",
+          "FD9E",
+          "FD9F",
+          "FDFA"
+        ],
+        "executed_address_sha256": "608632cc6c2c88514efa8d2342d25a80927841795f9854f9ca833f210c31e622"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "no_wrap_to_acted_governor",
+      "entry": "BBA3",
+      "input": {
+        "next_actor": 53312,
+        "officer_flags_byte2_byte3": {
+          "53248": [
+            1,
+            0
+          ]
+        },
+        "successors": {
+          "53248": 53280,
+          "53280": 53312,
+          "53312": 0
+        }
+      },
+      "expected": [
+        0,
+        53312,
+        0
+      ],
+      "result": {
+        "return": 0,
+        "actor": 53312,
+        "next_actor": 0,
+        "steps": 52,
+        "ram_before_sha256": "b0d42204f088d69de270043f09e8932e89a4dd9c24283d421d3e34eafc9c6ebb",
+        "ram_after_sha256": "5b9636910adb9880238f365db8dcf48951b6b30ce6464e6621e0a9efc416bacc",
+        "changed_addresses": [
+          "000D",
+          "000E",
+          "000F",
+          "0010",
+          "0011",
+          "001A",
+          "001B",
+          "FD9E",
+          "FD9F",
+          "FDFA",
+          "FDFB"
+        ],
+        "executed_address_sha256": "c378fb8aa2caedd73e03868096fba63338ecc23ab8f696661ce25fc9fdcd7eed"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "reset_starts_subordinate",
+      "entry": "BBF6",
+      "input": {
+        "next_actor": 0,
+        "officer_flags_byte2_byte3": {},
+        "successors": {
+          "53248": 53280,
+          "53280": 53312,
+          "53312": 0
+        }
+      },
+      "expected": [
+        0,
+        53280,
+        53312
+      ],
+      "result": {
+        "return": 0,
+        "actor": 53280,
+        "next_actor": 53312,
+        "steps": 93,
+        "ram_before_sha256": "ed8129fb5ca427c192931d8f6d3622c7eb12d08c2b6d399df11c3cd6c9b1030e",
+        "ram_after_sha256": "0090b08701a8bf1988475e26d229512788da6f3d5f4c3084be6ff71fd80b70af",
+        "changed_addresses": [
+          "000D",
+          "000E",
+          "000F",
+          "0010",
+          "0011",
+          "0018",
+          "0019",
+          "001A",
+          "001B",
+          "001C",
+          "FD9E",
+          "FD9F",
+          "FDFA",
+          "FDFB"
+        ],
+        "executed_address_sha256": "2c19be6c48e855d3b51deb07c2dcb01cf72440a209752f9b6b155ff67c349476"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "reset_skips_ineligible_subordinate",
+      "entry": "BBF6",
+      "input": {
+        "next_actor": 0,
+        "officer_flags_byte2_byte3": {
+          "53280": [
+            1,
+            0
+          ]
+        },
+        "successors": {
+          "53248": 53280,
+          "53280": 53312,
+          "53312": 0
+        }
+      },
+      "expected": [
+        0,
+        53312,
+        53248
+      ],
+      "result": {
+        "return": 0,
+        "actor": 53312,
+        "next_actor": 53248,
+        "steps": 118,
+        "ram_before_sha256": "c661ca9d746e093b75a0d6d489ad346348d32f491a6c4496ce50cffcd77ac294",
+        "ram_after_sha256": "50e7cdcc171f73e98b984b0366027177aed67d31dd877a33a9252cfd4816c451",
+        "changed_addresses": [
+          "000D",
+          "000E",
+          "000F",
+          "0010",
+          "0011",
+          "0018",
+          "0019",
+          "001A",
+          "001B",
+          "001C",
+          "FD9E",
+          "FD9F",
+          "FDFB"
+        ],
+        "executed_address_sha256": "d213c4d80a92d11adf52a7157407c2b2d2712c0ed1795cfa2ba4c30a39284b36"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "reset_single_governor",
+      "entry": "BBF6",
+      "input": {
+        "next_actor": 0,
+        "officer_flags_byte2_byte3": {},
+        "successors": {
+          "53248": 0
+        }
+      },
+      "expected": [
+        0,
+        53248,
+        0
+      ],
+      "result": {
+        "return": 0,
+        "actor": 53248,
+        "next_actor": 0,
+        "steps": 60,
+        "ram_before_sha256": "d26bcb57fbc27050c2c5eabc4cb7a930495284ba97311ad0e4999749d1ed6494",
+        "ram_after_sha256": "798d719d6a4418fc01611fa403297ca1d4b5779710ab5f703d8dff7a7df402a3",
+        "changed_addresses": [
+          "000D",
+          "000E",
+          "000F",
+          "0010",
+          "0011",
+          "001B",
+          "FD9F"
+        ],
+        "executed_address_sha256": "d56f9c9b54974cedcd14ffe808062418678442adaaf35b50e2fc928590678f83"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "reset_single_acted_governor_still_selected",
+      "entry": "BBF6",
+      "input": {
+        "next_actor": 0,
+        "officer_flags_byte2_byte3": {
+          "53248": [
+            1,
+            0
+          ]
+        },
+        "successors": {
+          "53248": 0
+        }
+      },
+      "expected": [
+        0,
+        53248,
+        0
+      ],
+      "result": {
+        "return": 0,
+        "actor": 53248,
+        "next_actor": 0,
+        "steps": 60,
+        "ram_before_sha256": "694b516ece6b2fb740328918fb6fb591f892b3bbd8c412974466ff292ca77376",
+        "ram_after_sha256": "001b17539e9ea8d22e07f9dbe717c407e140af7fbca684274f03b53bc19624cb",
+        "changed_addresses": [
+          "000D",
+          "000E",
+          "000F",
+          "0010",
+          "0011",
+          "001B",
+          "FD9F"
+        ],
+        "executed_address_sha256": "d56f9c9b54974cedcd14ffe808062418678442adaaf35b50e2fc928590678f83"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "reset_ineligible_subordinates_end_even_eligible_governor",
+      "entry": "BBF6",
+      "input": {
+        "next_actor": 0,
+        "officer_flags_byte2_byte3": {
+          "53280": [
+            1,
+            0
+          ],
+          "53312": [
+            0,
+            1
+          ]
+        },
+        "successors": {
+          "53248": 53280,
+          "53280": 53312,
+          "53312": 0
+        }
+      },
+      "expected": [
+        1,
+        0,
+        0
+      ],
+      "result": {
+        "return": 1,
+        "actor": 0,
+        "next_actor": 0,
+        "steps": 83,
+        "ram_before_sha256": "294595369f5a603c75b223a32b1463487baa98c0511e7a4a344b22e4d23c1da5",
+        "ram_after_sha256": "ada898de0c9380c84e7f23d674718c55be9f55f1ce577b7858c746c8a76db9e2",
+        "changed_addresses": [
+          "000A",
+          "000D",
+          "000E",
+          "000F",
+          "0010",
+          "0011",
+          "0018",
+          "0019",
+          "001A",
+          "001B"
+        ],
+        "executed_address_sha256": "66b45d2dacaad1fa564ea1888893736b421aaa855da4150556909cb3d44a9074"
+      },
+      "status": "PASS"
+    }
+  ],
+  "arithmetic_fixtures": [
+    {
+      "rice": 450,
+      "selected_troops": 50,
+      "total_troops": 150,
+      "native_product_low": 22500,
+      "native_product_high": 0,
+      "native_divisor": 151,
+      "native_rice_transfer": 149,
+      "widened_formula_for_contrast": 149,
+      "mul_steps": 132,
+      "div_steps": 142,
+      "status": "PASS"
+    },
+    {
+      "rice": 6000,
+      "selected_troops": 200,
+      "total_troops": 600,
+      "native_product_low": 20352,
+      "native_product_high": 18,
+      "native_divisor": 601,
+      "native_rice_transfer": 33,
+      "widened_formula_for_contrast": 1996,
+      "mul_steps": 144,
+      "div_steps": 138,
+      "status": "PASS"
+    },
+    {
+      "rice": 30000,
+      "selected_troops": 300,
+      "total_troops": 900,
+      "native_product_low": 21568,
+      "native_product_high": 137,
+      "native_divisor": 901,
+      "native_rice_transfer": 23,
+      "widened_formula_for_contrast": 9988,
+      "mul_steps": 144,
+      "div_steps": 142,
+      "status": "PASS"
+    },
+    {
+      "rice": 0,
+      "selected_troops": 200,
+      "total_troops": 600,
+      "native_product_low": 0,
+      "native_product_high": 0,
+      "native_divisor": 601,
+      "native_rice_transfer": 0,
+      "widened_formula_for_contrast": 0,
+      "mul_steps": 116,
+      "div_steps": 134,
+      "status": "PASS"
+    },
+    {
+      "rice": 65535,
+      "selected_troops": 1,
+      "total_troops": 65534,
+      "native_product_low": 65535,
+      "native_product_high": 0,
+      "native_divisor": 65535,
+      "native_rice_transfer": 1,
+      "widened_formula_for_contrast": 1,
+      "mul_steps": 180,
+      "div_steps": 136,
+      "status": "PASS"
+    },
+    {
+      "rice": 65535,
+      "selected_troops": 65535,
+      "total_troops": 65534,
+      "native_product_low": 1,
+      "native_product_high": 65534,
+      "native_divisor": 65535,
+      "native_rice_transfer": 0,
+      "widened_formula_for_contrast": 65535,
+      "mul_steps": 180,
+      "div_steps": 134,
+      "status": "PASS"
+    },
+    {
+      "rice": 65535,
+      "selected_troops": 65535,
+      "total_troops": 65535,
+      "native_product_low": 1,
+      "native_product_high": 65534,
+      "native_divisor": 0,
+      "native_rice_transfer": 65535,
+      "widened_formula_for_contrast": 65534,
+      "mul_steps": 180,
+      "div_steps": 166,
+      "status": "PASS"
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "eligibility_mask_byte_mutation_detected",
+      "mutated_address": "7E:BC42",
+      "status": "PASS",
+      "observed_next_actor": 53280,
+      "expected_original_next_actor": 53312
+    },
+    {
+      "name": "invalid_cyclic_list_fails_closed",
+      "status": "PASS",
+      "diagnostic": "step limit 5000 reached"
+    },
+    {
+      "name": "single_changed_rom_byte_breaks_identity",
+      "status": "PASS"
+    }
+  ],
+  "summary": {
+    "queue_pass": 12,
+    "arithmetic_pass": 7,
+    "negative_pass": 3,
+    "status": "PASS"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "id": "Q14-Q09-G09-SOURCE-DELIVERY-v1.01",
+  "created_utc": "2026-11-05T19:07:31.755985+00:00",
+  "author": "Cao Cao research worker / Zhuge Liang investigation",
+  "source_rom_sha256": "815bfcf4fd6eb23a20c2e50dde023c210b273ffb6cd86a93909d803c3643ce46",
+  "source_symbols_commit": "7c2bab7d634e22a3f5870fe548d6a0556760be98",
+  "generator_commit": "9a436f493bf20f760c5eac49014163c2570e77bd",
+  "status": {
+    "Q14_source_question": "CLOSED_VERIFIED_STATIC",
+    "Q09_destination_writer": "CLOSED_VERIFIED_STATIC",
+    "Q09_original_runtime": "NOT_RUN_BY_THIS_WORKER",
+    "G09_legitimate_above655_reachability": "PARTIAL",
+    "G09_next_experiment": "NOT_RUN"
+  },
+  "publication_scope": "Authored reports and probes, derived metadata, hashes, exact receipts. No ROM, save-state, full generated commercial source, or raw commercial asset included.",
+  "private_inputs_not_included": [
+    "Authorized original ROM",
+    "Full regenerated source listings",
+    "Upstream cloned source trees"
+  ],
+  "files": [
+    {
+      "name": "STATIC_FINDINGS_v1.00.md",
+      "bytes": 19409,
+      "sha256": "c03d4ef9cd16864a70b76e071bb265c64b0dd8d982599d5a3d68103ed77415c8"
+    },
+    {
+      "name": "Q09_ESCAPE_SCORE_ADDENDUM_v1.00.md",
+      "bytes": 3623,
+      "sha256": "f5806026fb00527a4a1f916aa12a785d46357d870ee889d54a7c250dcabe57f6"
+    },
+    {
+      "name": "G09_WRITER_AUDIT_v1.00.md",
+      "bytes": 12173,
+      "sha256": "32b98766f6dd68365eebd72414c8cd9757512a53bb578c9a796f35830f22022b"
+    },
+    {
+      "name": "G09_PENDING_ALLY_CANDIDATE_v1.00.md",
+      "bytes": 9334,
+      "sha256": "227710f11467b65d660d3becdf7056daa652765889dd072867adf1b19b6caa7b"
+    },
+    {
+      "name": "G09_NEXT_EXPERIMENT_v1.00.md",
+      "bytes": 4783,
+      "sha256": "d8735bf28560d0a7d2bae0dd957db99c85cea22f4e1ffe95386ab6d00e9f5776"
+    },
+    {
+      "name": "run_source_probe.py",
+      "bytes": 3030,
+      "sha256": "d19200ed41665dde8b4df57c55ca7ad386e20f254b27b41c6cb10d664d75d2b0"
+    },
+    {
+      "name": "verify_listing_bytes.py",
+      "bytes": 3647,
+      "sha256": "7b5609d006f53698c25c5d967424d49eb804b133595c2465dcaedebe8197767f"
+    },
+    {
+      "name": "collect_static_evidence.py",
+      "bytes": 6624,
+      "sha256": "1ecbe12b428d5d9d75a3a6487c20ed703527edc74c585065d0d1ea5432314f55"
+    },
+    {
+      "name": "audit_troop_writers.py",
+      "bytes": 12840,
+      "sha256": "3a47f88158fdeeb452600eed311866381e0213afd53028e284fe036abd38655a"
+    },
+    {
+      "name": "all_listing_byte_verification.json",
+      "bytes": 16945,
+      "sha256": "9be49a5377667ae48921b6517215f0cd4ed3db6d1c2cb2793eed0e1751c8494e"
+    },
+    {
+      "name": "key_static_evidence.json",
+      "bytes": 9684,
+      "sha256": "3e77c41e5af34a22550516e650965a2bd383919daf5d75cf0174e7b746b98c40"
+    },
+    {
+      "name": "static_execution_receipt.json",
+      "bytes": 9368,
+      "sha256": "02d195e64e5cbf40da66a3045b9d02106316909d9c824b8504472a8d0fdf9f9c"
+    },
+    {
+      "name": "g09_writer_and_map_audit.json",
+      "bytes": 52585,
+      "sha256": "50dab9eed36fd9fadb4f2195029ca720091727b3fd9deeb76392a8ed8bf21df5"
+    },
+    {
+      "name": "g09_writer_and_map_audit_attempt01.json",
+      "bytes": 51293,
+      "sha256": "4ec849279e02a09d0f2596008f41726101b3c5ddbb9fba135f1169358f58e88c"
+    },
+    {
+      "name": "g09_audit_attempt01_receipt.json",
+      "bytes": 1407,
+      "sha256": "d2b62f0666fa4d266a58c538a33f23f3a06190e11ef5ca79ceca53e85a5ce71c"
+    },
+    {
+      "name": "g09_audit_attempt01.stdout.txt",
+      "bytes": 357,
+      "sha256": "6c666eff8c354d8e2b2cd59da0ebc443de0db836bbf2e7fb17177661fb4c1ab6"
+    },
+    {
+      "name": "g09_audit_attempt01.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "g09_audit_attempt02_receipt.json",
+      "bytes": 1592,
+      "sha256": "e2c49578fb7ddde1f928a6516c75bcf9e5eaaa240c5f5f87ad7b63f1c9616f7b"
+    },
+    {
+      "name": "g09_audit_attempt02.stdout.txt",
+      "bytes": 357,
+      "sha256": "29cd3325e90e06197534d40fd6b83b728bce36d3f24f559a4f76544d714b07ed"
+    },
+    {
+      "name": "g09_audit_attempt02.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

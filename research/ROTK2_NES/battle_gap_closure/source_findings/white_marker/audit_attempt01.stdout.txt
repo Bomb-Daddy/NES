@@ -1,0 +1,1 @@
+{"result": "PASS", "output": "static_sources/white_marker/white_marker_audit.json", "sha256": "11dae7b3e5c0a5b345f6cf245ecc422ab78595b94e675f4b3a3e02a973b04090", "source_ranges": 10, "runtime_runs": 3, "first_run_retained_as_incomplete": true}

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/scratch/efe8e2e6cf8d/static_sources/q19/build_source_manifest.py",
+    "--rom",
+    "/workspace/scratch/efe8e2e6cf8d/private_sources/Romance of the Three Kingdoms II (USA).sfc",
+    "--source-dir",
+    "/workspace/scratch/efe8e2e6cf8d/static_sources/regenerated/src",
+    "--out",
+    "/workspace/scratch/efe8e2e6cf8d/static_sources/q19/q19_source_manifest.json"
+  ],
+  "cwd": "/workspace/scratch/efe8e2e6cf8d",
+  "date_utc": "2026-11-05T18:49:56.402398+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "exit": 1,
+  "script_sha256": "eaa1412f29953b27956fa004620abf9cdc28f75b0722bee5a6312850457490b6",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "1eb1b18cc1de04d468f7702e7e800982e625ce7147f7f1641cf6f6e0e37cdfd2"
+}

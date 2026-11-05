@@ -1,0 +1,337 @@
+{
+  "evidence": "VERIFIED_STATIC original ROM identity and exact listed-byte equality; semantic interpretation is in the accompanying report",
+  "rom_sha256": "815bfcf4fd6eb23a20c2e50dde023c210b273ffb6cd86a93909d803c3643ce46",
+  "symbols_repo_commit": "7c2bab7d634e22a3f5870fe548d6a0556760be98",
+  "generator_commit": "9a436f493bf20f760c5eac49014163c2570e77bd",
+  "modules": [
+    {
+      "resource": "root",
+      "directory_offset": "0x7800",
+      "rom_address": "01:8000",
+      "file_offset": "0x8000",
+      "size": 20978,
+      "wram_base": "7E:2000",
+      "module_sha256": "05aa376c9855c6b64251e2b3cbabf066a1af009baed062fd1733763b26af6ffb",
+      "listing_path": "/workspace/scratch/efe8e2e6cf8d/static_sources/regenerated/src/root.src",
+      "listing_sha256": "596647b2271e0cc4e23b1b8cc55c90d6d9ff5600a5173c53aa9f44eb89cf50b0",
+      "all_listing_bytes_match_rom": true,
+      "listed_bytes": 20978,
+      "anchors": [
+        {
+          "purpose": "rng_and_static_officer_fields",
+          "wram_start": "7E:24C8",
+          "wram_end_inclusive": "7E:2663",
+          "rom_file_offset": "0x84c8",
+          "size": 412,
+          "sha256": "1058c6c1b4299ef293d0b57a759c12700fad15fcb783e8c8f21baedb553b47ac"
+        },
+        {
+          "purpose": "eligibility_owner_and_ruler_helpers",
+          "wram_start": "7E:3FD9",
+          "wram_end_inclusive": "7E:4129",
+          "rom_file_offset": "0x9fd9",
+          "size": 337,
+          "sha256": "e491222a6c90bd1da041ac161fed0f883a0034827843dd9523990d781665309c"
+        },
+        {
+          "purpose": "officer_and_province_link_mutation",
+          "wram_start": "7E:4EB0",
+          "wram_end_inclusive": "7E:5240",
+          "rom_file_offset": "0xaeb0",
+          "size": 913,
+          "sha256": "1d96db3532fb468579011aadf2ecf8d430dd44773654f6d147e3e5ad6c459d37"
+        },
+        {
+          "purpose": "officer_stat_maximum",
+          "wram_start": "7E:606F",
+          "wram_end_inclusive": "7E:608B",
+          "rom_file_offset": "0xc06f",
+          "size": 29,
+          "sha256": "d3ba40ce21c4619be5d1a66fdab066006e5cbc21293a88a9174bbcf19a023ffb"
+        },
+        {
+          "purpose": "compatibility_distance",
+          "wram_start": "7E:64CA",
+          "wram_end_inclusive": "7E:64EB",
+          "rom_file_offset": "0xc4ca",
+          "size": 34,
+          "sha256": "944552efa2b05a0ee9a5803c791ff1427de9a552616b522f808e6f79b46ea378"
+        },
+        {
+          "purpose": "native_numeric_link_and_candidate_helpers",
+          "wram_start": "7E:66AA",
+          "wram_end_inclusive": "7E:6B44",
+          "rom_file_offset": "0xc6aa",
+          "size": 1179,
+          "sha256": "80b50f054fb394fff82d167662e80b081cb202844ff41a0d03956761117ec832"
+        }
+      ]
+    },
+    {
+      "resource": "comroot",
+      "directory_offset": "0x7850",
+      "rom_address": "04:AB76",
+      "file_offset": "0x22b76",
+      "size": 20072,
+      "wram_base": "7E:7200",
+      "module_sha256": "b3c15c77fa89093c81ba9abf535343ed5c84c7ba640902f29f4c0de837b83150",
+      "listing_path": "/workspace/scratch/efe8e2e6cf8d/static_sources/regenerated/src/comroot.src",
+      "listing_sha256": "1207bf986a16baba0b13a909d351600c16c77d6ef26a8c4f255fd3d56bd25201",
+      "all_listing_bytes_match_rom": true,
+      "listed_bytes": 20072,
+      "anchors": [
+        {
+          "purpose": "probability_helpers",
+          "wram_start": "7E:76C4",
+          "wram_end_inclusive": "7E:7B31",
+          "rom_file_offset": "0x2303a",
+          "size": 1134,
+          "sha256": "a9dc5afec013eff28d364aeff214d8e02476f6384f8fe9758baaca4eba60e0d9"
+        },
+        {
+          "purpose": "termination_and_joint_agreement_validation",
+          "wram_start": "7E:8277",
+          "wram_end_inclusive": "7E:83D6",
+          "rom_file_offset": "0x23bed",
+          "size": 352,
+          "sha256": "71eae3b3e750a3e0697e56e8df982dd6ef77cb47b314aaa8b339ed506dee548f"
+        },
+        {
+          "purpose": "accepted_diplomacy_and_recruitment_effects",
+          "wram_start": "7E:85CC",
+          "wram_end_inclusive": "7E:899A",
+          "rom_file_offset": "0x23f42",
+          "size": 975,
+          "sha256": "4c550d1412ab8fcfa485c8ca1ee78d8780001e95ad7d290265600c98cc43c0bb"
+        },
+        {
+          "purpose": "transfer_mutations",
+          "wram_start": "7E:98F4",
+          "wram_end_inclusive": "7E:9A44",
+          "rom_file_offset": "0x2526a",
+          "size": 337,
+          "sha256": "f3503ba6c52b991594ae602c9ef355b47396af6b8a2c621d61d750108b308c05"
+        },
+        {
+          "purpose": "transfer_and_vulnerable_target_helpers",
+          "wram_start": "7E:9EAB",
+          "wram_end_inclusive": "7E:A123",
+          "rom_file_offset": "0x25821",
+          "size": 633,
+          "sha256": "1b046ea4add882f4bc6381cb07197163afc90fb188916450e13c5db6ed3bc156"
+        },
+        {
+          "purpose": "partner_and_rival_selection",
+          "wram_start": "7E:A191",
+          "wram_end_inclusive": "7E:A2C6",
+          "rom_file_offset": "0x25b07",
+          "size": 310,
+          "sha256": "50fd56950602a075a71c56c35dfc009ffc7303ed75eb62806ad0636027171c39"
+        },
+        {
+          "purpose": "diplomatic_covert_result_dispatch",
+          "wram_start": "7E:ABA4",
+          "wram_end_inclusive": "7E:AFB3",
+          "rom_file_offset": "0x2651a",
+          "size": 1040,
+          "sha256": "2db986fa8fac663ddbca0a52ca8851f268de5e351525fe27b8c7e8684ab24cbf"
+        },
+        {
+          "purpose": "interception_and_common_travel",
+          "wram_start": "7E:B2FB",
+          "wram_end_inclusive": "7E:B68E",
+          "rom_file_offset": "0x26c71",
+          "size": 916,
+          "sha256": "4acaa1fa28c0a70b7573739a3e24d182b6dc07b5a1dedcf1dc26a2e6cbb5e82b"
+        },
+        {
+          "purpose": "spy_activation",
+          "wram_start": "7E:B891",
+          "wram_end_inclusive": "7E:B979",
+          "rom_file_offset": "0x27207",
+          "size": 233,
+          "sha256": "d3841e618a824fb3e2ffaace396e1050defb79deb327e856f887b6f70d253e34"
+        },
+        {
+          "purpose": "foreign_recruitment",
+          "wram_start": "7E:B97A",
+          "wram_end_inclusive": "7E:BB24",
+          "rom_file_offset": "0x272f0",
+          "size": 427,
+          "sha256": "3a83526ad20583f37a2478278ee1bf70a89fa56a4606acd1b6795d2a5e0cfa95"
+        },
+        {
+          "purpose": "native_actor_queue",
+          "wram_start": "7E:BBA3",
+          "wram_end_inclusive": "7E:BC77",
+          "rom_file_offset": "0x27519",
+          "size": 213,
+          "sha256": "cb3aa4746c8b110e919b847dd9d87c1ae277600b28fe5a817f98b7c9b03a1078"
+        }
+      ]
+    },
+    {
+      "resource": "csovl1",
+      "directory_offset": "0x78c0",
+      "rom_address": "05:A5BC",
+      "file_offset": "0x2a5bc",
+      "size": 4134,
+      "wram_base": "7E:CD00",
+      "module_sha256": "3b71333745bf32d14cbdacde8f14bb4b4e288230721ede4024cab5c250ffa7c6",
+      "listing_path": "/workspace/scratch/efe8e2e6cf8d/static_sources/regenerated/src/csovl1.src",
+      "listing_sha256": "2652c6556d1a0a755b7c54e4a0889209b2aa0d7006a4ccee864ffff41e3a24a1",
+      "all_listing_bytes_match_rom": true,
+      "listed_bytes": 4134,
+      "anchors": [
+        {
+          "purpose": "partner_diplomacy",
+          "wram_start": "7E:CD0C",
+          "wram_end_inclusive": "7E:CE54",
+          "rom_file_offset": "0x2a5c8",
+          "size": 329,
+          "sha256": "9484bd0251d07e0ff74563ede82ba75d7e99a45f91879acd0b03503d90681d31"
+        },
+        {
+          "purpose": "covert_action",
+          "wram_start": "7E:CE55",
+          "wram_end_inclusive": "7E:CF7B",
+          "rom_file_offset": "0x2a711",
+          "size": 295,
+          "sha256": "615eb62d13cb758ed04345226a43804a3bbe79a5faddf427c159248849439b92"
+        },
+        {
+          "purpose": "rival_frontier",
+          "wram_start": "7E:CF7C",
+          "wram_end_inclusive": "7E:D003",
+          "rom_file_offset": "0x2a838",
+          "size": 136,
+          "sha256": "14dda140924911f163461329c189bb47d0345e00d50fdf7e22d9682dd7cbd3ba"
+        },
+        {
+          "purpose": "joint_action",
+          "wram_start": "7E:D004",
+          "wram_end_inclusive": "7E:D130",
+          "rom_file_offset": "0x2a8c0",
+          "size": 301,
+          "sha256": "a81eecb6f17b42cd2d1ac3230ca1f5683b0b17ccc70bd011ee9e7b8255add0e5"
+        },
+        {
+          "purpose": "preferred_partner_wrapper",
+          "wram_start": "7E:D131",
+          "wram_end_inclusive": "7E:D15A",
+          "rom_file_offset": "0x2a9ed",
+          "size": 42,
+          "sha256": "0222a240e0c20903f08cc321aec640bf4283b9f554e6607cc2c6b539c762034b"
+        },
+        {
+          "purpose": "five_way_planner",
+          "wram_start": "7E:D15B",
+          "wram_end_inclusive": "7E:D21F",
+          "rom_file_offset": "0x2aa17",
+          "size": 197,
+          "sha256": "821da53b894b77524d604772083131620133f0fae4e2e44878c953a6edf53bea"
+        },
+        {
+          "purpose": "route_transfer_destination",
+          "wram_start": "7E:D220",
+          "wram_end_inclusive": "7E:D393",
+          "rom_file_offset": "0x2aadc",
+          "size": 372,
+          "sha256": "b76ad6961111954b00cd574c830e7b880c83a1c895dfb706a25f93a6cb327bbc"
+        },
+        {
+          "purpose": "adjacent_transfer_destination",
+          "wram_start": "7E:D394",
+          "wram_end_inclusive": "7E:D408",
+          "rom_file_offset": "0x2ac50",
+          "size": 117,
+          "sha256": "0092fb23a14d10da5d4e88e7678ad99dc84a2c9a1c1dac72a71ed45d57f26362"
+        },
+        {
+          "purpose": "transfer_main",
+          "wram_start": "7E:D409",
+          "wram_end_inclusive": "7E:D584",
+          "rom_file_offset": "0x2acc5",
+          "size": 380,
+          "sha256": "d01b5687cb0b8d0be066bd4cde17f326b9adb2d11f9176ae1d87ed2725197988"
+        },
+        {
+          "purpose": "hostile_attack_contrast_and_fallback",
+          "wram_start": "7E:D926",
+          "wram_end_inclusive": "7E:D9C4",
+          "rom_file_offset": "0x2b1e2",
+          "size": 159,
+          "sha256": "9c7dc0fe8cdb81948a1207ec26097c9d41007bd19f57a1c7657d57f39ac37f1d"
+        },
+        {
+          "purpose": "strategic_caller",
+          "wram_start": "7E:DB77",
+          "wram_end_inclusive": "7E:DCCF",
+          "rom_file_offset": "0x2b433",
+          "size": 345,
+          "sha256": "d2fd324090f53e1a55c5223292dd0d005f5e4080976dd91b2a6355889b47f5b9"
+        }
+      ]
+    },
+    {
+      "resource": "excsub1",
+      "directory_offset": "0x7860",
+      "rom_address": "04:F9DE",
+      "file_offset": "0x279de",
+      "size": 2456,
+      "wram_base": "7E:C300",
+      "module_sha256": "782320794ea51608cfe64bcd0d05b3e0fa410bbc8135d6f60024226b8f8c510e",
+      "listing_path": "/workspace/scratch/efe8e2e6cf8d/static_sources/regenerated/src/excsub1.src",
+      "listing_sha256": "7645f1738e1eb853dd662456b784069dc9549c5e6b4f236f22220047d487da84",
+      "all_listing_bytes_match_rom": true,
+      "listed_bytes": 2456,
+      "anchors": [
+        {
+          "purpose": "spy_activation_message",
+          "wram_start": "7E:C35E",
+          "wram_end_inclusive": "7E:C3BA",
+          "rom_file_offset": "0x27a3c",
+          "size": 93,
+          "sha256": "ee0917479c1a3a6441778982802a9dff6d8bf62b06e8099eb1cf16731b933ad3"
+        },
+        {
+          "purpose": "recruitment_mode_messages",
+          "wram_start": "7E:CA59",
+          "wram_end_inclusive": "7E:CAF0",
+          "rom_file_offset": "0x28137",
+          "size": 152,
+          "sha256": "285a9206c524eeee60b021468d3ff998d6b137bda5e7781a1bcc79eb85f579ae"
+        }
+      ]
+    },
+    {
+      "resource": "excsub5",
+      "directory_offset": "0x78a0",
+      "rom_address": "05:98F8",
+      "file_offset": "0x298f8",
+      "size": 880,
+      "wram_base": "7E:C300",
+      "module_sha256": "ccf2c33201289313f5fa58f9c8b812b9f6a186398fe1d02f12fd48f4b1dfdc5c",
+      "listing_path": "/workspace/scratch/efe8e2e6cf8d/static_sources/regenerated/src/excsub5.src",
+      "listing_sha256": "de0c61b7fef5b44fde034d3f78076c5d123da3c5e60d0d81e06c96c3067c70b2",
+      "all_listing_bytes_match_rom": true,
+      "listed_bytes": 880,
+      "anchors": [
+        {
+          "purpose": "spy_planting_advisor_counterspy",
+          "wram_start": "7E:C30D",
+          "wram_end_inclusive": "7E:C5A8",
+          "rom_file_offset": "0x29905",
+          "size": 668,
+          "sha256": "d77e1160c5eea30923e4f346294017e7dd9e5b70469417c34cc78d7d63b722a5"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "modules_verified": 5,
+    "listed_bytes_verified": 48520,
+    "anchors": 31,
+    "status": "PASS"
+  }
+}

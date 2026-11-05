@@ -1,0 +1,2 @@
+{"arithmetic_pass": 7, "negative_pass": 3, "queue_pass": 12, "status": "PASS"}
+VERIFIED_STATIC: bounded execution of original native instruction bytes against synthetic RAM; NOT OBSERVED_RUNTIME, NOT an original emulator run

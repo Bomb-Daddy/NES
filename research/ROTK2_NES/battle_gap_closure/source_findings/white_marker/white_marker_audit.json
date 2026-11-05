@@ -1,0 +1,1814 @@
+{
+  "author": "Cao Cao / ChatGPT source audit",
+  "date": "2026-11-05",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "pillow": "13.0.0",
+  "rom_sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a",
+  "evidence": [
+    "VERIFIED_STATIC",
+    "OBSERVED_RUNTIME"
+  ],
+  "historical_S02_exact_image_identity": "INFERRED / original sheet unavailable",
+  "runs": [
+    {
+      "name": "white_marker_noinput_001",
+      "status": "INCOMPLETE_RUNTIME",
+      "failures": [
+        "Screenshot 1: Missing/invalid native PNG screenshot",
+        "Missing shots: [1]"
+      ],
+      "exit_code": 0,
+      "native_identity_passed": true,
+      "input_state_sha256": "7ea302d1797cf59349253ce6add5e458d6426fe955a54bd1a81487c7fbdc9faf",
+      "frames": 181,
+      "no_controller_input": true,
+      "no_state_interventions": true,
+      "verified_products": 219,
+      "receipt": {
+        "path": "runtime/experiments/white_marker_noinput_001/probe_receipt.json",
+        "bytes": 33002,
+        "sha256": "6afcaad82d94b948717afb613b39e7e8656b1e897ffd6941ddac2d84d153c1f4"
+      },
+      "native_receipt": {
+        "path": "runtime/experiments/white_marker_noinput_001/process/receipt.json",
+        "bytes": 2759,
+        "sha256": "effc989d3f8396a1de334a2240813185c5563bce9a3a42ddc62ba8373791c2ef"
+      },
+      "stdout": {
+        "path": "runtime/experiments/white_marker_noinput_001/process/stdout.log",
+        "bytes": 2525503,
+        "sha256": "dd854a0797e5e52389561313c10ec899cdd90f9da782b09ae32726ec8994427d"
+      },
+      "stderr": {
+        "path": "runtime/experiments/white_marker_noinput_001/process/stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "schedule": {
+        "path": "runtime/experiments/white_marker_noinput_001/schedule.json",
+        "bytes": 1829,
+        "sha256": "c756a5441b6e391bfadff4a8f273aacdb4f40f290fcee90c4cbc53390f0fa3de"
+      },
+      "script": {
+        "path": "runtime/experiments/white_marker_noinput_001/probe.lua",
+        "bytes": 27052,
+        "sha256": "11e0095d01aa9d87ed285098547a76cbfe8eaceb2edaedee9fbf6fc1a17ee78c"
+      },
+      "roi_xyxy": [
+        216,
+        52,
+        232,
+        68
+      ],
+      "roi_sha256_values": [
+        "79fc0bbe53d7829a30bb38b8bc2f84e1f0e507eb0a57bdb933489257f40445a1",
+        "8d4e45cd0fca8bdf2e7814703ee7bfc7bc52bf8a2264072439e4e8873a3f581f"
+      ],
+      "verified_frame_phases": [
+        [
+          2,
+          "unit"
+        ],
+        [
+          3,
+          "unit"
+        ],
+        [
+          4,
+          "white"
+        ],
+        [
+          5,
+          "white"
+        ],
+        [
+          6,
+          "white"
+        ],
+        [
+          7,
+          "white"
+        ],
+        [
+          8,
+          "white"
+        ],
+        [
+          9,
+          "white"
+        ],
+        [
+          10,
+          "white"
+        ],
+        [
+          11,
+          "white"
+        ],
+        [
+          12,
+          "white"
+        ],
+        [
+          13,
+          "white"
+        ],
+        [
+          14,
+          "unit"
+        ],
+        [
+          15,
+          "unit"
+        ],
+        [
+          16,
+          "unit"
+        ],
+        [
+          17,
+          "unit"
+        ],
+        [
+          18,
+          "unit"
+        ],
+        [
+          19,
+          "unit"
+        ],
+        [
+          20,
+          "unit"
+        ],
+        [
+          21,
+          "unit"
+        ],
+        [
+          22,
+          "unit"
+        ],
+        [
+          23,
+          "unit"
+        ],
+        [
+          24,
+          "white"
+        ],
+        [
+          25,
+          "white"
+        ],
+        [
+          26,
+          "white"
+        ],
+        [
+          27,
+          "white"
+        ],
+        [
+          28,
+          "white"
+        ],
+        [
+          29,
+          "white"
+        ],
+        [
+          30,
+          "white"
+        ],
+        [
+          31,
+          "white"
+        ],
+        [
+          32,
+          "white"
+        ],
+        [
+          33,
+          "white"
+        ],
+        [
+          34,
+          "unit"
+        ],
+        [
+          35,
+          "unit"
+        ],
+        [
+          36,
+          "unit"
+        ],
+        [
+          37,
+          "unit"
+        ],
+        [
+          38,
+          "unit"
+        ],
+        [
+          39,
+          "unit"
+        ],
+        [
+          40,
+          "unit"
+        ],
+        [
+          41,
+          "unit"
+        ],
+        [
+          42,
+          "unit"
+        ],
+        [
+          43,
+          "unit"
+        ],
+        [
+          44,
+          "white"
+        ],
+        [
+          45,
+          "white"
+        ],
+        [
+          46,
+          "white"
+        ],
+        [
+          47,
+          "white"
+        ],
+        [
+          48,
+          "white"
+        ],
+        [
+          49,
+          "white"
+        ],
+        [
+          50,
+          "white"
+        ],
+        [
+          51,
+          "white"
+        ],
+        [
+          52,
+          "white"
+        ],
+        [
+          53,
+          "white"
+        ],
+        [
+          54,
+          "unit"
+        ],
+        [
+          55,
+          "unit"
+        ],
+        [
+          56,
+          "unit"
+        ],
+        [
+          57,
+          "unit"
+        ],
+        [
+          58,
+          "unit"
+        ],
+        [
+          59,
+          "unit"
+        ],
+        [
+          60,
+          "unit"
+        ],
+        [
+          61,
+          "unit"
+        ],
+        [
+          62,
+          "unit"
+        ],
+        [
+          63,
+          "unit"
+        ],
+        [
+          64,
+          "white"
+        ],
+        [
+          65,
+          "white"
+        ],
+        [
+          66,
+          "white"
+        ],
+        [
+          67,
+          "white"
+        ],
+        [
+          68,
+          "white"
+        ],
+        [
+          69,
+          "white"
+        ],
+        [
+          70,
+          "white"
+        ],
+        [
+          71,
+          "white"
+        ],
+        [
+          72,
+          "white"
+        ],
+        [
+          73,
+          "white"
+        ],
+        [
+          74,
+          "unit"
+        ],
+        [
+          75,
+          "unit"
+        ],
+        [
+          76,
+          "unit"
+        ],
+        [
+          77,
+          "unit"
+        ],
+        [
+          78,
+          "unit"
+        ],
+        [
+          79,
+          "unit"
+        ],
+        [
+          80,
+          "unit"
+        ],
+        [
+          81,
+          "unit"
+        ],
+        [
+          82,
+          "unit"
+        ],
+        [
+          83,
+          "unit"
+        ],
+        [
+          84,
+          "white"
+        ],
+        [
+          85,
+          "white"
+        ],
+        [
+          86,
+          "white"
+        ],
+        [
+          87,
+          "white"
+        ],
+        [
+          88,
+          "white"
+        ],
+        [
+          89,
+          "white"
+        ],
+        [
+          90,
+          "white"
+        ],
+        [
+          91,
+          "white"
+        ],
+        [
+          92,
+          "white"
+        ],
+        [
+          93,
+          "white"
+        ],
+        [
+          94,
+          "unit"
+        ],
+        [
+          95,
+          "unit"
+        ],
+        [
+          96,
+          "unit"
+        ],
+        [
+          97,
+          "unit"
+        ],
+        [
+          98,
+          "unit"
+        ],
+        [
+          99,
+          "unit"
+        ],
+        [
+          100,
+          "unit"
+        ],
+        [
+          101,
+          "unit"
+        ],
+        [
+          102,
+          "unit"
+        ],
+        [
+          103,
+          "unit"
+        ],
+        [
+          104,
+          "white"
+        ],
+        [
+          105,
+          "white"
+        ],
+        [
+          106,
+          "white"
+        ],
+        [
+          107,
+          "white"
+        ],
+        [
+          108,
+          "white"
+        ],
+        [
+          109,
+          "white"
+        ],
+        [
+          110,
+          "white"
+        ],
+        [
+          111,
+          "white"
+        ],
+        [
+          112,
+          "white"
+        ],
+        [
+          113,
+          "white"
+        ],
+        [
+          114,
+          "unit"
+        ],
+        [
+          115,
+          "unit"
+        ],
+        [
+          116,
+          "unit"
+        ],
+        [
+          117,
+          "unit"
+        ],
+        [
+          118,
+          "unit"
+        ],
+        [
+          119,
+          "unit"
+        ],
+        [
+          120,
+          "unit"
+        ],
+        [
+          121,
+          "unit"
+        ],
+        [
+          122,
+          "unit"
+        ],
+        [
+          123,
+          "unit"
+        ],
+        [
+          124,
+          "white"
+        ],
+        [
+          125,
+          "white"
+        ],
+        [
+          126,
+          "white"
+        ],
+        [
+          127,
+          "white"
+        ],
+        [
+          128,
+          "white"
+        ],
+        [
+          129,
+          "white"
+        ],
+        [
+          130,
+          "white"
+        ],
+        [
+          131,
+          "white"
+        ],
+        [
+          132,
+          "white"
+        ],
+        [
+          133,
+          "white"
+        ],
+        [
+          134,
+          "unit"
+        ],
+        [
+          135,
+          "unit"
+        ],
+        [
+          136,
+          "unit"
+        ],
+        [
+          137,
+          "unit"
+        ],
+        [
+          138,
+          "unit"
+        ],
+        [
+          139,
+          "unit"
+        ],
+        [
+          140,
+          "unit"
+        ],
+        [
+          141,
+          "unit"
+        ],
+        [
+          142,
+          "unit"
+        ],
+        [
+          143,
+          "unit"
+        ],
+        [
+          144,
+          "white"
+        ],
+        [
+          145,
+          "white"
+        ],
+        [
+          146,
+          "white"
+        ],
+        [
+          147,
+          "white"
+        ],
+        [
+          148,
+          "white"
+        ],
+        [
+          149,
+          "white"
+        ],
+        [
+          150,
+          "white"
+        ],
+        [
+          151,
+          "white"
+        ],
+        [
+          152,
+          "white"
+        ],
+        [
+          153,
+          "white"
+        ],
+        [
+          154,
+          "unit"
+        ],
+        [
+          155,
+          "unit"
+        ],
+        [
+          156,
+          "unit"
+        ],
+        [
+          157,
+          "unit"
+        ],
+        [
+          158,
+          "unit"
+        ],
+        [
+          159,
+          "unit"
+        ],
+        [
+          160,
+          "unit"
+        ],
+        [
+          161,
+          "unit"
+        ],
+        [
+          162,
+          "unit"
+        ],
+        [
+          163,
+          "unit"
+        ],
+        [
+          164,
+          "white"
+        ],
+        [
+          165,
+          "white"
+        ],
+        [
+          166,
+          "white"
+        ],
+        [
+          167,
+          "white"
+        ],
+        [
+          168,
+          "white"
+        ],
+        [
+          169,
+          "white"
+        ],
+        [
+          170,
+          "white"
+        ],
+        [
+          171,
+          "white"
+        ],
+        [
+          172,
+          "white"
+        ],
+        [
+          173,
+          "white"
+        ],
+        [
+          174,
+          "unit"
+        ],
+        [
+          175,
+          "unit"
+        ],
+        [
+          176,
+          "unit"
+        ],
+        [
+          177,
+          "unit"
+        ],
+        [
+          178,
+          "unit"
+        ],
+        [
+          179,
+          "unit"
+        ],
+        [
+          180,
+          "unit"
+        ]
+      ]
+    },
+    {
+      "name": "white_marker_writer_001",
+      "status": "OBSERVED_RUNTIME",
+      "failures": [],
+      "exit_code": 0,
+      "native_identity_passed": true,
+      "input_state_sha256": "7ea302d1797cf59349253ce6add5e458d6426fe955a54bd1a81487c7fbdc9faf",
+      "frames": 45,
+      "no_controller_input": true,
+      "no_state_interventions": true,
+      "verified_products": 172,
+      "receipt": {
+        "path": "runtime/experiments/white_marker_writer_001/probe_receipt.json",
+        "bytes": 27374,
+        "sha256": "ed4ed1b51e85873c975d155a1e3ea3a4adb883f86303d983e02cbad955527c4a"
+      },
+      "native_receipt": {
+        "path": "runtime/experiments/white_marker_writer_001/process/receipt.json",
+        "bytes": 2750,
+        "sha256": "e55e25133ff104b6e575c0a8d1dc853be6df2f9650d2530e71a6f5262b9bc382"
+      },
+      "stdout": {
+        "path": "runtime/experiments/white_marker_writer_001/process/stdout.log",
+        "bytes": 2908783,
+        "sha256": "33e93a967c3afb49b117f3b007ccf7ac80855ca4111cecfde97784f86707d84a"
+      },
+      "stderr": {
+        "path": "runtime/experiments/white_marker_writer_001/process/stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "schedule": {
+        "path": "runtime/experiments/white_marker_writer_001/schedule.json",
+        "bytes": 1118,
+        "sha256": "758dfcc04b9da946b11fc488b6deae228852f5693de8892124c5a3088d8aa928"
+      },
+      "script": {
+        "path": "runtime/experiments/white_marker_writer_001/probe.lua",
+        "bytes": 25949,
+        "sha256": "32e5edd42c9941d2a7418a618429437ffaf0afb3ed04a72055d0f7d3f1516d1c"
+      },
+      "roi_xyxy": [
+        216,
+        52,
+        232,
+        68
+      ],
+      "roi_sha256_values": [
+        "79fc0bbe53d7829a30bb38b8bc2f84e1f0e507eb0a57bdb933489257f40445a1",
+        "8d4e45cd0fca8bdf2e7814703ee7bfc7bc52bf8a2264072439e4e8873a3f581f"
+      ],
+      "verified_frame_phases": [
+        [
+          2,
+          "unit"
+        ],
+        [
+          3,
+          "unit"
+        ],
+        [
+          4,
+          "white"
+        ],
+        [
+          5,
+          "white"
+        ],
+        [
+          6,
+          "white"
+        ],
+        [
+          7,
+          "white"
+        ],
+        [
+          8,
+          "white"
+        ],
+        [
+          9,
+          "white"
+        ],
+        [
+          10,
+          "white"
+        ],
+        [
+          11,
+          "white"
+        ],
+        [
+          12,
+          "white"
+        ],
+        [
+          13,
+          "white"
+        ],
+        [
+          14,
+          "unit"
+        ],
+        [
+          15,
+          "unit"
+        ],
+        [
+          16,
+          "unit"
+        ],
+        [
+          17,
+          "unit"
+        ],
+        [
+          18,
+          "unit"
+        ],
+        [
+          19,
+          "unit"
+        ],
+        [
+          20,
+          "unit"
+        ],
+        [
+          21,
+          "unit"
+        ],
+        [
+          22,
+          "unit"
+        ],
+        [
+          23,
+          "unit"
+        ],
+        [
+          24,
+          "white"
+        ],
+        [
+          25,
+          "white"
+        ],
+        [
+          26,
+          "white"
+        ],
+        [
+          27,
+          "white"
+        ],
+        [
+          28,
+          "white"
+        ],
+        [
+          29,
+          "white"
+        ],
+        [
+          30,
+          "white"
+        ],
+        [
+          31,
+          "white"
+        ],
+        [
+          32,
+          "white"
+        ],
+        [
+          33,
+          "white"
+        ],
+        [
+          34,
+          "unit"
+        ],
+        [
+          35,
+          "unit"
+        ],
+        [
+          36,
+          "unit"
+        ],
+        [
+          37,
+          "unit"
+        ],
+        [
+          38,
+          "unit"
+        ],
+        [
+          39,
+          "unit"
+        ],
+        [
+          40,
+          "unit"
+        ],
+        [
+          41,
+          "unit"
+        ],
+        [
+          42,
+          "unit"
+        ],
+        [
+          43,
+          "unit"
+        ],
+        [
+          44,
+          "white"
+        ]
+      ],
+      "stable_state_checked_samples": 43,
+      "snapshot_examples": [
+        {
+          "frame": 2,
+          "x": 12,
+          "y": 2,
+          "index": 38,
+          "occupancy": 4,
+          "terrain": 0,
+          "current_officer": 26410,
+          "template_071a": [
+            51,
+            224,
+            3,
+            216,
+            51,
+            224,
+            3,
+            224,
+            59,
+            224,
+            3,
+            216,
+            59,
+            224,
+            3,
+            224
+          ],
+          "blink_enable_072a": 1,
+          "phase_072b": 255,
+          "sprite_slot_072c": 32,
+          "countdown_072d": 10,
+          "shadow_0680": [
+            51,
+            224,
+            3,
+            216,
+            51,
+            224,
+            3,
+            224,
+            59,
+            224,
+            3,
+            216,
+            59,
+            224,
+            3,
+            224
+          ]
+        },
+        {
+          "frame": 14,
+          "x": 12,
+          "y": 2,
+          "index": 38,
+          "occupancy": 4,
+          "terrain": 0,
+          "current_officer": 26410,
+          "template_071a": [
+            51,
+            224,
+            3,
+            216,
+            51,
+            224,
+            3,
+            224,
+            59,
+            224,
+            3,
+            216,
+            59,
+            224,
+            3,
+            224
+          ],
+          "blink_enable_072a": 1,
+          "phase_072b": 0,
+          "sprite_slot_072c": 32,
+          "countdown_072d": 8,
+          "shadow_0680": [
+            248,
+            224,
+            3,
+            216,
+            248,
+            224,
+            3,
+            224,
+            248,
+            224,
+            3,
+            216,
+            248,
+            224,
+            3,
+            224
+          ]
+        }
+      ],
+      "exact_watch_events": [
+        {
+          "frame": 1,
+          "address": 1664,
+          "old": 248,
+          "new": 51,
+          "callback_pc": 63709,
+          "vm_ip": 52634,
+          "mapped_vm_prg_offset": 249242,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 1,
+          "address": 1668,
+          "old": 248,
+          "new": 51,
+          "callback_pc": 63709,
+          "vm_ip": 52634,
+          "mapped_vm_prg_offset": 249242,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 1,
+          "address": 1672,
+          "old": 248,
+          "new": 59,
+          "callback_pc": 63709,
+          "vm_ip": 52634,
+          "mapped_vm_prg_offset": 249242,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 1,
+          "address": 1676,
+          "old": 248,
+          "new": 59,
+          "callback_pc": 63709,
+          "vm_ip": 52634,
+          "mapped_vm_prg_offset": 249242,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 11,
+          "address": 1664,
+          "old": 51,
+          "new": 248,
+          "callback_pc": 63729,
+          "vm_ip": 52593,
+          "mapped_vm_prg_offset": 249201,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 11,
+          "address": 1668,
+          "old": 51,
+          "new": 248,
+          "callback_pc": 63732,
+          "vm_ip": 52593,
+          "mapped_vm_prg_offset": 249201,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 11,
+          "address": 1672,
+          "old": 59,
+          "new": 248,
+          "callback_pc": 63735,
+          "vm_ip": 52593,
+          "mapped_vm_prg_offset": 249201,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 11,
+          "address": 1676,
+          "old": 59,
+          "new": 248,
+          "callback_pc": 63738,
+          "vm_ip": 52593,
+          "mapped_vm_prg_offset": 249201,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 21,
+          "address": 1664,
+          "old": 248,
+          "new": 51,
+          "callback_pc": 63709,
+          "vm_ip": 52569,
+          "mapped_vm_prg_offset": 249177,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 21,
+          "address": 1668,
+          "old": 248,
+          "new": 51,
+          "callback_pc": 63709,
+          "vm_ip": 52569,
+          "mapped_vm_prg_offset": 249177,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 21,
+          "address": 1672,
+          "old": 248,
+          "new": 59,
+          "callback_pc": 63709,
+          "vm_ip": 52569,
+          "mapped_vm_prg_offset": 249177,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 21,
+          "address": 1676,
+          "old": 248,
+          "new": 59,
+          "callback_pc": 63709,
+          "vm_ip": 52569,
+          "mapped_vm_prg_offset": 249177,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 31,
+          "address": 1664,
+          "old": 51,
+          "new": 248,
+          "callback_pc": 63729,
+          "vm_ip": 52533,
+          "mapped_vm_prg_offset": 249141,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 31,
+          "address": 1668,
+          "old": 51,
+          "new": 248,
+          "callback_pc": 63732,
+          "vm_ip": 52533,
+          "mapped_vm_prg_offset": 249141,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 31,
+          "address": 1672,
+          "old": 59,
+          "new": 248,
+          "callback_pc": 63735,
+          "vm_ip": 52533,
+          "mapped_vm_prg_offset": 249141,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 31,
+          "address": 1676,
+          "old": 59,
+          "new": 248,
+          "callback_pc": 63738,
+          "vm_ip": 52533,
+          "mapped_vm_prg_offset": 249141,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 41,
+          "address": 1664,
+          "old": 248,
+          "new": 51,
+          "callback_pc": 63709,
+          "vm_ip": 52564,
+          "mapped_vm_prg_offset": 249172,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 41,
+          "address": 1668,
+          "old": 248,
+          "new": 51,
+          "callback_pc": 63709,
+          "vm_ip": 52564,
+          "mapped_vm_prg_offset": 249172,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 41,
+          "address": 1672,
+          "old": 248,
+          "new": 59,
+          "callback_pc": 63709,
+          "vm_ip": 52564,
+          "mapped_vm_prg_offset": 249172,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 41,
+          "address": 1676,
+          "old": 248,
+          "new": 59,
+          "callback_pc": 63709,
+          "vm_ip": 52564,
+          "mapped_vm_prg_offset": 249172,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        }
+      ],
+      "occupancy_write_events": 0
+    },
+    {
+      "name": "white_marker_initializer_001",
+      "status": "OBSERVED_RUNTIME",
+      "failures": [],
+      "exit_code": 0,
+      "native_identity_passed": true,
+      "input_state_sha256": "5635b56bca48c7ffaa0e38283f53237d97aabee984e259043c1bf6c373c6cde4",
+      "frames": 600,
+      "no_controller_input": true,
+      "no_state_interventions": true,
+      "verified_products": 24,
+      "receipt": {
+        "path": "runtime/experiments/white_marker_initializer_001/probe_receipt.json",
+        "bytes": 4138,
+        "sha256": "2038b140a93b77a4e53336867f13fad6a35a0ee533bc465b0fd990a0e43c948d"
+      },
+      "native_receipt": {
+        "path": "runtime/experiments/white_marker_initializer_001/process/receipt.json",
+        "bytes": 2799,
+        "sha256": "3fe564153115e542c65f87d88bd2c5e307269687e6c5f9e7c4740db2d8e8750a"
+      },
+      "stdout": {
+        "path": "runtime/experiments/white_marker_initializer_001/process/stdout.log",
+        "bytes": 473155,
+        "sha256": "dea9bf7f4d67e38726b55fd01b242fe8d072285c4ccb315be907fea1a7b6ded3"
+      },
+      "stderr": {
+        "path": "runtime/experiments/white_marker_initializer_001/process/stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "schedule": {
+        "path": "runtime/experiments/white_marker_initializer_001/schedule.json",
+        "bytes": 376,
+        "sha256": "f89c72501c642f202209e477b0165f7538b5e2b70b99656609dde3fe55ad8022"
+      },
+      "script": {
+        "path": "runtime/experiments/white_marker_initializer_001/probe.lua",
+        "bytes": 24484,
+        "sha256": "06671f6afe5ab75b791968c7fc0c87c06adf1638b741d16e82777a8ad629d10d"
+      },
+      "enable_events": [
+        {
+          "frame": 41,
+          "address": 1834,
+          "old": 0,
+          "new": 0,
+          "callback_pc": 64974,
+          "vm_ip": 44988,
+          "mapped_vm_prg_offset": 118716,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 101,
+          "address": 1834,
+          "old": 0,
+          "new": 1,
+          "callback_pc": 64974,
+          "vm_ip": 44988,
+          "mapped_vm_prg_offset": 118716,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 142,
+          "address": 1834,
+          "old": 1,
+          "new": 0,
+          "callback_pc": 64974,
+          "vm_ip": 44988,
+          "mapped_vm_prg_offset": 118716,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 162,
+          "address": 1834,
+          "old": 0,
+          "new": 0,
+          "callback_pc": 64974,
+          "vm_ip": 44988,
+          "mapped_vm_prg_offset": 118716,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 163,
+          "address": 1834,
+          "old": 0,
+          "new": 0,
+          "callback_pc": 64974,
+          "vm_ip": 44988,
+          "mapped_vm_prg_offset": 118716,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        },
+        {
+          "frame": 180,
+          "address": 1834,
+          "old": 0,
+          "new": 1,
+          "callback_pc": 64974,
+          "vm_ip": 44988,
+          "mapped_vm_prg_offset": 118716,
+          "mapped_memory_type": 47,
+          "battle_day": 2
+        }
+      ],
+      "all_watch_events_count": 1057
+    }
+  ],
+  "source_anchors": [
+    {
+      "bank_8k": 8,
+      "cpu_start": 33056,
+      "cpu_end_exclusive": 33131,
+      "file_offset": 65840,
+      "bytes": 75,
+      "sha256": "a56fa805790bb90fb0e543bbf5cae010ee37cf46d30b0898eabae5bb2059f92a",
+      "purpose": "acting officer and cursor initialization",
+      "listing_comparison": {
+        "compared_bytes": 75,
+        "omissions": 0,
+        "mismatches": 0,
+        "listing": {
+          "path": "static_sources/nes_marker_sources/bank08_vm.asm",
+          "bytes": 175668,
+          "sha256": "2c23a02ae046d443dc46365db69f906f76d04f03033aaf748f00e519c6c85708"
+        }
+      }
+    },
+    {
+      "bank_8k": 8,
+      "cpu_start": 33216,
+      "cpu_end_exclusive": 33228,
+      "file_offset": 66000,
+      "bytes": 12,
+      "sha256": "3dc95764c55621348a5474bea921a646711da9d50993e319e57b8ecc3865e2f8",
+      "purpose": "disable cursor after command",
+      "listing_comparison": {
+        "compared_bytes": 12,
+        "omissions": 0,
+        "mismatches": 0,
+        "listing": {
+          "path": "static_sources/nes_marker_sources/bank08_vm.asm",
+          "bytes": 175668,
+          "sha256": "2c23a02ae046d443dc46365db69f906f76d04f03033aaf748f00e519c6c85708"
+        }
+      }
+    },
+    {
+      "bank_8k": 14,
+      "cpu_start": 44732,
+      "cpu_end_exclusive": 44757,
+      "file_offset": 118476,
+      "bytes": 25,
+      "sha256": "916d0b7cca930c7f98ec8a868edde1d44081132d0b0a8abe547a444f824e13a2",
+      "purpose": "hex to tile coordinates",
+      "listing_comparison": {
+        "compared_bytes": 25,
+        "omissions": 0,
+        "mismatches": 0,
+        "listing": {
+          "path": "static_sources/nes_marker_sources/bank14_vm.asm",
+          "bytes": 123502,
+          "sha256": "dbd6fbce2688d6ae23a87396acc90f491e61e4eb92c36d64932c47fbbd45c7c0"
+        }
+      }
+    },
+    {
+      "bank_8k": 14,
+      "cpu_start": 44952,
+      "cpu_end_exclusive": 45100,
+      "file_offset": 118696,
+      "bytes": 148,
+      "sha256": "ba5b25102de1d37b1b09300be382b852b8b314f06b04efdecbba2b6bb2eaabae",
+      "purpose": "white template and cursor configuration",
+      "listing_comparison": {
+        "compared_bytes": 148,
+        "omissions": 0,
+        "mismatches": 0,
+        "listing": {
+          "path": "static_sources/nes_marker_sources/bank14_vm.asm",
+          "bytes": 123502,
+          "sha256": "dbd6fbce2688d6ae23a87396acc90f491e61e4eb92c36d64932c47fbbd45c7c0"
+        }
+      }
+    },
+    {
+      "bank_8k": 31,
+      "cpu_start": 61158,
+      "cpu_end_exclusive": 61190,
+      "file_offset": 257782,
+      "bytes": 32,
+      "sha256": "c9688207468776a85fb54d232bcc0af4015db7d676c24b45a0b8734adaa0920d",
+      "purpose": "VM to native syscall bridge"
+    },
+    {
+      "bank_8k": 31,
+      "cpu_start": 63770,
+      "cpu_end_exclusive": 63812,
+      "file_offset": 260394,
+      "bytes": 42,
+      "sha256": "718942fc8763968bfedcade992fbb375e1b358b5803dabfc9ab1542190591fae",
+      "purpose": "native syscall dispatch"
+    },
+    {
+      "bank_8k": 31,
+      "cpu_start": 63862,
+      "cpu_end_exclusive": 63864,
+      "file_offset": 260486,
+      "bytes": 2,
+      "sha256": "e3dd87a3266c53c6c93180134a80fb5170e0653c1cd7d5561e2c5982f506ea76",
+      "purpose": "syscall 25 target FD77"
+    },
+    {
+      "bank_8k": 31,
+      "cpu_start": 64887,
+      "cpu_end_exclusive": 64975,
+      "file_offset": 261511,
+      "bytes": 88,
+      "sha256": "3226b8d392cabf3a07dd47518a0b6c23109a17b613c40cae4d0420e082dcda76",
+      "purpose": "configure four-sprite blinking template"
+    },
+    {
+      "bank_8k": 31,
+      "cpu_start": 63653,
+      "cpu_end_exclusive": 63739,
+      "file_offset": 260277,
+      "bytes": 86,
+      "sha256": "3ad84a1383471596957c8c9a6741aef7bc5d9a06f9e1eec42796ca880c41bbdf",
+      "purpose": "ten-frame blink update"
+    },
+    {
+      "bank_8k": 31,
+      "cpu_start": 63089,
+      "cpu_end_exclusive": 63163,
+      "file_offset": 259713,
+      "bytes": 74,
+      "sha256": "f335d0bd882d0d6d8b2f19b3b07be1fc414ca51e5d27d9c95b9842609ca10a55",
+      "purpose": "NMI OAM DMA and blink update order"
+    }
+  ],
+  "selected_input_files": [
+    {
+      "path": "runtime/experiments/wait_001/f002200.png",
+      "bytes": 7418,
+      "sha256": "a7e599236b6acc1b851c0dbf376584ba2e4e7d26931a78f84cd04dfdae58a846"
+    },
+    {
+      "path": "runtime/experiments/wait_001/memory_002200_cpu0000.bin",
+      "bytes": 2048,
+      "sha256": "c4587475534844a98e4b4f769942f78dd003b905a1c1c862f7787f8fbc671df8"
+    },
+    {
+      "path": "runtime/experiments/wait_001/memory_002200_cpu6000.bin",
+      "bytes": 8192,
+      "sha256": "b926920e1f85bd03154bad7fb14848a124ac55d256b74b4cd2bf21079dc4f178"
+    },
+    {
+      "path": "runtime/experiments/fire_prompt_001/f000700.png",
+      "bytes": 7089,
+      "sha256": "7169188cbc47918f95056ae590546836f63db650914b7d5cd3bf4a48d727f925"
+    },
+    {
+      "path": "runtime/experiments/fire_prompt_001/memory_000700_cpu0000.bin",
+      "bytes": 2048,
+      "sha256": "3e311a2fdc80bd7f7c33add403c1eb6f31f2c4933708e8b30bc622cd3b7e16f2"
+    },
+    {
+      "path": "runtime/experiments/fire_prompt_001/memory_000700_cpu6000.bin",
+      "bytes": 8192,
+      "sha256": "5e31606af93b06a4bb71c4fc9a24d41b7b0ad542ae831dc97dad7719e6614a3c"
+    },
+    {
+      "path": "runtime/experiments/forest_ready_001/f002200.png",
+      "bytes": 7325,
+      "sha256": "93d53be6a2d7cc72e3b5f656864bec2d20502e15854ba176388cd49d0dcb32ba"
+    },
+    {
+      "path": "runtime/experiments/forest_ready_001/memory_002200_cpu0000.bin",
+      "bytes": 2048,
+      "sha256": "ad4fd47424f47cebcf33ab6f40b5ba1a802a520f8e392b924f297b5c518a0c47"
+    },
+    {
+      "path": "runtime/experiments/forest_ready_001/memory_002200_cpu6000.bin",
+      "bytes": 8192,
+      "sha256": "1e0f49833af3dfe10ebbac90adad1d7d0a97665bb38f4542913987f882e279f0"
+    },
+    {
+      "path": "runtime/experiments/white_marker_writer_001/f000004.png",
+      "bytes": 7341,
+      "sha256": "d9d9b04c17180ade634cc461f3968faf17e070c5e030279416bf8ee4a0df121e"
+    },
+    {
+      "path": "runtime/experiments/white_marker_writer_001/f000014.png",
+      "bytes": 7418,
+      "sha256": "a7e599236b6acc1b851c0dbf376584ba2e4e7d26931a78f84cd04dfdae58a846"
+    },
+    {
+      "path": "runtime/experiments/white_marker_writer_001/f000024.png",
+      "bytes": 7341,
+      "sha256": "d9d9b04c17180ade634cc461f3968faf17e070c5e030279416bf8ee4a0df121e"
+    },
+    {
+      "path": "runtime/experiments/white_marker_writer_001/f000034.png",
+      "bytes": 7418,
+      "sha256": "a7e599236b6acc1b851c0dbf376584ba2e4e7d26931a78f84cd04dfdae58a846"
+    }
+  ],
+  "comparison_states_inspected": [
+    {
+      "frame": 2200,
+      "x": 12,
+      "y": 2,
+      "index": 38,
+      "occupancy": 4,
+      "terrain": 0,
+      "current_officer": 26410,
+      "template_071a": [
+        51,
+        224,
+        3,
+        216,
+        51,
+        224,
+        3,
+        224,
+        59,
+        224,
+        3,
+        216,
+        59,
+        224,
+        3,
+        224
+      ],
+      "blink_enable_072a": 1,
+      "phase_072b": 0,
+      "sprite_slot_072c": 32,
+      "countdown_072d": 2,
+      "shadow_0680": [
+        248,
+        224,
+        3,
+        216,
+        248,
+        224,
+        3,
+        224,
+        248,
+        224,
+        3,
+        216,
+        248,
+        224,
+        3,
+        224
+      ],
+      "run": "wait_001",
+      "receipt": {
+        "path": "runtime/experiments/wait_001/probe_receipt.json",
+        "bytes": 3888,
+        "sha256": "21aa5355763522730f56ee03aeeb45ecc329d9c83cdf5c1045f61d15105c8ded"
+      }
+    },
+    {
+      "frame": 700,
+      "x": 12,
+      "y": 2,
+      "index": 38,
+      "occupancy": 4,
+      "terrain": 0,
+      "current_officer": 26410,
+      "template_071a": [
+        58,
+        158,
+        128,
+        200,
+        58,
+        159,
+        128,
+        208,
+        66,
+        154,
+        128,
+        200,
+        66,
+        155,
+        128,
+        208
+      ],
+      "blink_enable_072a": 1,
+      "phase_072b": 255,
+      "sprite_slot_072c": 36,
+      "countdown_072d": 8,
+      "shadow_0680": [
+        248,
+        224,
+        3,
+        216,
+        248,
+        224,
+        3,
+        224,
+        248,
+        224,
+        3,
+        216,
+        248,
+        224,
+        3,
+        224
+      ],
+      "run": "fire_prompt_001",
+      "receipt": {
+        "path": "runtime/experiments/fire_prompt_001/probe_receipt.json",
+        "bytes": 2216,
+        "sha256": "2d08d22e3548334f17de82a1b084a90b24b96c736b628556fdb0d92674bf74b4"
+      }
+    },
+    {
+      "frame": 2200,
+      "x": 12,
+      "y": 4,
+      "index": 64,
+      "occupancy": 148,
+      "terrain": 1,
+      "current_officer": 26410,
+      "template_071a": [
+        83,
+        224,
+        3,
+        216,
+        83,
+        224,
+        3,
+        224,
+        91,
+        224,
+        3,
+        216,
+        91,
+        224,
+        3,
+        224
+      ],
+      "blink_enable_072a": 1,
+      "phase_072b": 255,
+      "sprite_slot_072c": 32,
+      "countdown_072d": 4,
+      "shadow_0680": [
+        83,
+        224,
+        3,
+        216,
+        83,
+        224,
+        3,
+        224,
+        91,
+        224,
+        3,
+        216,
+        91,
+        224,
+        3,
+        224
+      ],
+      "run": "forest_ready_001",
+      "receipt": {
+        "path": "runtime/experiments/forest_ready_001/probe_receipt.json",
+        "bytes": 2362,
+        "sha256": "2cc3d2e05ed935bef2d87850014a4893f5fb865814f94fde0f1195ea546f0e25"
+      }
+    }
+  ]
+}

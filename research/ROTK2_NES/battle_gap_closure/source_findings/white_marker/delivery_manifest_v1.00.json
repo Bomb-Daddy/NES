@@ -1,0 +1,37 @@
+{
+  "version": "1.00",
+  "date": "2026-11-05",
+  "purpose": "Authored NES white-marker source and original-runtime analysis; private inputs excluded",
+  "files": [
+    {
+      "name": "NES_WHITE_MARKER_FINDINGS_v1.00.md",
+      "bytes": 12060,
+      "sha256": "5207e1ad015f4505099579b5a5435173abbb12b5ceb9b07d8681681cbf18060c"
+    },
+    {
+      "name": "audit_attempt01.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "audit_attempt01.stdout.txt",
+      "bytes": 244,
+      "sha256": "67011f9df33844d3b78644b244a0e7d69a634fd4ceb152b4ae4e2a721933a103"
+    },
+    {
+      "name": "audit_attempt01_receipt.json",
+      "bytes": 711,
+      "sha256": "8d5635846d19aa141798b0d48c2542565c2a711a7e9d1cd6ac71652f112706da"
+    },
+    {
+      "name": "audit_white_marker.py",
+      "bytes": 12010,
+      "sha256": "0d828ea4325327febaaf3123a1dbc7570ec92a271f259df67af7a059f668809e"
+    },
+    {
+      "name": "white_marker_audit.json",
+      "bytes": 36734,
+      "sha256": "11dae7b3e5c0a5b345f6cf245ecc422ab78595b94e675f4b3a3e02a973b04090"
+    }
+  ]
+}

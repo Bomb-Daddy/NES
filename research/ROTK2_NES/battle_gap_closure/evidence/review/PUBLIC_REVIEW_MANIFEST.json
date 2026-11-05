@@ -1,0 +1,132 @@
+{
+  "copied_utc": "2026-11-05T19:23:12.382286+00:00",
+  "scope": "Authored review and metadata plus complete synthetic gate-test stdout/stderr/receipts. No original ROM, complete save, full RAM, screenshot or full decoded commercial source copied.",
+  "preservation": "Receipt command/cwd and original stack paths preserved verbatim for provenance; index links are repository-relative.",
+  "original_report_sha256": "ce24187ed1096179f578371e73680f91fb2ab84ca681992f74616e60539ad3fa",
+  "files": [
+    {
+      "file": "HOSTILE_REVIEW_v1.00.md",
+      "bytes": 19589,
+      "sha256": "ce24187ed1096179f578371e73680f91fb2ab84ca681992f74616e60539ad3fa",
+      "copy_matches_original": true
+    },
+    {
+      "file": "reviewed_runtime_artifacts.json",
+      "bytes": 6338,
+      "sha256": "2ac581f530cf0d5fcce2e9daaf123aa1a525f594abe98c41d83efa4a1d42ebf8",
+      "copy_matches_original": true
+    },
+    {
+      "file": "fresh_combat_review.json",
+      "bytes": 18110,
+      "sha256": "e49973cb179dc9959d4a62059964cc3d82e9788783651c1d621498e3efdd216e",
+      "copy_matches_original": true
+    },
+    {
+      "file": "weather_day3_integrity.json",
+      "bytes": 2860,
+      "sha256": "7ba29b41da78bccf2c0625ad98182292cd1c21f3e7a4bb2feebc6ad88d5e049b",
+      "copy_matches_original": true
+    },
+    {
+      "file": "weather_day3_recheck_review.json",
+      "bytes": 3958,
+      "sha256": "aed7eb9d4317fb1f603076e432852c10f94e53650a1a3ccfe11cdaad69f8ffa9",
+      "copy_matches_original": true
+    },
+    {
+      "file": "png_existing_artifacts_validation.json",
+      "bytes": 18473,
+      "sha256": "c49c4921bef5bf75ac8ea60d157a067551de1e6a651fce2c6afe263d337596ee",
+      "copy_matches_original": true
+    },
+    {
+      "file": "weather_recheck_review_attempt01.json",
+      "bytes": 419,
+      "sha256": "ceebf22bf51cca587e01ad442465dfcb7db6bf78c97888b59bc9e61ca2edef40",
+      "copy_matches_original": true
+    },
+    {
+      "file": "fresh_review_offset_correction.json",
+      "bytes": 479,
+      "sha256": "7db4a69537566084aebb418e10d85b30a86188c5ac0d78dc8de7f39bc6508d67",
+      "copy_matches_original": true
+    },
+    {
+      "file": "png_gate_red.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy_matches_original": true
+    },
+    {
+      "file": "png_gate_red.stderr.txt",
+      "bytes": 16046,
+      "sha256": "590627cacbb128244bd4c83673fc100397c4d66ccd7dd48a9f6be16d492d2841",
+      "copy_matches_original": true
+    },
+    {
+      "file": "png_gate_red_receipt.json",
+      "bytes": 528,
+      "sha256": "09b03e7f5d59b717f787efafb8f8c3397b3822223866ef2eb99cef329e42303a",
+      "copy_matches_original": true
+    },
+    {
+      "file": "png_gate_green.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy_matches_original": true
+    },
+    {
+      "file": "png_gate_green.stderr.txt",
+      "bytes": 1853,
+      "sha256": "5b029ad76c14cb574ef8f9761d93a80a41ce6a35a98cf1bf3d87efad7e2e1f65",
+      "copy_matches_original": true
+    },
+    {
+      "file": "png_gate_green_receipt.json",
+      "bytes": 528,
+      "sha256": "39c107347f40aec88eb9f199552c74fc109f96ac954df5f094d5731f300b3ada",
+      "copy_matches_original": true
+    },
+    {
+      "file": "runner_identity_red.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy_matches_original": true
+    },
+    {
+      "file": "runner_identity_red.stderr.txt",
+      "bytes": 3676,
+      "sha256": "f48acd6439bf661efd4656bacc95b8a02a71757f295a70132728de4516f96ab0",
+      "copy_matches_original": true
+    },
+    {
+      "file": "runner_identity_red_receipt.json",
+      "bytes": 694,
+      "sha256": "d7bf9827d4fcdc59060c1bf13dbc94a19fd01facbdc96ec346a8f0abe242376a",
+      "copy_matches_original": true
+    },
+    {
+      "file": "runner_identity_green.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copy_matches_original": true
+    },
+    {
+      "file": "runner_identity_green.stderr.txt",
+      "bytes": 2350,
+      "sha256": "d78cbbaf7fd0ee32b8268b382033e8f713d04f5fd1239a4681510264870fdab1",
+      "copy_matches_original": true
+    },
+    {
+      "file": "runner_identity_green_receipt.json",
+      "bytes": 694,
+      "sha256": "431d81ebb7aae4013e5300767708add2eac7b4ed475965667b9a7e959b6ed94d",
+      "copy_matches_original": true
+    }
+  ],
+  "relative_index": {
+    "file": "README.md",
+    "sha256": "b83bec386b7f3ee8cfaffd6b9ca6c9af1a47b870b9ade29c693925e1f478fb30"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "command_kind": "read-only audit using importlib spec_from_file_location",
+  "exit_code": 1,
+  "stderr": "ModuleNotFoundError: No module named run_mesen",
+  "cause": "The first inline review script did not add the sibling tools directory to sys.path. No reviewed artifact was changed; no output review JSON had been written.",
+  "remedy": "Add explicit tools directory to sys.path before importing battle_probe."
+}

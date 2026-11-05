@@ -1,0 +1,28 @@
+{
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-v"
+  ],
+  "cwd": "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools",
+  "started_utc": "2026-11-05T20:11:39.811050+00:00",
+  "completed_utc": "2026-11-05T20:11:40.480630+00:00",
+  "exit_code": 0,
+  "purpose": "Verify the published portable manifest-test entry together with all harness tests. Existing 12 cases are unchanged except resolving TOOLS relative to this test file. Original frozen runtime evidence is unchanged.",
+  "source_test_sha256": "00ce888468b5ffe141e4bb4b81f8dc148879e29cd6213a0ef8b13dab5716949c",
+  "public_test_sha256": "16c886eae032ab6a8a249eb647f18e10e39572975ce4a07d0e04a97dcb613b0c",
+  "test_files": {
+    "test_runtime_manifest.py": "16c886eae032ab6a8a249eb647f18e10e39572975ce4a07d0e04a97dcb613b0c",
+    "run_mesen.py": "886da014cfb13e79e54da4e441f8d31ab862abec2c4ac43b1b15d9ac6b8baf58",
+    "census_battle.py": "711d8b7155d1b20f82b2c58f54435b7c3ad1210772210dbf92224b283b16fea6",
+    "test_battle_probe.py": "faa0402bcb23272ab4d034f7343c315149054c01acd05393d082595e162a84d6",
+    "inspect_mss.py": "01e58410af964e19bf99c8582fe37efb389f7b5dca99465023501d5993592b93",
+    "build_runtime_manifest.py": "95daafcdb30442236c8695ed9274782b1c92d167ffff4ab48d93d0e5ce2113ef",
+    "battle_probe.py": "b21a626935a6b45c6918925856632d43a97e70cc5dcd15660a05b7ac086d1cbc"
+  },
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "02b23155dece21a71cdddd68facb2861ea55c5f96df1b8272c699bd14b306e7f"
+}

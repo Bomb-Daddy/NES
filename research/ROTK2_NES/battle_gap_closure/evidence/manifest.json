@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "research_date": "2026-11-05",
+  "generated_utc": "2026-11-05T20:21:16.547652+00:00",
+  "project": "ROTK II NES Windows \u2014 original battle-mechanics research",
+  "owner": "Zhuge Liang / ChatGPT",
+  "authority": {
+    "canonical_drive_folder_id": "1ODnfdVL5R3bZBBUp4cXpocNqtTClrxIL",
+    "register_url": "https://docs.google.com/document/d/1qEVhDdiG2oH8LvPz0jan5DCtFFVxHhQWdWRUpduTllQ/edit",
+    "ruling": "November 1 unified original NES/SNES battle mechanics; platform addresses and observed UI remain source-specific"
+  },
+  "source_index": "source_index.json",
+  "inputs": {
+    "nes_rom": {
+      "bytes": 524304,
+      "sha256": "11e312691b516e5e29dade3c8ce5434df3561cc69e1aecad9c948acdfddc517a"
+    },
+    "snes_rom": {
+      "bytes": 1048576,
+      "sha256": "815bfcf4fd6eb23a20c2e50dde023c210b273ffb6cd86a93909d803c3643ce46"
+    },
+    "mesen_launcher": {
+      "bytes": 69697976,
+      "sha256": "f02685dafe559addf8dd8d769621a89777137d0c4592436aed65694a7e740676"
+    },
+    "mesen_core": {
+      "sha256": "9d21269be65268c1f56543b83e2f10650f3a28ef2566a4acd861615ecc6ed189"
+    },
+    "mesen_settings": {
+      "sha256": "d8c5c019637436a1e6e54752ab4dc4f9202849b36d5169e397899bb834eff525"
+    }
+  },
+  "private_evidence_folder": {
+    "id": "1NlIRYS4k8sCpGgbMSapsmJcR7pmxVF64",
+    "url": "https://drive.google.com/drive/folders/1NlIRYS4k8sCpGgbMSapsmJcR7pmxVF64",
+    "actual_parent_id": "1ODnfdVL5R3bZBBUp4cXpocNqtTClrxIL",
+    "mime_type": "application/vnd.google-apps.folder",
+    "parent_verified": true,
+    "permission_check": {
+      "shared": false,
+      "observed_permission_roles": [
+        "owner"
+      ],
+      "public_or_domain_permission": false
+    }
+  },
+  "archives": {
+    "source": {
+      "file_name": "ROTK2_Battle_Source_Evidence_20261105_v1.00.zip",
+      "drive_file_id": "1TnLHU2n44qf7yvLanwX6IvT48xtqrnTD",
+      "url": "https://drive.google.com/file/d/1TnLHU2n44qf7yvLanwX6IvT48xtqrnTD/view",
+      "bytes": 4913084,
+      "sha256": "68ba2d1e9ffc2ea6e33e0dd60e517f6aeb85c28697e43b2845b8dd3c680bcb2c",
+      "members": 667,
+      "mime_type": "application/zip",
+      "actual_parent_id": "1NlIRYS4k8sCpGgbMSapsmJcR7pmxVF64",
+      "status": "PASS_VERIFIED",
+      "verification": [
+        "Actual metadata: ID, name, MIME, parent and size",
+        "Full uploaded file downloaded again; exact size and SHA-256 match",
+        "Downloaded ZIP member CRC check passed",
+        "Local package member sizes and SHA-256 all matched"
+      ]
+    },
+    "runtime": {
+      "file_name": "ROTK2_Battle_Runtime_Evidence_20261105_v1.00.zip",
+      "bytes": 112649376,
+      "sha256": "b256ca4d62761ef345e3c0a8affa8e7fd5e7f34a0ab1af59f440af1c261c0010",
+      "members": 3939,
+      "status": "PASS_VERIFIED",
+      "local_member_sha256_and_size_checks": 3939,
+      "downloaded_reassembly_crc_passed": true,
+      "downloaded_reassembly_equals_original_archive": true,
+      "storage": "Two ordered exact-byte transfer parts; concatenate before opening as ZIP",
+      "parts_in_order": [
+        {
+          "name": "ROTK2_Battle_Runtime_Evidence_20261105_v1.00.zip.part01",
+          "bytes": 67108864,
+          "sha256": "9199a50ddb9a908e8fa4bf243cfa42a157c11762add751b5dd9ab33f4ccf7148",
+          "drive_file_id": "1u-yzna8CkLwtf--mkqAEUwGvI7zQKL8U",
+          "actual_parent": "1NlIRYS4k8sCpGgbMSapsmJcR7pmxVF64",
+          "mime_type": "application/x-zip",
+          "shared": false,
+          "download_sha256_verified": true,
+          "url": "https://drive.google.com/file/d/1u-yzna8CkLwtf--mkqAEUwGvI7zQKL8U/view"
+        },
+        {
+          "name": "ROTK2_Battle_Runtime_Evidence_20261105_v1.00.zip.part02",
+          "bytes": 45540512,
+          "sha256": "9c3061ef48cd93781f2d37463cdb10c0a4aa85074c3656380b53c32acc939924",
+          "drive_file_id": "1AoqvROdtO6PKQgATJ_Gj3bzqFtAaMeZV",
+          "actual_parent": "1NlIRYS4k8sCpGgbMSapsmJcR7pmxVF64",
+          "mime_type": "application/octet-stream",
+          "shared": false,
+          "download_sha256_verified": true,
+          "url": "https://drive.google.com/file/d/1AoqvROdtO6PKQgATJ_Gj3bzqFtAaMeZV/view"
+        }
+      ],
+      "companion_files": [
+        {
+          "name": "ROTK2_Battle_Runtime_Evidence_20261105_v1.00.transfer_manifest.json",
+          "bytes": 1635,
+          "sha256": "4a825b0da73e12ec5bc812fc81bc6fd355f9a678687a72396b3d6682a422d7c9",
+          "drive_file_id": "1eXKlb_y4elTgcScx0eNToGg3J7sk8_3l",
+          "actual_parent": "1NlIRYS4k8sCpGgbMSapsmJcR7pmxVF64",
+          "mime_type": "application/json",
+          "shared": false,
+          "download_sha256_verified": true,
+          "url": "https://drive.google.com/file/d/1eXKlb_y4elTgcScx0eNToGg3J7sk8_3l/view"
+        },
+        {
+          "name": "ROTK2_Battle_Runtime_Evidence_20261105_v1.00.transfer_README.md",
+          "bytes": 4876,
+          "sha256": "0558bfa5fdf65d1a5dea4c663aa2f85975eb9b2b196fc4e96eddd0a9ab4579ff",
+          "drive_file_id": "19zOPCUzBN9A4REaUbn_KBjrSxV01KYrv",
+          "actual_parent": "1NlIRYS4k8sCpGgbMSapsmJcR7pmxVF64",
+          "mime_type": "text/markdown",
+          "shared": false,
+          "download_sha256_verified": true,
+          "url": "https://drive.google.com/file/d/19zOPCUzBN9A4REaUbn_KBjrSxV01KYrv/view"
+        }
+      ],
+      "verified_utc": "2026-11-05T20:20:44.991521+00:00",
+      "transfer_limit_recovery": {
+        "initial_upload": "Rejected before action invocation:112649376bytes exceeds104857600-byte connector limit",
+        "partial_original_upload_present": false,
+        "recovery": "64MiB first fragment plus remainder; full downloaded reassembly retains original ZIP SHA-256"
+      },
+      "mime_note": "Drive sniffs part01 as application/x-zip; both numbered parts are raw fragments and must be concatenated before opening. Part02 is application/octet-stream."
+    }
+  },
+  "runtime_catalog": {
+    "path": "runtime_runs.json",
+    "sha256": "d5f846032d794f3e570dd39bcc2f28aaee7dc9eca806f9e23195d74dfe894c42",
+    "summary": {
+      "runs": 99,
+      "status_counts": {
+        "PASS_VERIFIED": 93,
+        "FAILED": 6
+      },
+      "execution_status_counts": {
+        "COMPLETED": 95,
+        "FAILED": 4
+      },
+      "lineage_counts": {
+        "NO_DECLARED_INTERVENTION_ANCESTRY": 85,
+        "CONTROLLED_RAM_INTERVENTION": 3,
+        "PREPARED_RAM_DESCENDANT": 11
+      },
+      "declared_products": 1899,
+      "verified_products": 1899,
+      "png_checked": 930,
+      "png_valid": 929,
+      "saved_checkpoint_payloads": 129
+    },
+    "scope": "Native experiments directory. Cold-load, invalid-state and wrapper-review sessions are separately archived. Catalog build success does not imply every retained run passed."
+  },
+  "reviews": [
+    {
+      "path": "review/README.md",
+      "scope": "Source interpretation and selected raw runtime artifacts; evidence-gate fixes with failing and passing controls"
+    },
+    {
+      "path": "prepared_ui_review/REVIEW_v1.00.md",
+      "scope": "First ten prepared-fixture UI runs; original boundary retained"
+    },
+    {
+      "path": "prepared_ui_review/REVIEW_v1.01.md",
+      "scope": "Eleventh prepared-fixture continuation; persistent Liu Biao deletion and Cai Mao succession commit"
+    },
+    {
+      "path": "twohuman/daily_food_verification.json",
+      "scope": "Two-human day1-to-day2 list reconciliation and exact food deltas"
+    }
+  ],
+  "github_publication": {
+    "repository": "Bomb-Daddy/NES",
+    "branch": "rotk2-battle-gap-research-20261105",
+    "plan_commit": "9d80c6482a11a1f774635f0466918e95f9b8eddf",
+    "plan_published_before_experiments": true,
+    "status": "PENDING_RESULT_COMMIT_READBACK"
+  },
+  "remaining_questions": [
+    {
+      "id": "G09",
+      "status": "PARTIAL",
+      "evidence": "VERIFIED_STATIC conditional transition; ordinary-play reachability UNKNOWN",
+      "next_experiment": "../source_findings/q14_q09/G09_NEXT_EXPERIMENT_v1.00.md"
+    },
+    {
+      "id": "G01-H",
+      "status": "BLOCKED",
+      "reason": "Original historical FCS blobs and extraction scripts unavailable; nine-byte cause cannot be assigned"
+    },
+    {
+      "id": "G02-H",
+      "status": "PARTIAL",
+      "reason": "Old exact 130 fielded / 190 counted state unavailable; fresh 130+70 roster differs"
+    },
+    {
+      "id": "G07-H",
+      "status": "PARTIAL",
+      "reason": "Historical S-02 image unavailable; correspondence to newly verified white cursor remains INFERRED"
+    }
+  ],
+  "public_scope": {
+    "included": "Authored analysis, Python tools, derived metadata, receipts and source links",
+    "excluded": [
+      "Original ROMs",
+      "Complete decoded commercial listings",
+      "Emulator saves",
+      "Full memory dumps",
+      "Game screenshots",
+      "Portable emulator binaries",
+      "Compiled Python caches"
+    ]
+  },
+  "acceptance_boundaries": [
+    "No Windows port was built or tested",
+    "No physical Xbox controller acceptance",
+    "No full campaign acceptance",
+    "Prepared RAM interventions remain explicit through checkpoint ancestry",
+    "No other agent read/execution acknowledgement is implied"
+  ],
+  "final_local_validation": {
+    "private_manifest": "runtime/evidence/final_validation_001/FINAL_VALIDATION_MANIFEST.json",
+    "private_manifest_sha256": "8df6d46dd3d1e14859032f161d17c200c2cc9338579a63cb2bef0a3eeb2bba1e",
+    "frozen_review_scope": {
+      "python_files_parsed": 13,
+      "harness_tests_passed": 16,
+      "manifest_tests_passed": 12,
+      "authored_source_review_copies_equal": 48,
+      "public_utf8_files_checked": 90,
+      "relative_links_resolved": 80
+    },
+    "public_portable_test_addition": {
+      "receipt": "publication_validation/receipt.json",
+      "receipt_sha256": "324e3d81b010b4fa262073940f8e645811a4e99fbac0394e049715063c4968d4",
+      "combined_tests_passed": 28,
+      "exit_code": 0,
+      "change": "Existing manifest test copied with tool-directory lookup relative to its own path; no test-case or production-code change",
+      "after_private_runtime_freeze": true
+    }
+  }
+}

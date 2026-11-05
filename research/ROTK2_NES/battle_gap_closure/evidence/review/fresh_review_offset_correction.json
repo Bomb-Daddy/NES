@@ -1,0 +1,5 @@
+{
+  "classification": "Review script correction, not a game finding",
+  "incorrect_temporary_fields": "A first summary incorrectly labelled officer record +2 as actor_id/target_id. These fields were removed immediately; officer names were not decoded from record +2.",
+  "correct_scope": "The review identifies actor and target by their actual list-record pointers 0x672A and 0x687A, checks troop words at +0xC and packed positions at +0x12. No original evidence was changed."
+}

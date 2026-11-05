@@ -1,0 +1,92 @@
+{
+  "research_date": "2026-11-05",
+  "sources": [
+    {
+      "id": "1r4KOqPC8uN1VDmaNlfpjHa_k0J__GYZZ",
+      "title": "ROTK2_Battle_Answer_Matrix_LIVING_v1_4_part1_of_2.md",
+      "mime_type": "text/markdown",
+      "size": null,
+      "url": "https://drive.google.com/file/d/1r4KOqPC8uN1VDmaNlfpjHa_k0J__GYZZ/view?usp=drivesdk",
+      "display_url": "https://drive.google.com/file/d/1r4KOqPC8uN1VDmaNlfpjHa_k0J__GYZZ/view?usp=drivesdk",
+      "file_or_folder": "file",
+      "created_time": null,
+      "modified_time": "2026-11-01T11:09:00.308Z",
+      "parent_ids": [
+        "1YYP7-30Nek40mHymOo6zNcsf29IEeTHh"
+      ],
+      "drive_id": null,
+      "current_user_can_share": null,
+      "has_augmented_permissions": null,
+      "shared": null,
+      "permissions": null,
+      "source_visibility_status": "access_not_verified"
+    },
+    {
+      "id": "1uUNq4BWRie_b-DR3nh7h0jUqiAgw4Mtd",
+      "title": "ROTK2_Battle_Answer_Matrix_LIVING_v1_4_part2_of_2.md",
+      "mime_type": "text/markdown",
+      "size": null,
+      "url": "https://drive.google.com/file/d/1uUNq4BWRie_b-DR3nh7h0jUqiAgw4Mtd/view?usp=drivesdk",
+      "display_url": "https://drive.google.com/file/d/1uUNq4BWRie_b-DR3nh7h0jUqiAgw4Mtd/view?usp=drivesdk",
+      "file_or_folder": "file",
+      "created_time": null,
+      "modified_time": "2026-11-01T11:09:01.127Z",
+      "parent_ids": [
+        "1YYP7-30Nek40mHymOo6zNcsf29IEeTHh"
+      ],
+      "drive_id": null,
+      "current_user_can_share": null,
+      "has_augmented_permissions": null,
+      "shared": null,
+      "permissions": null,
+      "source_visibility_status": "access_not_verified"
+    },
+    {
+      "id": "1uZFMG5I0uR5GxmTZ1uhkdbmxSD6hRyhg1dogZ0D_lJk",
+      "title": "ROTK2_Battle_Answer_Matrix_v1_4_20261102_Stock_NES_Mesen_Trace_Addendum_v1.00",
+      "mime_type": "application/vnd.google-apps.document",
+      "size": null,
+      "url": "https://docs.google.com/document/d/1uZFMG5I0uR5GxmTZ1uhkdbmxSD6hRyhg1dogZ0D_lJk/edit?usp=drivesdk",
+      "display_url": "https://docs.google.com/document/d/1uZFMG5I0uR5GxmTZ1uhkdbmxSD6hRyhg1dogZ0D_lJk/edit?usp=drivesdk",
+      "file_or_folder": "file",
+      "created_time": null,
+      "modified_time": "2026-11-02T17:06:03.786Z",
+      "parent_ids": [
+        "1h5v__41iIFaazuKLzRxkia8OUFP647j_"
+      ],
+      "drive_id": null,
+      "current_user_can_share": null,
+      "has_augmented_permissions": null,
+      "shared": null,
+      "permissions": null,
+      "source_visibility_status": "access_not_verified"
+    },
+    {
+      "id": "1qEVhDdiG2oH8LvPz0jan5DCtFFVxHhQWdWRUpduTllQ",
+      "title": "CURRENT_AUTHORITY_AND_SUPERSESSION_REGISTER_2026-10-28",
+      "mime_type": "application/vnd.google-apps.document",
+      "size": null,
+      "url": "https://docs.google.com/document/d/1qEVhDdiG2oH8LvPz0jan5DCtFFVxHhQWdWRUpduTllQ/edit?usp=drivesdk",
+      "display_url": "https://docs.google.com/document/d/1qEVhDdiG2oH8LvPz0jan5DCtFFVxHhQWdWRUpduTllQ/edit?usp=drivesdk",
+      "file_or_folder": "file",
+      "created_time": null,
+      "modified_time": "2026-11-02T03:22:03.019Z",
+      "parent_ids": [
+        "1YYP7-30Nek40mHymOo6zNcsf29IEeTHh"
+      ],
+      "drive_id": null,
+      "current_user_can_share": null,
+      "has_augmented_permissions": null,
+      "shared": null,
+      "permissions": null,
+      "source_visibility_status": "access_not_verified"
+    }
+  ],
+  "github": {
+    "repository": "Bomb-Daddy/NES",
+    "main_at_start": "5e98092b1170a9213831c0b82f662813194d1688",
+    "headless_guide_file_commit": "31c77b408389aa04a67a9633db05181e3f238e48",
+    "capture_branch_commit": "c4a6f5a8d3a6f545a72da097d998356a3b852bd8",
+    "published_plan_commit": "9d80c6482a11a1f774635f0466918e95f9b8eddf"
+  }
+}

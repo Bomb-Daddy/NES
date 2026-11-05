@@ -1,0 +1,5449 @@
+{
+  "evidence": "OBSERVED_RUNTIME / indexed preserved original records",
+  "indexer_sha256": "4706d6c93daf0c0749b818aa7c7d084beb6d88921649b5cb8b41a527757ee724",
+  "cases": [
+    {
+      "case": "twohuman_001_players",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_001_players",
+      "semantic_note": "Observed two-human player count entry; stop at difficulty prompt before commitment. Ordinary controller only.",
+      "schedule": {
+        "intent": "Observed two-human player count entry; stop at difficulty prompt before commitment. Ordinary controller only.",
+        "events": [
+          [
+            4300,
+            "start",
+            6
+          ],
+          [
+            4700,
+            "a",
+            6
+          ],
+          [
+            5300,
+            "right",
+            6
+          ],
+          [
+            5450,
+            "up",
+            6
+          ],
+          [
+            5520,
+            "up",
+            6
+          ],
+          [
+            5650,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          5200,
+          5400,
+          5500,
+          5580,
+          5740,
+          5780
+        ],
+        "saves": [
+          5790
+        ],
+        "snapshots": [
+          5780
+        ],
+        "stop": 5800
+      },
+      "schedule_sha256": "7924400019305663918f0ba88e408ff1a5f68edfc170bebd5e0c670e266255ba",
+      "script_sha256": "1ba5f682b14414043e67164f119f7e2fd8e190f52b72ea8fc21017776c0af282",
+      "controller_source_lines": [
+        "emu.setInput(inp,0)"
+      ],
+      "native_input_state_sha256": null,
+      "native_input_sources": [],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_001_players/state_005790.b64",
+          "native_bytes": 16134,
+          "native_sha256": "5771f6f01662de1ef8e93c325a197db2ff155451d9731e5678e225dcfc0ade7d",
+          "base64_file_sha256": "a0e13405a77d870441cc72cf63e1672eef6e095d0443ef50f26d1aa884dd8458"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 40.789898992003145,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 5780 8192 50 1 3"
+      ],
+      "native_restore_confirmed": false,
+      "process_receipt_sha256": "4a5039fde645bf474f756498de4ae1423e1f7bbb34191882c9f560b559628600",
+      "probe_receipt_sha256": "4e9ea8e388c807bb7c6e9ab41b29c025313214be5d8592ddf8f8ae80adffe62e",
+      "products": [
+        {
+          "file": "f005200.png",
+          "bytes": 9043,
+          "sha256": "461f2998d7fe8015ef2153eba83c5d8dfc25d09050645474feb252c143081c35",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f005400.png",
+          "bytes": 9042,
+          "sha256": "379b352b8db09360120bc9eada1fbf9d4dc9401f1fce301a29da415aa6e308e0",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f005500.png",
+          "bytes": 9036,
+          "sha256": "49be4709a1bca16f6490b4395dfbef736ae115c7705980a55c70997b032b2053",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f005580.png",
+          "bytes": 9040,
+          "sha256": "3480594d2e5fc82ba792b42cbd938d44f24c0084d393408a73823385fc2f5958",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f005740.png",
+          "bytes": 9363,
+          "sha256": "1a1c43e589d6a79beb6d849af7c4d40ff8d95436ab61798400f65e92dfb6d9f7",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f005780.png",
+          "bytes": 9363,
+          "sha256": "1a1c43e589d6a79beb6d849af7c4d40ff8d95436ab61798400f65e92dfb6d9f7",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_005780_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "a582d330732d251a54ca2706a67d5c01de59ccc5bec16548529dcbd6928aea4b",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_005780_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "cd0f8641e667a4d1a50b91a2a4097c0b7e0f57c7c61416438712b56c7ebd1652",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_005780_save0000.bin",
+          "bytes": 32768,
+          "sha256": "8c4fca2e7dcf917b22883f95eb70e6a5c467b5d58bf45d6cedb0b5fab018e2a7",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_005790.b64",
+          "bytes": 21513,
+          "sha256": "a0e13405a77d870441cc72cf63e1672eef6e095d0443ef50f26d1aa884dd8458",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_002_player1_confirm",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_002_player1_confirm",
+      "semantic_note": "Identify next setup prompt after Player1 province selection; ordinary A input only.",
+      "schedule": {
+        "intent": "Identify next setup prompt after Player1 province selection; ordinary A input only.",
+        "events": [
+          [
+            100,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          50,
+          200,
+          400
+        ],
+        "saves": [
+          430
+        ],
+        "snapshots": [
+          400
+        ],
+        "stop": 450
+      },
+      "schedule_sha256": "5e35aa5687a17be8664aee366db1f2f84d23d7f5abfe0804d5802d30e9674064",
+      "script_sha256": "78257f46b73f1d08354aa71339ce3b88d75ed8079eacdd298322c72be71a53b9",
+      "controller_source_lines": [
+        "emu.setInput(inp,0)"
+      ],
+      "native_input_state_sha256": "5771f6f01662de1ef8e93c325a197db2ff155451d9731e5678e225dcfc0ade7d",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_001_players/state_005790.b64",
+          "native_bytes": 16134,
+          "native_sha256": "5771f6f01662de1ef8e93c325a197db2ff155451d9731e5678e225dcfc0ade7d",
+          "base64_file_sha256": "a0e13405a77d870441cc72cf63e1672eef6e095d0443ef50f26d1aa884dd8458"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_002_player1_confirm/state_000430.b64",
+          "native_bytes": 15392,
+          "native_sha256": "2d3e640fe9f9d78138af4a4753eb96dffca8f01e0ebc834282ad0483fa7f62c2",
+          "base64_file_sha256": "4fd0cbca5bf899323b32c116f532b686ca3ebf6eb7ae248c92da8d826bd1549e"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 4.530958724000811,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 400 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "cad32ac65107f012cfd48f6712c4c2e1bacdba2cd2ae124d88ae9348fb042e8e",
+      "probe_receipt_sha256": "fa90d8f8b04a2e737463b73e838c5049e15341251163375389dec2091b8be799",
+      "products": [
+        {
+          "file": "f000050.png",
+          "bytes": 9363,
+          "sha256": "1a1c43e589d6a79beb6d849af7c4d40ff8d95436ab61798400f65e92dfb6d9f7",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000200.png",
+          "bytes": 8469,
+          "sha256": "3a5acada24615478858a249b2ffd2938488442d331064486c577afb35891cc0e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000400.png",
+          "bytes": 8469,
+          "sha256": "3a5acada24615478858a249b2ffd2938488442d331064486c577afb35891cc0e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000400_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "1aacc1c086bdb2c1a2b309e2268a87b235fe7969bd8d77ec79084ee1daa3bdb4",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000400_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "bdeb1cb8fa498674d04f973927a09323330d7754fd177acffc0f293eef937f3e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000400_save0000.bin",
+          "bytes": 32768,
+          "sha256": "4890cae566bd1f052e227017f809f8ecbb9f08bc67209f6e05a0d9da0b0752af",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000430.b64",
+          "bytes": 20525,
+          "sha256": "4fd0cbca5bf899323b32c116f532b686ca3ebf6eb7ae248c92da8d826bd1549e",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_003_player2_prompt",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_003_player2_prompt",
+      "semantic_note": "Confirm visually identified Yuan Shu as Player1, then inspect Player2 province selection.",
+      "schedule": {
+        "intent": "Confirm visually identified Yuan Shu as Player1, then inspect Player2 province selection.",
+        "events": [
+          [
+            50,
+            "left",
+            6
+          ],
+          [
+            150,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          80,
+          250,
+          350
+        ],
+        "saves": [
+          380
+        ],
+        "snapshots": [
+          350
+        ],
+        "stop": 400
+      },
+      "schedule_sha256": "ebb374f86d3eeaef08fb119d05056fb1da06f4dffd7f1bf45eb9b4b381c3b089",
+      "script_sha256": "b317e9dd763ae965caac118f42efa610fcbf03cd0a1fb9e39681903d37fbd684",
+      "controller_source_lines": [
+        "emu.setInput(inp,0)"
+      ],
+      "native_input_state_sha256": "2d3e640fe9f9d78138af4a4753eb96dffca8f01e0ebc834282ad0483fa7f62c2",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_002_player1_confirm/state_000430.b64",
+          "native_bytes": 15392,
+          "native_sha256": "2d3e640fe9f9d78138af4a4753eb96dffca8f01e0ebc834282ad0483fa7f62c2",
+          "base64_file_sha256": "4fd0cbca5bf899323b32c116f532b686ca3ebf6eb7ae248c92da8d826bd1549e"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_003_player2_prompt/state_000380.b64",
+          "native_bytes": 16277,
+          "native_sha256": "104cbd426355a52ba408ffa23c1072667d136b10b857849e09067a096c05d7a6",
+          "base64_file_sha256": "80cdd1e2f206471311cc90a659833eecb167dccb7a0b601702df7d0e694fa072"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 8.24893419500222,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "9fea2ae4ffe9f9acc17083394813aa95eda74ebe7f16ef46521eec916b80b3b4",
+      "probe_receipt_sha256": "4e7822017053c8ecb30988643ac4b23310eba9c1628b949fe664b278b3c56725",
+      "products": [
+        {
+          "file": "f000080.png",
+          "bytes": 8775,
+          "sha256": "18cdd85aaeebff459ea9dd682f12418c12bedbc74b0cb56e4c6161807d08fe25",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000250.png",
+          "bytes": 9400,
+          "sha256": "ac06768f9ecb805d12dd423a7faed4ae523c91abd43329497f0ea7c6b062dd34",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 9400,
+          "sha256": "ac06768f9ecb805d12dd423a7faed4ae523c91abd43329497f0ea7c6b062dd34",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "4e95a73ab295c1b4125a098dee1c0adad8477801ab75ab323584813f2932018e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "d70c2cc4eadf0e21f7ec8833bad8616e893f798645c4aeef3ad46c25d3a91d70",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "3eb82c8bc997f9bb1e0afc023f3708f63d0d625f99a227b2ec8951a723244ea4",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000380.b64",
+          "bytes": 21705,
+          "sha256": "80cdd1e2f206471311cc90a659833eecb167dccb7a0b601702df7d0e694fa072",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_004_player2_candidate",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_004_player2_candidate",
+      "semantic_note": "Player2 port0 input had no selection effect; retained negative controller observation.",
+      "schedule": {
+        "intent": "Move Player2 map selection one Left, then inspect the named ruler confirmation without accepting it.",
+        "events": [
+          [
+            50,
+            "left",
+            6
+          ],
+          [
+            200,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          100,
+          350
+        ],
+        "saves": [
+          380
+        ],
+        "snapshots": [
+          350
+        ],
+        "stop": 400
+      },
+      "schedule_sha256": "15731cee6d9dc4e173d670892baea6f9e869abe0305f6db65ef07c3f88e5929a",
+      "script_sha256": "b32b90f91ac0c43aaeb0f69ef674d450a560ea7afde3ce18b4c96e6bee769c83",
+      "controller_source_lines": [
+        "emu.setInput(inp,0)"
+      ],
+      "native_input_state_sha256": "104cbd426355a52ba408ffa23c1072667d136b10b857849e09067a096c05d7a6",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_003_player2_prompt/state_000380.b64",
+          "native_bytes": 16277,
+          "native_sha256": "104cbd426355a52ba408ffa23c1072667d136b10b857849e09067a096c05d7a6",
+          "base64_file_sha256": "80cdd1e2f206471311cc90a659833eecb167dccb7a0b601702df7d0e694fa072"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_004_player2_candidate/state_000380.b64",
+          "native_bytes": 16277,
+          "native_sha256": "9b918823edcdb955617473cd985af5942178a3b629ea1835cf687ef6747822c3",
+          "base64_file_sha256": "bbbcfd49ae13b8a5d484e3bba1882f0d62235f81bea58bb983cacf23161317e0"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 13.494237269998848,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "99c32023670198d5f15e0e814cf146caef3ec231158f2987692236c857d6b273",
+      "probe_receipt_sha256": "54227c19f98dc33a7fdc5b1b46d405eb64a46bafff25c190965528377ed34c91",
+      "products": [
+        {
+          "file": "f000100.png",
+          "bytes": 9400,
+          "sha256": "149bdde4532d3d351f0374aa41e7e5be85111cb24bd6f159cd76aac78ce76163",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 9400,
+          "sha256": "149bdde4532d3d351f0374aa41e7e5be85111cb24bd6f159cd76aac78ce76163",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "d5efedfe0aa49c636316b4ee59e3babdc976b625d6dfbbd4e3c04bd4a0c1a401",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "d70c2cc4eadf0e21f7ec8833bad8616e893f798645c4aeef3ad46c25d3a91d70",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "3eb82c8bc997f9bb1e0afc023f3708f63d0d625f99a227b2ec8951a723244ea4",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000380.b64",
+          "bytes": 21705,
+          "sha256": "bbbcfd49ae13b8a5d484e3bba1882f0d62235f81bea58bb983cacf23161317e0",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_005_port1_probe",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_005_port1_probe",
+      "semantic_note": "Explicit local Lua port1 override established player2 controller identity.",
+      "schedule": {
+        "intent": "Bounded Player2 input-port diagnostic; only controller port1 receives Left/A, port0 released. Candidate ruler will not be accepted.",
+        "input_port_override": 1,
+        "events": [
+          [
+            50,
+            "left",
+            6
+          ],
+          [
+            150,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          100,
+          250
+        ],
+        "saves": [
+          280
+        ],
+        "snapshots": [
+          250
+        ],
+        "stop": 300
+      },
+      "schedule_sha256": "7bfc38c8d6ba7dd94be35f9045f00efabd3eb349cd7a1092cf22ce364d605826",
+      "script_sha256": "b5b60ddbf65778d99f3880b82965baaecb02fbc1b29c5c8c870e913d1f3257fa",
+      "controller_source_lines": [
+        "emu.setInput({},0)",
+        "emu.setInput(inp,1)"
+      ],
+      "native_input_state_sha256": "9b918823edcdb955617473cd985af5942178a3b629ea1835cf687ef6747822c3",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_004_player2_candidate/state_000380.b64",
+          "native_bytes": 16277,
+          "native_sha256": "9b918823edcdb955617473cd985af5942178a3b629ea1835cf687ef6747822c3",
+          "base64_file_sha256": "bbbcfd49ae13b8a5d484e3bba1882f0d62235f81bea58bb983cacf23161317e0"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_005_port1_probe/state_000280.b64",
+          "native_bytes": 15384,
+          "native_sha256": "5389f3fdaf22b2e560a762807a1c64305d2fdcb46b954d4141770c1a452d68c9",
+          "base64_file_sha256": "dd813e848e0c287a25e84bab3f88d73248af6fcf9e407d117268a83fe97530ad"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 4.46186846299679,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 250 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "8f47379107e3d87e4a976240e7d755558f0e2c5290b66d1c98bc6958af098381",
+      "probe_receipt_sha256": "890478c33f8b9a1e37b3f702bc728615199683d57090d3b96d2d5eaac5069c8c",
+      "products": [
+        {
+          "file": "f000100.png",
+          "bytes": 9403,
+          "sha256": "834bcfa4a3c7213a79a6f1f8ad0d035188d1167381486dc1b5f528d9892946f8",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000250.png",
+          "bytes": 8472,
+          "sha256": "8d6e21c50a2c2e3bb4e21433c9909b13b929117f62f0221fa641e941a59153d4",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000250_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "38b95d6830ddf2444c7aa183840c654f1fa155344bf1006d4c9c3897945be1df",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000250_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "5276b1234be5a28595cbeb85e5287b93f18c4a87c1665f64818ce9c0bfaa73f4",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000250_save0000.bin",
+          "bytes": 32768,
+          "sha256": "c637c0e11108249f5ab83f4c8f7d394c9ba892772647cadcaa65e63051b31019",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000280.b64",
+          "bytes": 20513,
+          "sha256": "dd813e848e0c287a25e84bab3f88d73248af6fcf9e407d117268a83fe97530ad",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_006_confirm_liubiao",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_006_confirm_liubiao",
+      "semantic_note": "Explicit local Lua port1 override confirmed LiuBiao; later cases use shared input_port.",
+      "schedule": {
+        "intent": "Confirm visually verified Liu Biao as Player2 using controller port1; inspect next global setup prompt.",
+        "input_port_override": 1,
+        "events": [
+          [
+            50,
+            "left",
+            6
+          ],
+          [
+            150,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          90,
+          280,
+          350
+        ],
+        "saves": [
+          380
+        ],
+        "snapshots": [
+          350
+        ],
+        "stop": 400
+      },
+      "schedule_sha256": "69e31fe3aff3b34332364746b969e619c5bcbf0ba9ec7d2f0eb5391a76af752a",
+      "script_sha256": "e846122e0b5dfb6d31e82f5f008b338f8a860356496b1b7a9f5c2d706c598475",
+      "controller_source_lines": [
+        "emu.setInput({},0)",
+        "emu.setInput(inp,1)"
+      ],
+      "native_input_state_sha256": "5389f3fdaf22b2e560a762807a1c64305d2fdcb46b954d4141770c1a452d68c9",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_005_port1_probe/state_000280.b64",
+          "native_bytes": 15384,
+          "native_sha256": "5389f3fdaf22b2e560a762807a1c64305d2fdcb46b954d4141770c1a452d68c9",
+          "base64_file_sha256": "dd813e848e0c287a25e84bab3f88d73248af6fcf9e407d117268a83fe97530ad"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_006_confirm_liubiao/state_000380.b64",
+          "native_bytes": 15156,
+          "native_sha256": "4b0de5f4518051c70128df8212568c982e6c6ac8cc5ac71a30e6cf19094ba5f9",
+          "base64_file_sha256": "8f0f8865a113963be00820e0657e8de08d0c8ee1e99b36c10762d69106f113e4"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 3.992778931999055,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "f39ac1a703043e5df98fb44e820635173ded593bdfadd3594f3e19ba843200c2",
+      "probe_receipt_sha256": "655541a1f20db929ee11b5b0ff37d2b9c86d63c8afe4e3754cb1941254631fd4",
+      "products": [
+        {
+          "file": "f000090.png",
+          "bytes": 9011,
+          "sha256": "42cce22eeb7cad6bab00f47840ebd8d0e0746880fb9ca6e3dacc758e61e321ec",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000280.png",
+          "bytes": 8207,
+          "sha256": "ed04ba5348c426a77ebf0e0a897880b2026ef7c606d0c6225033a4bb3a616410",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 8207,
+          "sha256": "ed04ba5348c426a77ebf0e0a897880b2026ef7c606d0c6225033a4bb3a616410",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "bfbd2ba092eaf004939ce737c93756f763551f866002cbdb09513b87c980cb49",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "b033f92893c008002d11fa2eb764da7f8ffdca91b48bbf0b8271ea84979b1bab",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "0fdc95956b048be952c05e4789a00bed3e412d759da0f5aac34a5d7512ba3db4",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000380.b64",
+          "bytes": 20209,
+          "sha256": "8f0f8865a113963be00820e0657e8de08d0c8ee1e99b36c10762d69106f113e4",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_007_level2_entry",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_007_level2_entry",
+      "semantic_note": "Enter and visually verify difficulty02 on global setup using controller0, without committing before inspection.",
+      "schedule": {
+        "intent": "Enter and visually verify difficulty02 on global setup using controller0, without committing before inspection.",
+        "input_port": 0,
+        "events": [
+          [
+            50,
+            "up",
+            6
+          ],
+          [
+            120,
+            "up",
+            6
+          ]
+        ],
+        "shots": [
+          80,
+          180
+        ],
+        "saves": [
+          200
+        ],
+        "snapshots": [
+          180
+        ],
+        "stop": 220
+      },
+      "schedule_sha256": "dc1040a5ca794776c6cc6a7528a59594391339fc41eeeaba561a23be12268bb5",
+      "script_sha256": "8a9729888a2d4425cc5d75d0317390185a8130c34940fbf75b44c5e367a7b0ec",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "4b0de5f4518051c70128df8212568c982e6c6ac8cc5ac71a30e6cf19094ba5f9",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_006_confirm_liubiao/state_000380.b64",
+          "native_bytes": 15156,
+          "native_sha256": "4b0de5f4518051c70128df8212568c982e6c6ac8cc5ac71a30e6cf19094ba5f9",
+          "base64_file_sha256": "8f0f8865a113963be00820e0657e8de08d0c8ee1e99b36c10762d69106f113e4"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_007_level2_entry/state_000200.b64",
+          "native_bytes": 15177,
+          "native_sha256": "80f57e4d93186fdcc1d873597c2bd0bbb6cb253b0fce1d92ab49e0acc018c805",
+          "base64_file_sha256": "fff09d4a0efc6f15797fb9d450d5e1c1c6c1d998efe1e72f504df7533aaaa11d"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 2.3802978530002292,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 180 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "07457ab7cd0467329368d52ef6cd1cf0e61ee1878cd1932a4f63e692eac87214",
+      "probe_receipt_sha256": "aa7814e66da4acf77d5f2c32a4b8532a0bf112ab48cb9779299956520fc9a058",
+      "products": [
+        {
+          "file": "f000080.png",
+          "bytes": 8211,
+          "sha256": "158e518c7c3d6df385966c709e2b621c48521bcc26ffff383db39e7d8f9f0e76",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000180.png",
+          "bytes": 8204,
+          "sha256": "18c96c23150b82a1b8e373a3cc1153d9156ad6844003c9cc44f5dc9f4cf4afc9",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000180_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "01a061b39b8dde495e6cccbbbc40c13ba4074bc62729e08c09af6963dabd5520",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000180_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "b033f92893c008002d11fa2eb764da7f8ffdca91b48bbf0b8271ea84979b1bab",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000180_save0000.bin",
+          "bytes": 32768,
+          "sha256": "0fdc95956b048be952c05e4789a00bed3e412d759da0f5aac34a5d7512ba3db4",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000200.b64",
+          "bytes": 20237,
+          "sha256": "fff09d4a0efc6f15797fb9d450d5e1c1c6c1d998efe1e72f504df7533aaaa11d",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_008_confirm_level2",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_008_confirm_level2",
+      "semantic_note": "Commit visually verified game difficulty2; inspect next setup prompt.",
+      "schedule": {
+        "intent": "Commit visually verified game difficulty2; inspect next setup prompt.",
+        "input_port": 0,
+        "events": [
+          [
+            50,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          200,
+          350
+        ],
+        "saves": [
+          380
+        ],
+        "snapshots": [
+          350
+        ],
+        "stop": 400
+      },
+      "schedule_sha256": "2f3e81cff75767de7d46a702f7134959c841abe73bde7917651d8eeba4f5cf49",
+      "script_sha256": "f4aa7c34f9f7a75352a8862c1c59bf113eac0cd641d7bc104466a0e1ce6252f6",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "80f57e4d93186fdcc1d873597c2bd0bbb6cb253b0fce1d92ab49e0acc018c805",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_007_level2_entry/state_000200.b64",
+          "native_bytes": 15177,
+          "native_sha256": "80f57e4d93186fdcc1d873597c2bd0bbb6cb253b0fce1d92ab49e0acc018c805",
+          "base64_file_sha256": "fff09d4a0efc6f15797fb9d450d5e1c1c6c1d998efe1e72f504df7533aaaa11d"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_008_confirm_level2/state_000380.b64",
+          "native_bytes": 15255,
+          "native_sha256": "bcc3681223711023e8e441cec128ad40fbcaf7fc849155af58727af50cb05ea7",
+          "base64_file_sha256": "88b575fcacbd06db6ea804ec00bdade1943cc62b458765ec9fab1f3be21c4323"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 4.100192465000873,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "dfc37bfc7dc84b1b292886bbbbf6ad7c4a64f4542426a0df18e9c7bd7d3666b6",
+      "probe_receipt_sha256": "c1ade38045c26641f0a250aa01f46bc6196d719e6fd886318c0ff29b89ed3e65",
+      "products": [
+        {
+          "file": "f000200.png",
+          "bytes": 8277,
+          "sha256": "215666c95b2db5dfa430ce1c1cedd5a38cfd0fc4f97ebcd337cb75e87b079e71",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 8277,
+          "sha256": "215666c95b2db5dfa430ce1c1cedd5a38cfd0fc4f97ebcd337cb75e87b079e71",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "4fb5654a0f44ce98d1919ed62d323d669e019d99072fd0bf14226d1997a94b90",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "0c88315d41075efb43a4098dc05230cca7242f3b05b1125e67d8f3abf0c99057",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "c46bff74a04a9ed1c79eeffca84c5ba0ab70ded8f2159017b42285ee3217bb1a",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000380.b64",
+          "bytes": 20341,
+          "sha256": "88b575fcacbd06db6ea804ec00bdade1943cc62b458765ec9fab1f3be21c4323",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_009_viewwars_no",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_009_viewwars_no",
+      "semantic_note": "Select No for the observed View other wars prompt, matching the prior BASE setup; inspect next prompt.",
+      "schedule": {
+        "intent": "Select No for the observed View other wars prompt, matching the prior BASE setup; inspect next prompt.",
+        "input_port": 0,
+        "events": [
+          [
+            50,
+            "right",
+            6
+          ],
+          [
+            150,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          90,
+          280,
+          350
+        ],
+        "saves": [
+          380
+        ],
+        "snapshots": [
+          350
+        ],
+        "stop": 400
+      },
+      "schedule_sha256": "715447bcaa4c7dc5a7a9add07e0411235c7c35fd3e9ddaf593353e60642ed297",
+      "script_sha256": "34b2ef578d292a5a72c7aff5804f8b981b283c4e0b01d5a8077a4e5e802c0e5f",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "bcc3681223711023e8e441cec128ad40fbcaf7fc849155af58727af50cb05ea7",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_008_confirm_level2/state_000380.b64",
+          "native_bytes": 15255,
+          "native_sha256": "bcc3681223711023e8e441cec128ad40fbcaf7fc849155af58727af50cb05ea7",
+          "base64_file_sha256": "88b575fcacbd06db6ea804ec00bdade1943cc62b458765ec9fab1f3be21c4323"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_009_viewwars_no/state_000380.b64",
+          "native_bytes": 15319,
+          "native_sha256": "0d01fdc69de3281c7ad6d5666eb8bc76cc183c563eee5c67dff6fa40ca803cb9",
+          "base64_file_sha256": "4097f10fb0764699d15f619c9e6890cdb8894f6cc9e88d6b94795019f28c35de"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 4.739778421000665,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "ba35e58dc4826d7dee1037af5b0672aa2e0f216cbaa6746cde08a941d96313fd",
+      "probe_receipt_sha256": "6acb6798d99f77ee068c09dca168fae47e0414650b38fe5496fcf12ecf80f21a",
+      "products": [
+        {
+          "file": "f000090.png",
+          "bytes": 8332,
+          "sha256": "edf1f8b9aab5c4f562d18d223c743ce9c1189733288d5679c1ca6b6787336010",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000280.png",
+          "bytes": 8363,
+          "sha256": "e3c1009adc3cbb9be6c7a4d07c9f605b99615d713726a6c993f4f8fe07fa7a09",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 8363,
+          "sha256": "e3c1009adc3cbb9be6c7a4d07c9f605b99615d713726a6c993f4f8fe07fa7a09",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "5db2c3608ed9ee70306059081ec53852fffeb5076255a090d9e655a9c1355d5d",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "6fbc8c5b8cfc0637ebe8551cdc14e457aa07a659f4d80b975488ee86bd9ef99d",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "0f24ee09ccc235de05cdee0069a14dc9604a8bbe471c30c69e2a05bd6523df0a",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000380.b64",
+          "bytes": 20429,
+          "sha256": "4097f10fb0764699d15f619c9e6890cdb8894f6cc9e88d6b94795019f28c35de",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_010_begin_campaign",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_010_begin_campaign",
+      "semantic_note": "Accept Everything OK after verified two humans and Level2; inspect first campaign screen before additional commands.",
+      "schedule": {
+        "intent": "Accept Everything OK after verified two humans and Level2; inspect first campaign screen before additional commands.",
+        "input_port": 0,
+        "events": [
+          [
+            50,
+            "left",
+            6
+          ],
+          [
+            150,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          90,
+          350,
+          800
+        ],
+        "saves": [
+          850
+        ],
+        "snapshots": [
+          800
+        ],
+        "stop": 900
+      },
+      "schedule_sha256": "90d641d58547502343d520c515284ae24ea5b50fe8ec144edc50d24c62d79df2",
+      "script_sha256": "e15402216ecd3e298d64233d15290ca68d64b8946b55d6ff53c135e4161bf9da",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "0d01fdc69de3281c7ad6d5666eb8bc76cc183c563eee5c67dff6fa40ca803cb9",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_009_viewwars_no/state_000380.b64",
+          "native_bytes": 15319,
+          "native_sha256": "0d01fdc69de3281c7ad6d5666eb8bc76cc183c563eee5c67dff6fa40ca803cb9",
+          "base64_file_sha256": "4097f10fb0764699d15f619c9e6890cdb8894f6cc9e88d6b94795019f28c35de"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_010_begin_campaign/state_000850.b64",
+          "native_bytes": 16734,
+          "native_sha256": "a0a68e4ac61bb4909abdbea11e6254294aa7b954617259e2892e43e1ccafc324",
+          "base64_file_sha256": "7dbebc019c67ce2dd58735dce60ec324f3444318bde22b0ab474cb786d09aacd"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 8.63067976900129,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 800 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "9aa9fb4c0ab83a411e123b9f1965bb307bf2dc9755f0686b8380ca481fdf2341",
+      "probe_receipt_sha256": "4813919406c6bb03e15d7d001349533fef19e2fe56be95ec12b75c19679fdb33",
+      "products": [
+        {
+          "file": "f000090.png",
+          "bytes": 8200,
+          "sha256": "96dcbadad48850f36a5ca6de23807d621098fae371d857958fba127fa5469dd8",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 8775,
+          "sha256": "b30f957e86b3a5ae16c92af248726918182589762a348c2e08368a92bfef5a8d",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000800.png",
+          "bytes": 9945,
+          "sha256": "f49662c8591eb581c831485ae6d30ada8e9bf4352d915937ba6145acff67116f",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000800_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "e373f574836909ecdba29ff0a3fce06b2086ecd535d59b63e963045d1ed17185",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000800_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "7a16a909bb4a4f799df33bebdada5092eb7e22d572d64b82590289e02e3096b6",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000800_save0000.bin",
+          "bytes": 32768,
+          "sha256": "507203fdb5c1efb8d087ae0e33cd3ff855cfd0b1c8097b955462256738f3b164",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000850.b64",
+          "bytes": 22313,
+          "sha256": "7dbebc019c67ce2dd58735dce60ec324f3444318bde22b0ab474cb786d09aacd",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_011_initial_rotation",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_011_initial_rotation",
+      "semantic_note": "Allow initial January189 computer ruler rotation to proceed with no controller input; inspect which human turn appears.",
+      "schedule": {
+        "intent": "Allow initial January189 computer ruler rotation to proceed with no controller input; inspect which human turn appears.",
+        "input_port": 0,
+        "events": [],
+        "shots": [
+          500,
+          1000,
+          1800
+        ],
+        "saves": [
+          1880
+        ],
+        "snapshots": [
+          1800
+        ],
+        "stop": 1900
+      },
+      "schedule_sha256": "4d23a88254a816fe0cf815852dd62961148298f81df86067946f354675214574",
+      "script_sha256": "e3450e7bf10557684a3f6687cf8d933a8a45aff693196af9d850c9c23e08999d",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "a0a68e4ac61bb4909abdbea11e6254294aa7b954617259e2892e43e1ccafc324",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_010_begin_campaign/state_000850.b64",
+          "native_bytes": 16734,
+          "native_sha256": "a0a68e4ac61bb4909abdbea11e6254294aa7b954617259e2892e43e1ccafc324",
+          "base64_file_sha256": "7dbebc019c67ce2dd58735dce60ec324f3444318bde22b0ab474cb786d09aacd"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_011_initial_rotation/state_001880.b64",
+          "native_bytes": 15554,
+          "native_sha256": "c86468e9534f74194898ed6e0bdb8bfbe35ccad6f5b5b0106bef007b1fc83b7a",
+          "base64_file_sha256": "ae7f5b92326292a36a93a0ae0f8da290c121776a130a199ef6041f8d8a8885c6"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 30.476716141998622,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 1800 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "476ba5e99f35c7387b50e8b27ed9254e33b739f0d597b03597cf5bab3b1026da",
+      "probe_receipt_sha256": "0837213cb27c4b859905cf9830751e54bf37e620d6390574ebe787281f0cf40e",
+      "products": [
+        {
+          "file": "f000500.png",
+          "bytes": 9953,
+          "sha256": "78d3ecb2ffcef620a331b341b0bf0cfe5ca105326a712a7df1e54222de38ac1e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001000.png",
+          "bytes": 9824,
+          "sha256": "5715385193198193ad400b8f982969d67455f2e4238fe6f67b734bdce490bcbf",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001800.png",
+          "bytes": 7817,
+          "sha256": "329764d33e1c037fb476cc2cea9cc47616f96445e51777b6a8d508b42531fd45",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001800_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "9ab7b360c68619e5c482d64b75e0eb0a3e79ebc1a4a107f3144cfa8a1dcd0d00",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001800_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "7fc6730c83e8651a0607997df4fa8e4e5aa4bf09336667dfed88c6a4dad4ff51",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001800_save0000.bin",
+          "bytes": 32768,
+          "sha256": "fc754e7b9d4b269573dcd28dac1c3b919e1e76a471369634f1deab40af753d50",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_001880.b64",
+          "bytes": 20741,
+          "sha256": "ae7f5b92326292a36a93a0ae0f8da290c121776a130a199ef6041f8d8a8885c6",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_012_letter_no",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_012_letter_no",
+      "semantic_note": "Decline reading an unsolicited secret-letter prompt during initial AI rotation, as in prior BASE right/A path; preserve the actual event and inspect next screen.",
+      "schedule": {
+        "intent": "Decline reading an unsolicited secret-letter prompt during initial AI rotation, as in prior BASE right/A path; preserve the actual event and inspect next screen.",
+        "input_port": 0,
+        "events": [
+          [
+            50,
+            "right",
+            6
+          ],
+          [
+            150,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          90,
+          280,
+          350
+        ],
+        "saves": [
+          380
+        ],
+        "snapshots": [
+          350
+        ],
+        "stop": 400
+      },
+      "schedule_sha256": "75b51abd3aaf5a4a743c610725de568161440251244a38e56dfd259039c9ea57",
+      "script_sha256": "cae32d4b8f25e1df7a26bd8bfa504b53ac7d637c5a1eacc3bd254b698da070b2",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "c86468e9534f74194898ed6e0bdb8bfbe35ccad6f5b5b0106bef007b1fc83b7a",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_011_initial_rotation/state_001880.b64",
+          "native_bytes": 15554,
+          "native_sha256": "c86468e9534f74194898ed6e0bdb8bfbe35ccad6f5b5b0106bef007b1fc83b7a",
+          "base64_file_sha256": "ae7f5b92326292a36a93a0ae0f8da290c121776a130a199ef6041f8d8a8885c6"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_012_letter_no/state_000380.b64",
+          "native_bytes": 17669,
+          "native_sha256": "b8610c656b0df003215348f65f34a4068e13751ca3b9b3e5f7e725c572a71f84",
+          "base64_file_sha256": "f85e52275e3da0c00b117556cd73cf45787731bea8d6006a7dacb69edacf0489"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 4.014491575999273,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "6b4ae83a1dc3ad259f0ce96fd68444fe9382a3285b92f39a31fb853cca870f44",
+      "probe_receipt_sha256": "38c08efff04e81516d5119270147d6de015c9cc7313a989a6df778c356626480",
+      "products": [
+        {
+          "file": "f000090.png",
+          "bytes": 10286,
+          "sha256": "df7ef54eeda252116465812c47c5618911ec82cc6513f30fae623023f1ff737f",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000280.png",
+          "bytes": 10272,
+          "sha256": "c8b3083d24446c3473030a7455f80ee3691ee4f426ebf419d54d3de130f41602",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 10267,
+          "sha256": "b1403c8482a00d9782627c780ad0ef5312d1bb2b397d0eb95c67674cc8da0191",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "98ba28ada0412986a917328f81656f4cb73ee7ae2becac5cf34ac99a5778b952",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "29144111f6e8f5fbc3232be4f17da94b28867a1d65fe4a517e1ec6ca673b5140",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "7c2d1b18a62ac034b4222c9b3dbeb22099c7321286d95ad52f251bc8ed62b22b",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000380.b64",
+          "bytes": 23561,
+          "sha256": "f85e52275e3da0c00b117556cd73cf45787731bea8d6006a7dacb69edacf0489",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_013_ack_message",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_013_ack_message",
+      "semantic_note": "Acknowledge the post-letter message with one A pulse, then wait for a stable human command screen.",
+      "schedule": {
+        "intent": "Acknowledge the post-letter message with one A pulse, then wait for a stable human command screen.",
+        "input_port": 0,
+        "events": [
+          [
+            50,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          250,
+          650
+        ],
+        "saves": [
+          700
+        ],
+        "snapshots": [
+          650
+        ],
+        "stop": 720
+      },
+      "schedule_sha256": "a58b2f93b63909cea5e5c33245a3bc86aa45dba42f99d4f65ef8755fbeabdaef",
+      "script_sha256": "b63fb6bd8154f9111ef8d32c5befacd7c8028f624cbc45ea4dd9a6d479df9380",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "b8610c656b0df003215348f65f34a4068e13751ca3b9b3e5f7e725c572a71f84",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_012_letter_no/state_000380.b64",
+          "native_bytes": 17669,
+          "native_sha256": "b8610c656b0df003215348f65f34a4068e13751ca3b9b3e5f7e725c572a71f84",
+          "base64_file_sha256": "f85e52275e3da0c00b117556cd73cf45787731bea8d6006a7dacb69edacf0489"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_013_ack_message/state_000700.b64",
+          "native_bytes": 13620,
+          "native_sha256": "7ead00803eb6412502b9b9cd051f061dec82233e2382745433a84f4351680c45",
+          "base64_file_sha256": "801a8459fe671e9a3c104eba001057d9ca0985e4d2ff7c97e5d485c8b23b76b6"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 11.914005953000014,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 650 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "1e27e72374df5fe92f86ba9146d361c21a86efbba3364b51144db5f46c88af23",
+      "probe_receipt_sha256": "f2a2589d0c8febaff42c28fe51c3820dd05b14a15e33f76fc1fb1b1fc9aff5e0",
+      "products": [
+        {
+          "file": "f000250.png",
+          "bytes": 5943,
+          "sha256": "f2b6d5567aecf527fb36afbac6bee2703e9d83859c12da703b4d56e57e5b736b",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000650.png",
+          "bytes": 5943,
+          "sha256": "f2b6d5567aecf527fb36afbac6bee2703e9d83859c12da703b4d56e57e5b736b",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000650_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "7711027325f0fca06642ef3b70b8acda39fdecf87919e3db1a1f1775ed0f4013",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000650_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "efa690aa607041cca14f0db7333135909c5eea72b1dea5a47c025350b5cb3425",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000650_save0000.bin",
+          "bytes": 32768,
+          "sha256": "a407f3a48d56b31c86744d7ab4af3f8eafc37cfa162cc2a938fbc8799377792d",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000700.b64",
+          "bytes": 18161,
+          "sha256": "801a8459fe671e9a3c104eba001057d9ca0985e4d2ff7c97e5d485c8b23b76b6",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_014_army_menu",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_014_army_menu",
+      "semantic_note": "From verified Yuan Shu Province19 command prompt, open Army tab using prior BASE/PRE route.",
+      "schedule": {
+        "intent": "From verified Yuan Shu Province19 command prompt, open Army tab using prior BASE/PRE route.",
+        "input_port": 0,
+        "events": [
+          [
+            50,
+            "right",
+            6
+          ],
+          [
+            150,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          100,
+          280,
+          350
+        ],
+        "saves": [
+          380
+        ],
+        "snapshots": [
+          350
+        ],
+        "stop": 400
+      },
+      "schedule_sha256": "1eddffd93a04e9d830425a55270ec893f3ad3bfc13a8989fd64c8d378a7077c5",
+      "script_sha256": "6a7c31905e12b2d7e7f57143a850fe137e838469a0e0692b78e1200f5feca2cb",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "7ead00803eb6412502b9b9cd051f061dec82233e2382745433a84f4351680c45",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_013_ack_message/state_000700.b64",
+          "native_bytes": 13620,
+          "native_sha256": "7ead00803eb6412502b9b9cd051f061dec82233e2382745433a84f4351680c45",
+          "base64_file_sha256": "801a8459fe671e9a3c104eba001057d9ca0985e4d2ff7c97e5d485c8b23b76b6"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_014_army_menu/state_000380.b64",
+          "native_bytes": 13141,
+          "native_sha256": "379801d2daded92b049f033ea03903f52b1a02440cb83c256a1e3b4bb6cfa8e1",
+          "base64_file_sha256": "923967e2b57848a515689a1569f6487de0fa1bb6ba3f410978d5ba3be736d9fe"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 8.816245219000848,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "27dbdbb1b82c7001c1318c34f7a889e414273817761701247eccf6d8017c5595",
+      "probe_receipt_sha256": "b0d637e55f0f68af81ad58adfa834d59dfd1dd14c90b4b25115132ce69ae4a03",
+      "products": [
+        {
+          "file": "f000100.png",
+          "bytes": 5947,
+          "sha256": "939ee97127b5e959ba347ec2799a8e83eff962c6f43ae32271f6e8eb561c01d5",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000280.png",
+          "bytes": 5332,
+          "sha256": "15be5abd6839e1519a97a3d93478ae4db3068ee11d591b73fdcd3fd4251670aa",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 5332,
+          "sha256": "15be5abd6839e1519a97a3d93478ae4db3068ee11d591b73fdcd3fd4251670aa",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "b66c7c1fbbab803a2cfa014869b98c181ab038d8d0a4dc3d7d52fca94e1c79d4",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "47e8513895b045f7d9dcb1e15c3c839aa47ecefc6de1383a4864fb7f59c7ad58",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "97d62e961dacb9461b13a9c524bbe77cd570d50b77151632e1e20b12f454a85a",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000380.b64",
+          "bytes": 17525,
+          "sha256": "923967e2b57848a515689a1569f6487de0fa1bb6ba3f410978d5ba3be736d9fe",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_015_war_destination",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_015_war_destination",
+      "semantic_note": "Destination input was too early during transition; no final general selector reached.",
+      "schedule": {
+        "intent": "Select Army/War, move destination cursor left to Province20 using the previously observed original capture route, inspect resulting invasion selection screen.",
+        "input_port": 0,
+        "events": [
+          [
+            50,
+            "down",
+            6
+          ],
+          [
+            130,
+            "down",
+            6
+          ],
+          [
+            210,
+            "down",
+            6
+          ],
+          [
+            350,
+            "a",
+            6
+          ],
+          [
+            500,
+            "left",
+            24
+          ],
+          [
+            700,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          300,
+          450,
+          600,
+          850
+        ],
+        "saves": [
+          900
+        ],
+        "snapshots": [
+          850
+        ],
+        "stop": 920
+      },
+      "schedule_sha256": "7f69d16e896be8397005afd5b3715d675c78bb540d29d2e63df28cb6cd0e8ef6",
+      "script_sha256": "b9e3c9c2d19507da40c789694963f1363ae7a997efa045b6f0c6724df9738557",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "379801d2daded92b049f033ea03903f52b1a02440cb83c256a1e3b4bb6cfa8e1",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_014_army_menu/state_000380.b64",
+          "native_bytes": 13141,
+          "native_sha256": "379801d2daded92b049f033ea03903f52b1a02440cb83c256a1e3b4bb6cfa8e1",
+          "base64_file_sha256": "923967e2b57848a515689a1569f6487de0fa1bb6ba3f410978d5ba3be736d9fe"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_015_war_destination/state_000900.b64",
+          "native_bytes": 16599,
+          "native_sha256": "4f4ca1d36950af5f083f71b736706212166fa86bacf6a08d18ff83c725af3d32",
+          "base64_file_sha256": "6fb2d89821e2a7322670a97fbfa682fb49aa1b71861dda584978146b4b03328d"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 9.005550652000238,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 850 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "079a51994c8294940b1fe9801365a3ae1c9296f5a16c9136d067dd83602acf73",
+      "probe_receipt_sha256": "84b588000a5a36a72575221a95873270c072eb3457e9def40d6e304560659d1c",
+      "products": [
+        {
+          "file": "f000300.png",
+          "bytes": 5333,
+          "sha256": "4b8e827841541617efa72e2497a68985091ce5583af14358b349168c54614546",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000450.png",
+          "bytes": 258,
+          "sha256": "788d6984576bb13490a00df106ec8ec4a1c2f966e544debd99f7ffce8d65c029",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000600.png",
+          "bytes": 8877,
+          "sha256": "86fbfd5ca153d543301d02cc053ad624172e748cd5f71057def840ea9ffd5ad8",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000850.png",
+          "bytes": 8877,
+          "sha256": "86fbfd5ca153d543301d02cc053ad624172e748cd5f71057def840ea9ffd5ad8",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000850_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "c32ee670f44ea8f7a6518cc751e2e57291d040e34c91013284551e88d328cd26",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000850_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "98b9c9f735d929f1e0a54e8186d471b1f9bf3318e4b9655909034af745704133",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000850_save0000.bin",
+          "bytes": 32768,
+          "sha256": "ec96b9bcff457c5f7cad89b9465d2f9debfd6798f9c7ccd68267056afbe86269",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000900.b64",
+          "bytes": 22133,
+          "sha256": "6fb2d89821e2a7322670a97fbfa682fb49aa1b71861dda584978146b4b03328d",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_016_attacker_selector",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_016_attacker_selector",
+      "semantic_note": "Idle observation established that Invade where prompt still awaited destination input.",
+      "schedule": {
+        "intent": "Inspect attacker general selection after confirming Province20 invasion destination; no controller input.",
+        "input_port": 0,
+        "events": [],
+        "shots": [
+          100,
+          300
+        ],
+        "saves": [
+          380
+        ],
+        "snapshots": [
+          300
+        ],
+        "stop": 400
+      },
+      "schedule_sha256": "2314675800de3761bd50f3a7dadddc7e7d79726a62f71a24c8951db7c102ee6f",
+      "script_sha256": "881d5d3521b71ebd50abae94996215619845283ca5ef81e65ceb25d9862410e6",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "4f4ca1d36950af5f083f71b736706212166fa86bacf6a08d18ff83c725af3d32",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_015_war_destination/state_000900.b64",
+          "native_bytes": 16599,
+          "native_sha256": "4f4ca1d36950af5f083f71b736706212166fa86bacf6a08d18ff83c725af3d32",
+          "base64_file_sha256": "6fb2d89821e2a7322670a97fbfa682fb49aa1b71861dda584978146b4b03328d"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_016_attacker_selector/state_000380.b64",
+          "native_bytes": 16608,
+          "native_sha256": "c3aff649c7e40a89383f7392f7b9d11db88b58eaec85a0fe2f49a19e4872dcdb",
+          "base64_file_sha256": "ce4ea8f9d6a801c7c8b7bba7746a2333930a902f5dc0775e56d4e0992544c0c1"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 4.088796394000383,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 300 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "1cd99c69fd8967ccd44a7290d214f3e2dc7dcde3372ee03bff79040f2400c6ed",
+      "probe_receipt_sha256": "be460510831fa405b909cd54a20abf15a5e0d41b3bb0014da9387908e68fcc96",
+      "products": [
+        {
+          "file": "f000100.png",
+          "bytes": 8877,
+          "sha256": "86fbfd5ca153d543301d02cc053ad624172e748cd5f71057def840ea9ffd5ad8",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000300.png",
+          "bytes": 8877,
+          "sha256": "86fbfd5ca153d543301d02cc053ad624172e748cd5f71057def840ea9ffd5ad8",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000300_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "ec93d932c3b79ee06773ebe8c28199fc6bf4e98a750b4d0210ee8bc76f0a80f9",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000300_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "98b9c9f735d929f1e0a54e8186d471b1f9bf3318e4b9655909034af745704133",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000300_save0000.bin",
+          "bytes": 32768,
+          "sha256": "ec96b9bcff457c5f7cad89b9465d2f9debfd6798f9c7ccd68267056afbe86269",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000380.b64",
+          "bytes": 22145,
+          "sha256": "ce4ea8f9d6a801c7c8b7bba7746a2333930a902f5dc0775e56d4e0992544c0c1",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_017_confirm_destination",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_017_confirm_destination",
+      "semantic_note": "Apply destination movement only after the Invade where prompt has finished its transition; left24 then A.",
+      "schedule": {
+        "intent": "Apply destination movement only after the Invade where prompt has finished its transition; left24 then A.",
+        "input_port": 0,
+        "events": [
+          [
+            100,
+            "left",
+            24
+          ],
+          [
+            400,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          250,
+          550,
+          900
+        ],
+        "saves": [
+          950
+        ],
+        "snapshots": [
+          900
+        ],
+        "stop": 970
+      },
+      "schedule_sha256": "62e2e34173c6c0eb6951a08a3d3f5c75de751a0953374e4905788f90046480d2",
+      "script_sha256": "3b3d04ebae3f92aa78eac80c2b7d0509804f99f55159d74588d4f220681aa890",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "c3aff649c7e40a89383f7392f7b9d11db88b58eaec85a0fe2f49a19e4872dcdb",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_016_attacker_selector/state_000380.b64",
+          "native_bytes": 16608,
+          "native_sha256": "c3aff649c7e40a89383f7392f7b9d11db88b58eaec85a0fe2f49a19e4872dcdb",
+          "base64_file_sha256": "ce4ea8f9d6a801c7c8b7bba7746a2333930a902f5dc0775e56d4e0992544c0c1"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_017_confirm_destination/state_000950.b64",
+          "native_bytes": 11132,
+          "native_sha256": "53b093c2bd5535ffc0085074f6a38c2f2b47d78ef1b30565adb883e610b6188e",
+          "base64_file_sha256": "97acb7edfded05089fc8eefe0e916a8d4190d654ef175a99f3783516db1e48cf"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 10.69060006699874,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 900 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "fb21ce38858ab0e693012e099763c63a2461f11e92fe81cafdb3962ee49484c6",
+      "probe_receipt_sha256": "b2f66b0dd880e5d253c6023911fbed9e1cd8f81d7d2145ad4f8476e480ae68df",
+      "products": [
+        {
+          "file": "f000250.png",
+          "bytes": 8868,
+          "sha256": "929ace5e08d3dfa37d7e394cbb03bc2b64dedcadeb22506f0072d542e20bf133",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000550.png",
+          "bytes": 258,
+          "sha256": "788d6984576bb13490a00df106ec8ec4a1c2f966e544debd99f7ffce8d65c029",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000900.png",
+          "bytes": 2469,
+          "sha256": "b7afcd895c6972b38576281c24a487f30e7128ee572589fddfe5a255c48c8ed1",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000900_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "131e4e148abfef471e97e2f0e5490e0b9047aa1ef3f5c7ef3f20dadefa97196b",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000900_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "98cafd5c8cb33633d809127e0458793c38166bc4d286e4869a7e1684ddb1c175",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000900_save0000.bin",
+          "bytes": 32768,
+          "sha256": "4c1e390ebb393b053bcaa06295d3e65e16fbbc56d6a0bb9d511b6f7ade44c241",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000950.b64",
+          "bytes": 14845,
+          "sha256": "97acb7edfded05089fc8eefe0e916a8d4190d654ef175a99f3783516db1e48cf",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_018_three_attackers",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_018_three_attackers",
+      "semantic_note": "Select Yuan Shu, Yuan Yin, and Ji Ling (displayed100+10+10), then End; inspect selection and gold screen.",
+      "schedule": {
+        "intent": "Select Yuan Shu, Yuan Yin, and Ji Ling (displayed100+10+10), then End; inspect selection and gold screen.",
+        "input_port": 0,
+        "events": [
+          [
+            50,
+            "a",
+            6
+          ],
+          [
+            150,
+            "down",
+            6
+          ],
+          [
+            250,
+            "a",
+            6
+          ],
+          [
+            350,
+            "down",
+            6
+          ],
+          [
+            450,
+            "a",
+            6
+          ],
+          [
+            600,
+            "right",
+            6
+          ],
+          [
+            700,
+            "down",
+            6
+          ],
+          [
+            800,
+            "down",
+            6
+          ],
+          [
+            950,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          100,
+          300,
+          500,
+          900,
+          1350
+        ],
+        "saves": [
+          1400
+        ],
+        "snapshots": [
+          500,
+          1350
+        ],
+        "stop": 1420
+      },
+      "schedule_sha256": "0f77c15ecbe92731300ceee0cd46027abbbe796f5251f011369f6a235572dd99",
+      "script_sha256": "15fc09741dce5ac59d8e78c398330a9efb8c0c9b2abc6298a5d5f0eae496054a",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "53b093c2bd5535ffc0085074f6a38c2f2b47d78ef1b30565adb883e610b6188e",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_017_confirm_destination/state_000950.b64",
+          "native_bytes": 11132,
+          "native_sha256": "53b093c2bd5535ffc0085074f6a38c2f2b47d78ef1b30565adb883e610b6188e",
+          "base64_file_sha256": "97acb7edfded05089fc8eefe0e916a8d4190d654ef175a99f3783516db1e48cf"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_018_three_attackers/state_001400.b64",
+          "native_bytes": 15254,
+          "native_sha256": "ffc01e5321d5febbedaeb03b3daa523207ee6d8cc7f3775723b19e71c1a86bb0",
+          "base64_file_sha256": "11a6cd5f80f2a868342be084f8fa791699cc7b72d3b8fd10b10c0ec4731fd5b3"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 13.697644186002435,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 500 8192 50 1 3",
+        "BANK 1350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "4ddbb4ae06fa14f2592f271f898de826f4d0e3306332616bfb77ccabba2d1c08",
+      "probe_receipt_sha256": "2ea4f3979b4c2f23e25255fa5796098a0847fd47e0b76e464ad6af363c876850",
+      "products": [
+        {
+          "file": "f000100.png",
+          "bytes": 2506,
+          "sha256": "f2ae132a7b351d290c2cb6df944772244b0bc52a64c39b2ef18a34efc99fa5e3",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000300.png",
+          "bytes": 2490,
+          "sha256": "43bd69fd711812cefc8f4f693c5776d782c28cc9f26baf7c8d82af9f45adf067",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000500.png",
+          "bytes": 2501,
+          "sha256": "044f63fb8450032954017b3a35297bdfdfe609ef014b88eea0c54fc7976a3b93",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000500_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "72a7e3140773a09d26af8d1f7137b75dabb05cbfc4a44871942794fcd238eb02",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000500_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "3a22cc313342127204408efb44493788bed5dc27f08c61070129f8d2b1f1cc66",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000500_save0000.bin",
+          "bytes": 32768,
+          "sha256": "695539412083470d6cb7e857fa9ab88f3fb11a84a0b873c1085c6e7d0245358a",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000900.png",
+          "bytes": 2495,
+          "sha256": "46465617ffe9637af5c1698bb09a55218f46dd1b5b46b8573394919acc801cf4",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001350.png",
+          "bytes": 7325,
+          "sha256": "7b29c68c79b03926a2aa6f0bed4e17d551849e9e8730809b709548be7229ab5b",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "ac0f4bb5df88d32a24b95c713dd59f2bfead38c9389777784519a15b49b8ef0e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "56ee49006ea5889588256ffe79635cc30496b6a7e7e1a989051c538cfbc3fbfd",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "b9caf0cd79e86af9c0cfb5b8fd93e7b5e4931ce1a1608d233edbe88f2b77ce93",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_001400.b64",
+          "bytes": 20341,
+          "sha256": "11a6cd5f80f2a868342be084f8fa791699cc7b72d3b8fd10b10c0ec4731fd5b3",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_019_supplies",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_019_supplies",
+      "semantic_note": "Accept0gold, enter300rice using three up presses, and inspect invasion confirmation before committing.",
+      "schedule": {
+        "intent": "Accept0gold, enter300rice using three up presses, and inspect invasion confirmation before committing.",
+        "input_port": 0,
+        "events": [
+          [
+            50,
+            "a",
+            6
+          ],
+          [
+            450,
+            "up",
+            6
+          ],
+          [
+            550,
+            "up",
+            6
+          ],
+          [
+            650,
+            "up",
+            6
+          ],
+          [
+            850,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          300,
+          750,
+          1100
+        ],
+        "saves": [
+          1150
+        ],
+        "snapshots": [
+          1100
+        ],
+        "stop": 1170
+      },
+      "schedule_sha256": "f5905c021966dd409e663620b4343545ddcc15ab97939f18cceaf8e675fb6f8f",
+      "script_sha256": "624ffecd074904fba50daefc5f18ff77691fa4a3b36b0c0305234b9cf358333d",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "ffc01e5321d5febbedaeb03b3daa523207ee6d8cc7f3775723b19e71c1a86bb0",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_018_three_attackers/state_001400.b64",
+          "native_bytes": 15254,
+          "native_sha256": "ffc01e5321d5febbedaeb03b3daa523207ee6d8cc7f3775723b19e71c1a86bb0",
+          "base64_file_sha256": "11a6cd5f80f2a868342be084f8fa791699cc7b72d3b8fd10b10c0ec4731fd5b3"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_019_supplies/state_001150.b64",
+          "native_bytes": 15197,
+          "native_sha256": "4ee616ae09942eb2ff06403ea7e7cf5a4a20a0502c0d9e23b336de1273eec688",
+          "base64_file_sha256": "3730bf1e5d1ebcb37f92e139b8afb455a6a88bde4f2cfeb8141b2650ffb603e8"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 18.446910624999873,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 1100 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "6e9d215df63b6ccde099239e121af34c15d978c1cd02c0c3e2cf23fb4dff8abe",
+      "probe_receipt_sha256": "6f52247cb236b2f233099fd00d3065b8c37e9f4575b465a0b5a23f58ca265fdf",
+      "products": [
+        {
+          "file": "f000300.png",
+          "bytes": 7513,
+          "sha256": "4d7c51016ea263e0b7bc7a5fb320006f238190df553f560b26267cb3edc435a1",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000750.png",
+          "bytes": 7511,
+          "sha256": "10d5a8a1a4681529776b25fb6f560e03593e60f184623417e329985049e59d58",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001100.png",
+          "bytes": 7189,
+          "sha256": "b3151e2225b58cf30b15bab0a6e64eb2640fde1d254d26c1e9eb8119d4825c61",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001100_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "dbbc3304baee60b0595ebd3e59bcfb71de9f5dcc2bc5785d499bea2fc2599ac9",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001100_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "260daf91ebd731611d69d720e123cfa4a13b8344dbb6705c19031b89b6dd2c2a",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001100_save0000.bin",
+          "bytes": 32768,
+          "sha256": "0cbccbd404893c32bc7a80b197d6a1f8967b09e5fa87e0b55334a36d26def491",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_001150.b64",
+          "bytes": 20265,
+          "sha256": "3730bf1e5d1ebcb37f92e139b8afb455a6a88bde4f2cfeb8141b2650ffb603e8",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_020_commit_invasion",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_020_commit_invasion",
+      "semantic_note": "Commit Yuan Shu invasion with three generals,120 displayed soldiers,0gold,300rice; inspect human defender response.",
+      "schedule": {
+        "intent": "Commit Yuan Shu invasion with three generals,120 displayed soldiers,0gold,300rice; inspect human defender response.",
+        "input_port": 0,
+        "events": [
+          [
+            50,
+            "left",
+            6
+          ],
+          [
+            200,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          150,
+          650,
+          1200
+        ],
+        "saves": [
+          1250
+        ],
+        "snapshots": [
+          1200
+        ],
+        "stop": 1270
+      },
+      "schedule_sha256": "b68515332250c25bfcb8350f6eecd5142f1bae654ef405182031f67e0f6459e5",
+      "script_sha256": "37d6f83d3757ff636fbd51ad4f8bd5c15b3aba6624ccf86180b07c12f2baab3a",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "4ee616ae09942eb2ff06403ea7e7cf5a4a20a0502c0d9e23b336de1273eec688",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_019_supplies/state_001150.b64",
+          "native_bytes": 15197,
+          "native_sha256": "4ee616ae09942eb2ff06403ea7e7cf5a4a20a0502c0d9e23b336de1273eec688",
+          "base64_file_sha256": "3730bf1e5d1ebcb37f92e139b8afb455a6a88bde4f2cfeb8141b2650ffb603e8"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_020_commit_invasion/state_001250.b64",
+          "native_bytes": 11335,
+          "native_sha256": "67960b8ff0686401e9f017f019c4fd397affb4eb134f0465544f30459856dc03",
+          "base64_file_sha256": "f79e9600cc391e945c49dd2c2a9fe81eebda4a07037c4bd55cb9fa3b546c4cb4"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 23.142403870002454,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 1200 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "3410c45d3e7c6e2eebf800c5973e4ccc5d076c073c9d0e27c22a6abc5d317e3c",
+      "probe_receipt_sha256": "ab11c4ed98e5804656da0778dfe4dd91cb8689c07f617cb4bb93e118c1e5f4da",
+      "products": [
+        {
+          "file": "f000150.png",
+          "bytes": 8905,
+          "sha256": "5f8a85d11e3e9dc6bbda9e05e526377c45361ec8d29c2a9ec002dca617ae174f",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000650.png",
+          "bytes": 2474,
+          "sha256": "d93680dfec60a70f174293a1c9959e050181d97246374f43f9c17ea954dd744e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001200.png",
+          "bytes": 2474,
+          "sha256": "d93680dfec60a70f174293a1c9959e050181d97246374f43f9c17ea954dd744e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001200_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "fd6cc263a21f38824dbc7882940452fa30f65515ca0e83828a88569ba10807ee",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001200_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "a87a9f13613332ea859de3643376bb292356568035a1c9c81e6946c9c7be1ae6",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001200_save0000.bin",
+          "bytes": 32768,
+          "sha256": "9dcc200e2893bf57747d637fbf6bf7600021398895c7be48a9d46f1617b02a1d",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_001250.b64",
+          "bytes": 15117,
+          "sha256": "f79e9600cc391e945c49dd2c2a9fe81eebda4a07037c4bd55cb9fa3b546c4cb4",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_021_p19_governor",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_021_p19_governor",
+      "semantic_note": "Assign default remaining Yu She as Province19 governor after ruler Yuan Shu joins invasion, then inspect defender response.",
+      "schedule": {
+        "intent": "Assign default remaining Yu She as Province19 governor after ruler Yuan Shu joins invasion, then inspect defender response.",
+        "input_port": 0,
+        "events": [
+          [
+            100,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          400,
+          900
+        ],
+        "saves": [
+          950
+        ],
+        "snapshots": [
+          900
+        ],
+        "stop": 970
+      },
+      "schedule_sha256": "e2ee3e10b11cdde260f28d106244f137894ddc0fb7c22e4c0735d77a0365c205",
+      "script_sha256": "5403f232ae7e6dd1ec30afd56f66232d246dabe7829385270a0e86dacd947b84",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "67960b8ff0686401e9f017f019c4fd397affb4eb134f0465544f30459856dc03",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_020_commit_invasion/state_001250.b64",
+          "native_bytes": 11335,
+          "native_sha256": "67960b8ff0686401e9f017f019c4fd397affb4eb134f0465544f30459856dc03",
+          "base64_file_sha256": "f79e9600cc391e945c49dd2c2a9fe81eebda4a07037c4bd55cb9fa3b546c4cb4"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_021_p19_governor/state_000950.b64",
+          "native_bytes": 16174,
+          "native_sha256": "0f9d37265aebfd2b003e8009da6d8c13b08c0a6d1c6a0ffff3daf094e6262fd4",
+          "base64_file_sha256": "a9c8efcbc5dabb0c753a64583a2ede55bb0dc10e405440dd2a862b6e996b6a86"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 8.371469849997084,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 900 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "961f5a2afd8419328270b92beb8040fb8f6b8d8248afd2a0a4780401525508d6",
+      "probe_receipt_sha256": "6d20d8c73ae593c19238fc733b1dc8ff3e508de84cf279c8edbb8892ee750d2e",
+      "products": [
+        {
+          "file": "f000400.png",
+          "bytes": 8405,
+          "sha256": "5fe577089c5aca8eeb4ecc8199276ba932328ef1c181ecfaa5feb47a97be568e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000900.png",
+          "bytes": 8399,
+          "sha256": "25ccf25862390ced3537f7e8f8be2b848c4768c5b841d8cee014967006217f36",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000900_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "b2a26781acb59a61cdd38057892df26b2fbd8775186c57d1f7bd9e09f1933291",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000900_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "fa77dac39c8f424080bef4731574e0f56a5a132e7071ea91d04c0d4b6cb00529",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000900_save0000.bin",
+          "bytes": 32768,
+          "sha256": "bef608b2196f9058f80ae6e272e2ae82cc430f1566e5b76725c0e28c9333b3fd",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000950.b64",
+          "bytes": 21569,
+          "sha256": "a9c8efcbc5dabb0c753a64583a2ede55bb0dc10e405440dd2a862b6e996b6a86",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_022_decline_reinforcements",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_022_decline_reinforcements",
+      "semantic_note": "Human defender Liu Biao declines reinforcement request using player2 controller port1, then inspect defender general selection.",
+      "schedule": {
+        "intent": "Human defender Liu Biao declines reinforcement request using player2 controller port1, then inspect defender general selection.",
+        "input_port": 1,
+        "events": [
+          [
+            100,
+            "right",
+            6
+          ],
+          [
+            250,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          200,
+          650,
+          1000
+        ],
+        "saves": [
+          1050
+        ],
+        "snapshots": [
+          1000
+        ],
+        "stop": 1070
+      },
+      "schedule_sha256": "b126b37164078f1576a40596ce56cc0ead4151a059b9d03d1fea9b2b90fd35e7",
+      "script_sha256": "3a7259844bc80d46a15ad07f69d6bb8184b508d13ab713c6464f2c1e19c47e97",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "0f9d37265aebfd2b003e8009da6d8c13b08c0a6d1c6a0ffff3daf094e6262fd4",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_021_p19_governor/state_000950.b64",
+          "native_bytes": 16174,
+          "native_sha256": "0f9d37265aebfd2b003e8009da6d8c13b08c0a6d1c6a0ffff3daf094e6262fd4",
+          "base64_file_sha256": "a9c8efcbc5dabb0c753a64583a2ede55bb0dc10e405440dd2a862b6e996b6a86"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_022_decline_reinforcements/state_001050.b64",
+          "native_bytes": 11655,
+          "native_sha256": "486471c6b09fa50ab2385d0ac1445ca8d937983da5aaca73c1a92069c90cc33d",
+          "base64_file_sha256": "bd0e9597784ba07532eeaa03b798c9df25302eb56912b78aab6e090d459e3db4"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 14.744009138001275,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 1000 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "4104a8ba062325bd934e4fb3e15cc2a1d3b11f6b00fb2187e4f9747a45d82245",
+      "probe_receipt_sha256": "04d06796b5a6639d8317ebd2ce33773a81e9962d1a8c80b250747f5309bb07e6",
+      "products": [
+        {
+          "file": "f000200.png",
+          "bytes": 258,
+          "sha256": "788d6984576bb13490a00df106ec8ec4a1c2f966e544debd99f7ffce8d65c029",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000650.png",
+          "bytes": 2569,
+          "sha256": "f93644641dbdffed8fae5dbd6dbec108b29b78fb99fce3cd50e085ba739a9b48",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001000.png",
+          "bytes": 2569,
+          "sha256": "f93644641dbdffed8fae5dbd6dbec108b29b78fb99fce3cd50e085ba739a9b48",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001000_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "5cdfeff502aebe5c585b510a761c5cc1af5f169c79846e0551fff00c35a365f1",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001000_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "cdf50b0b31c8cde6216855733621d36a933a33ac5fd16b58bd6c06df58ad1742",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001000_save0000.bin",
+          "bytes": 32768,
+          "sha256": "f2b882ed1b59f0111a7f24ab78666c7b6a62bfe0888a5503e53ddf437eaee2c1",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_001050.b64",
+          "bytes": 15541,
+          "sha256": "bd0e9597784ba07532eeaa03b798c9df25302eb56912b78aab6e090d459e3db4",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_023_defender_selection",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_023_defender_selection",
+      "semantic_note": "Human defender selects KuaiLiang row1,HanSong row3,HuangZhu row4; LiuBiao is absent from selectable list, consistent with mandatory commander. Inspect final selected stars and proceed End.",
+      "schedule": {
+        "intent": "Human defender selects KuaiLiang row1,HanSong row3,HuangZhu row4; LiuBiao is absent from selectable list, consistent with mandatory commander. Inspect final selected stars and proceed End.",
+        "input_port": 1,
+        "events": [
+          [
+            50,
+            "a",
+            6
+          ],
+          [
+            150,
+            "down",
+            6
+          ],
+          [
+            250,
+            "down",
+            6
+          ],
+          [
+            350,
+            "a",
+            6
+          ],
+          [
+            450,
+            "down",
+            6
+          ],
+          [
+            550,
+            "a",
+            6
+          ],
+          [
+            700,
+            "right",
+            6
+          ],
+          [
+            800,
+            "down",
+            6
+          ],
+          [
+            900,
+            "down",
+            6
+          ],
+          [
+            1050,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          100,
+          400,
+          600,
+          1000,
+          1500
+        ],
+        "saves": [
+          1550
+        ],
+        "snapshots": [
+          600,
+          1500
+        ],
+        "stop": 1570
+      },
+      "schedule_sha256": "b97b2c7b2ff38c977257b6784d79dc844f7f559b2c5940089799b444faba7720",
+      "script_sha256": "c0ae7cfb9eedf1fb955e6d25616d92ec7bb9412efc5d71ad6e6dd1cf961c3e1a",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "486471c6b09fa50ab2385d0ac1445ca8d937983da5aaca73c1a92069c90cc33d",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_022_decline_reinforcements/state_001050.b64",
+          "native_bytes": 11655,
+          "native_sha256": "486471c6b09fa50ab2385d0ac1445ca8d937983da5aaca73c1a92069c90cc33d",
+          "base64_file_sha256": "bd0e9597784ba07532eeaa03b798c9df25302eb56912b78aab6e090d459e3db4"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_023_defender_selection/state_001550.b64",
+          "native_bytes": 15909,
+          "native_sha256": "5e173131a4d65e6df6de504aa245559e704114b8c450bd7973038cda42dbcf4a",
+          "base64_file_sha256": "19f83bdf43c0ef2bdbe87bf0c098d78146bd1178f9f4da654d130720de159f46"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 14.54916324900114,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 600 8192 50 1 3",
+        "BANK 1500 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "ec3ccfdb20f1a35af4b8f996e4a09b83859fb25d33b3e8e1231dc2ad8292ee13",
+      "probe_receipt_sha256": "5d9cefecc82049bf308328879de282e8b507026dddab705bd997e31f41816abf",
+      "products": [
+        {
+          "file": "f000100.png",
+          "bytes": 2600,
+          "sha256": "424861675ea4d5d3dc229dc95e6606045d6cc0a53c4d4fa1ec0d6847e1b55ad5",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000400.png",
+          "bytes": 2601,
+          "sha256": "ffe7f468b15ffbf85ef45e5647b900aa165d7bd09ed0f53a8bc98c2f644cf1e7",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000600.png",
+          "bytes": 2609,
+          "sha256": "670cb8aee0776dd34e475e90fb02319dc859eec8050b555bbad27382c459ad6b",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000600_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "ef1edfbe5049aab4d15604ac1e6bf074493a2d73cca24dfb78a2e11b6e0cbaf7",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000600_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "ec49aa3df309c14d8a7190dcfcf493c861309f35f5e986bef4fee18e0648bca3",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000600_save0000.bin",
+          "bytes": 32768,
+          "sha256": "51813c56513619583f80b71daf064463c15201424ad58145876defe950fcc918",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001000.png",
+          "bytes": 2593,
+          "sha256": "e7d358282be213adc9edf51318d8f5c3394ca505bd10b87b813d0182c13b97f1",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001500.png",
+          "bytes": 8129,
+          "sha256": "64ab7a6d9477bd6d040f0f0cf512bc62a417eebc20c02bf7cfeb6b3638b13f97",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001500_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "5e0b48229f03b782b2101786cce03a451f0765f267716660eff5388741492001",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001500_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "823e8bd4e7d24a6dd27f1175dc18014a6fb2bcb55b057f3e6777c3382864a2a2",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001500_save0000.bin",
+          "bytes": 32768,
+          "sha256": "261fd57d8c0cbf1f8b00ea4d34ba069835aa37f42844edfe6dd8aa7473de85a4",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_001550.b64",
+          "bytes": 21213,
+          "sha256": "19f83bdf43c0ef2bdbe87bf0c098d78146bd1178f9f4da654d130720de159f46",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_024_confirm_defenders",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_024_confirm_defenders",
+      "semantic_note": "Confirm selected defender list on player2 port1, then inspect first tactical deployment prompt.",
+      "schedule": {
+        "intent": "Confirm selected defender list on player2 port1, then inspect first tactical deployment prompt.",
+        "input_port": 1,
+        "events": [
+          [
+            100,
+            "left",
+            6
+          ],
+          [
+            250,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          200,
+          700,
+          1250
+        ],
+        "saves": [
+          1300
+        ],
+        "snapshots": [
+          1250
+        ],
+        "stop": 1320
+      },
+      "schedule_sha256": "635df520be50d789baf3f8a7e8b968dc901f785f2ce2464fa8dbf2b212efe428",
+      "script_sha256": "6ed353ba1204efbb9e82c146674ff7b61c88841ed53584f1b5ecf32e21aa3a9c",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "5e173131a4d65e6df6de504aa245559e704114b8c450bd7973038cda42dbcf4a",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_023_defender_selection/state_001550.b64",
+          "native_bytes": 15909,
+          "native_sha256": "5e173131a4d65e6df6de504aa245559e704114b8c450bd7973038cda42dbcf4a",
+          "base64_file_sha256": "19f83bdf43c0ef2bdbe87bf0c098d78146bd1178f9f4da654d130720de159f46"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_024_confirm_defenders/state_001300.b64",
+          "native_bytes": 14864,
+          "native_sha256": "8b9092eb778e0fe9b12822f77fe79db4a3fb51c901c08bfb11c929bd57986471",
+          "base64_file_sha256": "5b5aa499fec44e9bc79b1cc70db439dc207dfd602dd78c98d1d2d6e3461dcd7a"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 10.067927484000393,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 1250 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "d4c5bf2a08a0880b278e4ab976f83fc28f7b683b1427fa9dd53655d21c79e5dc",
+      "probe_receipt_sha256": "7a338ad4b4ca1794a591bbdfdb0ffaf7eb77df92d65d7d581d2c14a76cff974e",
+      "products": [
+        {
+          "file": "f000200.png",
+          "bytes": 3922,
+          "sha256": "2ba570ee82166f4fc46d2ff5faa770659a36fe064ad634647a2b8da0bf237382",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000700.png",
+          "bytes": 7060,
+          "sha256": "c93162d016e1a0e36ee645649ac2e02074f9d3c1c4f2641609915a3e53e4f501",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001250.png",
+          "bytes": 7038,
+          "sha256": "5d6da65501b65374d16f5d22640d4bc2168963ddff0f9945ac0106bcfe957829",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001250_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "f2b9060ebec8bb3d3433c75d51c1767577520b67921700071358d23d8f12566a",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001250_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "50ba89a0d6ad16d0631b78443fdfaf35cec877979b6a8a0eedc472b32a7a6ed8",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001250_save0000.bin",
+          "bytes": 32768,
+          "sha256": "5f4b050b3a16365b25f770fa4a91d71207ff4e58d25da1da9e96eb5bcce634ee",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_001300.b64",
+          "bytes": 19821,
+          "sha256": "5b5aa499fec44e9bc79b1cc70db439dc207dfd602dd78c98d1d2d6e3461dcd7a",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_025_place_liubiao",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_025_place_liubiao",
+      "semantic_note": "Place LiuBiao at the current valid deployment cursor via port1 A, inspect next prompt and exact position.",
+      "schedule": {
+        "intent": "Place LiuBiao at the current valid deployment cursor via port1 A, inspect next prompt and exact position.",
+        "input_port": 1,
+        "events": [
+          [
+            100,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          350,
+          600
+        ],
+        "saves": [
+          650
+        ],
+        "snapshots": [
+          600
+        ],
+        "stop": 670
+      },
+      "schedule_sha256": "958fe37dd6f66166e1778d2a0e8e2b5542162c87589ac121d23c59c58ba57ded",
+      "script_sha256": "897073b0512cdf64d63a3348c6b037d78c5dbc0920787ab6c1df25dc5b762cba",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "8b9092eb778e0fe9b12822f77fe79db4a3fb51c901c08bfb11c929bd57986471",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_024_confirm_defenders/state_001300.b64",
+          "native_bytes": 14864,
+          "native_sha256": "8b9092eb778e0fe9b12822f77fe79db4a3fb51c901c08bfb11c929bd57986471",
+          "base64_file_sha256": "5b5aa499fec44e9bc79b1cc70db439dc207dfd602dd78c98d1d2d6e3461dcd7a"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_025_place_liubiao/state_000650.b64",
+          "native_bytes": 14918,
+          "native_sha256": "5b94152210a9df5bb3d423f4978c06697fb0b417b3aeb81f0e58559288069643",
+          "base64_file_sha256": "7239c8e96456d5ee9da959f132f8d63c986dac2fa531fb75f68f294f2a9374fc"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 11.270067326000571,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 600 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "4293c922ef45e72036652ef76df4059b1c4c32dceb515f18257352a48c296090",
+      "probe_receipt_sha256": "5de8188706472762cf42f4b518aa95e499481403bedabd4bf566afad0742f7ad",
+      "products": [
+        {
+          "file": "f000350.png",
+          "bytes": 7122,
+          "sha256": "e275feab95d6a4c07eb5693519c91f360d2be0bb343bb531bf4479ba1d1b81ef",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000600.png",
+          "bytes": 7090,
+          "sha256": "d1557e799672b401514488535ddec92e5cf6e497e45f3c8c6506d6c292191afe",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000600_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "53c6578881dd4743d3ff061607fbd89c0098e91638f34fb9f327cb2622040eb8",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000600_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "07fb6f89f0f990983e291971de33406f9a47f3bd44c8f25efdac81bafd6c2c16",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000600_save0000.bin",
+          "bytes": 32768,
+          "sha256": "9f68bbee5976ce4f5a4a7dbe1a420f1aa9857c06b5c294d4e7bae2c6370e1cb2",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000650.b64",
+          "bytes": 19893,
+          "sha256": "7239c8e96456d5ee9da959f132f8d63c986dac2fa531fb75f68f294f2a9374fc",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_026_place_other_defenders",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_026_place_other_defenders",
+      "semantic_note": "A-only deployment could not place on occupied cell; next case moved down before A.",
+      "schedule": {
+        "intent": "Place KuaiLiang,HanSong,HuangZhu at successive default valid deployment positions via player2 A; inspect attacker placement prompt.",
+        "input_port": 1,
+        "events": [
+          [
+            100,
+            "a",
+            6
+          ],
+          [
+            600,
+            "a",
+            6
+          ],
+          [
+            1100,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          400,
+          900,
+          1500
+        ],
+        "saves": [
+          1550
+        ],
+        "snapshots": [
+          1500
+        ],
+        "stop": 1570
+      },
+      "schedule_sha256": "ce378465eee250528e7a3a2eb5bae71c9c91d2343a582dc7db1911941b137d11",
+      "script_sha256": "756e331a350a768256e650c1365cb94ecc496b855f85760e96221e6f70c7dffe",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "5b94152210a9df5bb3d423f4978c06697fb0b417b3aeb81f0e58559288069643",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_025_place_liubiao/state_000650.b64",
+          "native_bytes": 14918,
+          "native_sha256": "5b94152210a9df5bb3d423f4978c06697fb0b417b3aeb81f0e58559288069643",
+          "base64_file_sha256": "7239c8e96456d5ee9da959f132f8d63c986dac2fa531fb75f68f294f2a9374fc"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_026_place_other_defenders/state_001550.b64",
+          "native_bytes": 14877,
+          "native_sha256": "508fe6f45dc489d38acf38608113cac748d12ffb2235e9c22be200b7c31dbe0b",
+          "base64_file_sha256": "9aaa6e3b4dc3f75bc5496095463f701ef2f81c1b00f4172431d4b1d24a1fde73"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 12.6590273719994,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 1500 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "bad660c7d887567acb0883ec392fcf71dfc8d08842e581906d6ca2845145560b",
+      "probe_receipt_sha256": "b22cf9d14975f47e0fd0de944c4acc32e8fff842cc59169367bf3c5a1c9e2b85",
+      "products": [
+        {
+          "file": "f000400.png",
+          "bytes": 7090,
+          "sha256": "d1557e799672b401514488535ddec92e5cf6e497e45f3c8c6506d6c292191afe",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000900.png",
+          "bytes": 7090,
+          "sha256": "d1557e799672b401514488535ddec92e5cf6e497e45f3c8c6506d6c292191afe",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001500.png",
+          "bytes": 7090,
+          "sha256": "d1557e799672b401514488535ddec92e5cf6e497e45f3c8c6506d6c292191afe",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001500_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "62b6e02c1c578d9e196ebb85d6e22daf3cfb5014989ac0b6db044094e9a38888",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001500_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "07fb6f89f0f990983e291971de33406f9a47f3bd44c8f25efdac81bafd6c2c16",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001500_save0000.bin",
+          "bytes": 32768,
+          "sha256": "9f68bbee5976ce4f5a4a7dbe1a420f1aa9857c06b5c294d4e7bae2c6370e1cb2",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_001550.b64",
+          "bytes": 19837,
+          "sha256": "9aaa6e3b4dc3f75bc5496095463f701ef2f81c1b00f4172431d4b1d24a1fde73",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_027_place_defenders_down",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_027_place_defenders_down",
+      "semantic_note": "Previous A-only placement remained on occupied LiuBiao cell. Move down one row before each placement to deploy KuaiLiang,HanSong,HuangZhu belowLiuBiao; preserve failed A-only attempt.",
+      "schedule": {
+        "intent": "Previous A-only placement remained on occupied LiuBiao cell. Move down one row before each placement to deploy KuaiLiang,HanSong,HuangZhu belowLiuBiao; preserve failed A-only attempt.",
+        "input_port": 1,
+        "events": [
+          [
+            100,
+            "down",
+            6
+          ],
+          [
+            250,
+            "a",
+            6
+          ],
+          [
+            550,
+            "down",
+            6
+          ],
+          [
+            700,
+            "a",
+            6
+          ],
+          [
+            1000,
+            "down",
+            6
+          ],
+          [
+            1150,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          400,
+          850,
+          1500
+        ],
+        "saves": [
+          1550
+        ],
+        "snapshots": [
+          1500
+        ],
+        "stop": 1570
+      },
+      "schedule_sha256": "d46ba173406dd2d825ce5f8c9d7d7d105e014cb4f9851adc24496795baeebf3e",
+      "script_sha256": "7c4b1bbb57828f66618626a8ce1ecb2cc4b41599487d58a451ecdc0b6a5f79e6",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "508fe6f45dc489d38acf38608113cac748d12ffb2235e9c22be200b7c31dbe0b",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_026_place_other_defenders/state_001550.b64",
+          "native_bytes": 14877,
+          "native_sha256": "508fe6f45dc489d38acf38608113cac748d12ffb2235e9c22be200b7c31dbe0b",
+          "base64_file_sha256": "9aaa6e3b4dc3f75bc5496095463f701ef2f81c1b00f4172431d4b1d24a1fde73"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_027_place_defenders_down/state_001550.b64",
+          "native_bytes": 14825,
+          "native_sha256": "933e9d5e4124b67bcc14abae3c80f5a90ffadb09431f1719c5f9160e52b8b39f",
+          "base64_file_sha256": "3b4c1e7f5861efc23b8da9906124fb18b6367fbe661ffe7934296a8a0f9283b3"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 12.647654393000266,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 1500 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "1795f49107fea0944b34886ebc0aa4c81a1fa8c86ef61630c2af35826160f5a1",
+      "probe_receipt_sha256": "ae22040cbf57f3d003bd703e9e343f01cd23d1b1bcf58b67534f7f83b238f30b",
+      "products": [
+        {
+          "file": "f000400.png",
+          "bytes": 7074,
+          "sha256": "011415f615c51b5b60630127108b3ba22e8cefb15a74b71b15542e7187daeb41",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000850.png",
+          "bytes": 7113,
+          "sha256": "791a133fc1e1d0a3e2d44d4e5be988beef517ada5650e759a250945312cdeff0",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001500.png",
+          "bytes": 6963,
+          "sha256": "4fbec291f304c333824329cc0c9994278481a7e527b32f5d220d589b22df6df3",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001500_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "cc95f86265bbdabc1e635f4171e862c988c08d2259da99d1fd486deed44f938d",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001500_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "8553100423ea566d55b9e672a0e57ef74448300ad741e6234c943cd4480ece6e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001500_save0000.bin",
+          "bytes": 32768,
+          "sha256": "ea37267d706f60bd270cbba842f0cdc1092785b3a83e2de945d5b297325fbc3e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_001550.b64",
+          "bytes": 19769,
+          "sha256": "3b4c1e7f5861efc23b8da9906124fb18b6367fbe661ffe7934296a8a0f9283b3",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_028_place_yuanshu_probe",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_028_place_yuanshu_probe",
+      "semantic_note": "On attacker deployment, move up once and pressA on player1 port0, then inspect whether YuanShu was placed and next prompt.",
+      "schedule": {
+        "intent": "On attacker deployment, move up once and pressA on player1 port0, then inspect whether YuanShu was placed and next prompt.",
+        "input_port": 0,
+        "events": [
+          [
+            100,
+            "up",
+            6
+          ],
+          [
+            250,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          200,
+          600
+        ],
+        "saves": [
+          650
+        ],
+        "snapshots": [
+          600
+        ],
+        "stop": 670
+      },
+      "schedule_sha256": "fc34cf8b8bc44b3e0a6a09c9f60d0cc161fb0d91de5018b32a7afdaaeb41c8d3",
+      "script_sha256": "3ab30be3dee3897c492fa7daa73dc35cbb55228504b6eead7f64abbed6799589",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "933e9d5e4124b67bcc14abae3c80f5a90ffadb09431f1719c5f9160e52b8b39f",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_027_place_defenders_down/state_001550.b64",
+          "native_bytes": 14825,
+          "native_sha256": "933e9d5e4124b67bcc14abae3c80f5a90ffadb09431f1719c5f9160e52b8b39f",
+          "base64_file_sha256": "3b4c1e7f5861efc23b8da9906124fb18b6367fbe661ffe7934296a8a0f9283b3"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_028_place_yuanshu_probe/state_000650.b64",
+          "native_bytes": 14852,
+          "native_sha256": "6b61fd319985c09c7f2504b1c7c2aed66380195e54632254cdd972230349d5c3",
+          "base64_file_sha256": "f7ecd68e5596dbe0ca93828eb558eff15b9d5b09432144fb023c11870a57a1c0"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 8.741113248001056,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 600 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "74fcbd19472e31f12de821ca02324f17e46507eb6907d03e074d2365a167fc44",
+      "probe_receipt_sha256": "ebb6e019f6397b1d7a03532e54ac66b8791f32da4c2bbaa42fd51864296df029",
+      "products": [
+        {
+          "file": "f000200.png",
+          "bytes": 7007,
+          "sha256": "01e2f97d1e07f4639f65d231f199f91635e60f4e8ab8c37c9c5cfed81f104c30",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000600.png",
+          "bytes": 7081,
+          "sha256": "2e52ae6c3a03261cacbb4d58fdc5d4217729eea202f4304cd53ca75300936a84",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000600_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "5aa76db47a97b5cebf7f6fa284afcbce64662e6c98eb54badfc6bc531500eb26",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000600_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "733206f5af896f0681de936b680eff9075a68046ca02d96394e2acb3fdb77786",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000600_save0000.bin",
+          "bytes": 32768,
+          "sha256": "cf12f323cf10e9af43989d22e16d909fe0e8791cd053a87ce29d2cf3e58b44fc",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000650.b64",
+          "bytes": 19805,
+          "sha256": "f7ecd68e5596dbe0ca93828eb558eff15b9d5b09432144fb023c11870a57a1c0",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_029_place_other_attackers",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_029_place_other_attackers",
+      "semantic_note": "Place YuanYin one row above YuanShu, then JiLing two rows below YuanYin, using port0; inspect duel prompt.",
+      "schedule": {
+        "intent": "Place YuanYin one row above YuanShu, then JiLing two rows below YuanYin, using port0; inspect duel prompt.",
+        "input_port": 0,
+        "events": [
+          [
+            100,
+            "up",
+            6
+          ],
+          [
+            250,
+            "a",
+            6
+          ],
+          [
+            550,
+            "down",
+            6
+          ],
+          [
+            650,
+            "down",
+            6
+          ],
+          [
+            800,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          400,
+          1100,
+          1500
+        ],
+        "saves": [
+          1550
+        ],
+        "snapshots": [
+          1500
+        ],
+        "stop": 1570
+      },
+      "schedule_sha256": "4c766891bf80bb57dd9cee119d0481a9124b05a11c53ae3df34ba7b5dc8ccff9",
+      "script_sha256": "96bd87f03679806af807106844f0791d93028288c85b2c3092de84d0f8c88a84",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "6b61fd319985c09c7f2504b1c7c2aed66380195e54632254cdd972230349d5c3",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_028_place_yuanshu_probe/state_000650.b64",
+          "native_bytes": 14852,
+          "native_sha256": "6b61fd319985c09c7f2504b1c7c2aed66380195e54632254cdd972230349d5c3",
+          "base64_file_sha256": "f7ecd68e5596dbe0ca93828eb558eff15b9d5b09432144fb023c11870a57a1c0"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_029_place_other_attackers/state_001550.b64",
+          "native_bytes": 15044,
+          "native_sha256": "4745246a71b19017eb2a7b22dbf01cee092c324bccbbb05a852bdf6008b1c0c3",
+          "base64_file_sha256": "5fb8565fc953e554c2e83593646a4713920cf276ada685f195127c8e47071da2"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 18.885333941998397,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 1500 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "6fec9b85e103661e3610f75667da384f29ed808b5c3a6f78866b524f892d174e",
+      "probe_receipt_sha256": "17a0475567523df16b72b447fc4d588a8e5d2c6eae109f39495e26ccabe53c66",
+      "products": [
+        {
+          "file": "f000400.png",
+          "bytes": 7063,
+          "sha256": "32a0f6ec1fcf9ba6422389749f0b9807c81508d741945fea2a5106eed5d6c3a0",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001100.png",
+          "bytes": 7223,
+          "sha256": "ce40babcce1851986e1f0a4759d567d1348d9c31f1e1d1d688818aaf6eccbe06",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001500.png",
+          "bytes": 7223,
+          "sha256": "ce40babcce1851986e1f0a4759d567d1348d9c31f1e1d1d688818aaf6eccbe06",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001500_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "7a26d5ad495adc23aaa2e4609028c3c378640ad85dcffd54568008786fccb2d8",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001500_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "083340ed559969fc4f26f7159c6633ba4134f59d4ce7bb89c65a3b60b8ce260f",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001500_save0000.bin",
+          "bytes": 32768,
+          "sha256": "25da3baec148f4f425781188a7045027ca4dcf2137922a49afec5d7e2c52345f",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_001550.b64",
+          "bytes": 20061,
+          "sha256": "5fb8565fc953e554c2e83593646a4713920cf276ada685f195127c8e47071da2",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_030_decline_defender_duel",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_030_decline_defender_duel",
+      "semantic_note": "Decline the Master LiuBiao personal combat suggestion using player2 port1, then inspect next prompt.",
+      "schedule": {
+        "intent": "Decline the Master LiuBiao personal combat suggestion using player2 port1, then inspect next prompt.",
+        "input_port": 1,
+        "events": [
+          [
+            100,
+            "right",
+            6
+          ],
+          [
+            250,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          200,
+          650,
+          1100
+        ],
+        "saves": [
+          1150
+        ],
+        "snapshots": [
+          1100
+        ],
+        "stop": 1170
+      },
+      "schedule_sha256": "96ad8ba9543ddea3757c59a0a92cce38cbea7978a085779d89701bb0a61504c3",
+      "script_sha256": "475031561a2bd21a2bb04d6379c0a21b323045f35c40e3b1d682d65015470023",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "4745246a71b19017eb2a7b22dbf01cee092c324bccbbb05a852bdf6008b1c0c3",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_029_place_other_attackers/state_001550.b64",
+          "native_bytes": 15044,
+          "native_sha256": "4745246a71b19017eb2a7b22dbf01cee092c324bccbbb05a852bdf6008b1c0c3",
+          "base64_file_sha256": "5fb8565fc953e554c2e83593646a4713920cf276ada685f195127c8e47071da2"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_030_decline_defender_duel/state_001150.b64",
+          "native_bytes": 15074,
+          "native_sha256": "c9b27cac9a6ee20c12b48edfd4b9e4c81445d20df4fb558655de3aa3fd4cd0ee",
+          "base64_file_sha256": "6c39cf0512ae7a0db1b94f9a2200276c600a768c9d15de2179f220b56a5aeaab"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 7.77951921100248,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 1100 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "749c3794307c627b24eb4f06c5c7ee9b40ad51d11504da992240d00ee1e31cd2",
+      "probe_receipt_sha256": "1cedadf87df8ca3b1dd00d4148fc31cab1f0014c35e2da9719fc30488a0f7def",
+      "products": [
+        {
+          "file": "f000200.png",
+          "bytes": 7243,
+          "sha256": "c562117e1ca89b4a4ae55c2c8793cac0e43dc70f5a89ec7dc0d483f67e8b0686",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000650.png",
+          "bytes": 7243,
+          "sha256": "c562117e1ca89b4a4ae55c2c8793cac0e43dc70f5a89ec7dc0d483f67e8b0686",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001100.png",
+          "bytes": 7246,
+          "sha256": "e3a518eeb1d6de9dee821a3a1993938bd9d79c5966774ee95b1f20a73f43f32e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001100_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "29d824ff2f22463c87fcf045db81f2662cd7a8c619e1bdeec45738a39ce07f17",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001100_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "6ec54532e8f7cac164deb0af67b430867dff72b1167320314694d7c5834e1b30",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001100_save0000.bin",
+          "bytes": 32768,
+          "sha256": "fee8cb7d94cebae48beb2e0abea89f67241ce47e71bf0fd1a002ad274954a0bc",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_001150.b64",
+          "bytes": 20101,
+          "sha256": "6c39cf0512ae7a0db1b94f9a2200276c600a768c9d15de2179f220b56a5aeaab",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_031_decline_attacker_duel",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_031_decline_attacker_duel",
+      "semantic_note": "Host timeout; partial screenshots retained; no final checkpoint or completion claim.",
+      "schedule": {
+        "intent": "Decline Master YuanShu personal combat on port0 after LiuBiao declined; capture first ordinary battle command menu and baseline banks/rosters.",
+        "input_port": 0,
+        "events": [
+          [
+            100,
+            "right",
+            6
+          ],
+          [
+            250,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          200,
+          650,
+          1100
+        ],
+        "saves": [
+          1150
+        ],
+        "snapshots": [
+          1100
+        ],
+        "stop": 1170
+      },
+      "schedule_sha256": "04fe9c49ddb34edb0611177b07ae8ecd01016208b467d088e1a8fc78b3399c80",
+      "script_sha256": "598f2d5d6f1166ffce157aaa86f8703ae7169e597e71f7f17d615ce9e842c51e",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "c9b27cac9a6ee20c12b48edfd4b9e4c81445d20df4fb558655de3aa3fd4cd0ee",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_030_decline_defender_duel/state_001150.b64",
+          "native_bytes": 15074,
+          "native_sha256": "c9b27cac9a6ee20c12b48edfd4b9e4c81445d20df4fb558655de3aa3fd4cd0ee",
+          "base64_file_sha256": "6c39cf0512ae7a0db1b94f9a2200276c600a768c9d15de2179f220b56a5aeaab"
+        }
+      ],
+      "native_output_states": [],
+      "exit_code": null,
+      "timeout": true,
+      "elapsed_seconds": 58.94120683700021,
+      "runtime_identity_passed": true,
+      "failures": [
+        "Emulator exit was None",
+        "Missing shots: [1100]",
+        "Missing saves: [1150]",
+        "Missing snapshots: [1100]",
+        "Native runtime identity/exit gate failed"
+      ],
+      "intervention_lines": [],
+      "bank_lines": [],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "2c6fcb18505ba6241ad4427db25f9301d73d4340cfad434277b29aed98a669ca",
+      "probe_receipt_sha256": "f6b1e1bb5abf97bab036c3e5041f72c83f532e48fd9a65e8ba2b7ab1225cb5b5",
+      "products": [
+        {
+          "file": "f000200.png",
+          "bytes": 6514,
+          "sha256": "a631b2e5b8cb24dc2c2119fe2a3f72627da5b49e23352c01ddb2b873bb0caa1f",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000650.png",
+          "bytes": 7316,
+          "sha256": "b0867c18c7ecf76d2f02f4e98a4c974bd31dac4faef07f14ed0c0b803d3c278b",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_032_day1_defender_baseline",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_032_day1_defender_baseline",
+      "semantic_note": "Replay original two duel-decline inputs from unchanged checkpoint after attempt031 host timeout; capture stable first-day LiuBiao menu with a shorter bounded run.",
+      "schedule": {
+        "intent": "Replay original two duel-decline inputs from unchanged checkpoint after attempt031 host timeout; capture stable first-day LiuBiao menu with a shorter bounded run.",
+        "input_port": 0,
+        "events": [
+          [
+            100,
+            "right",
+            6
+          ],
+          [
+            250,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          200,
+          650,
+          750
+        ],
+        "saves": [
+          800
+        ],
+        "snapshots": [
+          750
+        ],
+        "stop": 820
+      },
+      "schedule_sha256": "31fd040359356ac06cc72533ff6ccd1df99af41e4c8edb6720d6334dbcfec811",
+      "script_sha256": "2d97751ac6dba07b0f55d4f8d67caf8cf43c94a5093f5748e9c15ec36a107318",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "c9b27cac9a6ee20c12b48edfd4b9e4c81445d20df4fb558655de3aa3fd4cd0ee",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_030_decline_defender_duel/state_001150.b64",
+          "native_bytes": 15074,
+          "native_sha256": "c9b27cac9a6ee20c12b48edfd4b9e4c81445d20df4fb558655de3aa3fd4cd0ee",
+          "base64_file_sha256": "6c39cf0512ae7a0db1b94f9a2200276c600a768c9d15de2179f220b56a5aeaab"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_032_day1_defender_baseline/state_000800.b64",
+          "native_bytes": 15012,
+          "native_sha256": "74c64cd2323c9383cf5be8c610f18e609d829ee871acde2b270d00a2dae495c9",
+          "base64_file_sha256": "afb07d40e87fe4e5c72abb3e62d3e1f763a4799cefdf6113180e7b2eeaf52ffd"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 14.802512636000756,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 750 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "e067d7f99a6023f8ba495b95d5009adcaf27c0ea5d2cfdd4c8f624fc099fa371",
+      "probe_receipt_sha256": "89b7f9408fc62b1a6e0b0f816ba9095cfc69f47f5d7b97f17bdf281951b585e4",
+      "products": [
+        {
+          "file": "f000200.png",
+          "bytes": 6514,
+          "sha256": "a631b2e5b8cb24dc2c2119fe2a3f72627da5b49e23352c01ddb2b873bb0caa1f",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000650.png",
+          "bytes": 7316,
+          "sha256": "b0867c18c7ecf76d2f02f4e98a4c974bd31dac4faef07f14ed0c0b803d3c278b",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000750.png",
+          "bytes": 7316,
+          "sha256": "b0867c18c7ecf76d2f02f4e98a4c974bd31dac4faef07f14ed0c0b803d3c278b",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000750_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "189fb58aa846851ccdf0bfcb5db5d33019dd776a7a0730fc11364aaf9ab14b79",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000750_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "eae24ddada1039f17fe678ec3242603ae566b1a4ac5ec033f23682e787337471",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000750_save0000.bin",
+          "bytes": 32768,
+          "sha256": "2ae30a298298b12b682cccfac94006b2d893749fba49f0345d16300815b369f8",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000800.b64",
+          "bytes": 20017,
+          "sha256": "afb07d40e87fe4e5c72abb3e62d3e1f763a4799cefdf6113180e7b2eeaf52ffd",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_033_wait_liubiao",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_033_wait_liubiao",
+      "semantic_note": "LiuBiao Wait succeeded; later A opened next officer's Move submenu.",
+      "schedule": {
+        "intent": "Day1 defender LiuBiao selects Wait and accepts all remaining mobility using port1; inspect next general and preserve baseline resource counts.",
+        "input_port": 1,
+        "events": [
+          [
+            20,
+            "down",
+            6
+          ],
+          [
+            50,
+            "down",
+            6
+          ],
+          [
+            80,
+            "down",
+            6
+          ],
+          [
+            110,
+            "down",
+            6
+          ],
+          [
+            140,
+            "down",
+            6
+          ],
+          [
+            170,
+            "a",
+            6
+          ],
+          [
+            400,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          160,
+          300,
+          650
+        ],
+        "saves": [
+          750
+        ],
+        "snapshots": [
+          650
+        ],
+        "stop": 770
+      },
+      "schedule_sha256": "0777138a5b3aff3efbec15601980b2ace8bf9598258024b32abbda01eeb90147",
+      "script_sha256": "e93e204fff83d8976753ea94ba056f821b1e0be043bf0381a71fff21d9fb6e40",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "74c64cd2323c9383cf5be8c610f18e609d829ee871acde2b270d00a2dae495c9",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_032_day1_defender_baseline/state_000800.b64",
+          "native_bytes": 15012,
+          "native_sha256": "74c64cd2323c9383cf5be8c610f18e609d829ee871acde2b270d00a2dae495c9",
+          "base64_file_sha256": "afb07d40e87fe4e5c72abb3e62d3e1f763a4799cefdf6113180e7b2eeaf52ffd"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_033_wait_liubiao/state_000750.b64",
+          "native_bytes": 14971,
+          "native_sha256": "4681be41ff4050f26ca41dbbc701ec6367e73217b19cbf1ee80e41d01fffd226",
+          "base64_file_sha256": "65cdc1e19bc5813485dd6ca64fdef5567bc5d4a7c657ee2758f0819f025486f9"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 7.636645544000203,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 650 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "597d17d8e5fa8ea128058cecbce4898109898164b54673c3fd8c8ae0217a2e84",
+      "probe_receipt_sha256": "4a15fdd07183c77221cb16caa9a54330c4a3d819395e26d65f268d6f438f4f90",
+      "products": [
+        {
+          "file": "f000160.png",
+          "bytes": 7206,
+          "sha256": "2d7af4a6e988c113d4af9186d83ce60dc20467ea479ce33adc8ae5f4bb468d61",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000300.png",
+          "bytes": 7168,
+          "sha256": "3e9b849742f349ac55eb902e2b53b6da975516a16946e69270fda927e94b113f",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000650.png",
+          "bytes": 7050,
+          "sha256": "c9fd425de4f7bc5bd617b8e889312327bc68f70a42a7498dd5a62f8635233460",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000650_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "bc58dadf9092024ec030182686894537b747a4825b5199612f2c8ba1b52b20e0",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000650_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "2678ff648507d2ef96d188a6498988d1a573f2ecb77ec4f71960c26169e54c04",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000650_save0000.bin",
+          "bytes": 32768,
+          "sha256": "14cc183f7acbd5e28c3a719212cc03fb97db6f1283d58ace8475c548ec981041",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000750.b64",
+          "bytes": 19965,
+          "sha256": "65cdc1e19bc5813485dd6ca64fdef5567bc5d4a7c657ee2758f0819f025486f9",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_034_day1_summary",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_034_day1_summary",
+      "semantic_note": "Independent B-summary branch from first-day baseline; not an ancestor of day advancement.",
+      "schedule": {
+        "intent": "Independent read-only UI branch from first-day defender baseline: B opens battle summary showing deployedforces and rice; no Wait or combat.",
+        "input_port": 1,
+        "events": [
+          [
+            50,
+            "b",
+            6
+          ]
+        ],
+        "shots": [
+          300
+        ],
+        "saves": [
+          350
+        ],
+        "snapshots": [
+          300
+        ],
+        "stop": 370
+      },
+      "schedule_sha256": "1bb7721f3f8be241cd314e1fddfcf573a71fd0b24aa444b3d3bd33b019811219",
+      "script_sha256": "b2f6659de7de533d3f15586dcdb24322e5021106b667852e97a4cc12d5b48518",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "74c64cd2323c9383cf5be8c610f18e609d829ee871acde2b270d00a2dae495c9",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_032_day1_defender_baseline/state_000800.b64",
+          "native_bytes": 15012,
+          "native_sha256": "74c64cd2323c9383cf5be8c610f18e609d829ee871acde2b270d00a2dae495c9",
+          "base64_file_sha256": "afb07d40e87fe4e5c72abb3e62d3e1f763a4799cefdf6113180e7b2eeaf52ffd"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_034_day1_summary/state_000350.b64",
+          "native_bytes": 15061,
+          "native_sha256": "616fb23a71ebe8032479cc17ddcd8eb4ef76e94ab85730c2d6d7586208e90f26",
+          "base64_file_sha256": "9ba239931ed52d9a81310bbfd73c7e6f7d9c98f944cc7937befff8076f1a5812"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 3.4817669309995836,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 300 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "6d5bf92921d8270603d4b402f7ba93985917051356c536091f021d81bb602899",
+      "probe_receipt_sha256": "d5f641bd50a2679a4948f4bdd9b1bbef4e6ddd0de700244b00c3a7f3e39991d9",
+      "products": [
+        {
+          "file": "f000300.png",
+          "bytes": 6726,
+          "sha256": "7f10c0c249c7afe39ca2a8ec45df8fc87e9bbc05acfe9b20f08c0c674ca0f42c",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000300_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "315a83f333bca7e8091721eeada7d90f9eb13ddce3bce46997aace2863d47fae",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000300_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "a1b7bcd38df9e031bea0d3c31dd5aea52f987de09ace385832f611ea4be5d524",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000300_save0000.bin",
+          "bytes": 32768,
+          "sha256": "580f559453d9e9328354d9226f5c00f671526bab4c5f562710167553bb6b45f5",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000350.b64",
+          "bytes": 20085,
+          "sha256": "9ba239931ed52d9a81310bbfd73c7e6f7d9c98f944cc7937befff8076f1a5812",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_035_normal_after_wait",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_035_normal_after_wait",
+      "semantic_note": "Selected Normal in Move submenu; no movement direction entered.",
+      "schedule": {
+        "intent": "After LiuBiao Wait, select default Normal in observed Normal/Moveenemy chooser using port1; inspect next actual controller state.",
+        "input_port": 1,
+        "events": [
+          [
+            100,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          350,
+          700
+        ],
+        "saves": [
+          750
+        ],
+        "snapshots": [
+          700
+        ],
+        "stop": 770
+      },
+      "schedule_sha256": "f857c21976977b43465e8673d400154be76af2686a5a215d3e20e5b218a7cc99",
+      "script_sha256": "be9082ccd9c20244b1a434464f66a60695cdf38ce82605f3b440acf1de0ac5fb",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "4681be41ff4050f26ca41dbbc701ec6367e73217b19cbf1ee80e41d01fffd226",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_033_wait_liubiao/state_000750.b64",
+          "native_bytes": 14971,
+          "native_sha256": "4681be41ff4050f26ca41dbbc701ec6367e73217b19cbf1ee80e41d01fffd226",
+          "base64_file_sha256": "65cdc1e19bc5813485dd6ca64fdef5567bc5d4a7c657ee2758f0819f025486f9"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_035_normal_after_wait/state_000750.b64",
+          "native_bytes": 14873,
+          "native_sha256": "f8d0d6dcfae338b72a3a75857b2fe991b57c60d8392c115033f59d7b8e6a8ed7",
+          "base64_file_sha256": "6a97a3ca02bd86f86eef4de6ce21e7e54aaef476cab0896e1bfe30a7cf209f06"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 9.702912851000292,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 700 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "7a3d872cb7d102e930d87c330b3acf46cd272be4081d98f115c2bcb7f3102b14",
+      "probe_receipt_sha256": "3147b100ddce4359c8082a67082390f95e430a15f46542365cdbceff2c0cc5ce",
+      "products": [
+        {
+          "file": "f000350.png",
+          "bytes": 6964,
+          "sha256": "03434c995c34b92f0af480d7f1833e27b6ad6d59e8c341ec0753ef21fe2ff55f",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000700.png",
+          "bytes": 6964,
+          "sha256": "03434c995c34b92f0af480d7f1833e27b6ad6d59e8c341ec0753ef21fe2ff55f",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000700_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "fcdc98b8e494110a5dcb99d52223b019f9fc426ebfed0aa1dede6e428e0d99ff",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000700_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "5a7859b293e7692676e2b293822152d701148008f40dabd236361cca926ddabb",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000700_save0000.bin",
+          "bytes": 32768,
+          "sha256": "e62333a79df91f669c782bd77e93b5de7257ca96740ab675e64dd26a7eda2abb",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000750.b64",
+          "bytes": 19833,
+          "sha256": "6a97a3ca02bd86f86eef4de6ce21e7e54aaef476cab0896e1bfe30a7cf209f06",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_036_cancel_move",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_036_cancel_move",
+      "semantic_note": "B cancelled Move; roster positions, troops and mobility equal preceding checkpoint.",
+      "schedule": {
+        "intent": "Cancel the accidentally opened next-general Move/Normal submenu with B; no directional movement has been entered. Inspect restored main menu.",
+        "input_port": 1,
+        "events": [
+          [
+            50,
+            "b",
+            6
+          ]
+        ],
+        "shots": [
+          200,
+          350
+        ],
+        "saves": [
+          400
+        ],
+        "snapshots": [
+          350
+        ],
+        "stop": 420
+      },
+      "schedule_sha256": "59c4d6f5344bfdab8f8df79cfee99c0a199bf5316067abd1f5e91a5917ed3ce4",
+      "script_sha256": "56ee13c76f274e63e78c06a8c1125cc14aea09a6bc8a3208a5a96c31ad27dcf3",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "f8d0d6dcfae338b72a3a75857b2fe991b57c60d8392c115033f59d7b8e6a8ed7",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_035_normal_after_wait/state_000750.b64",
+          "native_bytes": 14873,
+          "native_sha256": "f8d0d6dcfae338b72a3a75857b2fe991b57c60d8392c115033f59d7b8e6a8ed7",
+          "base64_file_sha256": "6a97a3ca02bd86f86eef4de6ce21e7e54aaef476cab0896e1bfe30a7cf209f06"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_036_cancel_move/state_000400.b64",
+          "native_bytes": 15076,
+          "native_sha256": "50176ce90d5ab30802a1c940188937b0d8f7ca4d78b4a0bd2669acf1c7508689",
+          "base64_file_sha256": "4b99cf0f718f46d6de87cab4c2ef47dacc1920322bfdeb8140f75154cb9ae463"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 3.9994222709974565,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "da4e649cd7f8dca2e72be63f8c95b4f3ede74793aaa1a338e9aebda4d7ac6ee0",
+      "probe_receipt_sha256": "6c49ca43b8cf67b82e4f676c56d4d9ce1c84f3e52f6304f1f028330c9a761672",
+      "products": [
+        {
+          "file": "f000200.png",
+          "bytes": 7242,
+          "sha256": "c5f449a14b4c319486f55684a39888ee7a8bd194c2c29e0b05cad86099d9dc3f",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 7258,
+          "sha256": "d7c10bb7ac38f542f7eef988bc551a5d27017c444dafd413f5a5d3fbb39e41d7",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "1db160e5d7be3ed59f718243b6861888982dbfa21251827aa572acfa3d5714a9",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "fd6b59ac58e26d165a327e9fbc15440ddb724063a6f5b13e7e657235e59c1f69",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "030a148e4a0aaea59c0627195f78ff1f6f4e05127996192b8275d12f83991a71",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000400.b64",
+          "bytes": 20105,
+          "sha256": "4b99cf0f718f46d6de87cab4c2ef47dacc1920322bfdeb8140f75154cb9ae463",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_037_wait_other_defenders",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_037_wait_other_defenders",
+      "semantic_note": "Native test runner reached its time limit (exit255); no final checkpoint. Partial screenshots retained.",
+      "schedule": {
+        "intent": "Select Wait once for KuaiLiang,HanSong,HuangZhu at600-frame intervals; no acknowledgement A, since Wait message advances automatically. Preserve first attacker command checkpoint.",
+        "input_port": 1,
+        "events": [
+          [
+            20,
+            "down",
+            6
+          ],
+          [
+            50,
+            "down",
+            6
+          ],
+          [
+            80,
+            "down",
+            6
+          ],
+          [
+            110,
+            "down",
+            6
+          ],
+          [
+            140,
+            "down",
+            6
+          ],
+          [
+            170,
+            "a",
+            6
+          ],
+          [
+            620,
+            "down",
+            6
+          ],
+          [
+            650,
+            "down",
+            6
+          ],
+          [
+            680,
+            "down",
+            6
+          ],
+          [
+            710,
+            "down",
+            6
+          ],
+          [
+            740,
+            "down",
+            6
+          ],
+          [
+            770,
+            "a",
+            6
+          ],
+          [
+            1220,
+            "down",
+            6
+          ],
+          [
+            1250,
+            "down",
+            6
+          ],
+          [
+            1280,
+            "down",
+            6
+          ],
+          [
+            1310,
+            "down",
+            6
+          ],
+          [
+            1340,
+            "down",
+            6
+          ],
+          [
+            1370,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          400,
+          1000,
+          1600,
+          1900
+        ],
+        "saves": [
+          1950
+        ],
+        "snapshots": [
+          1600,
+          1900
+        ],
+        "stop": 1970
+      },
+      "schedule_sha256": "996bac27f31c372bd66d9a8180bfd9a5f9419b5fb3dad4fb410b240d526f4a8e",
+      "script_sha256": "7cf5b7e00e46c0db594f500dc9a66ecd6f62982639281f40cd2f5f39a57a151f",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "50176ce90d5ab30802a1c940188937b0d8f7ca4d78b4a0bd2669acf1c7508689",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_036_cancel_move/state_000400.b64",
+          "native_bytes": 15076,
+          "native_sha256": "50176ce90d5ab30802a1c940188937b0d8f7ca4d78b4a0bd2669acf1c7508689",
+          "base64_file_sha256": "4b99cf0f718f46d6de87cab4c2ef47dacc1920322bfdeb8140f75154cb9ae463"
+        }
+      ],
+      "native_output_states": [],
+      "exit_code": 255,
+      "timeout": false,
+      "elapsed_seconds": 99.55473173099745,
+      "runtime_identity_passed": true,
+      "failures": [
+        "Emulator exit was 255",
+        "Missing shots: [1600, 1900]",
+        "Missing saves: [1950]",
+        "Missing snapshots: [1600, 1900]",
+        "Native runtime identity/exit gate failed"
+      ],
+      "intervention_lines": [],
+      "bank_lines": [],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "b0d820d1646c7a574254c862df1a09d07dcfa08010c877b9513055617d681fef",
+      "probe_receipt_sha256": "6e14c7a046cd404ff45c7b7477238f83a3d75ac000cb4c538301d59aeb64bc6a",
+      "products": [
+        {
+          "file": "f000400.png",
+          "bytes": 7213,
+          "sha256": "ce7991eda132a1899c665f85dc50c1323b02e811572fb693cfd282282325ab22",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001000.png",
+          "bytes": 7227,
+          "sha256": "32aa08aa2647613834d1b76a3585784896646a8647acd8fd4b8c462ba09f155a",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_038_wait_kuailiang",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_038_wait_kuailiang",
+      "semantic_note": "Host timeout after frame350 snapshot; no requested frame400 checkpoint. Preserved failed retry.",
+      "schedule": {
+        "intent": "Short replay from preserved KuaiLiang main menu after037 timeout: Wait once, capture HanSong menu and immediate checkpoint.",
+        "input_port": 1,
+        "events": [
+          [
+            20,
+            "down",
+            6
+          ],
+          [
+            50,
+            "down",
+            6
+          ],
+          [
+            80,
+            "down",
+            6
+          ],
+          [
+            110,
+            "down",
+            6
+          ],
+          [
+            140,
+            "down",
+            6
+          ],
+          [
+            170,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          350
+        ],
+        "saves": [
+          400
+        ],
+        "snapshots": [
+          350
+        ],
+        "stop": 420
+      },
+      "schedule_sha256": "20f6ee0d0c49ed948c0cea01081829b6c038870aa5cc37cf1a96ee6a263966bf",
+      "script_sha256": "e3f29d82a05bcea66df82590209a5b1a310327ef2887f3564da0df69fc28731c",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "50176ce90d5ab30802a1c940188937b0d8f7ca4d78b4a0bd2669acf1c7508689",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_036_cancel_move/state_000400.b64",
+          "native_bytes": 15076,
+          "native_sha256": "50176ce90d5ab30802a1c940188937b0d8f7ca4d78b4a0bd2669acf1c7508689",
+          "base64_file_sha256": "4b99cf0f718f46d6de87cab4c2ef47dacc1920322bfdeb8140f75154cb9ae463"
+        }
+      ],
+      "native_output_states": [],
+      "exit_code": null,
+      "timeout": true,
+      "elapsed_seconds": 75.50555152900051,
+      "runtime_identity_passed": true,
+      "failures": [
+        "Emulator exit was None",
+        "Missing saves: [400]",
+        "Native runtime identity/exit gate failed"
+      ],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "bbfca4c9eb1e3e813e8ff79e2126ba8e1d9588b87fb2f6d81534338cb6be66c9",
+      "probe_receipt_sha256": "1a69c80624edf15ab7591dcdb48387beb61835d5f39bd9dc442ea7cfb672c807",
+      "products": [
+        {
+          "file": "f000350.png",
+          "bytes": 7253,
+          "sha256": "f4d5ea2b2e2bcb907d227d8e1eb6e4bacf7885e278b20b04d6a42487e0c667c1",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "a3afa84669d549f83116339a3487ee9b558b3524b2511b22cccdee3fce71954e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "1eb2ed09e20f7f4c5331f22a61abb22f014c96b7967b3cabad034a7e51a9bea2",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "d8a4032e9fbe107264598919dc3730a6463412004939d4ae3cfa7706dc538840",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_039_wait_kuailiang_short",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_039_wait_kuailiang_short",
+      "semantic_note": "Short retry completed while content-identical completed-run storage deduplication was in progress.",
+      "schedule": {
+        "intent": "Short Wait replay from unchanged036 checkpoint after timeout and storage cleanup; save at300 and350 before bounded stop.",
+        "input_port": 1,
+        "events": [
+          [
+            20,
+            "down",
+            6
+          ],
+          [
+            50,
+            "down",
+            6
+          ],
+          [
+            80,
+            "down",
+            6
+          ],
+          [
+            110,
+            "down",
+            6
+          ],
+          [
+            140,
+            "down",
+            6
+          ],
+          [
+            170,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          350
+        ],
+        "saves": [
+          300,
+          350
+        ],
+        "snapshots": [
+          350
+        ],
+        "stop": 370
+      },
+      "schedule_sha256": "43f4c7837c632e958cb83d817e62b1589e48d6778d5a72173c4529ab4cb11ccb",
+      "script_sha256": "6477ba784a85119cd806e2e0ec2bff8645d29d02c16fd6905867b2af5f375b41",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "50176ce90d5ab30802a1c940188937b0d8f7ca4d78b4a0bd2669acf1c7508689",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_036_cancel_move/state_000400.b64",
+          "native_bytes": 15076,
+          "native_sha256": "50176ce90d5ab30802a1c940188937b0d8f7ca4d78b4a0bd2669acf1c7508689",
+          "base64_file_sha256": "4b99cf0f718f46d6de87cab4c2ef47dacc1920322bfdeb8140f75154cb9ae463"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_039_wait_kuailiang_short/state_000350.b64",
+          "native_bytes": 15101,
+          "native_sha256": "42a633dbbeef9ece459a260c3992c42ce464182d3bc7709f1b908fccedb596d7",
+          "base64_file_sha256": "e3ea7ebbcffc462bb2b676474391bcb51ec082af3fca8a59257461a2b9fdff21"
+        },
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_039_wait_kuailiang_short/state_000300.b64",
+          "native_bytes": 15065,
+          "native_sha256": "79f2ac6d372e5140cc7f75354b4b3fd317dcc53f5ed749ab961f59ed43b2f380",
+          "base64_file_sha256": "6ff530303e743dd78ffc08bbd900e6c816c80f65265db6f75a733e9809379b91"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 28.215204004001862,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "6079bcf41c539b415360c68eab6328bb675020020ade8fc564ab2737ee49c6c2",
+      "probe_receipt_sha256": "009c22d78b8cf7577b9e3775de4f7f9d08be0820b78c4859278ede48293a0c9c",
+      "products": [
+        {
+          "file": "state_000300.b64",
+          "bytes": 20089,
+          "sha256": "6ff530303e743dd78ffc08bbd900e6c816c80f65265db6f75a733e9809379b91",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 7253,
+          "sha256": "f4d5ea2b2e2bcb907d227d8e1eb6e4bacf7885e278b20b04d6a42487e0c667c1",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "a3afa84669d549f83116339a3487ee9b558b3524b2511b22cccdee3fce71954e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "1eb2ed09e20f7f4c5331f22a61abb22f014c96b7967b3cabad034a7e51a9bea2",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "d8a4032e9fbe107264598919dc3730a6463412004939d4ae3cfa7706dc538840",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000350.b64",
+          "bytes": 20137,
+          "sha256": "e3ea7ebbcffc462bb2b676474391bcb51ec082af3fca8a59257461a2b9fdff21",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_040_wait_hansong",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_040_wait_hansong",
+      "semantic_note": "Day1 HanSong Wait only on port1; preserve next HuangZhu menu checkpoint.",
+      "schedule": {
+        "intent": "Day1 HanSong Wait only on port1; preserve next HuangZhu menu checkpoint.",
+        "input_port": 1,
+        "events": [
+          [
+            20,
+            "down",
+            6
+          ],
+          [
+            50,
+            "down",
+            6
+          ],
+          [
+            80,
+            "down",
+            6
+          ],
+          [
+            110,
+            "down",
+            6
+          ],
+          [
+            140,
+            "down",
+            6
+          ],
+          [
+            170,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          350
+        ],
+        "saves": [
+          300,
+          350
+        ],
+        "snapshots": [
+          350
+        ],
+        "stop": 370
+      },
+      "schedule_sha256": "a324cb816f1f6860d96163bef7feaba7d378bc130b56252dbb08b7722c6d13af",
+      "script_sha256": "6f50209d89088780d90eba8d0bff4c4095f533f519c57715041ac5a888202d88",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "42a633dbbeef9ece459a260c3992c42ce464182d3bc7709f1b908fccedb596d7",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_039_wait_kuailiang_short/state_000350.b64",
+          "native_bytes": 15101,
+          "native_sha256": "42a633dbbeef9ece459a260c3992c42ce464182d3bc7709f1b908fccedb596d7",
+          "base64_file_sha256": "e3ea7ebbcffc462bb2b676474391bcb51ec082af3fca8a59257461a2b9fdff21"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_040_wait_hansong/state_000350.b64",
+          "native_bytes": 15121,
+          "native_sha256": "f782216a684b459b5b62581f2f3128c0c100d8525f4d6e491e7a207289d735c2",
+          "base64_file_sha256": "9ffc6e12a975130219bd0af2e98bac6f9a37464feb06068bc22bdbb48de8375d"
+        },
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_040_wait_hansong/state_000300.b64",
+          "native_bytes": 15109,
+          "native_sha256": "6315c2a6eedf46a8f698cd378af4032bfbfdf79771677cb9ced0ca26ba61738e",
+          "base64_file_sha256": "1c2e7be87031aad66929317a60a9de8fe46cd588f02610b880a1a33bfc0b62fa"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 22.857458894002775,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "7a24da83b60edf65cab23bfa8cef7364ac1af7bbb499d463bf9034dd778c735b",
+      "probe_receipt_sha256": "72ed8f0c3943815a7c2e4764307d373554a406860303cc2d75d79f6b7cf09152",
+      "products": [
+        {
+          "file": "state_000300.b64",
+          "bytes": 20149,
+          "sha256": "1c2e7be87031aad66929317a60a9de8fe46cd588f02610b880a1a33bfc0b62fa",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 7270,
+          "sha256": "ed1342a6856fe3e262f485694261723716d3d6112746cc2258cdd9ea6b7532b8",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "1c5e8d2b6382cfad5b5b12bcb35a03f85e72287ef3da9afe5d23dcf198bfa302",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "099a8365acc88f1bb07520327c0e5ad060efe5994bc1ffcc462f0e4badbed6b8",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "9303797318a13517d319a777df1acf7400a8134b221532ab38c2c0ccde632b50",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000350.b64",
+          "bytes": 20165,
+          "sha256": "9ffc6e12a975130219bd0af2e98bac6f9a37464feb06068bc22bdbb48de8375d",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_041_wait_huangzhu_attacker_baseline",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_041_wait_huangzhu_attacker_baseline",
+      "semantic_note": "Day1 HuangZhu Wait only on port1; preserve first YuanShu attacker menu before any attacker battle action.",
+      "schedule": {
+        "intent": "Day1 HuangZhu Wait only on port1; preserve first YuanShu attacker menu before any attacker battle action.",
+        "input_port": 1,
+        "events": [
+          [
+            20,
+            "down",
+            6
+          ],
+          [
+            50,
+            "down",
+            6
+          ],
+          [
+            80,
+            "down",
+            6
+          ],
+          [
+            110,
+            "down",
+            6
+          ],
+          [
+            140,
+            "down",
+            6
+          ],
+          [
+            170,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          350,
+          500
+        ],
+        "saves": [
+          350,
+          500
+        ],
+        "snapshots": [
+          350,
+          500
+        ],
+        "stop": 520
+      },
+      "schedule_sha256": "64300eff27b9e0f6409c07fd7006a03a8bc9143bbf8a68bb1b507a6ec581a9e6",
+      "script_sha256": "a6b1a32c19ccb521dae1412bad45c3fc25cdd0a2e4fdc7970eb0b714ba093ce9",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "f782216a684b459b5b62581f2f3128c0c100d8525f4d6e491e7a207289d735c2",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_040_wait_hansong/state_000350.b64",
+          "native_bytes": 15121,
+          "native_sha256": "f782216a684b459b5b62581f2f3128c0c100d8525f4d6e491e7a207289d735c2",
+          "base64_file_sha256": "9ffc6e12a975130219bd0af2e98bac6f9a37464feb06068bc22bdbb48de8375d"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_041_wait_huangzhu_attacker_baseline/state_000350.b64",
+          "native_bytes": 15136,
+          "native_sha256": "8e71003d31a1183464dd43379cf6eeb76a7927f564fceeec071cbc774f22539c",
+          "base64_file_sha256": "af902fc59076121916df8951cd73a445a22b6bf65023ffa80d0f4ddcbbfe3635"
+        },
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_041_wait_huangzhu_attacker_baseline/state_000500.b64",
+          "native_bytes": 15091,
+          "native_sha256": "8c123e3c99965af3dc8c2d83d979796d4209ab16261a5e105102bbefb1aa2667",
+          "base64_file_sha256": "821e3f3535d39a0c072c401203133074dae7cd813f7e53ee9e6b21de4967d05f"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 58.12045880599908,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3",
+        "BANK 500 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "923aeeb128e03b87b64d29c827366278d2d14df09b63f26fa24388bdf7bfed52",
+      "probe_receipt_sha256": "7965f69565d999c684855632037c9a6fb72068b6f3acd5ec81ae1c5d97e368ba",
+      "products": [
+        {
+          "file": "f000350.png",
+          "bytes": 7337,
+          "sha256": "2e308166769a60e6247d2d6b717d4616b2c6ec46fb970465cfe55a78b0f8276e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "cfc08b8b410d9528e6dc7265683100ef628540222e7ea492ff77a9ef90346438",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "747cc760435fc9cae626d99ffbdc77e6d380bc5d96d82c5179562412c176ac3e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "c06d6ddec30121c2429430b1e0833064324ab01b1df2c3995b6f070097e4401a",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000350.b64",
+          "bytes": 20185,
+          "sha256": "af902fc59076121916df8951cd73a445a22b6bf65023ffa80d0f4ddcbbfe3635",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000500.png",
+          "bytes": 7255,
+          "sha256": "4b61335f7ca593a8c02c3d10a0d0f476b62bf9135c37e89618b4cf95cbff968d",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000500_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "7185f610a7da68c794ec988f89fcb3ca1bc63dfea60ba8f8535aff773e91ecdb",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000500_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "747cc760435fc9cae626d99ffbdc77e6d380bc5d96d82c5179562412c176ac3e",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000500_save0000.bin",
+          "bytes": 32768,
+          "sha256": "c06d6ddec30121c2429430b1e0833064324ab01b1df2c3995b6f070097e4401a",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000500.b64",
+          "bytes": 20125,
+          "sha256": "821e3f3535d39a0c072c401203133074dae7cd813f7e53ee9e6b21de4967d05f",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_042_wait_yuanshu",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_042_wait_yuanshu",
+      "semantic_note": "Day1 YuanShu Wait only on port0 from preserved first-attacker checkpoint; inspect YuanYin turn.",
+      "schedule": {
+        "intent": "Day1 YuanShu Wait only on port0 from preserved first-attacker checkpoint; inspect YuanYin turn.",
+        "input_port": 0,
+        "events": [
+          [
+            20,
+            "down",
+            6
+          ],
+          [
+            50,
+            "down",
+            6
+          ],
+          [
+            80,
+            "down",
+            6
+          ],
+          [
+            110,
+            "down",
+            6
+          ],
+          [
+            140,
+            "down",
+            6
+          ],
+          [
+            170,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          350
+        ],
+        "saves": [
+          300,
+          350
+        ],
+        "snapshots": [
+          350
+        ],
+        "stop": 370
+      },
+      "schedule_sha256": "0b834ae792c95afe132cd0623453dd61e81c6af2ef4640d22cac5ed7b829762c",
+      "script_sha256": "3b0226e8069e971ef10cc0d44901fb18b7724095e7c1f705b30052c4e8c521c8",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "8c123e3c99965af3dc8c2d83d979796d4209ab16261a5e105102bbefb1aa2667",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_041_wait_huangzhu_attacker_baseline/state_000500.b64",
+          "native_bytes": 15091,
+          "native_sha256": "8c123e3c99965af3dc8c2d83d979796d4209ab16261a5e105102bbefb1aa2667",
+          "base64_file_sha256": "821e3f3535d39a0c072c401203133074dae7cd813f7e53ee9e6b21de4967d05f"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_042_wait_yuanshu/state_000350.b64",
+          "native_bytes": 15144,
+          "native_sha256": "2a0b2824e847819899f3f3494b8e8afdfac251267ce305a1b892b833c9a8ff01",
+          "base64_file_sha256": "a828731760537d3df7ca51181673bd459eb9d25d7d3bb88d01de3ec7b6a36c31"
+        },
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_042_wait_yuanshu/state_000300.b64",
+          "native_bytes": 15095,
+          "native_sha256": "e23cd5b1f69655204b8ecf502ff4e4dbeb94f162efb1b68b14db85d97169555e",
+          "base64_file_sha256": "e1c90d3c0bb8534a21842ddb856a5dbf717225cee6d4ee353c2a8e552dfc7abd"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 5.850609782999527,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "7a07cea7fe5315b8dcce757ccec7569c88bce4893fa3a7ad68166507fcb48f5e",
+      "probe_receipt_sha256": "dc067131eb1679ade27238e96a21ccc216f48dfae5d29b272eec0b8bc5dd2dab",
+      "products": [
+        {
+          "file": "state_000300.b64",
+          "bytes": 20129,
+          "sha256": "e1c90d3c0bb8534a21842ddb856a5dbf717225cee6d4ee353c2a8e552dfc7abd",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 7336,
+          "sha256": "338201bfe87b3d6aa83a331bba000615e9f79c598bc956ff642028f1e41e2c43",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "b24216ae5d406938f0a24f93cb06ffa409427509a8104762ac024216de79d354",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "4c05c451da1b91d2cf1b284220ef21e4ae99c9ea555207b4cbb579a5921de0fd",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "2a1a1d965cfe6902a8ec285e75bc466cf9bd51d57b95dc59744d9b9f0ef0edf3",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000350.b64",
+          "bytes": 20193,
+          "sha256": "a828731760537d3df7ca51181673bd459eb9d25d7d3bb88d01de3ec7b6a36c31",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_043_wait_yuanyin",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_043_wait_yuanyin",
+      "semantic_note": "Day1 YuanYin Wait only on port0; inspect JiLing turn.",
+      "schedule": {
+        "intent": "Day1 YuanYin Wait only on port0; inspect JiLing turn.",
+        "input_port": 0,
+        "events": [
+          [
+            20,
+            "down",
+            6
+          ],
+          [
+            50,
+            "down",
+            6
+          ],
+          [
+            80,
+            "down",
+            6
+          ],
+          [
+            110,
+            "down",
+            6
+          ],
+          [
+            140,
+            "down",
+            6
+          ],
+          [
+            170,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          350
+        ],
+        "saves": [
+          300,
+          350
+        ],
+        "snapshots": [
+          350
+        ],
+        "stop": 370
+      },
+      "schedule_sha256": "163ac0a359832bc1e2e03a80207e8f6475c05456232fecf9f109347734c00836",
+      "script_sha256": "6e9e7d7d95cb4f01f915f23b7bbdbe888d9b039e5f13b9b89274d50927408029",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "2a0b2824e847819899f3f3494b8e8afdfac251267ce305a1b892b833c9a8ff01",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_042_wait_yuanshu/state_000350.b64",
+          "native_bytes": 15144,
+          "native_sha256": "2a0b2824e847819899f3f3494b8e8afdfac251267ce305a1b892b833c9a8ff01",
+          "base64_file_sha256": "a828731760537d3df7ca51181673bd459eb9d25d7d3bb88d01de3ec7b6a36c31"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_043_wait_yuanyin/state_000350.b64",
+          "native_bytes": 15121,
+          "native_sha256": "3b47eae74210d2932f2b178975aff7982e4dbb6a6197c48a7a4a8e48cdbf66eb",
+          "base64_file_sha256": "4ad9eab71de5ce691d12d220181a1b152091f9b25c1d0e5e747ac524524b85e8"
+        },
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_043_wait_yuanyin/state_000300.b64",
+          "native_bytes": 15130,
+          "native_sha256": "5c9e80dcc8e7def82545f1d89ae41ebc8635c46766a868ef75cfb8b42b4668ef",
+          "base64_file_sha256": "850f4c18ab82ab43aab0d27b875270b9fe1fd21b86cd4a30f71d576a1d54fdbc"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 4.376046795001457,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 350 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "441b1a07159d6cad0d79ca718c2fa8d6b09c5227c5d32791f07a5e5409d714be",
+      "probe_receipt_sha256": "c7eafef1e6c782acf4d1892bd51db62650dbb28dcef9a9810107762d724599b6",
+      "products": [
+        {
+          "file": "state_000300.b64",
+          "bytes": 20177,
+          "sha256": "850f4c18ab82ab43aab0d27b875270b9fe1fd21b86cd4a30f71d576a1d54fdbc",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 7296,
+          "sha256": "de79068b46f78948909014c923e1faf847b06c950fd9974620f73d5bb40bb9ba",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "c116a3d14275a87b45dd2bbd019f874ba38fa6edf0816199b9ddb28c355119d8",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "3239e013a453ea7b6be806794b5939a0db3790e30eaba4ddce159ac126ac76e7",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "dc79ba9d4d3d812772aff2d48189dba8fef01a17299137c4bb6abc933c99a20a",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000350.b64",
+          "bytes": 20165,
+          "sha256": "4ad9eab71de5ce691d12d220181a1b152091f9b25c1d0e5e747ac524524b85e8",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_044_wait_jiling_day2",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_044_wait_jiling_day2",
+      "semantic_note": "Final attacker JiLing Wait only; capture day1-to-day2 resource update, read-only rice/day write traces, fullSRAM census and native summary.",
+      "schedule": {
+        "intent": "Final attacker JiLing Wait only; capture day1-to-day2 resource update, read-only rice/day write traces, fullSRAM census and native summary.",
+        "input_port": 0,
+        "events": [
+          [
+            20,
+            "down",
+            6
+          ],
+          [
+            50,
+            "down",
+            6
+          ],
+          [
+            80,
+            "down",
+            6
+          ],
+          [
+            110,
+            "down",
+            6
+          ],
+          [
+            140,
+            "down",
+            6
+          ],
+          [
+            170,
+            "a",
+            6
+          ]
+        ],
+        "shots": [
+          10,
+          350,
+          700,
+          1100
+        ],
+        "saves": [
+          350,
+          700,
+          1100
+        ],
+        "snapshots": [
+          10,
+          350,
+          700,
+          1100
+        ],
+        "watches": [
+          [
+            31773,
+            31780
+          ],
+          [
+            32028,
+            32028
+          ]
+        ],
+        "stop": 1120
+      },
+      "schedule_sha256": "0f44282d5596ce1b0b833e5875e8f29adf5e1e2fb084361527fbe52841dde51b",
+      "script_sha256": "720c71e28604ad9e83b237542fa9f4061e844757194562936b8a3be3078ccd5d",
+      "controller_source_lines": [
+        "local inputport=0",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "3b47eae74210d2932f2b178975aff7982e4dbb6a6197c48a7a4a8e48cdbf66eb",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_043_wait_yuanyin/state_000350.b64",
+          "native_bytes": 15121,
+          "native_sha256": "3b47eae74210d2932f2b178975aff7982e4dbb6a6197c48a7a4a8e48cdbf66eb",
+          "base64_file_sha256": "4ad9eab71de5ce691d12d220181a1b152091f9b25c1d0e5e747ac524524b85e8"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_044_wait_jiling_day2/state_000350.b64",
+          "native_bytes": 13499,
+          "native_sha256": "a1d6bf009f0f5b7c5fee7bc671094169c7a1a210b276e4ed3ccb00e9cc689407",
+          "base64_file_sha256": "7f426d2b1e7bdbef40828065ea7d5dd6287c0a20d6ecbd0e126d5736d5aefec2"
+        },
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_044_wait_jiling_day2/state_001100.b64",
+          "native_bytes": 15027,
+          "native_sha256": "c6b363880045755dd18370103cba483c2cec632ddc83c8b109cb558ad0f9e360",
+          "base64_file_sha256": "a72686345e77c39c3efb7e6b832ad0db7db30793aa18b3777d59f3680df3d71e"
+        },
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_044_wait_jiling_day2/state_000700.b64",
+          "native_bytes": 15039,
+          "native_sha256": "aee285a71fb5007aaf9fa99c626870045c03efb5b6eb92736528b780f999d7ed",
+          "base64_file_sha256": "abf0ab32105427614d088910cc0c73f9d1436ff2dc1b7c761cc9f89e5022535a"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 10.600918650001404,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 10 8192 50 1 3",
+        "BANK 350 8192 50 1 3",
+        "BANK 700 8192 50 1 3",
+        "BANK 1100 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "fa22d0831bece9bc8e3a8159607cb991e521cc6e1de1e1fe8dc4d5563af77e48",
+      "probe_receipt_sha256": "5b92d42255990d70eaf2e84e1ce74681b61b4b5739357de4c63b467d8c735378",
+      "products": [
+        {
+          "file": "f000010.png",
+          "bytes": 7258,
+          "sha256": "18e904ef1bfe9c1be5e0d90925792b25bddb535972f573ef488e6dc5d9a91b7b",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000010_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "db7f832defebdd06e733e78aaf3497717598201011b9c33491b9f02cdc88e874",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000010_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "3239e013a453ea7b6be806794b5939a0db3790e30eaba4ddce159ac126ac76e7",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000010_save0000.bin",
+          "bytes": 32768,
+          "sha256": "dc79ba9d4d3d812772aff2d48189dba8fef01a17299137c4bb6abc933c99a20a",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000350.png",
+          "bytes": 5237,
+          "sha256": "f7fb03c83effad431f22cdf41059bfe1e2f7c648881335a3c414b00047431741",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "89837374028374a5b0b16045c545b8485f2a184debaa1491c5055bb11f3b23e9",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "844031ccd60ecf70b3fa8f8d0d9e5c34c5ba634d5dc0509ef11d7874913fca6f",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000350_save0000.bin",
+          "bytes": 32768,
+          "sha256": "3311d88713fd294727f75e9f481a867c5ce9dc290ad957596fe047fc9357d1ab",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000350.b64",
+          "bytes": 18001,
+          "sha256": "7f426d2b1e7bdbef40828065ea7d5dd6287c0a20d6ecbd0e126d5736d5aefec2",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f000700.png",
+          "bytes": 7211,
+          "sha256": "87503fee0ca721fbd95b7231e7d5093d16c331be3526dac93bcf9e2774b8e996",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000700_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "fbb3ee35b93459fd59353cdf2d1b0ef81376aac43aa578065771bcbe76e9d91b",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000700_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "5cc82438966efb78a8ec80d23274d3560fb9ca710b8dfa557451c4376504fa21",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000700_save0000.bin",
+          "bytes": 32768,
+          "sha256": "c60436958bfcbeec83c1cf65fad65ee45688f00ee327d598d718d82d52f54c14",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000700.b64",
+          "bytes": 20053,
+          "sha256": "abf0ab32105427614d088910cc0c73f9d1436ff2dc1b7c761cc9f89e5022535a",
+          "current_identity_matches": true
+        },
+        {
+          "file": "f001100.png",
+          "bytes": 7211,
+          "sha256": "87503fee0ca721fbd95b7231e7d5093d16c331be3526dac93bcf9e2774b8e996",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001100_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "860298d233681322510690e04551a7daab9ba1df36794e812769e5319eb50a3c",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001100_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "5cc82438966efb78a8ec80d23274d3560fb9ca710b8dfa557451c4376504fa21",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_001100_save0000.bin",
+          "bytes": 32768,
+          "sha256": "c60436958bfcbeec83c1cf65fad65ee45688f00ee327d598d718d82d52f54c14",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_001100.b64",
+          "bytes": 20037,
+          "sha256": "a72686345e77c39c3efb7e6b832ad0db7db30793aa18b3777d59f3680df3d71e",
+          "current_identity_matches": true
+        }
+      ]
+    },
+    {
+      "case": "twohuman_045_day2_summary",
+      "case_directory": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_045_day2_summary",
+      "semantic_note": "Open day2 B summary on defender port1 after verified Wait-only tick; visually confirm443/296rice while fieldtotals remain130/120.",
+      "schedule": {
+        "intent": "Open day2 B summary on defender port1 after verified Wait-only tick; visually confirm443/296rice while fieldtotals remain130/120.",
+        "input_port": 1,
+        "events": [
+          [
+            50,
+            "b",
+            6
+          ]
+        ],
+        "shots": [
+          300
+        ],
+        "saves": [
+          350
+        ],
+        "snapshots": [
+          300
+        ],
+        "stop": 370
+      },
+      "schedule_sha256": "6c0da5b2d32f2e5d0eb69d665346b81b2267cd2e21a406dfad601ca4fe567326",
+      "script_sha256": "9382744bddaed79192ecaf71b4a082804c896a8306c505baf3b8a248137c0ce8",
+      "controller_source_lines": [
+        "local inputport=1",
+        "emu.setInput({},1-inputport)",
+        "emu.setInput(inp,inputport)"
+      ],
+      "native_input_state_sha256": "c6b363880045755dd18370103cba483c2cec632ddc83c8b109cb558ad0f9e360",
+      "native_input_sources": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_044_wait_jiling_day2/state_001100.b64",
+          "native_bytes": 15027,
+          "native_sha256": "c6b363880045755dd18370103cba483c2cec632ddc83c8b109cb558ad0f9e360",
+          "base64_file_sha256": "a72686345e77c39c3efb7e6b832ad0db7db30793aa18b3777d59f3680df3d71e"
+        }
+      ],
+      "native_output_states": [
+        {
+          "file": "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_045_day2_summary/state_000350.b64",
+          "native_bytes": 15051,
+          "native_sha256": "b0268a2e7d234e90ac40aad32b17090d531f78c32a0e5ff45ccb7c17905072c8",
+          "base64_file_sha256": "92989cea60a21a31b939e2dd7ae0253084879871a5cfe95c29c3b777243a4dea"
+        }
+      ],
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 3.29679565799961,
+      "runtime_identity_passed": true,
+      "failures": [],
+      "intervention_lines": [],
+      "bank_lines": [
+        "BANK 300 8192 50 1 3"
+      ],
+      "native_restore_confirmed": true,
+      "process_receipt_sha256": "6463600cda69684c4cb2968bc27c59a0b40f7dcf0b71d129796bcae10f18fc6a",
+      "probe_receipt_sha256": "3aa4fc33d21a57079e08eebef8be3b932658027c62846c7097a3f4e03d95357e",
+      "products": [
+        {
+          "file": "f000300.png",
+          "bytes": 6677,
+          "sha256": "51ad0debdbc8f6fabdc94fe27f461e85689096101d62c785776b907847fe9187",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000300_cpu0000.bin",
+          "bytes": 2048,
+          "sha256": "aaea7a2eb17fae03be1e140a80e543ad9d6b26757c7b9a4216f25e9643c23790",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000300_cpu6000.bin",
+          "bytes": 8192,
+          "sha256": "eed379b7250a773c557d41d9cb8d8a6a1c02c1e8462f14ae213f808fd2eb02d9",
+          "current_identity_matches": true
+        },
+        {
+          "file": "memory_000300_save0000.bin",
+          "bytes": 32768,
+          "sha256": "2cc89ae1eee689b9baf04663858fe86a9fdf0ff9d8cd886710acb588323c9be7",
+          "current_identity_matches": true
+        },
+        {
+          "file": "state_000350.b64",
+          "bytes": 20069,
+          "sha256": "92989cea60a21a31b939e2dd7ae0253084879871a5cfe95c29c3b777243a4dea",
+          "current_identity_matches": true
+        }
+      ]
+    }
+  ],
+  "product_identity_mismatches": [],
+  "interpretation": "Execution completion is distinct from semantic UI action success. Read semantic_note and failures."
+}

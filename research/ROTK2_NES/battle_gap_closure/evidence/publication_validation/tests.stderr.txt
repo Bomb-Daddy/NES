@@ -1,0 +1,33 @@
+test_complete_native_rgb_png_and_split_idat_are_accepted (test_battle_probe.ProbeGates.test_complete_native_rgb_png_and_split_idat_are_accepted) ... ok
+test_early_exit_cannot_be_reported_success (test_battle_probe.ProbeGates.test_early_exit_cannot_be_reported_success) ... ok
+test_empty_native_screenshot_is_not_evidence (test_battle_probe.ProbeGates.test_empty_native_screenshot_is_not_evidence) ... ok
+test_empty_or_invalid_checkpoint_rejected (test_battle_probe.ProbeGates.test_empty_or_invalid_checkpoint_rejected) ... ok
+test_error_exit_cannot_be_reported_success (test_battle_probe.ProbeGates.test_error_exit_cannot_be_reported_success) ... ok
+test_nonempty_output_refused_without_removing_evidence (test_battle_probe.ProbeGates.test_nonempty_output_refused_without_removing_evidence) ... ok
+test_pending_restore_cannot_be_reported_success (test_battle_probe.ProbeGates.test_pending_restore_cannot_be_reported_success) ... ok
+test_png_chunk_order_and_critical_chunks_are_validated (test_battle_probe.ProbeGates.test_png_chunk_order_and_critical_chunks_are_validated) ... ok
+test_png_compressed_data_must_be_complete_and_bounded (test_battle_probe.ProbeGates.test_png_compressed_data_must_be_complete_and_bounded) ... ok
+test_png_header_without_image_is_not_evidence (test_battle_probe.ProbeGates.test_png_header_without_image_is_not_evidence) ... ok
+test_png_truncation_crc_and_trailing_bytes_are_rejected (test_battle_probe.ProbeGates.test_png_truncation_crc_and_trailing_bytes_are_rejected) ... ok
+test_valid_completion_receipt_accepted (test_battle_probe.ProbeGates.test_valid_completion_receipt_accepted) ... ok
+test_wrong_rom_rejected_before_output_creation (test_battle_probe.ProbeGates.test_wrong_rom_rejected_before_output_creation) ... ok
+test_copied_executable_corruption_is_rejected_before_launch (test_battle_probe.RunnerIdentityGates.test_copied_executable_corruption_is_rejected_before_launch) ... ok
+test_replaced_executable_after_zero_exit_cannot_pass_identity (test_battle_probe.RunnerIdentityGates.test_replaced_executable_after_zero_exit_cannot_pass_identity) ... ok
+test_unchanged_copied_executable_and_core_pass_identity (test_battle_probe.RunnerIdentityGates.test_unchanged_copied_executable_and_core_pass_identity) ... ok
+test_ambiguous_checkpoint_producers_cannot_erase_prepared_ancestry (test_runtime_manifest.ManifestCases.test_ambiguous_checkpoint_producers_cannot_erase_prepared_ancestry) ... ok
+test_checkpoint_cycle_remains_unknown (test_runtime_manifest.ManifestCases.test_checkpoint_cycle_remains_unknown) ... ok
+test_header_only_png_and_modified_log_do_not_pass (test_runtime_manifest.ManifestCases.test_header_only_png_and_modified_log_do_not_pass) ... ok
+test_logged_intervention_without_metadata_cannot_look_ordinary (test_runtime_manifest.ManifestCases.test_logged_intervention_without_metadata_cannot_look_ordinary) ... ok
+test_missing_product_error_does_not_leak_absolute_archive_path (test_runtime_manifest.ManifestCases.test_missing_product_error_does_not_leak_absolute_archive_path) ... ok
+test_missing_receipts_are_in_progress_not_failed (test_runtime_manifest.ManifestCases.test_missing_receipts_are_in_progress_not_failed) ... ok
+test_older_schedule_only_patches_still_taint_descendants (test_runtime_manifest.ManifestCases.test_older_schedule_only_patches_still_taint_descendants) ... ok
+test_partial_identity_receipt_is_reported_without_aborting_scan (test_runtime_manifest.ManifestCases.test_partial_identity_receipt_is_reported_without_aborting_scan) ... ok
+test_prepared_state_propagates_through_failed_parent_and_grandchild (test_runtime_manifest.ManifestCases.test_prepared_state_propagates_through_failed_parent_and_grandchild) ... ok
+test_retained_executable_mismatch_survives_recorded_success (test_runtime_manifest.ManifestCases.test_retained_executable_mismatch_survives_recorded_success) ... ok
+test_unknown_checkpoint_remains_unresolved (test_runtime_manifest.ManifestCases.test_unknown_checkpoint_remains_unresolved) ... ok
+test_valid_artifacts_pass_without_exposing_payloads_or_absolute_paths (test_runtime_manifest.ManifestCases.test_valid_artifacts_pass_without_exposing_payloads_or_absolute_paths) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.393s
+
+OK

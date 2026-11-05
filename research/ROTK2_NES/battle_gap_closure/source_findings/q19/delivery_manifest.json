@@ -1,0 +1,76 @@
+{
+  "task": "Implementation plan Task4 Q19-A/Q19-B",
+  "evidence": "VERIFIED_STATIC; original emulator runtime NOT RUN",
+  "files": [
+    {
+      "path": "Q19_STATIC_CLOSURE_v1.00.md",
+      "bytes": 36287,
+      "sha256": "9a1920b325364c032d110eb11c2a538421220102d2ebaa409fe8f2c39d1ea13b"
+    },
+    {
+      "path": "build_source_manifest.py",
+      "bytes": 5345,
+      "sha256": "e67d4e9739366e3f888184189155b7278e1eedc79295d1e1c352c0e01cb69820"
+    },
+    {
+      "path": "manifest_attempt01_run_receipt.json",
+      "bytes": 972,
+      "sha256": "0eb5fb588ba83980b9e0afb875b58b0fb5af471fe267513535b87d97c4682456"
+    },
+    {
+      "path": "manifest_attempt01_stderr.txt",
+      "bytes": 436,
+      "sha256": "1eb1b18cc1de04d468f7702e7e800982e625ce7147f7f1641cf6f6e0e37cdfd2"
+    },
+    {
+      "path": "manifest_attempt01_stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native_q19.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native_q19.stdout.txt",
+      "bytes": 225,
+      "sha256": "f2d04fa3df17ed475148904fb24aa95f8fa869fd24b057a27c5ca213f4ef80c9"
+    },
+    {
+      "path": "native_q19_results.json",
+      "bytes": 16523,
+      "sha256": "414afd293ac71dc5e432ebce8769030ed70f4d74d1471eb1d4c0a31bf1f3deb1"
+    },
+    {
+      "path": "native_q19_run_receipt.json",
+      "bytes": 876,
+      "sha256": "28920ac4f5a26e035a7b4229f4f8d5a0653da2209b368d008cb3951920b446e2"
+    },
+    {
+      "path": "probe_native_q19.py",
+      "bytes": 14101,
+      "sha256": "8d6de9c013c9bfea1782ecbdbdcd9d5301830ed6e119a2c1850503ecc23e622c"
+    },
+    {
+      "path": "q19_source_manifest.json",
+      "bytes": 12621,
+      "sha256": "2ed7ad6a5000dfedc096d75885b7f9677316be24c685660d66d0356c1a6a4c69"
+    },
+    {
+      "path": "q19_source_manifest.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "q19_source_manifest.stdout.txt",
+      "bytes": 89,
+      "sha256": "d2b1e93ebcd6fa1a63b02081603651aa5d3e9f301bf6ddeab06e65d78af6fedf"
+    },
+    {
+      "path": "q19_source_manifest_run_receipt.json",
+      "bytes": 972,
+      "sha256": "9b4a531d7b1a6392cc4cd61eb07332d511aba531c8af9b9d68c43e784d6913ea"
+    }
+  ]
+}

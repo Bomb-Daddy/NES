@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "static_sources/white_marker/audit_white_marker.py",
+    "--workspace",
+    ".",
+    "--rom",
+    "private_sources/library/Romance of The Three Kingdoms II (U).nes",
+    "--output",
+    "static_sources/white_marker/white_marker_audit.json"
+  ],
+  "cwd": "/workspace/scratch/efe8e2e6cf8d",
+  "exit_code": 0,
+  "elapsed_seconds": 16.966765007000504,
+  "script_sha256": "0d828ea4325327febaaf3123a1dbc7570ec92a271f259df67af7a059f668809e",
+  "stdout_sha256": "67011f9df33844d3b78644b244a0e7d69a634fd4ceb152b4ae4e2a721933a103",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

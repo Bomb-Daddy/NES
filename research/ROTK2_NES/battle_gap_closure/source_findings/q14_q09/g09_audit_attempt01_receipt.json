@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/scratch/efe8e2e6cf8d/static_sources/q14_q09/audit_troop_writers.py",
+    "--rom",
+    "/workspace/scratch/efe8e2e6cf8d/private_sources/Romance of the Three Kingdoms II (USA).sfc",
+    "--listings",
+    "/workspace/scratch/efe8e2e6cf8d/static_sources/regenerated/src",
+    "--out",
+    "/workspace/scratch/efe8e2e6cf8d/static_sources/q14_q09/g09_writer_and_map_audit.json"
+  ],
+  "cwd": "/workspace/scratch/efe8e2e6cf8d",
+  "started_utc": "2026-11-05T19:00:17.047785+00:00",
+  "finished_utc": "2026-11-05T19:00:18.078398+00:00",
+  "exit_code": 0,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "stdout": "{\"writer_matches\": 57, \"counts\": {\"officer_troops\": 47, \"province_population\": 8, \"ruler_troop_aggregate\": 2}, \"ranges_verified\": 13, \"anchors_verified\": 9, \"map_summary\": {\"maps\": 41, \"valid_neighbor_regions\": 186, \"all_valid_neighbor_regions_have_five_cells\": true, \"all_home_regions_have_twenty_cells\": true}, \"ordinary_play_reachability_proved\": false}\n",
+  "stderr": "",
+  "original_game_executed": false,
+  "script_sha256": "789ab6c1e95b823f20864739bfc979ecca32dd6c16e798bb504ed6f7efef460f",
+  "output_sha256": "4ec849279e02a09d0f2596008f41726101b3c5ddbb9fba135f1169358f58e88c"
+}

@@ -1,0 +1,1 @@
+{"writer_matches": 57, "counts": {"officer_troops": 47, "province_population": 8, "ruler_troop_aggregate": 2}, "ranges_verified": 13, "anchors_verified": 9, "map_summary": {"maps": 41, "valid_neighbor_regions": 186, "all_valid_neighbor_regions_have_five_cells": true, "all_home_regions_have_twenty_cells": true}, "ordinary_play_reachability_proved": false}

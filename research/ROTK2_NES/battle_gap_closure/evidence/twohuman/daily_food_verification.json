@@ -1,0 +1,48 @@
+{
+  "evidence": "OBSERVED_RUNTIME",
+  "status": "PASS_VERIFIED",
+  "source_files": {
+    "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_044_wait_jiling_day2/census_000010.json": "35c050906e715665a7c48ce463a26a99fc57b8011ff12fe7819490e0e727a856",
+    "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_044_wait_jiling_day2/census_001100.json": "78eef39eaad6ebc2b9ab755473d297fd7d62d1d6041f8ee6f03ce64ea7d72d68",
+    "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_044_wait_jiling_day2/probe_receipt.json": "5b92d42255990d70eaf2e84e1ce74681b61b4b5739357de4c63b467d8c735378",
+    "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_044_wait_jiling_day2/process/stdout.log": "4e283b458daff98b866db827bbb1efcdb56fac9683bf2f089eb4910f88208cac",
+    "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_044_wait_jiling_day2/process/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/workspace/scratch/efe8e2e6cf8d/runtime/experiments/twohuman_044_wait_jiling_day2/process/receipt.json": "fa22d0831bece9bc8e3a8159607cb991e521cc6e1de1e1fe8dc4d5563af77e48"
+  },
+  "calculations": {
+    "defender_total_raw": 20000,
+    "defender_field_raw": 13000,
+    "defender_resident_raw": 7000,
+    "attacker_total_raw": 12000,
+    "defender_food_observed": 666,
+    "attacker_food_observed": 400,
+    "defender_all_troops_formula": 666,
+    "defender_field_only_formula": 433,
+    "attacker_formula": 400
+  },
+  "same_rosters_troops_positions": true,
+  "cpu_window_equals_physical_sram_bank1": {
+    "10": true,
+    "350": true,
+    "700": true,
+    "1100": true
+  },
+  "day_before": {
+    "rice_defender_7C1D": 45000,
+    "rice_attacker_7C21": 30000,
+    "weather_7C25": 2,
+    "wind_7C26": 1,
+    "day_7D1C": 1,
+    "old_day_7D25": 3
+  },
+  "day_after": {
+    "rice_defender_7C1D": 44334,
+    "rice_attacker_7C21": 29600,
+    "weather_7C25": 3,
+    "wind_7C26": 1,
+    "day_7D1C": 2,
+    "old_day_7D25": 3
+  },
+  "native_exit_code": 0,
+  "limitation": "Historical130field+60reserve total was not reproduced; observed setup is130field+70reserve."
+}

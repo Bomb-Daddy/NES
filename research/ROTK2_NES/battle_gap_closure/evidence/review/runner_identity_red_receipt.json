@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-v"
+  ],
+  "cwd": "/workspace/scratch/efe8e2e6cf8d/research_repo/research/ROTK2_NES/battle_gap_closure/tools",
+  "exit_code": 1,
+  "date_utc": "2026-11-05T19:06:47.774224+00:00",
+  "files": {
+    "battle_probe.py": "b21a626935a6b45c6918925856632d43a97e70cc5dcd15660a05b7ac086d1cbc",
+    "run_mesen.py": "faa9ea48d9bedf847b25338a579f91b055630903fec5aa959f94df1e3ba7de09",
+    "test_battle_probe.py": "faa0402bcb23272ab4d034f7343c315149054c01acd05393d082595e162a84d6"
+  },
+  "subprocesses": "Synthetic fixtures only; no emulator or original ROM run"
+}
