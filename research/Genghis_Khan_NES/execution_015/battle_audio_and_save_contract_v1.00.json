@@ -1,0 +1,153 @@
+{
+  "record": "ZL-GK1-EXEC-0015",
+  "version": "1.00",
+  "date": "2026-11-05",
+  "classification": "OBSERVED_RUNTIME_MOD; Windows integration NOT RUN",
+  "rom_sha256": "4764d46359581be1e7d12bcb85bd375c84cd4497d1084d9d306a6e884afbe7c5",
+  "scope": "Mongol Conquest, Spring1175, invasion from country1 into country5, Self,20 strategic troops, early leader Flee; controlled audio-option comparisons",
+  "new_cue_events": [
+    {
+      "cue": 20,
+      "header_cpu": "0x9387",
+      "event": "first effect in the observed invasion departure sequence",
+      "gate": "Sound",
+      "repeat": false,
+      "scope": "sequence association; not a claim of unique use or a named instrument"
+    },
+    {
+      "cue": 48,
+      "header_cpu": "0x97B0",
+      "event": "second effect in the observed invasion departure sequence",
+      "gate": "Sound",
+      "repeat": false,
+      "scope": "sequence association; not a claim of unique use"
+    },
+    {
+      "cue": 5,
+      "header_cpu": "0x893E",
+      "event": "battle overview/deployment and field-battle background in the observed invasion",
+      "gate": "Music",
+      "repeat": true
+    },
+    {
+      "cue": 15,
+      "header_cpu": "0x902F",
+      "event": "confirmed commander Flee / retreat-result transition",
+      "gate": "Music",
+      "repeat": false
+    }
+  ],
+  "cue_sequences": {
+    "invasion_music_on_sound_on": [
+      20,
+      0,
+      48,
+      0,
+      5
+    ],
+    "invasion_music_on_sound_off": [
+      5
+    ],
+    "invasion_music_off_sound_on": [
+      20,
+      48
+    ],
+    "retreat_both_on": [
+      0,
+      15,
+      6
+    ],
+    "retreat_sound_off": [
+      0,
+      15,
+      6
+    ],
+    "retreat_music_off": []
+  },
+  "empty_cue_0": "Observed interleaved request. Its empty header is not equivalent to the explicit driver stop operation. Not counted as a newly identified player event.",
+  "state_transition": {
+    "start": {
+      "gold": 423,
+      "food": 208,
+      "troops": 61,
+      "reserve": 34,
+      "bp": 100,
+      "orders": 3
+    },
+    "after_invasion_commit": {
+      "gold": 403,
+      "food": 198,
+      "troops": 41,
+      "reserve": 34,
+      "bp": 25,
+      "orders": 3
+    },
+    "battle_overview": {
+      "attacker_soldiers": 200,
+      "attacker_food": 100,
+      "defender_soldiers": 350,
+      "defender_food": 430,
+      "day_budget": 90,
+      "attacker_unit_counts": [
+        40,
+        40,
+        40,
+        0,
+        40,
+        0,
+        0,
+        40,
+        0,
+        0
+      ]
+    },
+    "after_commander_flee": {
+      "gold": 403,
+      "food": 198,
+      "troops": 45,
+      "reserve": 34,
+      "bp": 25,
+      "orders": 2
+    },
+    "charge_timing": "BP/resource debit precedes combat; one order is deducted at the observed return to strategy. Do not generalize to all battle outcomes.",
+    "cancel": "War confirmation B preserved compared country/ruler records, resources, orders, BP and RNG"
+  },
+  "audio_controls": "All matched invasion outcomes equal, and all matched retreat outcomes equal, including country/ruler record hashes and RNG; only audio flags differ.",
+  "presentation_timing": {
+    "battle_music_request_offset_from_matching_case_baseline": {
+      "sound_on": 1095,
+      "sound_off": 951
+    },
+    "scope": "144 bridge-frame difference in this captured input schedule, not a universal command duration"
+  },
+  "native_save": {
+    "uninterrupted_post_commit_battle_retreat_save": true,
+    "new_process_load": true,
+    "memory_write_or_checkpoint_restore_in_load_process": false,
+    "battery_sha256": "aff390ef554415fce338aa4918e03205157ab4928cd61c83546f00d20659c9dc",
+    "all_compared_game_fields_and_country_ruler_records_match": true,
+    "saved_music": 1,
+    "saved_sound": 1,
+    "rng_before_save": "d14c2f94e0e9",
+    "rng_after_cold_load": "063206320000",
+    "rng_scope": "observed differing volatile RNG bytes; general save/init rule remains open"
+  },
+  "mapped_cues": 9,
+  "unmapped_cues": 43,
+  "native_driver_calls_compared": 21832,
+  "matched_driver_writes": 26168,
+  "not_closed": [
+    "attack/damage/complete battle AI",
+    "every battle result",
+    "all cue triggers",
+    "PCM waveform rendering",
+    "native Windows execution"
+  ],
+  "receiving_modules": [
+    "WarSelf commit and cancel",
+    "BattleEnterExit",
+    "AudioEventBus",
+    "SaveGameCodec"
+  ],
+  "private_evidence": "raw APU/driver logs, images, SRAM and .mss remain in private Drive; this contract contains authored observations only"
+}
