@@ -1,0 +1,35 @@
+row,command,Leadership,Judgment,Planning,Charm,Body,Battle,shared_BP,remaining_discovery
+0,Tax / Change rate,5,0,0,5,0,0,10,none for label/value
+1,Tax / Extra tax,10,0,0,10,0,0,20,none for label/value
+2,Assign / Labor,5,0,5,0,0,0,10,none for label/value
+3,Assign / Army,5,0,5,0,0,0,10,none for label/value
+4,Give,0,0,5,0,0,0,5,none for label/value
+5,Train / Troops,5,0,0,0,0,0,5,none for label/value
+6,Train / Prince,0,0,0,5,0,0,5,none for label/value
+7,Train / Self,0,0,0,0,0,0,0,none for label/value
+8,Train / People,0,0,0,5,0,0,5,none for label/value
+9,Trade / Buy-Sell-Hire,0,5,0,0,0,0,5,none for label/value
+10,People / Switch,5,10,5,0,0,0,20,none for label/value
+11,People / Select,5,10,5,0,0,0,20,none for label/value
+12,People / Demote,5,10,5,0,0,0,20,none for label/value
+13,People / Promote,5,10,5,0,0,0,20,none for label/value
+14,People / Marry,0,10,10,0,0,0,20,none for label/value
+15,People / Draft,20,0,0,10,0,10,40,none for label/value
+16,UNMAPPED,0,0,0,5,10,0,15,caller identity
+17,UNMAPPED,0,0,5,5,10,0,20,caller identity
+18,UNMAPPED,0,0,0,5,10,5,20,caller identity
+19,UNMAPPED,0,0,0,5,10,0,15,caller identity
+20,View / paid foreign State or Ruler,0,5,0,0,0,0,5,none for label/value
+21,Move / Base,0,0,0,0,20,0,20,none for label/value
+22,Move / People,10,0,0,10,0,0,20,none for label/value
+23,Move / Goods,5,5,5,0,0,0,15,none for label/value
+24,Policy,5,5,0,5,0,0,15,none for label/value
+25,Treaty / Vassal,0,0,0,25,5,10,40,none for label/value
+26,Treaty / Tribute,0,0,0,15,5,5,25,none for label/value
+27,Treaty / Alliance,0,0,0,5,5,0,10,none for label/value
+28,Spy / View report,0,0,5,0,0,0,5,none for label/value
+29,Spy / Havoc,0,0,0,0,20,0,20,none for label/value
+30,Spy / Kill,0,0,0,0,0,20,20,none for label/value
+31,Spy / Search,5,0,5,0,0,0,10,none for label/value
+32,War / Self,40,10,5,0,0,20,75,none for label/value
+33,War / Prince,10,5,5,5,0,0,25,none for label/value
