@@ -1,6 +1,6 @@
 # Genghis Khan I NES → Windows — Unified Knowledge and Completion Guide
 
-**Record:** ZL-GK1-MASTER-0017 · **Version:** 2.00 · **Date:** November 5, 2026  
+**Record:** ZL-GK1-MASTER-0017 · **Version:** 2.01 · **Date:** November 5, 2026  
 **Author:** Zhuge Liang · **Recipients:** Director; Nobunaga, Windows implementation; Cao Cao, independent QA  
 **Project:** Genghis Khan I, English USA NES, and the Director-approved modified NES builds. Not ROTK II NES/DOS or the separate original KOEI game.
 
@@ -10,7 +10,7 @@ This is the single current guide to what is already known, which implementation 
 
 **Director instruction: reuse completed work; do not retest it.** Existing source findings and recorded native Mesen results are accepted for their recorded ROM, mode and scope. Do not restart economic mapping, revalidate the sound sequencer, repeat Rest/Demobilize/menu-setting captures, or repeat the already completed invasion–retreat–save–cold-load sequence to obtain another green result. Use those outputs directly. Investigate only unanswered questions. Testing a newly implemented Windows component against the existing reference is new integration work, not a reason to replay the old NES experiment.
 
-**This consolidation performed no gameplay retests.** It recovered existing data, reconciled later reports with older inventories, and wrote the executable remaining-work instructions. Publication/content checks concern the documents, not game execution. Nothing here claims the entire Windows game has been built or accepted.
+**The v2.00 consolidation performed no gameplay retests.** It recovered existing data and reconciled old inventories. **Version 2.01 adds EXEC0018: new normal-melee research and executable arithmetic, not a replay of settled work.** Nine new controlled native attacks and a cancellation case used the existing in-battle checkpoint; 44 bounded source-instruction vectors and new-component checks support the decoded arithmetic. No Windows executable or complete tactical game is claimed.
 
 ### Current outcome
 
@@ -20,8 +20,8 @@ This is the single current guide to what is already known, which implementation 
 | Command data | All 34 cost rows; **30 labels identified** after recovering Train Prince/Self from the older table | Identify callers of rows 16–19; finish uncovered actor/commit paths, not cost extraction |
 | Approved ROM changes | Demobilize/Fonzarelli, shared BP/Rest, changed menus, bounded event handling, native save/load and affected HD screens | Port these exact features; finish only unvisited routes and full-world interactions |
 | Audio sequencing | Independent working four-channel sequencer, token/loop/repeat/replacement rules and native parity evidence | APU-to-PCM renderer, exact scheduling integration, remaining event associations, audible Windows output |
-| Audio event routing | Nine gameplay-associated entries; cue 0 already identified as an empty-header operation | **42 other entries need caller/event classification.** The previous “43 unmapped” included structural cue 0; no new playback discovery is claimed |
-| Strategic war / retreat | Actual invasion, five-unit deployment, early commander Flee, return accounting, option controls and uninterrupted native Save/cold-Load | Normal attacks/damage, other commands, victory/defeat/capture, auto-resolve and combat AI |
+| Audio event routing | Ten gameplay-associated entries after EXEC0018 cue41 normal-attack animation; cue0 is structural | **41 other entries need caller/event classification.** Cue41 option gate/additional uses remain open; do not redo the sequencer |
+| Strategic war / tactical rules | Accepted invasion/retreat/save route plus EXEC0018 executable normal-melee strength, matchup, terrain, castle and casualty arithmetic | Legal movement/target selection, ranged/special commands, commander-zero/terminal handling, victory/defeat/capture, auto-resolve and combat AI |
 | Graphics | 64 extracted portraits, 9 static tile sets, 19 attribute tables, five observed palettes, loader research and approved HD artwork | Bank 10 faces, 43 computed load sites, remaining layouts/fonts/sprites/animation and live overlays |
 | Scenarios / campaigns | Economic data for both scenarios, startup observations, modified World initialization and separate original campaign records | Remaining character/map/setup rules, end conditions and integrated Windows campaigns |
 | Windows product | Specifications, extracted data, reusable source and sound module | Integrated game, controller-only operation, packaging, native Windows execution and Director acceptance |
@@ -134,7 +134,7 @@ Country record base is `$6DCD + 83*i`, zero-based country index. Offsets are hex
 |4B / 4D / 4F|China / Islam / Uighur presence|
 |51|Officer pointer|
 
-P = sum of the five allocated occupations; it excludes undrafted reserve. Baseline P103 + reserve34 = 137 residents. Eligibility-derived headcount is not another population pool. Baseline first-turn values include Troops61, Town5, Masons4, Artisans6, Foodworkers27, Economy185, Defense115, Arms110, Skill124, Gold439, Food208, Morale118 and Tax35. Different starts/versions have different initial values; never overwrite them with this fixture.
+P = sum of the five allocated occupations; it excludes undrafted reserve. Eligibility-derived headcount is not another population pool. Baseline P103 + reserve34 = 137 residents. Baseline first-turn values include Troops61, Town5, Masons4, Artisans6, Foodworkers27, Economy185, Defense115, Arms110, Skill124, Gold439, Food208, Morale118 and Tax35. Different starts/versions have different initial values; never overwrite them with this fixture.
 
 Globals: country count `$65B9` (14/27), year `$65BB`, season `$65BD` (Spring0 through Winter3), difficulty `$7A88`, Rate `$7A8A`, actor-country `$7B34`, order word `$7B36`. Full character abilities are six words in L/J/P/C/Body/Battle order.
 
@@ -304,6 +304,7 @@ Accepted comparison: EXEC0014 matched33,419 native calls and55,814 ordered withi
 |48|Second observed invasion-departure effect|Sound|EXEC0015|
 |5|Battle overview/deployment/field background|Music, repeating|EXEC0015|
 |15|Commander Flee/retreat-result transition|Music, nonrepeating|EXEC0015|
+|41|Normal-attack animation; five requests at22-frame intervals in eight watched cases|Gate not yet identified; both settings On|EXEC0018|
 
 The two invasion effects are sequence-specific labels, not invented sound names or claims of exclusive use. Music and Sound settings are independent and survived native saves. Do not repeat those toggle tests. The following matched modified-ROM routes are implementation fixtures:
 
@@ -313,9 +314,9 @@ The two invasion effects are sequence-specific labels, not invented sound names 
 - Retreat with Music on, whether Sound on or off:0,15,6; Music off:no requests. Cue15 is Music-gated despite being an action outcome.
 - In the recorded input schedule, Sound-off reached battle music144 bridge frames sooner. Do not require identical presentation time when sound is disabled, or generalize144 into every action.
 
-**Remaining cue bookkeeping:**52 table entries are not52 identified songs. Nine have gameplay associations. Cue0 is a known structural empty header. The42 remaining caller classifications are:
-`2,3,4,7,8,9,10,11,12,13,14,16,18,19,21,22,23,24,25,26,27,28,29,31,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,49,50,51`.
-Some may have shared uses or be unreachable in the selected profile. Resolve and record that instead of manufacturing52 song titles. This reclassification of cue0 is not a new native capture.
+**Remaining cue bookkeeping:**52 table entries are not52 identified songs. Ten have gameplay associations after EXEC0018. Cue0 is a known structural empty header. The41 remaining caller classifications are:
+`2,3,4,7,8,9,10,11,12,13,14,16,18,19,21,22,23,24,25,26,27,28,29,31,33,34,35,36,37,38,39,40,42,43,44,45,46,47,49,50,51`.
+Some may have shared uses or be unreachable in the selected profile. Resolve and record that instead of manufacturing52 song titles. Cue0 reclassification was bookkeeping; cue41 is a new native association. Its gate and additional uses are not resolved merely by naming the animation.
 
 ## 7. Battle and persistence — reuse the completed route
 
@@ -337,7 +338,61 @@ The overview showed200 attacking soldiers versus350, tactical Food100 versus430,
 
 RNG differed: `d14c2f94e0e9` before Save versus `063206320000` after cold Load. Record the difference; do not claim native RNG continuation, and do not replay the entire invasion to investigate it. G10 isolates only the outstanding save/initialization rule.
 
-Nothing here establishes normal attack damage, victory, all retreat variants, all terrain or combat AI. Those are the next missing combat contracts, not reasons to invalidate the successful route.
+EXEC0015 alone does not establish normal attack damage, victory, all retreat variants, all terrain or combat AI. EXEC0018 now supplies the normal-melee numeric contract below. The other branches remain open; none invalidates the successful invasion/retreat/save route.
+
+### 7.1 Normal melee — implemented arithmetic, new EXEC0018 evidence
+
+`execution_018/normal_melee.py` now supplies the independent normal-melee numeric kernel. Nine new controller-driven attacks from the existing in-battle checkpoint matched it; one target-selection cancellation preserved all20 unit records, strategic resources, BP/orders and RNG. Forty-four additional bounded source-instruction vectors cover arithmetic/attribute/word boundaries. These are new unanswered combat findings, not repeats of completed invasion/retreat/save or economy work.
+
+**Scope and fixtures:** the combined modified ROM in §2 was used. Enemy unit11 was positioned adjacent to commander unit0 through a disclosed x/y write at`$60DB`; other cases change only named input type/Skill/Arms/terrain/count. Game code and computed losses were not patched. The castle logical-terrain case does not certify natural castle generation/graphics. The killed target was a noncommander; commander capture/victory remains G04.
+
+| New native case | Attacker/defender remaining soldiers |
+|---|---|
+| Cavalry vs cavalry, forest defender |24 / 60 from40 /70|
+| Infantry attacker |26 /57|
+| Infantry defender |24 /61|
+| Archer attacker |26 /57|
+| Attacker Skill102→500 |25 /59|
+| Attacker Arms124→500 |26 /58|
+| Plain defender |23 /63|
+| Castle defender |20 /67; original defending-country Defense91→83 first|
+| One-soldier defender |39 /0 from40 /1|
+
+**Records:**count pointer`$6060+11*i`,20 slots; relative count+0,x+2,y+3,type+4,mobility+5, preceding flag byte. Side descriptor`$6001+27*side` holds leader pointer+0,role+2,country+3; Skill at`$6037+2*side`, Arms`$603B+2*side`. Terrain`$615C+16*y+x` masked7F for logical16×10 map. Confirmed type IDs0 cavalry,1 infantry,2 archer; terrain2 plain,3 forest,6 castle. Do not invent other labels.
+
+**Source helpers:**bank5 strength`$8061`, defensive factor`$8024`, share`$80D4`, casualty`$811E`, normal numeric entry`$815F`, outer normal command`$81E9`. Ordinary word arithmetic wraps16bits. `wide(a,b,d)` is word inputs,32-bit product, low-word quotient; divisor0 givesFFFF. `pct(a,b)=wide(a,b,100)`.
+
+```
+sk = floor(Skill/10)+1
+ar = floor(Arms/5)+1
+trained = u16(pct(N,100+sk)+pct(N,100+ar)) >> 1
+leaderFactor = 1090 if role==102 else u16(1000+Battle+(Leadership>>1)+(Body>>2)+(Judgment>>1))
+strength = u16(trained+wide(N,leaderFactor,1000)) >> 1
+roleBonus = 2 if role==100 else 1 if role==101 else 0
+```
+
+Matchup matrix (attacker type rows, defender type columns) is`[[3,5,5],[4,3,3],[4,4,3]]`; add attacker role bonus. Defender-type rows / terrain0..5 matrix is`[[1,1,3,2,1,5],[1,2,3,4,5,5],[1,2,3,4,5,5]]`; add defender bonus. For castle6 first subtract `5+rand(4)+floor(pct(attackerN,100+attackerArmsBucket)/30)`, saturating at0, from the **original defending side's country Defense**. Then use `3+rand(floor(updatedDefense/7)+1)+defenderBonus`. The side-country reference is not interchangeable with the current receiving unit's owner.
+
+```
+A = u16(attackerStrength*attackMultiplier)
+D = u16(defenderStrength*defenseMultiplier)
+shareA = 50 if A==0 and D==0 else clamp(wide(A,100,u16(A+D)),1,99)
+shareD = 100-shareA
+# Resolve attacker first, then defender, each with its own rand(24):
+other = 100-ownShare
+scaled = pct(N,87+rand(24))
+ratio = wide(scaled,other*other,ownShare*ownShare+other*other)
+loss = min(N,u16((ratio>>1)+floor(other/ownShare)+1))
+remaining = N-loss
+```
+
+The square applies to the percentage shares, **not raw Skill squared**. The two sides use already computed shares, not recomputed strength after the first loss. The original calls zero-unit handling between casualty stages. The portable kernel returns zero flags but **does not implement terminal control-flow, leader capture or battle victory**; integrate those handlers without blindly committing both losses when a commander-zero branch can unwind the command.
+
+**Direct use:**`normal_melee(attacker, defender, game_rng.rand, defending_country_defense=...)` returns strength, multipliers, shares, losses, counts, fortification changes and consumed random bounds/values. Import immutable `Fighter` records and preserve the selected ROM profile's leader attributes. `test_normal_melee.py`, nine portable native cases,44 source vectors and a raw-memory evidence verifier are supplied. New component checks reject a wrong coefficient; native-binding checks reject changed/rehashed troop data and a missing response.32 snapshots bind to456 complete request/response pairs. No Windows executable was run.
+
+**Presentation harvested at the same time:**cue41 pointer`$96AC` appeared five times per watched normal attack at22-bridge-frame intervals, before casualties. Both audio settings were On; its exact gate remains G09. A separate exploratory move into forest changed40→34 troops and Mobility10→6; retain it as an observation, **not** a completed movement-loss formula.
+
+**Completion:**normal-melee numerical rules and the bounded castle prelude are implementation inputs now. Nobunaga integrates them; Cao Cao compares the new Windows component to existing fixtures. Zhuge Liang continues only missing legal movement/ranged/special-command and terminal rules. The detailed report and private logs preserve all interventions, unsuccessful navigation and source-probe failures.
 
 ## 8. Graphics and emulator resources already available
 
@@ -385,15 +440,15 @@ Each package below specifies the missing answer, existing material to start from
 
 ### G03 — Tactical movement, attacks and battlefield commands
 
-**Reuse:**actual battle entry/deployment checkpoint, known90-day case, five-unit structure, sound/music hooks, recovered source battle anchors, military command inventory. **Missing:**movement Entire/Divide; normal attacks; duels; arrows; ambush; Pass; Demand; SOS; Raid/Hunt; alternative Flee; terrain/range/fortification/weather rules; exact damage and unit accounting.
+**Reuse:**actual battle checkpoint, known90-day case, five-unit structure, sound/music hooks, military command inventory and **EXEC0018 normal-melee numeric kernel and nine native fixtures**. **Missing:**legal movement Entire/Divide and target selection; duels, arrows, ambush, Pass, Demand, SOS, Raid/Hunt, alternative Flee; remaining terrain/range/weather rules; full command orchestration and commander-zero/terminal branches. The normal-melee strength/share/casualty math is no longer a discovery task.
 
-**Do:** start from the accepted in-battle checkpoint, not another repeated invasion. Locate each command handler, its inputs, unit records, RNG and result stores. Resolve exact integer operations and legal-action constraints from existing bytecode/source first. Capture a new normal attack and its state delta; then expand only to distinct troop/terrain/command/outcome branches not already explained by that routine. Map range/path legality, splitting and animation/command sequencing together. Record the relevant new audio/graphics calls during these new routes instead of mounting separate repeat gameplay sessions.
+**Do:** start from the accepted in-battle checkpoint, not another repeated invasion. Import the new normal-melee kernel directly. Locate missing movement, ranged and special-command handlers, their legal targets, unit records, RNG and result stores. Resolve source operations first and capture only an unanswered branch. Connect zero-count handling to G04 rather than assuming the numeric kernel decides victory. Map path/range legality, splitting and presentation together; harvest new audio/graphics calls during these routes.
 
 **Deliver:**`TacticalRules`, `LegalActions`, `Damage`, `BattleCommandStateMachine`, terrain/map data and command-to-presentation events. **Finish:**all listed tactical commands have usable rules and the Windows player can conduct a real offensive/defensive battle. A new attack equation must explain its boundary/rounding cases; one retreat capture never substitutes for damage. Owners Zhuge Liang/Nobunaga; independent implementation QA Cao Cao. Critical dependency for G04/G12.
 
 ### G04 — Battle outcomes, logistics, auto-resolve and combat AI
 
-**Reuse:**EXEC0015 entry/return ledger and early-Flee timing; known manpower/economy formulas and original AI source leads. **Missing:**victory/defeat/surrender/starvation/time-limit outcomes; prisoner/ruler/prince handling; annexation/governor changes; captured goods; reinforcements; remaining food/day accounting; Prince/off-screen resolution; AI attack/defense decisions and rebellion war outcomes.
+**Reuse:**EXEC0015 entry/return ledger and early-Flee timing; EXEC0018 normal-melee zero flags and captured noncommander elimination; known manpower/economy formulas and original AI source leads. **Missing:**victory/defeat/surrender/starvation/time-limit outcomes; prisoner/ruler/prince handling; annexation/governor changes; captured goods; reinforcements; remaining food/day accounting; Prince/off-screen resolution; AI attack/defense decisions and rebellion war outcomes.
 
 **Do:** follow the outcome dispatch and persistent writes from source. Reuse common end-of-battle cleanup once identified; inspect only distinct terminal branches. Separate live tactical AI from the delegated/off-screen engine. Enter a missing terminal state via a disposable explicit fixture when natural play would add no new knowledge, labeling it accurately; do not present fixture injection as a full natural campaign. Capture resulting ownership/prisoner/stock effects and subsequent seasonal consumption.
 
@@ -433,7 +488,7 @@ Each package below specifies the missing answer, existing material to start from
 
 ### G09 — Remaining cue associations, not sequencer redevelopment
 
-**Reuse:**working sequencer,52-entry structure, nine event associations, cue0 structural semantics, archived APU/request traces. **Missing:**caller/profile classification of the42 IDs listed in §6.3 and any additional uses of known entries.
+**Reuse:**working sequencer,52-entry structure, ten event associations, cue0 structural semantics, archived APU/request traces. **Missing:**caller/profile classification of the41 IDs listed in §6.3, cue41 option gate, and additional uses of known entries.
 
 **Do:** first search existing raw cue/request logs and source call sites, including the mod's relocated routines. Reuse an already captured event whenever available. Identify which branches request each ID and whether a value is shared, structural or unreachable. Only drive a new game route for an otherwise unanswered trigger/gate/timing question. Collect missing battle/diplomacy/succession sounds while executing G03–G07. Do not request every cue in isolation again: that playback work is finished.
 
@@ -482,7 +537,7 @@ Ranges below are inclusive. Every original ID is accounted for exactly once. “
 |DT01–DT07 (7)|Existing proposal/transfer observations and costs reused|G05 target/result/tribute/vassal/duration/expiry/interactions|
 |SP01–SP06 (6)|Known source costs and modified isolated event effects reused|G05 full spy results/fees/detection/permissions; G06 death integration|
 |WA01–WA08 (8)|Self invasion/cancel, quoted Prince cost, early Flee debit/return and uninterrupted save accepted for tested mod route|G03/G04 remaining attack/outcome/auto-resolve/AI/logistics; do not replay known early retreat|
-|BT01–BT12 (12)|Five-unit deployment, early commander Flee,90-day observed case and associated sound accepted|G03 remaining tactical commands/legal actions/terrain; G04 terminal accounting/AI|
+|BT01–BT12 (12)|Five-unit deployment, early Flee,90-day case, normal-melee numeric rules/nine new native cases and cue41 association accepted within scope|G03 legal movement/ranged/special commands and presentation; G04 commander-zero/terminal accounting/AI; G09 cue41 gate|
 |SE01–SE09 (9)|SE02/03/04/06/07/08 accepted; original Pass observations and modified Rest accepted; economic growth/events retained|G06 family aging; G07 full scheduler/event interleave; G04 battle/civil-war effects|
 |OT01–OT09 (9)|Native Save/cold-Load and Music/Sound options/persistence accepted in captured profile; RNG difference explicitly retained|G08 untouched Wait/Display/Animation/Battle options; G10 remaining save/reset rules; G11 Windows service; G12 product acceptance|
 |CF01–CF14 (14)|CF01/02/04/05 accepted; known cost/ability/AI/graphics/audio findings reused; CF14 evidence separation corrected, not a research restart|G01 remaining actor/cost branches; G03/04 combat; G05–07 world interactions; G08 visuals; G09/10 remaining audio; G02 topology|
@@ -495,7 +550,7 @@ Count:11+7+6+5+6+16+9+6+7+6+7+6+8+12+9+9+14+14+9 = **167**. This table is covera
 
 1. **Completed by this consolidation:**recover accepted records; restore the command labels6/7; reconcile old UI statuses; recognize finished sound sequencing and natural battle/save; separate cue0 from the42 unknown event entries; publish one guide and recovered data. No NES gameplay replay.
 2. **Nobunaga starts G11 immediately** with economy, known state/commands/menu/assets, approved modifications and new Windows saves. G01/G02 fill specific missing identity/setup fields without holding every known module.
-3. **Zhuge Liang prioritizes G03/G04:**normal attack/damage first, then missing outcome/AI branches. Harvest new audio/visual events during those investigations. G05/G06/G07 proceed from already located source and cases, not duplicated entry tests.
+3. **Zhuge Liang continues G03/G04:**normal-melee math is delivered in EXEC0018; next resolve legal movement/ranged/special handlers and commander-zero/other terminal outcomes, then missing AI branches. Harvest audio/visual events alongside them. G05/G06/G07 proceed from existing source and cases, not duplicated entry tests.
 4. **G08/G09/G10 run in parallel where independent:**remaining graphics, cue callers and actual PCM backend. Do not wait for all cue names to integrate the working sequencer, or for full combat to finish the economic slice.
 5. **G12 finishes the product:**real complete gameplay, Windows controller/save/audio/graphics coherence and Director acceptance. Do not call a data export or native ROM capture the Windows release.
 
@@ -524,6 +579,9 @@ The guide contains the current decisions, essential data and all remaining instr
 |Native audio options/training report|https://github.com/Bomb-Daddy/NES/tree/main/research/Genghis_Khan_NES/execution_002|
 |Sequencer, API, contract and verifier|https://github.com/Bomb-Daddy/NES/tree/main/research/Genghis_Khan_NES/execution_014|
 |Invasion/retreat/native-save contract|https://github.com/Bomb-Daddy/NES/tree/main/research/Genghis_Khan_NES/execution_015|
+|Normal-melee module, cases, formulas and verifier|https://github.com/Bomb-Daddy/NES/tree/main/research/Genghis_Khan_NES/execution_018|
+|EXEC0018 private native evidence|https://drive.google.com/file/d/1The0pqj5hnTLySktLZRW2riDIip8qzC5/view|
+|EXEC0018 source package and handoff|https://drive.google.com/file/d/1Jl1tETGdL4Oqe0fwTqYsbpKram5nJTu0/view ; https://drive.google.com/file/d/1VXLhOYT1m16FNw-4oL7nAT77lLejBtOy/view|
 |Verified publication/evidence index|https://github.com/Bomb-Daddy/NES/blob/main/research/Genghis_Khan_NES/AUDIO_EXECUTION_PUBLICATION_2026-11-05.md|
 |Original graphics extraction branch|https://github.com/Bomb-Daddy/NES/tree/genghis-khan-assets/research/Genghis_Khan_NES/Assets|
 |HD/mod handoff|https://drive.google.com/file/d/1YJSCcMTl-HZS6eYoOxkwQfvJg_LHv6Sf/view|
@@ -538,8 +596,8 @@ GitHub holds authored source, documentation and permitted numeric findings. Priv
 
 ### Supersession and limitations
 
-This v2.00 guide is the current work-order and consolidated knowledge entry point. Preserve v1.00/v1.01/v1.02 plans, HQA0010/0011, v1.07 source evidence and EXEC0012–0015 unchanged as history. EXEC0016's verified publication receipt overrides their original historical NOT DELIVERED statements. Older pending UI and reconstructed-save statements are overridden only for the later completed cases described here.
+This v2.01 guide is the current work-order and consolidated knowledge entry point. It incorporates new EXEC0018 findings into v2.00 without restarting accepted work. Preserve v1.00/v1.01/v1.02 plans, HQA0010/0011, v1.07 source evidence and EXEC0012–0015 unchanged as history. EXEC0016's verified publication receipt overrides their original historical NOT DELIVERED statements. Older pending UI and reconstructed-save statements are overridden only for the later completed cases described here.
 
-Newly reconciled facts are source recovery, not fresh native proof. No old original/mod pass is revoked. No new Windows/gameplay result is claimed. All known remaining material work has an owner, method and receiving implementation in G01–G12; any newly discovered unknown is added to the applicable package rather than spawning a competing plan.
+The v2.00 recovered facts remain source recovery. EXEC0018 adds explicitly controlled native modified-ROM attacks and source-executed numerical proof; no old original/mod pass is revoked and no Windows execution is claimed. All remaining material work retains its owner, method and receiving implementation in G01–G12; add new unknowns there rather than spawning a competing plan.
 
 **End of unified guide. The deliverable is a complete, enjoyable Windows game; this document exists to stop rediscovery and get the remaining work implemented.**
