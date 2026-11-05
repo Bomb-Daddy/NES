@@ -2,11 +2,12 @@
 
 ## START HERE — one current guide
 
-**[Unified Knowledge and Completion Guide v2.00](GK1_WINDOWS_MASTER_GUIDE.md)** is the current human-readable source of what is known, what can be implemented immediately, and exactly what remains. It consolidates economics, original/modified-ROM behavior, command data, audio sequencing and event routing, battle/save captures, graphics, emulator recovery, and the remaining implementation plan. Its coverage table reconciles all 167 historical requirement IDs.
+**[Unified Knowledge and Completion Guide v2.01](GK1_WINDOWS_MASTER_GUIDE.md)** is the current human-readable source of what is known, what can be implemented immediately, and exactly what remains. It consolidates economics, original/modified-ROM behavior, command data, audio sequencing and event routing, battle/save captures, graphics, emulator recovery, and the remaining implementation plan. Its coverage table reconciles all 167 historical requirement IDs. Version2.01 incorporates the new normal-melee numeric kernel and bounded native evidence from EXEC0018.
 
 **Reuse existing evidence. Do not rerun completed NES investigations.** The guide identifies twelve remaining work packages and their Windows consumers. New Windows integration checks are separate from rediscovering old NES rules. Earlier plans v1.00–v1.02 remain historical; they are not competing active directives.
 
-- [Identical master in Drive Collaboration](https://drive.google.com/file/d/1OTd7qMxHAKerHW-CsD56aBFi0lRKmblW/view).
+- [Identical current master in Drive Collaboration](https://drive.google.com/file/d/18Qo3OJqTLXnedoUGJ9TVTINsjNObn45p/view); [preserved v2.00](https://drive.google.com/file/d/1OTd7qMxHAKerHW-CsD56aBFi0lRKmblW/view).
+- [EXEC0018 normal-melee code, formulas and native fixtures](execution_018/NORMAL_MELEE_IMPLEMENTATION.md): normal-attack strength, matchup, terrain/role, castle prelude and ordered casualty arithmetic. Nine new controlled native attacks match the kernel. Target legality, commander-zero handling, special commands and full Windows combat remain separate work. [Private evidence](https://drive.google.com/file/d/1The0pqj5hnTLySktLZRW2riDIip8qzC5/view); [source package](https://drive.google.com/file/d/1Jl1tETGdL4Oqe0fwTqYsbpKram5nJTu0/view); [Collaboration handoff](https://drive.google.com/file/d/1VXLhOYT1m16FNw-4oL7nAT77lLejBtOy/view).
 - [Recovered command data v1.01](execution_017/command_costs_v1.01.csv): all34 rows,30 named commands. Row6 Train Prince and row7 Train Self were recovered from existing v1.07 data without retesting; only row16–19 caller names remain unresolved. Demobilize reuses row2, not People Demote row12.
 - [Complete earlier extraction package](https://drive.google.com/file/d/1kRiBYBfg8MIcq5_CzSUcvqBCf6sEhrxT/view): paired costs,80 patch locations,16 UI surfaces and provenance. Its older UI status labels are reconciled in the master against later native results.
 
@@ -17,7 +18,7 @@
 - [EXEC0013 audio options/training capture](execution_002/GK1_EXEC_0013_AUDIO_CAPTURE_v1.00_2026-11-05.md).
 - [EXEC0014 working sound sequencer, verifier and contract](execution_014/).
 - [EXEC0015 invasion/retreat and uninterrupted native Save/cold-Load](execution_015/ZL-GK1-EXEC-0015_Invasion_Audio_Save_Report_v1.00.md), with [event/state contract](execution_015/battle_audio_and_save_contract_v1.00.json).
-- [Verified audio publication index](AUDIO_EXECUTION_PUBLICATION_2026-11-05.md): overrides original reports' historical NOT DELIVERED wording. Nine cue entries have gameplay associations; the master separately identifies structural cue0 and42 other entries requiring caller classification.
+- [Verified audio publication index](AUDIO_EXECUTION_PUBLICATION_2026-11-05.md): overrides original reports' historical NOT DELIVERED wording. With EXEC0018 cue41, ten cue entries now have gameplay associations; the master separately identifies structural cue0 and41 other entries requiring caller classification. Cue41's option gate remains unknown.
 - [Original graphics extraction branch](https://github.com/Bomb-Daddy/NES/tree/genghis-khan-assets/research/Genghis_Khan_NES/Assets).
 
 ## Existing emulator and campaign tools
