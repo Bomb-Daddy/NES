@@ -3,7 +3,7 @@
 ## ChatGPT headless Mesen execution — verified 2026-11-05
 
 - **[ChatGPT headless emulator operations & recovery guide](../../reference/MESEN_HEADLESS_CHATGPT_OPERATIONS_v1.00.md)** — reproducible setup, source versioning, first-run wizard fix, game-specific asynchronous checkpoint restores, controller pitfalls, evidence and QA.
-- **[Executable Mesen smoke/checkpoint harness](tools/headless_mesen_campaign_test.py)** and **[13 offline tests](tools/test_headless_mesen_campaign_test.py)** — original NES ROM restore, 256×240 frame, D-pad pulse, new-save/cold-reload checks passed on Linux in the pinned runtime.
+- **[Executable Mesen smoke/checkpoint harness](tools/headless_mesen_campaign_test.py)** and **[14 offline tests](tools/test_headless_mesen_campaign_test.py)** — original NES ROM restore, 256×240 frame, D-pad pulse, new-save/cold-reload checks passed on Linux in the pinned runtime.
 - **[Unified Temujin AI operating script v2.00](campaign/TEMUJIN_UNIFIED_AI_OPERATING_SCRIPT_v2.00.md)** — the Director's strategy, **not** a complete unattended gameplay controller. A real campaign run still requires verified input planning and private savestates.
 - Public GitHub does not store the ROM, state files or copyrighted gameplay captures; use the authorized private [Temujin campaign Drive folder](https://drive.google.com/drive/folders/1pWASkSQBTPwihklnGZJbetrRZCqyp2g9).
 
