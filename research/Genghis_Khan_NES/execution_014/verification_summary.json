@@ -1,0 +1,78 @@
+{
+  "record": "ZL-GK1-EXEC-0014",
+  "version": "1.00",
+  "date": "2026-11-05",
+  "rom_sha256": "4764d46359581be1e7d12bcb85bd375c84cd4497d1084d9d306a6e884afbe7c5",
+  "scope": "OBSERVED_RUNTIME_MOD + independent high-level reference implementation, not Windows/PCM acceptance",
+  "native_driver_calls": 33419,
+  "matched_register_writes": 55814,
+  "all_register_writes": 55816,
+  "continuous_carry_transitions": 33414,
+  "logged_checkpoint_reset_boundaries": 3,
+  "incomplete_terminal_calls": 0,
+  "native_cue_entries": 52,
+  "native_completed_entries_including_empty0": 40,
+  "native_prefix_only_entries": 12,
+  "full_model_entries_to_end": 52,
+  "gameplay_mapped_entries": 5,
+  "unmapped_event_entries": 47,
+  "newly_mapped_cue": 30,
+  "negative_controls_rejected": 3,
+  "pcm_produced": false,
+  "windows_executed": false,
+  "shared_publication": "NOT DELIVERED / BLOCKED: read-only tools exposed",
+  "host": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.13.5 (main, Jun 25 2025, 18:55:22) [GCC 14.2.0]",
+  "inputs": {
+    "bp/Genghis_Khan_Shared_BP_Rest_v1.0.nes": {
+      "bytes": 262160,
+      "sha256": "4764d46359581be1e7d12bcb85bd375c84cd4497d1084d9d306a6e884afbe7c5"
+    },
+    "bp/runtime/Mesen": {
+      "bytes": 69697976,
+      "sha256": "e777af28bc6cc49d2e61ca0c1a82fbccf13811355332a53ea00749fc37a92761"
+    },
+    "bp/runtime/MesenCore.so": {
+      "bytes": 16144520,
+      "sha256": "0668f6c09bc89a1c8199df6cbf15aeebba243169b30f8116df97127dbfd3d7af"
+    },
+    "bridge/bridge.lua": {
+      "bytes": 33681,
+      "sha256": "c646092d42a809ea2890662838d9b1add8e0ba7929e4157ace023a76951e0bc2"
+    },
+    "previous/current/audio_action_baseline.mss": {
+      "bytes": 13261,
+      "sha256": "c48cdf40c89502ca9289074073984777a63b8d62950c469a425fafd54978256b"
+    },
+    "scripts/sound_driver_model.py": {
+      "bytes": 10239,
+      "sha256": "bf13bfa59c973b714929262e1651b2f2c3af71c283dbddccaeb87bf2438c6092"
+    },
+    "scripts/verify_native_trace.py": {
+      "bytes": 4379,
+      "sha256": "15b2d35b79b3c77a2ed36ee01eff284f30465678176548d2c9a5ab970c8fb0e7"
+    }
+  },
+  "trace_files": {
+    "driver": {
+      "driver.jsonl": {
+        "sha256": "eac1573ea1c8a7b0419e0285a588d2dc6fa4b897a073bea3ada1a04a2eb4b2e0",
+        "bytes": 12876037
+      },
+      "apu.csv": {
+        "sha256": "058771e6015e069f0c23b84e570d79c6f8187742c07fc4bb14c614cfba86febf",
+        "bytes": 1213717
+      }
+    },
+    "interactions": {
+      "driver.jsonl": {
+        "sha256": "2ca0f175f0dfe3e04966f94246fdadc6ed5cc5ba7d7a375e5e4c6674175f031c",
+        "bytes": 12925012
+      },
+      "apu.csv": {
+        "sha256": "5bfcf16749126a9d9abe55c18e88ad5d219d8a77fb8d5974cd3f03bbb78adf79",
+        "bytes": 1197588
+      }
+    }
+  }
+}
