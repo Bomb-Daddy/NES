@@ -1,33 +1,35 @@
-# Genghis Khan NES research
+# Genghis Khan NES research and Windows implementation
 
-## Audio implementation and new native captures — published 2026-11-05
+## START HERE — one current guide
 
-[Verified Drive/GitHub publication index](AUDIO_EXECUTION_PUBLICATION_2026-11-05.md) supersedes the historical NOT DELIVERED text retained in the original EXEC0013/0014 reports.
+**[Unified Knowledge and Completion Guide v2.00](GK1_WINDOWS_MASTER_GUIDE.md)** is the current human-readable source of what is known, what can be implemented immediately, and exactly what remains. It consolidates economics, original/modified-ROM behavior, command data, audio sequencing and event routing, battle/save captures, graphics, emulator recovery, and the remaining implementation plan. Its coverage table reconciles all 167 historical requirement IDs.
 
-- [EXEC0015 invasion/retreat and uninterrupted native Save/cold-Load](execution_015/ZL-GK1-EXEC-0015_Invasion_Audio_Save_Report_v1.00.md), with [Windows event/state contract](execution_015/battle_audio_and_save_contract_v1.00.json): four more cue entries identified, 9 of52 now event-mapped;43 remain.
-- [EXEC0014 independent sound sequencer and verifier](execution_014/): implemented note/duration/channel/loop/interrupt logic; ordered APU-register output, not PCM or a complete Windows game.
-- [EXEC0013 audio settings/training capture](execution_002/GK1_EXEC_0013_AUDIO_CAPTURE_v1.00_2026-11-05.md): independent Music/Sound settings, training-result trigger and native saved settings.
+**Reuse existing evidence. Do not rerun completed NES investigations.** The guide identifies twelve remaining work packages and their Windows consumers. New Windows integration checks are separate from rediscovering old NES rules. Earlier plans v1.00–v1.02 remain historical; they are not competing active directives.
 
-The publication index links the private evidence archives and Collaboration handoffs. Private ROM/game imagery/sound data/raw memory remain off the public repository. Native modified-ROM evidence is valid for the matching modified build; Windows integration remains a separate execution gate.
+- [Identical master in Drive Collaboration](https://drive.google.com/file/d/1OTd7qMxHAKerHW-CsD56aBFi0lRKmblW/view).
+- [Recovered command data v1.01](execution_017/command_costs_v1.01.csv): all34 rows,30 named commands. Row6 Train Prince and row7 Train Self were recovered from existing v1.07 data without retesting; only row16–19 caller names remain unresolved. Demobilize reuses row2, not People Demote row12.
+- [Complete earlier extraction package](https://drive.google.com/file/d/1kRiBYBfg8MIcq5_CzSUcvqBCf6sEhrxT/view): paired costs,80 patch locations,16 UI surfaces and provenance. Its older UI status labels are reconciled in the master against later native results.
 
-## ChatGPT headless Mesen execution — verified 2026-11-05
+## Existing implementation and accepted evidence
 
-- **[ChatGPT headless emulator operations & recovery guide](../../reference/MESEN_HEADLESS_CHATGPT_OPERATIONS_v1.00.md)** — reproducible setup, source versioning, first-run wizard fix, game-specific asynchronous checkpoint restores, controller pitfalls, evidence and QA.
-- **[Executable Mesen smoke/checkpoint harness](tools/headless_mesen_campaign_test.py)** and **[14 offline tests](tools/test_headless_mesen_campaign_test.py)** — original NES ROM restore, 256×240 frame, D-pad pulse, new-save/cold-reload checks passed on Linux in the pinned runtime.
-- **[Unified Temujin AI operating script v2.00](campaign/TEMUJIN_UNIFIED_AI_OPERATING_SCRIPT_v2.00.md)** — the Director's strategy, **not** a complete unattended gameplay controller. A real campaign run still requires verified input planning and private savestates.
-- Public GitHub does not store the ROM, state files or copyrighted gameplay captures; use the authorized private [Temujin campaign Drive folder](https://drive.google.com/drive/folders/1pWASkSQBTPwihklnGZJbetrRZCqyp2g9).
+- [Economics v1.07](v1.07/GK1_ECONOMIC_MAPPING_v1.07_2026-11-04.md), [all41 country economic templates](v1.07/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv), [economic completion record](v1.07/GK1_ECONOMIC_MAPPING_COMPLETION_AND_REPRODUCTION_v1.07_2026-11-04.md), and [historical167-row register](v1.07/GK1_COMPLETE_167_PROOF_MATRIX_v1.07_2026-11-04.csv). All eleven scoped economic batches remain accepted. The old61/40/66 count is a historical snapshot, not a current count of untouched mechanics.
+- [EXEC0012 extraction report](execution_001/GK1_EXEC_0012_COMMAND_DATA_v1.00_2026-11-05.md).
+- [EXEC0013 audio options/training capture](execution_002/GK1_EXEC_0013_AUDIO_CAPTURE_v1.00_2026-11-05.md).
+- [EXEC0014 working sound sequencer, verifier and contract](execution_014/).
+- [EXEC0015 invasion/retreat and uninterrupted native Save/cold-Load](execution_015/ZL-GK1-EXEC-0015_Invasion_Audio_Save_Report_v1.00.md), with [event/state contract](execution_015/battle_audio_and_save_contract_v1.00.json).
+- [Verified audio publication index](AUDIO_EXECUTION_PUBLICATION_2026-11-05.md): overrides original reports' historical NOT DELIVERED wording. Nine cue entries have gameplay associations; the master separately identifies structural cue0 and42 other entries requiring caller classification.
+- [Original graphics extraction branch](https://github.com/Bomb-Daddy/NES/tree/genghis-khan-assets/research/Genghis_Khan_NES/Assets).
 
-## Current Windows fidelity execution and hostile QA
+## Existing emulator and campaign tools
 
-- [Latest Windows NES one-to-one gap-closure implementation plan v1.02](GK1_WINDOWS_PORT_GAP_CLOSURE_IMPLEMENTATION_PLAN_v1.02_2026-11-05.md) — the active execution plan, with 106 stock-original open requirements and verified modified-ROM behaviors for matching Windows features.
-- [Corrected modified-ROM evidence classification](GK1_WINDOWS_PORT_MOD_EVIDENCE_CLASSIFICATION_CORRECTION_v1.00_2026-11-05.md) — verified modified NES behavior counts as proof for that modified build.
-- [Hostile ROM-mod source QA v1.00](GK1_WINDOWS_PORT_MOD_SOURCE_HOSTILE_QA_v1.00_2026-11-05.md) — actual Demobilize and shared-BP developer ZIP inspection, 80-patch integrity review, source provenance and 16 corrected planning gaps.
-- [Prior plan v1.00](GK1_WINDOWS_PORT_GAP_CLOSURE_IMPLEMENTATION_PLAN_v1.00_2026-11-05.md) remains historical, not a competing active implementation directive.
+- [Headless Mesen operations/recovery](../../reference/MESEN_HEADLESS_CHATGPT_OPERATIONS_v1.00.md).
+- [Smoke/checkpoint harness](tools/headless_mesen_campaign_test.py) and [offline tests](tools/test_headless_mesen_campaign_test.py). These are recovery tools, not a requirement to replay settled research during consolidation.
+- [Temujin policy script v2.00](campaign/TEMUJIN_UNIFIED_AI_OPERATING_SCRIPT_v2.00.md) and [private campaign folder](https://drive.google.com/drive/folders/1pWASkSQBTPwihklnGZJbetrRZCqyp2g9). Policy, native captures and completed autonomous campaigns are different things; preserve selected checkpoint provenance.
 
-**ROM provenance:** Original USA NES alone is the Classic behavioral oracle. Demobilize/Fonzarelli and shared-BP/Rest ROMs prove their tested modified behavior; the corresponding modded ROM is the Enhanced fidelity oracle. This is distinct from stock-game parity proof. Private mod source/ROMs live in the linked Drive archives; do not assume they have been publicly committed to GitHub.
+## Preserved history, not current work ordering
 
-Start with [Complete Economic Mapping v1.07](v1.07/GK1_ECONOMIC_MAPPING_v1.07_2026-11-04.md). All requested economic mapping batches have completed original-ROM research and independent verification. [Completion and reproduction](v1.07/GK1_ECONOMIC_MAPPING_COMPLETION_AND_REPRODUCTION_v1.07_2026-11-04.md) provides the commands, evidence archive and delivery record.
+- [Gap-closure plan v1.02](GK1_WINDOWS_PORT_GAP_CLOSURE_IMPLEMENTATION_PLAN_v1.02_2026-11-05.md), [v1.01](GK1_WINDOWS_PORT_GAP_CLOSURE_IMPLEMENTATION_PLAN_v1.01_2026-11-05.md), [v1.00](GK1_WINDOWS_PORT_GAP_CLOSURE_IMPLEMENTATION_PLAN_v1.00_2026-11-05.md).
+- [Modified-ROM evidence correction](GK1_WINDOWS_PORT_MOD_EVIDENCE_CLASSIFICATION_CORRECTION_v1.00_2026-11-05.md) and [hostile source audit](GK1_WINDOWS_PORT_MOD_SOURCE_HOSTILE_QA_v1.00_2026-11-05.md).
+- [Earlier v1.06 research](v1.06/GK1_ECONOMIC_MAPPING_v1.06_2026-11-04.md) and [handoff](v1.06/GK1_EVIDENCE_PROVENANCE_AND_HANDOFF_v1.06_2026-11-04.md), with v1.04/v1.05 records, remain evidence history. No old pass is invalidated merely by a newer document.
 
-The [economic batch register](v1.07/GK1_ECONOMIC_BATCH_COMPLETION_REGISTER_v1.07.csv) and [167-obligation register](v1.07/GK1_COMPLETE_167_PROOF_MATRIX_v1.07_2026-11-04.csv) distinguish completed economics from broader full-game obligations. All original rows and earlier evidence are preserved. This research does not certify a Windows port, Xbox controls or completion of unrelated game systems.
-
-[v1.06 research](v1.06/GK1_ECONOMIC_MAPPING_v1.06_2026-11-04.md) and its [handoff](v1.06/GK1_EVIDENCE_PROVENANCE_AND_HANDOFF_v1.06_2026-11-04.md), along with v1.04 and v1.05 findings, remain historical records. v1.07 supersedes their unfinished economic batches. Private ROM, screenshots and saved memory are not published in this public repository; authorized evidence links are in the completion document.
+Original and approved modified ROMs are authoritative for their respective demonstrated behavior. Neither alone proves a Windows executable. Private ROMs, sound-bank payloads, images, SRAM and checkpoints remain in the linked authorized Drive archives; public GitHub holds authored code, documentation and permitted numeric findings. No full Windows release or recipient execution is implied by publication.
