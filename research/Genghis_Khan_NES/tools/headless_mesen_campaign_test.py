@@ -92,7 +92,7 @@ def decode_gk1(ram: bytes) -> dict[str, Any]:
     masons = w(ram, base + 0x20)
     artisans = w(ram, base + 0x3A)
     ptr = w(ram, base + 0x51)
-    if 0x6000 <= ptr <= 0x7FEC:
+    if 0x6000 <= ptr <= 0x7FE6:
         abilities = [w(ram, ptr + 14 + 2 * i) for i in range(6)]
     else:
         abilities = None  # Opaque until a valid officer pointer exists.
@@ -306,11 +306,15 @@ def run(a: argparse.Namespace) -> int:
             if checks["rom_sha256"] == GK1_ROM_SHA256:
                 state = decode_gk1(ram)
                 receipt["gk1_state"] = state
-                receipt["gk1_policy_v2_readonly"] = policy_v2_read_only(state)
+                initialized = 1175 <= state["year"] <= 1300 and 0 <= state["season_index"] < 4 and state["population"] > 0
+                receipt["gk1_country_initialized"] = initialized
+                receipt["gk1_policy_v2_readonly"] = policy_v2_read_only(state) if initialized else None
                 expected = {k: v for k, v in {
                     "year": a.expect_year, "season_index": a.expect_season,
                     "gold": a.expect_gold, "orders": a.expect_orders,
                 }.items() if v is not None}
+                if expected and not initialized:
+                    raise AssertionError("GK1 country data uninitialized; checkpoint was not restored")
                 assert_expected(state, expected)
             else:
                 if any(v is not None for v in (a.expect_year, a.expect_season, a.expect_gold, a.expect_orders)):
