@@ -1,0 +1,109 @@
+{
+  "id": "ZL-GK1-EXEC-0013",
+  "version": "1.00",
+  "date": "2026-11-05",
+  "status": "OBSERVED_RUNTIME_MOD; Windows integration NOT RUN",
+  "rom_sha256": "4764d46359581be1e7d12bcb85bd375c84cd4497d1084d9d306a6e884afbe7c5",
+  "music_flag": {
+    "nes_cpu_address": "0x7BB6",
+    "encoding": "uint16_le",
+    "off": 0,
+    "on": 1
+  },
+  "sound_flag": {
+    "nes_cpu_address": "0x7BB8",
+    "encoding": "uint16_le",
+    "off": 0,
+    "on": 1
+  },
+  "observation_contract": {
+    "music_on_sound_off_idle_240frames_apu_writes": 522,
+    "music_off_sound_off_idle_240frames_apu_writes": 0,
+    "music_off_sound_on_idle_240frames_apu_writes": 0,
+    "train_troops_sound_on_apu_writes": 86,
+    "train_troops_sound_off_apu_writes": 0,
+    "train_troops_repeat_normalized_cycle_frame_register_value_match": true,
+    "training_event_timing": "play effect on result before final acknowledgement; in captured case skill changes before BP/order charge",
+    "training_fixture": {
+      "skill_before": 102,
+      "skill_after": 126,
+      "bp_before": 100,
+      "bp_after": 95,
+      "orders_before": 3,
+      "orders_after": 2,
+      "gold": 423,
+      "food": 208,
+      "troops": 61,
+      "reserve": 34,
+      "rng_before": "2212b730fc13",
+      "rng_after": "19542c4d0061"
+    },
+    "no_state_or_rng_difference_between_sound_on_off": true
+  },
+  "cue_catalog": {
+    "physical_prg_bank": 14,
+    "table_cpu": "0x8608",
+    "headered_file_offset": "0x38618",
+    "contiguous_structural_entries": 52,
+    "mapped_events": [
+      {
+        "cue_id": 17,
+        "header_cpu": "0x90D2",
+        "event": "opening/title"
+      },
+      {
+        "cue_id": 1,
+        "header_cpu": "0x8679",
+        "event": "scenario selection"
+      },
+      {
+        "cue_id": 6,
+        "header_cpu": "0x89A5",
+        "event": "strategic main"
+      },
+      {
+        "cue_id": 32,
+        "header_cpu": "0x9550",
+        "event": "Train Troops effect"
+      }
+    ],
+    "unmapped_entries": 48,
+    "all_entries_in_private_evidence": "contracts/audio_cue_manifest_v1.json",
+    "not_a_complete_soundtrack": true
+  },
+  "save_contract": {
+    "native_new_process_load_audio_flags": [
+      0,
+      0
+    ],
+    "observed_state_retained": [
+      "year",
+      "season",
+      "gold",
+      "food",
+      "troops",
+      "reserve",
+      "skill",
+      "six_ability_words",
+      "orders"
+    ],
+    "rng_before_save": "19542c4d0061",
+    "rng_after_load": "063206320000",
+    "rng_claim_scope": "Different in this captured load; not a universal RNG persistence conclusion"
+  },
+  "port_implementation_tasks": [
+    "Use independent music and sound flags",
+    "Wire Train Troops sound to result presentation, not delayed acknowledgement",
+    "Use private normalized 86-event APU sequence as timing/output comparator",
+    "Preserve saved audio flags",
+    "Resolve native RNG save behavior before promising exact RNG continuation"
+  ],
+  "not_run": [
+    "Full cue/track catalog",
+    "All loops and SFX preemption",
+    "PCM waveform/listening comparison",
+    "Windows executable",
+    "Stock-original native run in this batch"
+  ],
+  "private_material_policy": "ROM, screenshots, SRAM, save states and raw sound-register sequences remain private; this JSON contains authored observations only."
+}
