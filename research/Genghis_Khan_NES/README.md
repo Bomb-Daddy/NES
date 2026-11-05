@@ -1,5 +1,13 @@
 # Genghis Khan NES research
 
+## Current Windows fidelity execution and hostile QA
+
+- [Latest Windows NES one-to-one gap-closure implementation plan v1.01](GK1_WINDOWS_PORT_GAP_CLOSURE_IMPLEMENTATION_PLAN_v1.01_2026-11-05.md) — the active executable research-to-port order, with all 106 open v1.07 source requirements and Nov 5 ROM-mod source-reuse contracts.
+- [Hostile ROM-mod source QA v1.00](GK1_WINDOWS_PORT_MOD_SOURCE_HOSTILE_QA_v1.00_2026-11-05.md) — actual Demobilize and shared-BP developer ZIP inspection, 80-patch integrity review, source provenance and 16 corrected planning gaps.
+- [Prior plan v1.00](GK1_WINDOWS_PORT_GAP_CLOSURE_IMPLEMENTATION_PLAN_v1.00_2026-11-05.md) remains historical, not a competing active implementation directive.
+
+**ROM provenance:** Original USA NES alone is the Classic behavioral oracle. Demobilize/Fonzarelli and shared-BP/Rest builds are separate Enhanced modes and valuable code research evidence, not stock-game parity proof. Private mod source/ROMs live in the linked Drive archives; do not assume they have been publicly committed to GitHub.
+
 Start with [Complete Economic Mapping v1.07](v1.07/GK1_ECONOMIC_MAPPING_v1.07_2026-11-04.md). All requested economic mapping batches have completed original-ROM research and independent verification. [Completion and reproduction](v1.07/GK1_ECONOMIC_MAPPING_COMPLETION_AND_REPRODUCTION_v1.07_2026-11-04.md) provides the commands, evidence archive and delivery record.
 
 The [economic batch register](v1.07/GK1_ECONOMIC_BATCH_COMPLETION_REGISTER_v1.07.csv) and [167-obligation register](v1.07/GK1_COMPLETE_167_PROOF_MATRIX_v1.07_2026-11-04.csv) distinguish completed economics from broader full-game obligations. All original rows and earlier evidence are preserved. This research does not certify a Windows port, Xbox controls or completion of unrelated game systems.
