@@ -4,7 +4,7 @@
 
 This reference explains the complete tested stack for executing an authorized original NES ROM with Mesen-for-AI, including environment preparation, first-run wizard diagnosis, native private save-state restoration, controller input, real-frame capture, command QA, evidence classification and recovery from timeouts.
 
-**Executable smoke test:** [`headless_mesen_campaign_test.py`](../research/Genghis_Khan_NES/tools/headless_mesen_campaign_test.py) with [13 offline unit tests](../research/Genghis_Khan_NES/tools/test_headless_mesen_campaign_test.py). The test is intentionally nonautonomous; a full campaign driver requires separate development/testing.
+**Executable smoke test:** [`headless_mesen_campaign_test.py`](../research/Genghis_Khan_NES/tools/headless_mesen_campaign_test.py) with [14 offline unit tests](../research/Genghis_Khan_NES/tools/test_headless_mesen_campaign_test.py). The test is intentionally nonautonomous; a full campaign driver requires separate development/testing.
 
 **Current Temujin policy script:** [Unified AI Operating Script v2.00](../research/Genghis_Khan_NES/campaign/TEMUJIN_UNIFIED_AI_OPERATING_SCRIPT_v2.00.md) (operator decision rules, **not** executable Python code or evidence of a 30-year completed campaign).
 
