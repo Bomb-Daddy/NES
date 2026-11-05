@@ -1,0 +1,77 @@
+{
+  "record": "ZL-GK1-EXEC-0018-PUBLICATION",
+  "version": "1.00",
+  "date": "2026-11-05",
+  "delivery": "PUBLISHED / FOLDER VERIFIED / CONTENT VERIFIED",
+  "github": {
+    "repository": "Bomb-Daddy/NES",
+    "source_commit": "0661b6a44c7eeb062a166ac6b1313c17334414a1",
+    "master_commit": "cdbd159498e743f1ae695a8f485f73eebaca704c",
+    "index_commit": "867da19fe589a5d1474466cea8d9ccc0f3a6d1c6",
+    "files": {
+      "normal_melee.py": "9e76a2c7a965a436aab30c978b76525f95f39409",
+      "verify_capture_bundle.py": "d5878cbc401069807824484ff6a709e34945a407",
+      "NORMAL_MELEE_IMPLEMENTATION.md": "ffbc44451ba4b6ad6edd92f0be89bd67582e2f9b",
+      "verification_summary.json": "042f829d0a661964732966dadb3e67d40d3a1895",
+      "test_normal_melee.py": "cec8fc03e7640f29f4096c89a79b2d788f6de40e",
+      "source_arithmetic_vectors.json": "cbc7f3b43ef0020a338c592c7bade5758c1256be",
+      "native_melee_cases.json": "be4caf84c003f03be74f402cbd0710f0160afea1"
+    }
+  },
+  "drive": {
+    "evidence": {
+      "id": "1The0pqj5hnTLySktLZRW2riDIip8qzC5",
+      "parent": "1mJ72ezJb9kzIGUHHXPTh3lXtiVxWjEL7",
+      "mime": "application/zip",
+      "bytes": 1171803,
+      "sha256": "ae8101b62ee377d4fa9037415250f442daa1fbf03537ba3d9ab3efc76e135815",
+      "download_hash_verified": true,
+      "manifest_files_verified": 233
+    },
+    "source_zip": {
+      "id": "1Jl1tETGdL4Oqe0fwTqYsbpKram5nJTu0",
+      "parent": "1d0TA1lgqsVA3AWQQ9o0FZgmvao90oCeT",
+      "mime": "application/zip",
+      "bytes": 13589,
+      "sha256": "2408d2aa507aece4aa2ee5df50e7306edd994fbe17a46d580b70a26ac50ed6c3",
+      "download_hash_verified": true
+    },
+    "report": {
+      "id": "1VXLhOYT1m16FNw-4oL7nAT77lLejBtOy",
+      "parent": "1d0TA1lgqsVA3AWQQ9o0FZgmvao90oCeT",
+      "mime": "text/markdown",
+      "bytes": 13203,
+      "opening_middle_ending_readback": true
+    },
+    "master": {
+      "id": "18Qo3OJqTLXnedoUGJ9TVTINsjNObn45p",
+      "parent": "1d0TA1lgqsVA3AWQQ9o0FZgmvao90oCeT",
+      "mime": "text/markdown",
+      "version": "2.01",
+      "bytes": 70420,
+      "sha256": "39152812a7feded9efc250408ddab2ef7d866b6b9fcc9aed8ba408145ea3ec6d",
+      "git_blob": "5cecfd439fdc267ded1a7d90f51575e5bb35a06f",
+      "download_identical": true
+    }
+  },
+  "work": {
+    "new_native_attacks": 9,
+    "cancellation_cases": 1,
+    "new_source_vectors": 44,
+    "bound_snapshots": 32,
+    "complete_request_response_pairs": 456,
+    "new_numeric_component": "PASS VERIFIED within decoded/captured scope",
+    "cue41_gate": "UNKNOWN",
+    "windows_execution": "NOT RUN",
+    "whole_tactical_system": "PARTIAL"
+  },
+  "limitations": [
+    "Published does not mean agent read or integrated.",
+    "No Windows executable or physical controller run.",
+    "No completed original research was replayed.",
+    "Private input fixtures and noncommander-zero case do not certify commander death or full battle outcomes.",
+    "Direct raw-GitHub download failed DNS in the container; authenticated connector readback and exact Git blob hashes supplied verification instead."
+  ],
+  "recipient_acknowledgment": "UNKNOWN",
+  "background_execution": false
+}
