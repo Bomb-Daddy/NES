@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "research_date": "2026-11-05",
-  "generated_utc": "2026-11-05T20:21:16.547652+00:00",
+  "generated_utc": "2026-11-05T20:24:48.707635+00:00",
   "project": "ROTK II NES Windows \u2014 original battle-mechanics research",
   "owner": "Zhuge Liang / ChatGPT",
   "authority": {
@@ -178,7 +178,16 @@
     "branch": "rotk2-battle-gap-research-20261105",
     "plan_commit": "9d80c6482a11a1f774635f0466918e95f9b8eddf",
     "plan_published_before_experiments": true,
-    "status": "PENDING_RESULT_COMMIT_READBACK"
+    "status": "PASS_VERIFIED",
+    "verified_result_commit": "f699a9d17b1fd58a9c5d919c0f445b2d7745e963",
+    "verified_result_root_tree": "16be106e72cc19b8e43dfd45e441428356478ae9",
+    "remote_branch_ref_matched": true,
+    "research_files_verified": 94,
+    "all_blob_hashes_sizes_modes_matched": true,
+    "core_documents_read_back_exactly": 7,
+    "status_commit_note": "This manifest records the preceding verified result commit. Final status-commit/branch readback is in the private publication receipt; no circular self-hash is claimed.",
+    "final_publication_receipt_file_name": "ROTK2_Battle_Publication_Receipt_20261105_v1.00.json",
+    "final_publication_receipt_folder_url": "https://drive.google.com/drive/folders/1NlIRYS4k8sCpGgbMSapsmJcR7pmxVF64"
   },
   "remaining_questions": [
     {
@@ -240,6 +249,13 @@
       "exit_code": 0,
       "change": "Existing manifest test copied with tool-directory lookup relative to its own path; no test-case or production-code change",
       "after_private_runtime_freeze": true
+    },
+    "publication_preflight": {
+      "public_files": 94,
+      "python_ast_files": 14,
+      "relative_file_links_checked": 83,
+      "test_source_hashes_unchanged": true,
+      "errors": []
     }
   }
 }
