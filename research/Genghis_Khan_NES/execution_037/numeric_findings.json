@@ -33,7 +33,7 @@
     "which VM writer increments word twice",
     "meaning of scratch $614E/$614C",
     "general merge legality",
-    "sequence inside selected_destination\\u2192after_attempt",
+    "sequence inside selected_destination\u2192after_attempt",
     "Windows gameplay parity"
   ],
   "word_613e_first_observed": 2
