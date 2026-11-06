@@ -1,0 +1,44 @@
+--- a/third_branch/officer_battle_adapter.py
++++ b/third_branch/officer_battle_adapter.py
+@@ -596,6 +596,23 @@
+         if unit is None:fail('NO_SUCH_BATTLE_OFFICER')
+         if s['officer_faction'][unit['id']]!=faction:fail('NOT_OWN_OFFICER')
+         units=[unit]
++    # Source hsovl2 $D89D selects destinations for withdrawing officers
++    # independently. Explicit whole-army selections are a complete mapping:
++    # reject a malformed set *before* any individual is unlinked or moved.
++    # The omitted mapping retains old-save/old-client compatibility only;
++    # it is not original one-to-one UI behavior until the nested popup ships.
++    selections=p.get('officer_destinations')
++    if selections is not None:
++        if not whole or not isinstance(selections,dict):fail('BAD_OFFICER_DESTINATION_SCOPE')
++        active=[u for u in units if not u.get('reserve')]
++        if (set(selections)!={u['id'] for u in active} or
++                any(type(chosen) is not str or chosen not in s['neighbors'].get(b['dst'],[]) or
++                    s['owners'].get(chosen) not in (None,faction)
++                    for chosen in selections.values())):
++            fail('BAD_OFFICER_DESTINATIONS')
++        primary=next((u for u in active if u['commander'] and u['slot']==(2 if side=='A' else 0)),None)
++        if primary is None or selections[primary['id']]!=dest:
++            fail('COMMANDER_DESTINATION_MISMATCH')
+     # Q09 fail closed on historical/corrupt pending-reserve records. Without
+     # the real home, defaulting to the field retreat destination manufactures
+     # a station transfer unsupported by the army ledger. Validate first to
+@@ -614,12 +631,15 @@
+             fail('UNRESOLVED_REINFORCEMENT_HOME')
+     for u in units:
+         u['fled']=True;u['acted']=True;u['mp']=0
+-        u['retreat_to']=u['home'] if u.get('reserve') else dest
++        u['retreat_to']=(u['home'] if u.get('reserve') else
++                         (selections[u['id']] if selections is not None else dest))
+     b.setdefault('combat_events',[]).append({'kind':'withdraw','officers':[u['id'] for u in units],
+-                                               'destination':dest,'whole_army':whole})
++                                               'destination':dest,'whole_army':whole,
++                                               'officer_destinations':{u['id']:u['retreat_to'] for u in units}})
+     _sync(s,b)
+     outcome=('DEFENDER' if side=='A' else 'ATTACKER') if whole else _result(s,b)
+     return {'withdrawn':[u['id'] for u in units],'destination':dest,
++            'officer_destinations':{u['id']:u['retreat_to'] for u in units},
+             'outcome':outcome}
+ 
+ def q19_defender_help_threshold(invader_troops,defender_troops,defender_rice):
