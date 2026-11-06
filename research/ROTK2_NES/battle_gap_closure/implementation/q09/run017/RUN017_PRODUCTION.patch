@@ -1,0 +1,60 @@
+--- Run016/src/rotk2/battle/engine.py
++++ Run017/src/rotk2/battle/engine.py
+@@ -1145,22 +1145,16 @@
+                                      destination:int)->None:
+     """Source $D648/$D6A5: insert a *known* escaped officer immediately.
+ 
+-    Only individual Flee into a peaceful province is modeled here. Native
+-    root $5154 moves the officer before battle termination; root $507C also
+-    claims a previously open province, and $D69A divides battle troops by
+-    100 for an un-attacked destination. Ruler insertion promotes the head.
+-
+-    Under-attack destinations retain a battle-scale officer word in the
+-    original; this port still lacks the distinct strategic/battle resident
+-    representation. Do NOT fabricate a scaled strategic troop count there.
++    Individual Flee uses root $5154 immediately, not at battle settlement.
++    Native hsovl2 $D69A divides battle troops by 100 ONLY for peaceful
++    destinations (+F == FF); into a province already under attack, the
++    original retains the entire battle-scaled 16-bit officer troop word.
++    The port models that immediate observable officer/troop placement, but
++    cannot yet enter a second simultaneously active tactical battle.
+     This helper is never invoked on source-unknown or failed-escape paths.
+     """
+     target=state.provinces[destination]
+     officer=state.officers[u.officer_id]
+-    if target.under_attack:
+-        b.log.append(f'd{b.day} Q09 officer {u.officer_id} active-siege ' 
+-                     'source insertion UNMODELLED')
+-        return
+     old=officer.province_id
+     # If this officer was the explicitly recovered old head, its successor
+     # is not known: clear the stale snapshot rather than invent list order.
+@@ -1172,7 +1166,8 @@
+     if target.owner is None and officer.ruler_id in state.rulers:
+         target.owner=officer.ruler_id
+     officer.province_id=destination
+-    officer.soldiers=(u.troops100 if u.troops100 is not None else u.soldiers*100)//100
++    source_troops=(u.troops100 if u.troops100 is not None else u.soldiers*100)
++    officer.soldiers=(source_troops if target.under_attack else source_troops//100)
+     if officer.is_ruler or empty:
+         target.q09_officer_head=officer.id
+     if (officer.is_ruler and officer.ruler_id in state.rulers
+@@ -1769,6 +1764,18 @@
+         if u.officer_id == MILITIA_ID:
+             continue
+         o = state.officers[u.officer_id]
++        # Q09 D648: a source-known successful individual Flee was already
++        # inserted into the destination province during the LIVE battle.
++        # Do not perform the later settlement's /100 conversion a second
++        # time, erase active-siege scaling, or award battle-end training.
++        # Legacy/source-unknown Flee remains on the prior deferred path.
++        flag, special, movement11 = _q09_source_fields(state, u)
++        native_known = (flag is not None and
++                        ((flag & 0x40) or
++                         (special is not None and movement11 is not None)))
++        if (u.fled and native_known and
++                b.retreat_destinations.get(str(u.officer_id)) == o.province_id):
++            continue
+         if u.alive:
+             o.soldiers = (u.troops100 // 100 if u.troops100 is not None else u.soldiers)
+             o.training = min(MAX_STAT, o.training + 3)
