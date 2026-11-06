@@ -1,0 +1,25 @@
+--- src/rotk2/battle/engine.py
++++ src/rotk2/battle/engine.py
+@@ -1160,16 +1160,17 @@
+     # is not known: clear the stale snapshot rather than invent list order.
+     if old in state.provinces and state.provinces[old].q09_officer_head==officer.id:
+         state.provinces[old].q09_officer_head=None
+-    empty=(target.owner is None or
+-           not any(o.alive and o.province_id==destination and
+-                   o.ruler_id==officer.ruler_id for o in state.officers.values()))
+     if target.owner is None and officer.ruler_id in state.rulers:
+         target.owner=officer.ruler_id
+     officer.province_id=destination
+     source_troops=(u.troops100 if u.troops100 is not None else u.soldiers*100)
+     officer.soldiers=(source_troops if target.under_attack else source_troops//100)
+-    if officer.is_ruler or empty:
+-        target.q09_officer_head=officer.id
++    # Original root select_officer_5154 ($5154/$5191) links EACH inserted
++    # officer at province+2 (the officer list head), including ordinary
++    # non-rulers and provinces that already have a garrison.  The earlier
++    # first-officer/ruler-only shortcut left the wrong head after multiple
++    # Flee operations and changed future legal retreat destinations.
++    target.q09_officer_head=officer.id
+     if (officer.is_ruler and officer.ruler_id in state.rulers
+             and target.owner==officer.ruler_id):
+         state.rulers[officer.ruler_id].q14_owned_head=destination
