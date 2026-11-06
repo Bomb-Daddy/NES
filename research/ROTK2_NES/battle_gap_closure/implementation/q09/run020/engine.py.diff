@@ -1,0 +1,41 @@
+--- src/rotk2/battle/engine.py
++++ src/rotk2/battle/engine.py
+@@ -1156,10 +1156,20 @@
+     target=state.provinces[destination]
+     officer=state.officers[u.officer_id]
+     old=officer.province_id
+-    # If this officer was the explicitly recovered old head, its successor
+-    # is not known: clear the stale snapshot rather than invent list order.
+-    if old in state.provinces and state.provinces[old].q09_officer_head==officer.id:
+-        state.provinces[old].q09_officer_head=None
++    # root select_officer_5154 $5159-$517D/$518E-$5195 loads the former
++    # head, writes the transferred officer as the new head, and connects the
++    # former head as its successor.  Unlike a dict/list order guess, this is
++    # an exact source-confirmed *linked* update when both links are known.
++    # When removing a head, preserve the explicitly known successor only if
++    # that officer is still resident; do not promote a foreign/stale link.
++    if old in state.provinces and old!=destination:
++        origin=state.provinces[old]
++        if origin.q09_officer_head==officer.id:
++            successor=state.officers.get(officer.q09_officer_next)
++            origin.q09_officer_head=(successor.id if successor is not None
++                                    and successor.alive and successor.province_id==old
++                                    and successor.id!=officer.id else None)
++    previous_head=target.q09_officer_head
+     if target.owner is None and officer.ruler_id in state.rulers:
+         target.owner=officer.ruler_id
+     officer.province_id=destination
+@@ -1170,6 +1180,13 @@
+     # non-rulers and provinces that already have a garrison.  The earlier
+     # first-officer/ruler-only shortcut left the wrong head after multiple
+     # Flee operations and changed future legal retreat destinations.
++    if old!=destination:
++        former=state.officers.get(previous_head)
++        officer.q09_officer_next=(former.id if former is not None
++                                and former.id!=officer.id and former.alive
++                                and former.province_id==destination else None)
++    # A same-province return by an already-linked officer must not generate
++    # a self-link or corrupt an existing successor on an apparent noop.
+     target.q09_officer_head=officer.id
+     if (officer.is_ruler and officer.ruler_id in state.rulers
+             and target.owner==officer.ruler_id):
