@@ -1,0 +1,38 @@
+--- Run012/src/rotk2/battle/engine.py
++++ Run013/src/rotk2/battle/engine.py
+@@ -1049,6 +1049,21 @@
+     return allowed
+ 
+ 
++def q09_effective_movement_byte(movement11:int, training:int)->int:
++    """Native hex $BFBB (hsovl2 $D582): 8-bit subtraction and BMI.
++
++    Original movement byte +11 is compared against the training-derived
++    floor by an 8-bit subtraction whose NEGATIVE flag, not unsigned carry or
++    Python max(), governs whether to replace it. This matters for anomalous
++    but representable original byte values >= 130. Not the UI's current MP.
++    """
++    if (type(movement11) is not int or not 0 <= movement11 <= 255 or
++            type(training) is not int or not 0 <= training <= 255):
++        raise ValueError('INVALID_Q09_SOURCE_BYTES')
++    floor=(max(training-1, 0)//20)+2
++    return floor if ((movement11-floor)&0x80) else movement11
++
++
+ def q09_escape_score(movement:int, war:int, training:int, troops100:int,
+                      opposing_neighbors:int, is_ruler:bool, special_a3:bool,
+                      roll10:int)->int:
+@@ -1108,10 +1123,9 @@
+     if flag is None or special is None or movement11 is None:
+         return True  # UNKNOWN SOURCE STATE: preserve migration/legacy behavior
+     officer=state.officers[u.officer_id]
+-    # Original native $BFBB raises ordinary movement byte to the trained floor.
+-    # Exact 8-bit signed subtraction behavior for arbitrary injected high bytes
+-    # is a distinct source-execution fixture still outstanding.
+-    movement=max(movement11, (max(officer.training-1,0)//20)+2)
++    # Native $BFBB uses the 8-bit subtraction negative flag; unsigned max()
++    # agrees for normal low values but differs for valid high source bytes.
++    movement=q09_effective_movement_byte(movement11,officer.training)
+     opponents=q09_opposing_neighbor_count(b,u)
+     troops=u.troops100 if u.troops100 is not None else u.soldiers*100
+     rng=_battle_rng(b)
