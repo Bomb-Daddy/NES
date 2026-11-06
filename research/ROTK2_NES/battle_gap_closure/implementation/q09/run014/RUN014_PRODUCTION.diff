@@ -1,0 +1,67 @@
+--- Run013/src/rotk2/battle/engine.py
++++ Run014/src/rotk2/battle/engine.py
+@@ -1141,6 +1141,45 @@
+     return escaped
+ 
+ 
++def _q09_apply_immediate_source_flee(state:GameState,b:Battle,u:BattleUnit,
++                                     destination:int)->None:
++    """Source $D648/$D6A5: insert a *known* escaped officer immediately.
++
++    Only individual Flee into a peaceful province is modeled here. Native
++    root $5154 moves the officer before battle termination; root $507C also
++    claims a previously open province, and $D69A divides battle troops by
++    100 for an un-attacked destination. Ruler insertion promotes the head.
++
++    Under-attack destinations retain a battle-scale officer word in the
++    original; this port still lacks the distinct strategic/battle resident
++    representation. Do NOT fabricate a scaled strategic troop count there.
++    This helper is never invoked on source-unknown or failed-escape paths.
++    """
++    target=state.provinces[destination]
++    officer=state.officers[u.officer_id]
++    if target.under_attack:
++        b.log.append(f'd{b.day} Q09 officer {u.officer_id} active-siege ' 
++                     'source insertion UNMODELLED')
++        return
++    old=officer.province_id
++    # If this officer was the explicitly recovered old head, its successor
++    # is not known: clear the stale snapshot rather than invent list order.
++    if old in state.provinces and state.provinces[old].q09_officer_head==officer.id:
++        state.provinces[old].q09_officer_head=None
++    empty=(target.owner is None or
++           not any(o.alive and o.province_id==destination and
++                   o.ruler_id==officer.ruler_id for o in state.officers.values()))
++    if target.owner is None and officer.ruler_id in state.rulers:
++        target.owner=officer.ruler_id
++    officer.province_id=destination
++    officer.soldiers=(u.troops100 if u.troops100 is not None else u.soldiers*100)//100
++    if officer.is_ruler or empty:
++        target.q09_officer_head=officer.id
++    if (officer.is_ruler and officer.ruler_id in state.rulers
++            and target.owner==officer.ruler_id):
++        state.rulers[officer.ruler_id].q14_owned_head=destination
++
++
+ def withdraw(state:GameState,b:Battle,side:str,destination:int,whole_army:bool=True,officer_id:int|None=None,officer_destinations:dict|None=None):
+     """Q09 original $D89D selects a legal destination independently for each officer.
+ 
+@@ -1214,7 +1253,17 @@
+         u.acted=True;u.mp=0
+         if escaped:
+             u.fled=True
+-            b.retreat_destinations[str(u.officer_id)]=homes.get(u.officer_id,individual_destinations.get(u.officer_id,destination))
++            chosen=homes.get(u.officer_id,individual_destinations.get(u.officer_id,destination))
++            b.retreat_destinations[str(u.officer_id)]=chosen
++            # Native $D648 calls root $5154 before return to the live battle.
++            # Restrict the new writer to the source-known individual path:
++            # legacy unknown bytes and whole-army atomic staging are still
++            # separately tracked as OPEN parity work.
++            if not whole_army:
++                flag,special,movement11=_q09_source_fields(state,u)
++                if (flag is not None and flag&0x40 or
++                    flag is not None and special is not None and movement11 is not None):
++                    _q09_apply_immediate_source_flee(state,b,u,chosen)
+         else:
+             # $D6AC bypasses destination insertion, invokes opposing capture,
+             # and removes the officer from the live grid. Q14 handles the
