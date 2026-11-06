@@ -1,0 +1,53 @@
+--- src/rotk2/battle/engine.py @Run010
++++ src/rotk2/battle/engine.py @Run011
+@@ -1016,13 +1016,12 @@
+ 
+ 
+ def retreat_destinations(state:GameState,b:Battle,side:str,officer_id:int|None=None):
+-    """Q09 hsovl2 $D905 -> hex $7FED: neighboring flee destinations.
+-
+-    The original accepts an open province, or a populated province whose
+-    officer-list head belongs to the *fleeing officer's* liege. The port's
+-    campaign model lacks the original linked-list head order, so the populated
+-    case tests membership in the same-faction serving garrison; mixed-head
+-    order remains a separate parity gap. Do not infer a garrison from owner.
++    """Q09 original hex $7FED uses the province officer-list HEAD's liege.
++
++    A known, source-confirmed head governs even when the province owner or a
++    non-head resident disagrees. Unknown heads retain the old conservative
++    serving-garrison proxy; that is not an assertion of exact link order.
++    Open/unowned neighbors require no garrison. Under-attack is not filtered.
+     """
+     members=active_units(b,side)
+     subject=(next((u for u in members if u.officer_id==officer_id),None)
+@@ -1037,9 +1036,16 @@
+         province=state.provinces[n]
+         if province.owner is None:
+             allowed.append(n)
++        elif province.q09_officer_head is not None:
++            # A recovered head points to an actual serving officer; an absent,
++            # dead or moved reference does not authorize this destination.
++            head=state.officers.get(province.q09_officer_head)
++            if (head is not None and head.alive and head.province_id==n
++                    and ruler is not None and head.ruler_id==ruler):
++                allowed.append(n)
+         elif (ruler is not None and province.owner==ruler and
+               state.officers_in(n,ruler)):
+-            allowed.append(n)
++            allowed.append(n)  # source head not recovered: prior approximation
+     return allowed
+ 
+ 
+--- src/rotk2/state/models.py @Run010
++++ src/rotk2/state/models.py @Run011
+@@ -72,6 +72,10 @@
+     # Original Q14 safe-neighbor predicate; defaults to no OTHER active siege.
+     # The single-battle campaign adapter still lacks general multi-battle upkeep.
+     under_attack: bool = False
++    # Exact original province+2 officer-list HEAD, when an original/source
++    # fixture has recovered it. None means unknown; never infer link order
++    # from Python dictionary insertion or numeric officer ID.
++    q09_officer_head: Optional[int] = None
+ 
+ 
+ @dataclass
