@@ -1,0 +1,40 @@
+{
+  "audit": "EXEC0037 archived modified-ROM temporal bracket",
+  "cases": 4,
+  "checkpoint_sha256": "e1b6266c963a48d736627812d024910b6d600c2ad8571813eb3b0999e0f2938b",
+  "evidence_sha256": "aec170e8661a0011e373024caeb858f2657b716574b5f8555b63703e5cfd28f1",
+  "friendly_join_before": "selected_destination",
+  "friendly_join_first_observed": "after_attempt",
+  "method": "hash-verified stages, not new Mesen execution",
+  "negative_controls": [
+    "insufficient_mobility",
+    "enemy_occupied",
+    "exact_mobility"
+  ],
+  "rom_sha256": "4764d46359581be1e7d12bcb85bd375c84cd4497d1084d9d306a6e884afbe7c5",
+  "scratch_614c_later": {
+    "after_attempt": 14,
+    "after_idle": 22
+  },
+  "scratch_614e_first_observed": {
+    "after_attempt": 3,
+    "before": 5
+  },
+  "snapshots": 28,
+  "units_first_observed": {
+    "both_at": [
+      8,
+      7
+    ],
+    "mover_soldiers": 74,
+    "partner_soldiers": 0
+  },
+  "unproven": [
+    "which VM writer increments word twice",
+    "meaning of scratch $614E/$614C",
+    "general merge legality",
+    "sequence inside selected_destination\\u2192after_attempt",
+    "Windows gameplay parity"
+  ],
+  "word_613e_first_observed": 2
+}
