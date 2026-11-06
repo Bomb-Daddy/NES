@@ -1,0 +1,22 @@
+# ROTK II NES Battle Performance Fidelity — Classic Run015 completion register
+Date: 2026-11-06 | Target: canonical NES Classic only | Outcome: TESTED CANDIDATE (not accepted release)
+
+Authority: Director's observable/gameplay fidelity requirement; SUP-0016 canonical `/Retro Gaming/ROTK2_NES_Windows`; shared mechanics authority `SUP-NES-COMBAT-20261101-001`; current authority and source-version register. Original-KOEI Enhanced and DOS trees unchanged.
+
+**Exact parent**: Classic Run014 full ZIP SHA256 `ddb6ee5693e6dce140f4e216d14d241e8c1239aa8ddfb66fd1b7257d46ade398` (159 ZIP files). **Run015 source ZIP** SHA256 `fdbbc394cbffe98044f994fe498d6445b912a6510fd175178257da3242c73506` (160 CRC-clean entries, 4,325,906 bytes, 157 original member bytes identical, two modules modified, one new test). No source from the Original-KOEI Enhanced donor or DOS port is copied into Classic.
+
+| Item | Evidence class | State | Evidence and unresolved limitations |
+|---|---|---|---|
+| Q09 failed individual Flee: immediately add officer to OPPOSING side captured list | VERIFIED_STATIC (accepted decoded `hsovl2 $D6AC–$D6C8` authority), TESTED_PORT (Classic Linux Python) | PARTIAL; implemented tested | `src/rotk2/battle/engine.py`, `Battle.q09_captured_by_side`; 6 failed/1 passed before patch, 7 passed after; both army sides; actual controlled source-RNG loss; staged battle officer is unlinked and not flagged fled |
+| Persistence and negative corruption control | TESTED_PORT | PASS VERIFIED (scoped) | `.ro2` disk save/load and byte-consistent `state_hash()`; rejects own-side captures, duplicate IDs and active units |
+| Unchanged game behavior and release invariants | TESTED_PORT (Linux Xvfb) | PASS VERIFIED (selected suite) | `282 passed, 37 skipped, 1 deselected`, broad selected suite in `/src/tests` and `/tests` and cold-extracted ZIP; excludes source ROM-dependent adjacency and obsolete CLASSIC008 release inventory |
+| Mutant proof | TESTED_PORT | PASS VERIFIED (negative control) | Disable opponent captured-list append: 4 expected failures and 3 passes; restore exact production bytes: 7/7 passes |
+| Q14 prisoner menu treatment of these Q09 captures | VERIFIED_STATIC (code inspections only) | OPEN | Must prove winner-sensitive treatment and prisoner list flow, no invented policy |
+| Q09 ordinary campaign `q09_source_*` hydration, 4-list under attack insertion, full army mixed fates | TESTED_PORT subset, REPORTED_UNREPRODUCED wider | PARTIAL | No general source-byte hydration; fallbacks remain; source gate is not ordinary-play parity |
+| Enhanced Run007 and Run009 source merge | REPORTED_UNREPRODUCED | BLOCKED as of source inspection | Exact Enhanced Run007 SHA `15ed58d6a0bba0f824bccfbc864a55cc3267bef004071d336f8df0c76b6b6a92` not available in canonical Drive folder `1Z5yAum2F94dKNd3eVztFTAvFC1bKnsT7`, which contains only the completion Doc; full Run009 donor exists separately and MUST NOT be promoted over Run007 |
+| NES-emulator event-by-event goldens and Enhanced controlled-RNG, Windows native, current-build physical Xbox | REPORTED_UNREPRODUCED / NOT RUN | OPEN | Neither Mesen gameplay nor Windows nor real Xbox executed in this run; historical REV-F hardware PASS is not this build acceptance |
+| Full Q01–Q22 battle fidelity, Director acceptance | INFERRED only where previously tested; otherwise NOT RUN | OPEN | Selected passing unit tests are not complete observable NES gameplay parity |
+
+**Platform and exclusions:** Linux Python 3.13, `xvfb-run`, no actual hardware controller. 37 skips come from the combined legacy suite. The private `ROTK2_TEST_ROM` was unavailable, so `src/tests/test_build23_q04_original_rom_adjacency.py` was excluded at collection, and stale `test_bundle_manifest_008` deselected. These are not passing test claims. Current source is not a Windows-native installed build.
+
+**Executable next correction:** Starting from exact Run015 hash, inspect `prepare_prisoners`, winner-sensitive captured-officer/Q14 settlement, and original `hsovl2 $D6AC–$D6C8` source fixture. Add two-way tests (capture side wins/loses subsequently), source-battle prisoner screens, cancel and disk cold load; fail-before/green-after and re-run suite. For Enhanced, first recover original exact full Run007 ZIP SHA and merge ONLY Run009 donor UI and Run006 per-officer destinations, preserving Run007 source escape/capture; do not merge donor before its parent can be verified. Preserve Economy/BP/marketplace.

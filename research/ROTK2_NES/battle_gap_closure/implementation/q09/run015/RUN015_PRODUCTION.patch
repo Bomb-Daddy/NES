@@ -1,0 +1,77 @@
+--- a/src/rotk2/state/models.py
++++ b/src/rotk2/state/models.py
+@@ -159,6 +159,11 @@
+     reinforcements: list = field(default_factory=list)  # Q09 queued reserves, serialized
+     retreat_destinations: dict = field(default_factory=dict)  # officer id -> destination
+     prisoner_choices: dict = field(default_factory=dict)  # officer id -> recruit/release/behead
++    # Q09 hsovl2 $D6AC: failed individual Flee is transferred to the
++    # opposing battle side's captured-officer list immediately, not merely
++    # inferred later from which army lost the battle. Absent on old saves.
++    # Mapping side -> officer IDs; separate from Q14 disposition outcomes.
++    q09_captured_by_side: dict = field(default_factory=dict)
+     prisoners_ready: bool = False
+     duel_done: bool = False
+     duel_pending: Optional[int] = None  # Q11 CPU opening challenger; human must respond
+@@ -309,6 +314,26 @@
+                             errs.append(f"battle officer {oid} outside grid")
+             if len(officer_ids)!=len(set(officer_ids)):
+                 errs.append('battle duplicated officer deployment')
++            # Fail closed on forged/corrupt captured-list saves. Do not allow
++            # the same officer on both sides' lists or a live/grid officer
++            # to masquerade as a captured opponent.
++            captures=b.q09_captured_by_side
++            if not isinstance(captures,dict):
++                errs.append('invalid Q09 capture list')
++            else:
++                seen_captures=set()
++                for captor, ids in captures.items():
++                    if captor not in ('A','D') or not isinstance(ids,list):
++                        errs.append('invalid Q09 capture list side')
++                        continue
++                    for oid in ids:
++                        unit=next((u for u in b.units if not isinstance(u,dict)
++                                   and u.officer_id==oid),None)
++                        if (type(oid) is not int or oid in seen_captures or
++                                unit is None or unit.officer_id==MILITIA_ID or
++                                unit.side==captor or unit.alive or unit.fled):
++                            errs.append('invalid Q09 capture list officer')
++                        seen_captures.add(oid)
+             if any(n>1 for n in commanders.values()):
+                 errs.append('multiple slot commanders')
+             if any(len(t)!=b.width for t in b.terrain) or len(b.terrain)!=b.height:
+--- a/src/rotk2/battle/engine.py
++++ b/src/rotk2/battle/engine.py
+@@ -1186,8 +1186,8 @@
+     Source-backed escape test executes only when original officer flag/source
+     tag inputs are supplied. Historic unhydrated campaigns preserve the previous
+     guaranteed-success fallback and remain NOT SOURCE-PARITY. Failed escape is
+-    captured into the existing Q14 losing-side prisoner-disposition path;
+-    original list-link timing and mid-battle capture-list fidelity remain OPEN.
++    immediately linked to the opposing Q09 captured-officer list. The later
++    winner-sensitive Q14 prisoner disposition remains an OPEN parity gap.
+     """
+     if side!=b.side_to_move or destination not in retreat_destinations(state,b,side,
+             officer_id=None if whole_army else officer_id):
+@@ -1265,11 +1265,18 @@
+                     flag is not None and special is not None and movement11 is not None):
+                     _q09_apply_immediate_source_flee(state,b,u,chosen)
+         else:
+-            # $D6AC bypasses destination insertion, invokes opposing capture,
+-            # and removes the officer from the live grid. Q14 handles the
+-            # resulting prisoner when the withdrawing army loses this battle.
++            # hsovl2 $D6AC–$D6C8 bypasses destination insertion and links
++            # this officer to the *opponent* captured-officer list NOW. A
++            # later battle result is not sufficient to reconstruct that
++            # link: the opponent may subsequently lose the battle.
++            # Do not invent a Q14 disposition or kill the Officer record here.
++            captor='D' if u.side=='A' else 'A'
++            captured=b.q09_captured_by_side.setdefault(captor,[])
++            if u.officer_id not in captured:
++                captured.append(u.officer_id)
+             u.alive=False
+-            b.log.append(f'd{b.day} Q09 officer {u.officer_id} captured on failed escape')
++            b.log.append(f'd{b.day} Q09 officer {u.officer_id} '
++                         f'captured by {captor} on failed escape')
+     if whole_army:
+         b.withdrawn=True
+         concede(b,side)
