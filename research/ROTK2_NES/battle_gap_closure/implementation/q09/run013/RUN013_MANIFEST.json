@@ -1,0 +1,22 @@
+{
+  "run": "Run013",
+  "date": "2026-11-06",
+  "canonical_root": "Retro Gaming/ROTK2_NES_Windows",
+  "canonical_root_drive_id": "1ODnfdVL5R3bZBBUp4cXpocNqtTClrxIL",
+  "source_parent_file_id": "1Kogf7Cz4MKwnMuTcV8YpvsPw5sF4ijNg",
+  "parent_sha256": "5214b118fd350544fa677394233d3a0c1d1db7e9c8d8eec5c64e55a7bd63ad9e",
+  "source_zip": "ROTK2_NES_Classic46_BPF_Run013_Q09_BFBB_SignedFlag_FullSource_v1.00.zip",
+  "source_sha256": "28e4d7c0296621941b274ffcbc5d41651a1a76b0053ee45d35086fddb4b51c68",
+  "source_size": 4320694,
+  "parent_entries": 157,
+  "child_entries": 158,
+  "changed": ["src/rotk2/battle/engine.py"],
+  "added": ["src/tests/test_run013_q09_native_bfbb_sign.py"],
+  "unchanged_parent_members": 156,
+  "status": "TESTED_CANDIDATE; DRIVE_BINARY_PUBLICATION_BLOCKED",
+  "linux_pytest": {"pass":268,"skip":37,"deselect":1},
+  "ui_xvfb": {"pass":39},
+  "target": {"pass":4},
+  "red_before": {"fail":2,"pass":2},
+  "mutant": {"fail":3,"pass":1}
+}
