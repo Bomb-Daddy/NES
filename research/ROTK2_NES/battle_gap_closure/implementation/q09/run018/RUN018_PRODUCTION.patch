@@ -1,0 +1,20 @@
+--- Run017/src/rotk2/battle/engine.py
++++ Run018/src/rotk2/battle/engine.py
+@@ -1250,11 +1250,12 @@
+             u.fled=True
+             chosen=homes.get(u.officer_id,individual_destinations.get(u.officer_id,destination))
+             b.retreat_destinations[str(u.officer_id)]=chosen
+-            # Native $D648 calls root $5154 before return to the live battle.
+-            # Restrict the new writer to the source-known individual path:
+-            # legacy unknown bytes and whole-army atomic staging are still
+-            # separately tracked as OPEN parity work.
+-            if not whole_army:
++            # hsovl2 $D89D iterates officer withdrawals through $D648:
++            # every source-known successful FIELD officer inserts immediately,
++            # whether selected by individual Flee or the whole-army prompt.
++            # Queued slot-1/3 reserves instead go home (not through $D648).
++            # Unknown original bytes retain the explicitly provisional path.
++            if not u.reserve:
+                 flag,special,movement11=_q09_source_fields(state,u)
+                 if (flag is not None and flag&0x40 or
+                     flag is not None and special is not None and movement11 is not None):
