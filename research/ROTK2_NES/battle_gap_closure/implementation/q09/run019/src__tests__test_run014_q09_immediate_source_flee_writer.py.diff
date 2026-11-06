@@ -1,0 +1,18 @@
+--- src/tests/test_run014_q09_immediate_source_flee_writer.py
++++ src/tests/test_run014_q09_immediate_source_flee_writer.py
+@@ -86,7 +86,7 @@
+     assert app.engine.state.state_hash()==before
+ 
+ 
+-def test_source_random_success_and_existing_head_retained_during_battle():
++def test_source_random_success_and_existing_head_replaced_by_native_head_insertion():
+     e=battle_game();s=e.state;b=s.battle
+     officer=s.officers[3]
+     officer.q09_source_flag2=0
+@@ -100,7 +100,7 @@
+     assert result.success and b.result is None
+     assert b.combat_draws==2
+     assert officer.province_id==3 and officer.soldiers==34
+-    assert s.provinces[3].q09_officer_head==5, 'ordinary appended officer cannot displace existing HEAD'
++    assert s.provinces[3].q09_officer_head==3, 'root $5154/$5177 writes the new officer to province+2 HEAD'
+     assert s.validate()==[]
