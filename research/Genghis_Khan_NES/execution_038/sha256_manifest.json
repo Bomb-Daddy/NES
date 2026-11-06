@@ -1,0 +1,46 @@
+{
+  "classification": "TESTED_LINUX_C11_ARCHIVED_MODIFIED_ROM_GATE\u2014not new NES/Windows execution",
+  "date": "2026-11-06",
+  "files": {
+    "execution_034/gk1_tactical_slice.c": {
+      "bytes": 6770,
+      "sha256": "9d2c6cec12fb3cc20642330789bf54967858a60b4c17ede86decacf66e055e03"
+    },
+    "execution_034/gk1_tactical_slice.h": {
+      "bytes": 3142,
+      "sha256": "936111b875576563912d7cafbab2304e182bdefe63318ad9328634ead2079c92"
+    },
+    "execution_035/gk1_native_ram_view.c": {
+      "bytes": 1910,
+      "sha256": "cf98fede806ade3f2be225d7c654f27c05ee0678d3ac05cbc9e69229ad47c124"
+    },
+    "execution_035/gk1_native_ram_view.h": {
+      "bytes": 1824,
+      "sha256": "8fb85a6c6d881f3eadaea10fe0eab10cf38bd84ef4617e221c6436ecac554ecc"
+    },
+    "execution_038/CMakeLists.txt": {
+      "bytes": 423,
+      "sha256": "4944bfb402200d4be3dd96777bbb4d4918275dff5eb31e4d22eb71e076b95b18"
+    },
+    "execution_038/README.md": {
+      "bytes": 5487,
+      "sha256": "1bf3957907e289715548776b0861245948904eba05a708e9767789d2c6da3d4b"
+    },
+    "execution_038/gk1_stage_window.c": {
+      "bytes": 5698,
+      "sha256": "870bdf4857b2d3bcc565e7e0e273191d7799e2916f4a6370fbb31bd9bb386b06"
+    },
+    "execution_038/gk1_stage_window.h": {
+      "bytes": 2004,
+      "sha256": "bcfc0382a15ff1b3537267358b54289b9956f533f19bd9a85de159fd1f1a0cbb"
+    },
+    "execution_038/test_gk1_stage_window.c": {
+      "bytes": 6293,
+      "sha256": "142f7eff8c04c2d9a9d4348f190f69da98fde3da32a1de9f9ec288153d31e77f"
+    }
+  },
+  "increment": "EXEC0038",
+  "license_payloads": "none",
+  "project": "GK1 NES-to-Windows independent port",
+  "version": "1.00"
+}
