@@ -72,7 +72,7 @@ def patch_engine(s):
     return owned[0]
 
 '''
-    s = s[:begin] + function + s[end:]
+    s = s[:begin] + function.rstrip("\n") + "\n" + s[end:]
     old = """    if att_won:
         dst.owner = atk_ruler
         for u in b.units:
