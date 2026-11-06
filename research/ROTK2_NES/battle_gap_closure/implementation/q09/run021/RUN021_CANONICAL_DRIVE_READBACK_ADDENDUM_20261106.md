@@ -14,3 +14,12 @@
 - Provenance/status: source and independent downloaded ZIP SHA/CRC = **VERIFIED_STATIC/PASS**; real engine Linux cold suite = **TESTED_PORT/PASS**; old software-controller observed Linux Xvfb = **OBSERVED_RUNTIME/PASS prior run**; original NES replay 30 fixed events, simultaneous attacked-destination second battle, ordinary campaign NES source-byte hydration, current native Windows/physical Xbox and Director acceptance remain **OPEN**, with original NES/Windows/Xbox **REPORTED_UNREPRODUCED/NOT RUN**.
 - Correct numbered Collaboration handoff `SUP-NES-BPF-20261106-072`: https://docs.google.com/document/d/1jwK4zShjI_6RhtoQDuJIn6f-cuS0nRSf2zl_Mjf4Yco/edit. Parent, beginning/middle/end content verified. Current source-version register appended: https://docs.google.com/document/d/1UXDXguwS0EGKKTInRWZraSFWabRD6pSuYHq9LKTBjZE/edit. No agent acknowledgment claimed.
 - Next executable parity correction: source-derive/implement attacked-neighbor second simultaneous battle slot against exact Run021 source with red-before/green-after, negatives, UI, cold load, original source fixtures, with separate Enhanced source untouched. Never promote this research-branch content as canonical NES tree.
+
+## Fresh independent negative, controller and persistence revalidation
+
+- Exact immutable pristine Run020 source `964d9ad55c50eaab944bf8f70ff257a230494b1ff6a799e152d88561b21ea345` with *only* the new Run021 regression test copied in, Xvfb software controller: **5 expected failures / 2 passes**, exit 1.
+- Exact unchanged Run021 source after successful Drive readback, Xvfb: **7 passes**, exit 0; includes software controller Flee, origin list linkage, real `.ro2` disk save/cold load, invalid retreat and state invariants.
+- Independently copied **mutant** Run021 production source with only the predecessor-repair statement replaced by a no-op, Xvfb: **5 intended failures / 2 passes**, exit 1. No canonical source modified.
+- Restored untouched Run021, Xvfb: **7 passes**, exit 0.
+- Same untouched source full applicable Linux suite: **317 passed / 37 skipped / 1 deselected**; original NES event replays, native Windows and physical Xbox **not run**.
+- New numbered handoff 072 and maintained source register append both read back these newly executed results.
