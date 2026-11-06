@@ -1,0 +1,12 @@
+--- src/rotk2/state/models.py
++++ src/rotk2/state/models.py
+@@ -57,6 +57,9 @@
+     q09_source_flag2: Optional[int] = None
+     q09_source_special_2569: Optional[int] = None
+     q09_source_movement11: Optional[int] = None  # source officer byte +11, NOT remaining UI action MP
++    # Original root select_officer_5154 keeps an officer's next-list link.
++    # None = not recovered, not a license to infer a linked list from IDs.
++    q09_officer_next: Optional[int] = None
+ 
+ 
+ @dataclass
