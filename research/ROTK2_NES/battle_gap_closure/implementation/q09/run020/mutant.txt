@@ -1,0 +1,70 @@
+F..F.F                                                                   [100%]
+=================================== FAILURES ===================================
+______ test_two_successful_flee_inserts_preserve_head_and_successor_order ______
+
+    def test_two_successful_flee_inserts_preserve_head_and_successor_order():
+        s, b = _army()
+        s.provinces[3].q09_officer_head = 5
+        bt.withdraw(s, b, 'A', 3, True, officer_id=1,
+                    officer_destinations={1: 3, 3: 3})
+        assert s.provinces[3].q09_officer_head == 3
+>       assert s.officers[3].q09_officer_next == 1
+E       AssertionError: assert None == 1
+E        +  where None = Officer(id=3, name='Attack regular', intel=65, war=55, charm=65, loyalty=30, ruler_id=1, province_id=3, soldiers=74, t..._year=0, duty=60, q09_source_flag2=64, q09_source_special_2569=None, q09_source_movement11=None, q09_officer_next=None).q09_officer_next
+
+src/tests/test_run020_q09_source_successor_links.py:19: AssertionError
+_________ test_source_successor_order_survives_real_save_and_coldload __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_source_successor_order_su0')
+
+    def test_source_successor_order_survives_real_save_and_coldload(tmp_path):
+        s, b = _army()
+        s.provinces[3].q09_officer_head = 5
+        bt.withdraw(s, b, 'A', 3, True, officer_id=1,
+                    officer_destinations={1: 3, 3: 3})
+        path = tmp_path / 'run020_successors.ro2'
+        codec.save(s, path)
+        cold = codec.load(path)
+        assert cold.state_hash() == s.state_hash()
+>       assert cold.officers[3].q09_officer_next == 1
+E       AssertionError: assert None == 1
+E        +  where None = Officer(id=3, name='Attack regular', intel=65, war=55, charm=65, loyalty=30, ruler_id=1, province_id=3, soldiers=74, t..._year=0, duty=60, q09_source_flag2=64, q09_source_special_2569=None, q09_source_movement11=None, q09_officer_next=None).q09_officer_next
+
+src/tests/test_run020_q09_source_successor_links.py:54: AssertionError
+_______ test_controller_visible_whole_army_retreat_keeps_exact_successor _______
+
+    def test_controller_visible_whole_army_retreat_keeps_exact_successor():
+        from test_classic_ui_route_build13 import App
+        from rotk2.input.router import Action
+        from rotk2.ui.screens import BattleScreen
+        from rotk2.ui.widgets import YesNo, ListPrompt
+        app=App(); s=app.engine.state
+        s.provinces[3].q09_officer_head=5
+        for oid in (1, 3):
+            s.officers[oid].q09_source_flag2=0x40
+        screen=BattleScreen(); screen.sel=1; app.stack.append(screen)
+        screen._withdraw_menu(app)
+        assert isinstance(app.stack[-1],YesNo)
+        app.stack[-1].handle(app,Action.CONFIRM)
+        for _ in (1,3):
+            menu=app.stack[-1]
+            assert isinstance(menu,ListPrompt)
+            for __ in range(40):
+                if menu.menu.current()==3:break
+                menu.handle(app,Action.DOWN)
+            else: raise AssertionError('destination absent from controller menu')
+            menu.handle(app,Action.CONFIRM)
+        assert s.provinces[3].q09_officer_head==3
+>       assert s.officers[3].q09_officer_next==1
+E       AssertionError: assert None == 1
+E        +  where None = Officer(id=3, name='Attack regular', intel=65, war=55, charm=65, loyalty=30, ruler_id=1, province_id=3, soldiers=80, t..._year=0, duty=60, q09_source_flag2=64, q09_source_special_2569=None, q09_source_movement11=None, q09_officer_next=None).q09_officer_next
+
+src/tests/test_run020_q09_source_successor_links.py:91: AssertionError
+=========================== short test summary info ============================
+FAILED src/tests/test_run020_q09_source_successor_links.py::test_two_successful_flee_inserts_preserve_head_and_successor_order - AssertionError: assert None == 1
+ +  where None = Officer(id=3, name='Attack regular', intel=65, war=55, charm=65, loyalty=30, ruler_id=1, province_id=3, soldiers=74, t..._year=0, duty=60, q09_source_flag2=64, q09_source_special_2569=None, q09_source_movement11=None, q09_officer_next=None).q09_officer_next
+FAILED src/tests/test_run020_q09_source_successor_links.py::test_source_successor_order_survives_real_save_and_coldload - AssertionError: assert None == 1
+ +  where None = Officer(id=3, name='Attack regular', intel=65, war=55, charm=65, loyalty=30, ruler_id=1, province_id=3, soldiers=74, t..._year=0, duty=60, q09_source_flag2=64, q09_source_special_2569=None, q09_source_movement11=None, q09_officer_next=None).q09_officer_next
+FAILED src/tests/test_run020_q09_source_successor_links.py::test_controller_visible_whole_army_retreat_keeps_exact_successor - AssertionError: assert None == 1
+ +  where None = Officer(id=3, name='Attack regular', intel=65, war=55, charm=65, loyalty=30, ruler_id=1, province_id=3, soldiers=80, t..._year=0, duty=60, q09_source_flag2=64, q09_source_special_2569=None, q09_source_movement11=None, q09_officer_next=None).q09_officer_next
+3 failed, 3 passed in 0.12s
