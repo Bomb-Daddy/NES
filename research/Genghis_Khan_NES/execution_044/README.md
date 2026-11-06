@@ -1,0 +1,13 @@
+# EXEC0044 — verified-format NES battlefield snapshot viewer (2026-11-06)
+
+New real work: add a read-only snapshot viewer to the **isolated standalone Genghis Khan I** 1280×720 native desktop research shell from execution_043. This does not touch ROTK II or licensed ROM/campaign files.
+
+Local full source archive: `GK1_EXEC_0044_Identity_Gated_Battle_Viewer_Source_v1.00.zip`; 38,340 bytes; SHA-256 `03c8a6285489d3a0d3a755218609f8fcd652ba71e772b57d99d28491d9c3fe75`. Contains 25 paths including exact older 034/035/039/040 source dependencies and the complete 044 new source/tests. GitHub files in this execution_044 folder are currently a **publication subset**, not a claim that this local ZIP was imported to GitHub or Drive.
+
+Implemented locally and clean-built: `gk1_snapshot_view.[ch]` validates the prior EXEC0040 440-byte format with exact profile+ROM hash and CRC; enumerates 20×11 unit records, 160 raw map tiles, counts occupied/zero-soldier/out-of-range records and phase. Modified `gk1_native_shell.c` now displays raw hex tile data, colored presence borders, independent phase and source identity, and refuses snapshot-driven movement/save-load. It never infers legality, alliance, ownership, RNG causality, or terminal behavior. Its displayed source hash is still caller-supplied, not independently authenticated by the UI.
+
+QA actually run: GCC14 C11 strict Debug CTest 5/5, Release 5/5, ASan+UBSan 5/5, clean extracted archive Release CTest 5/5; new snapshot viewer hostile checks 1,396/1,396; synthetic 440-byte snapshot Linux X11 native 1280×720 six-frame/read-only viewer and 120-frame screenshot inspection PASSED. A mislabeled/overlapping source-profile graphic was caught by screenshot and corrected. Wrong hash `--smoke-snapshot` refused with exit 8. All simulation data are **synthetic**.
+
+No new actual Mesen game/controller proof, Windows executable, genuine source-ROM SHA verification, actual private SRAM import or physical Xbox acceptance. G03 genuine join/Entire-Divide/multistep, G04 battle terminals, G11 complete campaign/audio/graphics/save integration, and G12 packaged Windows/physical QA remain OPEN. Exact Mesen e777af28... and MesenCore.so 0668f6c0... and checkpoint e1b6266... are not present in the working runtime and must be recovered before any new native breakpoint claim.
+
+Drive master successor v2.26, numbered handoff and ledger are independently maintained in Retro Gaming/Collaboration. Prior source and user campaigns preserved.
