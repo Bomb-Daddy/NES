@@ -1,0 +1,141 @@
+--- a/src/rotk2/battle/engine.py
++++ b/src/rotk2/battle/engine.py
+@@ -1049,11 +1049,92 @@
+     return allowed
+ 
+ 
++def q09_escape_score(movement:int, war:int, training:int, troops100:int,
++                     opposing_neighbors:int, is_ruler:bool, special_a3:bool,
++                     roll10:int)->int:
++    """Original hsovl2 $D5E9–$D62D score, source-state inputs explicit.
++
++    Rolls are supplied rather than generated so original-emulator fixtures can
++    assert exact intermediate score and test both comparison boundaries.
++    `troops100` is the original battle-scale troop word (not men rounded by UI).
++    """
++    values=(movement,war,training,troops100,opposing_neighbors,roll10)
++    if (any(type(v) is not int for v in values) or
++        movement<0 or war<0 or training<0 or troops100<0 or
++        not 0<=opposing_neighbors<=6 or not 0<=roll10<10 or
++        type(is_ruler) is not bool or type(special_a3) is not bool):
++        raise ValueError('INVALID_Q09_ESCAPE_SCORE_INPUT')
++    base=(10*movement+war+training+troops100//100)//(opposing_neighbors+2)
++    return min(100,base+(20 if is_ruler else 0)+(20 if special_a3 else 0)+roll10)
++
++
++def q09_opposing_neighbor_count(b:Battle,u:BattleUnit)->int:
++    """Original hex $80D1 and $C00A compare battle slot bit 1.
++
++    Defenders 0/1 are allied with one another; attackers 2/3 likewise.
++    Reserve, fled and dead units do not occupy a hex.
++    """
++    return sum(1 for col,row in neighbors(u.q,u.r)
++               if (occupant:=unit_at(b,col,row)) is not None and
++               occupant is not u and (occupant.slot&2)!=(u.slot&2))
++
++
++def _q09_source_fields(state:GameState,u:BattleUnit):
++    officer=state.officers.get(u.officer_id)
++    if officer is None:
++        raise ValueError('UNKNOWN_Q09_OFFICER')
++    flag=officer.q09_source_flag2
++    special=officer.q09_source_special_2569
++    movement=officer.q09_source_movement11
++    if ((flag is not None and (type(flag) is not int or not 0<=flag<=255)) or
++        (special is not None and (type(special) is not int or not 0<=special<=255)) or
++        (movement is not None and (type(movement) is not int or not 0<=movement<=255))):
++        raise ValueError('INVALID_Q09_SOURCE_BYTES')
++    return flag,special,movement
++
++
++def q09_escape_check(state:GameState,b:Battle,u:BattleUnit)->bool:
++    """Execute hsovl2 $D582 source check only with required original bytes.
++
++    A verified +2 flag $40 immediately succeeds WITHOUT an RNG draw.
++    Otherwise both source bytes must be known. Unknown/legacy campaign inputs
++    retain the old successful-escape path (an explicitly OPEN parity gap).
++    The deterministic portable RNG is a harness, not a claim about NES timing.
++    """
++    flag,special,movement11=_q09_source_fields(state,u)
++    if flag is not None and flag&0x40:
++        b.log.append(f'd{b.day} Q09 officer {u.officer_id} source flag40 escape')
++        return True
++    if flag is None or special is None or movement11 is None:
++        return True  # UNKNOWN SOURCE STATE: preserve migration/legacy behavior
++    officer=state.officers[u.officer_id]
++    # Original native $BFBB raises ordinary movement byte to the trained floor.
++    # Exact 8-bit signed subtraction behavior for arbitrary injected high bytes
++    # is a distinct source-execution fixture still outstanding.
++    movement=max(movement11, (max(officer.training-1,0)//20)+2)
++    opponents=q09_opposing_neighbor_count(b,u)
++    troops=u.troops100 if u.troops100 is not None else u.soldiers*100
++    rng=_battle_rng(b)
++    r10=_roll(rng,10)
++    score=q09_escape_score(movement,officer.war,officer.training,troops,
++                           opponents,officer.is_ruler,special==0xA3,r10)
++    r100=_roll(rng,100)
++    _store_rng(b,rng)
++    escaped=r100<score
++    b.log.append(f'd{b.day} Q09 officer {u.officer_id} movement={movement} '
++                 f'neighbors={opponents} r10={r10} score={score} r100={r100} '
++                 f'escaped={escaped}')
++    return escaped
++
++
+ def withdraw(state:GameState,b:Battle,side:str,destination:int,whole_army:bool=True,officer_id:int|None=None,officer_destinations:dict|None=None):
+     """Q09 original $D89D selects a legal destination independently for each officer.
+ 
+-    Escape chance/capture remains OPEN: this fixes destination selection and
+-    transaction validation without claiming the complete original withdrawal.
++    Source-backed escape test executes only when original officer flag/source
++    tag inputs are supplied. Historic unhydrated campaigns preserve the previous
++    guaranteed-success fallback and remain NOT SOURCE-PARITY. Failed escape is
++    captured into the existing Q14 losing-side prisoner-disposition path;
++    original list-link timing and mid-battle capture-list fidelity remain OPEN.
+     """
+     if side!=b.side_to_move or destination not in retreat_destinations(state,b,side,
+             officer_id=None if whole_army else officer_id):
+@@ -1106,9 +1187,26 @@
+                 raise ValueError('UNRESOLVED_REINFORCEMENT_HOME')
+             homes[u.officer_id]=source
+         units=units+reserves
++    # After all destination/home validation, validate the recovered source
++    # fields for all active officers BEFORE any chance draw or field mutation.
+     for u in units:
+-        u.fled=True;u.acted=True;u.mp=0
+-        b.retreat_destinations[str(u.officer_id)]=homes.get(u.officer_id,individual_destinations.get(u.officer_id,destination))
++        if not u.reserve:
++            _q09_source_fields(state,u)
++    # Source $D648 checks escape for each occupied officer separately. The
++    # command is deliberately not an all-or-nothing *chance* transaction:
++    # the original can capture one officer and let another reach a province.
++    for u in units:
++        escaped=u.reserve or q09_escape_check(state,b,u)
++        u.acted=True;u.mp=0
++        if escaped:
++            u.fled=True
++            b.retreat_destinations[str(u.officer_id)]=homes.get(u.officer_id,individual_destinations.get(u.officer_id,destination))
++        else:
++            # $D6AC bypasses destination insertion, invokes opposing capture,
++            # and removes the officer from the live grid. Q14 handles the
++            # resulting prisoner when the withdrawing army loses this battle.
++            u.alive=False
++            b.log.append(f'd{b.day} Q09 officer {u.officer_id} captured on failed escape')
+     if whole_army:
+         b.withdrawn=True
+         concede(b,side)
+--- a/src/rotk2/state/models.py
++++ b/src/rotk2/state/models.py
+@@ -51,6 +51,12 @@
+     family: int = 0
+     birth_year: int = 0
+     duty: int = 60                      # Q10 original duty stat; 60 only for legacy fixture migration
++    # Q09 original officer +2 flags and root $2569(officer,1) byte.
++    # None = not recovered from the original scenario/save. Never fabricate
++    # missing source bytes just to force a purported source-exact escape roll.
++    q09_source_flag2: Optional[int] = None
++    q09_source_special_2569: Optional[int] = None
++    q09_source_movement11: Optional[int] = None  # source officer byte +11, NOT remaining UI action MP
+ 
+ 
+ @dataclass
