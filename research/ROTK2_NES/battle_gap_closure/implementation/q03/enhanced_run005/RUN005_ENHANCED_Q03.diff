@@ -1,0 +1,62 @@
+--- Run004/third_branch/officer_battle_adapter.py
++++ Run005/third_branch/officer_battle_adapter.py
+@@ -213,6 +213,31 @@
+ 
+ def _all(b,side):
+     return [u for u in b['officer_units'] if u['side']==side and u['troops100']>=100 and not u['fled'] and not u.get('reserve')]
++
++
++def _q03_resident_defenders_troops100(s, b):
++    """Q03: stationed defender officers not represented in a field/queue list.
++
++    The roster is authoritative: only actual living officers posted at the
++    contested defender province and owning real stationed army groups count.
++    No phantom reserve group or duplicated deployed troop is introduced.
++    """
++    # Legacy aggregate battles do not distinguish a resident roster; counting
++    # all posted officers there would double-charge the displayed army.
++    if not b.get('officer_units'):
++        return 0
++    listed={u['id'] for u in b['officer_units']
++            if u['side']=='D' and not u.get('fled')}
++    total=0
++    for army in s['armies'].values():
++        oid=army['commander']
++        officer=s['core']['officers'].get(oid)
++        if (oid in listed or officer is None
++            or s['officer_faction'].get(oid)!=b['defender']
++            or officer['province_id']!=b['dst']):
++            continue
++        total+=100*army['stations'].get(b['dst'],0)
++    return total
+ 
+ 
+ def _sync(s,b):
+@@ -1103,8 +1128,10 @@
+     defender_second_list=sum(u['troops100'] for u in b['officer_units']
+         if u['side']=='D' and u['slot']==1 and u.get('reserve')
+         and not u.get('fled') and u['troops100']>=100)
++    # Original defender food also counts posted province residents who did
++    # not enter the battlefield; their troops remain in the campaign ledger.
+     b['rice_d']=core.rice_tick(b['rice_d'],sum(u['troops100'] for u in _all(b,'D')),
+-                               defender_second_list)
++                               defender_second_list+_q03_resident_defenders_troops100(s,b))
+     b['day']+=1
+     _arrive_reinforcements(s,b)
+     if b['day']%3==1:b['wind']=rand(7)
+--- Run004/third_branch/army_cohorts.py
++++ Run005/third_branch/army_cohorts.py
+@@ -185,7 +185,12 @@
+         if sum(p['troops'] for p in battle['participants'])!=battle['a']['troops']:fail('BATTLE_STRENGTH_MISMATCH')
+         # Defender military remains stationed at the besieged province and loses
+         # headcount as tactical combat reduces its strength.
+-        if totals(s)[battle['dst']]!=battle['d']['troops']:fail('DEFENDER_STRENGTH_MISMATCH')
++        # A real resident defender may hold garrison troops without joining
++        # the tactical field. Count these once; do not weaken conservation.
++        from . import officer_battle_adapter as battle_adapter
++        residents=battle_adapter._q03_resident_defenders_troops100(s,battle)//100
++        if totals(s)[battle['dst']]!=battle['d']['troops']+residents:
++            fail('DEFENDER_STRENGTH_MISMATCH')
+     return True
+ 
+ 
