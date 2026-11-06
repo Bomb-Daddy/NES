@@ -1,0 +1,96 @@
+FFFF.F                                                                   [100%]
+=================================== FAILURES ===================================
+______ test_two_successful_flee_inserts_preserve_head_and_successor_order ______
+
+    def test_two_successful_flee_inserts_preserve_head_and_successor_order():
+        s, b = _army()
+        s.provinces[3].q09_officer_head = 5
+        bt.withdraw(s, b, 'A', 3, True, officer_id=1,
+                    officer_destinations={1: 3, 3: 3})
+        assert s.provinces[3].q09_officer_head == 3
+>       assert s.officers[3].q09_officer_next == 1
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Officer' object has no attribute 'q09_officer_next'
+
+tests/test_run020_q09_source_successor_links.py:19: AttributeError
+__________ test_moving_known_head_advances_origin_to_known_successor ___________
+
+    def test_moving_known_head_advances_origin_to_known_successor():
+        s, b = _army()
+        s.provinces[1].q09_officer_head = 1
+        s.officers[1].q09_officer_next = 3
+        bt.withdraw(s, b, 'A', 3, False, officer_id=1)
+>       assert s.provinces[1].q09_officer_head == 3
+E       assert None == 3
+E        +  where None = Province(id=1, region=1, x=0, y=0, owner=1, gold=700, rice=600, pop=0, land=0, loyalty=0, flood=0, horses=0, rice_price=50, neighbors=[2, 3], under_attack=False, q09_officer_head=None).q09_officer_head
+
+tests/test_run020_q09_source_successor_links.py:30: AssertionError
+____________ test_unverified_next_does_not_create_fake_origin_head _____________
+
+    def test_unverified_next_does_not_create_fake_origin_head():
+        s, b = _army()
+        s.provinces[1].q09_officer_head = 1
+        s.officers[1].q09_officer_next = 5  # officer 5 is in P3, not old P1
+        bt.withdraw(s, b, 'A', 3, False, officer_id=1)
+        assert s.provinces[1].q09_officer_head is None
+>       assert s.officers[1].q09_officer_next is None
+E       AssertionError: assert 5 is None
+E        +  where 5 = Officer(id=1, name='Attack lead', intel=80, war=95, charm=75, loyalty=100, ruler_id=1, province_id=3, soldiers=151, tr...e=True, family=0, birth_year=0, duty=60, q09_source_flag2=64, q09_source_special_2569=None, q09_source_movement11=None).q09_officer_next
+
+tests/test_run020_q09_source_successor_links.py:42: AssertionError
+_________ test_source_successor_order_survives_real_save_and_coldload __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_source_successor_order_su0')
+
+    def test_source_successor_order_survives_real_save_and_coldload(tmp_path):
+        s, b = _army()
+        s.provinces[3].q09_officer_head = 5
+        bt.withdraw(s, b, 'A', 3, True, officer_id=1,
+                    officer_destinations={1: 3, 3: 3})
+        path = tmp_path / 'run020_successors.ro2'
+        codec.save(s, path)
+        cold = codec.load(path)
+        assert cold.state_hash() == s.state_hash()
+>       assert cold.officers[3].q09_officer_next == 1
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Officer' object has no attribute 'q09_officer_next'
+
+tests/test_run020_q09_source_successor_links.py:54: AttributeError
+_______ test_controller_visible_whole_army_retreat_keeps_exact_successor _______
+
+    def test_controller_visible_whole_army_retreat_keeps_exact_successor():
+        from test_classic_ui_route_build13 import App
+        from rotk2.input.router import Action
+        from rotk2.ui.screens import BattleScreen
+        from rotk2.ui.widgets import YesNo, ListPrompt
+        app=App(); s=app.engine.state
+        s.provinces[3].q09_officer_head=5
+        for oid in (1, 3):
+            s.officers[oid].q09_source_flag2=0x40
+        screen=BattleScreen(); screen.sel=1; app.stack.append(screen)
+        screen._withdraw_menu(app)
+        assert isinstance(app.stack[-1],YesNo)
+        app.stack[-1].handle(app,Action.CONFIRM)
+        for _ in (1,3):
+            menu=app.stack[-1]
+            assert isinstance(menu,ListPrompt)
+            for __ in range(40):
+                if menu.menu.current()==3:break
+                menu.handle(app,Action.DOWN)
+            else: raise AssertionError('destination absent from controller menu')
+            menu.handle(app,Action.CONFIRM)
+        assert s.provinces[3].q09_officer_head==3
+>       assert s.officers[3].q09_officer_next==1
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Officer' object has no attribute 'q09_officer_next'
+
+tests/test_run020_q09_source_successor_links.py:91: AttributeError
+=========================== short test summary info ============================
+FAILED tests/test_run020_q09_source_successor_links.py::test_two_successful_flee_inserts_preserve_head_and_successor_order - AttributeError: 'Officer' object has no attribute 'q09_officer_next'
+FAILED tests/test_run020_q09_source_successor_links.py::test_moving_known_head_advances_origin_to_known_successor - assert None == 3
+ +  where None = Province(id=1, region=1, x=0, y=0, owner=1, gold=700, rice=600, pop=0, land=0, loyalty=0, flood=0, horses=0, rice_price=50, neighbors=[2, 3], under_attack=False, q09_officer_head=None).q09_officer_head
+FAILED tests/test_run020_q09_source_successor_links.py::test_unverified_next_does_not_create_fake_origin_head - AssertionError: assert 5 is None
+ +  where 5 = Officer(id=1, name='Attack lead', intel=80, war=95, charm=75, loyalty=100, ruler_id=1, province_id=3, soldiers=151, tr...e=True, family=0, birth_year=0, duty=60, q09_source_flag2=64, q09_source_special_2569=None, q09_source_movement11=None).q09_officer_next
+FAILED tests/test_run020_q09_source_successor_links.py::test_source_successor_order_survives_real_save_and_coldload - AttributeError: 'Officer' object has no attribute 'q09_officer_next'
+FAILED tests/test_run020_q09_source_successor_links.py::test_controller_visible_whole_army_retreat_keeps_exact_successor - AttributeError: 'Officer' object has no attribute 'q09_officer_next'
+5 failed, 1 passed in 0.11s
