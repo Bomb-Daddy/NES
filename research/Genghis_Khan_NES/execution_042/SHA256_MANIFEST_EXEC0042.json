@@ -1,0 +1,20 @@
+{
+  "artifact": "GK1_EXEC_0042_Native_Research_Replay_Source_v1.00",
+  "classification": "copyright-clean source+tests, no raw ROM or SRAM",
+  "date": "2026-11-06",
+  "files": {
+    "execution_034/gk1_tactical_slice.c": "9d2c6cec12fb3cc20642330789bf54967858a60b4c17ede86decacf66e055e03",
+    "execution_034/gk1_tactical_slice.h": "936111b875576563912d7cafbab2304e182bdefe63318ad9328634ead2079c92",
+    "execution_039/gk1_battle_session.c": "bdaa70fc1ae72172af77627200c13777f41cc07f20fb7e6447b18116b3102450",
+    "execution_039/gk1_battle_session.h": "f41a0f581eb003712a6b165fa9a5d5b48177c9bd3de8816fd56b84e44c698760",
+    "execution_042/CMakeLists.txt": "03b00d85fb8a2039a5eb43acd7b2a29e5fb5a1495e1bdcedfc51e54569ee9b47",
+    "execution_042/README.md": "884cc3ee60b3e31b2c96b1f9ecbc8b4a46af05d88d5b6ca40d426d06d49b1c70",
+    "execution_042/gk1_app_state.c": "651e5d6d9cef7dee2ba8be361f64094a6ebb176ed9bcaa11cfbe96c2671c6e20",
+    "execution_042/gk1_app_state.h": "f4dd3dee3a6d36d10af0796c34826c135f99098f0ec0db2460a3090459910153",
+    "execution_042/gk1_native_shell.c": "d1630983b9a6529b81f5d9fc7d9526f4ba1bd34f26db66ea6374f4d2aca2f456",
+    "execution_042/gk1_replay_store.c": "648f1cb1ac64c9af8d99e2257b5114af9a134b3d8a790986fbcf0bb6dbfe03ae",
+    "execution_042/gk1_replay_store.h": "f56cb76d70aceae388125c211dfa7eebad6f7120b169b24522417b2f542ef72d",
+    "execution_042/test_gk1_app_state.c": "78db1c9f62fedceede35320dfc58c72922e7cee20aaf8d6a635f0fa7470dec3f",
+    "execution_042/test_gk1_replay_store.c": "994440c1b892ea66ddaf8e1a457acc6b23f743fa9289ea7b00cff67321d77e77"
+  }
+}
