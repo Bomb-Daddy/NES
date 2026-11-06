@@ -1,5 +1,5 @@
 {
-  "classification": "TESTED_LINUX_C11_ARCHIVED_MODIFIED_ROM_GATE\u2014not new NES/Windows execution",
+  "classification": "TESTED_LINUX_C11_ARCHIVED_MODIFIED_ROM_GATE—not new NES/Windows execution",
   "date": "2026-11-06",
   "files": {
     "execution_034/gk1_tactical_slice.c": {
@@ -42,5 +42,7 @@
   "increment": "EXEC0038",
   "license_payloads": "none",
   "project": "GK1 NES-to-Windows independent port",
-  "version": "1.00"
+  "version": "1.00",
+  "manifest_scope": "local_source_zip_bytes_v1.00",
+  "github_readme_note": "Remote GitHub README is an independently authored condensed publication summary; its bytes differ from the local ZIP README.md. The four original compiled C/build files match the local ZIP byte-for-byte."
 }
