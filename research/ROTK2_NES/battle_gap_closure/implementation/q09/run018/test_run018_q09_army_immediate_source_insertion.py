@@ -14,7 +14,7 @@ def _army():
     e=battle_game()
     s,b=e.state,e.state.battle
     for oid in (1,3):
-        s.officers[oid].q09_source_flag2=0x40
+        s.officers[oid].q09_source_flag2=0x40  # original unconditional source escape
     b.units[0].troops100=15131
     b.units[1].troops100=7455
     return s,b
@@ -93,11 +93,12 @@ def test_software_controller_whole_army_two_prompts_commits_immediate_source_out
     s.battle.units[0].troops100=15131
     s.battle.units[1].troops100=7455
     screen=BattleScreen();screen.sel=1
-    app.stack.append(screen)
+    app.stack.append(screen)  # real battle scene remains beneath modal stack
     screen._withdraw_menu(app)
     assert isinstance(app.stack[-1],YesNo)
-    app.stack[-1].handle(app,Action.CONFIRM)
+    app.stack[-1].handle(app,Action.CONFIRM)  # Yes: whole army
     assert isinstance(app.stack[-1],ListPrompt)
+    # Select P3 for both the primary commander and the second officer.
     for oid in (1,3):
         menu=app.stack[-1]
         assert isinstance(menu,ListPrompt)
