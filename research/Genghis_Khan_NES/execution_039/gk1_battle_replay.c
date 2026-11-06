@@ -36,7 +36,7 @@ int main(int argc,char **argv) {
     if(r==GK1_STEP_PENDING) {
         if(gk1_session_finish(&s,&r)!=GK1_SESSION_OK) return 5;
         printf("B_FINISH result=%d soldiers=%u mobility=%u word=%u\n",(int)r,
-            (unsigned)s.battle.mover.soldiers,(unsigned)s.battle.mover.mobility,(unsigned)s.battle.completion_word);
+        (unsigned)s.battle.mover.soldiers,(unsigned)s.battle.mover.mobility,(unsigned)s.battle.completion_word);
     }
     uint8_t b[GK1_SESSION_SAVE_BYTES];Gk1BattleSession restored;
     if(gk1_session_encode(&s,b,sizeof b)!=GK1_SESSION_OK ||
