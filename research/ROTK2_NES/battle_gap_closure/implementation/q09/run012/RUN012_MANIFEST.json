@@ -1,0 +1,38 @@
+{
+  "ID": "ROTK2_BPF_RUN012_Q09_SOURCE_ESCAPE_CAPTURE",
+  "status": "TESTED_PORT_CANDIDATE_NOT_DIRECTOR_ACCEPTED",
+  "authority": "SUP-0016 Google Drive /Retro Gaming/ROTK2_NES_Windows",
+  "actual_immutable_parent": {
+    "filename": "ROTK2_NES_Classic46_BPF_Run011_Q09_HeadLiege_FullSource_v1.00.zip",
+    "sha256": "b62f8c22fad8122dc412a8ef6181da5cbb80511bf3a031ae91a6f02becd5eb56",
+    "Drive_file_id": "16GCzxOrgE8eqhICtzpBd1Z0DmyCcSdrE",
+    "tested_previous_source_sha256": "b62f8c22fad8122dc412a8ef6181da5cbb80511bf3a031ae91a6f02becd5eb56"
+  },
+  "full_source_zip": {
+    "filename": "ROTK2_NES_Classic46_BPF_Run012_Q09_SourceEscape_Capture_FullSource_v1.00.zip",
+    "sha256": "5214b118fd350544fa677394233d3a0c1d1db7e9c8d8eec5c64e55a7bd63ad9e",
+    "bytes": 4318848,
+    "entries": 157,
+    "zip_crc": "PASS"
+  },
+  "parent_members": 156,
+  "unchanged_parent_members": 154,
+  "modified_parent_members": [
+    "src/rotk2/battle/engine.py",
+    "src/rotk2/state/models.py"
+  ],
+  "new_members": [
+    "src/tests/test_run012_q09_escape_probability_capture.py"
+  ],
+  "original_source_reference": "SNES hsovl2 $D582-$D62D, hex $BFBB, hex $80D1, $D6AC; research Q09_ESCAPE_SCORE_ADDENDUM_v1.00.md: VERIFIED_STATIC, not ROM-emulator runtime",
+  "scope": "Source-backed escape probability and failed-capture candidate in Classic only for explicitly recovered original byte +2, root $2569(officer,1) result, officer +11 movement. Unknown fields deliberately use historical fallback (open fidelity gap).",
+  "controlled_port_rng": "SplitMix64-style deterministic harness test; NOT SNES/NES hardware RNG",
+  "untested": [
+    "original NES/SNES emulator replay",
+    "native Windows",
+    "physical Xbox controller",
+    "Enhanced controlled RNG default parity",
+    "ordinary campaign original byte hydration",
+    "source-exact mid-battle prisoner linked-list/capture"
+  ]
+}
