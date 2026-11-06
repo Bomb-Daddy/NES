@@ -1,0 +1,17 @@
+--- a/src/rotk2/battle/engine.py
++++ b/src/rotk2/battle/engine.py
+@@ -1802,8 +1802,14 @@
+             # ordinary officer release with no refuge (free/unaffiliated path).
+             home = ruler_release_destination(state, b, o.ruler_id)
+             if home is None:
++                # Source sengo $84F6 -> root $4EB0: an ordinary released
++                # officer without an eligible refuge is returned to the
++                # contested province as free/unaffiliated, with zero troops
++                # and training reset to 100. The exceptional source-flagged
++                # free-list insertion path remains unmodelled separately.
+                 o.ruler_id=None
+                 o.province_id=dst.id
++                o.training=100
+             else:
+                 o.province_id=home
+                 if state.provinces[home].owner is None and o.ruler_id is not None:
