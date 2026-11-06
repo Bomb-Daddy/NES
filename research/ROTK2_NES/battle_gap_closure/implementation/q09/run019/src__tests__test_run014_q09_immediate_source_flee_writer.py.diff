@@ -16,3 +16,5 @@
 -    assert s.provinces[3].q09_officer_head==5, 'ordinary appended officer cannot displace existing HEAD'
 +    assert s.provinces[3].q09_officer_head==3, 'root $5154/$5177 writes the new officer to province+2 HEAD'
      assert s.validate()==[]
+ 
+ 
