@@ -1,0 +1,18 @@
+{
+  "version": "Run024",
+  "direct_parent_sha256": "776d20447d5d5f7820dbbca0ae2cb486e02a1c1edd33ccf902c3497937e9b157",
+  "full_source_sha256": "d48cdf9bf04999db31568cb303da92cdb2e402dd4cebbbcb5ba7e66e6491b0b8",
+  "parent_members": 541,
+  "new_members": 542,
+  "unchanged_parent_members": 540,
+  "changed_members": [
+    "third_branch/tactical_view.py"
+  ],
+  "added_members": [
+    "tests/test_run024_q09_flee_modal_actor_integrity.py"
+  ],
+  "zip_crc_clean": true,
+  "full_bytes": 148755565,
+  "product": "ORIGINAL_KOEI_ENHANCED_ONLY",
+  "status": "TESTED_PORT/PARTIAL"
+}
