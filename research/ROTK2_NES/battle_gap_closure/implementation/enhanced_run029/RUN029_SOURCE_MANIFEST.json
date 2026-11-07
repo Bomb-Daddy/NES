@@ -1,0 +1,16 @@
+{
+  "version": "Enhanced Run029",
+  "parent_version": "Enhanced Run028",
+  "parent_sha256": "95f5660ff01e3f92fcb449876a0779f388f6fe4c7240dba9c0d4f7de247db907",
+  "new_sha256": "262ce504f0324cf28d580a9afdcc93fd7ddba5b96d69c3aa9f63f6298defd794",
+  "bytes": 148766932,
+  "zip_entries": 547,
+  "unchanged_parent_entries": 545,
+  "parent_entries": 546,
+  "changed_production_file": "third_branch/tactical_view.py",
+  "new_test_file": "tests/test_run029_q14_prisoner_modal_identity.py",
+  "environment": "Linux Python 3.13 / Xvfb, not Windows/Xbox",
+  "source_scope": "Original-KOEI Enhanced ONLY",
+  "original_english_NES_event_goldens": "NOT RUN",
+  "status": "TESTED_PORT PARTIAL"
+}
