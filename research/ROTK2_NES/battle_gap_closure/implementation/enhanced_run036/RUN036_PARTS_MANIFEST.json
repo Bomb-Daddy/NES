@@ -1,0 +1,123 @@
+{
+  "parent_sha256": "48b4ed72b99141fe9672dcabbeb32cf417d498cb75461e5270e67bf0aceebf94",
+  "source_sha256": "7b4e03d2f335a12fb5f5950e552b0fcd7e37f21abcfc425b8f68405211a92ecc",
+  "bytes": 148785676,
+  "zip_entries": 554,
+  "inherited_identical": 551,
+  "inherited_total": 553,
+  "production_modified": [
+    "third_branch/officer_battle_adapter.py",
+    "third_branch/tactical_view.py"
+  ],
+  "test_added": "tests/test_run036_q10_live_list_head.py",
+  "parts": [
+    {
+      "sequence": 1,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part01.bin",
+      "bytes": 8500000,
+      "sha256": "1271bd4c31fc4e0be6bb76f0449e5cdc81e505bae2e29a747844a274e3dceada"
+    },
+    {
+      "sequence": 2,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part02.bin",
+      "bytes": 8500000,
+      "sha256": "0b6b07f586ac4ac708476267a179c66576febad1899f7dcb20c5c75236271357"
+    },
+    {
+      "sequence": 3,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part03.bin",
+      "bytes": 8500000,
+      "sha256": "e41e0a2ff3b590376880116f60408a4c16b38ef8d1b225086a91199058ef8aee"
+    },
+    {
+      "sequence": 4,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part04.bin",
+      "bytes": 8500000,
+      "sha256": "84a6b987d304c1c5a5abe5f5b6fe9198ef558b5b4b3ebbeef3c542159edf8c9b"
+    },
+    {
+      "sequence": 5,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part05.bin",
+      "bytes": 8500000,
+      "sha256": "522acabcf6f8efa33fe3c6f071c4a55a2a89d32780b0742672cf5db5e5ee634d"
+    },
+    {
+      "sequence": 6,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part06.bin",
+      "bytes": 8500000,
+      "sha256": "f9b84d5390e81b8effff242a08c2a3d5425453b5d5eaf9cd398eaa7eb72bd158"
+    },
+    {
+      "sequence": 7,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part07.bin",
+      "bytes": 8500000,
+      "sha256": "e02fb383b101c8942b0cf5f7da78f9978d22cb9ee0589404997d9f6725b95054"
+    },
+    {
+      "sequence": 8,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part08.bin",
+      "bytes": 8500000,
+      "sha256": "c0d88d9aae08d57a345230cdab9bacc9f6d960779a6f4bc013be0d762a0e0a01"
+    },
+    {
+      "sequence": 9,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part09.bin",
+      "bytes": 8500000,
+      "sha256": "ce55288c6fd8004b9bdb0c9291533a43b81dcc30611443c47eda70b851d51e95"
+    },
+    {
+      "sequence": 10,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part10.bin",
+      "bytes": 8500000,
+      "sha256": "fce0d874ad2a91e1d7e46c21cdb4ea1fe727db41d7d0fd655a43764727d2e1cd"
+    },
+    {
+      "sequence": 11,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part11.bin",
+      "bytes": 8500000,
+      "sha256": "f7508d0dce752c61ef00ca070d2c4fb88cb2ffa46502986fbdd5af8c272f70b2"
+    },
+    {
+      "sequence": 12,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part12.bin",
+      "bytes": 8500000,
+      "sha256": "0b458deda81605e76c089b8e25e2fbea6c0f08dcff86de9104a528e6ee1b7802"
+    },
+    {
+      "sequence": 13,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part13.bin",
+      "bytes": 8500000,
+      "sha256": "6703e4b8d4d02d297374f6cebf0431f5be38ce3e8c31c1748871e68a7f9b1266"
+    },
+    {
+      "sequence": 14,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part14.bin",
+      "bytes": 8500000,
+      "sha256": "64e8fc60579e740822a21a4c360737b8b2802825c72661828db4d07dbb6f86f2"
+    },
+    {
+      "sequence": 15,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part15.bin",
+      "bytes": 8500000,
+      "sha256": "0f94886b40cb12f39bc0e95f1084697ee9d13a1626cca0eec023ff7a7fed65a0"
+    },
+    {
+      "sequence": 16,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part16.bin",
+      "bytes": 8500000,
+      "sha256": "793ee30a7e6462e45458196b711fd9c6f735e71012fcd2669d8a5230075a6b43"
+    },
+    {
+      "sequence": 17,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part17.bin",
+      "bytes": 8500000,
+      "sha256": "29c014d2f7b5af1cdd384b0ea8f6b78289c603baa89a423244b4b1e084dd6ef0"
+    },
+    {
+      "sequence": 18,
+      "filename": "ROTK2_Enhanced_Run036_FullSource_v1.00.part18.bin",
+      "bytes": 4285676,
+      "sha256": "34a797eb6d28fcccf4c15b0dab6751485332762f378dcc8e5d7d39ce35df6605"
+    }
+  ]
+}
