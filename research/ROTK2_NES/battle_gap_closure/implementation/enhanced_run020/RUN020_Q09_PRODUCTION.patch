@@ -1,0 +1,19 @@
+--- Run019B/third_branch/officer_battle_adapter.py
++++ Run020/third_branch/officer_battle_adapter.py
+@@ -265,7 +265,15 @@
+         b['q09_source_officer_bytes']=staged
+         b['q09_source_byte_provenance']=s['q09_source_byte_provenance']
+     b['officer_units']=units
+-    b['selected_officer']=units[0]['id'] if units else None
++    # The NES command cursor must initially address an officer controlled by
++    # the human side.  On a human defence (including Q09 attacked recipients)
++    # the source-linked D-list head acts first; never select the enemy A head.
++    # A missing human_faction is the historical attacker-controlled default.
++    human_side = 'D' if s.get('human_faction')==b['defender'] else 'A'
++    first_player = next((u for u in units if u['side']==human_side
++                         and u['troops100']>=100 and not u.get('reserve')
++                         and not u.get('fled')), None)
++    b['selected_officer']=first_player['id'] if first_player else None
+     # Q11 CPU challenge occurs at battle opening, before ordinary orders.
+     # Legacy campaigns with no explicit human faction treat attacker as human.
+     human=s.get('human_faction') or b['attacker']
