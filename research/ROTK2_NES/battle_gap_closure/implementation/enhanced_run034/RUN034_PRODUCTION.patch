@@ -1,0 +1,47 @@
+--- a/third_branch/officer_battle_adapter.py
++++ b/third_branch/officer_battle_adapter.py
+@@ -1010,7 +1010,11 @@
+     transaction rollback rather than leaving enemy armies in friendly towns.
+     """
+     old_side=u['side']
+-    if old_side==new_side or u['commander'] or u.get('switched'):
++    # Q10 hsovl1 D5DD permits bribing an officer who previously switched.
++    # The +2 switched bit changes *spontaneous* daily eligibility, not
++    # the player-selected opposing non-head officer eligibility.
++    # A former subject returning to the original liege succeeds automatically.
++    if old_side==new_side or u['commander']:
+         fail('ILLEGAL_SWITCH')
+     old_faction=s['officer_faction'][u['id']]
+     new_faction=b['attacker'] if new_side=='A' else b['defender']
+@@ -1067,7 +1071,7 @@
+     if actor['acted']:fail('ALREADY_ACTED')
+     enemy='D' if side=='A' else 'A'
+     target=find(b,enemy,p.get('target_officer_id'))
+-    if target is None or target['commander'] or target.get('switched'):
++    if target is None or target['commander']:
+         fail('ILLEGAL_BRIBE_TARGET')
+     gold=p.get('gold')
+     if type(gold) is not int or not 1<=gold<=99:fail('ILLEGAL_BRIBE_AMOUNT')
+--- a/third_branch/tactical_view.py
++++ b/third_branch/tactical_view.py
+@@ -512,8 +512,8 @@
+                     if target is None:
+                         self.message.set('No eligible enemy on selected hex')
+                         self.redraw();return
+-                    if target.get('commander') or target.get('switched'):
+-                        self.message.set('Cannot bribe enemy commander or switched unit')
++                    if target.get('commander'):
++                        self.message.set('Cannot bribe enemy commander')
+                         self.redraw();return
+                     cap=self._bribe_gold_cap()
+                     if cap<1:
+@@ -529,8 +529,7 @@
+                     if u['id']==self.target_enemy and u['side']==opposite
+                     and (u['q'],u['r'])==self.target_enemy_hex
+                     and u['troops100']>=100 and not u.get('fled')
+-                    and not u.get('reserve') and not u.get('commander')
+-                    and not u.get('switched')),None)
++                    and not u.get('reserve') and not u.get('commander')),None)
+                 if (self.target_phase!='gold' or target is None or
+                     not 1<=self.bribe_gold<=self._bribe_gold_cap()):
+                     self.targeting=False;self.target_actor=None
