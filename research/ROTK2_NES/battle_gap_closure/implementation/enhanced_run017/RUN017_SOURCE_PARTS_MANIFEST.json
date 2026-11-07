@@ -1,0 +1,121 @@
+{
+  "project": "Original-KOEI Enhanced ONLY",
+  "run": "Run017",
+  "date": "2026-11-06",
+  "parent_run": "Run016",
+  "parent_sha256": "f2234784d6eb6746d24bee9f5fed6172077a925ec8f4fcfd7a4176ee321732fa",
+  "full_source_sha256": "d052013bff0cad1a3fc9be9902647f9d087aba19f6c19609d9aaa9092ec115a6",
+  "full_source_bytes": 148738638,
+  "zip_members": 534,
+  "parts": [
+    {
+      "index": 1,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part01",
+      "size": 8263258,
+      "sha256": "fc487a2e1e1a79b73dc1c0cb107ba9ef195505c86b23b04cd915765ab861dc1c"
+    },
+    {
+      "index": 2,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part02",
+      "size": 8263258,
+      "sha256": "343f3830c4d6740f8ca2efb7f2608a6efc098bd13b27909148974bc9b9ba8fe4"
+    },
+    {
+      "index": 3,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part03",
+      "size": 8263258,
+      "sha256": "f7b3bb2bdfcbec8fed9c8b67160bfc1eb4eb829d011d7a655f5c194f42bf2d38"
+    },
+    {
+      "index": 4,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part04",
+      "size": 8263258,
+      "sha256": "23acdab3b29fcca14b38dc48f45e2c49ccf80076fe5e3fdd5f4267ecc1346055"
+    },
+    {
+      "index": 5,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part05",
+      "size": 8263258,
+      "sha256": "a4994faf1c2e1b8874d934eb5d978f05df0987af14f404043227e3548b14965f"
+    },
+    {
+      "index": 6,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part06",
+      "size": 8263258,
+      "sha256": "6473c81ff2cdb2472baa255f9941a31f4aa868ada45bf014f631a3eb86fe9013"
+    },
+    {
+      "index": 7,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part07",
+      "size": 8263258,
+      "sha256": "463a6c52178747e5c0af79bced8ab9fef8372d4598c2a453294004a82f01070b"
+    },
+    {
+      "index": 8,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part08",
+      "size": 8263258,
+      "sha256": "7813730e2d913990406c46cbaa3e7647cd64c26d1c0a2c5d6a2501efb98466fa"
+    },
+    {
+      "index": 9,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part09",
+      "size": 8263258,
+      "sha256": "b885e9bed0e1300a2868762dcbcfa79f4d4fe3929d4e521c34d2d9acb3a59c2d"
+    },
+    {
+      "index": 10,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part10",
+      "size": 8263258,
+      "sha256": "ce46e8d880e4656c5d1aab3ebb0ba7fe5656a839bd5df477a9673f6dbf4433a6"
+    },
+    {
+      "index": 11,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part11",
+      "size": 8263258,
+      "sha256": "b2bdad556d148748317cc6a6966949d487209bcb95183417437ec4f4698403e7"
+    },
+    {
+      "index": 12,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part12",
+      "size": 8263258,
+      "sha256": "dd62d46b338ea7c7436a0189095b249f6cf0c4e1e5525eb5f9192c6e7062ba63"
+    },
+    {
+      "index": 13,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part13",
+      "size": 8263258,
+      "sha256": "9a274d6abef020a07a091528b38cb66a31209e2aa0e0aa49fddeddae3b8a36cd"
+    },
+    {
+      "index": 14,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part14",
+      "size": 8263258,
+      "sha256": "b6843aa26ac646e4d8e187dce7b0cfb587e80b7b76b71a1754146bf33e054219"
+    },
+    {
+      "index": 15,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part15",
+      "size": 8263258,
+      "sha256": "7f25847b94759f47564e2da9a2cc578d18afc245afa6e7d31ba40a31e1734a67"
+    },
+    {
+      "index": 16,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part16",
+      "size": 8263258,
+      "sha256": "b37b464d4b7b12434eaefbb5c3dc7ee0067952562cd4efb42c0aa80250386506"
+    },
+    {
+      "index": 17,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part17",
+      "size": 8263258,
+      "sha256": "b21a8d5cb61829a9531183520eef2a667ace8d2d552f1a3eab6ce3524f955795"
+    },
+    {
+      "index": 18,
+      "filename": "ROTK2_Enhanced_Run017_Q14_SourceGatedRulerSuccession_FullSource_v1.00.zip.part18",
+      "size": 8263252,
+      "sha256": "fb6acb3b9f036279b4a2650501aae1cd358dd27ba9f751fbfa8d67c56f59774c"
+    }
+  ],
+  "scope": "Q14 source-supplied ruler successor; original historical identity NOT verified"
+}
