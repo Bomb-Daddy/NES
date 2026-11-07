@@ -1,0 +1,125 @@
+--- Run030/third_branch/tactical_view.py
++++ Run031/third_branch/tactical_view.py
+@@ -133,6 +133,7 @@
+         self.target_phase=None;self.target_enemy=None;self.target_enemy_hex=None
+         self.pending_withdraw=None;self.withdraw_chosen={};self.withdraw_position=0;self.withdraw_legal_snapshot=None
+         self.pending_prisoner=False;self.pending_prisoner_actor=None;self.pending_prisoner_options=()
++        self.view_officer_id=None  # Q15: non-turn View pane, both visible sides
+         self._last_summary=None
+         battle=parent.c.state.get('battle',{})
+         human_side=('D' if parent.c.state.get('human_faction')==battle.get('defender') else 'A')
+@@ -357,7 +358,7 @@
+             self._withdraw_prompt(choice=='Whole army')
+             return
+         if branch=='View':
+-            if choice=='Officer':self.next_officer()
++            if choice=='Officer':self.start_view_officer()
+             elif choice=='Battle summary':self.message.set(self._battle_summary())
+             elif choice=='Prisoner fate':self._prisoner_prompt()
+             return
+@@ -369,6 +370,51 @@
+         if branch=='Wait':
+             if choice=='Wait officer':self.wait()
+             else:self.end_turn()
++
++    def _visible_officer_at(self,q,r):
++        """Q15 original tactical View has no fog or friendly-side restriction.
++
++        Lookup always uses the CURRENT battle officer roster, not selected
++        player's unit/Next Target or a queued reserve. This is view-only.
++        """
++        b=self.parent.c.state.get('battle')
++        if not b:return None
++        return next((u for u in b.get('officer_units',())
++                     if (u['q'],u['r'])==(q,r) and u['troops100']>=100
++                     and not u.get('reserve') and not u.get('fled')),None)
++
++    def _officer_view_text(self,u):
++        # Report the fields actually present in the campaign. "Arm" is the
++        # stored equipped-men quantity; do not invent a ratio or historical
++        # stat byte. Original English NES pixel/text match stays OPEN.
++        arms=self.parent.c.state.get('unit_armed_men',{}).get(u['id'])
++        armtext=str(arms) if isinstance(arms,int) else '?'
++        return (f'Officer {u["id"]}  Skill {u["training"]}  Arm {armtext}  '
++                f'Int {u["intel"]}  War {u["war"]}  Troops {u["troops"]}')
++
++    def start_view_officer(self):
++        b=self.parent.c.state.get('battle')
++        if not b or not b.get('officer_units'):
++            self.message.set('No battle officer available to inspect')
++            self.redraw();return
++        officer=next((u for u in b['officer_units']
++                      if u['id']==self.selected_officer and u['troops100']>=100
++                      and not u.get('fled') and not u.get('reserve')),None)
++        if officer is None:
++            officer=next((u for u in b['officer_units']
++                          if u['troops100']>=100 and not u.get('fled')
++                          and not u.get('reserve')),None)
++        if officer is None:
++            self.message.set('No battle officer available to inspect')
++            self.redraw();return
++        self.view_officer_id=None
++        self.targeting=True
++        self.target_mode='battle_view_officer'
++        self.target_actor=None;self.target_phase=None
++        self.target_enemy=None;self.target_enemy_hex=None
++        self.target_q,self.target_r=officer['q'],officer['r']
++        self.message.set('View Officer: D-pad points to any visible unit; A view, B cancel')
++        self.redraw()
+ 
+     def on_nes_button(self,button):
+         if button=='start':return self.parent.pause()
+@@ -423,6 +469,16 @@
+                 self.target_q=max(0,min(GRID_W-1,self.target_q+({'left':-1,'right':1}.get(button,0))))
+                 self.target_r=max(0,min(GRID_H-1,self.target_r+({'up':-1,'down':1}.get(button,0))))
+                 self.message.set('Which direction? A commit B cancel')
++                self.redraw();return
++            if button=='a' and self.target_mode=='battle_view_officer':
++                officer=self._visible_officer_at(self.target_q,self.target_r)
++                if officer is None:
++                    self.message.set('No officer at selected location')
++                    self.redraw();return
++                self.view_officer_id=officer['id']
++                self.targeting=False;self.target_actor=None
++                self.target_phase=None;self.target_enemy=None;self.target_enemy_hex=None
++                self.message.set(self._officer_view_text(officer))
+                 self.redraw();return
+             if button=='a':
+                 # Q03–Q06: the visible Move/Attack target belongs to the
+@@ -503,6 +559,10 @@
+             else:self.next_officer()
+             return
+         if button=='b':
++            if getattr(self,'view_officer_id',None) is not None:
++                self.view_officer_id=None
++                self.message.set('Officer view closed')
++                self.redraw();return
+             if self.menu.back():
+                 self.controller_index=self.menu.index
+                 self._cursor()
+@@ -804,6 +864,25 @@
+                 x,y=X0+u['q']*CELL,Y0+u['r']*CELL
+                 self.canvas.create_rectangle(x+1,y+1,x+CELL-2,y+CELL-2,outline='#ffed77',width=3)
+                 self.canvas.create_text(690,365,anchor='nw',text='TARGET: '+self.selected_target,fill='#ffed77')
++        # Q15 View is a nontransactional, fully controller-visible information
++        # pane. All living on-field units are inspectable; no fog filter.
++        if getattr(self,'view_officer_id',None):
++            unit=next((u for u in self.parent.c.state['battle'].get('officer_units',())
++                       if u['id']==self.view_officer_id and u['troops100']>=100
++                       and not u.get('fled') and not u.get('reserve')),None)
++            if unit:
++                text=self._officer_view_text(unit)
++                self.canvas.create_rectangle(682,472,1240,608,
++                    fill='#0a1422',outline='#6095cb',width=3)
++                self.canvas.create_text(702,490,anchor='nw',
++                    text='OFFICER VIEW — '+unit['id'],fill='#f5e5b3',
++                    font=('Courier',17,'bold'))
++                for i,line in enumerate((f'Skill {unit["training"]}   Arm '+
++                      str(self.parent.c.state.get('unit_armed_men',{}).get(unit['id'],'?')),
++                      f'Int {unit["intel"]}   War {unit["war"]}',
++                      f'Troops {unit["troops"]}   Side {unit["side"]}')):
++                    self.canvas.create_text(702,521+i*25,anchor='nw',
++                        text=line,fill='#eaf3ff',font=('Courier',15,'bold'))
+         if self.targeting:
+             x,y=X0+self.target_q*CELL,Y0+self.target_r*CELL
+             self.canvas.create_rectangle(x+1,y+1,x+CELL-2,y+CELL-2,outline='#fff37d',width=4)
