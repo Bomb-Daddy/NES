@@ -1,0 +1,17 @@
+{
+  "product": "Original-KOEI Enhanced",
+  "parent_run": "Run036",
+  "parent_sha256": "7b4e03d2f335a12fb5f5950e552b0fcd7e37f21abcfc425b8f68405211a92ecc",
+  "run": "Run037",
+  "sha256": "f85a12daadeb7b9557f633ad5b0661f4eff9b91d082e2aafd7054d518a682762",
+  "bytes": 148788833,
+  "crc_clean_members": 555,
+  "inherited_unchanged": 552,
+  "inherited_total": 554,
+  "production_modified": [
+    "third_branch/officer_battle_adapter.py",
+    "third_branch/tactical_view.py"
+  ],
+  "test_added": "tests/test_run037_q08_fire_empty_hex.py",
+  "source_status": "TESTED_PORT_PARTIAL_NOT_WINDOWS_RELEASE"
+}
