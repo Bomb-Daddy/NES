@@ -1,0 +1,71 @@
+--- Run017/third_branch/integrated.py
++++ Run018/third_branch/integrated.py
+@@ -166,6 +166,31 @@
+         from .scenario1_workforce import validate as validate_workforce
+         validate_workforce(s)
+     officercombat.validate_q09_source_import(s)
++    # Original Q09 D69A source-attacked destination arrival: a *pending*
++    # second tactical recipient is preserved at 100x battle strength while
++    # the real province army remains counted once in strategic soldier units.
++    # Activation of that simultaneous recipient remains a separate parity gap.
++    arrivals=s.get('q09_pending_attacked_arrivals',{})
++    if not isinstance(arrivals,dict):reject('BAD_Q09_ATTACKED_ARRIVAL')
++    tracked=set()
++    for loc,units in arrivals.items():
++        if loc not in s['owners'] or not isinstance(units,list) or not units:
++            reject('BAD_Q09_ATTACKED_ARRIVAL')
++        for rec in units:
++            if not isinstance(rec,dict) or set(rec)!={
++                    'officer','faction','army_id','troops100','recipient_status'}:
++                reject('BAD_Q09_ATTACKED_ARRIVAL')
++            oid=rec['officer'];aid=rec['army_id'];faction=rec['faction']
++            if (type(oid) is not str or oid in tracked or
++                    oid not in s['core']['officers'] or
++                    s['core']['officers'][oid]['province_id']!=loc or
++                    s['officer_faction'].get(oid)!=faction or
++                    s['owners'][loc]!=faction or aid!=ac.army_id(oid) or
++                    type(rec['troops100']) is not int or rec['troops100']<100 or
++                    rec['recipient_status']!='TACTICAL_ACTIVATION_UNVERIFIED' or
++                    ac.strength(s,oid,loc)<rec['troops100']//100):
++                reject('BAD_Q09_ATTACKED_ARRIVAL')
++            tracked.add(oid)
+     # Q14 sengo $84F6 -> root $4EB0/$5122: an ordinary prisoner with
+     # no legal return remains a REAL, unaffiliated officer in the contested
+     # province's free list. Existing old saves have no such list, treated empty.
+
+--- Run017/third_branch/officer_battle_adapter.py
++++ Run018/third_branch/officer_battle_adapter.py
+@@ -815,8 +815,13 @@
+     SNES battle 100x records. Dividing u['troops100'] by 100 is achieved by
+     projecting soldier count into the real province army station.
+     """
+-    if s.get('q14_source_attacked',{}).get(home,False):
+-        return False # needs a separate active-battle recipient topology
++    # Original D69A distinguishes an already-attacked destination from a
++    # peaceful one. Both insert the *real* officer now, but only the former
++    # preserves the raw battle-scale word for the receiving battle. The
++    # receiving simultaneous tactical encounter is not implemented yet;
++    # record its genuine pending arrival rather than pretending the active
++    # battle can already play two provinces concurrently.
++    attacked=s.get('q14_source_attacked',{}).get(home,False) is True
+     faction=s['officer_faction'][u['id']]
+     owner=s['owners'].get(home)
+     if owner not in (None,faction):fail('BAD_Q09_DESTINATION_OWNER')
+@@ -837,6 +842,17 @@
+     u['q09_live_inserted']=True
+     b.setdefault('combat_events',[]).append({'kind':'q09_live_flee_insert',
+         'officer':u['id'],'destination':home,'soldiers':troops})
++    if attacked:
++        # Q09 D69A: do NOT divide the original 100x battle strength for the
++        # receiving battle's unit. The strategic army ledger itself remains
++        # in normal soldier units; both records describe the SAME soldiers.
++        s.setdefault('q09_pending_attacked_arrivals',{}).setdefault(home,[]).insert(0,{
++            'officer':u['id'],'faction':faction,'army_id':u['army_id'],
++            'troops100':u['troops100'],
++            'recipient_status':'TACTICAL_ACTIVATION_UNVERIFIED'})
++        b['combat_events'].append({'kind':'q09_attacked_destination_arrival',
++            'officer':u['id'],'destination':home,'troops100':u['troops100'],
++            'recipient_status':'TACTICAL_ACTIVATION_UNVERIFIED'})
+     return True
+ 
+ def q19_defender_help_threshold(invader_troops,defender_troops,defender_rice):
