@@ -1,0 +1,9 @@
+# Enhanced Run029 source publication / Completion Register v1.01
+Date: 2026-11-07. Original-KOEI Enhanced game only, not Classic NES or DOS.
+
+Exact direct immutable parent: Enhanced Run028 SHA-256 95f5660ff01e3f92fcb449876a0779f388f6fe4c7240dba9c0d4f7de247db907.
+New Enhanced Run029 complete full-source SHA-256 262ce504f0324cf28d580a9afdcc93fd7ddba5b96d69c3aa9f63f6298defd794, 148766932 bytes, 547 CRC-clean ZIP members; 545/546 parent entries byte-identical. Modified production: third_branch/tactical_view.py only. Added tests/test_run029_q14_prisoner_modal_identity.py only.
+
+Drive source publication VERIFIED_STATIC: 18 source parts independently retrieved from new original-game Drive folder and every part SHA verified, full ZIP reconstructed exact SHA 262ce504f0324cf28d580a9afdcc93fd7ddba5b96d69c3aa9f63f6298defd794, all 547 ZIP CRC PASS. QA ZIP independently retrieved exact SHA e5f8f60253108453a82a8540af0125113cf5985e6fd23373fa8e2300f33461e5 and CRC pass. Drive-fetched 547-member source fresh extracted and 107 selected tests PASS on Linux Xvfb. Actual Tk prisoner controller interaction PASS; two independent processes .ro2 disk save and cold-load fingerprint 5c24d9ccdde3e5a98f761a6252b56060f6d6928b894fbae58ba5744b2f80586c PASS.
+
+TESTED_PORT Q14 prisoner choice binding and correction: prepatch 3 expected FAIL/3 PASS, postpatch 6 PASS; wrong actor mutant 3 expected FAIL/3 PASS; wrong decision mutant 1 expected FAIL/5 PASS; broad and cold 107 PASS each. OBSERVED_RUNTIME Linux software controller PASS. REPORTED_UNREPRODUCED original NES30 emulator goldens, Windows native, physical Xbox NOT RUN. INFERRED attacked Q09 simultaneous second battle/four-list scheduler OPEN. Full NES parity and Director acceptance OPEN. Exact original error message unknown. Preserve all prior source and approved Enhanced strategic economic/BP systems.
