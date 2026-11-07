@@ -1,0 +1,38 @@
+--- Run018/third_branch/integrated.py
++++ Run019/third_branch/integrated.py
+@@ -748,6 +748,35 @@
+             'committed_troops':n,'ally_support':support,'ally_home':s.pop('battle_support_home',None),
+             'spent_rations':ration, 'result':None,'acted':False, 'participants':participants}
+         officercombat.initialize(s,s['battle'])
++        # Q09 hsovl2 D648/D69A: previously inserted officers must appear as
++        # real, source-strength defenders when their receiving province next
++        # enters an ACTUAL tactical battle. Consume the pending transfer once
++        # (it is not another army): the named officer already owns one real
++        # station and is deployed by initialize(). Any mismatch rejects the
++        # entire staged command instead of silently duplicating/losing troops.
++        # This does NOT implement automatic simultaneous battle activation;
++        # only an independently launched real battle is handled here.
++        incoming=s.get('q09_pending_attacked_arrivals',{}).get(dst,())
++        if incoming:
++            deployed={u['id']:u for u in s['battle']['officer_units']
++                      if u['side']=='D' and not u.get('reserve') and not u.get('fled')}
++            for item in incoming:
++                u=deployed.get(item['officer'])
++                if (u is None or u['army_id']!=item['army_id'] or
++                        u['troops100']!=item['troops100'] or
++                        s['officer_faction'][u['id']]!=item['faction'] or
++                        s['core']['officers'][u['id']]['province_id']!=dst):
++                    reject('Q09_RECIPIENT_STRENGTH_MISMATCH')
++            s['battle']['q09_activated_attacked_recipient']=[
++                {'officer':item['officer'],'troops100':item['troops100'],
++                 'province':dst} for item in incoming]
++            s['battle'].setdefault('combat_events',[]).extend(
++                {'kind':'q09_recipient_tactical_activated',
++                 'officer':item['officer'],'province':dst,
++                 'troops100':item['troops100']} for item in incoming)
++            del s['q09_pending_attacked_arrivals'][dst]
++            if not s['q09_pending_attacked_arrivals']:
++                del s['q09_pending_attacked_arrivals']
+         # Q19: CPU defender asks for actual Q09 help when source thresholds
+         # hold. The 41-province ROM-backed tactical path uses this request;
+         # synthetic fixtures retain their prior explicit reinforcement setup.
