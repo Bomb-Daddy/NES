@@ -1,0 +1,25 @@
+{
+  "record": "ZL-GK1-EXEC-0049",
+  "date": "2026-11-06",
+  "input_kind": "v1.07 original NES pre-setup country templates (not playable first turn)",
+  "input_git_blob_sha1": "82126d270f45f3addcbebfd2bd196d5323476f9d",
+  "input_sha256": "fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581",
+  "input_size_bytes": 10345,
+  "schema_column_count": 45,
+  "scenario_counts": {
+    "1": 14,
+    "2": 27
+  },
+  "scenarios": {
+    "1": "Mongol Conquest",
+    "2": "World Conquest"
+  },
+  "test_scope": "Linux C11 exact source parser, failure atomicity, numeric invariants and both scenario loaded copies, not Windows or NES gameplay",
+  "known_not_run": [
+    "original NES Mesen run in this increment",
+    "native Windows executable",
+    "physical Xbox controller",
+    "first playable Spring setup",
+    "complete campaigns or save/quit/cold-load"
+  ]
+}
