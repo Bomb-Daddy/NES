@@ -1,0 +1,23 @@
+{
+  "added": [
+    "tests/test_run019_q09_recipient_source_attach.py",
+    "RUN019_ENHANCED_Q09_RECIPIENT_ATTACH_README.md"
+  ],
+  "changed_production": [
+    "third_branch/officer_battle_adapter.py"
+  ],
+  "direct_parent_run": "Run018",
+  "direct_parent_sha256": "95a9e1133684d7b18841d275bf8d32d0b45b814b30521836cbf5922dd56e3ba5",
+  "drive_status": "PENDING_INDEPENDENT_READBACK",
+  "kind": "TESTED_PORT_PARTIAL",
+  "native_windows_or_xbox": "NOT_RUN",
+  "original_emulator_30_event_goldens": "NOT_RUN",
+  "project": "Original_KOEI_Enhanced",
+  "real_second_simultaneous_battle": "NOT_IMPLEMENTED",
+  "run": "Run019",
+  "source_diff_sha256": "ae4adb2efae6b9991c4c88dcd784eb42567d13e55841ab4b24f9c5750f6b8c62",
+  "source_filename": "ROTK2_Enhanced_Run019_Q09_RecipientAttach_PARTIAL_FullSource_v1.00.zip",
+  "source_sha256": "9a47e07278d5d98a9f3cedcdc0e366a4dbb435241ce9f1777c607def32e65ad6",
+  "source_size_bytes": 148745801,
+  "zip_entries": 537
+}
