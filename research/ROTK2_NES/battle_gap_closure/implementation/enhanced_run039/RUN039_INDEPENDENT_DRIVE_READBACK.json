@@ -1,0 +1,14 @@
+{
+  "run": "Run039",
+  "original_game_folder_id": "1SEsq7mVnbkG2UO6JkhkvJlwaGFbj8_BK",
+  "readback_parts": 18,
+  "part_SHA256_and_sizes": "PASS",
+  "full_zip_bytes": 148793567,
+  "full_zip_sha256": "e2a1581af46f900fe16cc311566a27946320689ffb99e8a0ad21e72278153935",
+  "zip_members": 557,
+  "zip_CRC": "PASS",
+  "QA_zip_sha256": "beb89a2caf33fd455a1a493bac453db5ae710fcd0d3f135784d3a2d55ec1b2fe",
+  "QA_zip_CRC": "PASS",
+  "test_platform": "Linux Python 3.13, cold Drive reconstructed",
+  "unrestricted_NES_Windows_Xbox": "NOT RUN"
+}
