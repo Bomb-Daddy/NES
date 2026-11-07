@@ -1,0 +1,18 @@
+{
+  "run": "Enhanced Run021",
+  "product": "Original KOEI Enhanced ONLY",
+  "parent_run": "Run020",
+  "parent_sha256": "0f05ba1c3f46e433609a116a903e198942049ab0ef49ab797cab5e25bc2ecc15",
+  "source_sha256": "8dba021a3dc5dbfab5a8ec56cb1a9b5a5d990cc410c9ad6cee22e83c3deb5337",
+  "source_bytes": 148749312,
+  "zip_members": 539,
+  "changed_game_source": [
+    "third_branch/tactical_view.py"
+  ],
+  "new_regression": [
+    "tests/test_run021_q09_controller_actor_identity.py"
+  ],
+  "runtime": "Python3.13 Linux Xvfb software controller only",
+  "status": "TESTED_PORT_PARTIAL",
+  "director_acceptance": false
+}
