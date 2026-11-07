@@ -1,0 +1,95 @@
+{
+  "files": {
+    "execution_049/gk1_scenario_factory.h": {
+      "bytes": 2681,
+      "sha256": "5bede3da84bba8f89cd0d37e2dbb7871a3659441f10416b3247af6123ca8880b"
+    },
+    "logs/assertions_debug.out": {
+      "bytes": 121,
+      "sha256": "6d0359aca28001a661006487e5a891965ac96136350a9057250b2174085c93c6"
+    },
+    "logs/build_build_debug.out": {
+      "bytes": 231,
+      "sha256": "16f22ddb4681c190bc0f451af7d6ab745bdf02c658a7cc97fc532f391869f6d0"
+    },
+    "logs/build_build_release.out": {
+      "bytes": 309,
+      "sha256": "afb6b7c1adc57d744380f52cd432a4d79eb48713f461134ecfddc4d558efa42b"
+    },
+    "logs/build_build_san.out": {
+      "bytes": 309,
+      "sha256": "afb6b7c1adc57d744380f52cd432a4d79eb48713f461134ecfddc4d558efa42b"
+    },
+    "logs/build_debug.out": {
+      "bytes": 192,
+      "sha256": "01fbb998c8eb5b3975274d32352689dab36e659ea16708745bd176b1ecbd3194"
+    },
+    "logs/build_release.out": {
+      "bytes": 309,
+      "sha256": "afb6b7c1adc57d744380f52cd432a4d79eb48713f461134ecfddc4d558efa42b"
+    },
+    "logs/build_san.out": {
+      "bytes": 309,
+      "sha256": "afb6b7c1adc57d744380f52cd432a4d79eb48713f461134ecfddc4d558efa42b"
+    },
+    "logs/cmake_debug.out": {
+      "bytes": 125,
+      "sha256": "d36c78efc2a220d67d3a6acb0ca8ed563337111f4f4714740a8e36f6a1526bcb"
+    },
+    "logs/cmake_release.out": {
+      "bytes": 373,
+      "sha256": "f547c2c1da46a0136dea4fe606d0c22783bb3379bbb237aaca5801e70e4f352b"
+    },
+    "logs/cmake_san.out": {
+      "bytes": 369,
+      "sha256": "27ef15b03a4e3096d8744b32f81ff4cea097013678db4d30190709a712bbcfd4"
+    },
+    "logs/ctest_build_debug.out": {
+      "bytes": 341,
+      "sha256": "730ce9b4e13c235504dff016525f6b6315adc7aa50072365ea1f945126a407c3"
+    },
+    "logs/ctest_build_release.out": {
+      "bytes": 345,
+      "sha256": "f320300b8036faa58f35cc4bda802c827f0fed921247ce2c8b384b6e57dc4e23"
+    },
+    "logs/ctest_build_san.out": {
+      "bytes": 337,
+      "sha256": "26bec1d81644451cbb7feb6f7a3b8f89dda330cf9155bb1af9aade9018b60a4b"
+    },
+    "logs/ctest_debug.out": {
+      "bytes": 341,
+      "sha256": "730ce9b4e13c235504dff016525f6b6315adc7aa50072365ea1f945126a407c3"
+    },
+    "logs/ctest_release.out": {
+      "bytes": 345,
+      "sha256": "f320300b8036faa58f35cc4bda802c827f0fed921247ce2c8b384b6e57dc4e23"
+    },
+    "logs/ctest_san.out": {
+      "bytes": 337,
+      "sha256": "b40382620dc51984ef01a96d65515d26e797f4f6c2f4ec90a534c8a04519e704"
+    },
+    "source/CMakeLists.txt": {
+      "bytes": 560,
+      "sha256": "ce49067c1b862cce86a16c1929e834f24c8deb6c9bc5f213eb268ba9e758a77e"
+    },
+    "source/README.md": {
+      "bytes": 4543,
+      "sha256": "8a28435b0d14fb6800d781ac287a281e243f564c3e1a2789812d32774394994e"
+    },
+    "source/gk61_market.c": {
+      "bytes": 6214,
+      "sha256": "06bd2d48394334f5c8cb3dec1b6a39560129ca53489108872e69c430d6bfa8fb"
+    },
+    "source/gk61_market.h": {
+      "bytes": 2204,
+      "sha256": "9963c1f6371df775c79a2ba0b2a744ed32f38feac46ea088df7adb03be3c3f4d"
+    },
+    "source/test_gk61_market.c": {
+      "bytes": 7166,
+      "sha256": "bb60f8cc61d3b2b09e01db64b9f1b609d9bd3ef7d4565af0f71dd2713281c3af"
+    }
+  },
+  "id": "GK1_EXEC0061",
+  "scope": "market price / buy sell weapon hire source contract, gated outside PRE_SETUP",
+  "source_authority": "NES economic mapping v1.07 + Gk1CountryTemplate exact execution_049 header"
+}
