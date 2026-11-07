@@ -1,0 +1,35 @@
+--- a/third_branch/integrated.py
++++ b/third_branch/integrated.py
+@@ -1160,9 +1160,29 @@
+                     dispositions.append({'officer':oid,'status':'released','province':where})
+                 elif decision=='behead':
+                     if s['factions'][b['defender']].get('ruler_officer')==oid:
+-                        # Ruler succession requires original-source evidence;
+-                        # never leave a dangling pointer to a dead ruler.
+-                        s['factions'][b['defender']]['ruler_officer']=None
++                        # Q14 source prisoner treatment may kill the ruler while
++                        # that faction still controls other provinces.  Only
++                        # install a successor when an independently supplied
++                        # historical source fixture names the officer: never
++                        # choose an arbitrary surviving general or treat the
++                        # initial ruler_slots table as a succession roster.
++                        # This is a controlled original-data adapter, not a
++                        # claim ordinary scenarios have recovered the bytes.
++                        choices=s.get('q14_source_ruler_successor',{})
++                        if not isinstance(choices,dict):reject('Q14_SOURCE_SUCCESSOR_INVALID')
++                        successor=choices.get(b['defender'])
++                        if successor is not None:
++                            if (type(successor) is not str or successor==oid or
++                                successor not in s['core']['officers'] or
++                                s['officer_faction'].get(successor)!=b['defender'] or
++                                s['owners'].get(s['core']['officers'][successor]['province_id'])!=b['defender'] or
++                                successor in b.get('prisoner_queue',())):
++                                reject('Q14_SOURCE_SUCCESSOR_INVALID')
++                        s['factions'][b['defender']]['ruler_officer']=successor
++                        dispositions.append({'officer':oid,'status':'ruler_beheaded',
++                                             'successor':successor,
++                                             'source_status':('SUPPLIED_SOURCE_FIXTURE' if successor
++                                                              else 'ORIGINAL_SUCCESSOR_UNRESOLVED')})
+                     relations.drop_binding(s,oid)
+                     s['officer_faction'].pop(oid,None)
+                     s['officer_loyalty'].pop(oid,None)
