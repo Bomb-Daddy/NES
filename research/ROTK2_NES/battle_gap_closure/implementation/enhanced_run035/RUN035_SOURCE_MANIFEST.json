@@ -1,0 +1,15 @@
+{
+  "parent_sha256": "79c5bb7d98ef6376a34b7ea56d6d670c9c5d452439a8602d2c7b8c555d3d0d8c",
+  "new_sha256": "48b4ed72b99141fe9672dcabbeb32cf417d498cb75461e5270e67bf0aceebf94",
+  "byte_count": 148782592,
+  "entries": 553,
+  "inherited_identical": 550,
+  "inherited_total": 552,
+  "changed_files": [
+    "tests/test_build16_q10_bribe.py",
+    "third_branch/officer_battle_adapter.py"
+  ],
+  "added_files": [
+    "tests/test_run035_q10_return_requires_switched_flag.py"
+  ]
+}
