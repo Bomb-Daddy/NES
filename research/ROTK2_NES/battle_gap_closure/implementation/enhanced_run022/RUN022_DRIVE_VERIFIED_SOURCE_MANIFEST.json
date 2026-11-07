@@ -1,0 +1,30 @@
+{
+  "product": "Original-KOEI Enhanced (not canonical NES Classic or DOS)",
+  "version": "Run022",
+  "direct_parent_sha256": "8dba021a3dc5dbfab5a8ec56cb1a9b5a5d990cc410c9ad6cee22e83c3deb5337",
+  "source_sha256": "b4206359b205fd853a2f9288331611c5e2d03e5ed57d540ff370a92124bbb747",
+  "source_size": 148751806,
+  "zip_members": 540,
+  "parent_entries_unchanged": 535,
+  "production_patches": [
+    "third_branch/integrated.py",
+    "third_branch/tactical_view.py"
+  ],
+  "corrected_legacy_port_tests": [
+    "tests/test_build37_human_defender_controller.py",
+    "tests/test_build45_q09_defender_selected_retreat.py"
+  ],
+  "new_regressions": "tests/test_run022_q09_primary_commander_retreat.py",
+  "source_folder": "https://drive.google.com/drive/folders/1uIIG3stHzvJOJAF4TLKNFbIk0gWUqxYi",
+  "verification": {
+    "drive_parts_verified": 18,
+    "full_crc": "PASS",
+    "qa_sha256": "a2831d2f430733e700458900ffd47ce97d0e82fdd229662b814bbbe9df7f0a2f",
+    "qa_crc": "PASS",
+    "linux_broad": "762 passed, 2 skipped, 2 xfailed, 3 subtests passed",
+    "drive_cold_targeted": "29 passed",
+    "original_emulator": "NOT RUN",
+    "windows_xbox": "NOT RUN",
+    "director_acceptance": "OPEN"
+  }
+}
