@@ -1,0 +1,11 @@
+# Enhanced Run020 Q09 — human defender cursor and original source HEAD order
+
+This is an actual source-backed small patch against the **Original-KOEI Enhanced** Run019 **B**, SHA256 `9a47e07278d5d98a9f3cedcdc0e366a4dbb435241ce9f1777c607def32e65ad6` (not the parallel Run019 A `5887f9...`). Do not merge this into the canonical NES Classic source or DOS source tree. Retain Enhanced market/economy/Body Points outside battle.
+
+When an officer successfully escapes into a province already under attack and the real receiving Campaign battle starts, the Run019B engine correctly constructs D-side source HEAD officer B9 before B2/C1, but it initialized `selected_officer` to the **enemy A side** (C2). Human defender default NES Wait failed `NO_SUCH_BATTLE_OFFICER`. Run020 selects first valid deployed human-side officer, preserving original source head ordering; attacker defaults remain unchanged.
+
+Patch: `RUN020_Q09_PRODUCTION.patch`. Actual new tests: `test_run020_q09_human_defender_selected.py`. Reproducible complete-source builder: `build_run020.py`; exact immutable parent required. Proof: 6 failed / 1 passed before, 21 focused passed after, incorrect A-side mutant 6 failed / 1 passed, 274 passed/2 skipped local and independently downloaded source; second-process .ro2 disk cold-load fingerprint `c5a4abc2b4decea56d510a23e1344736ce3676e40a3d990ee526156131d34fd1`. Linux Xvfb software controller UI is not a physical Xbox test.
+
+New complete source ZIP SHA256 `0f05ba1c3f46e433609a116a903e198942049ab0ef49ab797cab5e25bc2ecc15`, 148747831 bytes, 538 clean members. Full source in 18 parts with SHA manifest and QA in separately original-game Drive folder: https://drive.google.com/drive/folders/1Yim5DKG9XbvXo9GZQx4PvKP3wlBCfGah . All parts independently re-downloaded, exact SHA + CRC and fresh 274/2 tests verified. This GitHub folder is **research diff evidence, not canonical game source**.
+
+Still open: original automatic simultaneous attacked destination tactical battle slot, 4-list turn order, all 30 original NES event goldens, source-byte ordinary officer hydration, native Windows and physical Xbox acceptance. No completed 1:1 parity claimed.
