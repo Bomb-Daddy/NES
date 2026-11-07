@@ -1,0 +1,33 @@
+--- Run042/third_branch/tactical_view.py
++++ Run043/third_branch/tactical_view.py
+@@ -76,7 +76,14 @@
+     # Units are overlaid after terrain, not baked into maps.
+     # Q01–Q05: display each real officer-commanded army on its own hex.
+     if battle.get('officer_units'):
++        # Q04 original player placement: initialize() stores provisional
++        # positions for the unplaced human officers. Those positions are NOT
++        # committed battlefield deployment. Never render a provisional army
++        # as a live marker before the human confirms its real province zone.
++        pending=set(battle.get('q04_pending_deployment',()))
+         for unit in sorted(battle['officer_units'],key=lambda x:(x['side'],x['id'])):
++            if unit['id'] in pending:
++                continue
+             _army(d,'a' if unit['side']=='A' else 'd',unit,
+                   commander=unit['commander'],
+                   burning=([unit['q'],unit['r']] in battle.get('burning',[])))
+@@ -90,7 +97,14 @@
+     d.text((685,175),f'DEFENDER {battle["defender"]}',font=UI_FONT, fill=(161,205,255))
+     d.text((685,205),f'Troops {battle["d"]["troops"]}  Morale {battle["d"]["morale"]}',font=UI_FONT, fill=(237,238,228))
+     d.text((685,263),f'Province {battle["dst"][1:]}  Season {((campaign.state["month"]-1)//3)%4+1}/4  Weather {battle.get("weather","?")}',font=UI_FONT, fill=(235,215,166))
+-    d.text((685,297),'Move / Normal / Charge / Simult. / Fire',font=UI_FONT, fill=(218,224,226))
++    # Q04 deployment precedes all ordinary battle orders. Never display an
++    # unavailable tactical-command hint during the player placement phase.
++    if battle.get('q04_pending_deployment'):
++        d.text((685,297),'DEPLOY: D-pad position / A place / B reset',
++               font=UI_FONT, fill=(218,224,226))
++    else:
++        d.text((685,297),'Move / Normal / Charge / Simult. / Fire',
++               font=UI_FONT, fill=(218,224,226))
+     if battle.get('officer_units'):
+         selected=selected_unit if selected_unit not in ('a','d') else battle.get('selected_officer')
+         u=next((u for u in battle['officer_units'] if u['id']==selected),None)
