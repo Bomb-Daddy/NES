@@ -1,0 +1,32 @@
+--- Run038/tests/test_run037_q08_fire_empty_hex.py
++++ Run039/tests/test_run037_q08_fire_empty_hex.py
+@@ -11,7 +11,7 @@
+ import sys
+ from pathlib import Path
+ from types import SimpleNamespace
+-from unittest.mock import Mock
++from unittest.mock import Mock, patch
+ import pytest
+ from og.core.fixed import CoreError
+ from third_branch.integrated import save_bytes, load_bytes, load_file, validate
+@@ -123,12 +123,14 @@
+     assert validate(c.state) and load_bytes(save_bytes(c)).fingerprint==c.fingerprint
+ 
+ 
+-def test_friendly_occupied_fire_cell_fails_closed_pending_original_source():
+-    c=_c(37011);old=save_bytes(c)
+-    with pytest.raises(CoreError,match='FIRE_ALLY_CELL_UNVERIFIED'):
+-        c.do('battle_attack','B9',{'officer_id':'B9','mode':'fire',
+-             'q':10,'r':6},'r037:ally-unknown')
+-    assert save_bytes(c)==old
++def test_friendly_occupied_fire_cell_uses_source_q08_occupant_not_side_filter():
++    # Run039 source correction: $818A uses cell occupancy, not officer side.
++    c=_c(37011)
++    victim=ba.find(c.state['battle'],'D','B2')
++    with patch.object(ba.core,'ignite',return_value=True):
++        r=c.do('battle_attack','B9',{'officer_id':'B9','mode':'fire',
++             'q':10,'r':6},'r037:ally-source-corrected-run039')
++    assert r['target']=='B2' and r['ignited'] and validate(c.state)
+ 
+ 
+ @pytest.mark.skipif(not os.environ.get('DISPLAY'),reason='requires actual Linux Xvfb Tk')
