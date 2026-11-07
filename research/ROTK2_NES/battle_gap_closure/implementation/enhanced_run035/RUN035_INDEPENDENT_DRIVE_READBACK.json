@@ -1,0 +1,10 @@
+{
+  "source_sha256": "48b4ed72b99141fe9672dcabbeb32cf417d498cb75461e5270e67bf0aceebf94",
+  "source_size": 148782592,
+  "source_zip_entries": 553,
+  "source_part_count": 18,
+  "part_checksums": "ALL PASS",
+  "qa_sha256": "a46613b2f4afc6617925a3951aa4202e7c440699de4c44146de6a2b20a596b66",
+  "qa_crc": "PASS",
+  "readback_source": "Google Drive individual downloaded, not local parts"
+}
