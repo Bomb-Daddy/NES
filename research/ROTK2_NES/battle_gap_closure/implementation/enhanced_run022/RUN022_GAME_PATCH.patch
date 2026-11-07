@@ -1,0 +1,67 @@
+--- Run021/third_branch/integrated.py
++++ Run022/third_branch/integrated.py
+@@ -790,6 +790,19 @@
+             allowed=(b['defender'] if human==b['defender'] else b['attacker'])
+             if f!=allowed:reject('NOT_BATTLE_OWNER')
+         if b.get('officer_units'):
++            # Original hsovl2 D905/D89D: the whole-army choice belongs ONLY
++            # to the active primary-list commander. A same-faction officer
++            # cannot forge that choice by supplying a commander's destination.
++            # Check actor and explicit selected officer before RNG or mutation.
++            if kind=='battle_withdraw' and p.get('whole_army') is True:
++                side='D' if s.get('human_faction')==b['defender'] else 'A'
++                primary=next((u for u in b['officer_units']
++                    if u['side']==side and u['slot']==(0 if side=='D' else 2)
++                    and u.get('commander') and not u.get('reserve')
++                    and not u.get('fled') and u['troops100']>=100),None)
++                if (primary is None or actor!=primary['id'] or
++                        p.get('officer_id',actor)!=actor):
++                    reject('ONLY_COMMANDER_WHOLE_WITHDRAW')
+             return officercombat.execute(s,b,kind,p,self._settle)
+         if kind=='battle_auto':
+             for i in range(31):  # Q03: 30 calendar days; not 20
+--- Run021/third_branch/tactical_view.py
++++ Run022/third_branch/tactical_view.py
+@@ -187,9 +187,27 @@
+         return [pid for pid in s['neighbors'][b['dst']]
+                 if s['owners'].get(pid) in (None,faction)]
+ 
++    def _primary_withdraw_commander(self):
++        # Q09 original hsovl2 D905/D89D: only a live main-list commander
++        # may order the whole-army choice. Auxiliary commanders do not qualify.
++        b=self.parent.c.state.get('battle')
++        if not b:return None
++        side=self._player_side()
++        return next((u for u in b.get('officer_units',())
++                     if u['side']==side and u['slot']==(0 if side=='D' else 2)
++                     and u.get('commander') and not u.get('reserve')
++                     and not u.get('fled') and u['troops100']>=100),None)
++
+     def _withdraw_prompt(self,whole):
+         choices=self._withdraw_officers()
+-        if not whole:
++        if whole:
++            primary=self._primary_withdraw_commander()
++            if primary is None or self.selected_officer!=primary['id']:
++                self.pending_withdraw=None
++                self.message.set('Only the primary commander may withdraw the whole army')
++                self.redraw()
++                return
++        else:
+             choices=[self.selected_officer] if self.selected_officer in choices else choices[:1]
+         self.pending_withdraw={'whole':whole,'officers':choices}
+         self.withdraw_chosen={}
+@@ -220,10 +238,9 @@
+             self.redraw()
+             return
+         whole=self.pending_withdraw['whole']
+-        primary=next((u for u in self.parent.c.state['battle']['officer_units']
+-                      if u['side']==self._player_side() and u.get('commander')
+-                      and u['slot']==(2 if self._player_side()=='A' else 0)),None)
+-        if whole and primary is None:
++        primary=self._primary_withdraw_commander() if whole else None
++        if whole and (primary is None or primary['id'] not in self.withdraw_chosen
++                      or self.selected_officer!=primary['id']):
+             self.message.set('No commander available for whole-army withdrawal')
+             self.pending_withdraw=None
+             return
