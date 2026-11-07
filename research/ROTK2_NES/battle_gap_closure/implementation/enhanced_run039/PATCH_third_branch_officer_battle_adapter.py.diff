@@ -1,0 +1,20 @@
+--- Run038/third_branch/officer_battle_adapter.py
++++ Run039/third_branch/officer_battle_adapter.py
+@@ -1416,10 +1416,13 @@
+             units_at=[v for v in b['officer_units'] if v['troops100']>=100
+                       and not v.get('fled') and not v.get('reserve')
+                       and (v['q'],v['r'])==fire_cell]
+-            if any(v['side']==player_side for v in units_at):
+-                # Friendly-cell Fire targeting remains an unsourced policy.
+-                fail('FIRE_ALLY_CELL_UNVERIFIED')
+-            target=next((v for v in units_at if v['side']==enemy_side),None)
++            # Q08 $818A/$C99C is an occupied-TERRAIN lookup: the unit's
++            # intellect and immediate casualties apply whether that unit
++            # belongs to the opponent or the actor. The old ally-only veto
++            # incorrectly turned an otherwise selectable hex into a no-op.
++            # This is a source-backed port behavior, not a verified NES
++            # input/message golden.
++            target=next(iter(units_at),None)
+             if p.get('target_officer_id') is not None and (
+                     target is None or target['id']!=p['target_officer_id']):
+                 fail('STALE_FIRE_TARGET')
