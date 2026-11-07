@@ -1,0 +1,45 @@
+--- Run023/third_branch/tactical_view.py
++++ Run024/third_branch/tactical_view.py
+@@ -239,6 +239,28 @@
+             self.message.set('Cannot flee')
+             return
+         officers=self.pending_withdraw['officers']
++        # D905 commits the source-selected officer, not whichever eligible
++        # officer happens to be under the controller cursor later.  A loaded
++        # campaign/update may invalidate a modal while it is open.  Recheck
++        # the *entire* frozen list before any selection, RNG or disk write.
++        if (self.pending_withdraw['whole'] and
++                ((primary := self._primary_withdraw_commander()) is None or
++                 self.selected_officer!=primary['id'] or
++                 primary['id'] not in officers or
++                 any(unit not in self._withdraw_officers() for unit in officers))):
++            self.pending_withdraw=None
++            self.withdraw_chosen={}
++            self.message.set('Selected officers cannot flee')
++            self.redraw()
++            return
++        if (not self.pending_withdraw['whole'] and
++                (self.selected_officer!=officers[0] or
++                 officers[0] not in self._withdraw_officers())):
++            self.pending_withdraw=None
++            self.withdraw_chosen={}
++            self.message.set('Selected officer cannot flee')
++            self.redraw()
++            return
+         oid=officers[self.withdraw_position]
+         self.withdraw_chosen[oid]=legal[self.withdraw_index%len(legal)]
+         if self.pending_withdraw['whole'] and self.withdraw_position+1<len(officers):
+@@ -435,6 +457,13 @@
+         from og.core.fixed import CoreError
+         if not self.parent.c.state['battle']:
+             self.message.set('Battle already resolved');return
++        # A specifically named individual Flee is already bound to the
++        # original selected officer (D905).  Do not silently rewrite its
++        # identity to a different on-field unit during controller recovery.
++        if (kind=='battle_withdraw' and not params.get('whole_army') and
++                'officer_id' in params and params['officer_id']!=self.selected_officer):
++            self.message.set('Selected officer cannot flee')
++            return
+         # Q09: resolve the real command actor AFTER correcting an obsolete
+         # opponent/non-field controller cursor. Otherwise the campaign journal
+         # records a different general from the unit executing the NES order.
