@@ -1,0 +1,12 @@
+{
+  "source": "Original-KOEI Enhanced Run034",
+  "independent_drive_downloads": 18,
+  "part_sha_size_verified": 18,
+  "source_full_sha256": "79c5bb7d98ef6376a34b7ea56d6d670c9c5d452439a8602d2c7b8c555d3d0d8c",
+  "source_bytes": 148779912,
+  "zip_entries": 552,
+  "zip_crc": "PASS",
+  "qa_zip_sha256": "1f371d7c1b9b9e00fb50d302b9782c3583df27fff925997a88c4a495fdc19863",
+  "qa_zip_crc": "PASS",
+  "verifier": "fresh Drive file retrieval through mounted Files Library; independent reassembly, SHA256 and zipfile.testzip"
+}
