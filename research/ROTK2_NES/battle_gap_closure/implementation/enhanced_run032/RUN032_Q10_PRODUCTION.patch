@@ -1,0 +1,142 @@
+--- parent/unpacked/third_branch/tactical_view.py	2026-11-07 15:16:05.977557451 +0000
++++ child/third_branch/tactical_view.py	2026-11-07 15:20:26.599758301 +0000
+@@ -125,6 +125,7 @@
+         self.menu=NESBattleMenu()
+         commands=[(label, lambda label=label: self._enter_root(label)) for label in ROOT]
+         self.bribe_gold=1
++        # Q10: controller-visible offer is chosen only after an actual enemy hex.
+         self.duel_accept=True
+         self.reinforce_index=0;self.reinforce_rice=0;self.reinforce_gold=0
+         self.withdraw_index=0;self.withdraw_whole=False
+@@ -364,13 +365,25 @@
+             return
+         if branch=='Tactics':
+             if choice=='Reinforce':self.reinforce()
+-            elif choice=='Switch sides':self.bribe()
++            elif choice=='Switch sides':
++                # Source Q10 officer_list_dispatch D5DD: choose an opposing
++                # noncommander on the field, not a stale Next Target index.
++                if self.parent.c.state.get('battle',{}).get('officer_units'):
++                    self.start_target('battle_bribe_target')
++                else:
++                    self.bribe()  # preserved pre-officer-ledger save fallback
+             elif choice=='Duel':self.duel()
+             return
+         if branch=='Wait':
+             if choice=='Wait officer':self.wait()
+             else:self.end_turn()
+ 
++    def _bribe_gold_cap(self):
++        b=self.parent.c.state.get('battle')
++        if not b:return 0
++        pool='gold_d_cents' if self._player_side()=='D' else 'gold_a_cents'
++        return min(99,max(0,b.get(pool,0)//100))
++
+     def _visible_officer_at(self,q,r):
+         """Q15 original tactical View has no fog or friendly-side restriction.
+ 
+@@ -466,10 +479,70 @@
+                 self.target_phase=None;self.target_enemy=None;self.target_enemy_hex=None
+                 self.message.set('Movement cancelled');self.redraw();return
+             if button in ('up','down','left','right'):
++                if self.target_mode=='battle_bribe_target' and self.target_phase=='gold':
++                    cap=self._bribe_gold_cap()
++                    if cap:
++                        delta=-1 if button in ('left','down') else 1
++                        self.bribe_gold=max(1,min(cap,self.bribe_gold+delta))
++                    self.message.set('Offer gold: '+str(self.bribe_gold)+' / '+str(cap)+'; A confirm, B cancel')
++                    self.redraw();return
+                 self.target_q=max(0,min(GRID_W-1,self.target_q+({'left':-1,'right':1}.get(button,0))))
+                 self.target_r=max(0,min(GRID_H-1,self.target_r+({'up':-1,'down':1}.get(button,0))))
+                 self.message.set('Which direction? A commit B cancel')
+                 self.redraw();return
++            if button=='a' and self.target_mode=='battle_bribe_target':
++                # Original Q10: choose a real enemy, never its commander or
++                # a hidden reserve. Freeze selected opponent and map hex for
++                # the offer; any stale identity is refused without a turn.
++                battle=self.parent.c.state.get('battle')
++                actor=self.target_actor
++                if (not battle or self.selected_officer!=actor or
++                    actor not in self._withdraw_officers()):
++                    self.targeting=False;self.target_actor=None
++                    self.target_enemy=None;self.target_enemy_hex=None
++                    self.target_phase=None
++                    self.message.set('Selected officer no longer available')
++                    self.redraw();return
++                opposite='A' if self._player_side()=='D' else 'D'
++                if self.target_phase=='enemy':
++                    target=next((u for u in battle['officer_units']
++                        if u['side']==opposite and (u['q'],u['r'])==(self.target_q,self.target_r)
++                        and u['troops100']>=100 and not u.get('fled')
++                        and not u.get('reserve')),None)
++                    if target is None:
++                        self.message.set('No eligible enemy on selected hex')
++                        self.redraw();return
++                    if target.get('commander') or target.get('switched'):
++                        self.message.set('Cannot bribe enemy commander or switched unit')
++                        self.redraw();return
++                    cap=self._bribe_gold_cap()
++                    if cap<1:
++                        self.message.set('No battle gold to offer')
++                        self.redraw();return
++                    self.target_enemy=target['id']
++                    self.target_enemy_hex=(target['q'],target['r'])
++                    self.target_phase='gold'
++                    self.bribe_gold=max(1,min(self.bribe_gold,cap))
++                    self.message.set('Offer gold: '+str(self.bribe_gold)+' / '+str(cap)+'; A confirm, B cancel')
++                    self.redraw();return
++                target=next((u for u in battle['officer_units']
++                    if u['id']==self.target_enemy and u['side']==opposite
++                    and (u['q'],u['r'])==self.target_enemy_hex
++                    and u['troops100']>=100 and not u.get('fled')
++                    and not u.get('reserve') and not u.get('commander')
++                    and not u.get('switched')),None)
++                if (self.target_phase!='gold' or target is None or
++                    not 1<=self.bribe_gold<=self._bribe_gold_cap()):
++                    self.targeting=False;self.target_actor=None
++                    self.target_enemy=None;self.target_enemy_hex=None
++                    self.target_phase=None
++                    self.message.set('Selected enemy or offer no longer available')
++                    self.redraw();return
++                offer=self.bribe_gold;tid=self.target_enemy
++                self.targeting=False;self.target_actor=None
++                self.target_phase=None;self.target_enemy=None;self.target_enemy_hex=None
++                self._issue('battle_bribe',{'gold':offer,'target_officer_id':tid})
++                return
+             if button=='a' and self.target_mode=='battle_view_officer':
+                 officer=self._visible_officer_at(self.target_q,self.target_r)
+                 if officer is None:
+@@ -601,7 +674,7 @@
+         self.targeting=True
+         self.target_mode=mode
+         self.target_actor=self.selected_officer
+-        self.target_phase='enemy' if mode=='battle_move_enemy' and officer_mode else None
++        self.target_phase='enemy' if mode in ('battle_move_enemy','battle_bribe_target') and officer_mode else None
+         self.target_enemy=None;self.target_enemy_hex=None
+         # Saved legacy aggregate-only campaigns retain their pre-Run026
+         # targeting fallback; the source bound-officer guard applies to
+@@ -612,7 +685,10 @@
+             u=battle['a']
+         self.target_q=u['q'];self.target_r=u['r']
+         if self.target_phase=='enemy':
+-            self.message.set('Move enemy: select an adjacent enemy; A selects, B cancels')
++            if mode=='battle_bribe_target':
++                self.message.set('Switch sides: select enemy noncommander; A selects, B cancels')
++            else:
++                self.message.set('Move enemy: select an adjacent enemy; A selects, B cancels')
+         else:
+             self.message.set('NES D-pad chooses destination; A commits '+mode+', B cancels')
+         self.redraw()
+@@ -883,6 +959,12 @@
+                       f'Troops {unit["troops"]}   Side {unit["side"]}')):
+                     self.canvas.create_text(702,521+i*25,anchor='nw',
+                         text=line,fill='#eaf3ff',font=('Courier',15,'bold'))
++        if self.targeting and self.target_mode=='battle_bribe_target' and self.target_phase=='gold':
++            self.canvas.create_rectangle(680,470,1240,552,fill='#0a1422',outline='#6095cb',width=3)
++            self.canvas.create_text(700,493,anchor='nw',text='SWITCH SIDES  '+str(self.target_enemy),
++                fill='#f5e5b3',font=('Courier',17,'bold'))
++            self.canvas.create_text(700,523,anchor='nw',text='OFFER GOLD '+str(self.bribe_gold)+' / '+str(self._bribe_gold_cap()),
++                fill='#eaf3ff',font=('Courier',15,'bold'))
+         if self.targeting:
+             x,y=X0+self.target_q*CELL,Y0+self.target_r*CELL
+             self.canvas.create_rectangle(x+1,y+1,x+CELL-2,y+CELL-2,outline='#fff37d',width=4)
