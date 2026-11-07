@@ -1,0 +1,44 @@
+--- a/third_branch/tactical_view.py
++++ b/third_branch/tactical_view.py
+@@ -927,12 +927,40 @@
+             self.canvas.create_text(220,110,text='Battle settled. Strategic map and ownership updated.',anchor='nw',fill='white')
+             return
+         img=render_battle(self.parent.c,selected_unit=self.selected_officer or 'a')
+-        if self.parent.c.state['battle'].get('pending_outcome'):
++        if self.parent.c.state['battle'].get('pending_outcome') and not self.pending_prisoner:
+             self.message.set('PRISONER DECISIONS REQUIRED: select Prisoner Fate, SELECT cycles officers, LEFT/RIGHT changes fate, A confirms')
+         self.photo=self.ImageTk.PhotoImage(img)
+         self.canvas.delete('all')
+         self.canvas.create_image(0,0,anchor='nw',image=self.photo)
+         self._draw_nes_menu()
++        # Q14: the exact officer and fate visible to the human must be the
++        # identities frozen by _prisoner_prompt/_prisoner_confirm. The prior
++        # renderer displayed only the ordinary six-command menu and overwrote
++        # the selected fate message with a generic pending-outcome notice:
++        # the player could not see whether A would Release or Behead. This
++        # is a port/UI visibility correction, NOT a claim of NES pixel text.
++        if self.pending_prisoner and self.parent.c.state['battle'].get('pending_outcome'):
++            prisoner=self.pending_prisoner_actor
++            choices=self.pending_prisoner_options
++            if prisoner is not None and choices:
++                selected=self.prisoner_decision_index%len(choices)
++                self.canvas.create_rectangle(681,470,1240,613,
++                    fill='#0a1422',outline='#6095cb',width=3,tags=('prisoner_modal',))
++                self.canvas.create_text(704,491,anchor='nw',
++                    text='PRISONER '+str(prisoner),fill='#f5e5b3',
++                    font=('Courier',18,'bold'),tags=('prisoner_modal',))
++                for i,choice in enumerate(choices):
++                    x=704+i*170
++                    if i==selected:
++                        self.canvas.create_rectangle(x-5,526,x+155,565,
++                            outline='#fbe7b6',width=3,tags=('prisoner_modal',))
++                    self.canvas.create_text(x,536,anchor='nw',text=choice.upper(),
++                        fill='#fbe7b6' if i==selected else '#eaf3ff',
++                        font=('Courier',15,'bold'),tags=('prisoner_modal',))
++                self.canvas.create_text(704,583,anchor='nw',
++                    text='A Confirm   B Cancel   SELECT Prisoner',
++                    fill='#a9c8ed',font=('Courier',12,'bold'),
++                    tags=('prisoner_modal',))
+         if self.selected_target:
+             b=self.parent.c.state.get('battle')
+             u=next((u for u in b.get('officer_units',[]) if u['id']==self.selected_target and u['troops100']>=100 and not u['fled']),None)
