@@ -1,0 +1,21 @@
+--- a/third_branch/tactical_view.py
++++ b/third_branch/tactical_view.py
+@@ -408,7 +408,9 @@
+         from og.core.fixed import CoreError
+         if not self.parent.c.state['battle']:
+             self.message.set('Battle already resolved');return
+-        actor=self._officer()
++        # Q09: resolve the real command actor AFTER correcting an obsolete
++        # opponent/non-field controller cursor. Otherwise the campaign journal
++        # records a different general from the unit executing the NES order.
+         if kind in ('battle_move','battle_move_enemy','battle_attack','battle_bribe','battle_duel','battle_wait','battle_withdraw'):
+             # A loaded battle may still carry an attacker-selected officer
+             # while the human is defending. Never dispatch enemy orders.
+@@ -417,6 +419,7 @@
+                  and u['troops100']>=100 and not u.get('reserve') and not u.get('fled')]
+             if self.selected_officer not in own:
+                 self.selected_officer=own[0] if own else None
++        actor=self._officer()
+         if kind in ('battle_move','battle_move_enemy','battle_attack','battle_bribe','battle_duel','battle_wait','battle_withdraw') and self.selected_officer:
+             params=dict(params,officer_id=self.selected_officer)
+         if kind in ('battle_attack','battle_move_enemy','battle_bribe','battle_duel') and self.selected_target:
