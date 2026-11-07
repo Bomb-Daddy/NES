@@ -1,0 +1,13 @@
+{
+  "parent_sha256": "48b4ed72b99141fe9672dcabbeb32cf417d498cb75461e5270e67bf0aceebf94",
+  "source_sha256": "7b4e03d2f335a12fb5f5950e552b0fcd7e37f21abcfc425b8f68405211a92ecc",
+  "bytes": 148785676,
+  "zip_entries": 554,
+  "inherited_identical": 551,
+  "inherited_total": 553,
+  "production_modified": [
+    "third_branch/officer_battle_adapter.py",
+    "third_branch/tactical_view.py"
+  ],
+  "test_added": "tests/test_run036_q10_live_list_head.py"
+}
