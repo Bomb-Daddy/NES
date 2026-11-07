@@ -1,0 +1,146 @@
+{
+  "project": "ORIGINAL-KOEI Enhanced \u2014 NOT canonical NES Classic SUP-0016 or DOS",
+  "run": "Run033",
+  "parent_run": "Run032",
+  "parent_source_sha256": "014ae2dcdc189395ee17f6d52d4568d526952180a7d4a4311583033741bd0e95",
+  "parent_archive_members": 550,
+  "source_sha256": "76b9247f9d1f0e21d143352134e8eaf93fe21f3daf529b757460017f1684a95e",
+  "source_bytes": 148777481,
+  "source_archive_members": 551,
+  "parent_members_unchanged": 549,
+  "changed_production": [
+    "third_branch/tactical_view.py"
+  ],
+  "added_tests": [
+    "tests/test_run033_q14_prisoner_visible_choices.py"
+  ],
+  "parts": [
+    {
+      "part": 1,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part01.bin",
+      "bytes": 8500000,
+      "sha256": "58a1b12e9ed0c52e553ecb22c9d4725b07f1f28c2ce8e3a96b1a8058a8d5ce93"
+    },
+    {
+      "part": 2,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part02.bin",
+      "bytes": 8500000,
+      "sha256": "4d7dd0288a5495a3489fcc85a2e151ae066f8644c7bfdfed0b86c7c4c136a605"
+    },
+    {
+      "part": 3,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part03.bin",
+      "bytes": 8500000,
+      "sha256": "5440997505552e2e434f196b7da1a5e5e0eb07ca306d919da5b41064b6437ec7"
+    },
+    {
+      "part": 4,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part04.bin",
+      "bytes": 8500000,
+      "sha256": "c3bd29a4b851968154b2697c91f76a9d4ea209c29f810793de4cddbf38a175b2"
+    },
+    {
+      "part": 5,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part05.bin",
+      "bytes": 8500000,
+      "sha256": "c6e94ef0b94b9dd98d166b71aaf73438445473efb582d494cdf054192f01810c"
+    },
+    {
+      "part": 6,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part06.bin",
+      "bytes": 8500000,
+      "sha256": "a4a95fee11a2a0fd91e275811ebb83a460e10c304079d7f677f6acc5e3d9ba2a"
+    },
+    {
+      "part": 7,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part07.bin",
+      "bytes": 8500000,
+      "sha256": "39bb729416484f2708d00eeae094b32baa6443f174feb0f2b05784f9a9059cfd"
+    },
+    {
+      "part": 8,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part08.bin",
+      "bytes": 8500000,
+      "sha256": "c79f3b944b4ebe80d7bcf0102315eea06f60eda362744cae5ccc74bc23661c34"
+    },
+    {
+      "part": 9,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part09.bin",
+      "bytes": 8500000,
+      "sha256": "dad6dca33ad15f2d35bc730432dde94c359f60fa057f061ae54ff64593a4bd95"
+    },
+    {
+      "part": 10,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part10.bin",
+      "bytes": 8500000,
+      "sha256": "e416af207c46b385e997e62619b4f45bc584c7acf9fbab8eaa4ebb8b7e93cffd"
+    },
+    {
+      "part": 11,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part11.bin",
+      "bytes": 8500000,
+      "sha256": "af864958dc2d5db5b82856d66540186df966cb270b949715f6362008dd6ec9f7"
+    },
+    {
+      "part": 12,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part12.bin",
+      "bytes": 8500000,
+      "sha256": "c982a81d6313ab91915e14ff6705dd7a6a9d0e71fbcc4f28f97682355edc375d"
+    },
+    {
+      "part": 13,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part13.bin",
+      "bytes": 8500000,
+      "sha256": "544d9b8ae7d7c486a15637d7c752ee46e4282bbf07f667702fc60ea4949bca6e"
+    },
+    {
+      "part": 14,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part14.bin",
+      "bytes": 8500000,
+      "sha256": "2b8b7fc55041e362577f99302ec74f763e99a10d611461d308cd6ad06c881735"
+    },
+    {
+      "part": 15,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part15.bin",
+      "bytes": 8500000,
+      "sha256": "c55dce484bad59e5f2bd8a80c124908d35c3386fc6caebdb42f99337f5a6d9b5"
+    },
+    {
+      "part": 16,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part16.bin",
+      "bytes": 8500000,
+      "sha256": "ec164cb39cbd4f5347d47a61f37ef2def429fb2e082577393c095943e3e582da"
+    },
+    {
+      "part": 17,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part17.bin",
+      "bytes": 8500000,
+      "sha256": "80234698c2cdd0587c580d71bf58b77531eee560a2ac7c056597f04e0ca3515a"
+    },
+    {
+      "part": 18,
+      "name": "ROTK2_Enhanced_Run033_FullSource_v1.00.part18.bin",
+      "bytes": 4277481,
+      "sha256": "aa5ff41fb58516cd128eac475aee03e3290e4209b33c91f4e89db4c934b83262"
+    }
+  ],
+  "tests": {
+    "parent_red": "4 failed, 2 passed",
+    "fixed_green": "6 passed",
+    "mutant_hide_modal": "4 failed, 2 passed",
+    "scoped_linux_working": "70 passed",
+    "cold_extracted_selected": "190 passed",
+    "platform": "Linux Python3.13 Tk Xvfb",
+    "original_NES_30_event_replays": "NOT RUN",
+    "native_windows": "NOT RUN",
+    "physical_xbox": "NOT RUN"
+  },
+  "source_evidence": "Q14 prisoner identity and selected fate, per officer original source; exact NES UI text/pixels not verified",
+  "limitations": [
+    "automatic Q09 attacked-recipient second-battle scheduling OPEN",
+    "four-slot original turn ordering OPEN",
+    "original NES goldens OPEN",
+    "full unrestricted suite NOT RUN",
+    "Director acceptance OPEN"
+  ]
+}
