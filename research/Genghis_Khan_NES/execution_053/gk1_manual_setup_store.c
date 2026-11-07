@@ -89,7 +89,9 @@ Gk1StoreResult gk53_setup_decode(const uint8_t *data,size_t n,
  *app=next;return GK1_STORE_OK;
 }
 static int valid_path(const char *p){
- if(!p)return 0;size_t i=0;while(i<1024&&p[i])i++;return i>0&&i<1024;
+ if(!p)return 0;
+ size_t i=0;while(i<1024&&p[i])i++;
+ return i>0&&i<1024;
 }
 Gk1StoreResult gk53_setup_save_new(const char *path,const Gk1App *app,
                                    const Gk1TemplateDataset *source){
@@ -100,7 +102,8 @@ Gk1StoreResult gk53_setup_save_new(const char *path,const Gk1App *app,
  HANDLE f=CreateFileA(path,GENERIC_WRITE,0,NULL,CREATE_NEW,FILE_ATTRIBUTE_NORMAL,NULL);
  if(f==INVALID_HANDLE_VALUE){DWORD e=GetLastError();return e==ERROR_FILE_EXISTS||e==ERROR_ALREADY_EXISTS?GK1_STORE_EXISTS:GK1_STORE_IO;}
  DWORD written=0;int ok=WriteFile(f,b,(DWORD)sizeof b,&written,NULL)&&written==sizeof b&&FlushFileBuffers(f);
- if(!CloseHandle(f))ok=0;if(!ok){DeleteFileA(path);return GK1_STORE_IO;}
+ if(!CloseHandle(f))ok=0;
+ if(!ok){DeleteFileA(path);return GK1_STORE_IO;}
 #else
  int fd=open(path,O_WRONLY|O_CREAT|O_EXCL,0600);
  if(fd<0)return errno==EEXIST?GK1_STORE_EXISTS:GK1_STORE_IO;
@@ -108,7 +111,9 @@ Gk1StoreResult gk53_setup_save_new(const char *path,const Gk1App *app,
  while(off<sizeof b){ssize_t nwrite=write(fd,b+off,sizeof b-off);
   if(nwrite<0&&errno==EINTR)continue;
   if(nwrite<=0){ok=0;break;}off+=(size_t)nwrite;}
- if(ok&&fsync(fd)!=0)ok=0;if(close(fd)!=0)ok=0;if(!ok){unlink(path);return GK1_STORE_IO;}
+ if(ok&&fsync(fd)!=0)ok=0;
+ if(close(fd)!=0)ok=0;
+ if(!ok){unlink(path);return GK1_STORE_IO;}
 #endif
  return GK1_STORE_OK;
 }
@@ -119,13 +124,15 @@ Gk1StoreResult gk53_setup_load(const char *path,const Gk1TemplateDataset *source
  HANDLE f=CreateFileA(path,GENERIC_READ,FILE_SHARE_READ,NULL,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,NULL);
  if(f==INVALID_HANDLE_VALUE)return GK1_STORE_IO;
  DWORD got=0;int ok=ReadFile(f,b,(DWORD)sizeof b,&got,NULL);n=got;
- if(!CloseHandle(f))ok=0;if(!ok)return GK1_STORE_IO;
+ if(!CloseHandle(f))ok=0;
+ if(!ok)return GK1_STORE_IO;
 #else
  int fd=open(path,O_RDONLY);if(fd<0)return GK1_STORE_IO;
  int ok=1;while(n<sizeof b){ssize_t got=read(fd,b+n,sizeof b-n);
   if(got<0&&errno==EINTR)continue;
   if(got<0){ok=0;break;}if(got==0)break;n+=(size_t)got;}
- if(close(fd)!=0)ok=0;if(!ok)return GK1_STORE_IO;
+ if(close(fd)!=0)ok=0;
+ if(!ok)return GK1_STORE_IO;
 #endif
  return gk53_setup_decode(b,n,source,app);
 }
