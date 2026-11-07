@@ -1,0 +1,79 @@
+--- a/third_branch/tactical_view.py (Run024)
++++ b/third_branch/tactical_view.py (Run025)
+@@ -130,7 +130,7 @@
+         self.withdraw_index=0;self.withdraw_whole=False
+         self.prisoner_index=0;self.prisoner_decision_index=0
+         self.controller_actions=commands;self.controller_index=0;self.targeting=False;self.target_mode='battle_move'
+-        self.pending_withdraw=None;self.withdraw_chosen={};self.withdraw_position=0
++        self.pending_withdraw=None;self.withdraw_chosen={};self.withdraw_position=0;self.withdraw_legal_snapshot=None
+         self.pending_prisoner=False
+         self._last_summary=None
+         battle=parent.c.state.get('battle',{})
+@@ -219,24 +219,39 @@
+                 self.redraw()
+                 return
+             choices=[self.selected_officer]
++        # Q09 destination identity is a province ID, not a live-list index.
++        # Freeze the visible choices when opening the nested NES Flee prompt.
++        # Controller navigation and commit must use the SAME mapping even if
++        # a campaign update changes the adjacency/ownership iterator order.
++        destinations=tuple(self._withdraw_legal_destinations())
+         self.pending_withdraw={'whole':whole,'officers':choices}
++        self.withdraw_legal_snapshot=destinations
+         self.withdraw_chosen={}
+         self.withdraw_position=0
+         self.withdraw_index=0
+-        if not self.pending_withdraw['officers'] or not self._withdraw_legal_destinations():
++        if not self.pending_withdraw['officers'] or not destinations:
+             self.message.set('Cannot flee')
+             self.pending_withdraw=None
+             return
+         self.message.set('Withdraw where? '+self.pending_withdraw['officers'][0] +
+-                         ': '+self._withdraw_legal_destinations()[0])
++                         ': '+destinations[0])
+         self.redraw()
+ 
+     def _withdraw_confirm(self):
+         if self.pending_withdraw is None:return
+-        legal=self._withdraw_legal_destinations()
+-        if not legal:
++        legal=set(self._withdraw_legal_destinations())
++        destinations=self.withdraw_legal_snapshot
++        # D89D uses the province explicitly selected, never whichever legal
++        # province later moved into the same menu position. Fail closed if
++        # this destination or a previously staged whole-army destination
++        # becomes illegal; do not silently redirect an officer or RNG draw.
++        if (not destinations or not legal or
++                any(pid not in legal for pid in self.withdraw_chosen.values()) or
++                destinations[self.withdraw_index % len(destinations)] not in legal):
+             self.pending_withdraw=None
+-            self.message.set('Cannot flee')
++            self.withdraw_chosen={}
++            self.message.set('Selected withdrawal destination unavailable')
++            self.redraw()
+             return
+         officers=self.pending_withdraw['officers']
+         # D905 commits the source-selected officer, not whichever eligible
+@@ -262,11 +277,11 @@
+             self.redraw()
+             return
+         oid=officers[self.withdraw_position]
+-        self.withdraw_chosen[oid]=legal[self.withdraw_index%len(legal)]
++        self.withdraw_chosen[oid]=destinations[self.withdraw_index%len(destinations)]
+         if self.pending_withdraw['whole'] and self.withdraw_position+1<len(officers):
+             self.withdraw_position+=1
+             self.withdraw_index=0
+-            self.message.set('Withdraw where? '+officers[self.withdraw_position]+' : '+legal[0])
++            self.message.set('Withdraw where? '+officers[self.withdraw_position]+' : '+destinations[0])
+             self.redraw()
+             return
+         whole=self.pending_withdraw['whole']
+@@ -364,7 +379,7 @@
+                 self.message.set('Withdrawal cancelled')
+                 self.redraw();return
+             if button in ('up','left','down','right'):
+-                options=self._withdraw_legal_destinations()
++                options=self.withdraw_legal_snapshot
+                 if options:
+                     delta= -1 if button in ('up','left') else 1
+                     self.withdraw_index=(self.withdraw_index+delta)%len(options)
