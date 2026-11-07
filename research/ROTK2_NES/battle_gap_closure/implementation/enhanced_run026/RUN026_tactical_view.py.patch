@@ -1,0 +1,69 @@
+--- Run025/third_branch/tactical_view.py
++++ Run026/third_branch/tactical_view.py
+@@ -129,7 +129,7 @@
+         self.reinforce_index=0;self.reinforce_rice=0;self.reinforce_gold=0
+         self.withdraw_index=0;self.withdraw_whole=False
+         self.prisoner_index=0;self.prisoner_decision_index=0
+-        self.controller_actions=commands;self.controller_index=0;self.targeting=False;self.target_mode='battle_move'
++        self.controller_actions=commands;self.controller_index=0;self.targeting=False;self.target_mode='battle_move';self.target_actor=None
+         self.pending_withdraw=None;self.withdraw_chosen={};self.withdraw_position=0;self.withdraw_index=0;self.withdraw_legal_snapshot=None
+         self.pending_prisoner=False
+         self._last_summary=None
+@@ -390,7 +390,8 @@
+             return
+         if self.targeting:
+             if button=='b':
+-                self.targeting=False;self.message.set('Movement cancelled');self.redraw();return
++                self.targeting=False;self.target_actor=None
++                self.message.set('Movement cancelled');self.redraw();return
+             if button in ('up','down','left','right'):
+                 self.target_q=max(0,min(GRID_W-1,self.target_q+({'left':-1,'right':1}.get(button,0))))
+                 self.target_r=max(0,min(GRID_H-1,self.target_r+({'up':-1,'down':1}.get(button,0))))
+@@ -398,6 +399,18 @@
+                 self.redraw();return
+             if button=='a':
+                 self.targeting=False
++                # Q03–Q05: the visible Move/Attack target belongs to the
++                # officer selected when targeting began. Do not silently
++                # substitute an ally after a stale selection or mid-modal
++                # campaign update; the source selected-unit turn is atomic.
++                original=self.target_actor
++                self.target_actor=None
++                battle=self.parent.c.state.get('battle')
++                on_field=bool(battle and battle.get('officer_units'))
++                if (not battle or self.selected_officer!=original or
++                    (on_field and (original is None or original not in self._withdraw_officers()))):
++                    self.message.set('Selected officer no longer available')
++                    self.redraw();return
+                 if self.target_mode=='battle_attack':
+                     b=self.parent.c.state.get('battle')
+                     enemy='A' if self._player_side()=='D' else 'D'
+@@ -445,10 +458,26 @@
+     def start_target(self,mode='battle_move'):
+         battle=self.parent.c.state.get('battle')
+         if not battle:self.message.set('Battle finished');return
++        # Source Q03–Q05 input_move_unit selects a live on-field unit first.
++        # An obsolete off-field cursor must not inherit an attacker position
++        # while the human is defending (or vice versa).
++        officer_mode=bool(battle.get('officer_units'))
++        if officer_mode and self.selected_officer not in self._withdraw_officers():
++            self.targeting=False
++            self.target_actor=None
++            self.message.set('Selected officer no longer available')
++            self.redraw();return
+         self.targeting=True
+         self.target_mode=mode
+-        u=next((u for u in battle.get('officer_units',[]) if u['id']==self.selected_officer),None)
+-        self.target_q=(u or battle['a'])['q'];self.target_r=(u or battle['a'])['r']
++        self.target_actor=self.selected_officer
++        # Saved legacy aggregate-only campaigns retain their pre-Run026
++        # targeting fallback; the source bound-officer guard applies to
++        # actual four-list/officer-ledger combat only.
++        if officer_mode:
++            u=next(u for u in battle['officer_units'] if u['id']==self.target_actor)
++        else:
++            u=battle['a']
++        self.target_q=u['q'];self.target_r=u['r']
+         self.message.set('NES D-pad chooses destination; A commits '+mode+', B cancels')
+         self.redraw()
+     def _player_side(self):
