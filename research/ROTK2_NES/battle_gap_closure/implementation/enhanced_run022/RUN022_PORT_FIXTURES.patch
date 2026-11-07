@@ -1,0 +1,44 @@
+--- Run021/tests/test_build37_human_defender_controller.py
++++ Run022/tests/test_build37_human_defender_controller.py
+@@ -75,11 +75,16 @@
+ 
+ 
+ def test_defender_whole_withdraw_and_invalid_destination():
++    # Run022 source correction (hsovl2 D905/D89D): B1 is the primary
++    # commander in this fixture; B2 may NOT order the entire army.
+     c=started(3704);before=save_bytes(c)
++    with pytest.raises(CoreError,match='ONLY_COMMANDER_WHOLE_WITHDRAW'):
++        c.do('battle_withdraw','B2',{'destination':'p7','whole_army':True},'b37:secondary')
++    assert save_bytes(c)==before
+     with pytest.raises(CoreError):
+-        c.do('battle_withdraw','B2',{'destination':'p3','whole_army':True},'b37:bad')
++        c.do('battle_withdraw','B1',{'destination':'p3','whole_army':True},'b37:bad')
+     assert save_bytes(c)==before
+-    out=c.do('battle_withdraw','B2',{'destination':'p7','whole_army':True},'b37:whole')
++    out=c.do('battle_withdraw','B1',{'destination':'p7','whole_army':True},'b37:whole')
+     assert out['resolved'] and c.state['battle'] is None
+     assert c.state['owners']['p5']=='A'
+     assert validate(c.state)
+--- Run021/tests/test_build45_q09_defender_selected_retreat.py
++++ Run022/tests/test_build45_q09_defender_selected_retreat.py
+@@ -22,9 +22,11 @@
+ 
+ 
+ def test_defender_whole_retreat_honors_selected_not_first_neighbor():
++    # Run022: original main commander B1 (not subordinate B2) has the
++    # source's whole-army authority. Keep B2's actual relocation assertion.
+     c=setup();start=save_bytes(c)
+     before=ac.strength(c.state,'B2','p5')
+-    out=c.do('battle_withdraw','B2',{'destination':'p7','whole_army':True},'b45:withdraw')
++    out=c.do('battle_withdraw','B1',{'destination':'p7','whole_army':True},'b45:withdraw')
+     assert out['resolved'] and c.state['battle'] is None
+     assert c.state['core']['officers']['B2']['province_id']=='p7'
+     assert ac.strength(c.state,'B2','p7')==before
+@@ -32,7 +34,7 @@
+     assert validate(c.state)
+     assert load_bytes(save_bytes(c)).fingerprint==c.fingerprint
+     replay=load_bytes(start)
+-    replay.do('battle_withdraw','B2',{'destination':'p7','whole_army':True},'b45:withdraw')
++    replay.do('battle_withdraw','B1',{'destination':'p7','whole_army':True},'b45:withdraw')
+     assert replay.fingerprint==c.fingerprint
+ 
