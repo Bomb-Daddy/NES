@@ -1,0 +1,23 @@
+--- RUN039/third_branch/officer_battle_adapter.py
++++ RUN040/third_branch/officer_battle_adapter.py
+@@ -1239,7 +1239,20 @@
+         ceiling=max(1,20-max(diff//5,1))
+         aa=20 if aw<dw else ceiling
+         dd=20 if dw<aw else ceiling
+-        if challenger.get('protected') or opponent.get('protected'):
++        # Q11 hsovl52 / ai_eval_odds_b: the non-lethal duel ceilings also
++        # apply to a former subject of the OTHER duelist's current ruler,
++        # not solely to an original +3 protected officer.  Only explicit
++        # source-backed switched/previous-liege metadata can activate this
++        # branch; unknown officer history must not be invented from side.
++        former_subordinate=(
++            (challenger.get('switched') is True and
++             challenger.get('original_faction')==(
++                 b['defender'] if opponent['side']=='D' else b['attacker'])) or
++            (opponent.get('switched') is True and
++             opponent.get('original_faction')==(
++                 b['defender'] if challenger['side']=='D' else b['attacker']))
++        )
++        if challenger.get('protected') or opponent.get('protected') or former_subordinate:
+             aa=max(1,aw//10);dd=max(1,dw//10)
+         result='DRAW'
