@@ -21,3 +21,4 @@
 +        if challenger.get('protected') or opponent.get('protected') or former_subordinate:
              aa=max(1,aw//10);dd=max(1,dw//10)
          result='DRAW'
+         for _ in range(10):
