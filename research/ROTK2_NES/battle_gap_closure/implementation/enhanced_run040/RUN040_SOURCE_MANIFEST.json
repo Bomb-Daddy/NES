@@ -1,0 +1,24 @@
+{
+  "version": "Enhanced Run040 Q11 Former-Subject Duel",
+  "game": "Original-KOEI Enhanced only (NOT Classic NES/DOS)",
+  "original_game_root_id": "1i5kLog2o1tC9c2dsjdF2CLFnXYQHVk_l",
+  "parent_sha256": "e2a1581af46f900fe16cc311566a27946320689ffb99e8a0ad21e72278153935",
+  "new_sha256": "19bd16739b8a168b3c5b5a0d5fbcf9f7032777c9967f4815ea1852e1f5e7308a",
+  "new_size_bytes": 148795770,
+  "zip_entries": 558,
+  "inherited_unchanged": 556,
+  "production": "third_branch/officer_battle_adapter.py",
+  "new_test": "tests/test_run040_q11_former_subject_duel.py",
+  "qa": {
+    "red": "2 failed 5 passed",
+    "green": "7 passed",
+    "mutant": "2 intended failures 5 controls passed",
+    "working": "213 passed",
+    "cold_extracted": "213 passed",
+    "inherited_q11": "16 passed"
+  },
+  "drive_source_publication": "BLOCKED container_session_unavailable / BLOCKED_FILE_REFERENCE",
+  "original_NES_30_goldens": "NOT RUN",
+  "native_windows": "NOT RUN",
+  "physical_xbox": "NOT RUN"
+}
