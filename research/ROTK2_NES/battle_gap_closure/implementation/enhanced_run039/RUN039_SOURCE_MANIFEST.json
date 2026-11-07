@@ -1,0 +1,23 @@
+{
+  "run": "Run039",
+  "product": "Original-KOEI Enhanced, not NES Classic or DOS",
+  "immutable_parent_run": "Run038",
+  "immutable_parent_sha256": "1a1b193c1bb8f4aa5f5f343bbcc9c5617d4889cd2b550f5a8a03aa2041c3e14f",
+  "source_sha256": "e2a1581af46f900fe16cc311566a27946320689ffb99e8a0ad21e72278153935",
+  "size_bytes": 148793567,
+  "zip_crc_clean_entries": 557,
+  "inherited_entries_unchanged": 554,
+  "parent_entries": 556,
+  "production_changes": [
+    "third_branch/officer_battle_adapter.py"
+  ],
+  "inherited_test_updated": [
+    "tests/test_run037_q08_fire_empty_hex.py"
+  ],
+  "test_added": [
+    "tests/test_run039_q08_friendly_cell_fire.py"
+  ],
+  "platform": "Linux Python3.13 Xvfb; no Windows/Xbox/original NES emulator",
+  "source_confidence": "Q08 source code interpreted as occupied-unit independent of faction; original NES controller behavior unverified",
+  "acceptance": "TESTED_PORT_PARTIAL"
+}
