@@ -1,0 +1,20 @@
+--- RUN015A/third_branch/historical_s1.py
++++ RUN016/third_branch/historical_s1.py
+@@ -188,12 +188,15 @@
+     # not the static scenario start/arrival fields. Make free officers visible
+     # to the same recruiting UI without inventing a garrison or original chance.
+     battle_free=list(s.get('q14_free_officers_by_province',{}).get(province,()))
+-    if s.get('source_label')!=S1_LABEL:return sorted(battle_free)
++    # Source root $5122 keeps the linked free-officer HEAD at list position 0.
++    # Sorting this sequence makes later player-visible recruiting choices differ.
++    if s.get('source_label')!=S1_LABEL:return battle_free
+     hidden=(key for key,o in s['officer_catalog'].items()
+             if s['officer_availability'][key] in ('Hidden/searchable at start','Arrived/searchable')
+             and (o['scenario1_start_province'] if s['officer_availability'][key]=='Hidden/searchable at start'
+                  else o['scenario1_arrival_province'])==int(province[1:]))
+-    return sorted(set(battle_free)|set(hidden),key=lambda k:(int(k[4:]) if k.startswith('nes:') else 100000,k))
++    ordered_hidden=sorted(set(hidden)-set(battle_free),key=lambda k:(int(k[4:]) if k.startswith('nes:') else 100000,k))
++    return battle_free+ordered_hidden
+ 
+ def recruit_officer(s,actor,pid,f,params):
+     from .integrated import reject
