@@ -1,0 +1,16 @@
+--- Run014/third_branch/officer_battle_adapter.py
++++ Run015/third_branch/officer_battle_adapter.py
+@@ -1192,10 +1192,9 @@
+         # The original ruler menu cannot offer a non-adjacent refuge.
+         ruler=s['factions'][b['defender']].get('ruler_officer')
+         if oid==ruler and decision=='recruit':fail('RULER_CANNOT_BE_RECRUITED')
+-        if decision=='release' and (
+-                ruler_release_destination(s,b,oid) is None if oid==ruler
+-                else not any(pid!=b['dst'] and owner==b['defender']
+-                             for pid,owner in s['owners'].items())):
++        # The original ruler is Behead-only without refuge; ordinary
++        # prisoners may still Release, becoming FREE at the battlefield.
++        if decision=='release' and oid==ruler and ruler_release_destination(s,b,oid) is None:
+             fail('NO_RELEASE_DESTINATION')
+         if decision not in prisoner_options(s,b,oid):fail('BAD_PRISONER_DECISION')
+         b['prisoner_decisions'][oid]=decision

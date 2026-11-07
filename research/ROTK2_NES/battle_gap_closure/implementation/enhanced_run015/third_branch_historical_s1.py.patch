@@ -1,0 +1,25 @@
+--- Run014/third_branch/historical_s1.py
++++ Run015/third_branch/historical_s1.py
+@@ -184,11 +184,17 @@
+ 
+ def list_recruitable(s,province):
+     """Hidden or arrived officers in target province; no hidden officer commands until recruited."""
+-    if s.get('source_label')!=S1_LABEL:return []
+-    return sorted((key for key,o in s['officer_catalog'].items()
+-                   if s['officer_availability'][key] in ('Hidden/searchable at start','Arrived/searchable')
+-                   and (o['scenario1_start_province'] if s['officer_availability'][key]=='Hidden/searchable at start'
+-                        else o['scenario1_arrival_province'])==int(province[1:])),key=lambda k:int(k[4:]))
++    # Q14 free officers are already REAL core records. They use the normal
++    # recruitment action but must appear in the strategic candidate menu,
++    # including in synthetic fixture campaigns with no historical catalog.
++    free=[oid for oid,record in s.get('free_officers',{}).items()
++          if record['province_id']==province]
++    if s.get('source_label')!=S1_LABEL:return sorted(free)
++    historical=[key for key,o in s['officer_catalog'].items()
++                if s['officer_availability'][key] in ('Hidden/searchable at start','Arrived/searchable')
++                and (o['scenario1_start_province'] if s['officer_availability'][key]=='Hidden/searchable at start'
++                     else o['scenario1_arrival_province'])==int(province[1:])]
++    return sorted(set(free)|set(historical),key=lambda k:int(k[4:]))
+ 
+ def recruit_officer(s,actor,pid,f,params):
+     from .integrated import reject

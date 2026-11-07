@@ -1,0 +1,113 @@
+--- Run014/third_branch/integrated.py
++++ Run015/third_branch/integrated.py
+@@ -177,6 +177,26 @@
+         for val in s['extras'][pid].values():integer(val,0)
+         for other in s['neighbors'][pid]:
+             if pid not in s['neighbors'].get(other,[]):reject('ASYMMETRIC_GRAPH')
++    # Q14 sengo $84F6 / root $4EB0: a released ordinary prisoner with
++    # no refuge is an unaffiliated FREE officer in the contested province,
++    # not a phantom living faction or an erased officer. Legacy saves have
++    # no free_officers key; the empty ledger is backward compatible.
++    free=s.get('free_officers',{})
++    if not isinstance(free,dict) or (set(free)&set(s['officer_faction'])):
++        reject('BAD_FREE_OFFICER_LIST')
++    if set(s['core']['officers']) != set(s['officer_faction'])|set(free):
++        reject('UNCLASSIFIED_OFFICER')
++    for oid,record in free.items():
++        if (not isinstance(record,dict) or
++                record.get('province_id')!=s['core']['officers'][oid]['province_id'] or
++                record.get('province_id') not in s['owners'] or
++                oid in s['officer_loyalty'] or
++                s.get('unit_training',{}).get(oid)!=100 or
++                ac.army_id(oid) in s['armies'] or
++                any(entry.get('officer')==oid for entry in s.get('governors',{}).values()) or
++                (s.get('source_label')=='ORIGINAL_GAME_HISTORICAL_S1_PROPOSED' and
++                 s.get('officer_availability',{}).get(oid)!='Free/recruitable')):
++            reject('BAD_FREE_OFFICER_LIST')
+     for o,f in s['officer_faction'].items():
+         if o not in s['core']['officers'] or f not in s['factions']:reject('BAD_OFFICER')
+         if s['owners'][s['core']['officers'][o]['province_id']]!=f:reject('OFFICER_OWNER_MISMATCH',o)
+@@ -255,6 +275,7 @@
+         q=self.preview(kind,actor,params,request_id)
+         return self.execute(kind,actor,params,request_id,q['quote_id'],q['revision'])
+     def _actor(self,s,actor,require_owner=True):
++        if actor not in s['officer_faction']:reject('FREE_OFFICER_CANNOT_ACT')
+         o=s['core']['officers'][actor];pid=o['province_id'];f=s['officer_faction'][actor]
+         if require_owner and s['owners'][pid]!=f:reject('WRONG_OWNER')
+         return o,pid,f
+@@ -268,6 +289,23 @@
+         if kind in relations.PERSONNEL_COMMANDS:
+             return relations.perform(s,actor,kind,p)
+         if kind=='recruit_officer':
++            # A genuine no-refuge Q14 free officer remains on the map and is
++            # recruitable through the existing strategic officer action.
++            # The established Enhanced recruit BP/loyalty policy is retained;
++            # neither is asserted to be an NES-original recruitment formula.
++            target=p.get('officer_id')
++            if target in s.get('free_officers',{}):
++                if (s['core']['officers'][target]['province_id']!=pid or
++                        s['owners'][pid]!=f):reject('NOT_RECRUITABLE')
++                if o['bp']<BP_COST['recruit_officer']:reject('NO_BP')
++                o['bp']-=BP_COST['recruit_officer']
++                del s['free_officers'][target]
++                s['officer_faction'][target]=f
++                s['officer_loyalty'][target]=60  # existing Enhanced policy
++                if 'officer_availability' in s:
++                    s['officer_availability'][target]='Serving'
++                return {'officer_id':target,'province':pid,'ruler':f,
++                        'loyalty':60,'status':'recruited_free'}
+             from .historical_s1 import recruit_officer
+             if s.get('source_label')!='ORIGINAL_GAME_HISTORICAL_S1_PROPOSED':reject('BAD_SCENARIO')
+             return recruit_officer(s,actor,pid,f,p)
+@@ -1039,21 +1077,37 @@
+                     # rulers. A sorted distant fallback is NOT the source's
+                     # first linked-owned province and can relocate the wrong
+                     # general. Preserve a missing-list-head uncertainty.
+-                    if not any(owner==b['defender'] for owner in s['owners'].values()):
+-                        reject('NO_RELEASE_DESTINATION')
+                     where=officercombat.release_destination(s,b,oid)
+-                    if where is None:reject('NO_RELEASE_DESTINATION')
+-                    # Original root $5154 calls $507C when the selected
+-                    # Release province is unowned: the returning officer's
+-                    # liege claims that actual province immediately.  Simply
+-                    # moving the officer record would strand a foreign officer
+-                    # in neutral territory and prevent the battle transaction.
+-                    # Do not synthesize a ruler-owned-list HEAD here: the
+-                    # source's linked order is separate, still-unhydrated data.
+-                    if s['owners'][where] is None:
+-                        s['owners'][where]=s['officer_faction'][oid]
+-                    off['province_id']=where
+-                    dispositions.append({'officer':oid,'status':'released','province':where})
++                    if where is None:
++                        # Original sengo $84F6/root $4EB0: an ordinary
++                        # officer without a legal refuge becomes FREE at the
++                        # battlefield, with no ruler, men, army or loyalty.
++                        if oid==s['factions'][b['defender']].get('ruler_officer'):
++                            reject('NO_RELEASE_DESTINATION')
++                        army=s['armies'].get(ac.army_id(oid))
++                        if army and ac.army_total(army):
++                            reject('FREE_OFFICER_HAS_ARMY')
++                        relations.drop_binding(s,oid)
++                        former=s['officer_faction'].pop(oid)
++                        s['officer_loyalty'].pop(oid,None)
++                        off['province_id']=b['dst']
++                        s.setdefault('unit_training',{})[oid]=100
++                        if 'unit_armed_men' in s:s['unit_armed_men'][oid]=0
++                        s.setdefault('free_officers',{})[oid]={
++                            'province_id':b['dst'],'prior_faction':former,
++                            'source_rule':'Q14_NO_REFUGE_FREE'}
++                        if 'officer_availability' in s:
++                            s['officer_availability'][oid]='Free/recruitable'
++                        dispositions.append({'officer':oid,'status':'released_free',
++                                             'province':b['dst']})
++                    else:
++                        # root $5154/$507C: unowned destination becomes the
++                        # real released officer's faction, not a ghost army.
++                        if s['owners'][where] is None:
++                            s['owners'][where]=s['officer_faction'][oid]
++                        off['province_id']=where
++                        dispositions.append({'officer':oid,'status':'released',
++                                             'province':where})
+                 elif decision=='behead':
+                     if s['factions'][b['defender']].get('ruler_officer')==oid:
+                         # Ruler succession requires original-source evidence;
