@@ -1,0 +1,47 @@
+--- Run018/third_branch/officer_battle_adapter.py
++++ Run019/third_branch/officer_battle_adapter.py
+@@ -219,9 +219,43 @@
+             defender.append((oid,men))
+     if sum(x[1] for x in defender)!=b['d']['troops']:
+         fail('UNACCOUNTED_DEFENDER_TROOPS')
++    # Q09 D648/D69A: a source-known officer arriving in an already attacked
++    # province is inserted at its province list HEAD with its unrounded
++    # original battle-scale troops.  Run018 persisted those arrivals but the
++    # next explicitly opened recipient battle silently alphabetized them and
++    # discarded fractional battle strength.  Honor the known head ordering
++    # and strength in the *existing* port battle; this is NOT the still-open
++    # simultaneous second-battle scheduling / four-slot parity claim.
++    pending=s.get('q09_pending_attacked_arrivals',{}).get(b['dst'],[])
++    pending_by_officer={r['officer']:r for r in pending}
++    if pending:
++        stationed={oid:men for oid,men in defender}
++        if len(pending_by_officer)!=len(pending) or any(
++            r['officer'] not in stationed or
++            r['faction']!=b['defender'] or
++            r['army_id']!=ac.army_id(r['officer']) or
++            r['troops100']//100>stationed[r['officer']]
++            for r in pending):
++            fail('BAD_Q09_ATTACKED_ARRIVAL')
++        defender=([(r['officer'],stationed[r['officer']]) for r in pending]
++                  +[(oid,men) for oid,men in defender if oid not in pending_by_officer])
+     for idx,(oid,men) in enumerate(defender):
+         q,r=choose('D',s['officer_faction'][oid]) if original else [(10,6),(10,5),(10,7),(9,6),(9,5),(9,7),(11,5),(11,6),(11,7)][idx%9]
+-        units.append(_unit(s,oid,'D',0,men,q,r,idx==0))
++        new_unit=_unit(s,oid,'D',0,men,q,r,idx==0)
++        if oid in pending_by_officer:
++            new_unit['troops100']=pending_by_officer[oid]['troops100']
++        units.append(new_unit)
++    if pending:
++        # Dequeue only after the real recipient battle has materialized;
++        # soldiers are ALREADY present in the station, not added a second time.
++        del s['q09_pending_attacked_arrivals'][b['dst']]
++        if not s['q09_pending_attacked_arrivals']:
++            del s['q09_pending_attacked_arrivals']
++        b.setdefault('combat_events',[]).append({
++            'kind':'q09_recipient_source_attached_port_partial',
++            'destination':b['dst'],
++            'officers':[r['officer'] for r in pending],
++            'simultaneous_second_battle':'NOT_IMPLEMENTED'})
+     # Q09 Run011: import only genuinely supplied strategic source records;
+     # never synthesize NES bytes from Enhanced BP, movement points or stats.
+     source_records=validate_q09_source_import(s)
