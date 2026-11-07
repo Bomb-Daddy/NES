@@ -1,0 +1,22 @@
+{
+  "project": "Original-KOEI Inspired Enhanced, not Classic SUP-0016/DOS",
+  "run": "Run042",
+  "direct_parent": "Run041",
+  "parent_full_sha256": "c99691f5f0134cda74e022f5a3d34bce0822188c772ce458ef9c03ffb8543d98",
+  "source_full_sha256": "372c4e2cb2ab94be68c47735024fe72999c82db8cc4cc9aa3dd542405cb47357",
+  "source_bytes": 148806922,
+  "zip_members": 563,
+  "unchanged_inherited_members": 560,
+  "qa_sha256": "d674f8e8daec91f8e4fb083c00c7cb0493b35ae958a06665962b830ff9cc9b77",
+  "drive_folder_id": "1W5sjqDkUOxWCtpJr87d08O-aC5hYUwb4",
+  "independently_drive_retrieved_parts": 18,
+  "source_crc": "PASS",
+  "selected_broad": 241,
+  "drive_cold_passed": 241,
+  "actual_platform": "Linux Python3.13.5 Xvfb, Tk software controller",
+  "original_nes_goldens": "NOT_RUN",
+  "native_windows": "NOT_RUN",
+  "physical_xbox": "NOT_RUN",
+  "source_status": "VERIFIED_STATIC",
+  "port_status": "TESTED_PORT_PARTIAL"
+}
