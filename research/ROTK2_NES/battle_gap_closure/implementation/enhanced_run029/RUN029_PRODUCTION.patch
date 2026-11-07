@@ -1,0 +1,88 @@
+--- a/third_branch/tactical_view.py
++++ b/third_branch/tactical_view.py
+@@ -131,7 +131,7 @@
+         self.prisoner_index=0;self.prisoner_decision_index=0
+         self.controller_actions=commands;self.controller_index=0;self.targeting=False;self.target_mode='battle_move';self.target_actor=None
+         self.pending_withdraw=None;self.withdraw_chosen={};self.withdraw_position=0;self.withdraw_legal_snapshot=None
+-        self.pending_prisoner=False
++        self.pending_prisoner=False;self.pending_prisoner_actor=None;self.pending_prisoner_options=()
+         self._last_summary=None
+         battle=parent.c.state.get('battle',{})
+         human_side=('D' if parent.c.state.get('human_faction')==battle.get('defender') else 'A')
+@@ -308,19 +308,38 @@
+             return
+         self.prisoner_decision_index=0
+         self.pending_prisoner=True
++        # Q14 decisions apply to the displayed captured officer. Preserve
++        # both the officer ID and displayed decision identities through A.
++        # Live queue/menu indices are not stable after another disposition.
++        self.pending_prisoner_actor=oid
++        self.pending_prisoner_options=tuple(options)
+         self.message.set(f'How will you treat {oid}? {options[0].title()}')
+         self.redraw()
+ 
+     def _prisoner_confirm(self):
+-        oid=self._prisoner_choice()
+-        options=self._prisoner_options()
+-        if oid is None or not options:
++        oid=getattr(self,'pending_prisoner_actor',None)
++        choices=getattr(self,'pending_prisoner_options',())
++        # If a saved campaign / second controller changed the queue while
++        # this modal was open, fail without targeting the next prisoner.
++        # Likewise do not reinterpret a visible decision index against a
++        # newly generated legal-options list (e.g. ruler options).
++        active=self._prisoner_choice()
++        current=self._prisoner_options() if oid==active else ()
++        if (oid is None or not choices or oid!=active or
++                oid not in self.parent.c.state['battle'].get('prisoner_queue',()) or
++                oid in self.parent.c.state['battle'].get('prisoner_decisions',{}) or
++                choices[self.prisoner_decision_index%len(choices)] not in current):
+             self.pending_prisoner=False
+-            self.message.set('No prisoner awaiting disposition')
+-            return
++            self.pending_prisoner_actor=None
++            self.pending_prisoner_options=()
++            self.message.set('Selected prisoner decision unavailable')
++            self.redraw()
++            return
++        decision=choices[self.prisoner_decision_index%len(choices)]
+         self.pending_prisoner=False
+-        self._issue('battle_prisoner',{'officer_id':oid,
+-                    'decision':options[self.prisoner_decision_index%len(options)]})
++        self.pending_prisoner_actor=None
++        self.pending_prisoner_options=()
++        self._issue('battle_prisoner',{'officer_id':oid,'decision':decision})
+ 
+     def _menu_action(self,branch,choice):
+         if branch=='Move':
+@@ -355,21 +374,27 @@
+         if getattr(self,'pending_prisoner',False):
+             if button=='b':
+                 self.pending_prisoner=False
++                self.pending_prisoner_actor=None
++                self.pending_prisoner_options=()
+                 self.message.set('Prisoner decision cancelled')
+                 self.redraw();return
+             if button=='select':
+                 self.prisoner_index+=1
+                 self.prisoner_decision_index=0
++                # SELECT explicitly changes the displayed prisoner; freeze
++                # that new identity and its visible options, not a list slot.
++                self.pending_prisoner_actor=self._prisoner_choice()
++                self.pending_prisoner_options=tuple(self._prisoner_options())
+             elif button in ('left','right','up','down'):
+-                options=self._prisoner_options()
++                options=getattr(self,'pending_prisoner_options',())
+                 if options:
+                     step=-1 if button in ('left','up') else 1
+                     self.prisoner_decision_index=(self.prisoner_decision_index+step)%len(options)
+             elif button=='a':
+                 self._prisoner_confirm();return
+-            options=self._prisoner_options()
++            options=getattr(self,'pending_prisoner_options',())
+             if options:
+-                self.message.set('How will you treat '+str(self._prisoner_choice())+
++                self.message.set('How will you treat '+str(self.pending_prisoner_actor)+
+                    '? '+options[self.prisoner_decision_index%len(options)].title())
+             self.redraw();return
+         if self.pending_withdraw is not None:
