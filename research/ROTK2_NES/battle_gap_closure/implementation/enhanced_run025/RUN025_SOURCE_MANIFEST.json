@@ -1,0 +1,10 @@
+{
+  "product": "Original-KOEI Enhanced only",
+  "parent_run": "Run024",
+  "parent_sha256": "d48cdf9bf04999db31568cb303da92cdb2e402dd4cebbbcb5ba7e66e6491b0b8",
+  "run": "Run025",
+  "source_sha256": "3159e3e916d1ad821e1245940a8df9e5d66bb35e4085c7c01c3c0ac306c22509",
+  "size": 148757724,
+  "zip_entries": 543,
+  "classification": "TESTED_PORT / PARTIAL"
+}
