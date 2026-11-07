@@ -1,0 +1,32 @@
+{
+  "project": "Original-KOEI Inspired Enhanced; NOT NES Classic or DOS",
+  "version": "Run043 Q04 uncommitted deployment marker",
+  "direct_parent_run": "Run042",
+  "direct_parent_sha256": "372c4e2cb2ab94be68c47735024fe72999c82db8cc4cc9aa3dd542405cb47357",
+  "new_complete_zip_sha256": "84c59e2448311eaa075f5fe3932674d84d87306d4ce484ab60cee16d46ae36be",
+  "new_zip_bytes": 148810228,
+  "new_zip_members": 565,
+  "unchanged_parent_entries": 562,
+  "modified_production_file": "third_branch/tactical_view.py",
+  "new_source_entries": [
+    "tests/test_run043_q04_provisional_display.py",
+    "RUN043_Q04_UNPLACED_VISUAL_IDENTITY_README.md"
+  ],
+  "new_folder_id": "1PxZOCIndnkT6TYT4gN57K9VZRRBs3CCv",
+  "original_game_root_id": "1i5kLog2o1tC9c2dsjdF2CLFnXYQHVk_l",
+  "source_local_status": "VERIFIED_STATIC",
+  "source_drive_status": "BLOCKED_container_session_unavailable",
+  "latest_fully_drive_verified_source": "Run042",
+  "red_parent": "3 FAIL / 2 PASS",
+  "green": "5 PASS",
+  "negative_mutant": "2 expected FAIL / 3 PASS",
+  "selected_broad": 252,
+  "cold_source": 252,
+  "save_load": "three independent Linux Python processes .ro2 confirmed",
+  "actual_GUI": "Linux Python3.13.5 Xvfb Tk software controller",
+  "native_windows": "NOT RUN",
+  "physical_xbox_current": "NOT RUN",
+  "original_NES_30_goldens": "NOT RUN",
+  "overall": "TESTED_PORT PARTIAL",
+  "note": "GitHub files are research-only source patch and tests; NOT canonical full source and NOT proof original NES pixel/text parity."
+}
