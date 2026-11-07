@@ -1,0 +1,87 @@
+--- RUN015A/third_branch/integrated.py
++++ RUN016/third_branch/integrated.py
+@@ -169,6 +169,10 @@
+     # Q14 sengo $84F6 -> root $4EB0/$5122: an ordinary prisoner with
+     # no legal return remains a REAL, unaffiliated officer in the contested
+     # province's free list. Existing old saves have no such list, treated empty.
++    # Run015A is the selected immutable parent. Run015B's separate per-officer
++    # free_officers state is NOT a compatible province-head-order save schema;
++    # never reinterpret it silently. The B artifacts remain preserved.
++    if 'free_officers' in s:reject('RUN015B_SCHEMA_UNMIGRATED')
+     free=s.get('q14_free_officers_by_province',{})
+     if not isinstance(free,dict):reject('BAD_Q14_FREE_LIST')
+     seen=set()
+@@ -188,6 +192,28 @@
+             seen.add(oid)
+     if set(s['core']['officers'])!=set(s['officer_faction'])|seen:
+         reject('BAD_Q14_FREE_LIST')
++    # B sibling's beneficial prior-faction metadata is retained as an additive
++    # optional ledger alongside A's original province-linked officer order.
++    # Old A candidate saves had no provenance field and remain readable.
++    provenance=s.get('q14_free_officer_provenance',{})
++    if not isinstance(provenance,dict) or not set(provenance).issubset(seen):
++        reject('BAD_Q14_FREE_PROVENANCE')
++    for oid,record in provenance.items():
++        if not isinstance(record,dict) or set(record)!={
++                'province_id','prior_faction','source_rule','original_special_flag'}:
++            reject('BAD_Q14_FREE_PROVENANCE')
++        if (record['province_id']!=s['core']['officers'][oid]['province_id'] or
++            record['prior_faction'] not in s['factions'] or
++            record['source_rule']!='Q14_NO_REFUGE_FREE' or
++            record['original_special_flag'] not in ('UNKNOWN_NOT_INFERRED','SOURCE_KNOWN_FALSE') or
++            (record['original_special_flag']=='SOURCE_KNOWN_FALSE' and
++             s.get('q14_source_special_free_flag',{}).get(oid,'missing') is not False)):
++            reject('BAD_Q14_FREE_PROVENANCE')
++        # Only a new source-known free officer is annotated. Historical old
++        # Run015A saves had Serving even when free; preserve old bytes.
++        if ('officer_availability' in s and oid in s['officer_availability'] and
++            s['officer_availability'][oid]!='Free/recruitable'):
++            reject('BAD_Q14_FREE_PROVENANCE')
+     ac.validate_armies(s)
+     relations.validate(s)
+     if s['month']!=scheduler.cursor(s['core'])[0]:reject('CALENDAR_MISMATCH')
+@@ -304,6 +330,7 @@
+                 o['bp']-=8
+                 free.remove(target)
+                 if not free:del s['q14_free_officers_by_province'][pid]
++                s.get('q14_free_officer_provenance',{}).pop(target,None)
+                 s['officer_faction'][target]=f
+                 s['officer_loyalty'][target]=60
+                 if 'officer_availability' in s and target in s['officer_availability']:
+@@ -1098,8 +1125,8 @@
+                         # A factionless officer must not retain a sworn vow
+                         # or advisor appointment to the defeated faction.
+                         relations.drop_binding(s,oid)
++                        former=s['officer_faction'].pop(oid)
+                         off['province_id']=b['dst']
+-                        s['officer_faction'].pop(oid,None)
+                         s['officer_loyalty'].pop(oid,None)
+                         s.setdefault('unit_training',{})[oid]=100
+                         s.setdefault('unit_armed_men',{})[oid]=0
+@@ -1108,6 +1135,15 @@
+                         # Exact ordering among multiple free officers is a
+                         # separate original-data parity gate.
+                         free.setdefault(b['dst'],[]).insert(0,oid)
++                        special=s.get('q14_source_special_free_flag',{}).get(oid,'missing')
++                        s.setdefault('q14_free_officer_provenance',{})[oid]={
++                            'province_id':b['dst'],'prior_faction':former,
++                            'source_rule':'Q14_NO_REFUGE_FREE',
++                            'original_special_flag':('SOURCE_KNOWN_FALSE' if special is False
++                                                     else 'UNKNOWN_NOT_INFERRED')}
++                        if ('officer_availability' in s and
++                                oid in s['officer_availability']):
++                            s['officer_availability'][oid]='Free/recruitable'
+                         dispositions.append({'officer':oid,'status':'released_unaffiliated',
+                                              'province':b['dst']})
+                         continue
+@@ -1343,6 +1379,10 @@
+     if set(doc)!=set(('format','sha256','state')) or doc['format']!='OG-INTEGRATED-TEST-1':reject('BAD_SAVE')
+     if hash_state(doc['state'])!=doc['sha256']:reject('HASH_MISMATCH')
+     state=doc['state']
++    # Run015B and Run015A are siblings, NOT ancestor versions. B's indexed
++    # map cannot recover original per-province list-head order for multiple
++    # officers. Fail explicitly rather than silently corrupt saved game state.
++    if 'free_officers' in state:reject('RUN015B_SCHEMA_UNMIGRATED')
+     # Older v1.7 saves have only aggregate province troop numbers. Each soldier
+     # is assigned to an existing legal officer on upgrade, never to a reserve.
+     if 'armies' not in state:
