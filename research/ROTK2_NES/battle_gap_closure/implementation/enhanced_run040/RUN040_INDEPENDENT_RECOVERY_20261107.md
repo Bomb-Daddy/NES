@@ -1,0 +1,13 @@
+# Enhanced Run040 independent source recovery and verification — 2026-11-07
+
+Game boundary: Original-KOEI Enhanced source only (not canonical Classic NES SUP-0016 and not DOS). No canonical original or old Enhanced ZIP was overwritten.
+
+* **Drive-verified immutable source parent Run039:** 148793567 bytes, SHA-256 `e2a1581af46f900fe16cc311566a27946320689ffb99e8a0ad21e72278153935`, 557 entries/CRC clean. All 18 parts were independently materialized from correct original-game Run039 Drive folder `1SEsq7mVnbkG2UO6JkhkvJlwaGFbj8_BK`.
+* **Run040 exact reconstructed source:** published Run040 Q11 production patch plus test whose exact Git blob is `7cd227252e56673dee254a1040b9d49c1bac4a86`. New ZIP SHA-256 `19bd16739b8a168b3c5b5a0d5fbcf9f7032777c9967f4815ea1852e1f5e7308a`, 148795770 bytes, 558 ZIP CRC-clean members. This byte-for-byte reproduces prior Run040 manifest. This is recovery/verification of the already documented patch, not a novel Run041 feature.
+* **Independent Linux Python 3.13.5/Xvfb:** unmodified Run039 RED 2 failed/4 passed/1 GUI deselected; corrected Run040 GREEN 6 passed; real six-command Tk Q11 with disk save/second-process load 11 passed; wider selected run tests 217 passed; fresh cold-extracted ZIP 217 passed; bad-guard mutant 2 expected failures/4 controls passed, restored green 6 passed.
+* **Drive blocker:** rebuilt 18 source parts/QA locally but a bounded Files Library upload returned `container_file_not_found`. Run040 folder `1TcVy3A1UtLEn0yFr3eXtosAvWGv4Z6cn` has no independently verified binary source. Run039 remains latest *fully Drive-source verified* candidate, Run040 latest locally exact tested candidate.
+* **Completion classifications:** Run039 source VERIFIED_STATIC PASS; Run040 source VERIFIED_STATIC LOCAL PASS; Q11 TESTED_PORT PASS scoped; Tk OBSERVED_RUNTIME PASS Linux; binary publication REPORTED_UNREPRODUCED BLOCKED; NES emulator 30-goldens, current native Windows and physical Xbox REPORTED_UNREPRODUCED NOT RUN; attacked-recipient Q09 four-list scheduler INFERRED OPEN; Director one-to-one release acceptance OPEN.
+
+Collaboration handoff 096 (originally empty and misplaced) was filled with evidence, moved to actual Collaboration folder `1d0TA1lgqsVA3AWQQ9o0FZgmvao90oCeT`, and verified: https://docs.google.com/document/d/1crX9nEhAAzt-Juo0VwS4Hmq0Yi6j4ICpFGroTyKtrSw/edit .
+
+**Next executable action:** restore binary transport, upload/re-download 18 Run040 parts, independently reconstruct exact Run040 SHA/CRC, then authenticate original English NES Q09 under-attack escape second-battle scheduling and implement smallest source-backed correction. Do not mix Classic NES, DOS, or Original-game sources.
