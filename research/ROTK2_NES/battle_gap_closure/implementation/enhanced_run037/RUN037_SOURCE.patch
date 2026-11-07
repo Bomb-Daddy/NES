@@ -1,0 +1,107 @@
+--- Run036/third_branch/officer_battle_adapter.py
++++ Run037/third_branch/officer_battle_adapter.py
+@@ -1393,16 +1393,46 @@
+         if u['acted']:fail('ALREADY_ACTED')
+         mode=p.get('mode','normal')
+         if mode not in ('normal','charge','simult','fire'):fail('BAD_ATTACK_MODE')
+-        target=find(b,enemy_side,p.get('target_officer_id'))
+-        if target is None or core.distance((u['q'],u['r']),(target['q'],target['r']))!=1:
+-            fail('NOT_ADJACENT')
++        # Q08 Fire Trick is a TERRAIN ignition order, not an enemy-unit
++        # lookup. Original hex:$818A/$C99C has an unoccupied-cell chance;
++        # only an occupied cell applies the target-Int adjustment and direct
++        # 5% troop loss. Explicit target coordinates bind the visible hex,
++        # preventing a missing officer ID from silently targeting a different
++        # unit. Legacy officer-ID-only attacks remain supported.
++        has_cell='q' in p or 'r' in p
++        fire_cell=None
++        if has_cell:
++            if mode!='fire':fail('BAD_ATTACK_TARGET')
++            q=p.get('q');r=p.get('r')
++            if type(q) is not int or type(r) is not int or not 0<=q<13 or not 0<=r<12:
++                fail('BAD_ATTACK_TARGET')
++            if core.distance((u['q'],u['r']),(q,r))!=1:
++                fail('NOT_ADJACENT')
++            fire_cell=(q,r)
++            units_at=[v for v in b['officer_units'] if v['troops100']>=100
++                      and not v.get('fled') and not v.get('reserve')
++                      and (v['q'],v['r'])==fire_cell]
++            if any(v['side']==player_side for v in units_at):
++                # Friendly-cell Fire targeting remains an unsourced policy.
++                fail('FIRE_ALLY_CELL_UNVERIFIED')
++            target=next((v for v in units_at if v['side']==enemy_side),None)
++            if p.get('target_officer_id') is not None and (
++                    target is None or target['id']!=p['target_officer_id']):
++                fail('STALE_FIRE_TARGET')
++        else:
++            target=find(b,enemy_side,p.get('target_officer_id'))
++            if target is None or core.distance((u['q'],u['r']),(target['q'],target['r']))!=1:
++                fail('NOT_ADJACENT')
+         if mode=='fire':
+-            pos=(target['q'],target['r'])
+-            fire=core.ignite(b['terrain'][pos[1]][pos[0]],u['intel'],target['intel'],True,b['weather'],rand)
++            pos=fire_cell if fire_cell is not None else (target['q'],target['r'])
++            fire=core.ignite(b['terrain'][pos[1]][pos[0]],u['intel'],
++                             target['intel'] if target else 0,
++                             bool(target),b['weather'],rand)
+             if fire:
+                 if list(pos) not in b['burning']:b['burning'].append(list(pos))
+-                target['troops100']=max(0,target['troops100']-rand(max(1,target['troops100']*5//100)))
+-                target['troops']=core.projected_soldiers(target)
++                if target is not None:
++                    target['troops100']=max(0,target['troops100']-rand(max(1,target['troops100']*5//100)))
++                    target['troops']=core.projected_soldiers(target)
+             losses=[]
+         else:
+             losses=[]
+@@ -1434,7 +1464,7 @@
+         _sync(s,b)
+         outcome=_result(s,b)
+         if outcome:settle(s,outcome)
+-        return {'mode':mode,'officer':oid,'target':target['id'],'losses':losses,
++        return {'mode':mode,'officer':oid,'target':target['id'] if target else None,'losses':losses,
+                 'ignited':fire,'resolved':s['battle'] is None}
+     if kind!='battle_end_turn':fail('UNKNOWN_KIND')
+     # Human defender acts manually; CPU invaders must get their own turn.
+--- Run036/third_branch/tactical_view.py
++++ Run037/third_branch/tactical_view.py
+@@ -620,12 +620,21 @@
+                     found=next((u for u in b.get('officer_units',())
+                                 if u['side']==enemy and u['troops100']>=100 and not u.get('fled')
+                                 and (u['q'],u['r'])==(self.target_q,self.target_r)),None)
+-                    if found is None:
+-                        self.message.set('Missed!')
+-                        self.redraw()
+-                        return
+-                    self.selected_target=found['id']
+-                    self._issue('battle_attack',{'mode':self.target_attack_mode})
++                    if self.target_attack_mode=='fire':
++                        # Q08 selects a hex, including EMPTY terrain. Send its
++                        # exact visible coordinates, never a stale target from
++                        # the global officer cursor (Q08 $818A/$C99C).
++                        params={'mode':'fire','q':self.target_q,'r':self.target_r}
++                        if found is not None:
++                            params['target_officer_id']=found['id']
++                        self._issue('battle_attack',params)
++                    else:
++                        if found is None:
++                            self.message.set('Missed!')
++                            self.redraw()
++                            return
++                        self.selected_target=found['id']
++                        self._issue('battle_attack',{'mode':self.target_attack_mode})
+                 else:self._issue(self.target_mode,{'q':self.target_q,'r':self.target_r})
+             return
+         if button=='select':
+@@ -752,7 +761,10 @@
+         actor=self._officer()
+         if kind in ('battle_move','battle_move_enemy','battle_attack','battle_bribe','battle_duel','battle_wait','battle_withdraw') and self.selected_officer:
+             params=dict(params,officer_id=self.selected_officer)
+-        if kind in ('battle_attack','battle_move_enemy','battle_bribe','battle_duel') and self.selected_target and 'target_officer_id' not in params:
++        if (kind in ('battle_attack','battle_move_enemy','battle_bribe','battle_duel')
++                and self.selected_target and 'target_officer_id' not in params
++                and not (kind=='battle_attack' and params.get('mode')=='fire'
++                         and 'q' in params and 'r' in params)):
+             params=dict(params,target_officer_id=self.selected_target)
+         if actor is None:
+             self.message.set('No eligible battle officer');return
