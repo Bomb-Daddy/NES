@@ -1,0 +1,21 @@
+--- Run022/third_branch/tactical_view.py
++++ Run023/third_branch/tactical_view.py
+@@ -208,7 +208,17 @@
+                 self.redraw()
+                 return
+         else:
+-            choices=[self.selected_officer] if self.selected_officer in choices else choices[:1]
++            # Q09 D905 selects the individual officer, not an arbitrary
++            # remaining ally.  An outdated cursor (e.g. after that officer
++            # has already fled) may never redirect an order to someone else.
++            # Exact original text for this unavailable-cursor case remains
++            # unverified; gameplay intentionally fails closed.
++            if self.selected_officer not in choices:
++                self.pending_withdraw=None
++                self.message.set('Selected officer cannot flee')
++                self.redraw()
++                return
++            choices=[self.selected_officer]
+         self.pending_withdraw={'whole':whole,'officers':choices}
+         self.withdraw_chosen={}
+         self.withdraw_position=0
