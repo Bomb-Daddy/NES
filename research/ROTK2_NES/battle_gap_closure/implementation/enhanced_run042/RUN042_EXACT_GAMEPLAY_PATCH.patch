@@ -1,0 +1,31 @@
+--- a/third_branch/tactical_view.py
++++ b/third_branch/tactical_view.py
+@@ -164,7 +164,12 @@
+             self.action_buttons.append(btn)
+         self._cursor()
+         self.redraw()
+-        if parent.c.state.get('battle',{}).get('duel_pending'):
++        # Q04 must finish before the Q11 opening challenge becomes an
++        # actionable controller phase. Never advertise a blocked Duel while
++        # a human still has officers to place in the ROM-confirmed zone.
++        if pending:
++            self.message.set('DEPLOY '+pending[0]+': D-pad position, A place, B reset')
++        elif parent.c.state.get('battle',{}).get('duel_pending'):
+             self.message.set('CPU CHALLENGE: Next Officer chooses your duelist; Duel answers. SELECT toggles Accept/Refuse.')
+     def _cursor(self):
+         for idx,button in enumerate(self.action_buttons):
+@@ -472,7 +477,13 @@
+                                        if u['id']==remaining[0])
+                         self.deployment_q,self.deployment_r=next_unit['q'],next_unit['r']
+                     else:
+-                        self.message.set('Deployment complete. Choose a battle command.')
++                        # Q11 CPU's opening challenge is already pending in
++                        # the actual battle ledger, and takes precedence over
++                        # normal battle orders after final Q04 confirmation.
++                        if self.parent.c.state['battle'].get('duel_pending'):
++                            self.message.set('CPU CHALLENGE: Next Officer chooses your duelist; Duel answers. SELECT toggles Accept/Refuse.')
++                        else:
++                            self.message.set('Deployment complete. Choose a battle command.')
+             self.redraw()
+             return
+         if getattr(self,'pending_prisoner',False):
