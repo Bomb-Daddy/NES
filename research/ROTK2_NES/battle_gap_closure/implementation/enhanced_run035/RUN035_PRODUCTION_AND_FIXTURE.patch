@@ -1,0 +1,50 @@
+--- a/tests/test_build16_q10_bribe.py
++++ b/tests/test_build16_q10_bribe.py
+@@ -30,6 +30,7 @@
+     c=make_battle();b=c.state['battle']
+     target=ba.find(b,'D','B2')
+     target['original_faction']='A'  # source-documented automatic return path
++    target['switched']=True  # Q10 D5DD also requires original +2 switched flag
+     total_before=sum(ac.army_total(a) for a in c.state['armies'].values())
+     strength=target['troops']
+     result=c.do('battle_bribe','A3',{'officer_id':'A3','target_officer_id':'B2','gold':1},'q10:return')
+@@ -82,6 +83,7 @@
+     ac.refresh(s)
+     assert validate(s)
+     b=s['battle'];ba.find(b,'D','B2')['original_faction']='A'
++    ba.find(b,'D','B2')['switched']=True  # original +2 bit 4
+     before=ac.strength(s,'B1','p4')
+     total=sum(ac.army_total(a) for a in s['armies'].values())
+     out=c.do('battle_bribe','A3',{'officer_id':'A3','target_officer_id':'B2','gold':1},'q10:remote')
+@@ -100,6 +102,7 @@
+     ac.refresh(s)
+     assert validate(s)
+     ba.find(s['battle'],'D','B2')['original_faction']='A'
++    ba.find(s['battle'],'D','B2')['switched']=True  # original +2 bit 4
+     before=c.fingerprint
+     with pytest.raises(CoreError) as ex:
+         c.do('battle_bribe','A3',{'officer_id':'A3','target_officer_id':'B2','gold':1},'q10:remote_fail')
+@@ -110,6 +113,7 @@
+ def test_bribed_officer_survives_victory_at_contested_province_after_cold_load():
+     c=make_battle();s=c.state
+     ba.find(s['battle'],'D','B2')['original_faction']='A'
++    ba.find(s['battle'],'D','B2')['switched']=True  # original +2 bit 4
+     c.do('battle_bribe','A3',{'officer_id':'A3','target_officer_id':'B2','gold':1},'q10:win_bribe')
+     c=load_bytes(save_bytes(c))
+     c.state['battle']['rice_d']=0
+--- a/third_branch/officer_battle_adapter.py
++++ b/third_branch/officer_battle_adapter.py
+@@ -1081,7 +1081,12 @@
+     # the existing 60 fallback remains explicitly provisional.
+     loyalty=s['officer_loyalty'][target['id']]
+     threshold=target.get('duty',60)//3+8+(2*loyalty)//3+(7 if loyalty==100 else 0)
+-    returning=target.get('original_faction')==(b['attacker'] if side=='A' else b['defender'])
++    # Q10 hsovl1 $D5DD: automatic original-liege return requires BOTH
++    # historical liege equality AND the original +2 previously-switched bit.
++    # A matching historical liege without that bit uses the ordinary bribe
++    # chance (the +3 protected flag is its separate guaranteed-success case).
++    returning=(bool(target.get('switched')) and
++               target.get('original_faction')==(b['attacker'] if side=='A' else b['defender']))
+     rand=lambda n:randrange(s['core'],n)
+     success=returning or target.get('protected',False) or rand(gold)>threshold
+     # For an actual switch, check remote army ownership before spending gold.
