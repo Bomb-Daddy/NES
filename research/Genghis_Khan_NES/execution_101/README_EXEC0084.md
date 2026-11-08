@@ -1,0 +1,9 @@
+# EXEC0084 — Explicit unknown RAM power-on counterfactual traces (not authentic first Spring)
+
+This **retains the entire EXEC0083 existing C11 game** and adds an executable, independently testable research path. Original USA NES SHA-256 remains exact and owner-private; no ROM/RAM assets are shipped. The source-derived reset executed 70 known instructions to $8060, then `LDA $00F5`, whose actual original power-on value is **unknown**. This version does not pretend that it knows that value. The existing authentic `--audit-stock-reset` remains unchanged.
+
+On the exact original, 256 counterfactual paths resolve to the next unknown RAM byte `$00F6` (1 value), `$00B3` (254 values), or `$00BD` (1 value). These are not observed reset values.
+
+New `--audit-stock-reset-hypotheses /absolute/owner_original.nes` exhaustively tests all 256 explicit *hypothetical* RAM `$00F5` initial values while keeping all other uninitialized NES CPU RAM unknown. Every path preserves actual stock ROM program bytes and the earlier MMC1 mapping and independently stops at an uninitialized read / hardware / unsupported opcode / bound. The output lists possible next source gates and counts; **none** is an observed Mesen power-on state or proof of actual setup / RNG behavior. This is research tooling, not player-facing Spring. The requested player-ready first Spring remains OPEN.
+
+Use `GK1_ORIGINAL_STOCK_ROM=/absolute/private/original.nes ctest --test-dir build --output-on-failure -j6` for live private ROM positive tests. The existing game remains native 1280×720 with controller-only UI, 14/27 source countries, original/Enhanced modes kept separate, and owner-only source-bind checkpoints. The private ROM stays outside all public output. Windows/NSIS and physical Xbox are still NOT RUN. Never promote an iteration to fully playable without source-authentic setup, RNG, actual strategic orders, AI, diplomacy, dynasty, battle aftermath, cold-load saves and complete both campaigns.
