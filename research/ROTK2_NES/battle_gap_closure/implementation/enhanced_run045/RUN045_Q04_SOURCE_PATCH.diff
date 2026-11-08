@@ -1,0 +1,28 @@
+--- Run044/third_branch/q04_manual_deployment.py
++++ Run045/third_branch/q04_manual_deployment.py
+@@ -61,6 +61,25 @@
+         _fail('Q04_BAD_PENDING_DEPLOYMENT')
+     if queue and battle.get('selected_officer')!=queue[0]:
+         _fail('Q04_BAD_PENDING_DEPLOYMENT')
++    # Original Q04 hsovl6 $D0CF/$CE5C: a *confirmed* player army
++    # occupies a real original-province-zone cell. In a partially staged
++    # saved battle, reject a stale/out-of-zone, enemy-stacked or burning
++    # committed location; pending preview coordinates are NOT occupiers.
++    # After the last confirmation, ordinary tactical movement may leave
++    # the initial region, so this guard applies only while queue is live.
++    if queue:
++        target=int(battle['dst'][1:])
++        home=int(battle['src'][1:]) if side=='A' else target
++        committed=[u for u in all_units if u['id'] not in queue]
++        fielded=[u for u in battle['officer_units']
++                 if u['id'] not in queue and not u.get('reserve')
++                 and not u.get('fled') and u['troops100']>=100]
++        for u in committed:
++            pos=(u['q'],u['r'])
++            occupied={(v['q'],v['r']) for v in fielded if v is not u}
++            if pos not in rom_battle_map.legal_cells(target,home,
++                    occupied=occupied,burning=battle['burning']):
++                _fail('Q04_COMMITTED_DEPLOYMENT_INVALID')
+ 
+ 
+ def place(state,battle,params):
