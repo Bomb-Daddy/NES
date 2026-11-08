@@ -1,0 +1,21 @@
+{
+  "project": "ORIGINAL-KOEI ENHANCED, NOT Classic NES/DOS",
+  "run": "Run046",
+  "verified_direct_parent_sha256": "e6a171c5a7b1a1e042d18f3998d7e7e2fb8e9910183ff88ac9896684c6f9d4dd",
+  "parent_bytes": 148818054,
+  "source_sha256": "986fe0efc5c617a75cb989d8c10f3ec5bcec9b8c30fad8c89424eebe46b620de",
+  "source_bytes": 148821261,
+  "parent_zip_entries": 569,
+  "new_zip_entries": 571,
+  "unchanged_parent_members": 568,
+  "modified_production": [
+    "third_branch/strategic_game.py"
+  ],
+  "added_members": [
+    "tests/test_run046_q04_gui_activation.py",
+    "RUN046_Q04_REAL_GUI_DEFAULT_DEPLOYMENT_README.md"
+  ],
+  "test_platform": "Linux Python 3.13.5 Xvfb/Tk; no Windows or physical Xbox",
+  "original_nes_30_goldens": "NOT RUN",
+  "source_basis": "ROM-backed 41-province zones $28934, hsovl6 original Q04 $D0CF/$CE5C; source bundle sha256 9bc5a0c945920e0d6fa50c4fcca3cd4c75ff2b986cd147c912f59aba6edb5aa1"
+}
