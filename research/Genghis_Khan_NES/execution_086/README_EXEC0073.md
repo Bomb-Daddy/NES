@@ -1,0 +1,3 @@
+# GK1 EXEC0073 combined execution increment
+
+Combines EXEC0071 manual strategic order-budget controller view and EXEC0072 battle Pass drill in the SAME inherited GK1 C11 application using EXEC0069 as common ancestor. Does NOT contain inaccessible EXEC0070 archived Spring comparator, which remains separate and explicitly unmerged. Original 14/27 countries remain PRE_SETUP; no first playable Spring or real campaign turn is claimed. Both additions are manual-derived demonstrations, not actual strategy/combat actions. All inherited code and original evidence preserved. No stock ROM, Windows binary, installer execution, physical Xbox, actual complete campaign parity claimed.
