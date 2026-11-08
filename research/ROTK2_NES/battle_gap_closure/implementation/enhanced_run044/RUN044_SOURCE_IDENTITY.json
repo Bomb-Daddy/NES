@@ -1,0 +1,21 @@
+{
+  "project": "Original-KOEI Inspired ENHANCED ONLY, NOT canonical NES Classic or DOS",
+  "version": "Run044 Q04 Pending Preview Nonoccupancy",
+  "exact_direct_parent": "Run043",
+  "parent_sha256": "84c59e2448311eaa075f5fe3932674d84d87306d4ce484ab60cee16d46ae36be",
+  "new_source_sha256": "20fe5a3ed964d4cd4854419ba887dadca2df9f7cfee420ae3041cbd206eb14e1",
+  "new_source_bytes": 148815052,
+  "zip_entries": 567,
+  "production_changed": [
+    "third_branch/q04_manual_deployment.py"
+  ],
+  "parent_unchanged_entries": 564,
+  "locally_tested": "RED parent 3 failures 1 pass; GREEN 4 passed; mutant 3 failures 1 pass; broad 343 passed; cold source 44 passed; real Tk/Xvfb software controller passed; four-process .ro2 fingerprint passed",
+  "gdrive_full_source_status": "BLOCKED binary egress, do not promote",
+  "drive_folder_id": "158Sfjh_9nvGEutRisW8eyvJj2GDeLn76",
+  "complete_register": "1BYT5N0sp14UlXpNH8A4pA4ph-qaTIxzyWw6PQ",
+  "handoff_id": "13eeYmJ85w3cPfmj-Ly1hloqjBi7MUUuvVrJi3s96r2I",
+  "original_goldens": "NOT RUN",
+  "windows_physical_xbox": "NOT RUN",
+  "director_1to1": "OPEN"
+}
