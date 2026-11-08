@@ -1477,7 +1477,7 @@ int main(int argc,char **argv){
   puts("ARCHIVED_SOURCE_CAPTURE_ROM_UNVERIFIED: NOT THE INITIAL SPRING TRANSFORM");return 0;
  }
  if(argc==2&&strcmp(argv[1],"--version")==0){
-  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0104 full-frame PPU-origin source hypotheses plus inherited NMI tracer; no transactions; not full game; setup and RNG unfinished)");return 0;
+  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0105 constant-lower7 PPUSTATUS source hypotheses plus inherited native game; no transactions; not full game; setup and RNG unfinished)");return 0;
  }
  /* Preserve EXEC0056's tested synthetic-pad correction/export contract. */
  if(argc==3&&strcmp(argv[1],"--bonus-correction-export")==0){
@@ -2239,7 +2239,7 @@ if(argc==3 && strcmp(argv[1],"--pre-setup-pad-smoke")==0){
    else if(e.type==ClientMessage && (Atom)e.xclient.data.l[0]==delete_window)running=0;
   }
   poll_joystick(&joystick,pad);render();XFlush(display);frames++;
-  if(smoke && frames>=smoke){printf("EXEC0104 real X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
+  if(smoke && frames>=smoke){printf("EXEC0105 real X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
   struct timespec t={0,16000000};nanosleep(&t,NULL);
  }
  if(joystick>=0)close(joystick);
