@@ -1417,7 +1417,7 @@ int main(int argc,char **argv){
   puts("ARCHIVED_SOURCE_CAPTURE_ROM_UNVERIFIED: NOT THE INITIAL SPRING TRANSFORM");return 0;
  }
  if(argc==2&&strcmp(argv[1],"--version")==0){
-  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0089 original Spring finance-only residual viewer, View/Pass only; not full game; setup and RNG unfinished)");return 0;
+  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0091 original-ROM zero-RAM reset trace to PPUSTATUS; View/Pass only; not full game; setup and RNG unfinished)");return 0;
  }
  /* Preserve EXEC0056's tested synthetic-pad correction/export contract. */
  if(argc==3&&strcmp(argv[1],"--bonus-correction-export")==0){
