@@ -1,0 +1,16 @@
+#!/bin/sh
+# Controller-only game: the wrapper only selects the writable user data dir.
+# Do not launch under /opt as current directory; no save should go there.
+set -eu
+umask 077
+if [ -n "${XDG_DATA_HOME:-}" ]; then
+    save_dir=$XDG_DATA_HOME/gk1-native-research
+else
+    : "${HOME:?HOME must be set for Genghis save storage}"
+    save_dir=$HOME/.local/share/gk1-native-research
+fi
+mkdir -p -- "$save_dir"
+cd -- "$save_dir"
+# An isolated smoke harness may override the binary path. Installed launcher
+# defaults unconditionally to the packaged source-identity-gated executable.
+exec "${GK1_RESEARCH_BINARY_OVERRIDE:-/opt/gk1-native-research/gk1_native_shell}" "$@"
