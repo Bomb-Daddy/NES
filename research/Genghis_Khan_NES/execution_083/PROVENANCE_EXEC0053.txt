@@ -1,0 +1,3 @@
+EXEC0053, 2026-11-07. Parent: EXEC0052 versioned native shell, original 41-country factory EXEC0049, historic manual DigitPress English NES pp. 8–9.
+Manual: https://www.digitpress.com/library/manuals/nes/Genghis%20Khan.pdf
+No ROM bytes, SRAM, checkpoints, sprites or proprietary audio. Original template data remains PRE_SETUP, not playable Spring.
