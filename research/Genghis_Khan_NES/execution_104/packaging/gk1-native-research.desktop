@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Genghis Khan I Research 1.04.0-dev1
+GenericName=NES-to-Windows Port Research Prototype
+Comment=Incomplete native Genghis Khan I research game; source-bounded battles only
+Exec=gk1-native-research
+Terminal=false
+Categories=Game;StrategyGame;
+Icon=applications-games
+StartupNotify=true
