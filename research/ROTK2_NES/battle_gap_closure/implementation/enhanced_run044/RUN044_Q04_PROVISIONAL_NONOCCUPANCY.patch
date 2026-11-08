@@ -1,0 +1,17 @@
+--- Run043/third_branch/q04_manual_deployment.py
++++ Run044/third_branch/q04_manual_deployment.py
+@@ -80,8 +80,13 @@
+         _fail('Q04_WRONG_DEPLOYMENT_OFFICER')
+     target=int(battle['dst'][1:])
+     home=(int(battle['src'][1:]) if unit['side']=='A' else target)
++    # Q04 original hsovl6 interactive placement: only fielded units occupy
++    # the zone. Another officer's *uncommitted preview* is not a deployed
++    # army (Run043 hides it), and cannot reserve or block the player's hex.
++    # A previously confirmed placement and every live CPU unit still block.
+     occupied={(u['q'],u['r']) for u in battle['officer_units']
+-              if u['id']!=oid and not u.get('fled') and not u.get('reserve')
++              if u['id']!=oid and u['id'] not in queue
++              and not u.get('fled') and not u.get('reserve')
+               and u['troops100']>=100}
+     if (x,y) not in rom_battle_map.legal_cells(target,home,
+             occupied=occupied,burning=battle['burning']):
