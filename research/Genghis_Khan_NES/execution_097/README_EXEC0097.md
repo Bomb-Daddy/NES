@@ -1,0 +1,5 @@
+# EXEC0097 — original ROM 6502 NMI stack/vector research (bounded)
+
+Version 0.97.0-dev1. Complete inherited native C11 application, no manufactured first Spring. New opt-in one-shot counterfactual NES NMI at CPU source-loop $C460 (after 150 instructions) pushed via proper 6502 P/PC stack and read from authenticated original ROM vector $FFFA/$FFFB through the mapped bank. RTI 0x40 is now decoded. Actual private original-ROM controlled experiment stops at CPU $C6AE while attempting IO read $4016 (controller port), with vector $C0D9; this identifies the next modeled hardware gate, NOT actual player input. No PPU frame/cycle timing, no original NES runtime observation, no campaign state mutation. Missing/wrong private ROM fail closed. Run `ctest -R GK1_097` with `GK1_ORIGINAL_STOCK_ROM` for original source test, or without for negative controls. This is NOT a new Mesen runtime execution.
+
+Verified authentic original ROM SHA256 expected: ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3 (private).
