@@ -1,0 +1,49 @@
+--- Run045/third_branch/strategic_game.py
++++ Run046/third_branch/strategic_game.py
+@@ -122,6 +122,22 @@
+     return f'{when}  |  {actor}  |  {kind}'+('\n'+details if details else '')
+ 
+ 
++def _activate_original_q04_gui(campaign):
++    """Use the English NES's human Q04 deployment in live 41-province GUI play.
++
++    Historical/synthetic core-test campaigns retain their explicit opt-in.
++    An already running battle is never converted into a new staging phase.
++    The source-region/cell validation remains in q04_manual_deployment.py.
++    """
++    state=campaign.state
++    if len(state.get('owners',()))!=41 or state.get('battle') is not None:
++        return False
++    if state.get('q04_manual_deployment') is True:
++        return False
++    state['q04_manual_deployment']=True
++    return True
++
++
+ class StrategicWindow:
+     def __init__(self, save_path):
+         import tkinter as tk
+@@ -131,6 +147,7 @@
+         from .platform_paths import prepare_save_path
+         self.path=prepare_save_path(save_path)
+         self.c=load_file(self.path) if self.path.exists() else new_campaign_historical_s1(balance_policy='OG_1000_DIRECTOR_V2')
++        _activate_original_q04_gui(self.c)  # original player placement for live GUI campaigns
+         self.audio=GameAudio()
+         initial='R0' if self.c.state.get('source_label')=='ORIGINAL_GAME_HISTORICAL_S1_PROPOSED' else 'A'
+         self.player=self.c.state.get('human_faction',initial)
+@@ -173,6 +190,7 @@
+         player=loaded.state.get('human_faction',initial)
+         if player not in loaded.state['factions']:
+             raise ValueError('Saved human faction is not in the historical roster')
++        _activate_original_q04_gui(loaded)
+         self.c=loaded;self.player=player
+         if 'human_faction' not in loaded.state and hasattr(self,'msg'):
+             self.msg.set('Legacy save has no ruler selection. Default '+player+'; choose ruler and save to confirm identity.')
+@@ -498,6 +516,7 @@
+             chosen=choices[row[0]]
+             staged=self.c.clone()
+             staged.state['human_faction']=chosen
++            _activate_original_q04_gui(staged)
+             try:save_file(staged,self.path)
+             except OSError as error:
+                 self.msg.set('Ruler choice could not be saved: '+str(error));return
