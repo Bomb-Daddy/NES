@@ -1,0 +1,9 @@
+# EXEC0083 — Authenticated original-stock 6502 reset instruction tracing
+
+**Project:** existing C11 standalone Genghis Khan I native game. **Build 0.83.0-dev1.** Keeps every EXEC0082 source component, gameplay guard, local save format, original-stock checkpoint and earlier profiles intact. No original NES ROM or graphics/audio distributed publicly.
+
+`gk83_reset_trace.c/.h` now execute actual 6502 reset-path instructions from an **owner-private, exact SHA256-authenticated original USA NES ROM** instead of merely reporting the reset vector and five initial opcodes. The bounded runner models 2 KiB NES RAM with known-value tracking, 6502 CPU flags/stack, branch/subroutine control, MMC1 five-write serial registers and mapped 16 KiB PRG banks. It **stops** before any unmodeled hardware read, unknown RAM, unknown bank or opcode, BRK or test-step limit. It does **not** make up `$2002` PPU-status responses, RNG, APU, controller data, season state or a ready-to-play Spring.
+
+The native controller START action on an authenticated Spring-checkpoint research screen invokes this real bounded trace on the user's private original cartridge and reports a trace gate without changing country arrays, order counts, saves or phase. A full CTest regression includes negative inputs and reproducible original-stock positive test when private data is supplied; public code must not contain the licensed cartridge. This implementation traces real instructions but **does not** emulate the NES game to first Spring. Win32 execution and physical Xbox remain NOT RUN.
+
+To run the authenticated positive test privately: `GK1_ORIGINAL_STOCK_ROM=/absolute/private/original.nes ctest --test-dir build -R GK1_083 --output-on-failure`. The user-owned cartridge must be 262,160 bytes with SHA256 `ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3`.
