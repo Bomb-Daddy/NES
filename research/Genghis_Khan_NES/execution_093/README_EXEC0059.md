@@ -1,0 +1,9 @@
+# GK1 EXEC0059: Windows installability and durable user-data path (SOURCE ONLY)
+
+This is the SAME native desktop executable with both original 14/27 pre-setup data templates, manual setup drafts, workforce planner, 3 cold-save slots, controller-only navigation, source-bounded movement/Divide, battle viewer and existing replay. **Not a finished game.** The exact source CSV remains identical and loading refuses altered bytes.
+
+**New actual native Windows integration:** use `$LOCALAPPDATA\GK1NativeResearch` (fallback `$APPDATA`) for ALL default mutable research/presetup save files; never write into the installed executable directory/Program Files. The four `GK1_*_FILE` override environment variables retain absolute custom paths. Directory failures produce a controlled save refusal, not a working-directory fallback. No write ever attempts to alter the original template CSV. Linux default path behavior remains unchanged; installed Debian wrapper already relocates its CWD into the user data home.
+
+**Windows installer specification:** `cmake -S execution_059 -B build-win -G "..."` with a native Windows C11 compiler, then build + `cpack -G NSIS --config build-win/CPackConfig.cmake` after NSIS installation. The installer includes `gk1_native_shell.exe`, original-hash-gated CSV and README; 0.59.0-dev1 application menu title/shortcuts. These commands have NOT run successfully on Windows or Xbox; the code is source-level and TESTED_PORT_LINUX path-policy only. No Windows executable or installer is delivered in this increment.
+
+**Reproduce actually tested Linux build:** `cmake -S execution_059 -B build59 -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build59 -j4 && ctest --test-dir build59 --output-on-failure`; test `test_gk59_storage` checks Windows path edge cases even when compiled on Linux. User data and prior ZIP/ROM/saves are not overwritten. Original first Spring, orders, AI, campaign save and authentic audio/graphics are still pending.

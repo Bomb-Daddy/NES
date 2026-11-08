@@ -1,0 +1,7 @@
+# EXEC0090 — Original PRE_SETUP provenance boundary
+
+Inherits the entire EXEC0089 C11 game, scenarios, controller, research checkpoint and previous mechanics. Implements GK90 sealed source verification: every native third-view Spring finance comparison must reload an **exact SHA-256 pinned** 41-country original PRE_SETUP CSV, reconstruct a canonical 14/27-country scenario, and compare **all countries and fields** to its offered baseline before deriving finance residuals against independently authenticated original private NES Spring data.
+
+This prevents tampered *other-country* fields, source addresses, history, and ability defaults from being mistaken for verified source finance. Failed validation returns without mutating the output, the private stock checkpoint, original source records or remaining orders. Test uses 41 private records when supplied and supports cancellation/forgery/CSV absence controls. The existing independent first-Spring generator, AI, merchant scheduler, dynasty, battle endings, Windows installer execution and real Xbox remain **unfinished**. This change is not a generated Spring or new Mesen run.
+
+Reproduce: `cmake -S execution_090 -B build90 -DCMAKE_BUILD_TYPE=Release && cmake --build build90 -j6 && ctest --test-dir build90 --output-on-failure`. Optional owner-private test `build90/test_gk90_verified_finance build90/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv /private/fresh.bin /private/mongol.bin /private/world.bin`. All private ROMs, records and screenshots stay outside public source.

@@ -1,0 +1,9 @@
+# Genghis Khan I — EXEC0087 — 14-command stock Spring menu
+
+Version 0.87.0-dev1. In the SAME original native C11 app after SHA-256-authenticated source Spring reattachment, START opens the original 14-command menu. D-pad UP/DOWN selects within each seven-item column, LEFT/RIGHT switches columns, for all fourteen original manual commands. VIEW returns to inspect countries without consuming an order. PASS requires two A confirmations, exhausts the three baseline orders and leaves the original country records, year, and season unchanged. B cancels an armed Pass; moving between commands also disarms it. The other twelve commands remain explicitly **locked** until their original source prerequisite, character abilities, RNG, and strategic scheduler are available. START while inside the menu continues to verify the private original ROM. X/Y and LB/RB preserve research save/load/slot controls. Nothing here claims a completed original first Spring, AI or merchant system.
+
+This is a player-facing controller route, not an original NES emulation run. Tests with synthetic world data do not prove original gameplay parity. The original owner-private ROM, SRAM, 83-byte records, checkpoints and graphics are excluded from public artifacts.
+
+Linux native QA (not an original NES emulator run):
+`GK1_STOCK_SPRING_RECORDS=/private/path/fresh.records GK1_STOCK_SPRING_PROFILE=fresh GK1_ORIGINAL_STOCK_ROM=/private/path/verified_stock.nes xvfb-run -a ./gk1_native_shell --smoke-stock-commands 120`
+This checks the actual source-bound stock Spring menu after reaching it through the existing manual-setup research path, original ROM reset probe, a locked Trade refusal, read-only View, Pass arm/B cancel, and byte-identical rollback. It leaves the native command UI rendered at 1280x720 for 120 real X11 frames. No original Spring is simulated or completed. Never publish the private paths/files.
