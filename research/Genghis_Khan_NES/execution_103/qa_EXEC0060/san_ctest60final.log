@@ -1,0 +1,46 @@
+Internal ctest changing into directory: /mnt/data/gk60_work/build60_san
+Test project /mnt/data/gk60_work/build60_san
+      Start  1: GK1_059_WinUserDataPathNoCWDAndNoMutation
+ 1/20 Test  #1: GK1_059_WinUserDataPathNoCWDAndNoMutation ................   Passed    0.00 sec
+      Start  2: GK1_044_C11_ControllerState
+ 2/20 Test  #2: GK1_044_C11_ControllerState ..............................   Passed    0.00 sec
+      Start  3: GK1_044_Exclusive_Research_Replay
+ 3/20 Test  #3: GK1_044_Exclusive_Research_Replay ........................   Passed    0.01 sec
+      Start  4: GK1_044_ControllerEdgeRepeat
+ 4/20 Test  #4: GK1_044_ControllerEdgeRepeat .............................   Passed    0.00 sec
+      Start  5: GK1_044_ControllerToNativeApp
+ 5/20 Test  #5: GK1_044_ControllerToNativeApp ............................   Passed    0.00 sec
+      Start  6: GK1_044_IdentityGatedBattleViewer
+ 6/20 Test  #6: GK1_044_IdentityGatedBattleViewer ........................   Passed    0.01 sec
+      Start  7: GK1_046_ModifiedROMPathControllerAndSave
+ 7/20 Test  #7: GK1_046_ModifiedROMPathControllerAndSave .................   Passed    0.00 sec
+      Start  8: GK1_048_ActualNativeAppDivideAndSave
+ 8/20 Test  #8: GK1_048_ActualNativeAppDivideAndSave .....................   Passed    0.01 sec
+      Start  9: GK1_049_OriginalCountryFactory
+ 9/20 Test  #9: GK1_049_OriginalCountryFactory ...........................   Passed    0.00 sec
+      Start 10: GK1_050_NativeTwoScenarioControllerIntegration
+10/20 Test #10: GK1_050_NativeTwoScenarioControllerIntegration ...........   Passed    0.00 sec
+      Start 11: GK1_050_VerifiedOriginalCSVHash
+11/20 Test #11: GK1_050_VerifiedOriginalCSVHash ..........................   Passed    0.00 sec
+      Start 12: GK1_051_PresetupExclusiveColdLoadAndHostileMutation
+12/20 Test #12: GK1_051_PresetupExclusiveColdLoadAndHostileMutation ......   Passed    0.16 sec
+      Start 13: GK1_052_ProfileSeparatedCandidateInputAndColdLoad
+13/20 Test #13: GK1_052_ProfileSeparatedCandidateInputAndColdLoad ........   Passed    0.18 sec
+      Start 14: GK1_053_ManualSetupWizardControllerAndSave
+14/20 Test #14: GK1_053_ManualSetupWizardControllerAndSave ...............   Passed    0.18 sec
+      Start 15: GK1_054_InstalledStyleSourceIdentityAndVersion
+15/20 Test #15: GK1_054_InstalledStyleSourceIdentityAndVersion ...........   Passed    0.66 sec
+      Start 16: GK1_055_SixAbilityFiveCharacterBonusDraftAndColdLoad
+16/20 Test #16: GK1_055_SixAbilityFiveCharacterBonusDraftAndColdLoad .....   Passed    1.49 sec
+      Start 17: GK1_057_IntegratedLaborPlanningStateAndSave
+17/20 Test #17: GK1_057_IntegratedLaborPlanningStateAndSave ..............   Passed    0.01 sec
+      Start 18: GK1_058_SlotRoutingPathAndEdges
+18/20 Test #18: GK1_058_SlotRoutingPathAndEdges ..........................   Passed    0.00 sec
+      Start 19: GK1_058_ActualNativeMultiSlotColdLoad
+19/20 Test #19: GK1_058_ActualNativeMultiSlotColdLoad ....................   Passed    0.80 sec
+      Start 20: GK1_060_EnhancedDemobilizeControllerSourceSaveRollback
+20/20 Test #20: GK1_060_EnhancedDemobilizeControllerSourceSaveRollback ...   Passed    0.01 sec
+
+100% tests passed, 0 tests failed out of 20
+
+Total Test time (real) =   3.57 sec
