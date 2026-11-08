@@ -1,0 +1,88 @@
+{
+  "changed_paths_relative_execution_062": {
+    "CMakeLists.txt": {
+      "sha256": "923d3fecf1a4bb643b3574633660399d4edb66503462838ffecbdfb9a9190662",
+      "size_bytes": 12325,
+      "type": "changed"
+    },
+    "README_EXEC0062.md": {
+      "sha256": "ce5021b6fe4d6843045ae8f0f779d8029f690aa92bdabf19b9aa11c416f7bf56",
+      "size_bytes": 2434,
+      "type": "new"
+    },
+    "gk1_app_state.c": {
+      "sha256": "2a20638ecabf329ba98d5288a624e75fbc62970343fc202cb41560ee23e5375f",
+      "size_bytes": 30091,
+      "type": "changed"
+    },
+    "gk1_app_state.h": {
+      "sha256": "0bf8687276c551779ff87d7108f0ae9c8b3b746e841944a16bfe4099e1ebf3bb",
+      "size_bytes": 4945,
+      "type": "changed"
+    },
+    "gk1_native_shell.c": {
+      "sha256": "5ad49e9da720790c83bb69f21e61e6e9da5b72193d276fe2259decabc26691ed",
+      "size_bytes": 64979,
+      "type": "changed"
+    },
+    "gk61_market.c": {
+      "sha256": "06bd2d48394334f5c8cb3dec1b6a39560129ca53489108872e69c430d6bfa8fb",
+      "size_bytes": 6214,
+      "type": "new"
+    },
+    "gk61_market.h": {
+      "sha256": "9963c1f6371df775c79a2ba0b2a744ed32f38feac46ea088df7adb03be3c3f4d",
+      "size_bytes": 2204,
+      "type": "new"
+    },
+    "packaging/gk1-native-research.desktop": {
+      "sha256": "b38dc2dd2344236ab77eb63feb3373404c8cf3a041a601c279b5c84112e2e803",
+      "size_bytes": 334,
+      "type": "changed"
+    },
+    "packaging/test_installed_layout.py": {
+      "sha256": "eb570aad80a4a56301f95e7517d7a2f3fa624ceff5ad29b8c0d5bdfb1ac1d9e0",
+      "size_bytes": 2941,
+      "type": "changed"
+    },
+    "packaging/test_package_contract.py": {
+      "sha256": "56bd6ec14195e0383c8914f0ffc15cb0f6252c332060308f9fbb0df697be8e02",
+      "size_bytes": 1642,
+      "type": "changed"
+    },
+    "test_gk61_market.c": {
+      "sha256": "bb60f8cc61d3b2b09e01db64b9f1b609d9bd3ef7d4565af0f71dd2713281c3af",
+      "size_bytes": 7166,
+      "type": "new"
+    },
+    "test_gk62_game_market_guard.c": {
+      "sha256": "6b9cc9c025ccc4a93a33fba7c5a2678dfac4176d9bfb855e8529ec9de2abb34e",
+      "size_bytes": 3572,
+      "type": "new"
+    }
+  },
+  "date": "2026-11-07",
+  "full_game": "INCOMPLETE",
+  "original_NES_emulator_new_test": "NOT RUN",
+  "package_deb": {
+    "bytes": 73010,
+    "name": "gk1-native-research_0.62.0~dev1_amd64.deb",
+    "sha256": "83de8bcdc7d365698b5825122c3e23f3f7f42bea89b9ef3a5aef229257c17a3d"
+  },
+  "physical_xbox": "NOT RUN",
+  "playable_first_spring": "NOT RUN",
+  "profile": "existing EXEC0060 integrated C11 Linux/X11 and Windows-source game, all old 060 code preserved",
+  "record": "ZL-GK1-EXEC-0062",
+  "reference_header_git_blob": "9605f7c08ed1b80ac4e82a6fee05879f48b58946",
+  "source_evidence": "GK1 economy v1.07; 3x17 merchant quotes; actor Classic/Enhanced trade costs",
+  "tests": {
+    "ASan_UBSan_CTest": "22/22 PASS",
+    "Debian_installed_layout_and_cold_load": "PASS",
+    "Debug_CTest": "22/22 PASS",
+    "Direct_merchant_assertions": "466/466 PASS",
+    "Release_CTest": "22/22 PASS",
+    "X11_demob": "80 frames 1280x720 PASS",
+    "X11_scenario": "120 frames 1280x720 PASS"
+  },
+  "windows_execution": "NOT RUN"
+}
