@@ -1,0 +1,5 @@
+# GK1 EXEC0084 implementation ledger (2026-11-07/08)
+
+Version 0.84.0-dev1, entire inherited EXEC0083 1280×720 native Win32/X11 C11 game unchanged in previous archive. New actual code: `gk84_reset_hypothesis.h`, modified `gk83_reset_trace.c` interpreter opcodes and private-ROM hypothesis API, modified `gk1_native_shell.c` controller-safe read-only CLI, new test `test_gk84_reset_hypothesis.c`, build and package labels; no publisher-accessible cartridge bytes. Exact baseline 70 instructions, 21 MMC1 serial writes, four mapper commits to original RAM $00F5 unknown. Exhaustive 256 hypotheses indicate $00F6 one, $00B3 254, $00BD one; no original power-on RAM established.
+
+PASS VERIFIED LOCAL LINUX (after readback): Release, Debug, ASan+UBSan, clean archive (43 tests each); actual graphical X11 startup 100 frames; negative corrupted cartridge rejected. This verifies a limited *research trace*, NOT playable first Spring. Original game execution not rerun, native Windows and physical controller NOT RUN. Open all critical game-completion items in the cumulative master/QA. No recurring work was disabled.
