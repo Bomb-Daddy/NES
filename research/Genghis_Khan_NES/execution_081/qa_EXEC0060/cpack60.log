@@ -1,0 +1,5 @@
+CPack: Create package using DEB
+CPack: Install projects
+CPack: - Install project: GK1NativeShell060 []
+CPack: Create package
+CPack: - package: /mnt/data/gk60_work/package60/gk1-native-research_0.60.0~dev1_amd64.deb generated.
