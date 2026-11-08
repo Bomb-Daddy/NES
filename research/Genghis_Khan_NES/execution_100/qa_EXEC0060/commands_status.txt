@@ -1,0 +1,22 @@
+EXEC0060 source execution, 2026-11-07. Original stock Classic and approved Enhanced oracle separate.
+
+Commands executed (from gk60_work parent with execution_060 / other execution_* peers):
+cmake -S execution_060 -B build60 -G Ninja -DCMAKE_BUILD_TYPE=Release [exit 0]
+cmake --build build60 -j4 [exit 0]
+ctest --test-dir build60 --output-on-failure [final exit 0, 20/20]
+Initial release test version-contract old expected 0.59.0: exit 8, 19/20; corrected new package .desktop and QA expectations to 0.60.0, reran 20/20.
+cmake -S execution_060 -B build60_debug -G Ninja -DCMAKE_BUILD_TYPE=Debug [exit 0]
+cmake --build build60_debug -j4 [exit 0]
+ctest --test-dir build60_debug --output-on-failure [exit 0, 20/20]
+cmake -S execution_060 -B build60_san -G Ninja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_FLAGS='-fsanitize=address,undefined -fno-omit-frame-pointer' -DCMAKE_EXE_LINKER_FLAGS='-fsanitize=address,undefined' [exit 0]
+cmake --build build60_san -j4 [exit 0]
+ASAN_OPTIONS=detect_leaks=0:abort_on_error=1 UBSAN_OPTIONS=halt_on_error=1 ctest --test-dir build60_san --output-on-failure [exit 0, 20/20]
+xvfb-run -a build60/gk1_native_shell --smoke-demob 80 [exit 0; 1280x720 native X11]
+cpack --config build60/CPackConfig.cmake -G DEB -B package60 [exit 0]
+python execution_060/packaging/test_installed_layout.py package60/gk1-native-research_0.60.0~dev1_amd64.deb [exit 0]
+GK1_SCENARIO_CSV=execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv build60/gk1_native_shell --demob-preview-export COLD/demo.gkp 1 1 10 [exit 0]
+GK1_SCENARIO_CSV=execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv build60/gk1_native_shell --demob-preview-import COLD/demo.gkp [exit 0]
+Re-executing the identical --demob-preview-export against existing path [exit 6, overwrite blocked]
+Corrupting 1 byte in an independent copy and importing it [exit 7; validated rejection]
+Original 41-country CSV SHA256 fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581, unchanged.
+Evidence category: TESTED_PORT_LINUX. No Windows native binary, no physical Xbox, no new Mesen source run. PRE_SETUP stage not original gameplay Spring.

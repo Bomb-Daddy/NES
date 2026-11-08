@@ -1,0 +1,9 @@
+# EXEC0100 — source-based 2A03 completed-instruction cycles and PPUCTRL write audit
+
+Extends the preserved existing EXEC0099 full native C11 program, including all preceding game source and tests. New `gk100_cpu_cycles.c/h` tracks the documented base/taken-branch/index-page-cross CPU cycle costs for the *implemented* original ROM opcode subset, and `gk83_reset_trace` now tracks **completed** original CPU instruction cycles. A source-level PPUCTRL register audit records attempted writes (including $2008-$3FFF mirrors), last opcode address and whether bit 7 was requested before the explicitly hypothetical one-shot NMI.
+
+**Boundaries:** This is CPU-cycle accounting only. The NES PPU ignores some early writes, and NMI requires PPU vblank and edge detection. Neither early-write acceptance, vblank timing, open-bus read values, sprite/video state nor actual original power-on first Spring is inferred. Counterfactual `PPUSTATUS=0x80` and one-shot NMI paths remain distinctly labeled. No fake first-Spring stats are synthesized. Baseline modified-ROM observations and all 103 audited manual-derived rules retained. No original ROM is included.
+
+Controller START stock-source diagnostic displays a dynamic completed-cycle count and attempted PPUCTRL NMI-enable state explicitly marked hypothetical.
+
+Test `test_gk100_cpu_timing`: branch 2/3/4 cycles, indexed read penalties, stores no penalty, unknown opcodes fail-closed, page boundary and source ROM deterministic replay with actual private stock cartridge SHA-256 guard. Label: `VERIFIED_STATIC` for CPU decoding and PPUCTRL-source intent; `TESTED_PORT_LINUX` for compiled executable; `OBSERVED_RUNTIME_STOCK` only for the pre-existing private Mesen captures; Windows/physical Xbox `NOT RUN`. No claim of PPU timing parity or original controller capture. Continued first-Spring initialization/RNG and full game remain highest priority.
