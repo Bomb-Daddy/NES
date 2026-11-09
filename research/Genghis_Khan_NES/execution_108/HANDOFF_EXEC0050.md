@@ -1,0 +1,11 @@
+# ZL-GK1-EXEC0050 — Existing Native Game: Two Original Pre-Setup Country Rosters Integrated
+
+Date: November 6, 2026 (America/Detroit) | Version 1.00 | Status TESTED_PORT_LINUX and INCOMPLETE GAME.
+
+**New execution:** Directly merged EXEC0049's exact 41-country source factory into the existing EXEC0048 native 1280×720 controller-only shell. The game now navigates Mongol (14) and World (27) Conquest country rosters in the same inherited live application. Each scenario has its own independent mutable world state, original names, 45 source fields, and explicitly labeled `GK1_PRE_SETUP_TEMPLATE` phase. D-pad navigates country list, A inspects, B returns. Invalid or altered CSV is rejected by exact SHA-256 identity check before any country data is installed. Build copies the exact CSV next to the executable; runtime resolves exe-relative path. Tactical Divide/path/research replay and snapshot viewer were preserved. A tactical cold-load no longer discards unrelated loaded country templates.
+
+**Important missing source proof:** no general NES original character/ruler/difficulty/automatic-stat or seasonal-entry transform has been established here; original first playable state MUST NOT be invented from pre-setup template. Template-country display is not playable campaign victory, AI, save, or starting Spring.
+
+**Verification:** Debug/Release/ASan+UBSan strict C11 CTest 10/10 each (including previous battle/replay regressions). Real Linux X11 1280×720 World campaign roster rendered 120 frames; previous Divide and path 30 frames each. Real native executable output 14 +27 original countries. Source hash `fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581` verified; changed Gold number returned failure exit 8, missing path 8, nonexistent scenario 4, source-changing graphical mode 12; existing Divide save no-overwrite exit 6. These are independent Linux/native tests and do not imply native Windows or physical Xbox hardware acceptance.
+
+**Next original research:** faithful setup and seasonal transforms, roster/topology/family sources, then true seasonal orders/AI and persistent campaign save. Battle terminal/AI, original artwork/audio and packaging remain open. No older ROM, save, source or handoff was overwritten. Need verified GitHub/Drive publication and recipient readback separately.
