@@ -1,0 +1,9 @@
+# EXEC0132 — Authentic stock conditional F5 writer source dependency
+
+Complete integrated C11 game, based on fully recovered EXEC0129 archive and reconstructed original public EXEC0130/0131 modules. Exact complete EXEC0131 ZIP was unavailable; do not claim bit-for-bit ancestry. All EXEC0129 history remains preserved.
+
+New executable original-stock source analyzer `gk132_f5_setup.c/h` authenticates the private original USA cartridge using the existing SHA256+header bootstrap, then checks actual original bank14 instructions at $8050..$8062. The discovered conditional source path is `LDA $00B8; BNE $805F; LDA $00BA; BNE $805F; LDA #$02; STA $00F5; RTS`, immediately followed at $8060 by `LDA $00F5`. **If this routine were entered**, B8=0 and BA=0 would write F5=2; if either is nonzero it would return without writing. The runtime call path and RAM bytes remain unproved. The currently bounded unknown-power-on reset reaches $8060 with no earlier $F5 write and fails closed. A distinct archived Mesen AllZeros profile progresses to first unsupported PPUSTATUS $2002 at $C5BE. This is not playable first Spring or setup/RNG.
+
+No ROM bytes, Mesen RAM, screenshots, licensed graphics/audio are contained in the package or public source. No actual new Mesen run was made. Do not hardcode F5=2 universally or grant 3 spring orders. The next task is source-event tracing the actual call ordering and PPUSTATUS, then full setup/difficulty/ability/RNG and the 14/27 country Spring transitions.
+
+Test: `GK1_ORIGINAL_STOCK_ROM=/private/stock.nes cmake --build build && GK1_ORIGINAL_STOCK_ROM=/private/stock.nes ctest --test-dir build --output-on-failure`. Linux graphical smoke via `xvfb-run -a -s '-screen 0 1280x720x24' ./build/gk1_native_shell --smoke-frames 120`. Windows/NSIS and physical Xbox NOT RUN.
