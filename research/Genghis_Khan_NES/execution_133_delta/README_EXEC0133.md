@@ -1,0 +1,5 @@
+# EXEC0133 source-authenticated original boot order
+
+The exact user-private stock USA ROM remains required at runtime (environment `GK1_ORIGINAL_STOCK_ROM`). No original ROM or licensed assets are included. New C11 `gk133_boot_order.c/h` independently checks source control flow and both bounded reset profiles in the inherited game. The first mapped instruction `$8000` calls `$8060` and loads `$00F5` **before** source execution reaches the later `$8040` clearing writer. Thus the first `$00F5` read necessarily depends on the configured power-on RAM value; it is not produced by that later write. With MesenCE `RamPowerOnState=1` (AllZeros) the bounded emulator reaches `$C5BE` and gates on unmodeled PPUSTATUS `$2002`. This is NOT an original NES formula, original Mesen gameplay rerun, or playable first Spring. No original orders are granted. Source is additive and preserves the established original-stock and Enhanced distinction.
+
+Reproduce: `cmake -S execution_133 -B build -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build -j8 && GK1_ORIGINAL_STOCK_ROM=/private/path/original.nes ctest --test-dir build --output-on-failure -j8`.
