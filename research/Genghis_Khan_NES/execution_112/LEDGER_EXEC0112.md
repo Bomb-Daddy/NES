@@ -1,0 +1,7 @@
+# EXEC0112 status — November 8, 2026
+
+Source: complete inherited C11 `execution_112` version `1.12.0-dev1`. New 24-field authenticated original Spring setup/season delta engine and controller X11 viewer. All original raw capture bytes stay private; valid records require existing original-source SHA provenance. Fresh vs archived Mongol source evidence differs in 93 field/country pairs (24x14); this is NOT a numeric RNG rule. All-country pre-setup/real-stock source data remains immutable. Both campaigns and Classic/Enhanced profiles preserved.
+
+TESTED_PORT_LINUX Release 71/71, Debug 71/71, ASan+UBSan 71/71; private three-source real Mesen capture input positive in Release and sanitizer; X11 controller/viewer 120-frame fresh/archived Mongol/archived World all PASS. Independent clean archive rebuild/package and source GitHub/Drive publication require explicit separate verification receipt.
+
+OBSERVED_RUNTIME_STOCK only **previous** original Mesen captured snapshots, NOT rerun this execution. VERIFIED_STATIC original CSV and hash-pinned 14x83/27x83 country record integrity. NOT RUN Win32, NSIS, physical Xbox, authentic stock self-generated Spring/RNG, full Trade or campaigns. Three real Spring orders still ungranted by the independent new game initializer. No public licensed original ROM, SRAM, screenshots, art or sound. Existing hourly development task stays active pending Director stop or accepted complete release.
