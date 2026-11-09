@@ -1,0 +1,398 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,12 +1,12 @@
+ cmake_minimum_required(VERSION 3.15)
+-project(GK1NativeShell137 C)
++project(GK1NativeShell138 C)
+ set(CMAKE_C_STANDARD 11)
+ set(CMAKE_C_STANDARD_REQUIRED ON)
+ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -54,18 +54,18 @@
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+-  set(CPACK_PACKAGE_VERSION "1.37.0")
++  set(CPACK_PACKAGE_VERSION "1.38.0")
+   set(CPACK_PACKAGE_VENDOR "GK1 native research prototype")
+   set(CPACK_PACKAGE_INSTALL_DIRECTORY "Genghis Khan I Native Research")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Incomplete native Genghis Khan I research; original first Spring still unfinished")
+-  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.37.0-dev1")
+-  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.37.0-dev1")
++  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.38.0-dev1")
++  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.38.0-dev1")
+   set(CPACK_NSIS_MUI_FINISHPAGE_RUN "gk1_native_shell.exe")
+   set(CPACK_NSIS_MODIFY_PATH OFF)
+-  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.37.0-dev1")
++  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.38.0-dev1")
+   set(CPACK_CREATE_DESKTOP_LINKS "gk1_native_shell")
+   include(CPack)
+ endif()
+@@ -149,10 +149,10 @@
+           DESTINATION opt/gk1-native-research)
+   install(PROGRAMS packaging/gk1-native-research DESTINATION usr/bin)
+   install(FILES packaging/gk1-native-research.desktop DESTINATION usr/share/applications)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md DESTINATION usr/share/doc/gk1-native-research)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+-  set(CPACK_PACKAGE_VERSION "1.37.0")
++  set(CPACK_PACKAGE_VERSION "1.38.0")
+   set(CPACK_DEBIAN_PACKAGE_RELEASE "dev1")
+   set(CPACK_PACKAGE_CONTACT "GK1 research prototype (offline source distribution)")
+   set(CPACK_DEBIAN_PACKAGE_MAINTAINER "GK1 Native Research")
+@@ -160,7 +160,7 @@
+   set(CPACK_DEBIAN_PACKAGE_SECTION "games")
+   set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Genghis Khan I native research prototype, not completed game")
+-  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.37.0~dev1_amd64")
++  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.38.0~dev1_amd64")
+   set(CPACK_SET_DESTDIR OFF)
+   set(CPACK_PACKAGING_INSTALL_PREFIX "/")
+   find_package(Python3 COMPONENTS Interpreter)
+@@ -561,3 +561,8 @@
+ add_executable(test_gk137_stock_rng test_gk137_stock_rng.c)
+ target_link_libraries(test_gk137_stock_rng PRIVATE gk1_app_state)
+ add_test(NAME GK1_137_SourceDerived48BitSpringRateIndependentOracleAndAppSafety COMMAND test_gk137_stock_rng)
++
++# EXEC0138: backwards source RNG stream and noncausal Spring Rate alignment.
++add_executable(test_gk138_rng_reverse test_gk138_rng_reverse.c)
++target_link_libraries(test_gk138_rng_reverse PRIVATE gk1_app_state)
++add_test(NAME GK1_138_OriginalStock48BitInverseAndSpringRateHistoryNoGameplayPromotion COMMAND test_gk138_rng_reverse)
+--- a/gk1_app_state.c
++++ b/gk1_app_state.c
+@@ -1015,3 +1015,20 @@
+     return GK137_BAD_INPUT;
+  *after=next;*rate=value;return GK137_OK;
+ }
++
++/* EXEC0138 source RNG inverse investigation: read-only setup boundary;
++ * neither a captured RATE nor a recovered pair identifies actual NMI
++ * history. A true original stock first Spring is still NOT generated. */
++Gk138Result gk1_app_source_rate_history(const Gk1App *app,
++ const uint8_t post_seed[6],uint16_t observed_rate,uint32_t max_draws_back,
++ Gk138RateScan *out){
++ if(!app||!post_seed||!out||app->active_world>1u||
++    app->setup_stage[app->active_world]!=GK53_SETUP_AWAIT_SOURCE||
++    app->setup_difficulty[app->active_world]<1u||
++    app->setup_difficulty[app->active_world]>5u)
++  return GK138_BAD_INPUT;
++ Gk137StockRng seed;
++ if(gk137_from_nes_bytes(&seed,post_seed)!=GK137_OK)return GK138_BAD_INPUT;
++ return gk138_scan_spring_rate(seed.seed48,
++  app->setup_difficulty[app->active_world],observed_rate,max_draws_back,out);
++}
+--- a/gk1_app_state.h
++++ b/gk1_app_state.h
+@@ -19,6 +19,7 @@
+ #include "gk116_enhanced_assign.h"
+ #include "gk119_order_bridge.h"
+ #include "gk137_stock_rng.h"
++#include "gk138_rng_reverse.h"
+ #include "../execution_049/gk1_scenario_factory.h"
+ /* A standalone, copyright-clean native-app vertical slice, NOT a shipped game.
+  * Campaign buttons are navigation only: no campaigns are fabricated.
+@@ -100,6 +101,12 @@
+  * manufacture original seed/NMI timing, or mark first Spring playable. */
+ Gk137Result gk1_app_source_rate_proof(const Gk1App *app,
+  const uint8_t explicit_nes_seed[6],Gk137StockRng *after,uint16_t *rate);
++/* Explicit observed post-setup seed and RATE, NOT an inferred stock
++ * RNG seed. Source-only backwards compatibility scan with unchanged app.
++ * No mutation or Spring/Trade unlock on success or refusal. */
++Gk138Result gk1_app_source_rate_history(const Gk1App *app,
++ const uint8_t post_seed[6],uint16_t observed_rate,uint32_t max_draws_back,
++ Gk138RateScan *out);
+ /* Atomic install of both validated scenario templates: no auto-stat or Spring. */
+ int gk1_app_install_templates(Gk1App *s,const Gk1TemplateDataset *source);
+ const Gk1CountryTemplate *gk1_app_selected_country(const Gk1App *s);
+--- a/gk1_native_shell.c
++++ b/gk1_native_shell.c
+@@ -51,7 +51,7 @@
+ # include <unistd.h>
+ # include <linux/joystick.h>
+ #endif
+-#define GK1_PORT_VERSION "1.37.0-dev1"
++#define GK1_PORT_VERSION "1.38.0-dev1"
+ #define WIDTH 1280
+ #define HEIGHT 720
+ #define BG UINT32_C(0x10202b)
+@@ -1600,7 +1600,7 @@
+   puts("ARCHIVED_SOURCE_CAPTURE_ROM_UNVERIFIED: NOT THE INITIAL SPRING TRANSFORM");return 0;
+  }
+  if(argc==2&&strcmp(argv[1],"--version")==0){
+-  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
++  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
+  }
+  /* Preserve EXEC0056's tested synthetic-pad correction/export contract. */
+  if(argc==3&&strcmp(argv[1],"--bonus-correction-export")==0){
+@@ -2409,7 +2409,7 @@
+    else if(e.type==ClientMessage && (Atom)e.xclient.data.l[0]==delete_window)running=0;
+   }
+   poll_joystick(&joystick,pad);render();XFlush(display);frames++;
+-  if(smoke && frames>=smoke){printf("EXEC0137 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
++  if(smoke && frames>=smoke){printf("EXEC0138 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
+   struct timespec t={0,16000000};nanosleep(&t,NULL);
+  }
+  if(joystick>=0)close(joystick);
+--- a/packaging/gk1-native-research.desktop
++++ b/packaging/gk1-native-research.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-Name=Genghis Khan I Research 1.37.0-dev1
++Name=Genghis Khan I Research 1.38.0-dev1
+ GenericName=NES-to-Windows Port Research Prototype
+ Comment=Incomplete native Genghis Khan I research game; source-bounded battles only
+ Exec=gk1-native-research
+--- a/packaging/test_package_contract.py
++++ b/packaging/test_package_contract.py
+@@ -5,14 +5,14 @@
+ assert exe.is_file() and csv.is_file() and desktop.is_file()
+ assert hashlib.sha256(csv.read_bytes()).hexdigest()=="fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581"
+ entry=desktop.read_text()
+-assert "Name=Genghis Khan I Research 1.37.0-dev1" in entry
++assert "Name=Genghis Khan I Research 1.38.0-dev1" in entry
+ assert "Exec=gk1-native-research\n" in entry
+ assert "Terminal=false\n" in entry
+ with tempfile.TemporaryDirectory(prefix='gk1_exec54_') as tmp:
+     def run(*args,env=None):
+         return subprocess.run([str(exe),*args],cwd=tmp,env=env,capture_output=True,text=True,timeout=15)
+     v=run('--version')
+-    assert v.returncode==0 and '1.37.0-dev1' in v.stdout and 'not full game' in v.stdout
++    assert v.returncode==0 and '1.38.0-dev1' in v.stdout and 'not full game' in v.stdout
+     for sc,num in ((1,14),(2,27)):
+         r=run('--scenario-report',str(sc))
+         assert r.returncode==0,(r.stdout,r.stderr)
+--- a/gk138_rng_reverse.c
++++ b/gk138_rng_reverse.c
+@@ -0,0 +1,52 @@
++#include "gk138_rng_reverse.h"
++#include <limits.h>
++#define GK138_MASK UINT64_C(0xffffffffffff)
++/* Derived by extended Euclid: 0xe0900e0187c5 * 0xd8e495025f0d == 1 mod 2^48. */
++#define GK138_INVERSE UINT64_C(0xd8e495025f0d)
++#define GK138_MULT UINT64_C(0xe0900e0187c5)
++static uint64_t prior_odd(uint64_t newer){
++ return ((UINT64_C(0)-newer)*GK138_INVERSE)&GK138_MASK;
++}
++Gk138Result gk138_reverse(uint64_t last_state,uint32_t draws_back,
++                         Gk138Reverse *out){
++ if(!out||last_state>GK138_MASK||draws_back>65536u||
++    (draws_back && !(last_state&1u)))return GK138_BAD_INPUT;
++ Gk138Reverse candidate={last_state,last_state,draws_back};
++ /* Every source output is odd; all intermediate states except the unknown
++  * original initial state are therefore uniquely odd. */
++ for(uint32_t i=0;i<draws_back;i++){
++  uint64_t p=prior_odd(candidate.candidate_odd);
++  /* Fail closed if the alleged original step could not actually produce
++   * this output; the assertion is also a regression gate on inverse value. */
++  if(!(p&1u)||(((UINT64_C(0)-(p*GK138_MULT))&GK138_MASK)!=candidate.candidate_odd))
++   return GK138_BAD_INPUT;
++  candidate.candidate_odd=p;
++ }
++ if(draws_back)candidate.candidate_even=candidate.candidate_odd&~UINT64_C(1);
++ *out=candidate;
++ return GK138_OK;
++}
++Gk138Result gk138_scan_spring_rate(uint64_t post_state,uint8_t difficulty,
++                                   uint16_t observed_rate,
++                                   uint32_t oldest_search,Gk138RateScan *out){
++ if(!out||post_state>GK138_MASK||!(post_state&1u)||
++    difficulty<1u||difficulty>5u||oldest_search==0u||oldest_search>65536u||
++    observed_rate<50u||observed_rate>(uint16_t)(143u+7u*difficulty))
++  return GK138_BAD_INPUT;
++ const uint16_t bound=(uint16_t)(94u+7u*difficulty);
++ Gk138RateScan candidate={0,UINT32_MAX,0};
++ for(uint32_t i=0;i<oldest_search;i++){
++  uint16_t rate=(uint16_t)(50u+(((post_state>>32u)&0x7fffu)%bound));
++  if(rate==observed_rate){
++   if(candidate.matches==0)candidate.nearest_offset=i;
++   candidate.matches++;
++  }
++  candidate.inspected++;
++  uint64_t p=prior_odd(post_state);
++  if(!(p&1u)||(((UINT64_C(0)-(p*GK138_MULT))&GK138_MASK)!=post_state))
++   return GK138_BAD_INPUT;
++  post_state=p;
++ }
++ *out=candidate;
++ return GK138_OK;
++}
+--- a/gk138_rng_reverse.h
++++ b/gk138_rng_reverse.h
+@@ -0,0 +1,34 @@
++#ifndef GK138_RNG_REVERSE_H
++#define GK138_RNG_REVERSE_H
++#include <stdint.h>
++/* Inverse of the EXACT source-derived GK137 48-bit NES PRNG step. This is a
++ * research trace tool, NOT an original NES power-on seed or a live Spring.
++ * The original step forces bit 0 of its input high. Consequently two initial
++ * seeds (odd and preceding even) ALWAYS yield the same later stream.
++ */
++typedef enum { GK138_OK=0, GK138_BAD_INPUT=1 } Gk138Result;
++typedef struct {
++ uint64_t candidate_even;
++ uint64_t candidate_odd;
++ uint32_t draws_back;
++} Gk138Reverse;
++typedef struct {
++ uint32_t matches;
++ uint32_t nearest_offset; /* 0=immediately preceding last observed seed */
++ uint32_t inspected;
++} Gk138RateScan;
++/* For draws_back=0 both candidates equal last_state, including even values.
++ * For draws_back>=1 last_state must be odd. Bounded to 65536 draws for QA.
++ * No changes to out on rejection.
++ */
++Gk138Result gk138_reverse(const uint64_t last_state, uint32_t draws_back,
++                         Gk138Reverse *out);
++/* Evaluate possible original Spring Rate draws in a post-setup state.
++ * This is CONDITIONAL on externally authenticated post-setup seed and the
++ * original call chronology. A numeric match NEVER proves causality.
++ * oldest_search <=65536, 0 is invalid. Refuses impossible rate or difficulty.
++ */
++Gk138Result gk138_scan_spring_rate(uint64_t post_state, uint8_t difficulty,
++                                   uint16_t observed_rate,
++                                   uint32_t oldest_search,Gk138RateScan *out);
++#endif
+--- a/test_gk138_rng_reverse.c
++++ b/test_gk138_rng_reverse.c
+@@ -0,0 +1,111 @@
++#include "gk138_rng_reverse.h"
++#include "gk137_stock_rng.h"
++#include "gk1_app_state.h"
++#include <stdint.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++#include <limits.h>
++#define M48 UINT64_C(0xffffffffffff)
++#define MULT UINT64_C(0xe0900e0187c5)
++static uint64_t check_count;
++#define CHECK(x) do {check_count++;if(!(x)){fprintf(stderr,"GK138 FAIL %s:%d: %s\n",__FILE__,__LINE__,#x);abort();}} while(0)
++/* Independent base-256 oracle, no 64-bit direct multiplication. */
++static uint64_t forward(uint64_t seed){
++ uint8_t a[6],b[6],prod[6];
++ for(unsigned i=0;i<6;i++){
++  a[i]=(uint8_t)((seed|UINT64_C(1))>>(8u*i));
++  b[i]=(uint8_t)(MULT>>(8u*i));
++ }
++ uint32_t carry=0;
++ for(unsigned i=0;i<6;i++){
++  uint32_t sum=carry;
++  for(unsigned j=0;j<=i;j++)sum+=(uint32_t)a[j]*b[i-j];
++  prod[i]=(uint8_t)sum;carry=sum>>8u;
++ }
++ uint64_t p=0;
++ for(unsigned i=0;i<6;i++)p|=(uint64_t)prod[i]<<(8u*i);
++ return (UINT64_C(0)-p)&M48;
++}
++static void to_bytes(uint64_t seed,uint8_t bytes[6]){
++ for(unsigned i=0;i<6;i++)bytes[i]=(uint8_t)(seed>>(8u*(5u-i)));
++}
++int main(void){
++ const uint64_t s[]={0,1,2,3,0x123456789abcULL,0x123456789abdULL,
++  0xffffffffffffULL,0xfffffffffffEULL,0x800000000000ULL,0x010203040506ULL};
++ for(unsigned k=0;k<sizeof s/sizeof s[0];k++){
++  uint64_t state=s[k];
++  Gk138Reverse rev={0};
++  CHECK(gk138_reverse(state,0,&rev)==GK138_OK);
++  CHECK(rev.candidate_even==state&&rev.candidate_odd==state&&rev.draws_back==0);
++  for(uint32_t n=1;n<=300;n++){
++   state=forward(state);
++   CHECK(gk138_reverse(state,n,&rev)==GK138_OK);
++   CHECK(rev.draws_back==n);
++   CHECK(rev.candidate_odd==(s[k]|UINT64_C(1)));
++   CHECK(rev.candidate_even==(s[k]&~UINT64_C(1)));
++   uint64_t p=rev.candidate_odd;
++   for(uint32_t i=0;i<n;i++)p=forward(p);
++   CHECK(p==state);
++  }
++ }
++ /* The original s|1 rule means distinct initial even/odd seeds collide
++  * after one call and there is NO way to infer exact original parity. */
++ for(uint64_t seed=0;seed<400;seed+=2){
++  CHECK(forward(seed)==forward(seed+1));
++  Gk138Reverse trace={0};
++  CHECK(gk138_reverse(forward(seed),1,&trace)==GK138_OK);
++  CHECK(trace.candidate_even==seed&&trace.candidate_odd==seed+1);
++ }
++ /* Deterministic reverse-rate search should find precisely the matches in
++  * an independent forward-generated history, not a manufactured causal hit. */
++ for(unsigned k=0;k<160;k++){
++  uint64_t hist[65],initial=((UINT64_C(0x123456789abc)+k*UINT64_C(0x101010101))&M48);
++  hist[0]=initial;
++  for(unsigned j=1;j<=64;j++)hist[j]=forward(hist[j-1]);
++  uint8_t diff=(uint8_t)(1+k%5);const unsigned bound=94u+7u*diff;
++  uint16_t wanted=(uint16_t)(50u+(((hist[17]>>32u)&0x7fffu)%bound));
++  Gk138RateScan result={0};
++  CHECK(gk138_scan_spring_rate(hist[64],diff,wanted,64,&result)==GK138_OK);
++  uint32_t count=0,closest=UINT32_MAX;
++  for(unsigned j=0;j<64;j++){
++   uint64_t st=hist[64-j];
++   uint16_t observed=(uint16_t)(50u+(((st>>32u)&0x7fffu)%bound));
++   if(observed==wanted){count++;if(closest==UINT32_MAX)closest=j;}
++  }
++  CHECK(result.inspected==64&&result.matches==count&&result.nearest_offset==closest);
++  CHECK(result.matches>=1);
++ }
++ /* All refusal paths must remain atomic, including outputs. */
++ Gk138Reverse r={17,19,23},r0=r;
++ CHECK(gk138_reverse(2,1,&r)==GK138_BAD_INPUT);
++ CHECK(gk138_reverse(M48+1,0,&r)==GK138_BAD_INPUT);
++ CHECK(gk138_reverse(1,65537,&r)==GK138_BAD_INPUT);
++ CHECK(gk138_reverse(1,1,NULL)==GK138_BAD_INPUT);
++ CHECK(!memcmp(&r,&r0,sizeof r));
++ Gk138RateScan scan={3,8,13},scan0=scan;
++ CHECK(gk138_scan_spring_rate(2,1,100,20,&scan)==GK138_BAD_INPUT);
++ CHECK(gk138_scan_spring_rate(1,0,100,20,&scan)==GK138_BAD_INPUT);
++ CHECK(gk138_scan_spring_rate(1,6,100,20,&scan)==GK138_BAD_INPUT);
++ CHECK(gk138_scan_spring_rate(1,1,49,20,&scan)==GK138_BAD_INPUT);
++ CHECK(gk138_scan_spring_rate(1,1,151,20,&scan)==GK138_BAD_INPUT);
++ CHECK(gk138_scan_spring_rate(1,1,100,0,&scan)==GK138_BAD_INPUT);
++ CHECK(gk138_scan_spring_rate(1,1,100,65537,&scan)==GK138_BAD_INPUT);
++ CHECK(gk138_scan_spring_rate(1,1,100,20,NULL)==GK138_BAD_INPUT);
++ CHECK(!memcmp(&scan,&scan0,sizeof scan));
++ /* Same real game's PRE_SETUP gate, and proof cannot mutate countries or
++  * turn synthetic source seed into playable orders. */
++ Gk1App app;gk1_app_init(&app);
++ app.active_world=0;app.setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;
++ app.setup_difficulty[0]=3;
++ Gk1App old=app;
++ uint8_t bytes[6];to_bytes(forward(0x112233445566ULL),bytes);
++ CHECK(gk1_app_source_rate_history(&app,bytes,121,32,&scan)==GK138_OK);
++ CHECK(!memcmp(&app,&old,sizeof app));
++ app.setup_stage[0]=GK53_SETUP_ABILITIES;old=app;scan0=scan;
++ CHECK(gk1_app_source_rate_history(&app,bytes,121,32,&scan)==GK138_BAD_INPUT);
++ CHECK(!memcmp(&scan,&scan0,sizeof scan)&&!memcmp(&app,&old,sizeof app));
++ puts("GK138 original 48-bit reverse/possible-rate history, collapse, bounded negative controls, application guard PASS");
++ printf("ASSERTIONS %llu\n",(unsigned long long)check_count);
++ return 0;
++}
+--- a/README_EXEC0138.md
++++ b/README_EXEC0138.md
+@@ -0,0 +1,12 @@
++# GK1 EXEC0138 — Source PRNG reverse-trace / original Spring Rate alignment (research, not playable)
++
++Inherits **complete** native Genghis C11 application from EXEC0137, unmodified scenario provenance, original-source cold-start guards and Classic/Enhanced isolation. Same 1280x720 controller UI. Adds gk138_rng_reverse.c/h and source-gated read-only app method. No original-ROM, SRAM, assets, saves, or copyrighted extracts included.
++
++Verified arithmetic: the source-v1.07 C289 generator maps `s -> -(s|1)*0xe0900e0187c5 mod 2^48`. The multiplier has inverse `0xd8e495025f0d mod 2^48`. Every output is odd, and forcing input bit 0 means two preceding inputs (one even, one odd) are indistinguishable. For an exact observed output seed and known number of draws, backwards traversal gives this precise two-candidate input pair. A Spring Rate numerical match within a scan is only *compatible* with an unknown chronology, never proof of that chronology. An isolated source expression is *not* a real first Spring or a seed authentication protocol.
++
++The user-authorized original NES game must still independently produce all 14/27 post-setup original country states with real ability/difficulty/RNG, three orders and live merchant/AI/diplomacy/battle. **No* staged snapshot has been promoted to genuine setup; no original ROM or private RAM is published. Previous genuine Mesen fresh Mongol1175 Rate121 and archived Mongol1175 Rate101/World1206 Rate114 have distinct RNG histories. This patch does not claim a new native Mesen run or Windows/physical Xbox QA.
++
++QA commands (from execution_138):
++`cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j4 && ctest --test-dir build --output-on-failure`
++
++Linux `Xvfb` smoke and Debian tests are separate from Windows/physical-Xbox acceptance; publish only observed results and exact artifact SHA-256.
