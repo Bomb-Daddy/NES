@@ -1,0 +1,22 @@
+--- execution_129/gk83_reset_trace.h
++++ execution_131/gk83_reset_trace.h
+@@ -32,6 +32,7 @@
+  uint32_t oam_address_writes,oam_direct_writes,oam_dma_transfers;
+  uint64_t oam_dma_stall_cycles;
+  uint8_t source_dma_alignment_is_hypothesis;
++ uint8_t source_dma_last_page,source_dma_last_result;
+  uint16_t first_unknown_oam_access;
+  uint32_t unmodelled_rmw_preflight_rejections;
+  uint8_t unmodelled_instruction_cpu_rolled_back;
+@@ -59,6 +60,11 @@
+  uint8_t ppu_bus_latch_known,ppu_bus_latch_gate;
+  /* EXEC0107: source-bounded open-bus write-only PPU port reads. */
+  uint32_t ppu_write_only_bus_reads,ppu_write_only_age_gates;
++ /* EXEC0131: first unknown RAM access instruction provenance.
++  * Source-backed trace metadata, never power-on RAM guesses or gameplay. */
++ uint16_t first_unknown_ram_source_pc,source_f5_last_writer_pc;
++ uint8_t first_unknown_ram_source_opcode,first_unknown_ram_mmc1_bank;
++ uint32_t source_f5_known_reads,source_f5_writes;
+  Gk83Stop stop;
+ } Gk83Trace;
+ /* On source/hash/argument rejection, output is byte-for-byte unchanged.
