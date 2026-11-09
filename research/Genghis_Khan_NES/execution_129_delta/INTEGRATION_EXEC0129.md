@@ -1,0 +1,17 @@
+# Executable integration of GK129 into the inherited original-ROM CPU trace
+
+Authority: EXEC0128 complete existing native game, not any standalone sample or EXEC0062 skeleton. Apply this delta under execution_129 in the same historical project; full complete source ZIP is authoritative for exact changed files.
+
+1. Copy gk129_dma_source.c, gk129_dma_source.h and test_gk129_dma_source.c alongside original gk83_reset_trace.c.
+2. In the existing gk1_app_state STATIC CMake target, add gk129_dma_source.c after gk128_oam.c. Add executable test_gk129_dma_source, link it to gk1_app_state and register CTest GK1_129_SourceGatedCpuRamOamDmaAtomicAndVerifiedRomGate.
+3. In gk83_reset_trace.c include gk129_dma_source.h. Machine gains two uint8_t fields named source_dma_alignment_is_hypothesis and source_dma_apu_phase.
+4. Extend trace_impl arguments by the two uint8_t fields dma_alignment_hypothesis and dma_phase; refuse invalid phase (>1), speculative alignment outside PPU-scheduled mode, or a nonzero phase with no alignment hypothesis. Preserve all prior call sites with trailing 0u,0u, maintaining their behavior.
+5. In write_byte BEFORE gk126_io_write_barrier, for CPU address 0x4014 ONLY WHEN ppu_schedule_enabled AND source_dma_alignment_is_hypothesis, invoke gk129_dma_from_cpu_ram with the existing m->oam, m->ram, m->known, CPU accumulator write value as source page, alignment_known=1 and the explicit source_dma_apu_phase. On GK129_DMA_OK add returned stall cycles to completed_cpu_cycles, increment oam_dma_transfers, oam_dma_stall_cycles, peripheral_writes, then return. On error mark ppu_schedule_gate, record first_unmodelled_io_write=0x4014, value and GK126_IO_OAMDMA_UNMODELLED if not already set, increment unmodelled_io_write_attempts, and return, WITHOUT changing OAM or cycles.
+6. Extend Gk83Trace (gk83_reset_trace.h) with uint64_t oam_dma_stall_cycles and uint8_t source_dma_alignment_is_hypothesis. Store the latter in the final trace diagnostics.
+7. Add research-only API gk129_trace_original_ppu_with_dma_alignment(rom, origin, explicit_phase_hypothesis, phase, max_steps, out), strictly validate arguments, and pass explicit 1u,phase into trace_impl along with previous stock PPU scheduling (mesen_zero_ram=1, status injections absent). NEVER enable this mode by default. No result from this path may be called OBSERVED_RUNTIME_STOCK without independent Mesen evidence.
+8. Bump native shell, desktop entry, installer and test-package version to 1.29.0-dev1. Preserve existing 1280x720 shell, 14/27 pre-setup templates, controller-only navigation, research/profile rules, receipts and save paths. Install README_EXEC0129.md alongside previous docs.
+9. Reproduce: cmake -S execution_129 -B build129 -DCMAKE_BUILD_TYPE=Release ; cmake --build build129 -j8 ; GK1_ORIGINAL_STOCK_ROM=/private/verified-original-stock.nes ctest --test-dir build129 --output-on-failure -j8 ; cd build129 && cpack -G DEB. The original ROM is an external private test input only and must never enter public archives.
+
+Safety: No guessed APU phase, PPUMASK frame timing, original Spring formula, source merchant offers or original-startup RAM. Default original-ROM reset still stops after 70 executed instructions at PC $8060, unknown RAM $00F5. A valid hypothetical trace does not grant game orders or make campaigns playable.
+
+The exact integrated source/CMake changes and all predecessor files are in the source ZIP; this GitHub folder is a copyright-clean DELTA, not a verified full executable replacement.
