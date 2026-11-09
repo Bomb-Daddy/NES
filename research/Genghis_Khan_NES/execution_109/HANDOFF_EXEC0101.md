@@ -1,0 +1,7 @@
+# GK1 EXEC0101 — executable source/QA handoff
+
+Current inherited native game: `execution_101`, v1.01.0-dev1; starts from exact EXEC0100 in C11, preserves all earlier code and tests. Read `README_EXEC0101.md` and `LEDGER_EXEC0101.md` before changes. Original ROM/83-byte country records/Mesen save states never to public GitHub. Relevant grounded hardware source: NESdev MMC1 consecutive writes and bit7 reset rule (https://www.nesdev.org/wiki/INES_Mapper_001).
+
+Reproduce from archive root: `cmake -S execution_101 -B build101 -DCMAKE_BUILD_TYPE=Release && cmake --build build101 -j8 && ctest --test-dir build101 --output-on-failure -j8`. With owner-private stock ROM, set `GK1_ORIGINAL_STOCK_ROM=/secure/path/original.nes` when running `test_gk101_mmc1_cycles` and `test_gk100_cpu_timing`. `xvfb-run -a build101/gk1_native_shell --smoke-frames 120` checks the actual Linux X11 process, not native Windows or real Xbox. Archive and clean-source tests must match; code version is not a completed game.
+
+Next SOURCE priority remains real original Mesen cycle-addressed $2002/PPUCTRL/NMI chronology (no virtual vblank constant), setup/difficulty/abilities RNG then true 14/27-country playable first Spring with a three-order controller turn, not new cosmetic reports. Follow with actual merchant scheduler/Trade, AI, battle aftermath, diplomacy/dynasty and both complete campaigns. Never infer universal Spring Gold/Rate from one Mesen run.
