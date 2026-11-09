@@ -1,0 +1,11 @@
+# EXEC0095 — Source-authenticated Spring Trade quote viewer
+
+Directly inherited the **complete** EXEC0094 native C11 game, including original 6502 trace, RAM-bank isolation, both country rosters, source-bound Spring records, controller menus, save/cold-load modules, and prior QA. Increment version `0.95.0-dev1`.
+
+The existing original-stock 14-command controller menu's TRADE entry now opens a read-only quote screen. A source-verified **original** first-Spring Rate (fresh Mongol 121, archived Mongol 101, archived World 114) is fed into the already verified 3-merchant ×17-item economics. D-pad changes merchant/item, A cycles buy/sell display, B closes. Original source record/SHA, 14/27-country state, abilities, inventory, and all three orders remain unchanged. The renderer stays in native 1280×720, no browser or scrolling. The illustrative PRE_SETUP quote explorer remains separate and unchanged.
+
+**It is not a Trade command execution**. Original merchant presence, item-offer masks, RNG, opportunity cost, transaction inputs, and full Spring setup remain unknown. This explicitly source-gated viewer *never* invokes gk61_commit and refuses tampered/forged/mismatched record data. It neither unlocks trade purchases nor claims RNG parity. New source: `gk95_stock_trade_reference.c/.h`, controller/raster integration, `test_gk95_stock_trade_reference.c`, native `--smoke-stock-trade N` option. `--smoke-stock-commands` regression updated to exercise the new Trade reference, B rollback, VIEW, and two-confirmation Pass.
+
+Build and test with historical sibling directories intact: `cmake -S execution_095 -B build95 -DCMAKE_BUILD_TYPE=Release && cmake --build build95 -j6 && ctest --test-dir build95 --output-on-failure`. Private positive tests are invoked explicitly with **owner-only, SHA-validated** original 14+14+27 records: `./build95/test_gk95_stock_trade_reference ./build95/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv PRIVATE_fresh.bin PRIVATE_mongol.bin PRIVATE_world.bin`. No private binary belongs in public source, QA ZIP, GitHub or installer.
+
+EVIDENCE: VERIFIED_STATIC original Rate/capture provenance; OBSERVED_RUNTIME_STOCK previous Mesen source capture only, no new NES execution; TESTED_PORT_LINUX when run with genuine original records; NOT RUN Win32/NSIS or physical Xbox. **First playable original Spring and full game remain incomplete.**
