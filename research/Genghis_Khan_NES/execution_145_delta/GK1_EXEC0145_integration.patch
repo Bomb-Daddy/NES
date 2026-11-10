@@ -69,7 +69,7 @@
 +add_executable(test_gk145_fresh_progress test_gk145_fresh_progress.c)
 +target_link_libraries(test_gk145_fresh_progress PRIVATE gk1_app_state)
 +add_test(NAME GK1_145_VerifiedFreshSourceProgressNoInventedFirstSpring COMMAND test_gk145_fresh_progress)
---- a/README_EXEC0145.md
+--- /dev/null
 +++ b/README_EXEC0145.md
 @@ -0,0 +1,7 @@
 +# EXEC0145 — first-Spring chronology, observed original stock fresh reset
@@ -79,7 +79,7 @@
 +A separate private executable test on the 14 exact authenticated original fresh-reset Mesen screenshots/event JSON produced the milestones: country count 14 first present at capture 2, Spring 1175 and Rate121 at capture 10, Gold425->430 first observed at capture 12, and original three orders first at capture 14. Source original NES SHA256 `ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3`; evidence ZIP SHA256 `8b757e11b12aeb3efe93e36c10628599ca5f12e91b15c02354cd3ebbd11bf52a`. Different RNG histories have different gold and rate: DO NOT hardcode these from this particular run. No new Mesen run or independent original first-Spring generation. No private raw event JSON, original ROM, savestate, screenshots/audio included in public code.
 +
 +Reproduction: `cmake -S execution_145 -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j8 && ctest --test-dir build -j8 --output-on-failure`. The only verified positive original timeline is Mongol fresh reset. Archived Mongol Spring 1175 and World 1206 are separate restored states and are never treated as fresh chronology or universal values. Native Linux tested; Win32/NSIS/physical Xbox/full campaigns not run. Future implementer must trace source-authentic setup/difficulty/ability RNG and PPU chronology, then generate independent Spring within same app, not turn this observation into playable state.
---- a/gk145_fresh_progress.c
+--- /dev/null
 +++ b/gk145_fresh_progress.c
 @@ -0,0 +1,45 @@
 +#include "gk145_fresh_progress.h"
@@ -127,7 +127,7 @@
 +      (r.first_gold_change&&r.first_gold_change!=r.first_three_orders));
 + *out=r;return GK145_OK;
 +}
---- a/gk145_fresh_progress.h
+--- /dev/null
 +++ b/gk145_fresh_progress.h
 @@ -0,0 +1,33 @@
 +#ifndef GK145_FRESH_PROGRESS_H
@@ -263,7 +263,7 @@
      for sc,num in ((1,14),(2,27)):
          r=run('--scenario-report',str(sc))
          assert r.returncode==0,(r.stdout,r.stderr)
---- a/test_gk145_fresh_progress.c
+--- /dev/null
 +++ b/test_gk145_fresh_progress.c
 @@ -0,0 +1,44 @@
 +#include "gk145_fresh_progress.h"
