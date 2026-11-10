@@ -1,0 +1,312 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,12 +1,12 @@
+ cmake_minimum_required(VERSION 3.15)
+-project(GK1NativeShell144 C)
++project(GK1NativeShell145 C)
+ set(CMAKE_C_STANDARD 11)
+ set(CMAKE_C_STANDARD_REQUIRED ON)
+ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -54,18 +54,18 @@
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+-  set(CPACK_PACKAGE_VERSION "1.44.0")
++  set(CPACK_PACKAGE_VERSION "1.45.0")
+   set(CPACK_PACKAGE_VENDOR "GK1 native research prototype")
+   set(CPACK_PACKAGE_INSTALL_DIRECTORY "Genghis Khan I Native Research")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Incomplete native Genghis Khan I research; original first Spring still unfinished")
+-  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.44.0-dev1")
+-  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.44.0-dev1")
++  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.45.0-dev1")
++  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.45.0-dev1")
+   set(CPACK_NSIS_MUI_FINISHPAGE_RUN "gk1_native_shell.exe")
+   set(CPACK_NSIS_MODIFY_PATH OFF)
+-  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.44.0-dev1")
++  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.45.0-dev1")
+   set(CPACK_CREATE_DESKTOP_LINKS "gk1_native_shell")
+   include(CPack)
+ endif()
+@@ -149,10 +149,10 @@
+           DESTINATION opt/gk1-native-research)
+   install(PROGRAMS packaging/gk1-native-research DESTINATION usr/bin)
+   install(FILES packaging/gk1-native-research.desktop DESTINATION usr/share/applications)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md DESTINATION usr/share/doc/gk1-native-research)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+-  set(CPACK_PACKAGE_VERSION "1.44.0")
++  set(CPACK_PACKAGE_VERSION "1.45.0")
+   set(CPACK_DEBIAN_PACKAGE_RELEASE "dev1")
+   set(CPACK_PACKAGE_CONTACT "GK1 research prototype (offline source distribution)")
+   set(CPACK_DEBIAN_PACKAGE_MAINTAINER "GK1 Native Research")
+@@ -160,7 +160,7 @@
+   set(CPACK_DEBIAN_PACKAGE_SECTION "games")
+   set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Genghis Khan I native research prototype, not completed game")
+-  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.44.0~dev1_amd64")
++  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.45.0~dev1_amd64")
+   set(CPACK_SET_DESTDIR OFF)
+   set(CPACK_PACKAGING_INSTALL_PREFIX "/")
+   find_package(Python3 COMPONENTS Interpreter)
+@@ -596,3 +596,7 @@
+ add_executable(test_gk144_archived_mapper test_gk144_archived_mapper.c)
+ target_link_libraries(test_gk144_archived_mapper PRIVATE gk1_app_state)
+ add_test(NAME GK1_144_ArchivedMesenMappedPRGPageProofNotStartupOrGameplay COMMAND test_gk144_archived_mapper)
++
++add_executable(test_gk145_fresh_progress test_gk145_fresh_progress.c)
++target_link_libraries(test_gk145_fresh_progress PRIVATE gk1_app_state)
++add_test(NAME GK1_145_VerifiedFreshSourceProgressNoInventedFirstSpring COMMAND test_gk145_fresh_progress)
+--- a/README_EXEC0145.md
++++ b/README_EXEC0145.md
+@@ -0,0 +1,7 @@
++# EXEC0145 — first-Spring chronology, observed original stock fresh reset
++
++Inherit complete EXEC0144 native C11 source. This addendum adds `gk145_fresh_progress.c/.h`, linked into `gk1_app_state`, with hostile validation of sequential frame/cycle, 14/27-country onset, year, Rate, Gold and original three-order transition. `test_gk145_fresh_progress` includes synthetic positive/negative assertions and the linked native app refusal before source templates are loaded. The analysis is *read only* and cannot fabricate first-Spring initialization, RNG seeds, a source-defined setup call sequence, any of the three original playable actions, AI or future seasons.
++
++A separate private executable test on the 14 exact authenticated original fresh-reset Mesen screenshots/event JSON produced the milestones: country count 14 first present at capture 2, Spring 1175 and Rate121 at capture 10, Gold425->430 first observed at capture 12, and original three orders first at capture 14. Source original NES SHA256 `ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3`; evidence ZIP SHA256 `8b757e11b12aeb3efe93e36c10628599ca5f12e91b15c02354cd3ebbd11bf52a`. Different RNG histories have different gold and rate: DO NOT hardcode these from this particular run. No new Mesen run or independent original first-Spring generation. No private raw event JSON, original ROM, savestate, screenshots/audio included in public code.
++
++Reproduction: `cmake -S execution_145 -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j8 && ctest --test-dir build -j8 --output-on-failure`. The only verified positive original timeline is Mongol fresh reset. Archived Mongol Spring 1175 and World 1206 are separate restored states and are never treated as fresh chronology or universal values. Native Linux tested; Win32/NSIS/physical Xbox/full campaigns not run. Future implementer must trace source-authentic setup/difficulty/ability RNG and PPU chronology, then generate independent Spring within same app, not turn this observation into playable state.
+--- a/gk145_fresh_progress.c
++++ b/gk145_fresh_progress.c
+@@ -0,0 +1,45 @@
++#include "gk145_fresh_progress.h"
++Gk145Status gk145_trace_fresh_progress(const Gk145FreshObservation *rows,
++ size_t count,uint16_t scenario_year,uint16_t expected_countries,
++ Gk145FreshProgress *out){
++ if(!rows||!out||count<2u||count>255u||
++    (scenario_year!=1175u&&scenario_year!=1206u)||
++    (expected_countries!=14u&&expected_countries!=27u)||
++    (scenario_year==1175u)!=(expected_countries==14u))return GK145_ARGUMENT;
++ Gk145FreshProgress r={0};r.samples=(uint8_t)count;
++ uint16_t first_gold=0u;int seen_countries=0,seen_year=0,seen_rate=0,seen_gold=0,seen_orders=0;
++ for(size_t i=0;i<count;i++){
++  const Gk145FreshObservation *p=&rows[i];
++  if((i>0&&(p->frame<=rows[i-1u].frame||p->cpu_cycles<=rows[i-1u].cpu_cycles))||
++     p->country_count>expected_countries||
++     (p->country_count!=0u&&p->country_count!=expected_countries)||
++     p->year>scenario_year||
++     (p->year!=0u&&p->year!=scenario_year&&p->year!=(uint16_t)(scenario_year-1u))||
++     p->gold>999u||p->rate>999u||p->orders>3u)
++    return GK145_INVALID_CHRONOLOGY;
++  if(i&&p->country_count<rows[i-1u].country_count)
++    return GK145_AMBIGUOUS_PROGRESS;
++  if(i&&p->year&&rows[i-1u].year&&p->year<rows[i-1u].year)
++    return GK145_AMBIGUOUS_PROGRESS;
++  if(p->country_count==expected_countries&&!seen_countries){seen_countries=1;r.first_world_setup=(uint8_t)(i+1u);first_gold=p->gold;}
++  if(p->year==scenario_year&&!seen_year){seen_year=1;r.first_spring_year=(uint8_t)(i+1u);}
++  if(p->rate>0u&&!seen_rate){seen_rate=1;r.first_nonzero_rate=(uint8_t)(i+1u);}
++  if(seen_countries&&p->gold!=first_gold&&!seen_gold){seen_gold=1;r.first_gold_change=(uint8_t)(i+1u);}
++  if(p->orders>0u&&(p->orders!=3u||p->year!=scenario_year||
++     p->country_count!=expected_countries||p->rate==0u))
++    return GK145_AMBIGUOUS_PROGRESS;
++  if(seen_rate&&p->rate==0u)return GK145_AMBIGUOUS_PROGRESS;
++  if(p->orders==3u&&!seen_orders){seen_orders=1;r.first_three_orders=(uint8_t)(i+1u);}
++  if(seen_orders&&p->orders!=3u)return GK145_AMBIGUOUS_PROGRESS;
++  if(!r.first_full_spring&&p->year==scenario_year&&p->country_count==expected_countries&&p->rate>0u&&p->orders==3u){
++   r.first_full_spring=(uint8_t)(i+1u);
++  }
++ }
++ if(!seen_countries||!seen_year||!seen_rate||!seen_orders||!r.first_full_spring)
++  return GK145_AMBIGUOUS_PROGRESS;
++ /* Discrete progress does not establish causation between inputs/events. */
++ r.temporal_separation_observed=(uint8_t)(r.first_spring_year!=r.first_three_orders ||
++      r.first_nonzero_rate!=r.first_three_orders ||
++      (r.first_gold_change&&r.first_gold_change!=r.first_three_orders));
++ *out=r;return GK145_OK;
++}
+--- a/gk145_fresh_progress.h
++++ b/gk145_fresh_progress.h
+@@ -0,0 +1,33 @@
++#ifndef GK145_FRESH_PROGRESS_H
++#define GK145_FRESH_PROGRESS_H
++#include <stddef.h>
++#include <stdint.h>
++/* Evidence-only original stock NES fresh-reset controller progression.
++ * The caller must authenticate its private raw Mesen source first: this
++ * function is NOT a ROM emulator and cannot grant a playable season.
++ * A positive Rate, changed Gold, and 3 orders are independent milestones.
++ */
++typedef struct {
++ uint32_t frame;
++ uint64_t cpu_cycles;
++ uint16_t year,country_count,gold,rate,orders;
++} Gk145FreshObservation;
++typedef struct {
++ uint8_t samples;
++ uint8_t first_world_setup; /* 1-based sample, 0 if never observed */
++ uint8_t first_spring_year;
++ uint8_t first_nonzero_rate;
++ uint8_t first_gold_change;
++ uint8_t first_three_orders;
++ uint8_t first_full_spring;
++ uint8_t temporal_separation_observed;
++} Gk145FreshProgress;
++typedef enum { GK145_OK=0, GK145_ARGUMENT=1, GK145_INVALID_CHRONOLOGY=2,
++               GK145_AMBIGUOUS_PROGRESS=3 } Gk145Status;
++/* Atomic: reject malformed stages or years/scenario/country-count changes.
++ * No specific Gold or Rate result is assumed; observed values vary by RNG.
++ * A value of three orders is only an observation, not a turn grant. */
++Gk145Status gk145_trace_fresh_progress(const Gk145FreshObservation *rows,
++ size_t count, uint16_t scenario_year, uint16_t expected_countries,
++ Gk145FreshProgress *out);
++#endif
+--- a/gk1_app_state.c
++++ b/gk1_app_state.c
+@@ -48,6 +48,15 @@
+ const char *gk1_app_case_label(unsigned i){return i<CASE_COUNT?cases[i].label:"UNKNOWN";}
+ static const uint8_t divide_qty[4]={1,6,7,8};
+ void gk1_app_init(Gk1App *s){if(!s)return;memset(s,0,sizeof *s);s->screen=GK1_SCREEN_TITLE;s->last_move=GK1_UNVERIFIED;s->setup_candidate[0]=s->setup_candidate[1]=255;s->rules_profile=1;s->example_rate=100;s->manual_remaining_orders=3;s->whatif_event=GK65_ACT_COMPLETE;s->whatif_victim=GK65_DEFENDER_VICTIM;(void)gk68_rest_open(&s->rest_case);reset_setup(s,0);reset_setup(s,1);strcpy(s->status,"SOURCE-BOUNDED RESEARCH BUILD - NOT FULL GAME");}
++Gk145Status gk1_app_source_fresh_progress(const Gk1App *app,
++ const Gk145FreshObservation *observations,size_t count,
++ uint16_t original_year,uint16_t countries,Gk145FreshProgress *out){
++ if(!app||app->active_world>1u||!app->world_ready[app->active_world]||
++    app->worlds[app->active_world].phase!=GK1_PRE_SETUP_TEMPLATE||
++    countries!=app->worlds[app->active_world].country_count)
++  return GK145_ARGUMENT;
++ return gk145_trace_fresh_progress(observations,count,original_year,countries,out);
++}
+ Gk110Result gk1_app_source_spring_stage(const Gk1App *app,
+  const char *verified_csv,Gk110SpringStage *out){
+  if(!app||!verified_csv||!out||app->active_world>1u||
+--- a/gk1_app_state.h
++++ b/gk1_app_state.h
+@@ -26,6 +26,7 @@
+ #include "gk142_fixed_cfg.h"
+ #include "gk143_bank_cfg.h"
+ #include "gk144_archived_mapper.h"
++#include "gk145_fresh_progress.h"
+ #include "../execution_049/gk1_scenario_factory.h"
+ /* A standalone, copyright-clean native-app vertical slice, NOT a shipped game.
+  * Campaign buttons are navigation only: no campaigns are fabricated.
+@@ -102,6 +103,12 @@
+   char status[128];
+ } Gk1App;
+ void gk1_app_init(Gk1App *s);
++/* Read-only analysis of independently authenticated original fresh reset event snapshots.
++ * Does not initialize native Spring, populate RNG seeds or grant any orders. */
++Gk145Status gk1_app_source_fresh_progress(const Gk1App *app,
++ const Gk145FreshObservation *observations,size_t count,
++ uint16_t original_year,uint16_t countries,Gk145FreshProgress *out);
++
+ /* Research-only original RATE RNG: caller provides explicit six-byte seed.
+  * Only accepts a real setup intent at AWAIT_SOURCE; does NOT mutate app,
+  * manufacture original seed/NMI timing, or mark first Spring playable. */
+--- a/gk1_native_shell.c
++++ b/gk1_native_shell.c
+@@ -51,7 +51,7 @@
+ # include <unistd.h>
+ # include <linux/joystick.h>
+ #endif
+-#define GK1_PORT_VERSION "1.44.0-dev1"
++#define GK1_PORT_VERSION "1.45.0-dev1"
+ #define WIDTH 1280
+ #define HEIGHT 720
+ #define BG UINT32_C(0x10202b)
+@@ -1600,7 +1600,7 @@
+   puts("ARCHIVED_SOURCE_CAPTURE_ROM_UNVERIFIED: NOT THE INITIAL SPRING TRANSFORM");return 0;
+  }
+  if(argc==2&&strcmp(argv[1],"--version")==0){
+-  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0144 archived Mesen PRG-page mapping, EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
++  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0145 fresh original progress gate (no Spring creation), EXEC0144 archived Mesen PRG-page mapping, EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
+  }
+  /* Preserve EXEC0056's tested synthetic-pad correction/export contract. */
+  if(argc==3&&strcmp(argv[1],"--bonus-correction-export")==0){
+@@ -2409,7 +2409,7 @@
+    else if(e.type==ClientMessage && (Atom)e.xclient.data.l[0]==delete_window)running=0;
+   }
+   poll_joystick(&joystick,pad);render();XFlush(display);frames++;
+-  if(smoke && frames>=smoke){printf("EXEC0144 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
++  if(smoke && frames>=smoke){printf("EXEC0145 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
+   struct timespec t={0,16000000};nanosleep(&t,NULL);
+  }
+  if(joystick>=0)close(joystick);
+--- a/packaging/gk1-native-research.desktop
++++ b/packaging/gk1-native-research.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-Name=Genghis Khan I Research 1.44.0-dev1
++Name=Genghis Khan I Research 1.45.0-dev1
+ GenericName=NES-to-Windows Port Research Prototype
+ Comment=Incomplete native Genghis Khan I research game; source-bounded battles only
+ Exec=gk1-native-research
+--- a/packaging/test_package_contract.py
++++ b/packaging/test_package_contract.py
+@@ -5,14 +5,14 @@
+ assert exe.is_file() and csv.is_file() and desktop.is_file()
+ assert hashlib.sha256(csv.read_bytes()).hexdigest()=="fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581"
+ entry=desktop.read_text()
+-assert "Name=Genghis Khan I Research 1.44.0-dev1" in entry
++assert "Name=Genghis Khan I Research 1.45.0-dev1" in entry
+ assert "Exec=gk1-native-research\n" in entry
+ assert "Terminal=false\n" in entry
+ with tempfile.TemporaryDirectory(prefix='gk1_exec54_') as tmp:
+     def run(*args,env=None):
+         return subprocess.run([str(exe),*args],cwd=tmp,env=env,capture_output=True,text=True,timeout=15)
+     v=run('--version')
+-    assert v.returncode==0 and '1.44.0-dev1' in v.stdout and 'not full game' in v.stdout
++    assert v.returncode==0 and '1.45.0-dev1' in v.stdout and 'not full game' in v.stdout
+     for sc,num in ((1,14),(2,27)):
+         r=run('--scenario-report',str(sc))
+         assert r.returncode==0,(r.stdout,r.stderr)
+--- a/test_gk145_fresh_progress.c
++++ b/test_gk145_fresh_progress.c
+@@ -0,0 +1,44 @@
++#include "gk145_fresh_progress.h"
++#include "gk1_app_state.h"
++#include <stdlib.h>
++#define assert(x) do { if(!(x)) {fprintf(stderr,"FAIL line %d: %s\n",__LINE__,#x);exit(1);} }while(0)
++#include <stdio.h>
++#include <string.h>
++int main(void){
++ /* Synthetic values test logic. This does NOT reproduce original ROM RNG. */
++ Gk145FreshObservation stage[]={
++  {10u,1000u,0,0,0,0,0},
++  {20u,2000u,1174,14,300,0,0},
++  {30u,3000u,1174,14,300,0,0},
++  {40u,4000u,1175,14,300,137,0},
++  {50u,5000u,1175,14,325,137,0},
++  {60u,6000u,1175,14,325,137,3}
++ };
++ Gk145FreshProgress r={0};assert(gk145_trace_fresh_progress(stage,6,1175,14,&r)==GK145_OK);
++ assert(r.samples==6&&r.first_world_setup==2&&r.first_spring_year==4&&
++        r.first_nonzero_rate==4&&r.first_gold_change==5&&
++        r.first_three_orders==6&&r.first_full_spring==6&&r.temporal_separation_observed==1);
++ Gk145FreshProgress guard=r;
++ stage[3].cpu_cycles=stage[2].cpu_cycles;
++ assert(gk145_trace_fresh_progress(stage,6,1175,14,&r)==GK145_INVALID_CHRONOLOGY);
++ assert(memcmp(&r,&guard,sizeof r)==0);stage[3].cpu_cycles=4000;
++ stage[5].orders=2;
++ assert(gk145_trace_fresh_progress(stage,6,1175,14,&r)==GK145_AMBIGUOUS_PROGRESS);
++ assert(memcmp(&r,&guard,sizeof r)==0);stage[5].orders=3;
++ stage[4].country_count=27;
++ assert(gk145_trace_fresh_progress(stage,6,1175,14,&r)==GK145_INVALID_CHRONOLOGY);
++ assert(memcmp(&r,&guard,sizeof r)==0);stage[4].country_count=14;
++ stage[3].rate=0; stage[4].rate=0;
++ assert(gk145_trace_fresh_progress(stage,6,1175,14,&r)==GK145_OK);
++ assert(r.first_nonzero_rate==6&&r.first_full_spring==6);
++ assert(gk145_trace_fresh_progress(NULL,6,1175,14,&r)==GK145_ARGUMENT);
++ assert(gk145_trace_fresh_progress(stage,6,1175,27,&r)==GK145_ARGUMENT);
++ Gk1App *app=(Gk1App*)calloc(1,sizeof *app);assert(app!=NULL);
++ gk1_app_init(app);
++ Gk145FreshProgress locked={0};
++ assert(gk1_app_source_fresh_progress(app,stage,6,1175,14,&locked)==GK145_ARGUMENT);
++ assert(memcmp(&locked,&(Gk145FreshProgress){0},sizeof locked)==0);
++ free(app);
++ puts("GK145 source-progression + app PRE_SETUP negative controls PASS; OBSERVATION_ONLY");
++ return 0;
++}
