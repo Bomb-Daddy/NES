@@ -1,0 +1,428 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,12 +1,12 @@
+ cmake_minimum_required(VERSION 3.15)
+-project(GK1NativeShell143 C)
++project(GK1NativeShell144 C)
+ set(CMAKE_C_STANDARD 11)
+ set(CMAKE_C_STANDARD_REQUIRED ON)
+ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -54,18 +54,18 @@
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+-  set(CPACK_PACKAGE_VERSION "1.43.0")
++  set(CPACK_PACKAGE_VERSION "1.44.0")
+   set(CPACK_PACKAGE_VENDOR "GK1 native research prototype")
+   set(CPACK_PACKAGE_INSTALL_DIRECTORY "Genghis Khan I Native Research")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Incomplete native Genghis Khan I research; original first Spring still unfinished")
+-  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.43.0-dev1")
+-  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.43.0-dev1")
++  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.44.0-dev1")
++  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.44.0-dev1")
+   set(CPACK_NSIS_MUI_FINISHPAGE_RUN "gk1_native_shell.exe")
+   set(CPACK_NSIS_MODIFY_PATH OFF)
+-  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.43.0-dev1")
++  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.44.0-dev1")
+   set(CPACK_CREATE_DESKTOP_LINKS "gk1_native_shell")
+   include(CPack)
+ endif()
+@@ -149,10 +149,10 @@
+           DESTINATION opt/gk1-native-research)
+   install(PROGRAMS packaging/gk1-native-research DESTINATION usr/bin)
+   install(FILES packaging/gk1-native-research.desktop DESTINATION usr/share/applications)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md DESTINATION usr/share/doc/gk1-native-research)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+-  set(CPACK_PACKAGE_VERSION "1.43.0")
++  set(CPACK_PACKAGE_VERSION "1.44.0")
+   set(CPACK_DEBIAN_PACKAGE_RELEASE "dev1")
+   set(CPACK_PACKAGE_CONTACT "GK1 research prototype (offline source distribution)")
+   set(CPACK_DEBIAN_PACKAGE_MAINTAINER "GK1 Native Research")
+@@ -160,7 +160,7 @@
+   set(CPACK_DEBIAN_PACKAGE_SECTION "games")
+   set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Genghis Khan I native research prototype, not completed game")
+-  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.43.0~dev1_amd64")
++  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.44.0~dev1_amd64")
+   set(CPACK_SET_DESTDIR OFF)
+   set(CPACK_PACKAGING_INSTALL_PREFIX "/")
+   find_package(Python3 COMPONENTS Interpreter)
+@@ -591,3 +591,8 @@
+ add_executable(test_gk143_bank_cfg test_gk143_bank_cfg.c)
+ target_link_libraries(test_gk143_bank_cfg PRIVATE gk1_app_state)
+ add_test(NAME GK1_143_ExplicitBankHypothesisNoSpringNorMesenRuntime COMMAND test_gk143_bank_cfg)
++
++# EXEC0144: source-bound archived Mesen PRG-window mapping at SAVED instant.
++add_executable(test_gk144_archived_mapper test_gk144_archived_mapper.c)
++target_link_libraries(test_gk144_archived_mapper PRIVATE gk1_app_state)
++add_test(NAME GK1_144_ArchivedMesenMappedPRGPageProofNotStartupOrGameplay COMMAND test_gk144_archived_mapper)
+--- /dev/null
++++ b/README_EXEC0144.md
+@@ -0,0 +1,9 @@
++# EXEC0144 — Authenticated archived-state PRG mapping evidence, not fresh reset
++
++This is a new linked C11 module in the complete inherited native game, not a new isolated prototype or a gameplay unlock. `gk144_archived_mapper.c/h` parses **uncompressed named-field MesenCE data** only after the existing GK139 CPU/RAM-source checks pass. It decodes 128 memory-manager 256-byte pages at $8000–$FFFF and cross-checks mapped physical PRG-ROM offsets, ROM page type/access, saved MMC1 PRG register, mode, and selected fixed slot. It strictly refuses inconsistent or unsupported mapping, duplicate keys, malformed data, and leaves output unchanged. `gk1_app_source_archived_mapper` is non-mutating and setup-gated.
++
++Private ORIGINAL STOCK Mesen archived Mongol1175 and World1206 saved-state evidence was independently extracted, and each showed **low PRG-ROM bank 0 and fixed high bank 15 at its saved instant**, with mapper.prgReg=0, prgMode=1, slotSelect=1 and CPU PC=$EFC9. These are **OBSERVED_RUNTIME_STOCK_ARCHIVED_RESTORED**, NOT a fresh stock power-on reset or a runtime trace of Spring setup. The fresh original Spring 1175 record bank is nesWorkRam, archived records are nesSaveRam; these cannot be interchanged. No startup bank, setup RNG/NMI chronology, first Spring, or orders are inferred.
++
++Synthetic hostile tests include every valid low-bank mapping 0..14, corrupt 256B page offsets, truncated/duplicate field refusal, source-stage gate, and unchanged app/output. Repro: `cmake -S execution_144 -B build144 -DCMAKE_BUILD_TYPE=Release && cmake --build build144 -j8 && ctest --test-dir build144 --output-on-failure -j8`. Optional private-only evidence: `build144/test_gk144_archived_mapper --private-archived /private/mongol.uncompressed /private/world.uncompressed`. Raw original ROM, SRAM, Mesen states and screenshots are never included in public source, installer, or GitHub.
++
++**Still open:** first playable original Spring, authentic original 14/27-country transformations, three orders, merchant scheduling, autonomous AI, battle aftermath, diplomatic/dynasty actions and both full campaigns. Linux Release/Debug, Windows Win32, NSIS, physical Xbox acceptance, and Mesen gameplay must be labeled separately. This is a research candidate, not a released complete game.
+--- /dev/null
++++ b/gk144_archived_mapper.c
+@@ -0,0 +1,86 @@
++#include "gk144_archived_mapper.h"
++#include <string.h>
++#define MAX_STATE (16u*1024u*1024u)
++#define NAMED_MAX 127u
++#define PAGES 256u
++#define PRG_PAGES 128u
++#define PRG_SIZE 262144u
++#define PRG_BANK 16384u
++#define PAGE_BYTES 256u
++static uint32_t read32(const uint8_t *p){
++ return (uint32_t)p[0]|((uint32_t)p[1]<<8)|((uint32_t)p[2]<<16)|((uint32_t)p[3]<<24);
++}
++/* An explicitly bounded decoder of MesenCE's CPU $8000-$FFFF per-256B
++ * memory manager mapping. The exact array format is saved-state-specific. */
++Gk144Status gk144_probe_archived_prg_map(const uint8_t *raw,size_t n,
++ Gk144ArchivedMapper *out){
++ if(!raw||!out||n<32u||n>MAX_STATE)return GK144_MAPPER_BAD_INPUT;
++ Gk139MesenProof original;
++ if(gk139_parse_uncompressed_state(raw,n,&original)!=GK139_STATE_OK)
++  return GK144_MAPPER_STATE_REFUSED;
++ const char *const names[]={"mapper.prgMemoryOffset","mapper.prgMemoryType",
++  "mapper.prgMemoryAccess","mapper.prgMode","mapper.slotSelect","mapper.prgReg"};
++ const uint8_t *field[6]={0};size_t sizes[6]={0};
++ size_t p=0;
++ while(p<n){
++  size_t begin=p;
++  while(p<n&&raw[p]){
++   if(raw[p]<33u||raw[p]>126u||p-begin>=NAMED_MAX)
++    return GK144_MAPPER_STATE_REFUSED;
++   ++p;
++  }
++  if(p==n||p==begin||n-p<5u)return GK144_MAPPER_STATE_REFUSED;
++  size_t len=p-begin;
++  ++p;uint32_t count=read32(raw+p);p+=4;
++  if((size_t)count>n-p)return GK144_MAPPER_STATE_REFUSED;
++  for(unsigned k=0;k<6u;k++){
++   if(len==strlen(names[k])&&memcmp(raw+begin,names[k],len)==0){
++    if(field[k])return GK144_MAPPER_STATE_REFUSED;
++    field[k]=raw+p;sizes[k]=count;
++   }
++  }
++  p+=(size_t)count;
++ }
++ for(unsigned k=0;k<6u;k++){
++  if(!field[k]||sizes[k]!=(k<3u?PAGES*4u:1u))
++   return GK144_MAPPER_STATE_REFUSED;
++ }
++ if(field[3][0]>1u||field[4][0]>1u||field[5][0]>15u)
++  return GK144_MAPPER_STATE_REFUSED;
++ /* Other configurations may be valid NES states, but this proof only
++  * establishes the exact 16 KiB switchable-low/fixed-high configuration. */
++ if(field[3][0]!=1u||field[4][0]!=1u)
++  return GK144_MAPPER_UNSUPPORTED_MODE;
++ const uint8_t *offsets=field[0],*types=field[1],*access=field[2];
++ uint32_t low_base=read32(offsets+0x80u*4u);
++ uint32_t high_base=read32(offsets+0xc0u*4u);
++ if(low_base%PRG_BANK||high_base%PRG_BANK||
++    low_base>=PRG_SIZE||high_base>=PRG_SIZE)
++  return GK144_MAPPER_CONTRADICTION;
++ for(unsigned i=0;i<PRG_PAGES;i++){
++  unsigned page=0x80u+i;
++  uint32_t base=i<64u?low_base:high_base;
++  uint32_t j=i%64u;
++  uint32_t expected=base+j*PAGE_BYTES;
++  if(expected>=PRG_SIZE||read32(offsets+4u*page)!=expected||
++     read32(types+4u*page)!=0u||read32(access+4u*page)!=1u)
++    return GK144_MAPPER_CONTRADICTION;
++ }
++ Gk144ArchivedMapper next={0};
++ next.lower_prg_bank=(uint8_t)(low_base/PRG_BANK);
++ next.upper_prg_bank=(uint8_t)(high_base/PRG_BANK);
++ next.mapper_prg_reg=field[5][0];
++ next.mapper_prg_mode=field[3][0];
++ next.mapper_slot_select=field[4][0];
++ next.saved_program_counter=original.program_counter;
++ next.saved_cpu_cycles=original.cpu_cycles;
++ next.observed_country_ram_bank=original.country_bank;
++ next.confirmed_prg_pages=PRG_PAGES;
++ next.upper_bank_is_fixed_last=(uint8_t)(next.upper_prg_bank==15u);
++ next.mapping_observed_at_saved_instant_only=1u;
++ /* This Mesen state claims the register selects the low 16 KiB bank and
++  * fixes high to the final bank. A mismatch would be misleading evidence. */
++ if(next.lower_prg_bank!=next.mapper_prg_reg||!next.upper_bank_is_fixed_last)
++  return GK144_MAPPER_CONTRADICTION;
++ *out=next;return GK144_MAPPER_OK;
++}
+--- /dev/null
++++ b/gk144_archived_mapper.h
+@@ -0,0 +1,31 @@
++#ifndef GK144_ARCHIVED_MAPPER_H
++#define GK144_ARCHIVED_MAPPER_H
++#include <stddef.h>
++#include <stdint.h>
++#include "gk139_mesen_state.h"
++/* Only the uncompressed named-field block of an independently authenticated
++ * MesenCE .mss. Page mapping is the SAVED instant, not mapper power-on or
++ * the earlier CPU/RNG/setup chronology. Never accepts arbitrary ROM bytes. */
++typedef enum {
++ GK144_MAPPER_OK=0,
++ GK144_MAPPER_BAD_INPUT=1,
++ GK144_MAPPER_STATE_REFUSED=2,
++ GK144_MAPPER_UNSUPPORTED_MODE=3,
++ GK144_MAPPER_CONTRADICTION=4
++} Gk144Status;
++typedef struct {
++ uint8_t lower_prg_bank,upper_prg_bank,mapper_prg_reg;
++ uint8_t mapper_prg_mode,mapper_slot_select;
++ uint16_t saved_program_counter;
++ uint64_t saved_cpu_cycles;
++ Gk139CountryBank observed_country_ram_bank;
++ uint16_t confirmed_prg_pages; /* 128 x 256-byte pages */
++ uint8_t upper_bank_is_fixed_last;
++ uint8_t mapping_observed_at_saved_instant_only;
++} Gk144ArchivedMapper;
++/* Every failure leaves `out` untouched. This is a source check and never
++ * resolves which bank was mapped at original fresh RESET. Private originals
++ * and savestates remain outside the public game package and GitHub. */
++Gk144Status gk144_probe_archived_prg_map(const uint8_t *named_fields,
++ size_t bytes,Gk144ArchivedMapper *out);
++#endif
+--- a/gk1_app_state.c
++++ b/gk1_app_state.c
+@@ -1087,3 +1087,15 @@
+     app->setup_difficulty[app->active_world]>5u)return GK141_BAD_INPUT;
+  return gk143_scan_authenticated(path,bank,out);
+ }
++
++/* EXEC0144: never promote an archived CPU mapper snapshot into first-Spring
++ * source chronology, country mutation, or a playable command. */
++Gk144Status gk1_app_source_archived_mapper(const Gk1App *app,
++ const uint8_t *raw,size_t bytes,Gk144ArchivedMapper *out){
++ if(!app||!raw||!out||app->active_world>1u||
++    app->setup_stage[app->active_world]!=GK53_SETUP_AWAIT_SOURCE||
++    app->setup_difficulty[app->active_world]<1u||
++    app->setup_difficulty[app->active_world]>5u)
++  return GK144_MAPPER_BAD_INPUT;
++ return gk144_probe_archived_prg_map(raw,bytes,out);
++}
+--- a/gk1_app_state.h
++++ b/gk1_app_state.h
+@@ -25,6 +25,7 @@
+ #include "gk141_dispatch_scan.h"
+ #include "gk142_fixed_cfg.h"
+ #include "gk143_bank_cfg.h"
++#include "gk144_archived_mapper.h"
+ #include "../execution_049/gk1_scenario_factory.h"
+ /* A standalone, copyright-clean native-app vertical slice, NOT a shipped game.
+  * Campaign buttons are navigation only: no campaigns are fabricated.
+@@ -123,6 +124,9 @@
+ Gk140Result gk1_app_source_rng_lineage(const Gk1App *app,
+  const Gk139MesenProof *earlier,const Gk139MesenProof *later,
+  uint32_t maximum_draws,Gk140Lineage *out);
++/* Archived Mesen PRG-window observation, NEVER original boot-bank proof. */
++Gk144Status gk1_app_source_archived_mapper(const Gk1App *app,
++ const uint8_t *uncompressed_named_state,size_t bytes,Gk144ArchivedMapper *out);
+ /* Explicit, unverified PRG boot-bank hypothesis. No turns or state writes. */
+ Gk141Result gk1_app_source_bank_cfg(const Gk1App *app,
+  const char *private_stock_rom_path,uint8_t assumed_bank,Gk143BankCfg *out);
+--- a/gk1_native_shell.c
++++ b/gk1_native_shell.c
+@@ -51,7 +51,7 @@
+ # include <unistd.h>
+ # include <linux/joystick.h>
+ #endif
+-#define GK1_PORT_VERSION "1.43.0-dev1"
++#define GK1_PORT_VERSION "1.44.0-dev1"
+ #define WIDTH 1280
+ #define HEIGHT 720
+ #define BG UINT32_C(0x10202b)
+@@ -1600,7 +1600,7 @@
+   puts("ARCHIVED_SOURCE_CAPTURE_ROM_UNVERIFIED: NOT THE INITIAL SPRING TRANSFORM");return 0;
+  }
+  if(argc==2&&strcmp(argv[1],"--version")==0){
+-  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
++  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0144 archived Mesen PRG-page mapping, EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
+  }
+  /* Preserve EXEC0056's tested synthetic-pad correction/export contract. */
+  if(argc==3&&strcmp(argv[1],"--bonus-correction-export")==0){
+@@ -2409,7 +2409,7 @@
+    else if(e.type==ClientMessage && (Atom)e.xclient.data.l[0]==delete_window)running=0;
+   }
+   poll_joystick(&joystick,pad);render();XFlush(display);frames++;
+-  if(smoke && frames>=smoke){printf("EXEC0143 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
++  if(smoke && frames>=smoke){printf("EXEC0144 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
+   struct timespec t={0,16000000};nanosleep(&t,NULL);
+  }
+  if(joystick>=0)close(joystick);
+--- a/packaging/gk1-native-research.desktop
++++ b/packaging/gk1-native-research.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-Name=Genghis Khan I Research 1.43.0-dev1
++Name=Genghis Khan I Research 1.44.0-dev1
+ GenericName=NES-to-Windows Port Research Prototype
+ Comment=Incomplete native Genghis Khan I research game; source-bounded battles only
+ Exec=gk1-native-research
+--- a/packaging/test_package_contract.py
++++ b/packaging/test_package_contract.py
+@@ -5,14 +5,14 @@
+ assert exe.is_file() and csv.is_file() and desktop.is_file()
+ assert hashlib.sha256(csv.read_bytes()).hexdigest()=="fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581"
+ entry=desktop.read_text()
+-assert "Name=Genghis Khan I Research 1.43.0-dev1" in entry
++assert "Name=Genghis Khan I Research 1.44.0-dev1" in entry
+ assert "Exec=gk1-native-research\n" in entry
+ assert "Terminal=false\n" in entry
+ with tempfile.TemporaryDirectory(prefix='gk1_exec54_') as tmp:
+     def run(*args,env=None):
+         return subprocess.run([str(exe),*args],cwd=tmp,env=env,capture_output=True,text=True,timeout=15)
+     v=run('--version')
+-    assert v.returncode==0 and '1.43.0-dev1' in v.stdout and 'not full game' in v.stdout
++    assert v.returncode==0 and '1.44.0-dev1' in v.stdout and 'not full game' in v.stdout
+     for sc,num in ((1,14),(2,27)):
+         r=run('--scenario-report',str(sc))
+         assert r.returncode==0,(r.stdout,r.stderr)
+--- /dev/null
++++ b/test_gk144_archived_mapper.c
+@@ -0,0 +1,121 @@
++#include "gk144_archived_mapper.h"
++#include "gk1_app_state.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++static unsigned checks;
++#define CHECK(v) do{checks++;if(!(v)){fprintf(stderr,"GK144 fail at %d: %s\n",__LINE__,#v);return 1;}}while(0)
++static void put32(uint8_t *p,uint32_t v){for(unsigned i=0;i<4u;i++)p[i]=(uint8_t)(v>>(8u*i));}
++static void put64(uint8_t *p,uint64_t v){for(unsigned i=0;i<8u;i++)p[i]=(uint8_t)(v>>(8u*i));}
++static int append(uint8_t *dst,size_t cap,size_t *pos,const char *name,const uint8_t *src,size_t bytes){
++ size_t len=strlen(name);
++ if(*pos+len+1u+4u+bytes>cap)return 0;
++ memcpy(dst+*pos,name,len);*pos+=len;dst[(*pos)++]=0;
++ put32(dst+*pos,(uint32_t)bytes);*pos+=4;
++ memcpy(dst+*pos,src,bytes);*pos+=bytes;return 1;
++}
++static size_t synthetic(uint8_t *buf,size_t cap,unsigned low_bank){
++ uint8_t cpu[2048]={0},work[8192]={0},save[8192]={0};
++ uint8_t offset[1024]={0},type[1024]={0},access[1024]={0};
++ uint8_t pc[2]={0xc9,0xef},cycles[8],mode[1]={1},slot[1]={1},reg[1]={(uint8_t)low_bank};
++ work[0x0dcd]=5;put64(cycles,1234567u);
++ for(unsigned page=0;page<256u;page++){
++  put32(offset+4u*page,0xffffffffu);
++  if(page>=0x80u){
++   unsigned j=page-0x80u;
++   put32(offset+4u*page,(j<64u?low_bank*16384u:15u*16384u)+(j%64u)*256u);
++   put32(access+4u*page,1u);
++  }
++ }
++ cpu[0x84]=1;size_t p=0;
++#define ADD(k,v) do{if(!append(buf,cap,&p,k,v,sizeof(v)))return 0;}while(0)
++ ADD("cpu.pc",pc);ADD("cpu.cycleCount",cycles);
++ ADD("memoryManager.internalRam",cpu);ADD("mapper.workRam",work);ADD("mapper.saveRam",save);
++ ADD("mapper.prgMemoryOffset",offset);ADD("mapper.prgMemoryType",type);
++ ADD("mapper.prgMemoryAccess",access);ADD("mapper.prgMode",mode);
++ ADD("mapper.slotSelect",slot);ADD("mapper.prgReg",reg);
++#undef ADD
++ return p;
++}
++static uint8_t *field_value(uint8_t *b,size_t n,const char *key){
++ size_t sz=strlen(key);for(size_t i=0;i+sz+5u<n;i++)
++  if(memcmp(b+i,key,sz)==0&&b[i+sz]==0)
++   return b+i+sz+5u;
++ return NULL;
++}
++static int file_check(const char *path,uint8_t expected){
++ FILE *f=fopen(path,"rb");if(!f)return 0;
++ uint8_t *b=malloc(16u*1024u*1024u);if(!b){fclose(f);return 0;}
++ size_t n=fread(b,1,16u*1024u*1024u,f);int e=ferror(f),c=fclose(f);
++ Gk144ArchivedMapper proof={0};
++ Gk144Status status=e||c?GK144_MAPPER_BAD_INPUT:gk144_probe_archived_prg_map(b,n,&proof);
++ free(b);
++ if(status!=GK144_MAPPER_OK||proof.lower_prg_bank!=expected||proof.upper_prg_bank!=15u)return 0;
++ printf("OBSERVED_RUNTIME_STOCK_ARCHIVED_RESTORED low=%u high=%u saved_pc=$%04x cpu_cycles=%llu country_ram=%u; NOT FRESH RESET\n",
++ proof.lower_prg_bank,proof.upper_prg_bank,proof.saved_program_counter,
++ (unsigned long long)proof.saved_cpu_cycles,proof.observed_country_ram_bank);
++ return 1;
++}
++int main(int argc,char **argv){
++ uint8_t b[40000];size_t n=synthetic(b,sizeof b,4u);CHECK(n>0);
++ Gk144ArchivedMapper r={0};CHECK(gk144_probe_archived_prg_map(b,n,&r)==GK144_MAPPER_OK);
++ CHECK(r.lower_prg_bank==4u&&r.upper_prg_bank==15u&&r.confirmed_prg_pages==128u);
++ CHECK(r.saved_program_counter==0xefc9u&&r.mapper_prg_reg==4u&&r.mapping_observed_at_saved_instant_only);
++ Gk144ArchivedMapper original=r;
++ CHECK(gk144_probe_archived_prg_map(b,n-1u,&r)==GK144_MAPPER_STATE_REFUSED);
++ CHECK(memcmp(&r,&original,sizeof r)==0);
++ CHECK(gk144_probe_archived_prg_map(NULL,n,&r)==GK144_MAPPER_BAD_INPUT);
++ CHECK(memcmp(&r,&original,sizeof r)==0);
++ CHECK(gk144_probe_archived_prg_map(b,n,NULL)==GK144_MAPPER_BAD_INPUT);
++ for(unsigned bank=0;bank<15u;bank++){
++  n=synthetic(b,sizeof b,bank);CHECK(n>0);
++  CHECK(gk144_probe_archived_prg_map(b,n,&r)==GK144_MAPPER_OK);
++  CHECK(r.lower_prg_bank==bank&&r.upper_prg_bank==15u);
++ }
++ n=synthetic(b,sizeof b,4u);CHECK(n>0);
++ /* Target exactly one named mapper field; corrupt its low-page mapping. */
++ const char *needle="mapper.prgMemoryOffset";
++ uint8_t *found=NULL;
++ for(size_t i=0;i+strlen(needle)+5u<n;i++)if(memcmp(b+i,needle,strlen(needle))==0){found=b+i+strlen(needle)+5u;break;}
++ CHECK(found);
++ Gk144ArchivedMapper before=r;
++ found[0x91u*4u]^=1u;
++ CHECK(gk144_probe_archived_prg_map(b,n,&r)==GK144_MAPPER_CONTRADICTION);
++ CHECK(memcmp(&r,&before,sizeof r)==0);
++ n=synthetic(b,sizeof b,4u);CHECK(n>0);
++ uint8_t *regp=field_value(b,n,"mapper.prgReg");CHECK(regp);
++ *regp=7u;CHECK(gk144_probe_archived_prg_map(b,n,&r)==GK144_MAPPER_CONTRADICTION);
++ n=synthetic(b,sizeof b,4u);CHECK(n>0);
++ uint8_t *mode=field_value(b,n,"mapper.prgMode");CHECK(mode);
++ *mode=0u;CHECK(gk144_probe_archived_prg_map(b,n,&r)==GK144_MAPPER_UNSUPPORTED_MODE);
++ n=synthetic(b,sizeof b,4u);CHECK(n>0);
++ uint8_t *slot=field_value(b,n,"mapper.slotSelect");CHECK(slot);
++ *slot=0u;CHECK(gk144_probe_archived_prg_map(b,n,&r)==GK144_MAPPER_UNSUPPORTED_MODE);
++ n=synthetic(b,sizeof b,4u);CHECK(n>0);
++ uint8_t *t=field_value(b,n,"mapper.prgMemoryType");CHECK(t);
++ t[0x80u*4u]=1u;CHECK(gk144_probe_archived_prg_map(b,n,&r)==GK144_MAPPER_CONTRADICTION);
++ n=synthetic(b,sizeof b,4u);CHECK(n>0);
++ uint8_t *acc=field_value(b,n,"mapper.prgMemoryAccess");CHECK(acc);
++ acc[0xc0u*4u]=2u;CHECK(gk144_probe_archived_prg_map(b,n,&r)==GK144_MAPPER_CONTRADICTION);
++ n=synthetic(b,sizeof b,4u);CHECK(n>0);
++ uint8_t repeated=1u;
++ CHECK(append(b,sizeof b,&n,"mapper.prgMode",&repeated,1u));
++ CHECK(gk144_probe_archived_prg_map(b,n,&r)==GK144_MAPPER_STATE_REFUSED);
++ CHECK(memcmp(&r,&before,sizeof r)==0);
++ n=synthetic(b,sizeof b,3u);CHECK(n>0);
++ Gk1App *app=calloc(1,sizeof *app),*saved=malloc(sizeof *app);
++ CHECK(app&&saved);gk1_app_init(app);memcpy(saved,app,sizeof *app);
++ CHECK(gk1_app_source_archived_mapper(app,b,n,&r)==GK144_MAPPER_BAD_INPUT);
++ CHECK(memcmp(saved,app,sizeof *app)==0);
++ app->setup_stage[app->active_world]=GK53_SETUP_AWAIT_SOURCE;
++ app->setup_difficulty[app->active_world]=2;
++ memcpy(saved,app,sizeof *app);
++ CHECK(gk1_app_source_archived_mapper(app,b,n,&r)==GK144_MAPPER_OK);
++ CHECK(r.lower_prg_bank==3u&&memcmp(saved,app,sizeof *app)==0);
++ free(app);free(saved);
++ if(argc==4&&strcmp(argv[1],"--private-archived")==0){
++  CHECK(file_check(argv[2],0u));CHECK(file_check(argv[3],0u));
++ }
++ printf("GK144 PASS %u assertions: observed archived mapper bank is not startup bank\n",checks);
++ return 0;
++}
