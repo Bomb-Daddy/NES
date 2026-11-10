@@ -1,0 +1,445 @@
+diff --git a/execution_163/CMakeLists.txt b/execution_163/CMakeLists.txt
+index 3d97290..7b87dbd 100644
+--- a/execution_163/CMakeLists.txt
++++ b/execution_163/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ cmake_minimum_required(VERSION 3.15)
+-project(GK1NativeShell162 C)
++project(GK1NativeShell163 C)
++find_package(ZLIB QUIET)
+ set(CMAKE_C_STANDARD 11)
+ set(CMAKE_C_STANDARD_REQUIRED ON)
+ set(CMAKE_C_EXTENSIONS OFF)
+@@ -54,18 +55,18 @@ endif()
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+-  set(CPACK_PACKAGE_VERSION "1.62.0")
++  set(CPACK_PACKAGE_VERSION "1.63.0")
+   set(CPACK_PACKAGE_VENDOR "GK1 native research prototype")
+   set(CPACK_PACKAGE_INSTALL_DIRECTORY "Genghis Khan I Native Research")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Incomplete native Genghis Khan I research; original first Spring still unfinished")
+-  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.62.0-dev1")
+-  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.62.0-dev1")
++  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.63.0-dev1")
++  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.63.0-dev1")
+   set(CPACK_NSIS_MUI_FINISHPAGE_RUN "gk1_native_shell.exe")
+   set(CPACK_NSIS_MODIFY_PATH OFF)
+-  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.62.0-dev1")
++  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.63.0-dev1")
+   set(CPACK_CREATE_DESKTOP_LINKS "gk1_native_shell")
+   include(CPack)
+ endif()
+@@ -149,18 +150,22 @@ if(UNIX AND NOT APPLE)
+           DESTINATION opt/gk1-native-research)
+   install(PROGRAMS packaging/gk1-native-research DESTINATION usr/bin)
+   install(FILES packaging/gk1-native-research.desktop DESTINATION usr/share/applications)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md DESTINATION usr/share/doc/gk1-native-research)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+-  set(CPACK_PACKAGE_VERSION "1.62.0")
++  set(CPACK_PACKAGE_VERSION "1.63.0")
+   set(CPACK_DEBIAN_PACKAGE_RELEASE "dev1")
+   set(CPACK_PACKAGE_CONTACT "GK1 research prototype (offline source distribution)")
+   set(CPACK_DEBIAN_PACKAGE_MAINTAINER "GK1 Native Research")
+-  set(CPACK_DEBIAN_PACKAGE_DEPENDS "libx11-6")
++  if(ZLIB_FOUND)
++    set(CPACK_DEBIAN_PACKAGE_DEPENDS "libx11-6, zlib1g")
++  else()
++    set(CPACK_DEBIAN_PACKAGE_DEPENDS "libx11-6")
++  endif()
+   set(CPACK_DEBIAN_PACKAGE_SECTION "games")
+   set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Genghis Khan I native research prototype, not completed game")
+-  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.62.0~dev1_amd64")
++  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.63.0~dev1_amd64")
+   set(CPACK_SET_DESTDIR OFF)
+   set(CPACK_PACKAGING_INSTALL_PREFIX "/")
+   find_package(Python3 COMPONENTS Interpreter)
+@@ -691,3 +696,16 @@ add_test(NAME gk161_enhanced_year2 COMMAND test_gk161_enhanced_year2 ${CMAKE_CUR
+ add_executable(test_gk162_original_entry test_gk162_original_entry.c)
+ target_link_libraries(test_gk162_original_entry PRIVATE gk1_app_state)
+ add_test(NAME GK1_162_OriginalStockCheckpointEntry_ControllerRegression COMMAND test_gk162_original_entry ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0163: exact-original archived Mesen .mss importer. Optional ZLIB keeps
++# existing Win32/Linux game builds valid even when zlib development files
++# are unavailable; in that case the importer fails closed as UNAVAILABLE.
++target_sources(gk1_app_state PRIVATE gk163_mesen_import.c)
++if(ZLIB_FOUND)
++  target_link_libraries(gk1_app_state PUBLIC ZLIB::ZLIB)
++  target_compile_definitions(gk1_app_state PUBLIC GK163_HAS_ZLIB=1)
++endif()
++add_executable(test_gk163_mesen_import test_gk163_mesen_import.c)
++target_link_libraries(test_gk163_mesen_import PRIVATE gk1_app_state)
++add_test(NAME GK1_163_ExactArchivedOriginalMesenMssImportAndHostileQACases
++ COMMAND test_gk163_mesen_import)
+diff --git a/execution_163/README_EXEC0163.md b/execution_163/README_EXEC0163.md
+new file mode 100644
+index 0000000..0871281
+--- /dev/null
++++ b/execution_163/README_EXEC0163.md
+@@ -0,0 +1,7 @@
++# EXEC0163 — source-authentic original Mesen savestate extraction (inherited complete C11 native app)
++
++`gk163_mesen_import.c/.h` implements an actual bounded reader for original Mesen1 `.mss` save-state containers. It reads, but never decodes/exports, the screenshot section, validates the compressed serialized state, delegates RAM-bank proof to the existing independent Mesen parser, and extracts the 83-byte country records from authentic `mapper.saveRam` physical offset 0x0DCD, never fake empty `mapper.workRam`. Original archived Mongol 1175 has 14 records; World 1206 has 27. It authenticates against prior independent original-stock SHA-256 profiles and refuses malformed, mismatched, tampered, synthetic, WorkRAM or fresh-profile inputs atomically.
++
++The existing native executable now exposes `--extract-original-mss <private-original-Mesen.mss> <mongol|world> <private-exclusive-destination.raw83>`. The written file may then be used as the already accepted `GK1_STOCK_SPRING_RECORDS` private input for the original checkpoint controller continuation. Output creation is exclusive; no overwrite. POSIX file creation permissions are private (umask 0077). Zlib is optional at build time, with explicit fail-closed `UNAVAILABLE` if absent (do not claim Windows installer parity).
++
++**This is an actual source-processing and player-checkpoint preparation feature, NOT an original ROM first-Spring generator.** It does not invent the original 3 executable commands or merchant/AI/character RNG; untouched PRE_SETUP worlds are preserved. Reconstructed raw records, screenshot, private ROM and licensed data must NEVER be added to public GitHub. Native Mesen runtime was NOT rerun, and physical Xbox/Win32/NSIS/full campaign remain NOT RUN.
+diff --git a/execution_163/gk163_mesen_import.c b/execution_163/gk163_mesen_import.c
+new file mode 100644
+index 0000000..fd91533
+--- /dev/null
++++ b/execution_163/gk163_mesen_import.c
+@@ -0,0 +1,127 @@
++#include "gk163_mesen_import.h"
++#include "gk139_mesen_state.h"
++#include "gk1_source_identity.h"
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++#include <stdint.h>
++#ifdef GK163_HAS_ZLIB
++#include <zlib.h>
++#endif
++
++#define GK163_MSS_LIMIT (1024u*1024u)
++#define GK163_STATE_LIMIT (1024u*1024u)
++#define GK163_SAVE_OFFSET 0x0dcdu
++#ifdef GK163_HAS_ZLIB
++static uint32_t get32(const uint8_t *p){
++ return (uint32_t)p[0]|((uint32_t)p[1]<<8)|((uint32_t)p[2]<<16)|((uint32_t)p[3]<<24);
++}
++static void wipe(void *p,size_t n){
++ volatile uint8_t *v=(volatile uint8_t*)p;
++ while(n--)*v++=0;
++}
++#endif
++/* The Mesen1 v2-serialized .mss envelope has two DEFLATE blocks: an
++ * untrusted screenshot followed by the length-prefixed serialized CPU/PRG
++ * state. We NEVER decode the screenshot. Input length, image block length,
++ * ROM display filename, expected state size, DEFLATE completion and exact
++ * end-of-file are independently checked. None authenticates source by itself.
++ */
++Gk163Status gk163_mesen_extract(const char *path,Gk77Profile profile,
++ uint8_t out[GK163_MAX_RECORDS],size_t *out_size){
++ if(!path||!*path||!out||!out_size||
++    (profile!=GK77_ARCHIVED_MONGOL_SAVERAM&&
++     profile!=GK77_ARCHIVED_WORLD_SAVERAM))return GK163_ARGUMENT;
++#ifndef GK163_HAS_ZLIB
++ return GK163_UNAVAILABLE;
++#else
++ Gk163Status status=GK163_FORMAT;
++ uint8_t *src=NULL,*raw=NULL;
++ size_t raw_len=0u;
++ long signed_size=0;
++ size_t size=0;
++ FILE *fp=fopen(path,"rb");
++ if(!fp)return GK163_IO;
++ if(fseek(fp,0,SEEK_END)){status=GK163_IO;goto finish;}
++ signed_size=ftell(fp);
++ if(signed_size<50||signed_size>(long)GK163_MSS_LIMIT||fseek(fp,0,SEEK_SET)){
++  status=GK163_FORMAT;goto finish;
++ }
++ size=(size_t)signed_size;
++ src=(uint8_t*)malloc(size);
++ if(!src){status=GK163_IO;goto finish;}
++ if(fread(src,1,size,fp)!=size||ferror(fp)){
++  status=GK163_IO;goto finish;
++ }
++ if(fclose(fp)!=0){fp=NULL;status=GK163_IO;goto finish;}
++ fp=NULL;
++ if(memcmp(src,"MSS\1",4)!=0){status=GK163_FORMAT;goto finish;}
++ size_t image_len=get32(src+31);
++ if(image_len>size-35u){status=GK163_FORMAT;goto finish;}
++ size_t pos=35u+image_len;
++ if(pos>size||size-pos<4u){status=GK163_FORMAT;goto finish;}
++ uint32_t name_len=get32(src+pos);pos+=4u;
++ static const char name[]="Genghis Khan (USA).nes";
++ if(name_len!=sizeof name-1u||name_len>size-pos||
++    memcmp(src+pos,name,sizeof name-1u)!=0){status=GK163_FORMAT;goto finish;}
++ pos+=name_len;
++ if(size-pos<9u||src[pos++]!=1u){status=GK163_FORMAT;goto finish;}
++ uint32_t uncompressed=get32(src+pos);pos+=4;
++ uint32_t compressed=get32(src+pos);pos+=4;
++ if(uncompressed<18000u||uncompressed>GK163_STATE_LIMIT||
++    compressed<16u||compressed>GK163_MSS_LIMIT||
++    (size_t)compressed!=size-pos){status=GK163_FORMAT;goto finish;}
++ raw_len=uncompressed;
++ raw=(uint8_t*)malloc(raw_len);
++ if(!raw){status=GK163_IO;goto finish;}
++ uLongf destination=(uLongf)uncompressed;
++ if(uncompress(raw,&destination,src+pos,(uLong)compressed)!=Z_OK||
++    destination!=uncompressed){status=GK163_FORMAT;goto finish;}
++ Gk139MesenProof proof={0};
++ if(gk139_parse_uncompressed_state(raw,uncompressed,&proof)!=GK139_STATE_OK){
++  status=GK163_FORMAT;goto finish;
++ }
++ if(proof.country_bank!=GK139_BANK_SAVE){status=GK163_BANK;goto finish;}
++ const uint8_t *save=NULL;
++ size_t cursor=0;
++ while(cursor<(size_t)uncompressed){
++  size_t start=cursor;
++  while(cursor<(size_t)uncompressed&&raw[cursor]!=0u){
++   if(cursor-start>=127u||raw[cursor]<33u||raw[cursor]>126u){
++    status=GK163_FORMAT;goto finish;
++   }
++   cursor++;
++  }
++  if(cursor==(size_t)uncompressed||cursor==start||
++     (size_t)uncompressed-cursor<5u){status=GK163_FORMAT;goto finish;}
++  size_t key_len=cursor-start;
++  ++cursor;
++  uint32_t field_len=get32(raw+cursor);cursor+=4;
++  if((size_t)field_len>(size_t)uncompressed-cursor){status=GK163_FORMAT;goto finish;}
++  if(key_len==sizeof("mapper.saveRam")-1u &&
++     memcmp(raw+start,"mapper.saveRam",sizeof("mapper.saveRam")-1u)==0){
++   if(save||field_len!=8192u){status=GK163_FORMAT;goto finish;}
++   save=raw+cursor;
++  }
++  cursor+=field_len;
++ }
++ if(!save){status=GK163_FORMAT;goto finish;}
++ size_t n=(profile==GK77_ARCHIVED_MONGOL_SAVERAM?14u:27u)*GK77_RECORD_BYTES;
++ if(n>8192u-GK163_SAVE_OFFSET){status=GK163_FORMAT;goto finish;}
++ uint8_t digest[32];
++ gk1_sha256_bytes(save+GK163_SAVE_OFFSET,n,digest);
++ if(!gk77_known_source_digest(profile,digest)){
++  wipe(digest,sizeof digest);status=GK163_SHA;goto finish;
++ }
++ wipe(digest,sizeof digest);
++ /* This is the first and ONLY caller-visible mutation. */
++ memcpy(out,save+GK163_SAVE_OFFSET,n);
++ *out_size=n;
++ status=GK163_OK;
++finish:
++ if(fp)fclose(fp);
++ if(raw){wipe(raw,raw_len);free(raw);}
++ if(src){wipe(src,(size_t)(signed_size>0?signed_size:0));free(src);}
++ return status;
++#endif
++}
+diff --git a/execution_163/gk163_mesen_import.h b/execution_163/gk163_mesen_import.h
+new file mode 100644
+index 0000000..5a2e8e6
+--- /dev/null
++++ b/execution_163/gk163_mesen_import.h
+@@ -0,0 +1,21 @@
++#ifndef GK163_MESEN_IMPORT_H
++#define GK163_MESEN_IMPORT_H
++#include "gk77_stock_spring.h"
++#include <stddef.h>
++#include <stdint.h>
++/* Source-authentic original STOCK archived Mesen .mss importer.
++ * This DOES NOT recreate power-on, first Spring or original commands.
++ * It extracts the owner-supplied original 14/27-country NES SaveRAM block
++ * and accepts it ONLY when the existing independently authenticated exact
++ * stock-country digest matches. Fresh original WorkRAM is NOT a .mss profile.
++ * The output buffer is untouched on any failure, including unavailable zlib.
++ * No ROM, image, state, PRG, screenshot or country bytes are compiled here.
++ */
++#define GK163_MAX_RECORDS (GK77_MAX_COUNTRIES*GK77_RECORD_BYTES)
++typedef enum {
++ GK163_OK=0, GK163_ARGUMENT=1, GK163_IO=2, GK163_FORMAT=3,
++ GK163_BANK=4, GK163_SHA=5, GK163_UNAVAILABLE=6
++} Gk163Status;
++Gk163Status gk163_mesen_extract(const char *mss_path,Gk77Profile profile,
++ uint8_t out[GK163_MAX_RECORDS],size_t *out_size);
++#endif
+diff --git a/execution_163/gk1_native_shell.c b/execution_163/gk1_native_shell.c
+index ce00640..cf5b209 100644
+--- a/execution_163/gk1_native_shell.c
++++ b/execution_163/gk1_native_shell.c
+@@ -30,6 +30,7 @@
+ #include "gk81_stock_attach.h"
+ #include "gk117_stock_pristine_gate.h"
+ #include "gk162_original_entry.h"
++#include "gk163_mesen_import.h"
+ #include "gk82_stock_cartridge.h"
+ #include "gk83_reset_trace.h"
+ #include "gk103_ntsc_ppu.h"
+@@ -52,8 +53,9 @@
+ # include <fcntl.h>
+ # include <unistd.h>
+ # include <linux/joystick.h>
++# include <sys/stat.h>
+ #endif
+-#define GK1_PORT_VERSION "1.62.0-dev1"
++#define GK1_PORT_VERSION "1.63.0-dev1"
+ #define WIDTH 1280
+ #define HEIGHT 720
+ #define BG UINT32_C(0x10202b)
+@@ -1903,8 +1905,28 @@ int main(int argc,char **argv){
+     (unsigned)proof.first_render_mask);
+   return 0;
+  }
++ if(argc==5&&strcmp(argv[1],"--extract-original-mss")==0){
++  Gk77Profile profile=gk77_profile_parse(argv[3]);
++  uint8_t original[GK163_MAX_RECORDS];size_t length=0u;
++  Gk163Status rc=gk163_mesen_extract(argv[2],profile,original,&length);
++  if(rc!=GK163_OK){fprintf(stderr,"Original-stock Mesen source refused (code %d); output unchanged\n",(int)rc);return 17;}
++#ifndef _WIN32
++  mode_t prev_umask=umask(0077);
++#endif
++  FILE *private_out=fopen(argv[4],"wbx");
++#ifndef _WIN32
++  umask(prev_umask);
++#endif
++  if(!private_out){fprintf(stderr,"Private source output not created (exists or access denied)\n");return 18;}
++  size_t wrote=fwrite(original,1,length,private_out);
++  int closed=fclose(private_out);
++  if(wrote!=length||closed){remove(argv[4]);fprintf(stderr,"Private source output write refused\n");return 19;}
++  memset(original,0,sizeof original);
++  printf("VERIFIED_STATIC GK163: exact original-stock archived Mesen profile %s, %zu authenticated private country bytes extracted; separate Spring startup/3 NES commands NOT implemented\n",gk77_profile_name(profile),length);
++  return 0;
++ }
+  if(argc==2&&strcmp(argv[1],"--version")==0){
+-  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0162 source-attested original-stock checkpoint controller re-entry and atomic profile replacement, including clearing stale Enhanced YEAR2; VIEW/PASS only; not NES first-Spring independent generation; EXEC0161 authenticated Enhanced YEAR2 SPRING rollover after Winter, three labor-only orders and exclusive GY21 save/cold-load; NO original NES Spring economics, first Spring or character RNG; EXEC0160 Enhanced-only research Winter with Spring/Summer/Fall source-attested receipts, no original weather/AI; EXEC0159 Enhanced-only research Fall with Spring/Summer receipt chaining; EXEC0158 Enhanced-only research Summer with 3 labor orders, no original seasonal economy/RNG, preserving EXEC0157 symbolic PPUSTATUS low7 guarded trace, preserving EXEC0156 exhaustive 128-variant matrix; EXEC0155 source-verified sign-only polling of $2002 only inside a BPL loop (unverified PPU origin; first edge explicitly hypothetical; NO independent Spring), EXEC0154 explicitly hypothetical single VBlank-edge source branch; EXEC0153 executed country-write watch; EXEC0152 source-authenticated raw Spring country-store candidate inventory (not executed), EXEC0151 explicitly assumed EVEN pre-render source trace, NOT original Mesen parity; EXEC0150 bounded render-on-source progression (not Mesen parity); EXEC0149 verified stock PPU phase gate/source scan (NOT original Mesen parity); EXEC0148 private-source bank-aware original 15-stage reset/Spring chronology; EXEC0147 original stock source-backed ten-goods controller VIEW; EXEC0146 Enhanced authentic-checkpoint variable-quantity labor; EXEC0145 fresh progress gate (no Spring creation), EXEC0144 archived Mesen PRG-page mapping, EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
++  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0163 genuine archived Mesen .mss import verified against exact original stock country SHA (no NES first-Spring generation); EXEC0162 source-attested original-stock checkpoint controller re-entry and atomic profile replacement, including clearing stale Enhanced YEAR2; VIEW/PASS only; not NES first-Spring independent generation; EXEC0161 authenticated Enhanced YEAR2 SPRING rollover after Winter, three labor-only orders and exclusive GY21 save/cold-load; NO original NES Spring economics, first Spring or character RNG; EXEC0160 Enhanced-only research Winter with Spring/Summer/Fall source-attested receipts, no original weather/AI; EXEC0159 Enhanced-only research Fall with Spring/Summer receipt chaining; EXEC0158 Enhanced-only research Summer with 3 labor orders, no original seasonal economy/RNG, preserving EXEC0157 symbolic PPUSTATUS low7 guarded trace, preserving EXEC0156 exhaustive 128-variant matrix; EXEC0155 source-verified sign-only polling of $2002 only inside a BPL loop (unverified PPU origin; first edge explicitly hypothetical; NO independent Spring), EXEC0154 explicitly hypothetical single VBlank-edge source branch; EXEC0153 executed country-write watch; EXEC0152 source-authenticated raw Spring country-store candidate inventory (not executed), EXEC0151 explicitly assumed EVEN pre-render source trace, NOT original Mesen parity; EXEC0150 bounded render-on-source progression (not Mesen parity); EXEC0149 verified stock PPU phase gate/source scan (NOT original Mesen parity); EXEC0148 private-source bank-aware original 15-stage reset/Spring chronology; EXEC0147 original stock source-backed ten-goods controller VIEW; EXEC0146 Enhanced authentic-checkpoint variable-quantity labor; EXEC0145 fresh progress gate (no Spring creation), EXEC0144 archived Mesen PRG-page mapping, EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
+  }
+  /* Preserve EXEC0056's tested synthetic-pad correction/export contract. */
+  if(argc==3&&strcmp(argv[1],"--bonus-correction-export")==0){
+diff --git a/execution_163/packaging/gk1-native-research.desktop b/execution_163/packaging/gk1-native-research.desktop
+index 0ad3d98..8cdcea6 100644
+--- a/execution_163/packaging/gk1-native-research.desktop
++++ b/execution_163/packaging/gk1-native-research.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-Name=Genghis Khan I Research 1.62.0-dev1
++Name=Genghis Khan I Research 1.63.0-dev1
+ GenericName=NES-to-Windows Port Research Prototype
+ Comment=Incomplete native Genghis Khan I research game; source-bounded battles only
+ Exec=gk1-native-research
+diff --git a/execution_163/packaging/test_package_contract.py b/execution_163/packaging/test_package_contract.py
+index 3085eac..4ee96e3 100644
+--- a/execution_163/packaging/test_package_contract.py
++++ b/execution_163/packaging/test_package_contract.py
+@@ -5,14 +5,14 @@ exe,csv,desktop=map(pathlib.Path,sys.argv[1:4])
+ assert exe.is_file() and csv.is_file() and desktop.is_file()
+ assert hashlib.sha256(csv.read_bytes()).hexdigest()=="fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581"
+ entry=desktop.read_text()
+-assert "Name=Genghis Khan I Research 1.62.0-dev1" in entry
++assert "Name=Genghis Khan I Research 1.63.0-dev1" in entry
+ assert "Exec=gk1-native-research\n" in entry
+ assert "Terminal=false\n" in entry
+ with tempfile.TemporaryDirectory(prefix='gk1_exec54_') as tmp:
+     def run(*args,env=None):
+         return subprocess.run([str(exe),*args],cwd=tmp,env=env,capture_output=True,text=True,timeout=15)
+     v=run('--version')
+-    assert v.returncode==0 and '1.62.0-dev1' in v.stdout and 'not full game' in v.stdout
++    assert v.returncode==0 and '1.63.0-dev1' in v.stdout and 'not full game' in v.stdout
+     for sc,num in ((1,14),(2,27)):
+         r=run('--scenario-report',str(sc))
+         assert r.returncode==0,(r.stdout,r.stderr)
+diff --git a/execution_163/test_gk163_mesen_import.c b/execution_163/test_gk163_mesen_import.c
+new file mode 100644
+index 0000000..9782a43
+--- /dev/null
++++ b/execution_163/test_gk163_mesen_import.c
+@@ -0,0 +1,99 @@
++#include "gk163_mesen_import.h"
++#include "gk1_source_identity.h"
++#include <stdint.h>
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++#ifdef GK163_HAS_ZLIB
++#include <zlib.h>
++#endif
++#define CHECK(c) do{if(!(c)){fprintf(stderr,"GK163 FAIL line %d: %s\n",__LINE__,#c);return 2;}checks++;}while(0)
++static unsigned checks;
++#ifdef GK163_HAS_ZLIB
++static void put32(uint8_t *p,uint32_t v){
++ for(unsigned i=0;i<4;i++)p[i]=(uint8_t)(v>>(8u*i));
++}
++/* A copyright-clean synthetic .mss, deliberately NOT an original record.
++ * Records, CPU bytes, mapper contents and compressed state here are synthetic.
++ * Every apparently valid synthetic container MUST be SHA-rejected. */
++static int synthetic(const char *path,int bank,int corrupt){
++ uint8_t *plain=calloc(1,25000),*packed=calloc(1,25000);if(!plain||!packed)return 0;
++ size_t n=0;
++ const struct {const char *key;uint32_t len;} f[]={
++  {"cpu.pc",2},{"cpu.cycleCount",8},{"memoryManager.internalRam",2048},
++  {"mapper.workRam",8192},{"mapper.saveRam",8192}
++ };
++ for(unsigned i=0;i<sizeof(f)/sizeof(f[0]);i++){
++  size_t l=strlen(f[i].key);
++  if(n+l+5u+f[i].len>25000u){free(plain);free(packed);return 0;}
++  memcpy(plain+n,f[i].key,l);n+=l;plain[n++]=0;
++  put32(plain+n,f[i].len);n+=4;
++  if(i==(bank==1?3u:4u))plain[n+0x0dcd]=1u;
++  n+=f[i].len;
++ }
++ uLongf compressed=25000u;
++ if(compress2(packed,&compressed,plain,(uLong)n,Z_BEST_COMPRESSION)!=Z_OK){free(plain);free(packed);return 0;}
++ static const char filename[]="Genghis Khan (USA).nes";
++ FILE *fp=fopen(path,"wb");if(!fp){free(plain);free(packed);return 0;}
++ uint8_t header[35]={0};memcpy(header,"MSS\1",4);put32(header+31,0u);
++ uint8_t meta[9]={1u};put32(meta+1,(uint32_t)n);put32(meta+5,(uint32_t)compressed);
++ uint8_t namelen[4];put32(namelen,sizeof(filename)-1u);
++ int ok=fwrite(header,1,35,fp)==35&&fwrite(namelen,1,4,fp)==4&&
++        fwrite(filename,1,sizeof filename-1,fp)==sizeof filename-1&&
++        fwrite(meta,1,9,fp)==9&&fwrite(packed,1,compressed,fp)==compressed;
++ if(fclose(fp)!=0)ok=0;
++ if(corrupt){fp=fopen(path,"r+b");if(!fp)ok=0;
++  else{if(fseek(fp,35u+4u+sizeof filename-1u+9u+3u,SEEK_SET))ok=0;
++   else{uint8_t u=0xfa;if(fwrite(&u,1,1,fp)!=1)ok=0;}if(fclose(fp))ok=0;}
++ }
++ free(plain);free(packed);return ok;
++}
++#endif
++int main(int argc,char **argv){
++#ifndef GK163_HAS_ZLIB
++ (void)argv;
++#endif
++ CHECK(argc==1||argc==5);
++ uint8_t out[GK163_MAX_RECORDS],old[GK163_MAX_RECORDS];
++ memset(out,0xa5,sizeof out);memcpy(old,out,sizeof out);size_t got=77u;
++ CHECK(gk163_mesen_extract(NULL,GK77_ARCHIVED_MONGOL_SAVERAM,out,&got)==GK163_ARGUMENT);
++ CHECK(gk163_mesen_extract("/invalid",GK77_FRESH_MONGOL_WORKRAM,out,&got)==GK163_ARGUMENT);
++ CHECK(gk163_mesen_extract("/invalid",GK77_ARCHIVED_WORLD_SAVERAM,NULL,&got)==GK163_ARGUMENT);
++ CHECK(gk163_mesen_extract("/invalid",GK77_ARCHIVED_WORLD_SAVERAM,out,NULL)==GK163_ARGUMENT);
++ CHECK(got==77u&&!memcmp(out,old,sizeof out));
++#ifdef GK163_HAS_ZLIB
++ CHECK(gk163_mesen_extract("/invalid",GK77_ARCHIVED_WORLD_SAVERAM,out,&got)==GK163_IO);
++ const char *tmp="GK163_fake_mesen_source.mss";
++ CHECK(synthetic(tmp,2,0));
++ CHECK(gk163_mesen_extract(tmp,GK77_ARCHIVED_MONGOL_SAVERAM,out,&got)==GK163_SHA);
++ CHECK(got==77u&&!memcmp(out,old,sizeof out));
++ CHECK(gk163_mesen_extract(tmp,GK77_ARCHIVED_WORLD_SAVERAM,out,&got)==GK163_SHA);
++ CHECK(synthetic(tmp,1,0));
++ CHECK(gk163_mesen_extract(tmp,GK77_ARCHIVED_MONGOL_SAVERAM,out,&got)==GK163_BANK);
++ CHECK(synthetic(tmp,2,1));
++ CHECK(gk163_mesen_extract(tmp,GK77_ARCHIVED_MONGOL_SAVERAM,out,&got)==GK163_FORMAT);
++ CHECK(remove(tmp)==0);
++ if(argc==5){
++  for(int i=0;i<2;i++){
++   Gk77Profile p=i==0?GK77_ARCHIVED_MONGOL_SAVERAM:GK77_ARCHIVED_WORLD_SAVERAM;
++   const char *original=argv[1+i];const char *expected=argv[3+i];
++   size_t length=i==0?14u*83u:27u*83u;
++   CHECK(gk163_mesen_extract(original,p,out,&got)==GK163_OK);
++   CHECK(got==length);
++   FILE *f=fopen(expected,"rb");CHECK(f!=NULL);
++   uint8_t raw[GK163_MAX_RECORDS]={0};
++   CHECK(fread(raw,1,length,f)==length);CHECK(fgetc(f)==EOF);CHECK(!fclose(f));
++   CHECK(!memcmp(raw,out,length));
++   uint8_t digest[32];gk1_sha256_bytes(out,got,digest);
++   CHECK(gk77_known_source_digest(p,digest));
++   printf("OBSERVED_RUNTIME_STOCK_ARCHIVED_RESTORED profile=%s 83-byte countries=%zu: AUTHENTIC EXACT STOCK HASH PASS\n",
++     gk77_profile_name(p),got/83u);
++  }
++ }
++#else
++ CHECK(gk163_mesen_extract("/invalid",GK77_ARCHIVED_WORLD_SAVERAM,out,&got)==GK163_UNAVAILABLE);
++#endif
++ CHECK(got==77u||argc==5);
++ printf("GK163 %u checks PASS. No first-Spring calculation or new Mesen gameplay.\n",checks);
++ return 0;
++}
