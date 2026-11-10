@@ -1,0 +1,569 @@
+diff --git a/execution_154/CMakeLists.txt b/execution_154/CMakeLists.txt
+index 71ef234..00e3982 100644
+--- a/execution_154/CMakeLists.txt
++++ b/execution_154/CMakeLists.txt
+@@ -57,15 +57,15 @@ if(WIN32)
+   install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+-  set(CPACK_PACKAGE_VERSION "1.53.0")
++  set(CPACK_PACKAGE_VERSION "1.54.0")
+   set(CPACK_PACKAGE_VENDOR "GK1 native research prototype")
+   set(CPACK_PACKAGE_INSTALL_DIRECTORY "Genghis Khan I Native Research")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Incomplete native Genghis Khan I research; original first Spring still unfinished")
+-  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.53.0-dev1")
+-  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.53.0-dev1")
++  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.54.0-dev1")
++  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.54.0-dev1")
+   set(CPACK_NSIS_MUI_FINISHPAGE_RUN "gk1_native_shell.exe")
+   set(CPACK_NSIS_MODIFY_PATH OFF)
+-  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.53.0-dev1")
++  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.54.0-dev1")
+   set(CPACK_CREATE_DESKTOP_LINKS "gk1_native_shell")
+   include(CPack)
+ endif()
+@@ -152,7 +152,7 @@ if(UNIX AND NOT APPLE)
+   install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+-  set(CPACK_PACKAGE_VERSION "1.53.0")
++  set(CPACK_PACKAGE_VERSION "1.54.0")
+   set(CPACK_DEBIAN_PACKAGE_RELEASE "dev1")
+   set(CPACK_PACKAGE_CONTACT "GK1 research prototype (offline source distribution)")
+   set(CPACK_DEBIAN_PACKAGE_MAINTAINER "GK1 Native Research")
+@@ -160,7 +160,7 @@ if(UNIX AND NOT APPLE)
+   set(CPACK_DEBIAN_PACKAGE_SECTION "games")
+   set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Genghis Khan I native research prototype, not completed game")
+-  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.53.0~dev1_amd64")
++  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.54.0~dev1_amd64")
+   set(CPACK_SET_DESTDIR OFF)
+   set(CPACK_PACKAGING_INSTALL_PREFIX "/")
+   find_package(Python3 COMPONENTS Interpreter)
+@@ -642,3 +642,10 @@ add_test(NAME GK1_152_OriginalStockSpringWritersStaticCandidatesNotExecuted COMM
+ add_executable(test_gk153_country_write_watch test_gk153_country_write_watch.c)
+ target_link_libraries(test_gk153_country_write_watch PRIVATE gk1_app_state)
+ add_test(NAME GK1_153_Executed6502PRGRAMCountryWatchNotRawCandidate COMMAND test_gk153_country_write_watch)
++
++# EXEC0154: an explicitly counterfactual single PPUSTATUS race branch, tested
++# on the complete linked native game, never a Classic first-Spring unlock.
++add_executable(test_gk154_vblank_branch test_gk154_vblank_branch.c)
++target_link_libraries(test_gk154_vblank_branch PRIVATE gk1_app_state)
++add_test(NAME GK1_154_AtomicSingleRaceBranchAndNoCampaignUnlock
++ COMMAND test_gk154_vblank_branch)
+diff --git a/execution_154/README_EXEC0154.md b/execution_154/README_EXEC0154.md
+new file mode 100644
+index 0000000..5b396bf
+--- /dev/null
++++ b/execution_154/README_EXEC0154.md
+@@ -0,0 +1,41 @@
++# GK1 EXEC0154 — explicit one-edge source interpreter diagnostic
++
++**2026-11-10 | 1.54.0-dev1 | Copyright-clean C11 source**
++
++This increment builds on the **complete inherited EXEC0153 native C11 game**; it does not replace the game, suppress PRE_SETUP, or manufacture an original first Spring. Classic stock NES and approved Enhanced profile remain separate.
++
++## Actual implementation
++
++`gk154_ppu_status_race_branch()` provides an **explicitly counterfactual** before/after selection for a *single* ambiguous PPUSTATUS read within the existing +/- two PPU-dot VBlank boundary. Its candidate-copy write is atomic: failed selections cannot modify timing state or output. The ordinary `gk103_ppu_status()` continues to fail closed.
++
++`gk154_trace_original_one_race_branch()` and guarded `gk1_app_source_one_race_branch()` extend the inherited authentic-original 6502 source-interpreter with a **one-time** opt-in choice, then return to fail-closed operation on the next unresolved race. A successful selection records the source PC and branch; original country write-watch counters are retained. The opt-in command is:
++
++```
++gk1_native_shell --source-one-vblank-race PRIVATE_STOCK_ROM_PATH 0 1
++gk1_native_shell --source-one-vblank-race PRIVATE_STOCK_ROM_PATH 0 2
++```
++
++Original ROM and Mesen samples are **private**. This is not Mesen execution and cannot determine the real NES edge timing or character/difficulty/RNG setup.
++
++## Reproduction
++
++From the complete historical ZIP (all inherited execution_* sibling folders retained):
++
++```
++cmake -S execution_154 -B build154 -DCMAKE_BUILD_TYPE=Release
++cmake --build build154 -j8
++ctest --test-dir build154 -j8 --output-on-failure
++GK1_ORIGINAL_STOCK_ROM=/private/authenticated-stock.nes ctest --test-dir build154 -R 'GK1_154' -V
++```
++
++Tested Linux Release 112/112 PASS; Debug 112/112 PASS; focused ASan/UBSan public/private test 38/38 PASS; 1280x720 Xvfb 120-frame compiled program and extracted Debian native program each PASS. Independent clean ZIP 112/112 must be separately checked after packaging. Full ASan/UBSan suite NOT certified.
++
++## Genuine bounded results
++
++Original USA stock 262160-byte private ROM SHA256 `ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3`: inherited even-pre-render origin-0 source hypothesis normally halts at PC `$C5BE` with 16,323 executed instructions. When explicitly choosing single-race outcome 1, its interpreter progresses to **25,731 instructions** then hits another unresolved PPUSTATUS hardware gate at `$C5BE`; choosing outcome 2 progresses **17,221 instructions** before another gate. Both have zero source-executed country stores prior to the respective gate. These figures are **VERIFIED_STATIC under an UNVERIFIED timing hypothesis**, not actual stock Mesen/controller observations, not proof the game does no country updates.
++
++Inherited **OBSERVED_RUNTIME_STOCK_FRESH_RESET**: original Mongol Spring1175 Gold430, Food208, Troops61, Rate121, three orders, WorkRAM physical `0x0DCD`. Distinct prior **OBSERVED_RUNTIME_STOCK_ARCHIVED_RESTORED**: Mongol1175 Gold439/Rate101, World1206 Gold193/Rate114, SaveRAM physical `0x0DCD`. Goods begin at country+`0x22`. Never hardcode one original run as universal RNG initial state.
++
++## Acceptance remains open
++
++Original source-authentic 14-/27-country first playable Spring, three genuine controller Classic orders, accurate setup/difficulty/character generation and RNG, merchant scheduling, AI, diplomacy, dynasty daughter ages 6/7/8, battle terminal/aftermath, original media, saved full campaigns and Win32 NSIS/physical Xbox-only testing all remain incomplete or NOT RUN. No original stock ROM, SRAM, images, audio or gameplay states may be published in copyright-clean archives.
+diff --git a/execution_154/gk103_ntsc_ppu.c b/execution_154/gk103_ntsc_ppu.c
+index 3ba970d..ee9336a 100644
+--- a/execution_154/gk103_ntsc_ppu.c
++++ b/execution_154/gk103_ntsc_ppu.c
+@@ -106,6 +106,24 @@ int gk103_ppu_status(Gk103Ppu *p,uint64_t cycle,uint8_t low,uint8_t *out){
+  *out=result;
+  return 1;
+ }
++int gk154_ppu_status_race_branch(Gk103Ppu *p,uint64_t cycle,
++ uint8_t low,uint8_t after_edge,uint8_t *out){
++ uint64_t dot;
++ if(!p||!out||after_edge>1u||p->render_window_active||
++    !at_dot(cycle,p->frame_origin_dots,&dot))return 0;
++ uint64_t in=dot%GK103_FRAME_DOTS;
++ if(in<GK103_VBLANK_START-2u||in>GK103_VBLANK_START+2u)return 0;
++ Gk103Ppu next=*p;
++ if(!gk103_ppu_advance(&next,cycle))return 0;
++ /* This is a deliberately selected branch, not evidence of the
++  * physical read/NMI ordering at the dot-level edge. */
++ next.vblank=0u;
++ if(next.status_reads==UINT64_MAX)return 0;
++ next.status_reads++;
++ *out=(uint8_t)((low&0x7fu)|(after_edge?0x80u:0u));
++ *p=next;
++ return 1;
++}
+ int gk103_ppu_ctrl(Gk103Ppu *p,uint64_t cycle,uint8_t value){
+  if(!p)return 0;
+  Gk103Ppu candidate=*p;
+diff --git a/execution_154/gk103_ntsc_ppu.h b/execution_154/gk103_ntsc_ppu.h
+index 6498359..4ae2890 100644
+--- a/execution_154/gk103_ntsc_ppu.h
++++ b/execution_154/gk103_ntsc_ppu.h
+@@ -36,6 +36,12 @@ int gk103_ppu_advance(Gk103Ppu *p,uint64_t cpu_cycle);
+  * mutation, or status-read consumption when a PPUSTATUS timing race fails.
+  * Only diagnostic race_gate is set. This is a bounded research model. */
+ int gk103_ppu_status(Gk103Ppu *p,uint64_t cpu_cycle,uint8_t lower_bits,uint8_t *value);
++/* EXEC0154 explicitly COUNTERFACTUAL single VBlank edge branch: option 0
++ * supposes the disputed read occurred BEFORE VBlank; option 1 AFTER.
++ * Only legal within the preexisting +/-2 PPU-dot race window. This never
++ * establishes original-Mesen parity and does not change the normal API. */
++int gk154_ppu_status_race_branch(Gk103Ppu *p,uint64_t cpu_cycle,
++ uint8_t lower_bits,uint8_t after_edge,uint8_t *value);
+ /* Accepted after PPU powerup warmup only. */
+ int gk103_ppu_ctrl(Gk103Ppu *p,uint64_t cpu_cycle,uint8_t value);
+ /* Rendering requires odd-frame skip, sprite effects and PPUMASK -> GATE. */
+diff --git a/execution_154/gk1_app_state.c b/execution_154/gk1_app_state.c
+index 531ac28..56bc280 100644
+--- a/execution_154/gk1_app_state.c
++++ b/execution_154/gk1_app_state.c
+@@ -48,6 +48,17 @@ static void reset_setup(Gk1App *s,uint8_t w){
+ const char *gk1_app_case_label(unsigned i){return i<CASE_COUNT?cases[i].label:"UNKNOWN";}
+ static const uint8_t divide_qty[4]={1,6,7,8};
+ void gk1_app_init(Gk1App *s){if(!s)return;memset(s,0,sizeof *s);s->screen=GK1_SCREEN_TITLE;s->last_move=GK1_UNVERIFIED;s->setup_candidate[0]=s->setup_candidate[1]=255;s->rules_profile=1;s->example_rate=100;s->manual_remaining_orders=3;s->whatif_event=GK65_ACT_COMPLETE;s->whatif_victim=GK65_DEFENDER_VICTIM;(void)gk68_rest_open(&s->rest_case);reset_setup(s,0);reset_setup(s,1);strcpy(s->status,"SOURCE-BOUNDED RESEARCH BUILD - NOT FULL GAME");}
++Gk153TraceResult gk1_app_source_one_race_branch(const Gk1App *app,
++ const char *rom,uint32_t origin,uint8_t choice,Gk83Trace *out){
++ if(!app||!rom||!*rom||!out||app->active_world>1u||
++    app->setup_stage[app->active_world]!=GK53_SETUP_AWAIT_SOURCE)
++  return GK153_TRACE_BAD_STAGE;
++ Gk83Trace result={0};
++ Gk83Stop stop=gk154_trace_original_one_race_branch(rom,origin,choice,120000u,&result);
++ if(stop==GK83_INVALID||stop==GK83_SOURCE_REFUSED)return GK153_TRACE_BAD_SOURCE;
++ *out=result;
++ return GK153_TRACE_BOUNDED;
++}
+ Gk153TraceResult gk1_app_source_country_writer_trace(const Gk1App *app,
+  const char *rom,Gk83Trace *out){
+  if(!app||!rom||!*rom||!out||app->active_world>1u||
+diff --git a/execution_154/gk1_app_state.h b/execution_154/gk1_app_state.h
+index 81fa35c..7d6beb0 100644
+--- a/execution_154/gk1_app_state.h
++++ b/execution_154/gk1_app_state.h
+@@ -116,6 +116,10 @@ void gk1_app_init(Gk1App *s);
+  * hardware hypothesis only, not original Mesen and NOT gameplay. */
+ typedef enum { GK153_TRACE_BAD_STAGE=0, GK153_TRACE_BAD_SOURCE=1,
+  GK153_TRACE_BOUNDED=2 } Gk153TraceResult;
++/* Explicit PPU VBlank-edge counterfactual: no campaign mutation or unlock.
++ * Only original SHA-authenticated private ROM and PRE_SETUP stage accepted. */
++Gk153TraceResult gk1_app_source_one_race_branch(const Gk1App *app,
++ const char *private_rom,uint32_t origin,uint8_t branch_choice,Gk83Trace *out);
+ Gk153TraceResult gk1_app_source_country_writer_trace(const Gk1App *app,
+  const char *private_rom,Gk83Trace *out);
+ /* Authentication required, never advances seasons or grants original orders. */
+diff --git a/execution_154/gk1_native_shell.c b/execution_154/gk1_native_shell.c
+index cac162d..94f63a0 100644
+--- a/execution_154/gk1_native_shell.c
++++ b/execution_154/gk1_native_shell.c
+@@ -31,6 +31,7 @@
+ #include "gk117_stock_pristine_gate.h"
+ #include "gk82_stock_cartridge.h"
+ #include "gk83_reset_trace.h"
++#include "gk103_ntsc_ppu.h"
+ #include "gk84_reset_hypothesis.h"
+ #include "gk58_slots.h"
+ #include "gk59_storage.h"
+@@ -51,7 +52,7 @@
+ # include <unistd.h>
+ # include <linux/joystick.h>
+ #endif
+-#define GK1_PORT_VERSION "1.53.0-dev1"
++#define GK1_PORT_VERSION "1.54.0-dev1"
+ #define WIDTH 1280
+ #define HEIGHT 720
+ #define BG UINT32_C(0x10202b)
+@@ -1630,6 +1631,23 @@ int main(int argc,char **argv){
+     (unsigned long long)result.first_after_render_stop_cycles);
+   return 0;
+  }
++ if(argc==5&&strcmp(argv[1],"--source-one-vblank-race")==0){
++  char *end1=NULL,*end2=NULL;
++  unsigned long origin=strtoul(argv[3],&end1,10),choice=strtoul(argv[4],&end2,10);
++  if(!argv[3][0]||!argv[4][0]||!end1||*end1||!end2||*end2||
++     origin>=GK103_FRAME_DOTS||choice<1u||choice>2u)return 2;
++  gk1_app_init(&app);app.setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;
++  Gk83Trace trace={0};
++  if(gk1_app_source_one_race_branch(&app,argv[2],(uint32_t)origin,
++      (uint8_t)choice,&trace)!=GK153_TRACE_BOUNDED)return 3;
++  printf("VERIFIED_STATIC COUNTERFACTUAL GK154: selected branch=%u consumed=%u "
++         "source PC=$%04X, stopped PC=$%04X gate=%u, executed=%u, "
++         "country stores=%u; NOT Mesen parity, NOT playable Spring\n",
++   trace.hypothetical_race_choice,trace.hypothetical_race_consumed,
++   trace.hypothetical_race_source_pc,trace.stop_pc,(unsigned)trace.stop,
++   trace.instructions,trace.country_writes.world_region_writes);
++  return 0;
++ }
+  if(argc==3&&strcmp(argv[1],"--source-country-write-watch")==0){
+   gk1_app_init(&app);app.setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;
+   Gk83Trace trace={0};
+@@ -1678,7 +1696,7 @@ int main(int argc,char **argv){
+   return 0;
+  }
+  if(argc==2&&strcmp(argv[1],"--version")==0){
+-  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0152 source-authenticated raw Spring country-store candidate inventory (not executed), EXEC0151 explicitly assumed EVEN pre-render source trace, NOT original Mesen parity; EXEC0150 bounded render-on-source progression (not Mesen parity); EXEC0149 verified stock PPU phase gate/source scan (NOT original Mesen parity); EXEC0148 private-source bank-aware original 15-stage reset/Spring chronology; EXEC0147 original stock source-backed ten-goods controller VIEW; EXEC0146 Enhanced authentic-checkpoint variable-quantity labor; EXEC0145 fresh progress gate (no Spring creation), EXEC0144 archived Mesen PRG-page mapping, EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
++  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0154 explicitly hypothetical single VBlank-edge source branch; EXEC0153 executed country-write watch; EXEC0152 source-authenticated raw Spring country-store candidate inventory (not executed), EXEC0151 explicitly assumed EVEN pre-render source trace, NOT original Mesen parity; EXEC0150 bounded render-on-source progression (not Mesen parity); EXEC0149 verified stock PPU phase gate/source scan (NOT original Mesen parity); EXEC0148 private-source bank-aware original 15-stage reset/Spring chronology; EXEC0147 original stock source-backed ten-goods controller VIEW; EXEC0146 Enhanced authentic-checkpoint variable-quantity labor; EXEC0145 fresh progress gate (no Spring creation), EXEC0144 archived Mesen PRG-page mapping, EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
+  }
+  /* Preserve EXEC0056's tested synthetic-pad correction/export contract. */
+  if(argc==3&&strcmp(argv[1],"--bonus-correction-export")==0){
+@@ -2504,7 +2522,7 @@ if(argc==3 && strcmp(argv[1],"--pre-setup-pad-smoke")==0){
+    else if(e.type==ClientMessage && (Atom)e.xclient.data.l[0]==delete_window)running=0;
+   }
+   poll_joystick(&joystick,pad);render();XFlush(display);frames++;
+-  if(smoke && frames>=smoke){printf("EXEC0153 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
++  if(smoke && frames>=smoke){printf("EXEC0154 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
+   struct timespec t={0,16000000};nanosleep(&t,NULL);
+  }
+  if(joystick>=0)close(joystick);
+diff --git a/execution_154/gk83_reset_trace.c b/execution_154/gk83_reset_trace.c
+index fe43b65..cb93b68 100644
+--- a/execution_154/gk83_reset_trace.c
++++ b/execution_154/gk83_reset_trace.c
+@@ -65,6 +65,7 @@ typedef struct {
+  uint64_t ppu_bus_last_full_drive_cycle;
+  int ppu_bus_latch_enabled;
+  uint8_t ppu_sprite_hypothesis; /* 0: refuse unknown; 1..4: explicit flags */
++ uint8_t hypothetical_race_choice,hypothetical_race_consumed;
+  uint8_t hypothetical_upper_bus_bits;
+  uint8_t hypothetical_ppustatus_lower7; /* EXEC0105 uncertain open bus/flags */
+  const uint8_t *scripted_frame_buttons;
+@@ -121,8 +122,20 @@ static Gk83Stop read_byte(Machine *m,uint16_t addr,uint8_t *v){
+     m->result.ppu_bus_latch_gate=1u;return GK83_HARDWARE_GATE;
+    }
+    m->result.ppu_bus_latch_reads=m->ppu_bus.status_reads;
+-  }else if(!gk103_ppu_status(&m->ppu,m->result.completed_cpu_cycles+3u,m->hypothetical_ppustatus_lower7,v))
+-   return GK83_HARDWARE_GATE;
++  }else if(!gk103_ppu_status(&m->ppu,m->result.completed_cpu_cycles+3u,m->hypothetical_ppustatus_lower7,v)){
++   /* Consume at most ONE explicitly selected race hypothesis; an ordinary
++    * trace and all subsequent unknown races still fail closed. */
++   if(!m->ppu.race_gate||m->hypothetical_race_consumed||
++      !m->hypothetical_race_choice||
++      !gk154_ppu_status_race_branch(&m->ppu,m->result.completed_cpu_cycles+3u,
++           m->hypothetical_ppustatus_lower7,
++           (uint8_t)(m->hypothetical_race_choice-1u),v))
++    return GK83_HARDWARE_GATE;
++   m->hypothetical_race_consumed=1u;
++   m->result.hypothetical_race_choice=m->hypothetical_race_choice;
++   m->result.hypothetical_race_consumed=1u;
++   m->result.hypothetical_race_source_pc=m->result.stop_pc;
++  }
+   if((*v & 0x80u)!=0u){
+    if(!m->result.ppu_first_vblank_read_pc)
+     m->result.ppu_first_vblank_read_pc=m->result.stop_pc;
+@@ -773,9 +786,10 @@ static Gk83Stop trace_impl(const char *path,uint32_t max_steps,Gk83Trace *out,
+                           const uint8_t *scripted_buttons,uint32_t scripted_count,
+                           int ppu_scheduled,uint32_t ppu_origin,uint8_t lower7,
+                           uint8_t dma_alignment_hypothesis,uint8_t dma_phase,
+-                          uint8_t render_window_hypothesis){
++                          uint8_t render_window_hypothesis,uint8_t race_choice){
+  if(!path||!out||max_steps==0u||max_steps>1000000u||
+-    dma_alignment_hypothesis>1u||dma_phase>1u||render_window_hypothesis>2u||
++    dma_alignment_hypothesis>1u||dma_phase>1u||render_window_hypothesis>2u||race_choice>2u||
++    (race_choice&&(!ppu_scheduled||render_window_hypothesis!=2u))||
+     (render_window_hypothesis&&!ppu_scheduled)||
+     (dma_alignment_hypothesis&&!ppu_scheduled)||(!dma_alignment_hypothesis&&dma_phase)||
+     (use_hypothesis && ram_address>=2048u) || lower7>132u ||
+@@ -804,6 +818,7 @@ static Gk83Stop trace_impl(const char *path,uint32_t max_steps,Gk83Trace *out,
+  m->source_dma_alignment_is_hypothesis=dma_alignment_hypothesis;
+  m->source_dma_apu_phase=dma_phase;
+  m->source_render_window_hypothesis=render_window_hypothesis;
++ m->hypothetical_race_choice=race_choice;
+  m->ppu_bus_latch_enabled=(lower7>=128u);
+  m->ppu_sprite_hypothesis=(uint8_t)(lower7>=129u?lower7-128u:0u);
+  m->hypothetical_ppustatus_lower7=(uint8_t)(lower7&0x7fu);
+@@ -911,11 +926,11 @@ static Gk83Stop trace_impl(const char *path,uint32_t max_steps,Gk83Trace *out,
+ }
+ 
+ Gk83Stop gk83_trace_original_reset(const char *path,uint32_t max_steps,Gk83Trace *out){
+- return trace_impl(path,max_steps,out,0,0u,0u,0,NULL,0,0,0,0u,0u,0u,NULL,0u,0,0u,0u,0u,0u,0u);
++ return trace_impl(path,max_steps,out,0,0u,0u,0,NULL,0,0,0,0u,0u,0u,NULL,0u,0,0u,0u,0u,0u,0u,0u);
+ }
+ Gk83Stop gk84_trace_reset_single_ram_hypothesis(const char *path,
+  uint16_t ram_address,uint8_t value,uint32_t max_steps,Gk83Trace *out){
+- return trace_impl(path,max_steps,out,1,ram_address,value,0,NULL,0,0,0,0u,0u,0u,NULL,0u,0,0u,0u,0u,0u,0u);
++ return trace_impl(path,max_steps,out,1,ram_address,value,0,NULL,0,0,0,0u,0u,0u,NULL,0u,0,0u,0u,0u,0u,0u,0u);
+ }
+ 
+ /* EXEC0091: exact archived fresh Mesen script selected zero-filled CPU RAM.
+@@ -923,7 +938,7 @@ Gk83Stop gk84_trace_reset_single_ram_hypothesis(const char *path,
+  * Mesen runtime observation or a completed original Spring generator. */
+ Gk83Stop gk91_trace_reset_mesen_allzeros(const char *path,
+  uint32_t max_steps,Gk83Trace *out){
+- return trace_impl(path,max_steps,out,0,0u,0u,1,NULL,0,0,0,0u,0u,0u,NULL,0u,0,0u,0u,0u,0u,0u);
++ return trace_impl(path,max_steps,out,0,0u,0u,1,NULL,0,0,0,0u,0u,0u,NULL,0u,0,0u,0u,0u,0u,0u,0u);
+ }
+ 
+ /* EXEC0092: strictly COUNTERFACTUAL PPUSTATUS values supplied by caller.
+@@ -934,7 +949,7 @@ Gk83Stop gk92_trace_reset_ppustatus_hypothesis(const char *rom,
+  const uint8_t *hypothetical_status_reads,uint32_t read_count,
+  uint32_t max_steps,Gk83Trace *out){
+  return trace_impl(rom,max_steps,out,0,0u,0u,1,
+-                   hypothetical_status_reads,read_count,0,0,0u,0u,0u,NULL,0u,0,0u,0u,0u,0u,0u);
++                   hypothetical_status_reads,read_count,0,0,0u,0u,0u,NULL,0u,0,0u,0u,0u,0u,0u,0u);
+ }
+ 
+ /* EXEC0097: one expressly counterfactual NMI at source-loop $C460 after
+@@ -943,7 +958,7 @@ Gk83Stop gk97_trace_reset_one_hypothetical_nmi(const char *rom,
+  const uint8_t *status_reads,uint32_t status_count,
+  uint32_t max_steps,Gk83Trace *out){
+  if(!rom||!*rom||!out||status_count<6u)return GK83_INVALID;
+- return trace_impl(rom,max_steps,out,0,0u,0u,1,status_reads,status_count,1,0,0u,0u,0u,NULL,0u,0,0u,0u,0u,0u,0u);
++ return trace_impl(rom,max_steps,out,0,0u,0u,1,status_reads,status_count,1,0,0u,0u,0u,NULL,0u,0,0u,0u,0u,0u,0u,0u);
+ }
+ 
+ /* EXEC0098: explicitly provided controller input, NOT an original Mesen
+@@ -955,7 +970,7 @@ Gk83Stop gk98_trace_reset_controller_hypothesis(const char *rom,
+  if(!rom||!*rom||!out||status_count<6u||!status_reads||
+     (upper_bus_bits&1u))return GK83_INVALID;
+  return trace_impl(rom,max_steps,out,0,0u,0u,1,status_reads,status_count,1,
+-                   1,buttons,port2_buttons,upper_bus_bits,NULL,0u,0,0u,0u,0u,0u,0u);
++                   1,buttons,port2_buttons,upper_bus_bits,NULL,0u,0,0u,0u,0u,0u,0u,0u);
+ }
+ 
+ /* EXEC0102: multiple caller-scripted controller frames. These use a known
+@@ -968,7 +983,7 @@ Gk83Stop gk102_trace_scripted_controller_frames(const char *rom,
+  if(!rom||!*rom||!out||!controller_frames||frame_count==0u||
+     frame_count>32u||!status_reads||status_count<6u)return GK83_INVALID;
+  return trace_impl(rom,max_steps,out,0,0u,0u,1,status_reads,status_count,
+-                   0,1,0u,0u,0u,controller_frames,frame_count,0,0u,0u,0u,0u,0u);
++                   0,1,0u,0u,0u,controller_frames,frame_count,0,0u,0u,0u,0u,0u,0u);
+ }
+ 
+ /* EXEC0103: PPU clock-scheduled *hypothesis* from explicit NTSC frame origin.
+@@ -978,7 +993,7 @@ Gk83Stop gk103_trace_original_ppu_schedule(const char *rom,uint8_t phase,
+  uint32_t max_steps,Gk83Trace *out){
+  if(!rom||!*rom||!out||phase>2u)return GK83_INVALID;
+  return trace_impl(rom,max_steps,out,0,0u,0u,1,NULL,0u,0,0,0u,0u,0u,
+-                   NULL,0u,1,phase,0u,0u,0u,0u);
++                   NULL,0u,1,phase,0u,0u,0u,0u,0u);
+ }
+ 
+ /* EXEC0104: scans an explicitly chosen absolute reset-origin hypothesis.
+@@ -990,7 +1005,7 @@ Gk83Stop gk104_trace_original_ppu_origin(const char *rom,uint32_t origin,
+  if(!rom||!*rom||!out||origin>=GK103_FRAME_DOTS||
+     (origin>=GK103_VBLANK_START&&origin<GK103_VBLANK_END))return GK83_INVALID;
+  return trace_impl(rom,max_steps,out,0,0u,0u,1,NULL,0u,0,0,0u,0u,0u,
+-                   NULL,0u,1,origin,0u,0u,0u,0u);
++                   NULL,0u,1,origin,0u,0u,0u,0u,0u);
+ }
+ 
+ /* EXEC0105: source-hypothesis ONLY. PPUSTATUS bits 0..4 open bus, bits
+@@ -1003,7 +1018,7 @@ Gk83Stop gk105_trace_original_low7(const char *rom,uint32_t origin,
+  if(!rom||!*rom||!out||lower7>127u||origin>=GK103_FRAME_DOTS||
+     (origin>=GK103_VBLANK_START&&origin<GK103_VBLANK_END))return GK83_INVALID;
+  return trace_impl(rom,max_steps,out,0,0u,0u,1,NULL,0u,0,0,0u,0u,0u,
+-                   NULL,0u,1,origin,lower7,0u,0u,0u);
++                   NULL,0u,1,origin,lower7,0u,0u,0u,0u);
+ }
+ 
+ /* EXEC0106: Unlike the arbitrary fixed 128-way PPUSTATUS injection, this
+@@ -1016,7 +1031,7 @@ Gk83Stop gk106_trace_original_ppu_latch(const char *rom,uint32_t origin,
+  if(!rom||!*rom||!out||origin>=GK103_FRAME_DOTS||
+     (origin>=GK103_VBLANK_START&&origin<GK103_VBLANK_END))return GK83_INVALID;
+  return trace_impl(rom,max_steps,out,0,0u,0u,1,NULL,0u,0,0,0u,0u,0u,
+-                   NULL,0u,1,origin,128u,0u,0u,0u);
++                   NULL,0u,1,origin,128u,0u,0u,0u,0u);
+ }
+ 
+ /* 4 explicitly counterfactual sprite-flag hypotheses (zero, overflow,
+@@ -1028,7 +1043,7 @@ Gk83Stop gk106_trace_original_ppu_latch_sprite_hypothesis(const char *rom,
+  if(!rom||!*rom||!out||sprite_choice>3u||origin>=GK103_FRAME_DOTS||
+     (origin>=GK103_VBLANK_START&&origin<GK103_VBLANK_END))return GK83_INVALID;
+  return trace_impl(rom,max_steps,out,0,0u,0u,1,NULL,0u,0,0,0u,0u,0u,
+-                   NULL,0u,1,origin,(uint8_t)(129u+sprite_choice),0u,0u,0u);
++                   NULL,0u,1,origin,(uint8_t)(129u+sprite_choice),0u,0u,0u,0u);
+ }
+ 
+ /* EXEC0129: a ROM-source CPU-path research option with EXPLICITLY HYPOTHETICAL
+@@ -1041,7 +1056,7 @@ Gk83Stop gk129_trace_original_ppu_with_dma_alignment(const char *rom,
+     origin>=GK103_FRAME_DOTS||
+     (origin>=GK103_VBLANK_START&&origin<GK103_VBLANK_END))return GK83_INVALID;
+  return trace_impl(rom,max_steps,out,0,0u,0u,1,NULL,0u,0,0,0u,0u,0u,
+-                   NULL,0u,1,origin,0u,1u,phase,0u);
++                   NULL,0u,1,origin,0u,1u,phase,0u,0u);
+ }
+ 
+ /* EXEC0150 opt-in source-only continuation. Mesen AllZeros and APU DMA
+@@ -1054,7 +1069,7 @@ Gk83Stop gk150_trace_original_ppu_render_window(const char *rom,
+     origin>=GK103_FRAME_DOTS||
+     (origin>=GK103_VBLANK_START&&origin<GK103_VBLANK_END))return GK83_INVALID;
+  return trace_impl(rom,max_steps,out,0,0u,0u,1,NULL,0u,0,0,0u,0u,0u,
+-                   NULL,0u,1,origin,0u,1u,assumed_dma_phase,1u);
++                   NULL,0u,1,origin,0u,1u,assumed_dma_phase,1u,0u);
+ }
+ /* GK151 deliberately NOT Mesen: one explicit even-parity assumption, and
+  * a strict refusal at the next potentially uncertain VBlank edge. */
+@@ -1064,5 +1079,18 @@ Gk83Stop gk151_trace_original_even_prerender(const char *rom,
+     origin>=GK103_FRAME_DOTS||
+     (origin>=GK103_VBLANK_START&&origin<GK103_VBLANK_END))return GK83_INVALID;
+  return trace_impl(rom,max_steps,out,0,0u,0u,1,NULL,0u,0,0,0u,0u,0u,
+-                   NULL,0u,1,origin,0u,1u,assumed_dma_phase,2u);
++                   NULL,0u,1,origin,0u,1u,assumed_dma_phase,2u,0u);
++}
++
++/* EXEC0154: bounded 6502 execution after ONE explicit alternative to a
++ * disputed PPUSTATUS VBlank-edge read. This is NOT a verified reset phase,
++ * original Mesen result, ROM initialization, or live playable Spring. */
++Gk83Stop gk154_trace_original_one_race_branch(const char *rom,
++ uint32_t origin,uint8_t branch_choice,uint32_t max_steps,Gk83Trace *out){
++ if(!rom||!out||branch_choice<1u||branch_choice>2u||
++    origin>=GK103_FRAME_DOTS||
++    (origin>=GK103_VBLANK_START&&origin<GK103_VBLANK_END))
++  return GK83_INVALID;
++ return trace_impl(rom,max_steps,out,0,0u,0u,1,NULL,0u,0,0,0u,0u,0u,
++                  NULL,0u,1,origin,0u,1u,0u,2u,branch_choice);
+ }
+diff --git a/execution_154/gk83_reset_trace.h b/execution_154/gk83_reset_trace.h
+index 9b1e907..461d5eb 100644
+--- a/execution_154/gk83_reset_trace.h
++++ b/execution_154/gk83_reset_trace.h
+@@ -64,6 +64,10 @@ typedef struct {
+  uint16_t ppu_first_vblank_read_pc;
+  uint8_t ppu_scheduled_ppu_phase,ppu_scheduled_warmup_ignored;
+  uint8_t ppu_scheduled_render_gate,ppu_scheduled_race_gate;
++ /* EXEC0154 explicit counterfactual race branch, selected at most once.
++  * Choice 1=BEFORE -> clear bit, 2=AFTER -> set bit. Not Mesen truth. */
++ uint8_t hypothetical_race_choice,hypothetical_race_consumed;
++ uint16_t hypothetical_race_source_pc;
+  uint32_t ppu_scheduled_frame_origin_dots; /* EXEC0104: hypothetical reset origin */
+  /* EXEC0106: explicitly bounded PPU I/O latch path; never stock Mesen parity. */
+  uint32_t ppu_bus_latch_writes,ppu_bus_latch_reads;
+@@ -104,6 +108,8 @@ Gk83Stop gk150_trace_original_ppu_render_window(const char *rom,
+  uint32_t origin,uint8_t assumed_dma_phase,uint32_t max_steps,Gk83Trace *out);
+ /* Even-frame source-control experiment: NO odd skip, sprite rendering,
+  * original NES setup, or physical Mesen gameplay has been reproduced. */
++Gk83Stop gk154_trace_original_one_race_branch(const char *rom,
++ uint32_t origin,uint8_t branch_choice,uint32_t max_steps,Gk83Trace *out);
+ Gk83Stop gk151_trace_original_even_prerender(const char *rom,
+  uint32_t origin,uint8_t assumed_dma_phase,uint32_t max_steps,Gk83Trace *out);
+ #endif
+diff --git a/execution_154/packaging/gk1-native-research.desktop b/execution_154/packaging/gk1-native-research.desktop
+index ecdaa77..5955d79 100644
+--- a/execution_154/packaging/gk1-native-research.desktop
++++ b/execution_154/packaging/gk1-native-research.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-Name=Genghis Khan I Research 1.53.0-dev1
++Name=Genghis Khan I Research 1.54.0-dev1
+ GenericName=NES-to-Windows Port Research Prototype
+ Comment=Incomplete native Genghis Khan I research game; source-bounded battles only
+ Exec=gk1-native-research
+diff --git a/execution_154/packaging/test_package_contract.py b/execution_154/packaging/test_package_contract.py
+index 2912048..114f716 100644
+--- a/execution_154/packaging/test_package_contract.py
++++ b/execution_154/packaging/test_package_contract.py
+@@ -5,14 +5,14 @@ exe,csv,desktop=map(pathlib.Path,sys.argv[1:4])
+ assert exe.is_file() and csv.is_file() and desktop.is_file()
+ assert hashlib.sha256(csv.read_bytes()).hexdigest()=="fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581"
+ entry=desktop.read_text()
+-assert "Name=Genghis Khan I Research 1.53.0-dev1" in entry
++assert "Name=Genghis Khan I Research 1.54.0-dev1" in entry
+ assert "Exec=gk1-native-research\n" in entry
+ assert "Terminal=false\n" in entry
+ with tempfile.TemporaryDirectory(prefix='gk1_exec54_') as tmp:
+     def run(*args,env=None):
+         return subprocess.run([str(exe),*args],cwd=tmp,env=env,capture_output=True,text=True,timeout=15)
+     v=run('--version')
+-    assert v.returncode==0 and '1.53.0-dev1' in v.stdout and 'not full game' in v.stdout
++    assert v.returncode==0 and '1.54.0-dev1' in v.stdout and 'not full game' in v.stdout
+     for sc,num in ((1,14),(2,27)):
+         r=run('--scenario-report',str(sc))
+         assert r.returncode==0,(r.stdout,r.stderr)
+diff --git a/execution_154/test_gk154_vblank_branch.c b/execution_154/test_gk154_vblank_branch.c
+new file mode 100644
+index 0000000..eb6ca3a
+--- /dev/null
++++ b/execution_154/test_gk154_vblank_branch.c
+@@ -0,0 +1,61 @@
++#include "gk1_app_state.h"
++#include "gk103_ntsc_ppu.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define CHECK(x) do{ if(!(x)){fprintf(stderr,"GK154 assertion failed line %d: %s\n",__LINE__,#x);return 1;}checks++;}while(0)
++int main(void){
++ unsigned checks=0;
++ Gk103Ppu initial={0};uint8_t val=0xa5u;
++ CHECK(gk104_ppu_reset_origin(&initial,0u));
++ Gk103Ppu s=initial;
++ CHECK(!gk103_ppu_status(&s,27394u,0x15u,&val));
++ CHECK(val==0xa5u);
++ CHECK(s.race_gate==1u);
++ CHECK(s.last_dot==initial.last_dot);
++ Gk103Ppu p=initial;
++ CHECK(!gk154_ppu_status_race_branch(&p,27394u,0x15u,2u,&val));
++ CHECK(!memcmp(&p,&initial,sizeof p));CHECK(val==0xa5u);
++ CHECK(!gk154_ppu_status_race_branch(&p,27390u,0x15u,0u,&val));
++ CHECK(!memcmp(&p,&initial,sizeof p));
++ Gk103Ppu before=initial,after=initial;
++ CHECK(gk154_ppu_status_race_branch(&before,27394u,0x15u,0u,&val));
++ CHECK(val==0x15u && before.vblank==0u && before.status_reads==1u);
++ CHECK(gk154_ppu_status_race_branch(&after,27394u,0x15u,1u,&val));
++ CHECK(val==0x95u && after.vblank==0u && after.status_reads==1u);
++ CHECK(before.last_dot==after.last_dot && before.vblank_events==after.vblank_events);
++ CHECK(!gk154_ppu_status_race_branch(NULL,27394u,0u,0u,&val));
++ CHECK(!gk154_ppu_status_race_branch(&p,27394u,0u,0u,NULL));
++ Gk1App *app=calloc(1,sizeof *app);CHECK(app!=NULL);gk1_app_init(app);
++ Gk1App *save=malloc(sizeof *save);CHECK(save!=NULL);*save=*app;
++ Gk83Trace out={0};out.stop_pc=0x55aau;
++ CHECK(gk1_app_source_one_race_branch(app,"/nonexistent/stock.nes",0u,1u,&out)==GK153_TRACE_BAD_STAGE);
++ CHECK(out.stop_pc==0x55aau);
++ app->setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;*save=*app;
++ CHECK(gk1_app_source_one_race_branch(app,"/nonexistent/stock.nes",0u,1u,&out)==GK153_TRACE_BAD_SOURCE);
++ CHECK(out.stop_pc==0x55aau);CHECK(!memcmp(app,save,sizeof *app));
++ CHECK(gk154_trace_original_one_race_branch("/nonexistent/stock.nes",0u,0u,100u,&out)==GK83_INVALID);
++ CHECK(gk154_trace_original_one_race_branch("/nonexistent/stock.nes",0u,3u,100u,&out)==GK83_INVALID);
++ CHECK(gk154_trace_original_one_race_branch("/nonexistent/stock.nes",GK103_VBLANK_START,1u,100u,&out)==GK83_INVALID);
++ CHECK(out.stop_pc==0x55aau);
++ const char* rom=getenv("GK1_ORIGINAL_STOCK_ROM");
++ if(rom&&*rom){
++  Gk83Trace a={0},b={0},base={0};
++  Gk83Stop r0=gk151_trace_original_even_prerender(rom,0u,0u,120000u,&base);
++  CHECK(r0==GK83_HARDWARE_GATE && base.stop_pc==0xc5be);
++  Gk83Stop r1=gk154_trace_original_one_race_branch(rom,0u,1u,120000u,&a);
++  Gk83Stop r2=gk154_trace_original_one_race_branch(rom,0u,2u,120000u,&b);
++  CHECK(r1!=GK83_INVALID&&r1!=GK83_SOURCE_REFUSED);
++  CHECK(r2!=GK83_INVALID&&r2!=GK83_SOURCE_REFUSED);
++  CHECK(a.hypothetical_race_consumed==1u&&a.hypothetical_race_choice==1u);
++  CHECK(b.hypothetical_race_consumed==1u&&b.hypothetical_race_choice==2u);
++  CHECK(a.hypothetical_race_source_pc==0xc5be && b.hypothetical_race_source_pc==0xc5be);
++  CHECK(a.instructions>=base.instructions&&b.instructions>=base.instructions);
++  CHECK(gk1_app_source_one_race_branch(app,rom,0u,1u,&out)==GK153_TRACE_BOUNDED);
++  CHECK(out.hypothetical_race_consumed==1u);
++  CHECK(!memcmp(app,save,sizeof *app));
++ }
++ free(save);free(app);
++ printf("GK154 %u assertions PASS; optional original ROM source path = %s; Mesen/first Spring NOT RUN\n",checks,rom&&*rom?"authenticated":"not supplied");
++ return 0;
++}
