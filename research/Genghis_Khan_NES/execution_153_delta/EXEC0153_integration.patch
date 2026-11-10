@@ -1,0 +1,339 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,12 +1,12 @@
+ cmake_minimum_required(VERSION 3.15)
+-project(GK1NativeShell152 C)
++project(GK1NativeShell153 C)
+ set(CMAKE_C_STANDARD 11)
+ set(CMAKE_C_STANDARD_REQUIRED ON)
+ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -54,18 +54,18 @@
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+-  set(CPACK_PACKAGE_VERSION "1.52.0")
++  set(CPACK_PACKAGE_VERSION "1.53.0")
+   set(CPACK_PACKAGE_VENDOR "GK1 native research prototype")
+   set(CPACK_PACKAGE_INSTALL_DIRECTORY "Genghis Khan I Native Research")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Incomplete native Genghis Khan I research; original first Spring still unfinished")
+-  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.52.0-dev1")
+-  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.52.0-dev1")
++  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.53.0-dev1")
++  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.53.0-dev1")
+   set(CPACK_NSIS_MUI_FINISHPAGE_RUN "gk1_native_shell.exe")
+   set(CPACK_NSIS_MODIFY_PATH OFF)
+-  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.52.0-dev1")
++  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.53.0-dev1")
+   set(CPACK_CREATE_DESKTOP_LINKS "gk1_native_shell")
+   include(CPack)
+ endif()
+@@ -152,7 +152,7 @@
+   install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+-  set(CPACK_PACKAGE_VERSION "1.52.0")
++  set(CPACK_PACKAGE_VERSION "1.53.0")
+   set(CPACK_DEBIAN_PACKAGE_RELEASE "dev1")
+   set(CPACK_PACKAGE_CONTACT "GK1 research prototype (offline source distribution)")
+   set(CPACK_DEBIAN_PACKAGE_MAINTAINER "GK1 Native Research")
+@@ -160,7 +160,7 @@
+   set(CPACK_DEBIAN_PACKAGE_SECTION "games")
+   set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Genghis Khan I native research prototype, not completed game")
+-  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.52.0~dev1_amd64")
++  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.53.0~dev1_amd64")
+   set(CPACK_SET_DESTDIR OFF)
+   set(CPACK_PACKAGING_INSTALL_PREFIX "/")
+   find_package(Python3 COMPONENTS Interpreter)
+@@ -637,3 +637,8 @@
+ add_executable(test_gk152_spring_writer_map test_gk152_spring_writer_map.c)
+ target_link_libraries(test_gk152_spring_writer_map PRIVATE gk1_app_state)
+ add_test(NAME GK1_152_OriginalStockSpringWritersStaticCandidatesNotExecuted COMMAND test_gk152_spring_writer_map)
++
++# EXEC0153 source-executed memory watchpoint with private-cartridge opt-in.
++add_executable(test_gk153_country_write_watch test_gk153_country_write_watch.c)
++target_link_libraries(test_gk153_country_write_watch PRIVATE gk1_app_state)
++add_test(NAME GK1_153_Executed6502PRGRAMCountryWatchNotRawCandidate COMMAND test_gk153_country_write_watch)
+--- /dev/null
++++ b/README_EXEC0153.md
+@@ -0,0 +1,9 @@
++# EXEC0153 — source-executed PRG-RAM country write watch (1.53.0-dev1)
++
++This is a genuine linked C11 instrumentation increment to the inherited complete native Genghis Khan I app. It instruments **successful 6502 source-executed writes** to $6000-$7FFF PRG RAM in the existing fail-closed ROM interpreter, distinguishing them from the raw unaligned candidate byte inventory of EXEC0152. The source-country records begin at CPU $6DCD and contain 14×83 and 27×83 bytes respectively. Exclusion upper bounds are $7257 and $768E. All speculative/failed and non-country writes are excluded. First/last PC and country index are recorded only in process-memory result, not published ROM data.
++
++The optional original-ROM command `gk1_native_shell --source-country-write-watch PRIVATE_STOCK_ROM` is **VERIFIED_STATIC source-hypothesis only**, using an explicitly unverified even-pre-render timing model at origin zero. A zero count proves only that no successful country PRG-RAM writes were reached on **that** bounded trace, not that original Spring has no writes. The normal game remains locked at authentic PRE_SETUP without genuine initialization. No player turn, country value, merchant, RNG seed, sound, AI, diplomacy, post-war event, or original first Spring is fabricated.
++
++`test_gk153_country_write_watch` exercises all 83-byte boundary edges including the last two bytes of World country27, first/last source-PC receipt, overflow no-mutation, out-of-range no-mutation, setup guard, invalid ROM atomic rollback and optional exact private original stock source execution. Reproduce via CMake and CTest with optional `GK1_ORIGINAL_STOCK_ROM=/private/stock.nes`; never include stock ROM, source SRAM, screenshots or sound in public GitHub or installer.
++
++Evidence classes: VERIFIED_STATIC traced CPU source under assumptions; inherited OBSERVED_RUNTIME_STOCK fresh and archived independent; TESTED_PORT_LINUX only when binaries/tests actually pass; Win32/NSIS/physical Xbox/full campaigns NOT RUN. This does not close original Spring or constitute a playable release.
+--- /dev/null
++++ b/gk153_country_write_watch.c
+@@ -0,0 +1,24 @@
++#include "gk153_country_write_watch.h"
++#include <limits.h>
++Gk153WatchResult gk153_note_executed_write(Gk153CountryWatch *watch,
++ uint16_t address,uint16_t pc){
++ if(!watch)return GK153_INVALID;
++ if(address<GK153_COUNTRY_BASE||address>=GK153_WORLD_END)
++  return GK153_OUTSIDE;
++ if(watch->world_region_writes==UINT32_MAX ||
++    (address<GK153_MONGOL_END && watch->mongol_region_writes==UINT32_MAX))
++  return GK153_INVALID;
++ Gk153CountryWatch next=*watch;
++ if(!next.world_region_writes){
++  next.first_cpu_address=address;
++  next.first_source_pc=pc;
++  next.first_country_index=(uint8_t)((address-GK153_COUNTRY_BASE)/GK153_COUNTRY_STRIDE+1u);
++ }
++ next.world_region_writes++;
++ if(address<GK153_MONGOL_END)next.mongol_region_writes++;
++ next.last_cpu_address=address;
++ next.last_source_pc=pc;
++ next.last_country_index=(uint8_t)((address-GK153_COUNTRY_BASE)/GK153_COUNTRY_STRIDE+1u);
++ *watch=next;
++ return GK153_RECORDED;
++}
+--- /dev/null
++++ b/gk153_country_write_watch.h
+@@ -0,0 +1,24 @@
++#ifndef GK153_COUNTRY_WRITE_WATCH_H
++#define GK153_COUNTRY_WRITE_WATCH_H
++#include <stdint.h>
++/* A source-executed NES $6000-$7FFF PRG-RAM write watchpoint.  The original
++ * 83-byte country records start at CPU $6DCD, NOT CPU work RAM $0DCD.
++ * These measurements never grant turns or establish Mesen runtime parity. */
++#define GK153_COUNTRY_BASE 0x6DCDu
++#define GK153_COUNTRY_STRIDE 83u
++#define GK153_MONGOL_COUNTRIES 14u
++#define GK153_WORLD_COUNTRIES 27u
++#define GK153_MONGOL_END (GK153_COUNTRY_BASE+GK153_COUNTRY_STRIDE*GK153_MONGOL_COUNTRIES)
++#define GK153_WORLD_END (GK153_COUNTRY_BASE+GK153_COUNTRY_STRIDE*GK153_WORLD_COUNTRIES)
++typedef enum { GK153_INVALID=0, GK153_OUTSIDE=1, GK153_RECORDED=2 } Gk153WatchResult;
++typedef struct {
++ uint32_t world_region_writes;
++ uint32_t mongol_region_writes;
++ uint16_t first_cpu_address,first_source_pc,last_cpu_address,last_source_pc;
++ uint8_t first_country_index,last_country_index;
++} Gk153CountryWatch;
++/* An accepted source CPU store only, never a speculative byte pattern.
++ * Invalid/outside/overflow writes leave the accumulator unchanged. */
++Gk153WatchResult gk153_note_executed_write(Gk153CountryWatch *watch,
++ uint16_t cpu_address,uint16_t source_pc);
++#endif
+--- a/gk1_app_state.c
++++ b/gk1_app_state.c
+@@ -48,6 +48,18 @@
+ const char *gk1_app_case_label(unsigned i){return i<CASE_COUNT?cases[i].label:"UNKNOWN";}
+ static const uint8_t divide_qty[4]={1,6,7,8};
+ void gk1_app_init(Gk1App *s){if(!s)return;memset(s,0,sizeof *s);s->screen=GK1_SCREEN_TITLE;s->last_move=GK1_UNVERIFIED;s->setup_candidate[0]=s->setup_candidate[1]=255;s->rules_profile=1;s->example_rate=100;s->manual_remaining_orders=3;s->whatif_event=GK65_ACT_COMPLETE;s->whatif_victim=GK65_DEFENDER_VICTIM;(void)gk68_rest_open(&s->rest_case);reset_setup(s,0);reset_setup(s,1);strcpy(s->status,"SOURCE-BOUNDED RESEARCH BUILD - NOT FULL GAME");}
++Gk153TraceResult gk1_app_source_country_writer_trace(const Gk1App *app,
++ const char *rom,Gk83Trace *out){
++ if(!app||!rom||!*rom||!out||app->active_world>1u||
++    app->setup_stage[app->active_world]!=GK53_SETUP_AWAIT_SOURCE)
++  return GK153_TRACE_BAD_STAGE;
++ Gk83Trace local={0};
++ Gk83Stop status=gk151_trace_original_even_prerender(rom,0u,0u,120000u,&local);
++ if(status==GK83_INVALID||status==GK83_SOURCE_REFUSED)
++  return GK153_TRACE_BAD_SOURCE;
++ *out=local;
++ return GK153_TRACE_BOUNDED;
++}
+ Gk152Status gk1_app_source_spring_writer_map(const Gk1App *app,
+  const char *rom,Gk152WriterMap *out){
+  if(!app||!rom||!out||app->active_world>1u||
+--- a/gk1_app_state.h
++++ b/gk1_app_state.h
+@@ -33,6 +33,7 @@
+ #include "gk149_ppu_phase_scan.h"
+ #include "gk150_render_window.h"
+ #include "gk151_even_source.h"
++#include "gk153_country_write_watch.h"
+ #include "gk152_spring_writer_map.h"
+ #include "../execution_049/gk1_scenario_factory.h"
+ /* A standalone, copyright-clean native-app vertical slice, NOT a shipped game.
+@@ -111,6 +112,12 @@
+   char status[128];
+ } Gk1App;
+ void gk1_app_init(Gk1App *s);
++/* Source-instruction-level PRG-RAM country-store watch. Opt-in even-frame
++ * hardware hypothesis only, not original Mesen and NOT gameplay. */
++typedef enum { GK153_TRACE_BAD_STAGE=0, GK153_TRACE_BAD_SOURCE=1,
++ GK153_TRACE_BOUNDED=2 } Gk153TraceResult;
++Gk153TraceResult gk1_app_source_country_writer_trace(const Gk1App *app,
++ const char *private_rom,Gk83Trace *out);
+ /* Authentication required, never advances seasons or grants original orders. */
+ Gk152Status gk1_app_source_spring_writer_map(const Gk1App *app,
+  const char *private_stock_rom,Gk152WriterMap *out);
+--- a/gk1_native_shell.c
++++ b/gk1_native_shell.c
+@@ -51,7 +51,7 @@
+ # include <unistd.h>
+ # include <linux/joystick.h>
+ #endif
+-#define GK1_PORT_VERSION "1.52.0-dev1"
++#define GK1_PORT_VERSION "1.53.0-dev1"
+ #define WIDTH 1280
+ #define HEIGHT 720
+ #define BG UINT32_C(0x10202b)
+@@ -1630,6 +1630,17 @@
+     (unsigned long long)result.first_after_render_stop_cycles);
+   return 0;
+  }
++ if(argc==3&&strcmp(argv[1],"--source-country-write-watch")==0){
++  gk1_app_init(&app);app.setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;
++  Gk83Trace trace={0};
++  if(gk1_app_source_country_writer_trace(&app,argv[2],&trace)!=GK153_TRACE_BOUNDED){
++   fprintf(stderr,"GK153: exact PRIVATE original-stock ROM and source setup stage required\n");return 2;
++  }
++  printf("VERIFIED_STATIC GK153: CPU-executed country PRG-RAM writes=%u (first14=%u), source PC gate=$%04X, gate=%u; HYPOTHETICAL even-frame timing; no new Mesen, original Spring still UNIMPLEMENTED\n",
++   trace.country_writes.world_region_writes,trace.country_writes.mongol_region_writes,
++   trace.stop_pc,(unsigned)trace.stop);
++  return 0;
++ }
+  if(argc==3&&strcmp(argv[1],"--source-spring-writers")==0){
+   gk1_app_init(&app);
+   app.setup_stage[app.active_world]=GK53_SETUP_AWAIT_SOURCE;
+@@ -2493,7 +2504,7 @@
+    else if(e.type==ClientMessage && (Atom)e.xclient.data.l[0]==delete_window)running=0;
+   }
+   poll_joystick(&joystick,pad);render();XFlush(display);frames++;
+-  if(smoke && frames>=smoke){printf("EXEC0152 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
++  if(smoke && frames>=smoke){printf("EXEC0153 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
+   struct timespec t={0,16000000};nanosleep(&t,NULL);
+  }
+  if(joystick>=0)close(joystick);
+--- a/gk83_reset_trace.c
++++ b/gk83_reset_trace.c
+@@ -282,7 +282,10 @@
+   if(at==0x00f5u){m->result.source_f5_writes++;
+    m->result.source_f5_last_writer_pc=m->result.stop_pc;}
+  }else if(addr>=0x6000u && addr<0x8000u){
+-  if(gk94_prgram_write(&m->prgram,addr,v)==GK94_RAM_OK)m->result.ram_writes++;
++  if(gk94_prgram_write(&m->prgram,addr,v)==GK94_RAM_OK){
++   m->result.ram_writes++;
++   (void)gk153_note_executed_write(&m->result.country_writes,addr,m->result.stop_pc);
++  }
+  }else if(addr>=0x8000u)mmc1_write(m,addr,v,m->write_end_cycle);
+  else {
+   if(m->ppu_bus_latch_enabled&&addr>=0x2000u&&addr<0x4000u){
+--- a/gk83_reset_trace.h
++++ b/gk83_reset_trace.h
+@@ -1,6 +1,7 @@
+ #ifndef GK83_RESET_TRACE_H
+ #define GK83_RESET_TRACE_H
+ #include <stdint.h>
++#include "gk153_country_write_watch.h"
+ /* Exact, private STOCK ROM 6502 reset-source trace. Only executes instructions
+  * while every RAM read is initialized by the trace and every PRG-bank mapping
+  * is known. Stops before a peripheral read, unsupported opcode, or bound.
+@@ -23,6 +24,7 @@
+  uint8_t control,prg,chr0,chr1,control_known,prg_known;
+  uint32_t mapper_serial_writes,mapper_register_commits;
+  uint32_t ram_writes,peripheral_writes,jsr_count,rom_bank_switches;
++ Gk153CountryWatch country_writes; /* only source-executed, successful PRG-RAM writes */
+  uint16_t first_jsr,first_banked_pc;
+  /* EXEC0126: first actual ROM-sourced write requiring peripheral behavior
+   * absent from the bounded CPU interpreter; the attempt is NOT completed. */
+--- a/packaging/gk1-native-research.desktop
++++ b/packaging/gk1-native-research.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-Name=Genghis Khan I Research 1.52.0-dev1
++Name=Genghis Khan I Research 1.53.0-dev1
+ GenericName=NES-to-Windows Port Research Prototype
+ Comment=Incomplete native Genghis Khan I research game; source-bounded battles only
+ Exec=gk1-native-research
+--- a/packaging/test_package_contract.py
++++ b/packaging/test_package_contract.py
+@@ -5,14 +5,14 @@
+ assert exe.is_file() and csv.is_file() and desktop.is_file()
+ assert hashlib.sha256(csv.read_bytes()).hexdigest()=="fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581"
+ entry=desktop.read_text()
+-assert "Name=Genghis Khan I Research 1.52.0-dev1" in entry
++assert "Name=Genghis Khan I Research 1.53.0-dev1" in entry
+ assert "Exec=gk1-native-research\n" in entry
+ assert "Terminal=false\n" in entry
+ with tempfile.TemporaryDirectory(prefix='gk1_exec54_') as tmp:
+     def run(*args,env=None):
+         return subprocess.run([str(exe),*args],cwd=tmp,env=env,capture_output=True,text=True,timeout=15)
+     v=run('--version')
+-    assert v.returncode==0 and '1.52.0-dev1' in v.stdout and 'not full game' in v.stdout
++    assert v.returncode==0 and '1.53.0-dev1' in v.stdout and 'not full game' in v.stdout
+     for sc,num in ((1,14),(2,27)):
+         r=run('--scenario-report',str(sc))
+         assert r.returncode==0,(r.stdout,r.stderr)
+--- /dev/null
++++ b/test_gk153_country_write_watch.c
+@@ -0,0 +1,58 @@
++#include "gk153_country_write_watch.h"
++#include "gk1_app_state.h"
++#include "gk91_reset_zero.h"
++#include "gk82_stock_cartridge.h"
++#include <limits.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define CHECK(x) do{if(!(x)){fprintf(stderr,"GK153 FAIL %d %s\n",__LINE__,#x);return 1;}}while(0)
++int main(void){
++ CHECK(GK153_MONGOL_END==0x7257u);
++ CHECK(GK153_WORLD_END==0x768eu);
++ Gk153CountryWatch w={0},before=w;
++ CHECK(gk153_note_executed_write(NULL,0x6dcdu,0x8000u)==GK153_INVALID);
++ CHECK(gk153_note_executed_write(&w,0x6dccu,0x8000u)==GK153_OUTSIDE);
++ CHECK(gk153_note_executed_write(&w,0x768eu,0x8000u)==GK153_OUTSIDE);
++ CHECK(memcmp(&before,&w,sizeof w)==0);
++ CHECK(gk153_note_executed_write(&w,0x6dcdu,0xc100u)==GK153_RECORDED);
++ CHECK(w.first_country_index==1u&&w.first_cpu_address==0x6dcdu);
++ CHECK(gk153_note_executed_write(&w,0x7256u,0xc200u)==GK153_RECORDED);
++ CHECK(w.last_country_index==14u);
++ CHECK(gk153_note_executed_write(&w,0x7257u,0xc300u)==GK153_RECORDED);
++ CHECK(w.last_country_index==15u);
++ CHECK(gk153_note_executed_write(&w,0x768du,0xc400u)==GK153_RECORDED);
++ CHECK(w.last_country_index==27u&&w.world_region_writes==4u&&w.mongol_region_writes==2u);
++ before=w;
++ CHECK(gk153_note_executed_write(&w,0x7fffu,0x9000u)==GK153_OUTSIDE);
++ CHECK(memcmp(&before,&w,sizeof w)==0);
++ w.world_region_writes=UINT32_MAX;before=w;
++ CHECK(gk153_note_executed_write(&w,0x6dcdu,0x8000u)==GK153_INVALID);
++ CHECK(memcmp(&before,&w,sizeof w)==0);
++ w.world_region_writes=4;w.mongol_region_writes=UINT32_MAX;before=w;
++ CHECK(gk153_note_executed_write(&w,0x7256u,0x8000u)==GK153_INVALID);
++ CHECK(memcmp(&before,&w,sizeof w)==0);
++ Gk1App app;gk1_app_init(&app);
++ Gk83Trace report;memset(&report,0xa3,sizeof report);Gk83Trace sent=report;
++ CHECK(gk1_app_source_country_writer_trace(&app,"/invalid",&report)==GK153_TRACE_BAD_STAGE);
++ CHECK(memcmp(&sent,&report,sizeof report)==0);
++ app.setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;
++ CHECK(gk1_app_source_country_writer_trace(&app,"/invalid",&report)==GK153_TRACE_BAD_SOURCE);
++ CHECK(memcmp(&sent,&report,sizeof report)==0);
++ const char *rom=getenv("GK1_ORIGINAL_STOCK_ROM");
++ if(rom&&*rom){
++  Gk82RomBootstrap boot;
++  CHECK(gk82_probe_stock_rom(rom,&boot)==GK82_ROM_OK);
++  Gk1App pristine=app;
++  CHECK(gk1_app_source_country_writer_trace(&app,rom,&report)==GK153_TRACE_BOUNDED);
++  CHECK(memcmp(&pristine,&app,sizeof app)==0);
++  CHECK(report.country_writes.mongol_region_writes<=report.country_writes.world_region_writes);
++  CHECK(report.stop==GK83_HARDWARE_GATE||report.stop==GK83_UNKNOWN_RAM_GATE||
++        report.stop==GK83_OPCODE_GATE||report.stop==GK83_BANK_GATE||
++        report.stop==GK83_BUDGET_GATE||report.stop==GK83_BRK_GATE);
++  printf("GK153 verified stock source CPU trace: %u PRG-RAM country-range stores (%u Mongol range); stop=$%04X gate=%u; NO NES first Spring\n",
++    report.country_writes.world_region_writes,report.country_writes.mongol_region_writes,
++    report.stop_pc,(unsigned)report.stop);
++ }else puts("GK153 boundary/overflow/atomic refusal synthetic tests PASS; private ROM not provided");
++ return 0;
++}
