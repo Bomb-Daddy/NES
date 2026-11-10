@@ -1,0 +1,202 @@
+#ifndef GK1_APP_STATE_H
+#define GK1_APP_STATE_H
+#include "../execution_039/gk1_battle_session.h"
+#include <stdint.h>
+#include "../execution_045/gk1_observed_turn.h"
+#include "../execution_047/gk1_divide_contract.h"
+#include "gk61_market.h"
+#include "gk64_manual_rules.h"
+#include "gk65_battle_terminal.h"
+#include "gk68_observed_rest.h"
+#include "gk71_order_budget.h"
+#include "gk72_battle_pass.h"
+#include "gk75_spring_economy.h"
+#include "gk110_spring_stage.h"
+#include "gk111_stock_spring_audit.h"
+#include "gk112_stock_setup_deltas.h"
+#include "gk114_stock_spring_timeline.h"
+#include "gk79_stock_checkpoint.h"
+#include "gk116_enhanced_assign.h"
+#include "gk119_order_bridge.h"
+#include "gk137_stock_rng.h"
+#include "gk138_rng_reverse.h"
+#include "gk139_mesen_state.h"
+#include "gk140_rng_lineage.h"
+#include "gk141_dispatch_scan.h"
+#include "gk142_fixed_cfg.h"
+#include "gk143_bank_cfg.h"
+#include "gk144_archived_mapper.h"
+#include "gk145_fresh_progress.h"
+#include "gk146_assign_quantity.h"
+#include "gk147_stock_goods.h"
+#include "gk148_fresh_bank_trace.h"
+#include "gk149_ppu_phase_scan.h"
+#include "gk150_render_window.h"
+#include "../execution_049/gk1_scenario_factory.h"
+/* A standalone, copyright-clean native-app vertical slice, NOT a shipped game.
+ * Campaign buttons are navigation only: no campaigns are fabricated.
+ * Approved combined modified-ROM one-cell checkpoint cases only.
+ */
+typedef enum {GK1_SCREEN_TITLE=0, GK1_SCREEN_CAMPAIGNS=1,
+ GK1_SCREEN_RESEARCH_BATTLE=2, GK1_SCREEN_UNIMPLEMENTED=3, GK1_SCREEN_PATH_PICK=4, GK1_SCREEN_PATH_BATTLE=5, GK1_SCREEN_DIVIDE_PICK=6, GK1_SCREEN_DIVIDE_BATTLE=7, GK1_SCREEN_SCENARIO_COUNTRIES=8, GK1_SCREEN_SETUP_WIZARD=9, GK1_SCREEN_LABOR_PLAN=10,GK1_SCREEN_DEMOBILIZE=11, GK1_SCREEN_MARKET_EXPLORER=12,
+ GK1_SCREEN_MANUAL_RULES=13, GK1_SCREEN_BATTLE_TIMELINE=14,GK1_SCREEN_REST_CASE=15,GK1_SCREEN_ORDER_BUDGET_RESEARCH=32,GK1_SCREEN_BATTLE_PASS_DRILL=16,GK1_SCREEN_SPRING_ARCHIVE=33,GK1_SCREEN_STOCK_CONTINUE=34,GK1_SCREEN_STOCK_COMMANDS=35,GK1_SCREEN_STOCK_TRADE_REFERENCE=36,GK1_SCREEN_ENHANCED_ASSIGN=37} Gk1Screen;
+typedef enum {GK1_INPUT_UP=1, GK1_INPUT_DOWN=2, GK1_INPUT_LEFT=3,
+ GK1_INPUT_RIGHT=4, GK1_INPUT_CONFIRM=5, GK1_INPUT_CANCEL=6, GK1_INPUT_SETUP=7, GK1_INPUT_DRAFT_UNDO_ONE=8,
+ GK1_INPUT_DRAFT_UNDO_TEN=9, GK1_INPUT_LABOR_PLAN=10} Gk1Input;
+typedef enum {GK53_SETUP_PLAYERS=0, GK53_SETUP_DIFFICULTY=1,
+ GK53_SETUP_LORD=2, GK53_SETUP_ABILITIES=3, GK53_SETUP_AWAIT_SOURCE=4} Gk53SetupStage;
+/* Source-verified NES manual: single Mongol player, 1-4 World players,
+ * 1-5 difficulty, four World selectable lords, manual/auto abilities.
+ * These are setup INTENT; original stat randomization and seasonal init OPEN.
+ */
+int gk53_setup_allowed_lord(uint8_t world,uint8_t country_index);
+uint8_t gk53_setup_country_for_slot(uint8_t world,uint8_t slot);
+typedef struct {
+  Gk1Screen screen;
+  uint8_t menu_index, case_index;
+  uint8_t has_session;
+  Gk1BattleSession session;
+  Gk1MoveResult last_move;
+  Gk45Turn path;
+  uint8_t path_case;   /* 0 raw7, 1 controlled raw2, 2 controlled ally40 */
+  uint8_t cursor_x,cursor_y;
+  uint8_t path_events[4]; /* 1 step1, 2 step2, 3 B */
+  uint8_t path_event_count;
+  Gk47Divide divide;
+  uint8_t divide_choice,divide_cursor_x,divide_cursor_y;
+  uint8_t divide_events[8],divide_event_count;
+  Gk1LoadedScenario worlds[2]; /* independent mutable PRE_SETUP copies */
+  uint8_t world_ready[2],country_cursor[2],active_world;
+  uint8_t setup_candidate[2]; /* 0xFF unset; INDEX intent ONLY, not NES player setup */
+  uint8_t rules_profile; /* 0 stock Classic, 1 approved Enhanced; separate oracles */
+  uint8_t setup_player_count[2]; /* 1 Mongol; 1..4 World */
+  uint8_t setup_difficulty[2]; /* NES manual: 1..5 */
+  uint8_t setup_stage[2]; /* stages do NOT imply original game reached Spring */
+  uint8_t setup_player_slot[2]; /* current player selecting a lord */
+  uint8_t setup_rulers[2][4]; /* country index, 255 means unset */
+  uint8_t setup_ability_method[2]; /* 0 undecided, 1 automatic, 2 manual */
+  uint8_t setup_method_cursor[2]; /* 0 automatic, 1 manual */
+  /* EXEC0055: controller-entered proposed manual ability point distribution.
+   * Manual p.8-9 confirms SIX abilities and LORD+FOUR PRINCES.
+   * These are additional-point draft quantities ONLY, never base abilities or
+   * NES-authoritative initialized stats. No season/ruler transform implied. */
+  uint8_t manual_bonus_active[2];
+  uint8_t manual_bonus_person[2];
+  uint8_t manual_bonus_ability[2];
+  uint8_t manual_bonus[2][5][6];
+  uint8_t labor_from, labor_to; /* EXEC0057 PRE_SETUP planner cursor ONLY */
+  uint8_t market_merchant,market_item,market_sell;
+  uint16_t example_rate; /* illustrative only, NOT original merchant Rate */
+  uint8_t spring_stock_mode; /* EXEC0077 validated external STOCK read-only source profile */
+  uint8_t spring_stock_count; /* 0 until exact hash-validated private record load */
+  uint8_t spring_preview_mode; /* EXEC0075 original-source bounded what-if; never mutates country */
+  uint8_t spring_archive_cursor; /* read-only 14-country archived capture; not Spring init */
+  uint8_t manual_remaining_orders; /* manual battle window 1..3; NOT player turns */
+  Gk65Terminal battle_timeline;
+  Gk72BattlePass battle_pass; /* manual p31 Pass drill, not source unit/RNG */
+  Gk68RestCase rest_case; /* isolated observed MOD checkpoint, not campaign */
+  Gk79Checkpoint stock_checkpoint;
+  Gk116EnhancedAssign enhanced_assign; /* distinct Enhanced mutable world */
+  uint8_t assign_from,assign_to; /* exact source validated by gk77_load, not game startup */
+  uint16_t assign_quantity; /* Enhanced-only source-attested requested labor amount */
+  uint8_t stock_reconcile_view; /* VIEW cycles decoded / raw / finance / deltas / source goods */
+  uint8_t stock_trade_merchant,stock_trade_item,stock_trade_sell; /* source-rate quote research only */
+  uint8_t stock_command_cursor; /* authentic-stock 14-command controller menu (Pass/View only) */
+  Gk71Budget order_budget_research; /* MANUAL-only, never live order in PRE_SETUP */
+  /* EXEC0066: explicit manual what-if event selector, not ROM-derived gameplay. */
+  uint8_t whatif_event,whatif_victim; /* event0..6, victim1=attacker 2=defender */
+  uint16_t demob_quantity; /* EXEC0060 Enhanced-only PRE_SETUP preview, not season */
+  char status[128];
+} Gk1App;
+void gk1_app_init(Gk1App *s);
+/* Research-only progressive source bounded PPU render-window analysis.
+ * Real original first Spring and all 3 original orders remain unimplemented. */
+Gk150Status gk1_app_source_render_window(const Gk1App *app,
+ const char *private_rom,Gk150Report *out);
+/* Source-validated, phase-hypothesis read-only boot audit, not NES gameplay. */
+Gk149Status gk1_app_source_ppu_phase_scan(const Gk1App *app,
+ const char *private_stock_rom,Gk149PhaseScan *out);
+/* Read-only analysis of independently authenticated original fresh reset event snapshots.
+ * Does not initialize native Spring, populate RNG seeds or grant any orders. */
+Gk145Status gk1_app_source_fresh_progress(const Gk1App *app,
+ const Gk145FreshObservation *observations,size_t count,
+ uint16_t original_year,uint16_t countries,Gk145FreshProgress *out);
+
+/* Research-only original RATE RNG: caller provides explicit six-byte seed.
+ * Only accepts a real setup intent at AWAIT_SOURCE; does NOT mutate app,
+ * manufacture original seed/NMI timing, or mark first Spring playable. */
+Gk137Result gk1_app_source_rate_proof(const Gk1App *app,
+ const uint8_t explicit_nes_seed[6],Gk137StockRng *after,uint16_t *rate);
+/* Explicit observed post-setup seed and RATE, NOT an inferred stock
+ * RNG seed. Source-only backwards compatibility scan with unchanged app.
+ * No mutation or Spring/Trade unlock on success or refusal. */
+Gk138Result gk1_app_source_rate_history(const Gk1App *app,
+ const uint8_t post_seed[6],uint16_t observed_rate,uint32_t max_draws_back,
+ Gk138RateScan *out);
+/* Research-only, read-only archived MesenCE named-state proof. The caller
+ * must separately authenticate the originating private stock savestate,
+ * original ROM and campaign branch. No snapshot grants a live turn. */
+Gk139Status gk1_app_source_mesen_state_probe(const Gk1App *app,
+ const uint8_t *uncompressed_named_state,size_t state_len,Gk139MesenProof *out);
+/* Read-only, bounded source-PRNG lineage test between two owner-authenticated
+ * Mesen saved-state observations; compatibility is NOT original draw count.
+ * No setup advancement, turn grant, or mutation on success/refusal. */
+Gk140Result gk1_app_source_rng_lineage(const Gk1App *app,
+ const Gk139MesenProof *earlier,const Gk139MesenProof *later,
+ uint32_t maximum_draws,Gk140Lineage *out);
+/* Exactly source-bound, read-only ten specialty goods for the active original
+ * 14/27-country checkpoint; this does not establish Trade or spawn Spring. */
+Gk147GoodsStatus gk1_app_source_goods_view(const Gk1App *app,
+ unsigned country_index,Gk147StockGoods *out);
+/* Archived Mesen PRG-window observation, NEVER original boot-bank proof. */
+Gk144Status gk1_app_source_archived_mapper(const Gk1App *app,
+ const uint8_t *uncompressed_named_state,size_t bytes,Gk144ArchivedMapper *out);
+/* Explicit, unverified PRG boot-bank hypothesis. No turns or state writes. */
+Gk141Result gk1_app_source_bank_cfg(const Gk1App *app,
+ const char *private_stock_rom_path,uint8_t assumed_bank,Gk143BankCfg *out);
+/* Fixed-bank CFG is a read-only lower-bound on reachable ROM code,
+ * not actual Mesen execution, dynamic setup or a Spring turn. */
+Gk141Result gk1_app_source_fixed_cfg(const Gk1App *app,
+ const char *private_stock_rom_path,Gk142FixedCfg *out);
+Gk141Result gk1_app_source_dispatch_scan(const Gk1App *app,
+ const char *private_stock_rom_path,Gk141DispatchMap *out);
+/* Atomic install of both validated scenario templates: no auto-stat or Spring. */
+int gk1_app_install_templates(Gk1App *s,const Gk1TemplateDataset *source);
+const Gk1CountryTemplate *gk1_app_selected_country(const Gk1App *s);
+
+/* All-country source-bounded partial Spring finance for the same native app.
+ * No world mutation or setup/season unlock on either success or failure. */
+Gk110Result gk1_app_source_spring_stage(const Gk1App *app,
+ const char *verified_csv,Gk110SpringStage *out);
+/* All-country read-only certified Spring mismatch audit from attached stock
+ * source. Never changes setup, grants orders, or forecasts RNG. */
+Gk111Result gk1_app_stock_spring_audit(const Gk1App *app,
+ const char *verified_csv,Gk111StockSpringAudit *out);
+/* AUTHENTIC original checkpoint full-field setup+season residuals; readonly. */
+Gk112Status gk1_app_stock_setup_deltas(const Gk1App *app,
+ const char *verified_csv,Gk112StockDeltas *out);
+/* Six-stage ORIGINAL stock provenance, read-only. Not playable state. */
+Gk148Result gk1_app_original_fresh_bank_trace(const Gk1App *app,
+ const char *private_fresh_events,Gk148FreshTimeline *out);
+Gk114Status gk1_app_original_fresh_timeline(const Gk1App *app,
+ const char *verified_csv,const char *private_96bytes,Gk114Timeline *out);
+/* 1 indicates input handled; 0 rejects null/invalid. All paths controller reachable. */
+int gk1_app_input(Gk1App *s,Gk1Input command);
+const char *gk1_app_case_label(unsigned i);
+/* Atomic state transition from a validated, replayable receipt.
+ * Does not claim a complete NES campaign save. */
+int gk1_app_restore_session(Gk1App *s,const Gk1BattleSession *loaded);
+/* Restore from an exact validated source-event script, atomic to the app. */
+int gk1_app_restore_path(Gk1App *s,uint8_t scenario,const uint8_t *events,uint8_t count);
+/* Validated source-event replay of actual Divide controller phases, no campaigns. */
+int gk1_app_restore_divide(Gk1App *s,const uint8_t *events,uint8_t count,
+                           uint8_t selected,uint8_t cursor_x,uint8_t cursor_y);
+/* G11 exact arithmetic is retained, but EXEC0115 rejects all app-level
+ * transactions without an independently authenticated original merchant
+ * event (none captured yet), even when a caller forges phase 2/offers. */
+const char *gk87_stock_command_name(unsigned command);
+Gk61Result gk1_app_trade(Gk1App *app,Gk61Actor *actor,
+                         const Gk61Market *market,uint8_t country_one_based,
+                         Gk61Merchant merchant,Gk61Action action,uint8_t item,
+                         uint16_t quantity,int hire_morale_roll11);
+#endif
