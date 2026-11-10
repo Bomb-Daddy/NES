@@ -1,0 +1,11 @@
+# GK1 EXEC0146 — Enhanced source-attested labor amount via controller
+
+Complete inherited native C11 app 1.46.0-dev1; not an independent first-Spring initializer or full Windows release. This execution adds a genuine mutable **Enhanced-only** labor operation after externally SHA-attested original-stock Spring loading. Controller START cycles through **1, 5, 10, 25, 50, 100** workers, VIEW cycles backward, D-pad selects source and destination labor pools, A commits the selected quantity as **one Enhanced order**. Invalid or excessive quantities and Classic-mode operations cannot change original country records, source digests, or order budget. The original NES Classic Assign remains locked, as its executable numeric semantics have not been established. Source-backed Enhanced save/cold-load continues using existing 96-byte GA16 receipts with exact quantity; no licensed original stock evidence is included in any public distribution.
+
+Also fixed command-grid help text that previously misidentified the locked TAX command as Enhanced, and synchronized GUI, package and desktop version 1.46.0-dev1.
+
+**Evidence classes:** VERIFIED_STATIC: code and source-authenticated input signatures; OBSERVED_RUNTIME_STOCK_FRESH_RESET/ARCHIVED_RESTORED: inherited original Mesen Spring evidence, freshly reprocessed for positive port tests, not newly executed in Mesen; TESTED_PORT_LINUX: C11 Release, Debug, focused ASan/UBSan, native Xvfb 120-frame and extracted Debian Xvfb 120-frame; NOT RUN: Windows/NSIS, physical Xbox, full campaigns, original fresh-first-Spring generator, original merchant RNG, AI, diplomacy/dynasty/afterwar.
+
+**Repro:** `cmake -S execution_146 -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j8 && ctest --test-dir build -j8 --output-on-failure`, then use `ctest --test-dir build -R GK1_146 -V` for public safeguards. Private positive test command: `build/test_gk146_assign_quantity <exact-41-country-CSV> <private-fresh-1162B> <private-archived-mongol-1162B> <private-archived-world-2241B>`. Test inputs remain private.
+
+No stock first-Spring independence achieved. Private original ROM SHA256 ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3, and separate original evidence hash 8b757e11b12aeb3efe93e36c10628599ca5f12e91b15c02354cd3ebbd11bf52a are identities only, not shipped materials.
