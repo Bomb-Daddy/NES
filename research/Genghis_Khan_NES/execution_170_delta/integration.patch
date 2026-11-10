@@ -69,7 +69,7 @@ index b335e20..d435e65 100644
  add_test(NAME GK1_169_ControllerOTHER_SourceLockedPortStorage_AtomicCancel
   COMMAND test_gk169_port_storage)
 +
-+# EXEC0170 â independently validated controller TITLE private-slot inventory.
++# EXEC0170 — independently validated controller TITLE private-slot inventory.
 +add_executable(test_gk170_slot_preview test_gk170_slot_preview.c)
 +target_link_libraries(test_gk170_slot_preview PRIVATE gk1_app_state)
 +add_test(NAME GK1_170_TitleSlotPreview_NoMutationAndSourceIdentity
@@ -81,7 +81,7 @@ index 0000000..61d114e
 --- /dev/null
 +++ b/execution_170/README_EXEC0170.md
 @@ -0,0 +1,14 @@
-+# GK1 EXEC0170 â Authenticated private checkpoint slot preview (research build)
++# GK1 EXEC0170 – Authenticated private checkpoint slot preview (research build)
 +
 +This incremental release continues the exact integrated EXEC0169 C11 game; it is not a new prototype. On the controller-only TITLE screen, LB/RB select one of three private original-stock slots. The screen displays a read-only preview (`VERIFIED`, `MISSING OR SECURITY-REFUSED`, or `SOURCE-INVALID`) without loading that slot into the live game. On verified slots, it displays source profile, season/year, country count and remaining orders. The preview uses the existing strict GK167 source-attested/private 0600 same-file-descriptor cold-load validator on a temporary copy of the live Gk1App; all status paths leave live state unchanged. Slot previews refresh only on selection or after save/load, not every graphical frame. Actual X/Y save/restore retains EXEC0169 behavior and no NES command or historical source state changes.
 +
