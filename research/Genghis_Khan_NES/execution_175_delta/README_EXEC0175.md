@@ -1,0 +1,9 @@
+# GK1 EXEC0175 — version-contract regression in inherited C11 app
+
+**Scope:** Direct continuation of the fully integrated `execution_174` application, preserving all 14/27 original pre-setup country templates and the existing Enhanced/Classic boundaries. This version advances software-release QA, not original-NES first-Spring gameplay.
+
+The `execution_174` authoritatively published GitHub `packaging/` files **already used 1.74.0-dev1 correctly**. An earlier local *reconstruction* omitted those updated files and consequently failed `GK1_054`; this was a source-staging error, not an EXEC0174 release bug. Correcting that local error is not counted as a new product improvement.
+
+New work: version 1.75.0-dev1 updates the existing Win32 NSIS generator display name (source authored only), Debian CPack package filename/version, desktop launcher title, Linux CLI version, and existing package regression expectation as one source change; it adds a new independent `GK1_175_LauncherAndDualPackagingVersionContract` negative test that binds the Linux executable, desktop, CMake/NSIS configuration and actual CPack metadata. It preserves original 0174 `gk174_setup_boundary` source/hardware boundaries and source-attested private ROM identity. It does not implement NES PPUSTATUS or produce a source-generated first Spring. Original Classic gameplay remains VIEW/PASS only; no original three executable orders, merchant AI, dynastic/game end parity, Win32/NSIS execution, physical Xbox or complete campaigns are claimed.
+
+Build: `cmake -S execution_175 -B build175 -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build175 -j8 && ctest --test-dir build175 --output-on-failure -j8`. Test native and Debian-extracted Xvfb binaries separately; when private ROM is present use `--source-boot-boundary OWNER_PRIVATE_ROM` to verify the original 70/142 instruction bounds. Original ROM, raw saves, screenshots and licensed media are NEVER in public artifacts.
