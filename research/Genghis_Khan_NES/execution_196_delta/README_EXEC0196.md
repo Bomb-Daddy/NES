@@ -1,0 +1,5 @@
+# EXEC0196 - Classic Trade quote live order accounting and integrity
+
+Inherited complete EXEC0195 C11 app. Controller Classic ASSIGN consumes manual-derived orders from its replay-verified derived ledger, leaving original stock records unchanged. The read-only Trade quote was still displaying 3 BASE orders regardless of Classic labor spending. It now displays real derived remaining orders and spent actions, including after PASS. No Trade action, merchant presence, RNG, seasonal AI or original first Spring are implemented or claimed.
+
+The new `gk196_classic_trade_status` validates source attestation and the derived Classic replay before copying any output. Stock Trade command entry and subsequent Trade price-reference navigation fail closed if a mutable action receipt is corrupted. Three authenticated fresh/archived profiles can be supplied to `test_gk196_classic_trade_status` as CSV fresh.json archived1175.mss world1206.mss. Base CTest exercises invalid input and build paths; without user-private files it is NOT a full runtime parity test. Preserves original source, all 14/27 countries, Classic vs Enhanced separation and historic work.
