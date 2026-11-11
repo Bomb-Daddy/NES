@@ -1,0 +1,69 @@
+--- a/gk1_native_shell.c
++++ b/gk1_native_shell.c
+@@ -2977,7 +2977,7 @@
+   puts("EXEC0071 native software controller View/A/DPAD/B PASS; original two worlds unchanged PRE_SETUP");return 0;
+  }
+  int show_stock_finance=0,show_stock_trade=0,show_stock_setup=0,show_stock_goods=0,show_enhanced_summer=0,show_enhanced_fall=0,show_enhanced_winter=0,show_enhanced_year2=0;
+- int play_fresh_json=0,smoke_private_controller=0,smoke_classic_storage_original=0,smoke_classic_view_original=0,smoke_classic_trade_original=0;
++ int play_fresh_json=0,smoke_private_controller=0,smoke_classic_storage_original=0,smoke_classic_view_original=0,smoke_classic_trade_original=0,smoke_classic_tax_recovery=0;
+  int smoke=0,show_snapshot=0,show_path=0,show_divide=0,show_scenario=0,show_setup=0,show_labor=0,show_demob=0,show_manual=0,show_market=0,show_clock=0,show_whatif=0,show_rest=0,show_mesen=0,show_order_budget=0,show_pass=0,show_spring=0,show_stock_spring=0,show_stock_checkpoint=0,show_stock_commands=0;
+  if(argc==5&&strcmp(argv[1],"--smoke-original-private-controller")==0){
+   smoke=atoi(argv[4]);if(smoke<1||smoke>120)return 4;
+@@ -3059,6 +3059,10 @@
+   smoke=atoi(argv[3]);if(smoke<1||smoke>120)return 4;
+   smoke_classic_trade_original=1;
+  }
++ else if(argc==4&&strcmp(argv[1],"--smoke-classic-tax-recovery")==0){
++  smoke=atoi(argv[3]);if(smoke<1||smoke>120)return 4;
++  smoke_classic_tax_recovery=1;
++ }
+  else if(argc==4&&strcmp(argv[1],"--play-original-mss")==0){
+   /* Full controller UI opens only after main loop loads the canonical 41
+    * original templates, then validates the owner-private archived source. */
+@@ -3089,7 +3093,7 @@
+  gk1_app_init(&app);gk1_pad_init(&pad);load_optional_battle_view();load_optional_mesen_map();load_optional_spring_archive();load_optional_stock_spring();(void)load_scenario_data();
+  if((argc==3&&strcmp(argv[1],"--play-original-auto")==0)||
+     (argc==4&&strcmp(argv[1],"--smoke-original-auto")==0)||
+-    smoke_classic_storage_original||smoke_classic_view_original||smoke_classic_trade_original){
++    smoke_classic_storage_original||smoke_classic_view_original||smoke_classic_trade_original||smoke_classic_tax_recovery){
+   Gk77Profile detected=GK77_FRESH_MONGOL_WORKRAM;
+   app.rules_profile=0u;
+   Gk193Result joined=scenario_loaded?
+@@ -3103,6 +3107,37 @@
+     fprintf(stderr,"GK193 invalid original-stock continuing world\n");return 22;
+   }
+   printf("TESTED_PORT_LINUX GK193 verified private Mesen %s; actual original NES first-Spring initialization and commands still OPEN\n",gk77_profile_name(detected));
++  if(smoke_classic_tax_recovery){
++   /* Recovery-only independent native gamepad test. This is NOT a newly
++    * observed original Mesen action or original tax ability/morale parity. */
++   const Gk79Checkpoint original=app.stock_checkpoint;
++   pad_test_press(GK1_PAD_MENU);
++   if(app.screen!=GK1_SCREEN_STOCK_COMMANDS||app.stock_command_cursor!=0u)return 281;
++   pad_test_press(GK1_PAD_A);
++   if(app.screen!=GK1_SCREEN_CLASSIC_TAX||!app.classic_assign.active||
++      !gk187_intact(&app.classic_assign,&app.stock_checkpoint))return 282;
++   const uint8_t initial=app.classic_tax_selection;
++   pad_test_press(initial==100u?GK1_PAD_DOWN:GK1_PAD_UP);
++   const uint8_t proposed=app.classic_tax_selection;
++   if(proposed==initial||!proposed||proposed>100u)return 283;
++   pad_test_press(GK1_PAD_A);
++   if(app.classic_assign.action_count!=1u||app.classic_assign.budget.remaining!=2u||
++      app.classic_assign.mutable_world.countries[app.stock_checkpoint.player_index].tax!=proposed||
++      !gk187_intact(&app.classic_assign,&app.stock_checkpoint))return 284;
++   pad_test_press(GK1_PAD_Y);
++   if(app.classic_assign.action_count!=0u||app.classic_assign.budget.remaining!=3u||
++      app.classic_tax_selection!=initial||
++      app.classic_assign.mutable_world.countries[app.stock_checkpoint.player_index].tax!=initial||
++      !gk187_intact(&app.classic_assign,&app.stock_checkpoint))return 285;
++   /* Undo when no action exists must not mint extra orders. */
++   pad_test_press(GK1_PAD_Y);
++   if(app.classic_assign.action_count||app.classic_assign.budget.remaining!=3u)return 286;
++   pad_test_press(GK1_PAD_B);
++   if(app.screen!=GK1_SCREEN_STOCK_COMMANDS)return 287;
++   if(memcmp(original.stock_raw,app.stock_checkpoint.stock_raw,sizeof original.stock_raw)||
++      memcmp(original.world.countries,app.stock_checkpoint.world.countries,sizeof original.world.countries))return 288;
++   printf("TESTED_PORT_LINUX GK1 EXEC0200-CANDIDATE %s original captured source -> PAD CLASSIC TAX A/Y/B -> exact 3-order rollback, source bytes unchanged; NOT original NES or hardware Xbox\n",gk77_profile_name(detected));
++  }
+   if(smoke_classic_trade_original){
+    /* Software-injected real native pad routes: original source Spring ->
+     * Classic ASSIGN -> read-only Trade. No merchant is invented. */
