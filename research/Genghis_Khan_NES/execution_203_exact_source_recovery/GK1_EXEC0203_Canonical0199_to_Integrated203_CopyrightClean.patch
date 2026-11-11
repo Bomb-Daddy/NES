@@ -1,0 +1,717 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+index 1e4a3bc..6eb7ce6 100644
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -944,3 +944,31 @@ add_test(NAME GK1_197_ManualDerivedClassicTaxRateRangeAndRollback COMMAND test_g
+ add_executable(test_gk199_classic_tax_undo test_gk199_classic_tax_undo.c)
+ target_link_libraries(test_gk199_classic_tax_undo PRIVATE gk1_app_state)
+ add_test(NAME GK1_199_ControllerOnlyReplayVerifiedTaxUndo COMMAND test_gk199_classic_tax_undo)
++
++# EXEC0201-CANDIDATE: reusable native Windows XInput + Linux controller
++# anti-phantom action fix. Full release remains blocked by exact EXEC0197.
++add_executable(test_gk201_chord_rearm test_gk201_chord_rearm.c)
++target_link_libraries(test_gk201_chord_rearm PRIVATE gk1_pad_router gk99_xinput_bridge)
++add_test(NAME GK1_201_Win32XInputLinuxJoystick_ChordPartialReleaseCannotPhantomSaveConfirm
++ COMMAND test_gk201_chord_rearm)
++
++# EXEC0202: original private-stock IRQ/BRK table RNG source attestation.
++add_executable(test_gk202_irq_rng_dispatch test_gk202_irq_rng_dispatch.c)
++target_link_libraries(test_gk202_irq_rng_dispatch PRIVATE gk1_app_state)
++add_test(NAME GK1_202_OriginalRngBrkIndirectDispatchNoFalseSpring
++ COMMAND test_gk202_irq_rng_dispatch)
++# EXEC0202: regression for a CLI parser branch that previously rejected the
++# graphical --smoke-frames route (code 4) despite successful compilation.
++if(UNIX AND NOT APPLE)
++ find_program(GK202_XVFB_RUN xvfb-run)
++ if(GK202_XVFB_RUN)
++  add_test(NAME GK1_202_LinuxX11_SmokeFlagsRemainReachable
++   COMMAND ${GK202_XVFB_RUN} -a -s "-screen 0 1280x720x24"
++    $<TARGET_FILE:gk1_native_shell> --smoke-frames 120)
++ endif()
++endif()
++
++# EXEC0203 original stock selector provenance; private positive ROM excluded from public CTest.
++add_executable(test_gk203_rng_selector_writers test_gk203_rng_selector_writers.c)
++target_link_libraries(test_gk203_rng_selector_writers PRIVATE gk1_app_state)
++add_test(NAME GK1_203_AuthenticatedSelectorWriterSourceOnlyNoPhantomFirstSpring COMMAND test_gk203_rng_selector_writers)
+diff --git a/execution_199/gk1_app_state.c b/execution_199/gk1_app_state.c
+index 7516ff3..9aabb82 100644
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -51,6 +51,20 @@ static void reset_setup(Gk1App *s,uint8_t w){
+ const char *gk1_app_case_label(unsigned i){return i<CASE_COUNT?cases[i].label:"UNKNOWN";}
+ static const uint8_t divide_qty[4]={1,6,7,8};
+ void gk1_app_init(Gk1App *s){if(!s)return;memset(s,0,sizeof *s);s->screen=GK1_SCREEN_TITLE;s->last_move=GK1_UNVERIFIED;s->setup_candidate[0]=s->setup_candidate[1]=255;s->rules_profile=1;s->example_rate=100;s->manual_remaining_orders=3;s->whatif_event=GK65_ACT_COMPLETE;s->whatif_victim=GK65_DEFENDER_VICTIM;(void)gk68_rest_open(&s->rest_case);reset_setup(s,0);reset_setup(s,1);strcpy(s->status,"SOURCE-BOUNDED RESEARCH BUILD - NOT FULL GAME");}
++Gk202Status gk1_app_source_irq_rng_path(const Gk1App *app,
++ const char *private_stock_rom,Gk202Proof *out){
++ if(!app||!private_stock_rom||!out||app->active_world>1u||
++    app->setup_stage[app->active_world]!=GK53_SETUP_AWAIT_SOURCE)
++  return GK202_ARGUMENT;
++ return gk202_analyze_authenticated_file(private_stock_rom,out);
++}
++Gk203Status gk1_app_source_rng_selector_writers(const Gk1App *app,
++ const char *private_stock_rom,Gk203Proof *out){
++ if(!app||!private_stock_rom||!out||app->active_world>1u||
++    app->setup_stage[app->active_world]!=GK53_SETUP_AWAIT_SOURCE)
++  return GK203_ARGUMENT;
++ return gk203_from_file(private_stock_rom,out);
++}
+ Gk153TraceResult gk1_app_source_symbolic_vblank_exit(const Gk1App *app,
+  const char *rom,uint32_t origin,uint8_t choice,Gk83Trace *out){
+  if(!app||!rom||!*rom||!out||app->active_world>1u||
+diff --git a/execution_199/gk1_app_state.h b/execution_199/gk1_app_state.h
+index abb3c2e..f1f14ac 100644
+--- a/execution_199/gk1_app_state.h
++++ b/execution_199/gk1_app_state.h
+@@ -45,6 +45,8 @@
+ #include "gk180_seed_writer_scan.h"
+ #include "gk181_bank_seed_trace.h"
+ #include "gk182_archived_source_bank.h"
++#include "gk202_irq_rng_dispatch.h"
++#include "gk203_rng_selector_writers.h"
+ #include "gk152_spring_writer_map.h"
+ #include "../execution_049/gk1_scenario_factory.h"
+ /* A standalone, copyright-clean native-app vertical slice, NOT a shipped game.
+@@ -133,6 +135,12 @@ typedef struct {
+   char status[128];
+ } Gk1App;
+ void gk1_app_init(Gk1App *s);
++/* Exact-original BRK-vector jump-table RNG source proof, NOT actual setup. */
++Gk202Status gk1_app_source_irq_rng_path(const Gk1App *app,
++ const char *private_stock_rom,Gk202Proof *out);
++/* Source-only static callsite inspection; no active campaign mutation. */
++Gk203Status gk1_app_source_rng_selector_writers(const Gk1App *app,
++ const char *private_stock_rom,Gk203Proof *out);
+ /* Exact archived Mesen source/SHA mapper+seed captured at a SAVED instant.
+  * Only callable in pristine setup; no Spring/Classic orders generated. */
+ Gk182Status gk1_app_archived_source_bank(const Gk1App *app,
+diff --git a/execution_199/gk1_native_shell.c b/execution_199/gk1_native_shell.c
+index 015fd4e..7a23351 100644
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -3071,6 +3071,36 @@ if(argc==3 && strcmp(argv[1],"--pre-setup-pad-smoke")==0){
+  else if(argc==5&&strcmp(argv[1],"--smoke-original-mss")==0){
+   smoke=atoi(argv[4]);if(smoke<1||smoke>120)return 4;
+  }
++ else if(argc==3&&strcmp(argv[1],"--audit-stock-rng-selector-writers")==0){
++  Gk203Proof p={0};
++  if(gk203_from_file(argv[2],&p)!=GK203_OK){
++   fputs("GK203 source mismatch / invalid private ROM\n",stderr);return 1;
++  }
++  printf("VERIFIED_STATIC original IRQ RNG slot=%u, fixed trampoline sites=%u, confirmed fixed RNG selectors=%u\n",
++   p.rng_slot,p.fixed_caller_count,p.fixed_rng_caller_count);
++  for(unsigned i=0;i<p.fixed_caller_count;i++)
++   printf("  source $%04X selector decimal%u -> dispatch $%04X, subcommand %u (NOT RNG)\n",
++    p.fixed[i].pc,p.fixed[i].selector,p.fixed[i].dispatched_target,p.fixed[i].subcommand);
++  printf("  raw immediate RNG-slot writes=%u (not a CPU reachability proof)\n",p.raw_immediate_rng_slot_writes);
++  puts("NOT OBSERVED RUNTIME; indirect/dynamic writers, first Spring and 14/27 RNG progression unresolved.");
++  return 0;
++ }
++ else if(argc==3&&strcmp(argv[1],"--audit-stock-brk-rng-dispatch")==0){
++  Gk202Proof proof={0};
++  Gk202Status status=gk202_analyze_authenticated_file(argv[2],&proof);
++  if(status!=GK202_OK){fprintf(stderr,"GK202 source rejected: %d\n",(int)status);return 1;}
++  printf("VERIFIED_STATIC original IRQ/BRK vector=$%04X, BRK-bit=$%02X, "
++         "selector RAM=$%04X, 3-byte table=$%04X entries=%u\n",
++         proof.irq_brk_vector,proof.stack_brk_bit_mask,
++         proof.command_selector_ram,proof.table_first_pc,proof.table_entries);
++  printf("RNG via conditional BRK selector=%u -> JMP at $%04X -> $%04X; "
++         "raw direct JSR=%u, raw direct JMP=%u\n",proof.rng_slot,
++         proof.rng_entry_pc,proof.rng_target_pc,
++         proof.direct_jsr_rng_raw_sequences,proof.direct_jmp_rng_raw_sequences);
++  puts("NOT OBSERVED RUNTIME: no source proof that setup selected this slot; "
++       "no original first Spring, seasonal RNG history or merchant availability generated.");
++  return 0;
++ }
+  else if(argc==3&&strcmp(argv[1],"--audit-original-rng-calls")==0){
+   /* Static source audit only, never a playable original Spring or NES run.
+    * The ROM must authenticate to the exact privately supplied SHA256.
+diff --git a/execution_199/gk1_pad_router.c b/execution_199/gk1_pad_router.c
+index fa6537e..2f1b05c 100644
+--- a/execution_199/gk1_pad_router.c
++++ b/execution_199/gk1_pad_router.c
+@@ -13,6 +13,19 @@ static int8_t axis(int16_t value,int8_t was){
+  if(value>=ENGAGE)return 1;
+  return 0;
+ }
++/* Never turn the surviving half of a suppressed chord into a new edge.
++ * A pair is rearmed only after the player has released BOTH buttons for at
++ * least one sample. This protects Xbox X/Y storage and A/B confirmations.
++ * Gating the physical direction buttons also works when analog sticks are
++ * present, while leaving independent analog-only navigation unchanged. */
++static void disarm_pair(Gk1PadRouter *r,uint16_t raw,
++                        uint16_t *resolved,uint16_t pair,uint8_t flag){
++ if((raw&pair)==pair)r->chord_blocked|=flag;
++ if(r->chord_blocked&flag){
++  *resolved=(uint16_t)(*resolved&~pair);
++  if(!(raw&pair))r->chord_blocked=(uint8_t)(r->chord_blocked&~flag);
++ }
++}
+ static uint16_t resolve(Gk1PadRouter *r,const Gk1PadSample *s){
+  r->analog_x=axis(s->lx,r->analog_x);
+  r->analog_y=axis(s->ly,r->analog_y);
+@@ -30,19 +43,14 @@ static uint16_t resolve(Gk1PadRouter *r,const Gk1PadSample *s){
+   if(y<0)b|=GK1_PAD_UP;
+   if(y>0)b|=GK1_PAD_DOWN;
+  }
+- /* Mutual exclusion for opposite face actions: simultaneous A+B must not
+-  * enter and back out, and X+Y must not save then immediately load. */
+- if((b&(GK1_PAD_A|GK1_PAD_B))==(GK1_PAD_A|GK1_PAD_B))
+-  b=(uint16_t)(b&~(GK1_PAD_A|GK1_PAD_B));
+- if((b&(GK1_PAD_X|GK1_PAD_Y))==(GK1_PAD_X|GK1_PAD_Y))
+-  b=(uint16_t)(b&~(GK1_PAD_X|GK1_PAD_Y));
+- if((b&(GK1_PAD_LB|GK1_PAD_RB))==(GK1_PAD_LB|GK1_PAD_RB))
+-  b=(uint16_t)(b&~(GK1_PAD_LB|GK1_PAD_RB));
+- /* Contradictory hardware reports cannot move both directions. */
+- if((b&(GK1_PAD_UP|GK1_PAD_DOWN))==(GK1_PAD_UP|GK1_PAD_DOWN))
+-  b=(uint16_t)(b&~(GK1_PAD_UP|GK1_PAD_DOWN));
+- if((b&(GK1_PAD_LEFT|GK1_PAD_RIGHT))==(GK1_PAD_LEFT|GK1_PAD_RIGHT))
+-  b=(uint16_t)(b&~(GK1_PAD_LEFT|GK1_PAD_RIGHT));
++ /* Chord quarantine: hold and partial-release are inert until one wholly
++  * neutral frame. This closes the unsafe A+B -> A / X+Y -> X transition. */
++ uint16_t hardware=(uint16_t)(s->buttons&0x0fffu);
++ disarm_pair(r,hardware,&b,GK1_PAD_A|GK1_PAD_B,0x01u);
++ disarm_pair(r,hardware,&b,GK1_PAD_X|GK1_PAD_Y,0x02u);
++ disarm_pair(r,hardware,&b,GK1_PAD_LB|GK1_PAD_RB,0x04u);
++ disarm_pair(r,hardware,&b,GK1_PAD_UP|GK1_PAD_DOWN,0x08u);
++ disarm_pair(r,hardware,&b,GK1_PAD_LEFT|GK1_PAD_RIGHT,0x10u);
+  return b;
+ }
+ void gk1_pad_init(Gk1PadRouter *r){if(r)memset(r,0,sizeof *r);}
+diff --git a/execution_199/gk1_pad_router.h b/execution_199/gk1_pad_router.h
+index 80ed7b5..a3b311a 100644
+--- a/execution_199/gk1_pad_router.h
++++ b/execution_199/gk1_pad_router.h
+@@ -27,6 +27,11 @@ typedef struct {
+  uint16_t held;
+  int8_t analog_x,analog_y,hat_x,hat_y;
+  uint32_t repeat_due_ms[4];
++ /* Physical opposite-button chords disarm their pair until a full neutral
++  * frame. Prevent releasing B from a held A+B, or Y from held X+Y, from
++  * unexpectedly activating the remaining button. Windows and Linux share
++  * this input path; hardware confirmation remains outstanding. */
++ uint8_t chord_blocked;
+  int connected;
+ } Gk1PadRouter;
+ void gk1_pad_init(Gk1PadRouter *r);
+diff --git a/execution_199/gk202_irq_rng_dispatch.c b/execution_199/gk202_irq_rng_dispatch.c
+new file mode 100644
+index 0000000..9f54a92
+--- /dev/null
++++ b/execution_199/gk202_irq_rng_dispatch.c
+@@ -0,0 +1,123 @@
++#include "gk202_irq_rng_dispatch.h"
++#include "gk1_source_identity.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define PRG_START 16u
++#define FIXED_BANK 15u
++#define BANK_BYTES 16384u
++#define FIXED_OFFSET (PRG_START+FIXED_BANK*BANK_BYTES)
++static const uint8_t stock_sha[32]={
++ 0xad,0xa7,0x06,0x6d,0x9e,0x71,0xa8,0x13,
++ 0x10,0xff,0xf7,0x8b,0xc7,0x03,0x71,0x26,
++ 0x79,0x80,0x18,0xa6,0x9d,0xc2,0xb9,0x23,
++ 0x82,0xc3,0xcb,0xdc,0xd9,0xb2,0x43,0xb3
++};
++/* The supplied source is a 16-PRG MMC1 NES image with fixed last 16-KiB
++ * bank at $C000-$FFFF. No mapper's live state is guessed here. */
++static uint8_t at(const uint8_t *image,uint16_t addr){
++ return image[FIXED_OFFSET+(size_t)(addr-0xc000u)];
++}
++/* Hash the private-stock source instruction windows instead of embedding
++ * licensed source bytes in this copyright-clean implementation. */
++static int window_sha_at(const uint8_t *image,uint16_t address,
++                         size_t n,const uint8_t expected[32]){
++ if(address<0xc000u||(unsigned)address+n>65536u)return 0;
++ uint8_t got[32];
++ gk1_sha256_bytes(image+FIXED_OFFSET+(size_t)(address-0xc000u),n,got);
++ int match=memcmp(got,expected,32)==0;
++ memset(got,0,sizeof got);
++ return match;
++}
++Gk202Status gk202_analyze_authenticated_bytes(const uint8_t *image,size_t len,
++                                               Gk202Proof *out){
++ if(!image||!out)return GK202_ARGUMENT;
++ if(len!=GK202_STOCK_ROM_BYTES||memcmp(image,"NES\032",4)!=0||
++    image[4]!=16u||image[5]!=0u||image[6]!=0x12u||image[7]!=0u)
++  return GK202_SOURCE_REFUSED;
++ uint8_t digest[32];gk1_sha256_bytes(image,len,digest);
++ int good=memcmp(digest,stock_sha,sizeof digest)==0;
++ memset(digest,0,sizeof digest);
++ if(!good)return GK202_SOURCE_REFUSED;
++ /* IRQ/BRK vector $FFFE points to $C14B. The handler's PHP-stack
++  * status check must see pushed B=1 to enter the dispatch path. */
++ if(at(image,0xfffeu)!=0x4bu||at(image,0xffffu)!=0xc1u)
++  return GK202_DISPATCH_MISMATCH;
++ /* Source-code signature SHA-256; no original opcode material is
++  * reproduced in the distributed source or unit-test fixtures. */
++ static const uint8_t irq_hash[32]={
++  0xb5,0x18,0xfa,0x2d,0xdb,0xf4,0xe9,0xf9,
++  0x5f,0xe5,0xf1,0x76,0x0b,0x75,0xc5,0xfa,
++  0xb3,0x76,0x5a,0x1a,0x69,0xdb,0x8f,0x41,
++  0x0b,0x50,0x15,0x03,0xdc,0x70,0xf5,0xa5
++ };
++ static const uint8_t dispatch_hash[32]={
++  0x47,0x56,0xc9,0x1a,0x1a,0x26,0x93,0x9d,
++  0xf0,0x38,0x7c,0xf1,0x5d,0xb8,0x9d,0x06,
++  0x78,0x7e,0x63,0xb8,0x71,0x98,0xe7,0xf7,
++  0x39,0xc3,0x46,0x83,0x5f,0xc9,0xeb,0x05
++ };
++ static const uint8_t product_hash[32]={
++  0xee,0x13,0x8c,0x34,0xc3,0x4c,0x27,0xc2,
++  0x77,0xb6,0x8b,0x76,0xbb,0x6e,0x8b,0xba,
++  0xe6,0xe3,0xce,0xd0,0x1e,0xfc,0x74,0xa8,
++  0x8f,0xd0,0x49,0x34,0xf2,0x90,0x3a,0xdc
++ };
++ if(!window_sha_at(image,0xc14bu,13u,irq_hash)||
++    !window_sha_at(image,0xc166u,24u,dispatch_hash)||
++    !window_sha_at(image,0xc726u,17u,product_hash)||
++    at(image,0xc183u)!=0x68u||at(image,0xc184u)!=0x40u)
++  return GK202_DISPATCH_MISMATCH;
++ Gk202Proof proof={0};
++ proof.irq_brk_vector=0xc14bu;
++ proof.stack_status_read=0x0104u;
++ proof.stack_brk_bit_mask=0x10u;
++ proof.command_selector_ram=0x0050u;
++ proof.multiply_subroutine=0xc726u;
++ proof.indirect_jmp_pointer=0x0068u;
++ proof.table_first_pc=0xc185u;
++ proof.table_entries=GK202_TABLE_CAP;
++ proof.rng_slot=0xffu;
++ for(unsigned slot=0;slot<GK202_TABLE_CAP;slot++){
++  uint16_t entry=(uint16_t)(0xc185u+3u*slot);
++  if(at(image,entry)!=0x4cu)return GK202_DISPATCH_MISMATCH;
++  uint16_t target=(uint16_t)at(image,(uint16_t)(entry+1u))|
++    (uint16_t)((uint16_t)at(image,(uint16_t)(entry+2u))<<8u);
++  proof.entry_targets[slot]=target;
++  if(target==0xc289u){
++   if(proof.rng_slot!=0xffu)return GK202_DISPATCH_MISMATCH;
++   proof.rng_slot=(uint8_t)slot;
++   proof.rng_entry_pc=entry;
++   proof.rng_target_pc=target;
++  }
++ }
++ if(proof.rng_slot==0xffu)return GK202_DISPATCH_MISMATCH;
++ /* An exhaustive raw 3-byte pattern count, not a disassembled executed
++  * call count. This explains why earlier direct-JSR-only static scans saw
++  * zero RNG calls while the dispatch-table path still exists in source. */
++ for(size_t i=PRG_START;i+2u<len;i++){
++  if(image[i+1u]==0x89u&&image[i+2u]==0xc2u){
++   if(image[i]==0x20u){if(proof.direct_jsr_rng_raw_sequences<255u)
++       proof.direct_jsr_rng_raw_sequences++;}
++   if(image[i]==0x4cu){if(proof.direct_jmp_rng_raw_sequences<255u)
++       proof.direct_jmp_rng_raw_sequences++;}
++  }
++ }
++ proof.verified_stock_sha=1u;
++ proof.source_only_not_runtime=1u;
++ *out=proof;
++ return GK202_OK;
++}
++Gk202Status gk202_analyze_authenticated_file(const char *filename,
++                                              Gk202Proof *out){
++ if(!filename||!*filename||!out)return GK202_ARGUMENT;
++ FILE *f=fopen(filename,"rb");if(!f)return GK202_SOURCE_REFUSED;
++ uint8_t *data=(uint8_t*)malloc(GK202_STOCK_ROM_BYTES+1u);
++ if(!data){fclose(f);return GK202_SOURCE_REFUSED;}
++ size_t n=fread(data,1,GK202_STOCK_ROM_BYTES+1u,f);
++ int bad=ferror(f)||fclose(f)!=0;
++ Gk202Status result=(!bad&&n==GK202_STOCK_ROM_BYTES)?
++  gk202_analyze_authenticated_bytes(data,n,out):GK202_SOURCE_REFUSED;
++ memset(data,0,GK202_STOCK_ROM_BYTES+1u);free(data);
++ return result;
++}
+diff --git a/execution_199/gk202_irq_rng_dispatch.h b/execution_199/gk202_irq_rng_dispatch.h
+new file mode 100644
+index 0000000..c8d32fc
+--- /dev/null
++++ b/execution_199/gk202_irq_rng_dispatch.h
+@@ -0,0 +1,39 @@
++#ifndef GK202_IRQ_RNG_DISPATCH_H
++#define GK202_IRQ_RNG_DISPATCH_H
++#include <stddef.h>
++#include <stdint.h>
++/* Authenticated original NES PRG: IRQ/BRK vector dispatch into the fixed-bank
++ * three-byte jump table. This is STATIC SOURCE EVIDENCE ONLY: it does not
++ * establish that the game selected a particular slot during a live setup,
++ * nor initialize the game's first Spring, character stats, or offers. */
++#define GK202_STOCK_ROM_BYTES 262160u
++#define GK202_TABLE_CAP 33u
++typedef enum {
++ GK202_OK=0, GK202_ARGUMENT=1, GK202_SOURCE_REFUSED=2,
++ GK202_DISPATCH_MISMATCH=3
++} Gk202Status;
++typedef struct {
++ uint16_t irq_brk_vector;
++ uint16_t stack_status_read;
++ uint8_t stack_brk_bit_mask;
++ uint16_t command_selector_ram;
++ uint16_t multiply_subroutine;
++ uint16_t indirect_jmp_pointer;
++ uint16_t table_first_pc;
++ uint8_t table_entries;
++ uint8_t rng_slot;
++ uint16_t rng_entry_pc;
++ uint16_t rng_target_pc;
++ uint8_t direct_jsr_rng_raw_sequences;
++ uint8_t direct_jmp_rng_raw_sequences;
++ uint8_t verified_stock_sha;
++ uint8_t source_only_not_runtime;
++ uint16_t entry_targets[GK202_TABLE_CAP];
++} Gk202Proof;
++/* Both APIs leave *out byte-identical on any failure. For original-stock
++ * evidence, caller must never include the private ROM in public receipts. */
++Gk202Status gk202_analyze_authenticated_bytes(const uint8_t *rom,size_t bytes,
++                                               Gk202Proof *out);
++Gk202Status gk202_analyze_authenticated_file(const char *private_rom_path,
++                                              Gk202Proof *out);
++#endif
+diff --git a/execution_199/gk203_rng_selector_writers.c b/execution_199/gk203_rng_selector_writers.c
+new file mode 100644
+index 0000000..ce93aec
+--- /dev/null
++++ b/execution_199/gk203_rng_selector_writers.c
+@@ -0,0 +1,72 @@
++#include "gk203_rng_selector_writers.h"
++#include "gk202_irq_rng_dispatch.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define HEADER 16u
++#define BANK_BYTES 16384u
++#define BANK_COUNT 16u
++static uint16_t target_from_table(const Gk202Proof *p,uint8_t index){
++ return index<GK202_TABLE_CAP?p->entry_targets[index]:0u;
++}
++Gk203Status gk203_from_bytes(const uint8_t *rom,size_t length,Gk203Proof *out){
++ if(!rom||!out)return GK203_ARGUMENT;
++ Gk202Proof prior={0};
++ if(gk202_analyze_authenticated_bytes(rom,length,&prior)!=GK202_OK)
++  return GK203_SOURCE_REFUSED;
++ Gk203Proof result={0};
++ result.authenticated_stock=1u;result.analysis_only=1u;
++ result.rng_slot=prior.rng_slot;
++ /* Count source *byte patterns*, not disassembled reachable CPU writes.
++  * NES bank switching and indirect stores make this a lower-bound on paths,
++  * not a proof that RNG cannot be selected by game initialization. */
++ for(unsigned bank=0u;bank<BANK_COUNT;bank++){
++  const uint8_t *segment=rom+HEADER+(size_t)bank*BANK_BYTES;
++  for(size_t i=0;i+3u<BANK_BYTES;i++){
++   if(segment[i]!=0xa9u||segment[i+2u]!=0x85u||segment[i+3u]!=0x50u)continue;
++   if(segment[i+1u]==prior.rng_slot)result.raw_immediate_rng_slot_writes++;
++   else result.raw_immediate_other_slot_writes++;
++  }
++ }
++ /* Only two candidate sites in the exact authenticated fixed bank match
++  * this whole local instruction structure. This is stronger than a bare
++  * two-byte match but remains static, not a runtime BRK trace. */
++ const uint8_t *fixed=rom+HEADER+15u*BANK_BYTES;
++ for(size_t i=0;i+10u<BANK_BYTES;i++){
++  if(fixed[i]!=0xa9u||fixed[i+2u]!=0x85u||fixed[i+3u]!=0x50u||
++     fixed[i+4u]!=0xa9u||fixed[i+6u]!=0x85u||fixed[i+7u]!=0x52u||
++     fixed[i+8u]!=0x20u||fixed[i+9u]!=0x76u||fixed[i+10u]!=0xefu)
++   continue;
++  if(result.fixed_caller_count>=GK203_FIXED_SITES)return GK203_SOURCE_REFUSED;
++  Gk203Site *site=&result.fixed[result.fixed_caller_count++];
++  site->pc=(uint16_t)(0xc000u+i);
++  site->selector=fixed[i+1u];site->subcommand=fixed[i+5u];
++  site->dispatched_target=target_from_table(&prior,site->selector);
++  site->dispatch_slot_is_rng=(uint8_t)(site->selector==prior.rng_slot);
++  if(site->dispatch_slot_is_rng)result.fixed_rng_caller_count++;
++ }
++ /* The known authenticated source contains two fixed trampoline callsites
++  * at $EF3D and $EF4B with selector $17 (23, NOT RNG slot17 decimal).
++  * Fail closed if any expected structure is absent. We do not hardcode an
++  * unexplained Gold/Rate or claim the absence of other indirect writers. */
++ if(result.fixed_caller_count!=2u||
++    result.fixed[0].pc!=0xef3du||result.fixed[1].pc!=0xef4bu||
++    result.fixed[0].selector!=23u||result.fixed[1].selector!=23u||
++    result.fixed[0].subcommand!=5u||result.fixed[1].subcommand!=4u||
++    result.fixed[0].dispatched_target!=0xc419u||
++    result.fixed[1].dispatched_target!=0xc419u||
++    result.fixed_rng_caller_count!=0u)
++  return GK203_SOURCE_REFUSED;
++ *out=result;return GK203_OK;
++}
++Gk203Status gk203_from_file(const char *name,Gk203Proof *out){
++ if(!name||!*name||!out)return GK203_ARGUMENT;
++ FILE *f=fopen(name,"rb");if(!f)return GK203_SOURCE_REFUSED;
++ uint8_t *rom=malloc(GK202_STOCK_ROM_BYTES+1u);
++ if(!rom){fclose(f);return GK203_SOURCE_REFUSED;}
++ const size_t n=fread(rom,1,GK202_STOCK_ROM_BYTES+1u,f);
++ const int failed=ferror(f)||fclose(f)!=0;
++ Gk203Status result=(!failed&&n==GK202_STOCK_ROM_BYTES)?
++  gk203_from_bytes(rom,n,out):GK203_SOURCE_REFUSED;
++ memset(rom,0,GK202_STOCK_ROM_BYTES+1u);free(rom);return result;
++}
+diff --git a/execution_199/gk203_rng_selector_writers.h b/execution_199/gk203_rng_selector_writers.h
+new file mode 100644
+index 0000000..b4e4621
+--- /dev/null
++++ b/execution_199/gk203_rng_selector_writers.h
+@@ -0,0 +1,30 @@
++#ifndef GK203_RNG_SELECTOR_WRITERS_H
++#define GK203_RNG_SELECTOR_WRITERS_H
++#include <stddef.h>
++#include <stdint.h>
++/* EXEC0203: source-only selector provenance for the AUTHENTIC original USA NES.
++ * Exact ROM SHA gate is inherited from GK202. This does not emulate a CPU,
++ * prove reachable execution, sample RNG, or initialize any Spring country. */
++typedef enum {GK203_OK=0,GK203_ARGUMENT=1,GK203_SOURCE_REFUSED=2} Gk203Status;
++#define GK203_FIXED_SITES 2u
++typedef struct {
++ uint16_t pc; /* LDA immediate start in fixed $C000 bank */
++ uint8_t selector; /* immediate value written to zero-page $0050 */
++ uint8_t subcommand; /* immediate value written to $0052 */
++ uint8_t dispatch_slot_is_rng; /* exactly 17 when true; no dynamic inference */
++ uint16_t dispatched_target; /* decoded from authenticated GK202 table */
++} Gk203Site;
++typedef struct {
++ uint8_t authenticated_stock;
++ uint8_t analysis_only;
++ uint8_t rng_slot; /* 17, from GK202 */
++ uint8_t fixed_caller_count; /* matched LDA# / STA$50 / LDA# / STA$52 / JSR$EF76 */
++ uint8_t fixed_rng_caller_count;
++ uint16_t raw_immediate_rng_slot_writes; /* across all 16 PRG banks; may include DATA */
++ uint16_t raw_immediate_other_slot_writes; /* raw non-17 immediate source patterns */
++ Gk203Site fixed[GK203_FIXED_SITES];
++} Gk203Proof;
++/* Refuse malformed source without modifying *out, even partially. */
++Gk203Status gk203_from_bytes(const uint8_t *rom,size_t length,Gk203Proof *out);
++Gk203Status gk203_from_file(const char *private_path,Gk203Proof *out);
++#endif
+diff --git a/execution_199/test_gk201_chord_rearm.c b/execution_199/test_gk201_chord_rearm.c
+new file mode 100644
+index 0000000..a3ea228
+--- /dev/null
++++ b/execution_199/test_gk201_chord_rearm.c
+@@ -0,0 +1,83 @@
++#include "gk1_pad_router.h"
++#include "gk99_xinput_bridge.h"
++#include <stdint.h>
++#include <stdio.h>
++#include <string.h>
++static unsigned checks=0;
++#define CK(x) do { ++checks; if (!(x)) { fprintf(stderr,"GK201 FAIL line %d: %s\n",__LINE__,#x); return 1; } } while (0)
++static size_t send(Gk1PadRouter *r,Gk1PadSample *s,unsigned buttons,Gk1PadAction *e){
++ s->buttons=(uint16_t)buttons;
++ return gk1_pad_step(r,s,16,e,12);
++}
++static int pair_test(uint16_t a,uint16_t b,Gk1PadAction act_a,Gk1PadAction act_b){
++ Gk1PadRouter r;Gk1PadSample s={0};Gk1PadAction out[12];
++ gk1_pad_init(&r);
++ CK(send(&r,&s,0,out)==0);
++ CK(send(&r,&s,a|b,out)==0);
++ CK(send(&r,&s,a,out)==0); /* partial release is NOT A or X */
++ CK(send(&r,&s,b,out)==0); /* switching retained side also suppressed */
++ CK(send(&r,&s,a|b,out)==0);
++ CK(send(&r,&s,0,out)==0); /* complete release, rearm but NO phantom */
++ CK(send(&r,&s,a,out)==1&&out[0]==act_a);
++ CK(send(&r,&s,a,out)==0);
++ CK(send(&r,&s,0,out)==0);
++ CK(send(&r,&s,b,out)==1&&out[0]==act_b);
++ CK(send(&r,&s,0,out)==0);
++ /* A second chord reached while holding A must also require release. */
++ CK(send(&r,&s,a,out)==1);
++ CK(send(&r,&s,a|b,out)==0);
++ CK(send(&r,&s,b,out)==0);
++ CK(send(&r,&s,0,out)==0);
++ CK(send(&r,&s,b,out)==1&&out[0]==act_b);
++ return 0;
++}
++static int xinput_test(void){
++ Gk1PadRouter r;Gk1PadSample s={0};Gk1PadAction out[12];
++ Gk99XinputRaw raw={0};gk1_pad_init(&r);
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0xC000u; /* actual Xbox X+Y raw XInput */
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0x4000u; /* Y released; X remains: DO NOT CREATE SAVE */
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0;
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0x4000u;
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==1&&out[0]==GK1_PAD_ACT_X);
++ /* Disconnect while chord is held resets all latches and seeds raw held
++  * buttons on reconnect. No load/save until complete release and re-press. */
++ gk1_pad_disconnect(&r);
++ raw.buttons=0xC000u;
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0x4000u;
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0;
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0x8000u;
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==1&&out[0]==GK1_PAD_ACT_Y);
++ return 0;
++}
++int main(void){
++ CK(pair_test(GK1_PAD_A,GK1_PAD_B,GK1_PAD_ACT_A,GK1_PAD_ACT_B)==0);
++ CK(pair_test(GK1_PAD_X,GK1_PAD_Y,GK1_PAD_ACT_X,GK1_PAD_ACT_Y)==0);
++ CK(pair_test(GK1_PAD_LB,GK1_PAD_RB,GK1_PAD_ACT_LB,GK1_PAD_ACT_RB)==0);
++ CK(pair_test(GK1_PAD_UP,GK1_PAD_DOWN,GK1_PAD_ACT_UP,GK1_PAD_ACT_DOWN)==0);
++ CK(pair_test(GK1_PAD_LEFT,GK1_PAD_RIGHT,GK1_PAD_ACT_LEFT,GK1_PAD_ACT_RIGHT)==0);
++ CK(xinput_test()==0);
++ /* Blocking one pair cannot mute unrelated controls (e.g. START). */
++ Gk1PadRouter r; Gk1PadSample s={0}; Gk1PadAction out[12];
++ gk1_pad_init(&r); CK(send(&r,&s,0,out)==0);
++ CK(send(&r,&s,GK1_PAD_X|GK1_PAD_Y|GK1_PAD_MENU,out)==1&&out[0]==GK1_PAD_ACT_MENU);
++ CK(send(&r,&s,GK1_PAD_X|GK1_PAD_MENU,out)==0);
++ CK(send(&r,&s,0,out)==0);
++ CK(send(&r,&s,GK1_PAD_X,out)==1&&out[0]==GK1_PAD_ACT_X);
++ printf("GK201 native Linux XInput/joypad chord rearm %u assertions PASS (physical Xbox and Windows NOT RUN)\n",checks);
++ return 0;
++}
+diff --git a/execution_199/test_gk202_irq_rng_dispatch.c b/execution_199/test_gk202_irq_rng_dispatch.c
+new file mode 100644
+index 0000000..3a83727
+--- /dev/null
++++ b/execution_199/test_gk202_irq_rng_dispatch.c
+@@ -0,0 +1,74 @@
++#include "gk202_irq_rng_dispatch.h"
++#include "gk1_app_state.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++static unsigned checks=0;
++#define CHECK(condition) do { \
++ checks++; \
++ if(!(condition)){ \
++  fprintf(stderr,"GK202 FAIL %s:%d %s\n",__FILE__,__LINE__,#condition); \
++  return 1; \
++ } \
++} while(0)
++static int unchanged(const Gk202Proof *x,const Gk202Proof *y){
++ return memcmp(x,y,sizeof *x)==0;
++}
++int main(int argc,char **argv){
++ Gk202Proof proof,previous;memset(&proof,0xa5,sizeof proof);previous=proof;
++ CHECK(gk202_analyze_authenticated_bytes(NULL,0,&proof)==GK202_ARGUMENT);
++ CHECK(unchanged(&proof,&previous));
++ CHECK(gk202_analyze_authenticated_file(NULL,&proof)==GK202_ARGUMENT);
++ CHECK(unchanged(&proof,&previous));
++ uint8_t *rom=(uint8_t*)calloc(GK202_STOCK_ROM_BYTES+1u,1u);
++ CHECK(rom!=NULL);
++ CHECK(gk202_analyze_authenticated_bytes(rom,GK202_STOCK_ROM_BYTES,&proof)==GK202_SOURCE_REFUSED);
++ CHECK(unchanged(&proof,&previous));
++ CHECK(gk202_analyze_authenticated_bytes(rom,GK202_STOCK_ROM_BYTES-1u,&proof)==GK202_SOURCE_REFUSED);
++ CHECK(unchanged(&proof,&previous));
++ Gk1App app;gk1_app_init(&app);
++ CHECK(gk1_app_source_irq_rng_path(&app,"unused",&proof)==GK202_ARGUMENT);
++ CHECK(unchanged(&proof,&previous));
++ /* Optional private source path is never a public CTest dependency. */
++ if(argc==2){
++  FILE *f=fopen(argv[1],"rb");CHECK(f!=NULL);
++  CHECK(fread(rom,1,GK202_STOCK_ROM_BYTES+1u,f)==GK202_STOCK_ROM_BYTES);
++  CHECK(fclose(f)==0);
++  CHECK(gk202_analyze_authenticated_bytes(rom,GK202_STOCK_ROM_BYTES,&proof)==GK202_OK);
++  CHECK(proof.irq_brk_vector==0xc14bu);
++  CHECK(proof.stack_brk_bit_mask==0x10u&&proof.stack_status_read==0x104u);
++  CHECK(proof.command_selector_ram==0x50u);
++  CHECK(proof.table_first_pc==0xc185u&&proof.table_entries==33u);
++  CHECK(proof.multiply_subroutine==0xc726u);
++  CHECK(proof.indirect_jmp_pointer==0x68u);
++  CHECK(proof.rng_slot==17u);
++  CHECK(proof.rng_entry_pc==0xc1b8u);
++  CHECK(proof.rng_target_pc==0xc289u);
++  CHECK(proof.entry_targets[17]==0xc289u);
++  CHECK(proof.entry_targets[0]==0xc000u);
++  CHECK(proof.entry_targets[32]==0xc207u);
++  CHECK(proof.direct_jsr_rng_raw_sequences==0u);
++  CHECK(proof.direct_jmp_rng_raw_sequences==1u);
++  CHECK(proof.source_only_not_runtime==1u&&proof.verified_stock_sha==1u);
++  Gk202Proof from_file={0};
++  CHECK(gk202_analyze_authenticated_file(argv[1],&from_file)==GK202_OK);
++  CHECK(unchanged(&proof,&from_file));
++  previous=proof;
++  rom[17u+15u*16384u]^=1u; /* changed PRG, valid iNES but wrong SHA */
++  CHECK(gk202_analyze_authenticated_bytes(rom,GK202_STOCK_ROM_BYTES,&proof)==GK202_SOURCE_REFUSED);
++  CHECK(unchanged(&proof,&previous));
++  rom[17u+15u*16384u]^=1u;
++  CHECK(gk202_analyze_authenticated_bytes(rom,GK202_STOCK_ROM_BYTES-1u,&proof)==GK202_SOURCE_REFUSED);
++  CHECK(unchanged(&proof,&previous));
++  /* Original setup remains gated; this source path may not unlock Spring. */
++  app.setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;
++  CHECK(gk1_app_source_irq_rng_path(&app,argv[1],&from_file)==GK202_OK);
++  CHECK(app.screen==GK1_SCREEN_TITLE&&app.stock_checkpoint.valid==0);
++  CHECK(app.world_ready[0]==0&&app.world_ready[1]==0);
++  app.setup_stage[0]=GK53_SETUP_PLAYERS;
++  CHECK(gk1_app_source_irq_rng_path(&app,argv[1],&from_file)==GK202_ARGUMENT);
++ }
++ free(rom);
++ printf("GK202 PASS %u assertions%s\n",checks,argc==2?" private original ROM verified":" public negative only");
++ return 0;
++}
+diff --git a/execution_199/test_gk203_rng_selector_writers.c b/execution_199/test_gk203_rng_selector_writers.c
+new file mode 100644
+index 0000000..1861500
+--- /dev/null
++++ b/execution_199/test_gk203_rng_selector_writers.c
+@@ -0,0 +1,49 @@
++#include "gk203_rng_selector_writers.h"
++#include "gk1_app_state.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++static unsigned checks=0;
++#define CHECK(x) do{checks++;if(!(x)){fprintf(stderr,"GK203 FAIL %d: %s\n",__LINE__,#x);return 1;}}while(0)
++int main(int argc,char **argv){
++ Gk203Proof proof,baseline;memset(&proof,0x5a,sizeof proof);baseline=proof;
++ CHECK(gk203_from_bytes(NULL,0,&proof)==GK203_ARGUMENT);
++ CHECK(memcmp(&proof,&baseline,sizeof proof)==0);
++ CHECK(gk203_from_file(NULL,&proof)==GK203_ARGUMENT);
++ CHECK(memcmp(&proof,&baseline,sizeof proof)==0);
++ uint8_t *fake=calloc(262161u,1u);CHECK(fake!=NULL);
++ CHECK(gk203_from_bytes(fake,262160u,&proof)==GK203_SOURCE_REFUSED);
++ CHECK(memcmp(&proof,&baseline,sizeof proof)==0);
++ CHECK(gk203_from_bytes(fake,262159u,&proof)==GK203_SOURCE_REFUSED);
++ CHECK(memcmp(&proof,&baseline,sizeof proof)==0);
++ Gk1App app;gk1_app_init(&app);
++ CHECK(gk1_app_source_rng_selector_writers(&app,"nope",&proof)==GK203_ARGUMENT);
++ CHECK(memcmp(&proof,&baseline,sizeof proof)==0);
++ if(argc==2){
++  CHECK(gk203_from_file(argv[1],&proof)==GK203_OK);
++  CHECK(proof.authenticated_stock&&proof.analysis_only&&proof.rng_slot==17u);
++  CHECK(proof.fixed_caller_count==2u&&proof.fixed_rng_caller_count==0u);
++  CHECK(proof.fixed[0].pc==0xef3du&&proof.fixed[1].pc==0xef4bu);
++  CHECK(proof.fixed[0].selector==23u&&proof.fixed[1].selector==23u);
++  CHECK(proof.fixed[0].subcommand==5u&&proof.fixed[1].subcommand==4u);
++  CHECK(proof.fixed[0].dispatched_target==0xc419u&&proof.fixed[1].dispatched_target==0xc419u);
++  CHECK(proof.raw_immediate_rng_slot_writes==0u);
++  CHECK(proof.raw_immediate_other_slot_writes>=2u);
++  baseline=proof;
++  FILE *f=fopen(argv[1],"rb");CHECK(f!=NULL);
++  CHECK(fread(fake,1,262161u,f)==262160u);CHECK(fclose(f)==0);
++  fake[16u+15u*16384u]^=1u;
++  CHECK(gk203_from_bytes(fake,262160u,&proof)==GK203_SOURCE_REFUSED);
++  CHECK(memcmp(&proof,&baseline,sizeof proof)==0);
++  app.setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;
++  CHECK(gk1_app_source_rng_selector_writers(&app,argv[1],&proof)==GK203_OK);
++  CHECK(memcmp(&proof,&baseline,sizeof proof)==0);
++  CHECK(app.screen==GK1_SCREEN_TITLE&&!app.stock_checkpoint.valid);
++  app.setup_stage[0]=GK53_SETUP_PLAYERS;
++  CHECK(gk1_app_source_rng_selector_writers(&app,argv[1],&proof)==GK203_ARGUMENT);
++  CHECK(memcmp(&proof,&baseline,sizeof proof)==0);
++ }
++ free(fake);
++ printf("GK203 PASS %u assertions%s\n",checks,argc==2?" private original stock":" public refusal");
++ return 0;
++}
