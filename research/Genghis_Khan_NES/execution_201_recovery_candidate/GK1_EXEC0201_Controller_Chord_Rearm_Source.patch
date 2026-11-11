@@ -1,0 +1,172 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+index 1e4a3bc..77e3ff1 100644
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -944,3 +944,10 @@ add_test(NAME GK1_197_ManualDerivedClassicTaxRateRangeAndRollback COMMAND test_g
+ add_executable(test_gk199_classic_tax_undo test_gk199_classic_tax_undo.c)
+ target_link_libraries(test_gk199_classic_tax_undo PRIVATE gk1_app_state)
+ add_test(NAME GK1_199_ControllerOnlyReplayVerifiedTaxUndo COMMAND test_gk199_classic_tax_undo)
++
++# EXEC0201-CANDIDATE: reusable native Windows XInput + Linux controller
++# anti-phantom action fix. Full release remains blocked by exact EXEC0197.
++add_executable(test_gk201_chord_rearm test_gk201_chord_rearm.c)
++target_link_libraries(test_gk201_chord_rearm PRIVATE gk1_pad_router gk99_xinput_bridge)
++add_test(NAME GK1_201_Win32XInputLinuxJoystick_ChordPartialReleaseCannotPhantomSaveConfirm
++ COMMAND test_gk201_chord_rearm)
+diff --git a/execution_199/gk1_pad_router.c b/execution_199/gk1_pad_router.c
+index fa6537e..2f1b05c 100644
+--- a/execution_199/gk1_pad_router.c
++++ b/execution_199/gk1_pad_router.c
+@@ -13,6 +13,19 @@ static int8_t axis(int16_t value,int8_t was){
+  if(value>=ENGAGE)return 1;
+  return 0;
+ }
++/* Never turn the surviving half of a suppressed chord into a new edge.
++ * A pair is rearmed only after the player has released BOTH buttons for at
++ * least one sample. This protects Xbox X/Y storage and A/B confirmations.
++ * Gating the physical direction buttons also works when analog sticks are
++ * present, while leaving independent analog-only navigation unchanged. */
++static void disarm_pair(Gk1PadRouter *r,uint16_t raw,
++                        uint16_t *resolved,uint16_t pair,uint8_t flag){
++ if((raw&pair)==pair)r->chord_blocked|=flag;
++ if(r->chord_blocked&flag){
++  *resolved=(uint16_t)(*resolved&~pair);
++  if(!(raw&pair))r->chord_blocked=(uint8_t)(r->chord_blocked&~flag);
++ }
++}
+ static uint16_t resolve(Gk1PadRouter *r,const Gk1PadSample *s){
+  r->analog_x=axis(s->lx,r->analog_x);
+  r->analog_y=axis(s->ly,r->analog_y);
+@@ -30,19 +43,14 @@ static uint16_t resolve(Gk1PadRouter *r,const Gk1PadSample *s){
+   if(y<0)b|=GK1_PAD_UP;
+   if(y>0)b|=GK1_PAD_DOWN;
+  }
+- /* Mutual exclusion for opposite face actions: simultaneous A+B must not
+-  * enter and back out, and X+Y must not save then immediately load. */
+- if((b&(GK1_PAD_A|GK1_PAD_B))==(GK1_PAD_A|GK1_PAD_B))
+-  b=(uint16_t)(b&~(GK1_PAD_A|GK1_PAD_B));
+- if((b&(GK1_PAD_X|GK1_PAD_Y))==(GK1_PAD_X|GK1_PAD_Y))
+-  b=(uint16_t)(b&~(GK1_PAD_X|GK1_PAD_Y));
+- if((b&(GK1_PAD_LB|GK1_PAD_RB))==(GK1_PAD_LB|GK1_PAD_RB))
+-  b=(uint16_t)(b&~(GK1_PAD_LB|GK1_PAD_RB));
+- /* Contradictory hardware reports cannot move both directions. */
+- if((b&(GK1_PAD_UP|GK1_PAD_DOWN))==(GK1_PAD_UP|GK1_PAD_DOWN))
+-  b=(uint16_t)(b&~(GK1_PAD_UP|GK1_PAD_DOWN));
+- if((b&(GK1_PAD_LEFT|GK1_PAD_RIGHT))==(GK1_PAD_LEFT|GK1_PAD_RIGHT))
+-  b=(uint16_t)(b&~(GK1_PAD_LEFT|GK1_PAD_RIGHT));
++ /* Chord quarantine: hold and partial-release are inert until one wholly
++  * neutral frame. This closes the unsafe A+B -> A / X+Y -> X transition. */
++ uint16_t hardware=(uint16_t)(s->buttons&0x0fffu);
++ disarm_pair(r,hardware,&b,GK1_PAD_A|GK1_PAD_B,0x01u);
++ disarm_pair(r,hardware,&b,GK1_PAD_X|GK1_PAD_Y,0x02u);
++ disarm_pair(r,hardware,&b,GK1_PAD_LB|GK1_PAD_RB,0x04u);
++ disarm_pair(r,hardware,&b,GK1_PAD_UP|GK1_PAD_DOWN,0x08u);
++ disarm_pair(r,hardware,&b,GK1_PAD_LEFT|GK1_PAD_RIGHT,0x10u);
+  return b;
+ }
+ void gk1_pad_init(Gk1PadRouter *r){if(r)memset(r,0,sizeof *r);}
+diff --git a/execution_199/gk1_pad_router.h b/execution_199/gk1_pad_router.h
+index 80ed7b5..a3b311a 100644
+--- a/execution_199/gk1_pad_router.h
++++ b/execution_199/gk1_pad_router.h
+@@ -27,6 +27,11 @@ typedef struct {
+  uint16_t held;
+  int8_t analog_x,analog_y,hat_x,hat_y;
+  uint32_t repeat_due_ms[4];
++ /* Physical opposite-button chords disarm their pair until a full neutral
++  * frame. Prevent releasing B from a held A+B, or Y from held X+Y, from
++  * unexpectedly activating the remaining button. Windows and Linux share
++  * this input path; hardware confirmation remains outstanding. */
++ uint8_t chord_blocked;
+  int connected;
+ } Gk1PadRouter;
+ void gk1_pad_init(Gk1PadRouter *r);
+diff --git a/execution_199/test_gk201_chord_rearm.c b/execution_199/test_gk201_chord_rearm.c
+new file mode 100644
+index 0000000..a3ea228
+--- /dev/null
++++ b/execution_199/test_gk201_chord_rearm.c
+@@ -0,0 +1,83 @@
++#include "gk1_pad_router.h"
++#include "gk99_xinput_bridge.h"
++#include <stdint.h>
++#include <stdio.h>
++#include <string.h>
++static unsigned checks=0;
++#define CK(x) do { ++checks; if (!(x)) { fprintf(stderr,"GK201 FAIL line %d: %s\n",__LINE__,#x); return 1; } } while (0)
++static size_t send(Gk1PadRouter *r,Gk1PadSample *s,unsigned buttons,Gk1PadAction *e){
++ s->buttons=(uint16_t)buttons;
++ return gk1_pad_step(r,s,16,e,12);
++}
++static int pair_test(uint16_t a,uint16_t b,Gk1PadAction act_a,Gk1PadAction act_b){
++ Gk1PadRouter r;Gk1PadSample s={0};Gk1PadAction out[12];
++ gk1_pad_init(&r);
++ CK(send(&r,&s,0,out)==0);
++ CK(send(&r,&s,a|b,out)==0);
++ CK(send(&r,&s,a,out)==0); /* partial release is NOT A or X */
++ CK(send(&r,&s,b,out)==0); /* switching retained side also suppressed */
++ CK(send(&r,&s,a|b,out)==0);
++ CK(send(&r,&s,0,out)==0); /* complete release, rearm but NO phantom */
++ CK(send(&r,&s,a,out)==1&&out[0]==act_a);
++ CK(send(&r,&s,a,out)==0);
++ CK(send(&r,&s,0,out)==0);
++ CK(send(&r,&s,b,out)==1&&out[0]==act_b);
++ CK(send(&r,&s,0,out)==0);
++ /* A second chord reached while holding A must also require release. */
++ CK(send(&r,&s,a,out)==1);
++ CK(send(&r,&s,a|b,out)==0);
++ CK(send(&r,&s,b,out)==0);
++ CK(send(&r,&s,0,out)==0);
++ CK(send(&r,&s,b,out)==1&&out[0]==act_b);
++ return 0;
++}
++static int xinput_test(void){
++ Gk1PadRouter r;Gk1PadSample s={0};Gk1PadAction out[12];
++ Gk99XinputRaw raw={0};gk1_pad_init(&r);
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0xC000u; /* actual Xbox X+Y raw XInput */
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0x4000u; /* Y released; X remains: DO NOT CREATE SAVE */
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0;
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0x4000u;
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==1&&out[0]==GK1_PAD_ACT_X);
++ /* Disconnect while chord is held resets all latches and seeds raw held
++  * buttons on reconnect. No load/save until complete release and re-press. */
++ gk1_pad_disconnect(&r);
++ raw.buttons=0xC000u;
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0x4000u;
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0;
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==0);
++ raw.buttons=0x8000u;
++ CK(gk99_xinput_sample(&raw,&s));
++ CK(gk1_pad_step(&r,&s,16,out,12)==1&&out[0]==GK1_PAD_ACT_Y);
++ return 0;
++}
++int main(void){
++ CK(pair_test(GK1_PAD_A,GK1_PAD_B,GK1_PAD_ACT_A,GK1_PAD_ACT_B)==0);
++ CK(pair_test(GK1_PAD_X,GK1_PAD_Y,GK1_PAD_ACT_X,GK1_PAD_ACT_Y)==0);
++ CK(pair_test(GK1_PAD_LB,GK1_PAD_RB,GK1_PAD_ACT_LB,GK1_PAD_ACT_RB)==0);
++ CK(pair_test(GK1_PAD_UP,GK1_PAD_DOWN,GK1_PAD_ACT_UP,GK1_PAD_ACT_DOWN)==0);
++ CK(pair_test(GK1_PAD_LEFT,GK1_PAD_RIGHT,GK1_PAD_ACT_LEFT,GK1_PAD_ACT_RIGHT)==0);
++ CK(xinput_test()==0);
++ /* Blocking one pair cannot mute unrelated controls (e.g. START). */
++ Gk1PadRouter r; Gk1PadSample s={0}; Gk1PadAction out[12];
++ gk1_pad_init(&r); CK(send(&r,&s,0,out)==0);
++ CK(send(&r,&s,GK1_PAD_X|GK1_PAD_Y|GK1_PAD_MENU,out)==1&&out[0]==GK1_PAD_ACT_MENU);
++ CK(send(&r,&s,GK1_PAD_X|GK1_PAD_MENU,out)==0);
++ CK(send(&r,&s,0,out)==0);
++ CK(send(&r,&s,GK1_PAD_X,out)==1&&out[0]==GK1_PAD_ACT_X);
++ printf("GK201 native Linux XInput/joypad chord rearm %u assertions PASS (physical Xbox and Windows NOT RUN)\n",checks);
++ return 0;
++}
