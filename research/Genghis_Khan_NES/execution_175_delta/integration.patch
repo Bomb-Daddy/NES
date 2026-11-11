@@ -1,0 +1,153 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9c0e50c..79841bb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -55,18 +55,18 @@ endif()
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+-  set(CPACK_PACKAGE_VERSION "1.74.0")
++  set(CPACK_PACKAGE_VERSION "1.75.0")
+   set(CPACK_PACKAGE_VENDOR "GK1 native research prototype")
+   set(CPACK_PACKAGE_INSTALL_DIRECTORY "Genghis Khan I Native Research")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Incomplete native Genghis Khan I research; original first Spring still unfinished")
+-  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.74.0-dev1")
+-  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.74.0-dev1")
++  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.75.0-dev1")
++  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.75.0-dev1")
+   set(CPACK_NSIS_MUI_FINISHPAGE_RUN "gk1_native_shell.exe")
+   set(CPACK_NSIS_MODIFY_PATH OFF)
+-  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.74.0-dev1")
++  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.75.0-dev1")
+   set(CPACK_CREATE_DESKTOP_LINKS "gk1_native_shell")
+   include(CPack)
+ endif()
+@@ -150,10 +150,10 @@ if(UNIX AND NOT APPLE)
+           DESTINATION opt/gk1-native-research)
+   install(PROGRAMS packaging/gk1-native-research DESTINATION usr/bin)
+   install(FILES packaging/gk1-native-research.desktop DESTINATION usr/share/applications)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md DESTINATION usr/share/doc/gk1-native-research)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+-  set(CPACK_PACKAGE_VERSION "1.74.0")
++  set(CPACK_PACKAGE_VERSION "1.75.0")
+   set(CPACK_DEBIAN_PACKAGE_RELEASE "dev1")
+   set(CPACK_PACKAGE_CONTACT "GK1 research prototype (offline source distribution)")
+   set(CPACK_DEBIAN_PACKAGE_MAINTAINER "GK1 Native Research")
+@@ -165,7 +165,7 @@ if(UNIX AND NOT APPLE)
+   set(CPACK_DEBIAN_PACKAGE_SECTION "games")
+   set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Genghis Khan I native research prototype, not completed game")
+-  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.74.0~dev1_amd64")
++  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.75.0~dev1_amd64")
+   set(CPACK_SET_DESTDIR OFF)
+   set(CPACK_PACKAGING_INSTALL_PREFIX "/")
+   find_package(Python3 COMPONENTS Interpreter)
+@@ -767,3 +767,13 @@ add_test(NAME GK1_173_SourceExecutedRngTransferOnlyNotOpcodeCandidates COMMAND t
+ add_executable(test_gk174_setup_boundary test_gk174_setup_boundary.c)
+ target_link_libraries(test_gk174_setup_boundary PRIVATE gk1_app_state)
+ add_test(NAME GK1_174_ExactMesenRAMSetupBoundaryNotRuntimeParity COMMAND test_gk174_setup_boundary)
++
++# GK175: independently assert Linux launcher, CLI, CPack and both source
++# packaging generator declarations share one version.
++if(Python3_Interpreter_FOUND)
++ add_test(NAME GK1_175_LauncherAndDualPackagingVersionContract
++  COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/packaging/test_gk175_version_contract.py
++   $<TARGET_FILE:gk1_native_shell> ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt
++   ${CMAKE_CURRENT_SOURCE_DIR}/packaging/gk1-native-research.desktop
++   ${CMAKE_CURRENT_BINARY_DIR}/CPackConfig.cmake)
++endif()
+diff --git a/README_EXEC0175.md b/README_EXEC0175.md
+new file mode 100644
+index 0000000..930cd1f
+--- /dev/null
++++ b/README_EXEC0175.md
+@@ -0,0 +1,9 @@
++# GK1 EXEC0175 — version-contract regression in inherited C11 app
++
++**Scope:** Direct continuation of the fully integrated `execution_174` application, preserving all 14/27 original pre-setup country templates and the existing Enhanced/Classic boundaries. This version advances software-release QA, not original-NES first-Spring gameplay.
++
++The `execution_174` authoritatively published GitHub `packaging/` files **already used 1.74.0-dev1 correctly**. An earlier local *reconstruction* omitted those updated files and consequently failed `GK1_054`; this was a source-staging error, not an EXEC0174 release bug. Correcting that local error is not counted as a new product improvement.
++
++New work: version 1.75.0-dev1 updates the existing Win32 NSIS generator display name (source authored only), Debian CPack package filename/version, desktop launcher title, Linux CLI version, and existing package regression expectation as one source change; it adds a new independent `GK1_175_LauncherAndDualPackagingVersionContract` negative test that binds the Linux executable, desktop, CMake/NSIS configuration and actual CPack metadata. It preserves original 0174 `gk174_setup_boundary` source/hardware boundaries and source-attested private ROM identity. It does not implement NES PPUSTATUS or produce a source-generated first Spring. Original Classic gameplay remains VIEW/PASS only; no original three executable orders, merchant AI, dynastic/game end parity, Win32/NSIS execution, physical Xbox or complete campaigns are claimed.
++
++Build: `cmake -S execution_175 -B build175 -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build175 -j8 && ctest --test-dir build175 --output-on-failure -j8`. Test native and Debian-extracted Xvfb binaries separately; when private ROM is present use `--source-boot-boundary OWNER_PRIVATE_ROM` to verify the original 70/142 instruction bounds. Original ROM, raw saves, screenshots and licensed media are NEVER in public artifacts.
+diff --git a/gk1_native_shell.c b/gk1_native_shell.c
+index 0092c22..37563b7 100644
+--- a/gk1_native_shell.c
++++ b/gk1_native_shell.c
+@@ -62,7 +62,7 @@
+ # include <linux/joystick.h>
+ # include <sys/stat.h>
+ #endif
+-#define GK1_PORT_VERSION "1.74.0-dev1"
++#define GK1_PORT_VERSION "1.75.0-dev1"
+ #define WIDTH 1280
+ #define HEIGHT 720
+ #define BG UINT32_C(0x10202b)
+diff --git a/packaging/gk1-native-research.desktop b/packaging/gk1-native-research.desktop
+index 8c3ced9..9e49c47 100644
+--- a/packaging/gk1-native-research.desktop
++++ b/packaging/gk1-native-research.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-Name=Genghis Khan I Research 1.74.0-dev1
++Name=Genghis Khan I Research 1.75.0-dev1
+ GenericName=NES-to-Windows Port Research Prototype
+ Comment=Incomplete native Genghis Khan I research game; source-bounded battles only
+ Exec=gk1-native-research
+diff --git a/packaging/test_gk175_version_contract.py b/packaging/test_gk175_version_contract.py
+new file mode 100644
+index 0000000..c55d504
+--- /dev/null
++++ b/packaging/test_gk175_version_contract.py
+@@ -0,0 +1,21 @@
++#!/usr/bin/env python3
++"""EXEC0175 reproducible package/launcher consistency (not Win32 runtime QA)."""
++import pathlib,re,subprocess,sys
++if len(sys.argv)!=5: raise SystemExit('need binary, CMakeLists, desktop, CPackConfig')
++binfile,cmfile,desktopfile,configfile=map(pathlib.Path,sys.argv[1:])
++source=cmfile.read_text(); desk=desktopfile.read_text(); pkg=configfile.read_text()
++version='1.75.0'; display=version+'-dev1'
++assert all(p.is_file() for p in (binfile,cmfile,desktopfile,configfile))
++assert source.count('set(CPACK_PACKAGE_VERSION "'+version+'")') == 2 # Windows and Debian
++assert 'set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research '+display+'")' in source
++assert 'set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_'+version+'~dev1_amd64")' in source
++assert 'Name=Genghis Khan I Research '+display+'\n' in desk
++assert 'Exec=gk1-native-research\n' in desk
++assert 'CPACK_PACKAGE_VERSION:STRING' not in pkg # do not infer CMakeCache format
++assert 'CPACK_PACKAGE_VERSION "'+version+'"' in pkg
++assert 'CPACK_PACKAGE_FILE_NAME "gk1-native-research_'+version+'~dev1_amd64"' in pkg
++r=subprocess.run([str(binfile),'--version'],capture_output=True,text=True,timeout=20)
++assert r.returncode==0 and ('research prototype '+display) in r.stdout
++assert 'not full game' in r.stdout
++assert not re.search(r'Name=Genghis Khan I Research 1\.(?:73|74)\.0',desk)
++print('GK175 launcher, Linux runtime, DEB, authored NSIS version: PASS; actual NSIS/Win32 NOT RUN')
+diff --git a/packaging/test_package_contract.py b/packaging/test_package_contract.py
+index 81d1920..8d7921a 100644
+--- a/packaging/test_package_contract.py
++++ b/packaging/test_package_contract.py
+@@ -5,14 +5,14 @@ exe,csv,desktop=map(pathlib.Path,sys.argv[1:4])
+ assert exe.is_file() and csv.is_file() and desktop.is_file()
+ assert hashlib.sha256(csv.read_bytes()).hexdigest()=="fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581"
+ entry=desktop.read_text()
+-assert "Name=Genghis Khan I Research 1.74.0-dev1" in entry
++assert "Name=Genghis Khan I Research 1.75.0-dev1" in entry
+ assert "Exec=gk1-native-research\n" in entry
+ assert "Terminal=false\n" in entry
+ with tempfile.TemporaryDirectory(prefix='gk1_exec54_') as tmp:
+     def run(*args,env=None):
+         return subprocess.run([str(exe),*args],cwd=tmp,env=env,capture_output=True,text=True,timeout=15)
+     v=run('--version')
+-    assert v.returncode==0 and '1.74.0-dev1' in v.stdout and 'not full game' in v.stdout
++    assert v.returncode==0 and '1.75.0-dev1' in v.stdout and 'not full game' in v.stdout
+     for sc,num in ((1,14),(2,27)):
+         r=run('--scenario-report',str(sc))
+         assert r.returncode==0,(r.stdout,r.stderr)
