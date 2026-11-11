@@ -1,0 +1,425 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ cmake_minimum_required(VERSION 3.15)
+-project(GK1NativeShell198 C)
++project(GK1NativeShell199 C)
+ find_package(ZLIB QUIET)
+ set(CMAKE_C_STANDARD 11)
+ set(CMAKE_C_STANDARD_REQUIRED ON)
+@@ -7,7 +7,7 @@
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -55,18 +55,18 @@
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0193.md README_EXEC0194.md README_EXEC0195.md README_EXEC0196.md README_EXEC0197.md README_EXEC0198.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0193.md README_EXEC0194.md README_EXEC0195.md README_EXEC0196.md README_EXEC0197.md README_EXEC0198.md README_EXEC0199.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+-  set(CPACK_PACKAGE_VERSION "1.98.0")
++  set(CPACK_PACKAGE_VERSION "1.99.0")
+   set(CPACK_PACKAGE_VENDOR "GK1 native research prototype")
+   set(CPACK_PACKAGE_INSTALL_DIRECTORY "Genghis Khan I Native Research")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Incomplete native Genghis Khan I research; original first Spring still unfinished")
+-  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.98.0-dev1")
+-  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.98.0-dev1")
++  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.99.0-dev1")
++  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.99.0-dev1")
+   set(CPACK_NSIS_MUI_FINISHPAGE_RUN "gk1_native_shell.exe")
+   set(CPACK_NSIS_MODIFY_PATH OFF)
+-  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.98.0-dev1")
++  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.99.0-dev1")
+   set(CPACK_CREATE_DESKTOP_LINKS "gk1_native_shell")
+   include(CPack)
+ endif()
+@@ -150,10 +150,10 @@
+           DESTINATION opt/gk1-native-research)
+   install(PROGRAMS packaging/gk1-native-research DESTINATION usr/bin)
+   install(FILES packaging/gk1-native-research.desktop DESTINATION usr/share/applications)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0198.md DESTINATION usr/share/doc/gk1-native-research)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0198.md README_EXEC0199.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+-  set(CPACK_PACKAGE_VERSION "1.98.0")
++  set(CPACK_PACKAGE_VERSION "1.99.0")
+   set(CPACK_DEBIAN_PACKAGE_RELEASE "dev1")
+   set(CPACK_PACKAGE_CONTACT "GK1 research prototype (offline source distribution)")
+   set(CPACK_DEBIAN_PACKAGE_MAINTAINER "GK1 Native Research")
+@@ -165,7 +165,7 @@
+   set(CPACK_DEBIAN_PACKAGE_SECTION "games")
+   set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Genghis Khan I native research prototype, not completed game")
+-  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.98.0~dev1_amd64")
++  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.99.0~dev1_amd64")
+   set(CPACK_SET_DESTDIR OFF)
+   set(CPACK_PACKAGING_INSTALL_PREFIX "/")
+   find_package(Python3 COMPONENTS Interpreter)
+@@ -940,3 +940,7 @@
+ add_executable(test_gk197_classic_tax test_gk197_classic_tax.c)
+ target_link_libraries(test_gk197_classic_tax PRIVATE gk1_app_state)
+ add_test(NAME GK1_197_ManualDerivedClassicTaxRateRangeAndRollback COMMAND test_gk197_classic_tax ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++add_executable(test_gk199_classic_tax_undo test_gk199_classic_tax_undo.c)
++target_link_libraries(test_gk199_classic_tax_undo PRIVATE gk1_app_state)
++add_test(NAME GK1_199_ControllerOnlyReplayVerifiedTaxUndo COMMAND test_gk199_classic_tax_undo)
+--- /dev/null
++++ b/README_EXEC0199.md
+@@ -0,0 +1,24 @@
++# GK1 EXEC0199 — Classic source-attested TAX Undo (port-only)
++
++Based on the exact complete EXEC0198 C11 application, not a standalone demo.
++
++Controller Y on the live Classic TAX screen now reverses the latest
++UNPASSED TAX action, even if it was the third order. It replays every earlier
++TAX/ASSIGN action against the original source checkpoint and atomically
++restores the current tax rate and one remaining order. If the last action was
++ASSIGN, pressing Y while TAX is visible refuses without undoing unrelated
++work. If the source, action sequence or raw record is corrupt, nothing is
++changed. The inherited original 83-byte records are never mutated.
++
++A/DPAD retain manual-derived tax changes, B exits, X now saves GC19 while
++in TAX; title Y still cold-loads. This is a controller usability enhancement,
++NOT original NES TAX/Undo parity or an independently generated Spring.
++
++Reproduce from complete source:
++`cmake -S execution_199 -B build199 -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build199 -j8 && ctest --test-dir build199 --output-on-failure -j8`
++
++Optional private original-stock checks: `build199/test_gk199_classic_tax_undo <41-country CSV> <fresh JSON> <archived Mongol MSS> <archived World MSS>` and `xvfb-run -a build199/gk1_native_shell --smoke-classic-tax-original <private source> 120`.
++
++Evidence: source/port testing only. No fresh NES emulation, original character
++stat RNG, merchant availability, full strategic AI, Win32 native testing,
++NSIS installation, physical Xbox or complete campaigns claimed.
+--- /dev/null
++++ b/gk199_classic_tax_undo.c
+@@ -0,0 +1,23 @@
++#include "gk199_classic_tax_undo.h"
++#include <string.h>
++Gk187Result gk199_undo_last_tax(Gk187ClassicAssign *state,
++ const Gk79Checkpoint *source, uint8_t *selection){
++ if(!state||!source||!selection)return GK187_INVALID;
++ if(!gk187_intact(state,source))return GK187_SOURCE;
++ if(state->passed)return GK187_EXHAUSTED;
++ if(state->action_count==0u)return GK187_NO_ACTION;
++ const Gk187Action last=state->actions[state->action_count-1u];
++ if(last.from!=5u||last.to!=5u||last.quantity<1u||last.quantity>100u)
++  return GK187_INVALID;
++ Gk187ClassicAssign restored=*state;
++ Gk187Result result=gk187_undo_last(&restored,source);
++ if(result!=GK187_OK)return result;
++ if(restored.player_index>=restored.mutable_world.country_count ||
++    !gk187_intact(&restored,source))return GK187_SOURCE;
++ uint16_t rate=restored.mutable_world.countries[restored.player_index].tax;
++ if(rate<1u||rate>100u)return GK187_SOURCE;
++ /* Always publish state and selection together, only after replay succeeds. */
++ memcpy(state,&restored,sizeof restored);
++ *selection=(uint8_t)rate;
++ return GK187_OK;
++}
+--- /dev/null
++++ b/gk199_classic_tax_undo.h
+@@ -0,0 +1,11 @@
++#ifndef GK199_CLASSIC_TAX_UNDO_H
++#define GK199_CLASSIC_TAX_UNDO_H
++#include "gk187_classic_assign.h"
++/* Port-only controller convenience. The authentic NES has not been shown to
++ * permit TAX Undo, and this never claims to reproduce unknown original
++ * Leadership, Charm, morale or RNG effects.
++ * Only a replay-attested, last-unpassed TAX action can be reversed.
++ * On refusal both state and selection remain byte-identical. */
++Gk187Result gk199_undo_last_tax(Gk187ClassicAssign *state,
++ const Gk79Checkpoint *source, uint8_t *selection);
++#endif
+--- a/gk1_app_state.c
++++ b/gk1_app_state.c
+@@ -1,4 +1,5 @@
+ #include "gk1_app_state.h"
++#include "gk199_classic_tax_undo.h"
+ #include "gk194_classic_storage_gate.h"
+ #include "gk195_classic_view.h"
+ #include "gk115_market_gate.h"
+@@ -956,6 +957,17 @@
+    if(n<1)n=1;
+    if(n>100)n=100;
+    s->classic_tax_selection=(uint8_t)n;
++   return 1;
++  }
++  if(cmd==GK1_INPUT_DRAFT_UNDO_TEN){
++   Gk187Result r=gk199_undo_last_tax(&s->classic_assign,
++     &s->stock_checkpoint,&s->classic_tax_selection);
++   snprintf(s->status,sizeof s->status,
++    "PORT-ONLY TAX UNDO: %s / ORDERS LEFT %u (NOT NES PARITY)",
++    r==GK187_OK?"RESTORED":r==GK187_NO_ACTION?"NO ACTION":
++    r==GK187_EXHAUSTED?"PASS ENDED":r==GK187_INVALID?
++    "LAST ACTION NOT TAX":"SOURCE REFUSED",
++    (unsigned)s->classic_assign.budget.remaining);
+    return 1;
+   }
+   if(cmd==GK1_INPUT_CONFIRM){
+--- a/gk1_native_shell.c
++++ b/gk1_native_shell.c
+@@ -13,6 +13,7 @@
+ #include "gk195_classic_view.h"
+ #include "gk196_classic_trade_status.h"
+ #include "gk198_tax_forecast.h"
++#include "gk199_classic_tax_undo.h"
+ #include "gk95_stock_trade_reference.h"
+ #include "gk96_ppu_warmup.h"
+ #include "gk97_nmi_trace.h"
+@@ -70,7 +71,7 @@
+ # include <linux/joystick.h>
+ # include <sys/stat.h>
+ #endif
+-#define GK1_PORT_VERSION "1.98.0-dev1"
++#define GK1_PORT_VERSION "1.99.0-dev1"
+ #define WIDTH 1280
+ #define HEIGHT 720
+ #define BG UINT32_C(0x10202b)
+@@ -795,7 +796,7 @@
+    (unsigned)app.classic_assign.action_count);
+   label(104,230,line,FG);
+   label(104,286,"UP/DOWN: +/-1  LEFT/RIGHT: +/-10 (BOUNDED 1 TO 100)",FG);
+-  label(104,343,"A COMMIT ONE ORDER / B CANCEL AND RETURN",FG);
++  label(104,343,"A COMMIT ONE ORDER / Y UNDO LAST TAX / B RETURN",FG);
+   Gk198Forecast tax_preview;
+   if(gk198_classic_tax_forecast(&app.classic_assign,
+      &app.stock_checkpoint,app.classic_tax_selection,
+@@ -1493,7 +1494,7 @@
+    else replay_key(1);
+    break;
+   case GK1_PAD_ACT_Y:
+-   if(app.screen==GK1_SCREEN_CLASSIC_ASSIGN)
++   if(app.screen==GK1_SCREEN_CLASSIC_TAX || app.screen==GK1_SCREEN_CLASSIC_ASSIGN)
+     input(GK1_INPUT_DRAFT_UNDO_TEN);
+    else if(app.screen==GK1_SCREEN_SETUP_WIZARD && app.manual_bonus_active[app.active_world])
+     input(GK1_INPUT_DRAFT_UNDO_TEN);
+@@ -1747,7 +1748,7 @@
+  if(app.classic_assign.active && app.rules_profile==0u){
+   if(app.screen==GK1_SCREEN_STOCK_CONTINUE||app.screen==GK1_SCREEN_STOCK_COMMANDS||
+      app.screen==GK1_SCREEN_STOCK_TRADE_REFERENCE||app.screen==GK1_SCREEN_CLASSIC_ASSIGN||
+-     app.screen==GK1_SCREEN_STOCK_STORAGE){
++     app.screen==GK1_SCREEN_CLASSIC_TAX||app.screen==GK1_SCREEN_STOCK_STORAGE){
+    classic_receipt_io(save);return;
+   }
+   strcpy(app.status,"CLASSIC SAVE REFUSED OUTSIDE ORIGINAL STRATEGIC SCREEN");return;
+@@ -3125,9 +3126,14 @@
+       app.classic_assign.mutable_world.countries[original.player_index].tax!=old+1u)return 284;
+    if(app.stock_checkpoint.orders.remaining!=3u||
+       memcmp(original.stock_raw,app.stock_checkpoint.stock_raw,sizeof original.stock_raw)!=0)return 285;
++   pad_test_press(GK1_PAD_Y);
++   if(app.classic_assign.budget.remaining!=3u ||
++      app.classic_assign.action_count!=0u ||
++      app.classic_tax_selection!=old ||
++      !gk187_intact(&app.classic_assign,&app.stock_checkpoint))return 287;
+    pad_test_press(GK1_PAD_B);
+    if(app.screen!=GK1_SCREEN_STOCK_COMMANDS)return 286;
+-   printf("TESTED_PORT_LINUX EXEC0198 %s PAD TAX %u->%u; derived orders 2/source orders 3; no original NES cost/RNG parity; no physical Xbox\n",
++   printf("TESTED_PORT_LINUX EXEC0199 %s PAD TAX %u->%u; derived orders reset to 3/source orders 3; no original NES cost/RNG parity; no physical Xbox\n",
+      gk77_profile_name(detected),(unsigned)old,(unsigned)(old+1u));
+   }
+   if(smoke_classic_trade_original){
+@@ -3612,7 +3618,7 @@
+    else if(e.type==ClientMessage && (Atom)e.xclient.data.l[0]==delete_window)running=0;
+   }
+   poll_joystick(&joystick,pad);render();XFlush(display);frames++;
+-  if(smoke && frames>=smoke){printf("EXEC0198 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
++  if(smoke && frames>=smoke){printf("EXEC0199 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
+   struct timespec t={0,16000000};nanosleep(&t,NULL);
+  }
+  if(joystick>=0)close(joystick);
+--- a/packaging/gk1-native-research.desktop
++++ b/packaging/gk1-native-research.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-Name=Genghis Khan I Research 1.98.0-dev1
++Name=Genghis Khan I Research 1.99.0-dev1
+ GenericName=NES-to-Windows Port Research Prototype
+ Comment=Incomplete native Genghis Khan I research game; source-bounded battles only
+ Exec=gk1-native-research
+--- a/packaging/test_gk176_version_contract.py
++++ b/packaging/test_gk176_version_contract.py
+@@ -4,7 +4,7 @@
+ if len(sys.argv)!=5: raise SystemExit('need binary, CMakeLists, desktop, CPackConfig')
+ binfile,cmfile,desktopfile,configfile=map(pathlib.Path,sys.argv[1:])
+ source=cmfile.read_text(); desk=desktopfile.read_text(); pkg=configfile.read_text()
+-version='1.98.0'; display=version+'-dev1'
++version='1.99.0'; display=version+'-dev1'
+ assert all(p.is_file() for p in (binfile,cmfile,desktopfile,configfile))
+ assert source.count('set(CPACK_PACKAGE_VERSION "'+version+'")') == 2 # Windows and Debian
+ assert 'set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research '+display+'")' in source
+--- a/packaging/test_gk179_version_contract.py
++++ b/packaging/test_gk179_version_contract.py
+@@ -3,6 +3,6 @@
+ shell=Path(sys.argv[1]).read_text()
+ cmake=Path(sys.argv[2]).read_text()
+ assert 'EXEC0179 source-authentic RNG only after validated setup' in shell
+-assert '1.98.0~dev1_amd64' in cmake
++assert '1.99.0~dev1_amd64' in cmake
+ assert 'test_gk179_rng_setup_boundary' in cmake
+ print('GK179 version source contract PASS')
+--- a/packaging/test_gk181_version_contract.py
++++ b/packaging/test_gk181_version_contract.py
+@@ -1,9 +1,9 @@
+ from pathlib import Path
+ import sys
+ shell=Path(sys.argv[1]).read_text();cmake=Path(sys.argv[2]).read_text()
+-assert '#define GK1_PORT_VERSION "1.98.0-dev1"' in shell
++assert '#define GK1_PORT_VERSION "1.99.0-dev1"' in shell
+ assert '--source-bank-seed-writers' in shell
+ assert 'gk181_bank_seed_trace.c' in cmake
+ assert 'test_gk181_bank_seed_trace' in cmake
+-assert '1.98.0~dev1_amd64' in cmake
++assert '1.99.0~dev1_amd64' in cmake
+ print("GK181 version / source + deb contract PASS")
+--- a/packaging/test_gk182_version_contract.py
++++ b/packaging/test_gk182_version_contract.py
+@@ -1,9 +1,9 @@
+ from pathlib import Path
+ import sys
+ shell=Path(sys.argv[1]).read_text();cmake=Path(sys.argv[2]).read_text()
+-assert '#define GK1_PORT_VERSION "1.98.0-dev1"' in shell
++assert '#define GK1_PORT_VERSION "1.99.0-dev1"' in shell
+ assert '--source-archived-bank' in shell
+ assert 'gk182_archived_source_bank.c' in cmake
+ assert 'test_gk182_archived_source_bank' in cmake
+-assert '1.98.0~dev1_amd64' in cmake
++assert '1.99.0~dev1_amd64' in cmake
+ print('GK182 version, saved-state original provenance, source + Debian contract PASS')
+--- a/packaging/test_gk183_version_contract.py
++++ b/packaging/test_gk183_version_contract.py
+@@ -1,9 +1,9 @@
+ from pathlib import Path
+ import sys
+ shell=Path(sys.argv[1]).read_text();cmake=Path(sys.argv[2]).read_text()
+-assert '#define GK1_PORT_VERSION "1.98.0-dev1"' in shell
++assert '#define GK1_PORT_VERSION "1.99.0-dev1"' in shell
+ assert 'gk183_checkpoint_isolation.c' in cmake
+ assert 'test_gk183_checkpoint_isolation' in cmake
+-assert '1.98.0~dev1_amd64' in cmake
++assert '1.99.0~dev1_amd64' in cmake
+ assert 'README_EXEC0183.md' in cmake
+ print('GK183 checkpoint isolation and Linux/NSIS package version contract PASS')
+--- a/packaging/test_gk184_version_contract.py
++++ b/packaging/test_gk184_version_contract.py
+@@ -3,8 +3,8 @@
+ assert len(sys.argv)==3
+ shell=Path(sys.argv[1]).read_text()
+ cmake=Path(sys.argv[2]).read_text()
+-assert '#define GK1_PORT_VERSION "1.98.0-dev1"' in shell
+-assert '1.98.0~dev1_amd64' in cmake
++assert '#define GK1_PORT_VERSION "1.99.0-dev1"' in shell
++assert '1.99.0~dev1_amd64' in cmake
+ assert 'README_EXEC0184.md' in cmake
+ assert 'test_gk184_controller_source_gate' in cmake
+ print('EXEC0184 version/package and controller gate contract PASS')
+--- a/packaging/test_package_contract.py
++++ b/packaging/test_package_contract.py
+@@ -5,14 +5,14 @@
+ assert exe.is_file() and csv.is_file() and desktop.is_file()
+ assert hashlib.sha256(csv.read_bytes()).hexdigest()=="fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581"
+ entry=desktop.read_text()
+-assert "Name=Genghis Khan I Research 1.98.0-dev1" in entry
++assert "Name=Genghis Khan I Research 1.99.0-dev1" in entry
+ assert "Exec=gk1-native-research\n" in entry
+ assert "Terminal=false\n" in entry
+ with tempfile.TemporaryDirectory(prefix='gk1_exec54_') as tmp:
+     def run(*args,env=None):
+         return subprocess.run([str(exe),*args],cwd=tmp,env=env,capture_output=True,text=True,timeout=15)
+     v=run('--version')
+-    assert v.returncode==0 and '1.98.0-dev1' in v.stdout and 'not full game' in v.stdout
++    assert v.returncode==0 and '1.99.0-dev1' in v.stdout and 'not full game' in v.stdout
+     for sc,num in ((1,14),(2,27)):
+         r=run('--scenario-report',str(sc))
+         assert r.returncode==0,(r.stdout,r.stderr)
+--- /dev/null
++++ b/test_gk199_classic_tax_undo.c
+@@ -0,0 +1,80 @@
++#include "gk199_classic_tax_undo.h"
++#include "gk193_auto_source_entry.h"
++#include "gk1_app_state.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define CK(x) do{if(!(x)){fprintf(stderr,"GK199 FAIL at line %d: %s\n",__LINE__,#x);return 1;}n++;}while(0)
++static int private_case(const char *csv,const char *file,Gk77Profile profile,unsigned *count){
++ Gk1TemplateDataset *ds=calloc(1,sizeof *ds);
++ Gk1App *app=calloc(1,sizeof *app);
++ if(!ds||!app)return 0;
++ if(gk1_template_load(csv,ds)!=GK1_LOAD_OK)return 0;
++ gk1_app_init(app);
++ if(!gk1_app_install_templates(app,ds))return 0;
++ app->rules_profile=0;
++ Gk77Profile detected=0;
++ if(gk193_enter_original_auto(app,csv,file,0,&detected)!=GK193_OK||detected!=profile)return 0;
++ if(gk187_open(&app->stock_checkpoint,&app->classic_assign)!=GK187_OK)return 0;
++ Gk79Checkpoint original=app->stock_checkpoint;
++ uint8_t starting=(uint8_t)app->classic_assign.mutable_world.countries[0].tax;
++ uint8_t changed=starting==100u?99u:100u,selection=changed;
++ if(gk187_set_tax(&app->classic_assign,&app->stock_checkpoint,changed)!=GK187_OK)return 0;
++ if(gk187_transfer(&app->classic_assign,&app->stock_checkpoint,0u,4u,1u)!=GK187_OK)return 0;
++ Gk187ClassicAssign before=app->classic_assign;
++ if(gk199_undo_last_tax(&app->classic_assign,&app->stock_checkpoint,&selection)!=GK187_INVALID||
++    memcmp(&before,&app->classic_assign,sizeof before)||selection!=changed)return 0;
++ (*count)++;
++ if(gk187_undo_last(&app->classic_assign,&app->stock_checkpoint)!=GK187_OK)return 0;
++ if(gk199_undo_last_tax(&app->classic_assign,&app->stock_checkpoint,&selection)!=GK187_OK||
++    selection!=starting||app->classic_assign.action_count!=0u||
++    app->classic_assign.budget.remaining!=3u||
++    !gk187_intact(&app->classic_assign,&app->stock_checkpoint))return 0;
++ (*count)++;
++ if(memcmp(&original,&app->stock_checkpoint,sizeof original))return 0;
++ (*count)++;
++ if(gk199_undo_last_tax(&app->classic_assign,&app->stock_checkpoint,&selection)!=GK187_NO_ACTION)return 0;
++ (*count)++;
++ if(gk187_set_tax(&app->classic_assign,&app->stock_checkpoint,changed)!=GK187_OK)return 0;
++ if(gk187_set_tax(&app->classic_assign,&app->stock_checkpoint,starting)!=GK187_OK)return 0;
++ if(gk187_set_tax(&app->classic_assign,&app->stock_checkpoint,changed)!=GK187_OK)return 0;
++ if(gk199_undo_last_tax(&app->classic_assign,&app->stock_checkpoint,&selection)!=GK187_OK||
++    app->classic_assign.action_count!=2u||app->classic_assign.budget.remaining!=1u||
++    selection!=starting||!gk187_intact(&app->classic_assign,&app->stock_checkpoint))return 0;
++ (*count)++;
++ /* Genuine PASS is irreversible; no in-game tax rollback after ending. */
++ if(gk187_pass(&app->classic_assign,&app->stock_checkpoint)!=GK187_OK)return 0;
++ Gk187ClassicAssign after_pass=app->classic_assign;
++ uint8_t prior_selection=selection;
++ if(gk199_undo_last_tax(&app->classic_assign,&app->stock_checkpoint,&selection)!=GK187_EXHAUSTED ||
++    selection!=prior_selection || memcmp(&after_pass,&app->classic_assign,sizeof after_pass))return 0;
++ (*count)++;
++ /* Tamper with derived state: no action, selection or source is altered. */
++ app->classic_assign=after_pass;
++ app->classic_assign.mutable_world.countries[0].gold++;
++ Gk187ClassicAssign tampered=app->classic_assign;
++ if(gk199_undo_last_tax(&app->classic_assign,&app->stock_checkpoint,&selection)!=GK187_SOURCE ||
++    selection!=prior_selection || memcmp(&tampered,&app->classic_assign,sizeof tampered))return 0;
++ (*count)++;
++ if(memcmp(&original,&app->stock_checkpoint,sizeof original))return 0;
++ (*count)++;
++ free(app);free(ds);return 1;
++}
++int main(int argc,char **argv){
++ unsigned n=0;
++ Gk187ClassicAssign state={0};Gk79Checkpoint source={0};
++ uint8_t selection=45u;
++ CK(gk199_undo_last_tax(NULL,&source,&selection)==GK187_INVALID);
++ CK(gk199_undo_last_tax(&state,NULL,&selection)==GK187_INVALID);
++ CK(gk199_undo_last_tax(&state,&source,NULL)==GK187_INVALID);
++ CK(gk199_undo_last_tax(&state,&source,&selection)==GK187_SOURCE);
++ CK(selection==45u);
++ CK(argc==1||argc==5);
++ if(argc==5){
++  CK(private_case(argv[1],argv[2],GK77_FRESH_MONGOL_WORKRAM,&n));
++  CK(private_case(argv[1],argv[3],GK77_ARCHIVED_MONGOL_SAVERAM,&n));
++  CK(private_case(argv[1],argv[4],GK77_ARCHIVED_WORLD_SAVERAM,&n));
++ }
++ printf("GK199 authenticated Classic TAX Undo: %u assertions PASS; PORT-ONLY, not NES parity\n",n);
++ return 0;
++}
