@@ -1,0 +1,286 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+index 6eb7ce6..51c1bab 100644
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -972,3 +972,8 @@ endif()
+ add_executable(test_gk203_rng_selector_writers test_gk203_rng_selector_writers.c)
+ target_link_libraries(test_gk203_rng_selector_writers PRIVATE gk1_app_state)
+ add_test(NAME GK1_203_AuthenticatedSelectorWriterSourceOnlyNoPhantomFirstSpring COMMAND test_gk203_rng_selector_writers)
++
++# EXEC0204: source-authenticated raw selector writes; never gameplay parity.
++add_executable(test_gk204_selector_store_inventory test_gk204_selector_store_inventory.c)
++target_link_libraries(test_gk204_selector_store_inventory PRIVATE gk1_app_state)
++add_test(NAME GK1_204_OriginalSelectorStoreCandidatesStaticOnly COMMAND test_gk204_selector_store_inventory)
+diff --git a/execution_199/gk1_app_state.c b/execution_199/gk1_app_state.c
+index 9aabb82..57536d3 100644
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -65,6 +65,13 @@ Gk203Status gk1_app_source_rng_selector_writers(const Gk1App *app,
+   return GK203_ARGUMENT;
+  return gk203_from_file(private_stock_rom,out);
+ }
++Gk204Status gk1_app_source_selector_store_inventory(const Gk1App *app,
++ const char *private_stock_rom,Gk204Inventory *out){
++ if(!app||!private_stock_rom||!out||app->active_world>1u||
++    app->setup_stage[app->active_world]!=GK53_SETUP_AWAIT_SOURCE)
++  return GK204_ARGUMENT;
++ return gk204_inventory_file(private_stock_rom,out);
++}
+ Gk153TraceResult gk1_app_source_symbolic_vblank_exit(const Gk1App *app,
+  const char *rom,uint32_t origin,uint8_t choice,Gk83Trace *out){
+  if(!app||!rom||!*rom||!out||app->active_world>1u||
+diff --git a/execution_199/gk1_app_state.h b/execution_199/gk1_app_state.h
+index f1f14ac..dcda710 100644
+--- a/execution_199/gk1_app_state.h
++++ b/execution_199/gk1_app_state.h
+@@ -47,6 +47,7 @@
+ #include "gk182_archived_source_bank.h"
+ #include "gk202_irq_rng_dispatch.h"
+ #include "gk203_rng_selector_writers.h"
++#include "gk204_selector_store_inventory.h"
+ #include "gk152_spring_writer_map.h"
+ #include "../execution_049/gk1_scenario_factory.h"
+ /* A standalone, copyright-clean native-app vertical slice, NOT a shipped game.
+@@ -158,6 +159,9 @@ Gk178Status gk1_app_source_rng_step(const Gk1App *app,
+  * canonical PRE_SETUP. Never promotes a real Spring or spends an order. */
+ Gk172Status gk1_app_source_rng_xref(const Gk1App *app,
+  const char *private_rom,Gk172RngXref *out);
++/* EXEC0204: exact-stock raw selector store candidates; does not execute NES. */
++Gk204Status gk1_app_source_selector_store_inventory(const Gk1App *,
++ const char *private_stock_rom,Gk204Inventory *out);
+ /* Source-instruction-level PRG-RAM country-store watch. Opt-in even-frame
+  * hardware hypothesis only, not original Mesen and NOT gameplay. */
+ typedef enum { GK153_TRACE_BAD_STAGE=0, GK153_TRACE_BAD_SOURCE=1,
+diff --git a/execution_199/gk1_native_shell.c b/execution_199/gk1_native_shell.c
+index 7a23351..80ccd71 100644
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -3071,6 +3071,24 @@ if(argc==3 && strcmp(argv[1],"--pre-setup-pad-smoke")==0){
+  else if(argc==5&&strcmp(argv[1],"--smoke-original-mss")==0){
+   smoke=atoi(argv[4]);if(smoke<1||smoke>120)return 4;
+  }
++ else if(argc==3&&strcmp(argv[1],"--audit-stock-selector-store-candidates")==0){
++  Gk204Inventory p={0};
++  if(gk204_inventory_file(argv[2],&p)!=GK204_OK){
++   fputs("GK204 rejected unauthenticated original stock input\n",stderr);return 1;
++  }
++  printf("VERIFIED_STATIC source-only raw selector $0050 candidates=%u direct_store=%u rmw=%u indexed=%u absolute=%u\n",
++   p.site_count,p.raw_direct_store_count,p.raw_direct_rmw_count,p.raw_indexed_count,p.raw_absolute_count);
++  printf("  adjacent immediate load of actual RNG decimal selector %u: %u candidates\n",
++   p.rng_selector,p.adjacent_lda_rng_store_count);
++  for(unsigned i=0;i<p.site_count;i++){
++   const Gk204Site *site=&p.sites[i];
++   printf("  bank=%u offset=$%04X hypothetical_pc=$%04X opcode=$%02X raw_kind=%u%s\n",
++    site->bank,site->bank_offset,site->hypothetical_pc,site->opcode,site->kind,
++    site->adjacent_lda_immediate?" [adjacent LDA immediate]":"");
++  }
++  puts("SOURCE BYTE PATTERNS MAY BE DATA. NO MAPPER / REACHABILITY / ACTUAL BRK EXECUTION OR FIRST SPRING PROVEN.");
++  return 0;
++ }
+  else if(argc==3&&strcmp(argv[1],"--audit-stock-rng-selector-writers")==0){
+   Gk203Proof p={0};
+   if(gk203_from_file(argv[2],&p)!=GK203_OK){
+diff --git a/execution_199/gk204_selector_store_inventory.c b/execution_199/gk204_selector_store_inventory.c
+new file mode 100644
+index 0000000..826a262
+--- /dev/null
++++ b/execution_199/gk204_selector_store_inventory.c
+@@ -0,0 +1,76 @@
++#include "gk204_selector_store_inventory.h"
++#include "gk202_irq_rng_dispatch.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define GK204_HEADER 16u
++#define GK204_BANK_SIZE 16384u
++#define GK204_BANKS 16u
++static int direct_store(uint8_t op){
++ return op==0x84u||op==0x85u||op==0x86u;
++}
++static int direct_rmw(uint8_t op){
++ return op==0x06u||op==0x26u||op==0x46u||op==0x66u||
++        op==0xc6u||op==0xe6u;
++}
++static int indexed_candidate(uint8_t op){
++ return op==0x94u||op==0x95u||op==0x96u||op==0x16u||
++        op==0x36u||op==0x56u||op==0x76u||op==0xd6u||op==0xf6u;
++}
++static int absolute_candidate(uint8_t op){
++ return op==0x8cu||op==0x8du||op==0x8eu||op==0x0eu||
++        op==0x2eu||op==0x4eu||op==0x6eu||op==0xceu||op==0xeeu;
++}
++Gk204Status gk204_inventory_bytes(const uint8_t *rom,size_t len,Gk204Inventory *out){
++ if(!rom||!out)return GK204_ARGUMENT;
++ Gk202Proof proof={0};
++ if(gk202_analyze_authenticated_bytes(rom,len,&proof)!=GK202_OK)
++  return GK204_SOURCE_REFUSED;
++ Gk204Inventory r={0};
++ r.verified_original_stock=1;
++ r.source_only_not_runtime=1;
++ r.rng_selector=proof.rng_slot;
++ for(unsigned bank=0;bank<GK204_BANKS;bank++){
++  const uint8_t *p=rom+GK204_HEADER+(size_t)bank*GK204_BANK_SIZE;
++  for(size_t i=0;i+1u<GK204_BANK_SIZE;i++){
++   if(p[i+1u]!=0x50u)continue;
++   uint8_t kind=0;
++   if(direct_store(p[i]))kind=GK204_RAW_DIRECT_STORE;
++   else if(direct_rmw(p[i]))kind=GK204_RAW_DIRECT_RMW;
++   else if(indexed_candidate(p[i]))kind=GK204_RAW_INDEXED_CANDIDATE;
++   else if(absolute_candidate(p[i])&&i+2u<GK204_BANK_SIZE&&p[i+2u]==0u)
++    kind=GK204_RAW_ABSOLUTE_CANDIDATE;
++   if(!kind)continue;
++   if(r.site_count>=GK204_MAX_CANDIDATES)return GK204_TOO_MANY;
++   Gk204Site *s=&r.sites[r.site_count++];
++   s->bank=(uint8_t)bank;
++   s->bank_offset=(uint16_t)i;
++   s->hypothetical_pc=(uint16_t)(i+(bank==15u?0xc000u:0x8000u));
++   s->opcode=p[i];s->kind=kind;
++   if(kind==GK204_RAW_DIRECT_STORE){
++    r.raw_direct_store_count++;
++    if(p[i]==0x85u&&i>=2u&&p[i-2u]==0xa9u){
++     s->adjacent_lda_immediate=1;s->immediate_value=p[i-1u];
++     if(s->immediate_value==proof.rng_slot)r.adjacent_lda_rng_store_count++;
++    }
++   }else if(kind==GK204_RAW_DIRECT_RMW)r.raw_direct_rmw_count++;
++   else if(kind==GK204_RAW_INDEXED_CANDIDATE)r.raw_indexed_count++;
++   else r.raw_absolute_count++;
++  }
++ }
++ /* This bounds only exact raw byte patterns from the immutable original
++  * cartridge. Do not assert the original CPU executed any candidate. */
++ *out=r;return GK204_OK;
++}
++Gk204Status gk204_inventory_file(const char *name,Gk204Inventory *out){
++ if(!name||!*name||!out)return GK204_ARGUMENT;
++ FILE *f=fopen(name,"rb");if(!f)return GK204_SOURCE_REFUSED;
++ uint8_t *data=(uint8_t*)malloc(GK202_STOCK_ROM_BYTES+1u);
++ if(!data){fclose(f);return GK204_SOURCE_REFUSED;}
++ size_t n=fread(data,1,GK202_STOCK_ROM_BYTES+1u,f);
++ int err=ferror(f),closed=fclose(f);
++ Gk204Status result=(!err&&!closed&&n==GK202_STOCK_ROM_BYTES)?
++  gk204_inventory_bytes(data,n,out):GK204_SOURCE_REFUSED;
++ memset(data,0,GK202_STOCK_ROM_BYTES+1u);free(data);
++ return result;
++}
+diff --git a/execution_199/gk204_selector_store_inventory.h b/execution_199/gk204_selector_store_inventory.h
+new file mode 100644
+index 0000000..5460d23
+--- /dev/null
++++ b/execution_199/gk204_selector_store_inventory.h
+@@ -0,0 +1,39 @@
++#ifndef GK204_SELECTOR_STORE_INVENTORY_H
++#define GK204_SELECTOR_STORE_INVENTORY_H
++#include <stddef.h>
++#include <stdint.h>
++/* Original USA NES only. All entries are raw PRG byte-sequence candidates,
++ * NEVER disassembled reachable instructions, executed BRKs, or Spring RNG.
++ * Candidate PC in banks 0..14 is a hypothetical $8000-$BFFF window.
++ * The fixed bank (15) is at $C000-$FFFF. */
++#define GK204_MAX_CANDIDATES 64u
++typedef enum { GK204_OK=0, GK204_ARGUMENT=1,
++ GK204_SOURCE_REFUSED=2, GK204_TOO_MANY=3 } Gk204Status;
++typedef enum { GK204_RAW_DIRECT_STORE=1, GK204_RAW_DIRECT_RMW=2,
++ GK204_RAW_INDEXED_CANDIDATE=3, GK204_RAW_ABSOLUTE_CANDIDATE=4 } Gk204Kind;
++typedef struct {
++ uint8_t bank;
++ uint16_t bank_offset;
++ uint16_t hypothetical_pc;
++ uint8_t opcode;
++ uint8_t kind;
++ uint8_t adjacent_lda_immediate;
++ uint8_t immediate_value; /* meaningful only when adjacent_lda_immediate */
++} Gk204Site;
++typedef struct {
++ uint8_t verified_original_stock;
++ uint8_t source_only_not_runtime;
++ uint8_t rng_selector; /* from authenticated GK202 IRQ dispatch table, decimal17 */
++ uint8_t site_count;
++ uint8_t raw_direct_store_count;
++ uint8_t raw_direct_rmw_count;
++ uint8_t raw_indexed_count;
++ uint8_t raw_absolute_count;
++ uint8_t adjacent_lda_rng_store_count;
++ Gk204Site sites[GK204_MAX_CANDIDATES];
++} Gk204Inventory;
++/* Both calls are failure-atomic; no output write on refusal.
++ * Never passes private ROM bytes to a report or a public source archive. */
++Gk204Status gk204_inventory_bytes(const uint8_t *,size_t,Gk204Inventory *);
++Gk204Status gk204_inventory_file(const char *,Gk204Inventory *);
++#endif
+diff --git a/execution_199/test_gk204_selector_store_inventory.c b/execution_199/test_gk204_selector_store_inventory.c
+new file mode 100644
+index 0000000..bfa04a0
+--- /dev/null
++++ b/execution_199/test_gk204_selector_store_inventory.c
+@@ -0,0 +1,62 @@
++#include "gk204_selector_store_inventory.h"
++#include "gk1_app_state.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++static unsigned checks;
++#define CHECK(c) do{checks++;if(!(c)){fprintf(stderr,"GK204 FAIL %u: %s\n",__LINE__,#c);return 1;}}while(0)
++int main(int argc,char **argv){
++ Gk204Inventory result,baseline;
++ memset(&result,0xa5,sizeof result);baseline=result;
++ CHECK(gk204_inventory_bytes(NULL,0,&result)==GK204_ARGUMENT);
++ CHECK(memcmp(&result,&baseline,sizeof result)==0);
++ CHECK(gk204_inventory_file(NULL,&result)==GK204_ARGUMENT);
++ CHECK(memcmp(&result,&baseline,sizeof result)==0);
++ uint8_t *bytes=calloc(262161u,1u);CHECK(bytes!=NULL);
++ CHECK(gk204_inventory_bytes(bytes,262160u,&result)==GK204_SOURCE_REFUSED);
++ CHECK(memcmp(&result,&baseline,sizeof result)==0);
++ CHECK(gk204_inventory_file("/does-not-exist.nes",&result)==GK204_SOURCE_REFUSED);
++ CHECK(memcmp(&result,&baseline,sizeof result)==0);
++ Gk1App app;gk1_app_init(&app);
++ CHECK(gk1_app_source_selector_store_inventory(&app,"notfound",&result)==GK204_ARGUMENT);
++ CHECK(memcmp(&result,&baseline,sizeof result)==0);
++ if(argc==2){
++  CHECK(gk204_inventory_file(argv[1],&result)==GK204_OK);
++  CHECK(result.verified_original_stock&&result.source_only_not_runtime);
++  CHECK(result.rng_selector==17u&&result.site_count==21u);
++  CHECK(result.raw_direct_store_count==9u);
++  CHECK(result.raw_direct_rmw_count==5u);
++  CHECK(result.raw_indexed_count==6u);
++  CHECK(result.raw_absolute_count==1u);
++  CHECK(result.adjacent_lda_rng_store_count==0u);
++  unsigned fixed=0,matched=0,bank10=0;
++  for(unsigned i=0;i<result.site_count;i++){
++   Gk204Site *s=&result.sites[i];
++   if(s->bank==15){
++    fixed++;
++    if(s->kind==GK204_RAW_DIRECT_STORE&&s->opcode==0x85u&&
++       s->adjacent_lda_immediate&&s->immediate_value==23u&&
++       (s->hypothetical_pc==0xef3fu||s->hypothetical_pc==0xef4du))matched++;
++   }
++   if(s->bank==10)bank10++;
++  }
++  CHECK(fixed==2u&&matched==2u&&bank10==6u);
++  baseline=result;
++  FILE *f=fopen(argv[1],"rb");CHECK(f!=NULL);
++  CHECK(fread(bytes,1,262161u,f)==262160u);CHECK(fclose(f)==0);
++  bytes[16+15*16384+0x2f3f]^=1u;
++  CHECK(gk204_inventory_bytes(bytes,262160u,&result)==GK204_SOURCE_REFUSED);
++  CHECK(memcmp(&result,&baseline,sizeof result)==0);
++  CHECK(gk204_inventory_bytes(bytes,262159u,&result)==GK204_SOURCE_REFUSED);
++  CHECK(memcmp(&result,&baseline,sizeof result)==0);
++  app.setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;
++  CHECK(gk1_app_source_selector_store_inventory(&app,argv[1],&result)==GK204_OK);
++  CHECK(memcmp(&result,&baseline,sizeof result)==0);
++  CHECK(app.screen==GK1_SCREEN_TITLE&&app.stock_checkpoint.valid==0);
++  app.setup_stage[0]=GK53_SETUP_PLAYERS;
++  CHECK(gk1_app_source_selector_store_inventory(&app,argv[1],&result)==GK204_ARGUMENT);
++  CHECK(memcmp(&result,&baseline,sizeof result)==0);
++ }
++ free(bytes);printf("GK204 PASS %u assertions%s\n",checks,argc==2?" on authenticated private original":" public rejection only");
++ return 0;
++}
