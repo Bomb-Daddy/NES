@@ -1,0 +1,688 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5ab4104..3f3ada1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ cmake_minimum_required(VERSION 3.15)
+-project(GK1NativeShell174 C)
++project(GK1NativeShell177 C)
+ find_package(ZLIB QUIET)
+ set(CMAKE_C_STANDARD 11)
+ set(CMAKE_C_STANDARD_REQUIRED ON)
+@@ -7,7 +7,7 @@ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -55,18 +55,18 @@ endif()
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+-  set(CPACK_PACKAGE_VERSION "1.76.0")
++  set(CPACK_PACKAGE_VERSION "1.77.0")
+   set(CPACK_PACKAGE_VENDOR "GK1 native research prototype")
+   set(CPACK_PACKAGE_INSTALL_DIRECTORY "Genghis Khan I Native Research")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Incomplete native Genghis Khan I research; original first Spring still unfinished")
+-  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.76.0-dev1")
+-  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.76.0-dev1")
++  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.77.0-dev1")
++  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.77.0-dev1")
+   set(CPACK_NSIS_MUI_FINISHPAGE_RUN "gk1_native_shell.exe")
+   set(CPACK_NSIS_MODIFY_PATH OFF)
+-  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.76.0-dev1")
++  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.77.0-dev1")
+   set(CPACK_CREATE_DESKTOP_LINKS "gk1_native_shell")
+   include(CPack)
+ endif()
+@@ -153,7 +153,7 @@ if(UNIX AND NOT APPLE)
+   install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+-  set(CPACK_PACKAGE_VERSION "1.76.0")
++  set(CPACK_PACKAGE_VERSION "1.77.0")
+   set(CPACK_DEBIAN_PACKAGE_RELEASE "dev1")
+   set(CPACK_PACKAGE_CONTACT "GK1 research prototype (offline source distribution)")
+   set(CPACK_DEBIAN_PACKAGE_MAINTAINER "GK1 Native Research")
+@@ -165,7 +165,7 @@ if(UNIX AND NOT APPLE)
+   set(CPACK_DEBIAN_PACKAGE_SECTION "games")
+   set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Genghis Khan I native research prototype, not completed game")
+-  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.76.0~dev1_amd64")
++  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.77.0~dev1_amd64")
+   set(CPACK_SET_DESTDIR OFF)
+   set(CPACK_PACKAGING_INSTALL_PREFIX "/")
+   find_package(Python3 COMPONENTS Interpreter)
+@@ -783,3 +783,9 @@ add_executable(test_gk176_enhanced_cycle test_gk176_enhanced_cycle.c)
+ target_link_libraries(test_gk176_enhanced_cycle PRIVATE gk1_app_state)
+ add_test(NAME GK1_176_EnhancedLaborContinuationAttestationRollback
+  COMMAND test_gk176_enhanced_cycle ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0177 authenticated Enhanced continuation durable cross-session receipt.
++add_executable(test_gk177_enhanced_receipt test_gk177_enhanced_receipt.c)
++target_link_libraries(test_gk177_enhanced_receipt PRIVATE gk1_app_state)
++add_test(NAME GK1_177_EnhancedContinuationDurableAtomicColdLoad
++ COMMAND test_gk177_enhanced_receipt ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+diff --git a/README_EXEC0177.md b/README_EXEC0177.md
+new file mode 100644
+index 0000000..583123a
+--- /dev/null
++++ b/README_EXEC0177.md
+@@ -0,0 +1,38 @@
++# EXEC0177 — Authenticated Enhanced continuation replay save and cold resume
++
++This is a **real incremental save/cold-load improvement to the SAME 1280x720
++native C11 game**, based on all files in EXEC0176. It does **not** implement
++KOEI/NES first-Spring setup, AI, three Classic commands, original trade RNG,
++dynasty, diplomacy, battle aftermath, a full campaign, or Win32 device QA.
++
++Controller X while the Enhanced continuation is active creates an exclusive,
++owner-private `.gk77` receipt. Y loads it without changing live state on
++failure. From TITLE, X loads the exact private original `.gk17` source and
++then the newest continuation `.gk77`, checking the complete immutable original
++checkpoint and replaying all 5 inherited and up to 20 continuation seasons.
++A corrupted newer receipt refuses rather than silently rolling back to an
++older stage. No source ROM bytes, SRAM, images or audio go into `.gk77`.
++
++The fixed 448-byte GC77/v1 format records the source SHA identity and ordered
++from/to/amount action receipts, Pass flags and current season; trailing SHA256
++validates file integrity but is **not** authentication. The actual authenticity
++boundary is the SHA-validated private original source, complete upstream
++stage replay, strict canonical re-encode and atomic commit. Classic mode
++cannot import Enhanced receipts. Existing `.gk16`–`.gk21` receipts are retained.
++
++Linux I/O: exclusive 0600 creation, file fsync, parent-directory fsync,
++O_NOFOLLOW load, fstat regular/owner-only/single-link/exact-size checks.
++Windows `_commit` branch authored but **NOT RUN** and Windows ACL equivalence
++not certified. Only the verified `.gk77` ownership path is allowed to consume
++this format, never the original NES source slot.
++
++Build: `cmake -S execution_177 -B build177 -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build177 -j8 && ctest --test-dir build177 --output-on-failure`.
++Private original runtime regression (do not publish fixtures):
++`build177/test_gk177_enhanced_receipt build177/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv PRIVATE_FRESH_14x83.bin 1`;
++use profile 2 for archived Mongol SaveRAM, profile 3 for archived World SaveRAM.
++
++Labels: VERIFIED_STATIC (source/replay/format); OBSERVED_RUNTIME_STOCK (prior
++three original Spring samples only); TESTED_PORT_LINUX (native integration
++and controller UI). NOT RUN: new NES/Mesen playback, Windows installer,
++physical Xbox, full campaigns. Publication of this source is not a Director
++acceptance or other agent execution acknowledgement.
+diff --git a/gk177_enhanced_receipt.c b/gk177_enhanced_receipt.c
+new file mode 100644
+index 0000000..9f9f99c
+--- /dev/null
++++ b/gk177_enhanced_receipt.c
+@@ -0,0 +1,194 @@
++#define _GNU_SOURCE
++#include "gk177_enhanced_receipt.h"
++#include "gk1_source_identity.h"
++#include <string.h>
++#include <stdio.h>
++#include <errno.h>
++#include <stdlib.h>
++#include <sys/stat.h>
++#ifdef _WIN32
++#include <io.h>
++#else
++#include <unistd.h>
++#include <fcntl.h>
++#endif
++
++#define BASE 48u
++#define FIRST_SEASONS 5u
++#define RECORD 14u
++#define CONT (BASE + FIRST_SEASONS*RECORD)
++#define HASH 416u
++static uint16_t amount(const uint8_t *s){return (uint16_t)((unsigned)s[2]|((unsigned)s[3]<<8));}
++static void put(uint8_t *p,uint8_t n,uint8_t passed,const Gk116LaborAction *a){
++ p[0]=n;p[1]=passed;
++ for(unsigned i=0;i<n;i++){
++  p[2u+i*4u]=a[i].from;p[3u+i*4u]=a[i].to;
++  p[4u+i*4u]=(uint8_t)a[i].quantity;
++  p[5u+i*4u]=(uint8_t)(a[i].quantity>>8);
++ }
++}
++static int canonical_stages(const Gk79Checkpoint *o,const Gk177Stages *s){
++ return o&&s&&gk176_attestation_intact(&s->continuation,
++   &s->year2,&s->spring,&s->summer,&s->fall,&s->winter,o);
++}
++Gk177Status gk177_encode(const Gk79Checkpoint *o,const Gk177Stages *s,
++ uint8_t raw[GK177_BYTES]){
++ if(!raw||!o||!s)return GK177_INPUT;
++ if(!canonical_stages(o,s))return GK177_SOURCE;
++ memset(raw,0,GK177_BYTES);
++ memcpy(raw,"GC77",4);raw[4]=1u;raw[5]=1u;
++ raw[6]=(uint8_t)s->spring.mutable_world.scenario_id;
++ raw[7]=s->spring.player_index;
++ raw[8]=(uint8_t)s->spring.year;raw[9]=(uint8_t)(s->spring.year>>8);
++ raw[10]=(uint8_t)s->spring.rate;raw[11]=(uint8_t)(s->spring.rate>>8);
++ raw[12]=s->continuation.season_index;raw[13]=1u;
++ memcpy(raw+16,s->spring.source_sha,32);
++ put(raw+BASE,s->spring.action_count,s->spring.pass_ended,s->spring.actions);
++ put(raw+BASE+RECORD,s->summer.action_count,s->summer.pass_ended,s->summer.actions);
++ put(raw+BASE+2u*RECORD,s->fall.action_count,s->fall.pass_ended,s->fall.actions);
++ put(raw+BASE+3u*RECORD,s->winter.action_count,s->winter.pass_ended,s->winter.actions);
++ put(raw+BASE+4u*RECORD,s->year2.action_count,s->year2.pass_ended,s->year2.actions);
++ for(unsigned i=0;i<=s->continuation.season_index;i++){
++  const Gk176SeasonReceipt *r=&s->continuation.receipts[i];
++  put(raw+CONT+i*RECORD,r->action_count,r->pass_ended,r->actions);
++ }
++ gk1_sha256_bytes(raw,HASH,raw+HASH);
++ return GK177_OK;
++}
++static int valid_rec(const uint8_t *p){return p[0]<=3u&&p[1]<=1u;}
++#define ACT(P) ((P)+2u)
++#define LOOP_TRANSFER(R,OBJ,CALL) do{ \
++ const uint8_t *r=(R);if(!valid_rec(r))return GK177_CORRUPT; \
++ for(unsigned j=0;j<r[0];j++){const uint8_t *a=ACT(r)+4u*j; \
++  if((CALL)!=GK177_OK)return GK177_CORRUPT;} \
++}while(0)
++/* Replay every preserved stage against the authenticated original source.
++ * Do not deserialize mutable world state, budgets, RNG or licensed source. */
++Gk177Status gk177_decode(const Gk79Checkpoint *o,uint8_t enhanced,
++ const uint8_t *raw,size_t length,Gk177Stages *out){
++ if(!o||!raw||!out)return GK177_INPUT;
++ if(enhanced!=1u)return GK177_SOURCE;
++ if(length!=GK177_BYTES||memcmp(raw,"GC77",4)||raw[4]!=1u||
++    raw[5]!=1u||raw[12]>=GK176_MAX_SEASONS||raw[13]!=1u||
++    raw[14]!=0u||raw[15]!=0u)return GK177_CORRUPT;
++ uint8_t digest[32];gk1_sha256_bytes(raw,HASH,digest);
++ if(memcmp(digest,raw+HASH,32))return GK177_CORRUPT;
++ Gk177Stages *tmp=calloc(1,sizeof *tmp);if(!tmp)return GK177_IO;
++ Gk177Status status=GK177_CORRUPT;
++ if(gk116_open(o,1,&tmp->spring)!=GK116_OK){status=GK177_SOURCE;goto end;}
++ const uint8_t *r=raw+BASE;
++ if(!valid_rec(r))goto end;
++ for(unsigned j=0;j<r[0];j++){
++  const uint8_t *a=r+2u+4u*j;
++  if(gk116_transfer(&tmp->spring,o,a[0],a[1],amount(a))!=GK116_OK)goto end;
++ }
++ if(r[1]&&gk116_pass_remaining(&tmp->spring,o)!=GK116_OK)goto end;
++ if(gk158_open(&tmp->spring,o,&tmp->summer)!=GK158_OK)goto end;
++ r=raw+BASE+RECORD;if(!valid_rec(r))goto end;
++ for(unsigned j=0;j<r[0];j++){
++  const uint8_t *a=r+2u+4u*j;
++  if(gk158_transfer(&tmp->summer,&tmp->spring,o,a[0],a[1],amount(a))!=GK158_OK)goto end;
++ }
++ if(r[1]&&gk158_pass(&tmp->summer,&tmp->spring,o)!=GK158_OK)goto end;
++ if(gk159_open(&tmp->spring,&tmp->summer,o,&tmp->fall)!=GK159_OK)goto end;
++ r=raw+BASE+2u*RECORD;if(!valid_rec(r))goto end;
++ for(unsigned j=0;j<r[0];j++){
++  const uint8_t *a=r+2u+4u*j;
++  if(gk159_transfer(&tmp->fall,&tmp->spring,&tmp->summer,o,a[0],a[1],amount(a))!=GK159_OK)goto end;
++ }
++ if(r[1]&&gk159_pass(&tmp->fall,&tmp->spring,&tmp->summer,o)!=GK159_OK)goto end;
++ if(gk160_open(&tmp->spring,&tmp->summer,&tmp->fall,o,&tmp->winter)!=GK160_OK)goto end;
++ r=raw+BASE+3u*RECORD;if(!valid_rec(r))goto end;
++ for(unsigned j=0;j<r[0];j++){
++  const uint8_t *a=r+2u+4u*j;
++  if(gk160_transfer(&tmp->winter,&tmp->spring,&tmp->summer,&tmp->fall,o,a[0],a[1],amount(a))!=GK160_OK)goto end;
++ }
++ if(r[1]&&gk160_pass(&tmp->winter,&tmp->spring,&tmp->summer,&tmp->fall,o)!=GK160_OK)goto end;
++ if(gk161_open(&tmp->spring,&tmp->summer,&tmp->fall,&tmp->winter,o,&tmp->year2)!=GK161_OK)goto end;
++ r=raw+BASE+4u*RECORD;if(!valid_rec(r))goto end;
++ for(unsigned j=0;j<r[0];j++){
++  const uint8_t *a=r+2u+4u*j;
++  if(gk161_transfer(&tmp->year2,&tmp->spring,&tmp->summer,&tmp->fall,&tmp->winter,
++    o,a[0],a[1],amount(a))!=GK161_OK)goto end;
++ }
++ if(r[1]&&gk161_pass(&tmp->year2,&tmp->spring,&tmp->summer,&tmp->fall,
++    &tmp->winter,o)!=GK161_OK)goto end;
++ if(gk176_open(&tmp->year2,&tmp->spring,&tmp->summer,&tmp->fall,
++    &tmp->winter,o,&tmp->continuation)!=GK176_OK)goto end;
++ for(unsigned i=0;i<=raw[12];i++){
++  r=raw+CONT+i*RECORD;if(!valid_rec(r))goto end;
++  if(i&&gk176_advance(&tmp->continuation,&tmp->year2,&tmp->spring,
++     &tmp->summer,&tmp->fall,&tmp->winter,o)!=GK176_OK)goto end;
++  for(unsigned j=0;j<r[0];j++){
++   const uint8_t *a=r+2u+4u*j;
++   if(gk176_transfer(&tmp->continuation,&tmp->year2,&tmp->spring,
++      &tmp->summer,&tmp->fall,&tmp->winter,o,a[0],a[1],amount(a))!=GK176_OK)goto end;
++  }
++  if(r[1]&&gk176_pass(&tmp->continuation,&tmp->year2,&tmp->spring,
++      &tmp->summer,&tmp->fall,&tmp->winter,o)!=GK176_OK)goto end;
++ }
++ /* Compare the whole canonical encoding, not merely an unkeyed digest.
++  * Reject unused actions, padding, forged event histories and mismatched source. */
++ uint8_t canonical[GK177_BYTES];
++ if(gk177_encode(o,tmp,canonical)!=GK177_OK||memcmp(raw,canonical,sizeof canonical))goto end;
++ *out=*tmp;status=GK177_OK;
++end:
++ memset(tmp,0,sizeof *tmp);free(tmp);return status;
++}
++Gk177Status gk177_save_new(const char *path,const Gk79Checkpoint *o,
++ const Gk177Stages *s){
++ if(!path||!*path)return GK177_INPUT;
++ uint8_t raw[GK177_BYTES];Gk177Status r=gk177_encode(o,s,raw);
++ if(r!=GK177_OK)return r;
++#ifdef _WIN32
++ errno=0;FILE *fp=fopen(path,"wbx");if(!fp)return errno==EEXIST?GK177_EXISTS:GK177_IO;
++ size_t n=fwrite(raw,1,sizeof raw,fp);int er=ferror(fp);int flush=fflush(fp);
++ int sync=flush?1:_commit(_fileno(fp));int close_result=fclose(fp);
++#else
++ int fd=open(path,O_WRONLY|O_CREAT|O_EXCL,0600);
++ if(fd<0)return errno==EEXIST?GK177_EXISTS:GK177_IO;
++ size_t n=0;int er=0;
++ while(n<sizeof raw){ssize_t k=write(fd,raw+n,sizeof raw-n);
++   if(k<0&&errno==EINTR)continue;
++   if(k<=0){er=1;break;} n+=(size_t)k;}
++ int sync=er?1:fsync(fd);int close_result=close(fd);
++ /* The directory entry itself must also survive a crash before success. */
++ if(!er&&!sync&&!close_result){
++  const char *slash=strrchr(path,'/');
++  char dir[4096];size_t len=slash?(size_t)(slash-path):1u;
++  if(len==0u)len=1u;
++  if(len>=sizeof dir)sync=1;
++  else {
++   if(slash){memcpy(dir,path,len);dir[len]=0;}
++   else {dir[0]='.';dir[1]=0;}
++   int dfd=open(dir,O_RDONLY|O_DIRECTORY|O_NOFOLLOW);
++   if(dfd<0)sync=1;
++   else {if(fsync(dfd))sync=1;if(close(dfd))sync=1;}
++  }
++ }
++#endif
++ if(n!=sizeof raw||er||sync||close_result){(void)remove(path);return GK177_IO;}
++ return GK177_OK;
++}
++Gk177Status gk177_cold_load(const char *path,const Gk79Checkpoint *o,
++ uint8_t enhanced,Gk177Stages *out){
++ if(!path||!*path||!o||!out)return GK177_INPUT;
++ uint8_t raw[GK177_BYTES+1u];size_t n=0;int er=0;
++#ifdef _WIN32
++ FILE *fp=fopen(path,"rb");if(!fp)return GK177_IO;
++ n=fread(raw,1,sizeof raw,fp);er=ferror(fp);int cl=fclose(fp);
++#else
++ int fd=open(path,O_RDONLY|O_NOFOLLOW);
++ if(fd<0)return GK177_IO;
++ struct stat st;
++ if(fstat(fd,&st)||!S_ISREG(st.st_mode)||st.st_nlink!=1||
++     (st.st_mode&077u)!=0u||st.st_uid!=geteuid()||
++     st.st_size!=(off_t)GK177_BYTES){(void)close(fd);return GK177_CORRUPT;}
++ while(n<sizeof raw){ssize_t k=read(fd,raw+n,sizeof raw-n);
++   if(k<0&&errno==EINTR)continue;
++   if(k<0){er=1;break;}if(k==0)break;n+=(size_t)k;}
++ int cl=close(fd);
++#endif
++ if(er||cl)return GK177_IO;
++ return gk177_decode(o,enhanced,raw,n,out);
++}
+diff --git a/gk177_enhanced_receipt.h b/gk177_enhanced_receipt.h
+new file mode 100644
+index 0000000..fbcd598
+--- /dev/null
++++ b/gk177_enhanced_receipt.h
+@@ -0,0 +1,28 @@
++#ifndef GK177_ENHANCED_RECEIPT_H
++#define GK177_ENHANCED_RECEIPT_H
++#include "gk176_enhanced_cycle.h"
++/* PORT-ONLY source-attested Enhanced labor history, not original NES save/turns.
++ * Requires the exact private original-stock checkpoint to cold-load.
++ * 448-byte canonical, replayable, fixed endian on-disk receipt. */
++#define GK177_BYTES 448u
++typedef enum {GK177_OK=0,GK177_INPUT,GK177_SOURCE,GK177_CORRUPT,
++              GK177_IO,GK177_EXISTS} Gk177Status;
++typedef struct {
++ Gk116EnhancedAssign spring;
++ Gk158EnhancedSummer summer;
++ Gk159EnhancedFall fall;
++ Gk160EnhancedWinter winter;
++ Gk161EnhancedYear2 year2;
++ Gk176EnhancedCycle continuation;
++} Gk177Stages;
++/* Atomic decode: outputs unchanged on every failure, including forged action
++ * counts, stale stock source, noncanonical reserved bytes, SHA mismatch. */
++Gk177Status gk177_encode(const Gk79Checkpoint *original,
++ const Gk177Stages *stages,uint8_t bytes[GK177_BYTES]);
++Gk177Status gk177_decode(const Gk79Checkpoint *original,uint8_t enhanced,
++ const uint8_t *bytes,size_t length,Gk177Stages *out);
++Gk177Status gk177_save_new(const char *path,const Gk79Checkpoint *original,
++ const Gk177Stages *stages);
++Gk177Status gk177_cold_load(const char *path,const Gk79Checkpoint *original,
++ uint8_t enhanced,Gk177Stages *out);
++#endif
+diff --git a/gk1_native_shell.c b/gk1_native_shell.c
+index e33f74d..b75d946 100644
+--- a/gk1_native_shell.c
++++ b/gk1_native_shell.c
+@@ -7,6 +7,7 @@
+ #include "gk174_setup_boundary.h"
+ #include "gk80_full_checkpoint.h"
+ #include "gk171_enhanced_title_resume.h"
++#include "gk177_enhanced_receipt.h"
+ #include "gk1_app_state.h"
+ #include "gk95_stock_trade_reference.h"
+ #include "gk96_ppu_warmup.h"
+@@ -62,7 +63,7 @@
+ # include <linux/joystick.h>
+ # include <sys/stat.h>
+ #endif
+-#define GK1_PORT_VERSION "1.76.0-dev1"
++#define GK1_PORT_VERSION "1.77.0-dev1"
+ #define WIDTH 1280
+ #define HEIGHT 720
+ #define BG UINT32_C(0x10202b)
+@@ -1455,6 +1456,41 @@ static int private_stock_slot_path(char *out,size_t size){
+  * receipt using the private original GK17 as its immutable source. Every
+  * receipt is interpreted by the same attestation/replay module as in-game Y;
+  * no keyboard, CLI arguments or fake first Spring is required for the resume. */
++/* EXEC0177: X/Y on an active authenticated Enhanced continuation; X from
++ * TITLE resumes this receipt first, refusing any corrupt highest-stage save.
++ * Neither routine mutates original stock RAM or creates a Classic order. */
++static int continuation_path(char *out,size_t cap){
++ const char *base=getenv("GK1_ENHANCED_CONTINUATION_SAVE_FILE");
++#ifdef _WIN32
++ if(!base||!*base)base=gk59_profile_default(3,"gk1_enhanced_continuation_slot1.gk77");
++#else
++ if(!base||!*base)base=gk120_linux_default(4,"gk1_enhanced_continuation_slot1.gk77");
++#endif
++ return gk58_slot_path(base,campaign_slot,out,cap);
++}
++static void continuation_io(int save){
++ char path[1100];
++ if(!continuation_path(path,sizeof path)){
++  strcpy(app.status,"ENHANCED CONTINUATION PATH INVALID: NO STATE CHANGED");return;
++ }
++ Gk177Stages *st=calloc(1,sizeof *st);
++ if(!st){strcpy(app.status,"ENHANCED CONTINUATION: ALLOCATION FAILED");return;}
++ st->spring=app.enhanced_assign;st->summer=app.enhanced_summer;
++ st->fall=app.enhanced_fall;st->winter=app.enhanced_winter;
++ st->year2=app.enhanced_year2;st->continuation=app.enhanced_continuation;
++ Gk177Status r=save?gk177_save_new(path,&app.stock_checkpoint,st):
++    gk177_cold_load(path,&app.stock_checkpoint,app.rules_profile,st);
++ if(!save&&r==GK177_OK){
++  app.enhanced_assign=st->spring;app.enhanced_summer=st->summer;
++  app.enhanced_fall=st->fall;app.enhanced_winter=st->winter;
++  app.enhanced_year2=st->year2;app.enhanced_continuation=st->continuation;
++  app.screen=GK1_SCREEN_ENHANCED_CONTINUATION;
++ }
++ snprintf(app.status,sizeof app.status,"ENHANCED 20-SEASON %s: %s (NO NES SEASON PARITY)",
++  save?"SAVE":"LOAD",r==GK177_OK?"SOURCE-REPLAY VERIFIED":
++  r==GK177_EXISTS?"EXISTS - NOT OVERWRITTEN":"REFUSED - UNCHANGED");
++ memset(st,0,sizeof *st);free(st);
++}
+ static void enhanced_title_resume(void){
+  if(app.screen!=GK1_SCREEN_TITLE||!scenario_loaded)return;
+  char stock_path[1100],paths[GK171_STAGES][1100];
+@@ -1473,6 +1509,49 @@ static void enhanced_title_resume(void){
+   "GK1_ENHANCED_FALL_SAVE_FILE","GK1_ENHANCED_WINTER_SAVE_FILE",
+   "GK1_ENHANCED_YEAR2_SAVE_FILE"
+  };
++ /* A GC77 continuation is newer than five historical stage receipts.
++  * Its presence dominates; corruption never falls back to an older stage. */
++ char continuation_file[1100];
++ if(!continuation_path(continuation_file,sizeof continuation_file)){
++  strcpy(app.status,"CONTINUATION RESUME PATH INVALID: NO STATE CHANGED");return;
++ }
++#ifdef _WIN32
++ struct _stat64 cont_stat;
++ int has_cont=(_stat64(continuation_file,&cont_stat)==0);
++#else
++ struct stat cont_stat;
++ int has_cont=(lstat(continuation_file,&cont_stat)==0);
++#endif
++#ifndef _WIN32
++ if(!has_cont&&errno!=ENOENT){
++  strcpy(app.status,"CONTINUATION SAVE INACCESSIBLE: NO FALLBACK OR STATE CHANGE");return;
++ }
++#endif
++ if(has_cont){
++  Gk1App *candidate=malloc(sizeof *candidate);
++  Gk177Stages *stage=calloc(1,sizeof *stage);
++  if(!candidate||!stage){free(candidate);free(stage);
++   strcpy(app.status,"CONTINUATION RESUME ALLOCATION REFUSED");return;}
++  *candidate=app;
++  Gk177Status r=GK177_SOURCE;
++  if(gk167_cold_load_private(stock_path,scenario_csv_path(),candidate)==GK167_OK){
++   candidate->rules_profile=1u;
++   r=gk177_cold_load(continuation_file,&candidate->stock_checkpoint,1u,stage);
++  }
++  if(r==GK177_OK){
++   candidate->enhanced_assign=stage->spring;
++   candidate->enhanced_summer=stage->summer;
++   candidate->enhanced_fall=stage->fall;
++   candidate->enhanced_winter=stage->winter;
++   candidate->enhanced_year2=stage->year2;
++   candidate->enhanced_continuation=stage->continuation;
++   candidate->screen=GK1_SCREEN_ENHANCED_CONTINUATION;
++   strcpy(candidate->status,"ENHANCED 20-SEASON COLD RESUMED: NOT ORIGINAL NES PARITY");
++   app=*candidate;
++  }else strcpy(app.status,"CONTINUATION SAVE REFUSED: SOURCE/RECEIPT INVALID - UNCHANGED");
++  memset(stage,0,sizeof *stage);free(stage);
++  memset(candidate,0,sizeof *candidate);free(candidate);return;
++ }
+  Gk171Paths p={0};p.source_gk17=stock_path;
+  p.canonical_csv=scenario_csv_path();
+  for(unsigned i=0;i<GK171_STAGES;i++){
+@@ -1506,12 +1585,7 @@ static void refresh_private_title_preview(void){
+  private_title_preview_valid=1;
+ }
+ static void replay_key(int save){
+- /* Continuation has not yet received an exact cold-load format: refuse rather
+-  * than silently write the older Year2 checkpoint and lose later progress. */
+- if(app.enhanced_continuation.active){
+-  strcpy(app.status,"CONTINUATION SAVE/LOAD NOT IMPLEMENTED: NO FILE OR STATE CHANGED");
+-  return;
+- }
++ if(app.enhanced_continuation.active){continuation_io(save);return;}
+  /* Self-contained original-stock save: X creates a user-private local file;
+   * Y from the TITLE works after a true process restart without reattaching
+   * the ROM or original snapshot, provided canonical country CSV is installed.
+@@ -2157,7 +2231,7 @@ int main(int argc,char **argv){
+   return 0;
+  }
+  if(argc==2&&strcmp(argv[1],"--version")==0){
+-  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0176 source-attested Enhanced 20-season labor-only continuation; EXEC0174 original stock CPU boot/RAM provenance boundary; EXEC0173 bounded executed RNG control-transfer telemetry; EXEC0172 static source RNG xref; EXEC0171 controller X TITLE source-attested Enhanced labor-season cold resume, no NES season parity; EXEC0170 read-only SHA-verified TITLE private slot inventory; EXEC0169 port-only controller OTHER private checkpoint save/load; EXEC0168 Linux protected owner-private cold-save reload/flush; EXEC0167 owner-private self-contained source-attested Spring save/cold resume, NOT a full campaign; EXEC0166 integrated fresh WorkRAM JSON in-memory checkpoint + EXEC0164 archived Mesen .mss; original NES initialization still NOT reconstructed; EXEC0164 in-memory archived original Mesen controller checkpoint entry (VIEW/PASS only, no independent Spring); EXEC0163 genuine archived Mesen .mss import verified against exact original stock country SHA (no NES first-Spring generation); EXEC0162 source-attested original-stock checkpoint controller re-entry and atomic profile replacement, including clearing stale Enhanced YEAR2; VIEW/PASS only; not NES first-Spring independent generation; EXEC0161 authenticated Enhanced YEAR2 SPRING rollover after Winter, three labor-only orders and exclusive GY21 save/cold-load; NO original NES Spring economics, first Spring or character RNG; EXEC0160 Enhanced-only research Winter with Spring/Summer/Fall source-attested receipts, no original weather/AI; EXEC0159 Enhanced-only research Fall with Spring/Summer receipt chaining; EXEC0158 Enhanced-only research Summer with 3 labor orders, no original seasonal economy/RNG, preserving EXEC0157 symbolic PPUSTATUS low7 guarded trace, preserving EXEC0156 exhaustive 128-variant matrix; EXEC0155 source-verified sign-only polling of $2002 only inside a BPL loop (unverified PPU origin; first edge explicitly hypothetical; NO independent Spring), EXEC0154 explicitly hypothetical single VBlank-edge source branch; EXEC0153 executed country-write watch; EXEC0152 source-authenticated raw Spring country-store candidate inventory (not executed), EXEC0151 explicitly assumed EVEN pre-render source trace, NOT original Mesen parity; EXEC0150 bounded render-on-source progression (not Mesen parity); EXEC0149 verified stock PPU phase gate/source scan (NOT original Mesen parity); EXEC0148 private-source bank-aware original 15-stage reset/Spring chronology; EXEC0147 original stock source-backed ten-goods controller VIEW; EXEC0146 Enhanced authentic-checkpoint variable-quantity labor; EXEC0145 fresh progress gate (no Spring creation), EXEC0144 archived Mesen PRG-page mapping, EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
++  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0177 durable source-attested Enhanced 20-season receipt/cold resume; EXEC0176 Enhanced 20-season labor-only continuation; EXEC0174 original stock CPU boot/RAM provenance boundary; EXEC0173 bounded executed RNG control-transfer telemetry; EXEC0172 static source RNG xref; EXEC0171 controller X TITLE source-attested Enhanced labor-season cold resume, no NES season parity; EXEC0170 read-only SHA-verified TITLE private slot inventory; EXEC0169 port-only controller OTHER private checkpoint save/load; EXEC0168 Linux protected owner-private cold-save reload/flush; EXEC0167 owner-private self-contained source-attested Spring save/cold resume, NOT a full campaign; EXEC0166 integrated fresh WorkRAM JSON in-memory checkpoint + EXEC0164 archived Mesen .mss; original NES initialization still NOT reconstructed; EXEC0164 in-memory archived original Mesen controller checkpoint entry (VIEW/PASS only, no independent Spring); EXEC0163 genuine archived Mesen .mss import verified against exact original stock country SHA (no NES first-Spring generation); EXEC0162 source-attested original-stock checkpoint controller re-entry and atomic profile replacement, including clearing stale Enhanced YEAR2; VIEW/PASS only; not NES first-Spring independent generation; EXEC0161 authenticated Enhanced YEAR2 SPRING rollover after Winter, three labor-only orders and exclusive GY21 save/cold-load; NO original NES Spring economics, first Spring or character RNG; EXEC0160 Enhanced-only research Winter with Spring/Summer/Fall source-attested receipts, no original weather/AI; EXEC0159 Enhanced-only research Fall with Spring/Summer receipt chaining; EXEC0158 Enhanced-only research Summer with 3 labor orders, no original seasonal economy/RNG, preserving EXEC0157 symbolic PPUSTATUS low7 guarded trace, preserving EXEC0156 exhaustive 128-variant matrix; EXEC0155 source-verified sign-only polling of $2002 only inside a BPL loop (unverified PPU origin; first edge explicitly hypothetical; NO independent Spring), EXEC0154 explicitly hypothetical single VBlank-edge source branch; EXEC0153 executed country-write watch; EXEC0152 source-authenticated raw Spring country-store candidate inventory (not executed), EXEC0151 explicitly assumed EVEN pre-render source trace, NOT original Mesen parity; EXEC0150 bounded render-on-source progression (not Mesen parity); EXEC0149 verified stock PPU phase gate/source scan (NOT original Mesen parity); EXEC0148 private-source bank-aware original 15-stage reset/Spring chronology; EXEC0147 original stock source-backed ten-goods controller VIEW; EXEC0146 Enhanced authentic-checkpoint variable-quantity labor; EXEC0145 fresh progress gate (no Spring creation), EXEC0144 archived Mesen PRG-page mapping, EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
+  }
+  /* Preserve EXEC0056's tested synthetic-pad correction/export contract. */
+  if(argc==3&&strcmp(argv[1],"--bonus-correction-export")==0){
+diff --git a/packaging/gk1-native-research.desktop b/packaging/gk1-native-research.desktop
+index cba9fd7..769dc4d 100644
+--- a/packaging/gk1-native-research.desktop
++++ b/packaging/gk1-native-research.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-Name=Genghis Khan I Research 1.76.0-dev1
++Name=Genghis Khan I Research 1.77.0-dev1
+ GenericName=NES-to-Windows Port Research Prototype
+ Comment=Incomplete native Genghis Khan I research game; source-bounded battles only
+ Exec=gk1-native-research
+diff --git a/packaging/test_gk176_version_contract.py b/packaging/test_gk176_version_contract.py
+index a0f8b1e..850ad49 100644
+--- a/packaging/test_gk176_version_contract.py
++++ b/packaging/test_gk176_version_contract.py
+@@ -1,10 +1,10 @@
+ #!/usr/bin/env python3
+-"""EXEC0176 reproducible package/launcher consistency (not Win32 runtime QA)."""
++"""EXEC0177 reproducible package/launcher consistency (not Win32 runtime QA)."""
+ import pathlib,re,subprocess,sys
+ if len(sys.argv)!=5: raise SystemExit('need binary, CMakeLists, desktop, CPackConfig')
+ binfile,cmfile,desktopfile,configfile=map(pathlib.Path,sys.argv[1:])
+ source=cmfile.read_text(); desk=desktopfile.read_text(); pkg=configfile.read_text()
+-version='1.76.0'; display=version+'-dev1'
++version='1.77.0'; display=version+'-dev1'
+ assert all(p.is_file() for p in (binfile,cmfile,desktopfile,configfile))
+ assert source.count('set(CPACK_PACKAGE_VERSION "'+version+'")') == 2 # Windows and Debian
+ assert 'set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research '+display+'")' in source
+@@ -18,4 +18,4 @@ r=subprocess.run([str(binfile),'--version'],capture_output=True,text=True,timeou
+ assert r.returncode==0 and ('research prototype '+display) in r.stdout
+ assert 'not full game' in r.stdout
+ assert not re.search(r'Name=Genghis Khan I Research 1\.(?:73|74)\.0',desk)
+-print('GK176 launcher, Linux runtime, DEB, authored NSIS version: PASS; actual NSIS/Win32 NOT RUN')
++print('GK177 launcher, Linux runtime, DEB, authored NSIS version: PASS; actual NSIS/Win32 NOT RUN')
+diff --git a/packaging/test_package_contract.py b/packaging/test_package_contract.py
+index 87d466e..cfb2892 100644
+--- a/packaging/test_package_contract.py
++++ b/packaging/test_package_contract.py
+@@ -5,14 +5,14 @@ exe,csv,desktop=map(pathlib.Path,sys.argv[1:4])
+ assert exe.is_file() and csv.is_file() and desktop.is_file()
+ assert hashlib.sha256(csv.read_bytes()).hexdigest()=="fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581"
+ entry=desktop.read_text()
+-assert "Name=Genghis Khan I Research 1.76.0-dev1" in entry
++assert "Name=Genghis Khan I Research 1.77.0-dev1" in entry
+ assert "Exec=gk1-native-research\n" in entry
+ assert "Terminal=false\n" in entry
+ with tempfile.TemporaryDirectory(prefix='gk1_exec54_') as tmp:
+     def run(*args,env=None):
+         return subprocess.run([str(exe),*args],cwd=tmp,env=env,capture_output=True,text=True,timeout=15)
+     v=run('--version')
+-    assert v.returncode==0 and '1.76.0-dev1' in v.stdout and 'not full game' in v.stdout
++    assert v.returncode==0 and '1.77.0-dev1' in v.stdout and 'not full game' in v.stdout
+     for sc,num in ((1,14),(2,27)):
+         r=run('--scenario-report',str(sc))
+         assert r.returncode==0,(r.stdout,r.stderr)
+diff --git a/test_gk177_enhanced_receipt.c b/test_gk177_enhanced_receipt.c
+new file mode 100644
+index 0000000..a035647
+--- /dev/null
++++ b/test_gk177_enhanced_receipt.c
+@@ -0,0 +1,139 @@
++#define _POSIX_C_SOURCE 200809L
++#include "gk177_enhanced_receipt.h"
++#include "gk117_stock_pristine_gate.h"
++#include "gk1_source_identity.h"
++#include <assert.h>
++#define CONT 118u
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <sys/stat.h>
++#ifdef _WIN32
++#include <io.h>
++#else
++#include <unistd.h>
++#endif
++static unsigned checks=0;
++#define CHECK(X) do{checks++;if(!(X)){fprintf(stderr,"GK177 check %u line %d: %s\n",checks,__LINE__,#X);abort();}}while(0)
++static void negatives(void){
++ Gk79Checkpoint o={0};Gk177Stages s={0},old={0};
++ uint8_t bytes[GK177_BYTES]={0};
++ CHECK(gk177_encode(&o,&s,bytes)==GK177_SOURCE);
++ CHECK(gk177_encode(NULL,&s,bytes)==GK177_INPUT);
++ CHECK(gk177_encode(&o,&s,NULL)==GK177_INPUT);
++ CHECK(gk177_decode(&o,0u,bytes,sizeof bytes,&s)==GK177_SOURCE);
++ CHECK(gk177_decode(&o,1u,bytes,sizeof bytes,&s)==GK177_CORRUPT);
++ CHECK(gk177_decode(&o,1u,bytes,sizeof bytes-1u,&s)==GK177_CORRUPT);
++ CHECK(gk177_decode(&o,1u,NULL,sizeof bytes,&s)==GK177_INPUT);
++ CHECK(gk177_save_new("",&o,&s)==GK177_INPUT);
++ CHECK(gk177_cold_load("",&o,1u,&s)==GK177_INPUT);
++ CHECK(!memcmp(&old,&s,sizeof s));
++}
++static void private_positive(const char *csv,const char *records,Gk77Profile profile){
++ Gk1TemplateDataset *d=malloc(sizeof *d);
++ Gk1LoadedScenario *world=calloc(1,sizeof *world);
++ Gk177Stages *s=calloc(1,sizeof *s),*decoded=calloc(1,sizeof *decoded);
++ CHECK(d&&world&&s&&decoded);
++ CHECK(gk1_template_load(csv,d)==GK1_LOAD_OK);
++ CHECK(gk1_open_loaded_scenario(d,profile==GK77_ARCHIVED_WORLD_SAVERAM?
++   GK1_WORLD_CONQUEST:GK1_MONGOL_CONQUEST,world)==GK1_LOAD_OK);
++ Gk79Checkpoint *o=calloc(1,sizeof *o);CHECK(o);
++ CHECK(gk117_open_attested_original(csv,world,records,
++   profile,0,o)==GK117_OK);
++ CHECK(gk116_open(o,1,&s->spring)==GK116_OK);
++ CHECK(gk116_transfer(&s->spring,o,0,4,5)==GK116_OK);
++ CHECK(gk116_pass_remaining(&s->spring,o)==GK116_OK);
++ CHECK(gk158_open(&s->spring,o,&s->summer)==GK158_OK);
++ CHECK(gk158_transfer(&s->summer,&s->spring,o,0,4,5)==GK158_OK);
++ CHECK(gk158_pass(&s->summer,&s->spring,o)==GK158_OK);
++ CHECK(gk159_open(&s->spring,&s->summer,o,&s->fall)==GK159_OK);
++ CHECK(gk159_transfer(&s->fall,&s->spring,&s->summer,o,0,4,5)==GK159_OK);
++ CHECK(gk159_pass(&s->fall,&s->spring,&s->summer,o)==GK159_OK);
++ CHECK(gk160_open(&s->spring,&s->summer,&s->fall,o,&s->winter)==GK160_OK);
++ CHECK(gk160_transfer(&s->winter,&s->spring,&s->summer,&s->fall,o,0,4,5)==GK160_OK);
++ CHECK(gk160_pass(&s->winter,&s->spring,&s->summer,&s->fall,o)==GK160_OK);
++ CHECK(gk161_open(&s->spring,&s->summer,&s->fall,&s->winter,o,&s->year2)==GK161_OK);
++ CHECK(gk161_transfer(&s->year2,&s->spring,&s->summer,&s->fall,&s->winter,o,0,4,5)==GK161_OK);
++ CHECK(gk161_pass(&s->year2,&s->spring,&s->summer,&s->fall,&s->winter,o)==GK161_OK);
++ CHECK(gk176_open(&s->year2,&s->spring,&s->summer,&s->fall,
++   &s->winter,o,&s->continuation)==GK176_OK);
++ CHECK(gk176_transfer(&s->continuation,&s->year2,&s->spring,&s->summer,
++  &s->fall,&s->winter,o,0,4,2)==GK176_OK);
++ /* Exercise durable replay at every intermediate Spring/Summer/Fall/Winter,
++  * then final 20th Enhanced season, including year rollover and pass. */
++ uint8_t raw[GK177_BYTES];
++ for(unsigned i=0;i<GK176_MAX_SEASONS;i++){
++  if(i){
++   CHECK(gk176_advance(&s->continuation,&s->year2,&s->spring,&s->summer,
++     &s->fall,&s->winter,o)==GK176_OK);
++   CHECK(gk176_transfer(&s->continuation,&s->year2,&s->spring,&s->summer,
++     &s->fall,&s->winter,o,0,4,1)==GK176_OK);
++  }
++  CHECK(gk177_encode(o,s,raw)==GK177_OK);
++  CHECK(gk177_decode(o,1u,raw,sizeof raw,decoded)==GK177_OK);
++  CHECK(!memcmp(decoded,s,sizeof *s));
++  CHECK(gk176_pass(&s->continuation,&s->year2,&s->spring,&s->summer,
++    &s->fall,&s->winter,o)==GK176_OK);
++ }
++ CHECK(gk177_encode(o,s,raw)==GK177_OK);
++ CHECK(gk177_decode(o,1,raw,sizeof raw,decoded)==GK177_OK);
++ CHECK(!memcmp(decoded,s,sizeof *s));
++ Gk177Stages *sentinel=malloc(sizeof *sentinel);CHECK(sentinel);
++ *sentinel=*decoded;
++ uint8_t forged[GK177_BYTES];memcpy(forged,raw,sizeof raw);
++ forged[CONT+0]=0xffu; /* Overlong receipt; recompute digest to defeat hash-only guards */
++ gk1_sha256_bytes(forged,416u,forged+416u);
++ CHECK(gk177_decode(o,1u,forged,sizeof forged,decoded)==GK177_CORRUPT);
++ CHECK(!memcmp(decoded,sentinel,sizeof *sentinel));
++ memcpy(forged,raw,sizeof raw);forged[0]^=1u;
++ CHECK(gk177_decode(o,1u,forged,sizeof forged,decoded)==GK177_CORRUPT);
++ CHECK(!memcmp(decoded,sentinel,sizeof *sentinel));
++ memcpy(forged,raw,sizeof raw);forged[398u]=1u;
++ gk1_sha256_bytes(forged,416u,forged+416u);
++ CHECK(gk177_decode(o,1u,forged,sizeof forged,decoded)==GK177_CORRUPT);
++ CHECK(!memcmp(decoded,sentinel,sizeof *sentinel));
++ CHECK(gk177_decode(o,0u,raw,sizeof raw,decoded)==GK177_SOURCE);
++ CHECK(!memcmp(decoded,sentinel,sizeof *sentinel));
++ char path[200];
++#ifdef _WIN32
++ snprintf(path,sizeof path,"gk177_replay_qa_%u.gk77",(unsigned)checks);
++#else
++ snprintf(path,sizeof path,"/tmp/gk177_replay_qa_%ld.gk77",(long)getpid());
++#endif
++ remove(path);
++ CHECK(gk177_save_new(path,o,s)==GK177_OK);
++ CHECK(gk177_save_new(path,o,s)==GK177_EXISTS);
++ CHECK(gk177_cold_load(path,o,1u,decoded)==GK177_OK);
++ CHECK(!memcmp(decoded,s,sizeof *s));
++#ifndef _WIN32
++ struct stat st;CHECK(stat(path,&st)==0&&!(st.st_mode&077));
++ char hard[220],sym[220];snprintf(hard,sizeof hard,"%s.hard",path);
++ snprintf(sym,sizeof sym,"%s.sym",path);
++ (void)remove(hard);(void)remove(sym);
++ CHECK(link(path,hard)==0);
++ CHECK(gk177_cold_load(path,o,1u,decoded)==GK177_CORRUPT);
++ CHECK(!memcmp(decoded,sentinel,sizeof *sentinel));
++ CHECK(remove(hard)==0);
++ CHECK(symlink(path,sym)==0);
++ CHECK(gk177_cold_load(sym,o,1u,decoded)!=GK177_OK);
++ CHECK(!memcmp(decoded,sentinel,sizeof *sentinel));
++ CHECK(remove(sym)==0);
++ CHECK(chmod(path,0644)==0);
++ CHECK(gk177_cold_load(path,o,1u,decoded)==GK177_CORRUPT);
++ CHECK(!memcmp(decoded,sentinel,sizeof *sentinel));
++ CHECK(chmod(path,0600)==0);
++#endif
++ FILE *fp=fopen(path,"r+b");CHECK(fp!=NULL);CHECK(fputc('X',fp)!=EOF);CHECK(!fclose(fp));
++ CHECK(gk177_cold_load(path,o,1u,decoded)==GK177_CORRUPT);
++ CHECK(!memcmp(decoded,sentinel,sizeof *sentinel));
++ CHECK(remove(path)==0);
++ free(sentinel);free(decoded);free(s);free(o);free(world);free(d);
++}
++int main(int argc,char **argv){
++ negatives();
++ if(argc==3||argc==4)private_positive(argv[1],argv[2],
++   (Gk77Profile)(argc==4?atoi(argv[3]):GK77_FRESH_MONGOL_WORKRAM));
++ else CHECK(argc==2);
++ printf("GK177 %u assertions PASS: source-attested Enhanced continuation only; Classic Spring NOT IMPLEMENTED\n",checks);
++ return 0;
++}
