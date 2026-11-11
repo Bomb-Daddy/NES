@@ -1,0 +1,7 @@
+# Genghis Khan I — EXEC0193 (research v1.93.0-dev1)
+
+Original 1280x720 Windows/XInput and Linux/X11 C11 game, based on the **complete** EXEC0192 source. Exact original USA ROM and private 83-byte country records are **not shipped**.
+
+**New executable behavior:** `--play-original-auto <owner-private snapshot>` or `--smoke-original-auto <snapshot> <frames>` recognizes *by its contents* an authenticated original Mesen archived-state `.mss` (Mongol 14 or World 27 countries, correct active **SaveRAM** bank), or the single authenticated fresh `14_after_wait` reset JSON (14 countries, **WorkRAM**). It delegates source SHA/bank validation to established native original importers, commits the verified native `Gk1App` only on success, and returns the detected profile. Wrong-bank, tampered, missing, incompatible Enhanced profile and wrong canonical CSV all fail without mutation. No private source data is written, logged, distributed or embedded. This continues the real stock checkpoint with existing Classic controller actions; it **does not independently synthesize original first Spring**, NES RNG or full Classic campaigns.
+
+Build from the **whole** inherited historical archive, not GitHub delta alone. Hostile test `test_gk193_auto_source_entry <canonical 41-country CSV> [private fresh JSON] [private archived Mongol.mss] [private archived World.mss]` checks exact live native world, three-source recognition, and negative full-struct rollback. Private files remain local, never in GitHub or installers. Windows binary/NSIS and physical Xbox device not tested.
