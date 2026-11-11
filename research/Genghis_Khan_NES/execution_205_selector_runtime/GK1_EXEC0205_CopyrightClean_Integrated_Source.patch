@@ -1,0 +1,237 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+index 51c1bab..6850314 100644
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -977,3 +977,8 @@ add_test(NAME GK1_203_AuthenticatedSelectorWriterSourceOnlyNoPhantomFirstSpring
+ add_executable(test_gk204_selector_store_inventory test_gk204_selector_store_inventory.c)
+ target_link_libraries(test_gk204_selector_store_inventory PRIVATE gk1_app_state)
+ add_test(NAME GK1_204_OriginalSelectorStoreCandidatesStaticOnly COMMAND test_gk204_selector_store_inventory)
++
++# EXEC0205 source-executed 6502 selector-write telemetry; no source ROM in public artifacts.
++add_executable(test_gk205_selector_runtime_watch test_gk205_selector_runtime_watch.c)
++target_link_libraries(test_gk205_selector_runtime_watch PRIVATE gk1_app_state)
++add_test(NAME GK1_205_BoundedStockCPUSelectorWriteTelemetry COMMAND test_gk205_selector_runtime_watch)
+diff --git a/execution_199/gk1_native_shell.c b/execution_199/gk1_native_shell.c
+index 80ccd71..add5f7d 100644
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -3071,6 +3071,26 @@ if(argc==3 && strcmp(argv[1],"--pre-setup-pad-smoke")==0){
+  else if(argc==5&&strcmp(argv[1],"--smoke-original-mss")==0){
+   smoke=atoi(argv[4]);if(smoke<1||smoke>120)return 4;
+  }
++ else if(argc==3&&strcmp(argv[1],"--audit-stock-selector-runtime")==0){
++  Gk83Trace t={0};
++  Gk83Stop status=gk83_trace_original_reset(argv[2],20000u,&t);
++  if(status==GK83_INVALID||status==GK83_SOURCE_REFUSED){
++   fputs("GK205 refused unauthenticated original stock source\n",stderr);return 1;
++  }
++  printf("SOURCE_BOUNDED original reset gate=%u pc=$%04X steps=%u; completed selector $0050 writes=%u, dropped=%u; unexecuted BRK gates=%u\n",
++   status,t.stop_pc,t.instructions,t.selector_runtime.completed_selector_writes,
++   t.selector_runtime.dropped_event_details,t.selector_runtime.brk_gates);
++  for(unsigned i=0;i<t.selector_runtime.completed_selector_writes&&i<GK205_STORED_EVENTS;i++){
++   const Gk205Store *e=&t.selector_runtime.first[i];
++   printf("  STORE pc=$%04X cpu=$%04X selector=%u cycle=%llu bank=%s\n",
++    e->pc,e->address,e->selector_value,(unsigned long long)e->bus_cpu_cycle,
++    e->bank_known?"known":"unknown");
++  }
++  if(t.selector_runtime.brk_gates)printf("  BRK GATE (NOT EXECUTED): pc=$%04X selector=%s\n",
++   t.selector_runtime.brk_pc,t.selector_runtime.brk_selector_known?"known":"unknown");
++  puts("NOT MESEN RUNTIME. Stops at first unmodelled event; cannot infer Spring RNG or first playable season.");
++  return 0;
++ }
+  else if(argc==3&&strcmp(argv[1],"--audit-stock-selector-store-candidates")==0){
+   Gk204Inventory p={0};
+   if(gk204_inventory_file(argv[2],&p)!=GK204_OK){
+diff --git a/execution_199/gk205_selector_runtime_watch.c b/execution_199/gk205_selector_runtime_watch.c
+new file mode 100644
+index 0000000..d42fff9
+--- /dev/null
++++ b/execution_199/gk205_selector_runtime_watch.c
+@@ -0,0 +1,30 @@
++#include "gk205_selector_runtime_watch.h"
++#include <limits.h>
++Gk205Result gk205_note_completed_selector_store(Gk205SelectorWatch *w,
++ uint16_t pc,uint16_t addr,uint8_t value,uint8_t known,uint8_t bank,
++ uint64_t cycle){
++ if(!w||pc<0x8000u||known>1u||bank>15u)return GK205_BAD_INPUT;
++ if(addr>=0x2000u||(addr&0x07ffu)!=0x0050u)return GK205_OUTSIDE;
++ if(w->completed_selector_writes==UINT32_MAX)return GK205_BAD_INPUT;
++ if(w->completed_selector_writes>=GK205_STORED_EVENTS &&
++    w->dropped_event_details==UINT32_MAX)return GK205_BAD_INPUT;
++ Gk205Store event={pc,addr,value,bank,known,cycle};
++ if(w->completed_selector_writes<GK205_STORED_EVENTS)
++  w->first[w->completed_selector_writes]=event;
++ else w->dropped_event_details++;
++ w->completed_selector_writes++;
++ w->last=event;
++ return GK205_RECORDED;
++}
++Gk205Result gk205_note_brk_gate(Gk205SelectorWatch *w,uint16_t pc,
++ uint8_t selector_known,uint8_t selector,uint8_t bank_known,uint8_t bank){
++ if(!w||pc<0x8000u||selector_known>1u||bank_known>1u||bank>15u||
++    w->brk_gates==UINT32_MAX)return GK205_BAD_INPUT;
++ ++w->brk_gates;
++ w->brk_pc=pc;
++ w->brk_selector_known=selector_known;
++ w->brk_selector_value=selector_known?selector:0u;
++ w->brk_bank_known=bank_known;
++ w->brk_bank=bank_known?bank:0u;
++ return GK205_BRK_ATTEMPT;
++}
+diff --git a/execution_199/gk205_selector_runtime_watch.h b/execution_199/gk205_selector_runtime_watch.h
+new file mode 100644
+index 0000000..b596534
+--- /dev/null
++++ b/execution_199/gk205_selector_runtime_watch.h
+@@ -0,0 +1,33 @@
++#ifndef GK205_SELECTOR_RUNTIME_WATCH_H
++#define GK205_SELECTOR_RUNTIME_WATCH_H
++#include <stdint.h>
++/* Only source-CPU stores completed in the bounded C11 6502 executor.
++ * A BRK is a GATE, not an executed interrupt, and the code never infers
++ * a first Spring, original Mesen time, or mapper state when unknown. */
++#define GK205_STORED_EVENTS 16u
++typedef enum {
++ GK205_BAD_INPUT=0,GK205_OUTSIDE=1,GK205_RECORDED=2,GK205_BRK_ATTEMPT=3
++} Gk205Result;
++typedef struct {
++ uint16_t pc, address;
++ uint8_t selector_value, prg_bank, bank_known;
++ uint64_t bus_cpu_cycle;
++} Gk205Store;
++typedef struct {
++ uint32_t completed_selector_writes;
++ uint32_t dropped_event_details;
++ uint32_t brk_gates; /* bounded emulator stopped BEFORE executing the BRK */
++ uint16_t brk_pc;
++ uint8_t brk_selector_known,brk_selector_value;
++ uint8_t brk_bank_known,brk_bank;
++ Gk205Store first[GK205_STORED_EVENTS];
++ Gk205Store last;
++} Gk205SelectorWatch;
++/* Failure/outside/overflow is atomic. NES internal RAM mirrors included.
++ * CPU cycles are a bounded interpreter's clocks, NOT original Mesen clocks. */
++Gk205Result gk205_note_completed_selector_store(Gk205SelectorWatch *w,
++ uint16_t source_pc,uint16_t cpu_addr,uint8_t value,
++ uint8_t prg_known,uint8_t prg_bank,uint64_t write_cycle);
++Gk205Result gk205_note_brk_gate(Gk205SelectorWatch *w,uint16_t source_pc,
++ uint8_t selector_known,uint8_t selector,uint8_t prg_known,uint8_t prg_bank);
++#endif
+diff --git a/execution_199/gk83_reset_trace.c b/execution_199/gk83_reset_trace.c
+index eaa3ef4..c7f0916 100644
+--- a/execution_199/gk83_reset_trace.c
++++ b/execution_199/gk83_reset_trace.c
+@@ -340,6 +340,9 @@ static void write_byte(Machine *m,uint16_t addr,uint8_t v){
+  }
+  if(addr<0x2000u){unsigned at=addr&0x7ffu;
+   m->ram[at]=v;m->known[at]=1u;m->result.ram_writes++;
++  if(at==0x50u)(void)gk205_note_completed_selector_store(
++   &m->result.selector_runtime,m->result.stop_pc,addr,v,
++   m->prg_known,m->prg,m->write_end_cycle);
+   if(at==0x00f5u){m->result.source_f5_writes++;
+    m->result.source_f5_last_writer_pc=m->result.stop_pc;}
+  }else if(addr>=0x6000u && addr<0x8000u){
+@@ -795,7 +798,10 @@ static Gk83Stop one(Machine *m){
+   if(!s){m->p=(uint8_t)((b|0x20u)&~0x10u);m->pc=(uint16_t)(lo|((unsigned)hi<<8u));}
+   break;
+  }
+- case 0x00:s=GK83_BRK_GATE;break;
++ case 0x00:
++  (void)gk205_note_brk_gate(&m->result.selector_runtime,start_pc,
++   m->known[0x50u],m->ram[0x50u],m->prg_known,m->prg);
++  s=GK83_BRK_GATE;break;
+  default:s=GK83_OPCODE_GATE;break;
+  }
+ finish_one:
+diff --git a/execution_199/gk83_reset_trace.h b/execution_199/gk83_reset_trace.h
+index 7d88feb..b5fe68a 100644
+--- a/execution_199/gk83_reset_trace.h
++++ b/execution_199/gk83_reset_trace.h
+@@ -2,6 +2,7 @@
+ #define GK83_RESET_TRACE_H
+ #include <stdint.h>
+ #include "gk153_country_write_watch.h"
++#include "gk205_selector_runtime_watch.h"
+ #include "gk173_rng_control.h"
+ /* Exact, private STOCK ROM 6502 reset-source trace. Only executes instructions
+  * while every RAM read is initialized by the trace and every PRG-bank mapping
+@@ -27,6 +28,7 @@ typedef struct {
+  uint32_t ram_writes,peripheral_writes,jsr_count,rom_bank_switches;
+  Gk173RngControl executed_rng_transfers;
+  Gk153CountryWatch country_writes; /* only source-executed, successful PRG-RAM writes */
++ Gk205SelectorWatch selector_runtime; /* bounded CPU completed stores, BRK is a GATE */
+  uint16_t first_jsr,first_banked_pc;
+  /* EXEC0126: first actual ROM-sourced write requiring peripheral behavior
+   * absent from the bounded CPU interpreter; the attempt is NOT completed. */
+diff --git a/execution_199/test_gk205_selector_runtime_watch.c b/execution_199/test_gk205_selector_runtime_watch.c
+new file mode 100644
+index 0000000..09e0ae6
+--- /dev/null
++++ b/execution_199/test_gk205_selector_runtime_watch.c
+@@ -0,0 +1,57 @@
++#include "gk205_selector_runtime_watch.h"
++#include "gk83_reset_trace.h"
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++#include <limits.h>
++#define CHECK(q) do { if(!(q)){fprintf(stderr,"GK205 FAIL %s:%d %s\n",__FILE__,__LINE__,#q);return 1;} ++count;}while(0)
++int main(void){
++ unsigned count=0;
++ Gk205SelectorWatch w={0},before;
++ before=w;
++ CHECK(gk205_note_completed_selector_store(NULL,0xc111,0x50,17,1,7,22)==GK205_BAD_INPUT);
++ CHECK(gk205_note_completed_selector_store(&w,0xc111,0x51,17,1,7,22)==GK205_OUTSIDE);
++ CHECK(!memcmp(&before,&w,sizeof(w)));
++ CHECK(gk205_note_completed_selector_store(&w,0x4000,0x50,17,1,7,22)==GK205_BAD_INPUT);
++ CHECK(!memcmp(&before,&w,sizeof(w)));
++ CHECK(gk205_note_completed_selector_store(&w,0xc111,0x50,17,2,7,22)==GK205_BAD_INPUT);
++ CHECK(!memcmp(&before,&w,sizeof(w)));
++ CHECK(gk205_note_completed_selector_store(&w,0xc111,0x50,17,1,16,22)==GK205_BAD_INPUT);
++ CHECK(!memcmp(&before,&w,sizeof(w)));
++ CHECK(gk205_note_completed_selector_store(&w,0xc111,0x2050,17,1,7,22)==GK205_OUTSIDE);
++ CHECK(!memcmp(&before,&w,sizeof(w)));
++ CHECK(gk205_note_completed_selector_store(&w,0xc111,0x0050,17,1,7,22)==GK205_RECORDED);
++ CHECK(w.completed_selector_writes==1&&w.first[0].selector_value==17);
++ CHECK(w.first[0].pc==0xc111&&w.first[0].address==0x50&&w.first[0].bus_cpu_cycle==22);
++ CHECK(gk205_note_completed_selector_store(&w,0x8123,0x1850,23,0,0,26)==GK205_RECORDED);
++ CHECK(w.completed_selector_writes==2&&w.last.selector_value==23&&w.last.bank_known==0);
++ CHECK(gk205_note_brk_gate(NULL,0xc111,1,17,1,2)==GK205_BAD_INPUT);
++ before=w;
++ CHECK(gk205_note_brk_gate(&w,0xc111,2,17,1,2)==GK205_BAD_INPUT);
++ CHECK(!memcmp(&before,&w,sizeof(w)));
++ CHECK(gk205_note_brk_gate(&w,0xc111,0,17,0,2)==GK205_BRK_ATTEMPT);
++ CHECK(w.brk_gates==1&&w.brk_pc==0xc111&&w.brk_selector_known==0);
++ CHECK(w.brk_selector_value==0&&w.brk_bank_known==0&&w.brk_bank==0);
++ CHECK(gk205_note_brk_gate(&w,0xc113,1,17,1,3)==GK205_BRK_ATTEMPT);
++ CHECK(w.brk_gates==2&&w.brk_selector_known&&w.brk_selector_value==17&&w.brk_bank==3);
++ for(unsigned i=2;i<22;i++)
++  CHECK(gk205_note_completed_selector_store(&w,0xc555,0x850,(uint8_t)i,1,0,i)==GK205_RECORDED);
++ CHECK(w.completed_selector_writes==22&&w.dropped_event_details==6);
++ CHECK(w.first[15].selector_value==15&&w.last.selector_value==21);
++ w.completed_selector_writes=UINT32_MAX;before=w;
++ CHECK(gk205_note_completed_selector_store(&w,0xc555,0x50,1,1,0,1)==GK205_BAD_INPUT);
++ CHECK(!memcmp(&before,&w,sizeof(w)));
++ /* Genuine stock input is not packaged with the public test. */
++ const char *rom=getenv("GK1_ORIGINAL_STOCK_ROM");
++ if(rom&&*rom){
++  Gk83Trace trace={0};
++  Gk83Stop stop=gk83_trace_original_reset(rom,20000,&trace);
++  CHECK(stop==GK83_UNKNOWN_RAM_GATE);
++  CHECK(trace.stop_pc==0x8060&&trace.instructions==70);
++  CHECK(trace.selector_runtime.completed_selector_writes==0);
++  CHECK(trace.selector_runtime.brk_gates==0);
++  CHECK(trace.first_unknown_ram_read==0xf5);
++ }
++ printf("GK205 bounded 6502 selector-write/BRK-gate telemetry: %u assertions PASS; original source gate is NOT an NES game initialization\n",count);
++ return 0;
++}
