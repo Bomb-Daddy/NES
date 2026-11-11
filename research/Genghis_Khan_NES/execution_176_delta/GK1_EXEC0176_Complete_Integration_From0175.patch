@@ -1,0 +1,705 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 79841bb..5ab4104 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,7 +7,7 @@ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -55,18 +55,18 @@ endif()
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+-  set(CPACK_PACKAGE_VERSION "1.75.0")
++  set(CPACK_PACKAGE_VERSION "1.76.0")
+   set(CPACK_PACKAGE_VENDOR "GK1 native research prototype")
+   set(CPACK_PACKAGE_INSTALL_DIRECTORY "Genghis Khan I Native Research")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Incomplete native Genghis Khan I research; original first Spring still unfinished")
+-  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.75.0-dev1")
+-  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.75.0-dev1")
++  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.76.0-dev1")
++  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.76.0-dev1")
+   set(CPACK_NSIS_MUI_FINISHPAGE_RUN "gk1_native_shell.exe")
+   set(CPACK_NSIS_MODIFY_PATH OFF)
+-  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.75.0-dev1")
++  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.76.0-dev1")
+   set(CPACK_CREATE_DESKTOP_LINKS "gk1_native_shell")
+   include(CPack)
+ endif()
+@@ -150,10 +150,10 @@ if(UNIX AND NOT APPLE)
+           DESTINATION opt/gk1-native-research)
+   install(PROGRAMS packaging/gk1-native-research DESTINATION usr/bin)
+   install(FILES packaging/gk1-native-research.desktop DESTINATION usr/share/applications)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md DESTINATION usr/share/doc/gk1-native-research)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+-  set(CPACK_PACKAGE_VERSION "1.75.0")
++  set(CPACK_PACKAGE_VERSION "1.76.0")
+   set(CPACK_DEBIAN_PACKAGE_RELEASE "dev1")
+   set(CPACK_PACKAGE_CONTACT "GK1 research prototype (offline source distribution)")
+   set(CPACK_DEBIAN_PACKAGE_MAINTAINER "GK1 Native Research")
+@@ -165,7 +165,7 @@ if(UNIX AND NOT APPLE)
+   set(CPACK_DEBIAN_PACKAGE_SECTION "games")
+   set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Genghis Khan I native research prototype, not completed game")
+-  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.75.0~dev1_amd64")
++  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.76.0~dev1_amd64")
+   set(CPACK_SET_DESTDIR OFF)
+   set(CPACK_PACKAGING_INSTALL_PREFIX "/")
+   find_package(Python3 COMPONENTS Interpreter)
+@@ -771,9 +771,15 @@ add_test(NAME GK1_174_ExactMesenRAMSetupBoundaryNotRuntimeParity COMMAND test_gk
+ # GK175: independently assert Linux launcher, CLI, CPack and both source
+ # packaging generator declarations share one version.
+ if(Python3_Interpreter_FOUND)
+- add_test(NAME GK1_175_LauncherAndDualPackagingVersionContract
+-  COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/packaging/test_gk175_version_contract.py
++ add_test(NAME GK1_176_LauncherAndDualPackagingVersionContract
++  COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/packaging/test_gk176_version_contract.py
+    $<TARGET_FILE:gk1_native_shell> ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt
+    ${CMAKE_CURRENT_SOURCE_DIR}/packaging/gk1-native-research.desktop
+    ${CMAKE_CURRENT_BINARY_DIR}/CPackConfig.cmake)
+ endif()
++
++# EXEC0176 Enhanced-only source-attested five-year labor continuation; Classic untouched.
++add_executable(test_gk176_enhanced_cycle test_gk176_enhanced_cycle.c)
++target_link_libraries(test_gk176_enhanced_cycle PRIVATE gk1_app_state)
++add_test(NAME GK1_176_EnhancedLaborContinuationAttestationRollback
++ COMMAND test_gk176_enhanced_cycle ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+diff --git a/README_EXEC0176.md b/README_EXEC0176.md
+new file mode 100644
+index 0000000..25b9c9c
+--- /dev/null
++++ b/README_EXEC0176.md
+@@ -0,0 +1,17 @@
++# GK1 EXEC0176 — Enhanced-only source-attested 20-season labor continuation
++
++This is an **incomplete research game**, never original-NES campaign parity.
++Directly inherits the full EXEC0175 native C11 app. Once a separately verified,
++original-stock checkpoint has been attached in the user's private workspace,
++and the five earlier Enhanced labor-only seasons have been completed, the
++controller can progress through up to 20 further Enhanced-only seasons.
++Each season enforces the existing three-action budget, labor transfers and Pass.
++Replay-based attestation reconstructs the entire chain from the immutable
++original 83-byte country records, rejecting corruption and mutated ancestors.
++Source, stock Classic mode, and 14/27 original templates are unchanged.
++No original CPU reset/RNG, AI, food, rates, taxes, dynasties, battles or merchants
++are simulated by this feature. Continuation save/cold-load is NOT implemented.
++Original Classic mode remains VIEW/PASS; no physical Xbox or Windows test.
++
++Build: `cmake -S execution_176 -B build176 -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build176 -j8 && ctest --test-dir build176 --output-on-failure -j8`.
++Private verifier (no redistribution): `build176/test_gk176_enhanced_cycle CSV PRIVATE_FRESH_14x83_RECORDS.bin`.
+diff --git a/__pycache__/gk139_archived_state_extract.cpython-313.pyc b/__pycache__/gk139_archived_state_extract.cpython-313.pyc
+index 220cdef4cae96036907cc674e7f19e7c586aaa61..43c8620e200ef5ab949dda06d01cf14bce93666d 100644
+GIT binary patch
+delta 61
+zcmaEB{>hx{GcPX}0}yl_-pI9-S;bjDH?KrLC9xz?KRr9XJijPA-q74!KeZw?xwIrR
+OKM%+=+kB2$UIGApbrh)p
+
+delta 56
+zcmexl{??r9GcPX}0}y;!xRGlqv%H;tZeEFgN@7W(etLF!eo?l5YDH>tX-Q^&Uc8~X
+K$>z(<@)7_mP!o*+
+
+diff --git a/gk176_enhanced_cycle.c b/gk176_enhanced_cycle.c
+new file mode 100644
+index 0000000..81e2219
+--- /dev/null
++++ b/gk176_enhanced_cycle.c
+@@ -0,0 +1,118 @@
++#include "gk176_enhanced_cycle.h"
++#include <string.h>
++#include <stdint.h>
++
++static Gk176Result source_seed(const Gk161EnhancedYear2 *y,
++ const Gk116EnhancedAssign *sp,const Gk158EnhancedSummer *su,
++ const Gk159EnhancedFall *fa,const Gk160EnhancedWinter *wi,
++ const Gk79Checkpoint *original,Gk176EnhancedCycle *out){
++ if(!out)return GK176_INPUT;
++ if(!y||!sp||!su||!fa||!wi||!original||y->year>UINT16_MAX-5u||
++    !gk161_attestation_intact(y,sp,su,fa,wi,original)||
++    !y->budget.ended||y->budget.remaining) return GK176_SOURCE;
++ Gk176EnhancedCycle e={0};
++ e.mutable_world=y->mutable_world;
++ e.budget=y->budget;
++ if(gk71_next_season(&e.mutable_world,&e.budget,GK71_SUMMER)!=GK71_OK)
++  return GK176_SOURCE;
++ e.year=y->year;e.active=1u;e.season_index=0u;
++ *out=e;return GK176_OK;
++}
++Gk176Result gk176_open(const Gk161EnhancedYear2 *y,
++ const Gk116EnhancedAssign *sp,const Gk158EnhancedSummer *su,
++ const Gk159EnhancedFall *fa,const Gk160EnhancedWinter *wi,
++ const Gk79Checkpoint *original,Gk176EnhancedCycle *out){
++ return source_seed(y,sp,su,fa,wi,original,out);
++}
++/* This private replay primitive cannot admit a forged receipt: every
++ * transition is regenerated by the existing validated labor/order engine. */
++static int replay_action(Gk176EnhancedCycle *next,
++ const Gk116EnhancedAssign *sp,const Gk116LaborAction *action){
++ Gk116Result r=gk116_worker_math(&next->mutable_world,&next->budget,
++   sp->player_index,action->from,action->to,action->quantity);
++ return r==GK116_OK;
++}
++int gk176_attestation_intact(const Gk176EnhancedCycle *e,
++ const Gk161EnhancedYear2 *y,const Gk116EnhancedAssign *sp,
++ const Gk158EnhancedSummer *su,const Gk159EnhancedFall *fa,
++ const Gk160EnhancedWinter *wi,const Gk79Checkpoint *original){
++ if(!e||!e->active||e->season_index>=GK176_MAX_SEASONS)return 0;
++ Gk176EnhancedCycle replay={0};
++ if(source_seed(y,sp,su,fa,wi,original,&replay)!=GK176_OK)return 0;
++ for(unsigned season=0;season<=e->season_index;season++){
++  Gk176SeasonReceipt const *src=&e->receipts[season];
++  Gk176SeasonReceipt *dst=&replay.receipts[season];
++  if(src->action_count>GK176_MAX_ACTIONS||src->pass_ended>1u)return 0;
++  for(unsigned i=0;i<src->action_count;i++){
++   if(!replay_action(&replay,sp,&src->actions[i]))return 0;
++   dst->actions[dst->action_count++]=src->actions[i];
++  }
++  if(src->pass_ended){
++   if(gk71_pass(&replay.budget)!=GK71_OK)return 0;
++   dst->pass_ended=1u;
++  }
++  if(season<e->season_index){
++   if(!replay.budget.ended)return 0;
++   Gk71Season following=(Gk71Season)((replay.budget.season+1u)%4u);
++   if(gk71_next_season(&replay.mutable_world,&replay.budget,following)!=GK71_OK)
++    return 0;
++   if(following==GK71_SPRING)replay.year++;
++   replay.season_index++;
++  }
++ }
++ return memcmp(&replay,e,sizeof replay)==0;
++}
++static Gk176Result map_worker(Gk116Result r){
++ if(r==GK116_NO_WORKER)return GK176_NO_WORKER;
++ if(r==GK116_NO_ORDERS)return GK176_NO_ORDERS;
++ return GK176_INPUT;
++}
++Gk176Result gk176_transfer(Gk176EnhancedCycle *e,
++ const Gk161EnhancedYear2 *y,const Gk116EnhancedAssign *sp,
++ const Gk158EnhancedSummer *su,const Gk159EnhancedFall *fa,
++ const Gk160EnhancedWinter *wi,const Gk79Checkpoint *original,
++ uint8_t from,uint8_t to,uint16_t amount){
++ if(!e)return GK176_INPUT;
++ if(!gk176_attestation_intact(e,y,sp,su,fa,wi,original))return GK176_SOURCE;
++ const Gk176SeasonReceipt *r=&e->receipts[e->season_index];
++ if(e->budget.ended||r->action_count>=GK176_MAX_ACTIONS||r->pass_ended)
++  return GK176_NO_ORDERS;
++ Gk176EnhancedCycle next=*e;
++ Gk116Result status=gk116_worker_math(&next.mutable_world,&next.budget,
++   sp->player_index,from,to,amount);
++ if(status!=GK116_OK)return map_worker(status);
++ Gk116LaborAction action={0};action.from=from;action.to=to;action.quantity=amount;
++ next.receipts[next.season_index].actions[next.receipts[next.season_index].action_count++]=action;
++ if(!gk176_attestation_intact(&next,y,sp,su,fa,wi,original))return GK176_SOURCE;
++ *e=next;return GK176_OK;
++}
++Gk176Result gk176_pass(Gk176EnhancedCycle *e,
++ const Gk161EnhancedYear2 *y,const Gk116EnhancedAssign *sp,
++ const Gk158EnhancedSummer *su,const Gk159EnhancedFall *fa,
++ const Gk160EnhancedWinter *wi,const Gk79Checkpoint *original){
++ if(!e)return GK176_INPUT;
++ if(!gk176_attestation_intact(e,y,sp,su,fa,wi,original))return GK176_SOURCE;
++ if(e->budget.ended)return GK176_NO_ORDERS;
++ Gk176EnhancedCycle next=*e;
++ if(gk71_pass(&next.budget)!=GK71_OK)return GK176_SOURCE;
++ next.receipts[next.season_index].pass_ended=1u;
++ if(!gk176_attestation_intact(&next,y,sp,su,fa,wi,original))return GK176_SOURCE;
++ *e=next;return GK176_OK;
++}
++Gk176Result gk176_advance(Gk176EnhancedCycle *e,
++ const Gk161EnhancedYear2 *y,const Gk116EnhancedAssign *sp,
++ const Gk158EnhancedSummer *su,const Gk159EnhancedFall *fa,
++ const Gk160EnhancedWinter *wi,const Gk79Checkpoint *original){
++ if(!e)return GK176_INPUT;
++ if(!gk176_attestation_intact(e,y,sp,su,fa,wi,original))return GK176_SOURCE;
++ if(!e->budget.ended)return GK176_NO_ORDERS;
++ if(e->season_index+1u==GK176_MAX_SEASONS)return GK176_END;
++ Gk176EnhancedCycle next=*e;
++ Gk71Season season=(Gk71Season)((next.budget.season+1u)%4u);
++ if(gk71_next_season(&next.mutable_world,&next.budget,season)!=GK71_OK)
++  return GK176_SOURCE;
++ if(season==GK71_SPRING)next.year++;
++ next.season_index++;
++ if(!gk176_attestation_intact(&next,y,sp,su,fa,wi,original))return GK176_SOURCE;
++ *e=next;return GK176_OK;
++}
+diff --git a/gk176_enhanced_cycle.h b/gk176_enhanced_cycle.h
+new file mode 100644
+index 0000000..132f5a7
+--- /dev/null
++++ b/gk176_enhanced_cycle.h
+@@ -0,0 +1,45 @@
++#ifndef GK176_ENHANCED_CYCLE_H
++#define GK176_ENHANCED_CYCLE_H
++#include "gk161_enhanced_year2.h"
++/* Post-year-two approved Enhanced LABOR-ONLY continuation. This does NOT
++ * simulate original NES food, taxes, aging, events, AI, diplomacy or RNG.
++ * Exact 20-season history is replayed against the immutable stock witness. */
++#define GK176_MAX_SEASONS 20u
++#define GK176_MAX_ACTIONS 3u
++typedef enum {
++ GK176_OK=0,GK176_INPUT,GK176_SOURCE,GK176_NO_ORDERS,
++ GK176_NO_WORKER,GK176_END
++} Gk176Result;
++typedef struct {
++ uint8_t action_count,pass_ended;
++ Gk116LaborAction actions[GK176_MAX_ACTIONS];
++} Gk176SeasonReceipt;
++typedef struct {
++ Gk1LoadedScenario mutable_world;
++ Gk71Budget budget;
++ uint16_t year;
++ uint8_t active,season_index;
++ Gk176SeasonReceipt receipts[GK176_MAX_SEASONS];
++} Gk176EnhancedCycle;
++Gk176Result gk176_open(const Gk161EnhancedYear2 *y,
++ const Gk116EnhancedAssign *sp,const Gk158EnhancedSummer *su,
++ const Gk159EnhancedFall *fa,const Gk160EnhancedWinter *wi,
++ const Gk79Checkpoint *original,Gk176EnhancedCycle *out);
++int gk176_attestation_intact(const Gk176EnhancedCycle *e,
++ const Gk161EnhancedYear2 *y,const Gk116EnhancedAssign *sp,
++ const Gk158EnhancedSummer *su,const Gk159EnhancedFall *fa,
++ const Gk160EnhancedWinter *wi,const Gk79Checkpoint *original);
++Gk176Result gk176_transfer(Gk176EnhancedCycle *e,
++ const Gk161EnhancedYear2 *y,const Gk116EnhancedAssign *sp,
++ const Gk158EnhancedSummer *su,const Gk159EnhancedFall *fa,
++ const Gk160EnhancedWinter *wi,const Gk79Checkpoint *original,
++ uint8_t from,uint8_t to,uint16_t amount);
++Gk176Result gk176_pass(Gk176EnhancedCycle *e,
++ const Gk161EnhancedYear2 *y,const Gk116EnhancedAssign *sp,
++ const Gk158EnhancedSummer *su,const Gk159EnhancedFall *fa,
++ const Gk160EnhancedWinter *wi,const Gk79Checkpoint *original);
++Gk176Result gk176_advance(Gk176EnhancedCycle *e,
++ const Gk161EnhancedYear2 *y,const Gk116EnhancedAssign *sp,
++ const Gk158EnhancedSummer *su,const Gk159EnhancedFall *fa,
++ const Gk160EnhancedWinter *wi,const Gk79Checkpoint *original);
++#endif
+diff --git a/gk1_app_state.c b/gk1_app_state.c
+index cad7635..86463f3 100644
+--- a/gk1_app_state.c
++++ b/gk1_app_state.c
+@@ -569,7 +569,7 @@ int gk1_app_input(Gk1App *s,Gk1Input cmd){
+      !gk88_stock_projection_intact(cp) || s->rules_profile!=0u ||
+      s->enhanced_assign.active || s->enhanced_summer.active ||
+      s->enhanced_fall.active || s->enhanced_winter.active ||
+-     s->enhanced_year2.active){
++     s->enhanced_year2.active||s->enhanced_continuation.active){
+     s->stock_storage_request=0u;s->stock_storage_confirm=0u;
+     s->screen=GK1_SCREEN_STOCK_COMMANDS;
+     strcpy(s->status,"PORT PRIVATE STORAGE REFUSED: SOURCE/PROFILE INVALID");return 1;
+@@ -635,6 +635,16 @@ int gk1_app_input(Gk1App *s,Gk1Input cmd){
+     strcpy(s->status,"VIEW: ORIGINAL COUNTRIES / NO ORDER SPENT");return 1;
+    }
+    if(route==GK134_ROUTE_ENHANCED_ASSIGN){
++    if(s->rules_profile==1u&&s->enhanced_continuation.active==1u){
++     if(!gk176_attestation_intact(&s->enhanced_continuation,&s->enhanced_year2,
++       &s->enhanced_assign,&s->enhanced_summer,&s->enhanced_fall,
++       &s->enhanced_winter,cp)){
++      strcpy(s->status,"CONTINUATION ASSIGN REFUSED: SOURCE CHAIN INVALID");return 1;
++     }
++     s->screen=GK1_SCREEN_ENHANCED_CONTINUATION;
++     s->assign_from=0u;s->assign_to=4u;s->assign_quantity=1u;
++     strcpy(s->status,"ENHANCED LABOR CONTINUATION: NO NES ANNUAL ECONOMY");return 1;
++    }
+     if(s->rules_profile==1u&&s->enhanced_year2.active==1u){
+      if(!gk161_attestation_intact(&s->enhanced_year2,&s->enhanced_assign,
+        &s->enhanced_summer,&s->enhanced_fall,&s->enhanced_winter,cp)){
+@@ -701,6 +711,7 @@ int gk1_app_input(Gk1App *s,Gk1Input cmd){
+     if(s->rules_profile!=0u || s->enhanced_assign.active ||
+        s->enhanced_summer.active||s->enhanced_fall.active||
+        s->enhanced_winter.active||s->enhanced_year2.active ||
++       s->enhanced_continuation.active ||
+        !cp->source_verified||!gk88_stock_projection_intact(cp)){
+       strcpy(s->status,"PORT STORAGE REFUSED: CLASSIC SOURCE REQUIRED");return 1;
+     }
+@@ -710,6 +721,30 @@ int gk1_app_input(Gk1App *s,Gk1Input cmd){
+     strcpy(s->status,"PORT-ONLY OTHER: OWNER-PRIVATE CHECKPOINT SAVE/LOAD");return 1;
+    }
+    if(route==GK134_ROUTE_PASS){
++    if(s->rules_profile==1u&&s->enhanced_continuation.active==1u){
++     Gk176EnhancedCycle *e=&s->enhanced_continuation;
++     if(!gk176_attestation_intact(e,&s->enhanced_year2,&s->enhanced_assign,
++       &s->enhanced_summer,&s->enhanced_fall,&s->enhanced_winter,cp)){
++      cp->pending_pass=0;strcpy(s->status,"CONTINUATION PASS REFUSED: SOURCE CHAIN INVALID");return 1;
++     }
++     if(!e->budget.ended){
++      if(!cp->pending_pass){cp->pending_pass=1u;
++       strcpy(s->status,"PASS THIS ENHANCED LABOR SEASON? A CONFIRM / B CANCEL");return 1;}
++      Gk176Result r=gk176_pass(e,&s->enhanced_year2,&s->enhanced_assign,
++       &s->enhanced_summer,&s->enhanced_fall,&s->enhanced_winter,cp);
++      cp->pending_pass=0;
++      strcpy(s->status,r==GK176_OK?"ENHANCED LABOR SEASON ENDED; PASS AGAIN FOR NEXT SEASON":
++       "ENHANCED LABOR PASS REFUSED; NO SOURCE MUTATION");return 1;
++     }
++     cp->pending_pass=0;
++     Gk176Result r=gk176_advance(e,&s->enhanced_year2,&s->enhanced_assign,
++       &s->enhanced_summer,&s->enhanced_fall,&s->enhanced_winter,cp);
++     if(r==GK176_END){strcpy(s->status,"ENHANCED 20-SEASON LIMIT: NO LATER RESEARCH SEASON IMPLEMENTED");return 1;}
++     if(r!=GK176_OK){strcpy(s->status,"ENHANCED NEXT SEASON REFUSED: SOURCE/ORDER INVALID");return 1;}
++     s->screen=GK1_SCREEN_ENHANCED_CONTINUATION;
++     s->assign_from=0u;s->assign_to=4u;s->assign_quantity=1u;
++     strcpy(s->status,"NEXT ENHANCED LABOR SEASON: 3 ORDERS; NO ORIGINAL NES EFFECTS");return 1;
++    }
+     if(s->rules_profile==1u&&s->enhanced_year2.active==1u){
+      if(!gk161_attestation_intact(&s->enhanced_year2,&s->enhanced_assign,
+        &s->enhanced_summer,&s->enhanced_fall,&s->enhanced_winter,cp)){
+@@ -723,8 +758,14 @@ int gk1_app_input(Gk1App *s,Gk1Input cmd){
+       cp->pending_pass=0;
+       strcpy(s->status,r==GK161_OK?"YEAR2 LABOR PASS COMPLETE; ORIGINAL NES STILL LOCKED":"YEAR2 PASS REFUSED");return 1;
+      }
+-     cp->pending_pass=0;s->screen=GK1_SCREEN_ENHANCED_YEAR2;
+-     strcpy(s->status,"ENHANCED YEAR2 SPRING COMPLETE; NO LATER YEAR IMPLEMENTED");return 1;
++     cp->pending_pass=0;
++     Gk176EnhancedCycle next={0};
++     Gk176Result r=gk176_open(&s->enhanced_year2,&s->enhanced_assign,
++       &s->enhanced_summer,&s->enhanced_fall,&s->enhanced_winter,cp,&next);
++     if(r!=GK176_OK){strcpy(s->status,"ENHANCED YEAR2 NEXT SEASON REFUSED: INVALID ANCESTOR");return 1;}
++     s->enhanced_continuation=next;s->screen=GK1_SCREEN_ENHANCED_CONTINUATION;
++     s->assign_from=0u;s->assign_to=4u;s->assign_quantity=1u;
++     strcpy(s->status,"ENHANCED YEAR2 SUMMER: 3 LABOR ORDERS, NO NES ANNUAL ECONOMY");return 1;
+     }
+ 
+     if(s->rules_profile==1u && s->enhanced_winter.active==1u){
+@@ -927,6 +968,38 @@ int gk1_app_input(Gk1App *s,Gk1Input cmd){
+   }
+   return 1;
+  }
++ case GK1_SCREEN_ENHANCED_CONTINUATION:{
++  if(cmd==GK1_INPUT_CANCEL){s->screen=GK1_SCREEN_STOCK_COMMANDS;
++   strcpy(s->status,"ENHANCED CONTINUATION CLOSED; ORIGINAL NES SOURCE UNCHANGED");return 1;}
++  if(!s->rules_profile||!gk176_attestation_intact(&s->enhanced_continuation,
++     &s->enhanced_year2,&s->enhanced_assign,&s->enhanced_summer,
++     &s->enhanced_fall,&s->enhanced_winter,&s->stock_checkpoint)){
++   strcpy(s->status,"ENHANCED CONTINUATION REFUSED: SOURCE/REPLAY INVALID");return 1;
++  }
++  if(cmd==GK1_INPUT_SETUP||cmd==GK1_INPUT_LABOR_PLAN){
++   uint16_t next=0u;
++   if(gk146_quantity_step(s->assign_quantity,
++      cmd==GK1_INPUT_SETUP?1:-1,&next)!=GK146_QUANTITY_OK)return 0;
++   s->assign_quantity=next;return 1;
++  }
++  if(cmd==GK1_INPUT_UP){s->assign_from=(uint8_t)((s->assign_from+4u)%5u);return 1;}
++  if(cmd==GK1_INPUT_DOWN){s->assign_from=(uint8_t)((s->assign_from+1u)%5u);return 1;}
++  if(cmd==GK1_INPUT_LEFT){s->assign_to=(uint8_t)((s->assign_to+4u)%5u);return 1;}
++  if(cmd==GK1_INPUT_RIGHT){s->assign_to=(uint8_t)((s->assign_to+1u)%5u);return 1;}
++  if(cmd==GK1_INPUT_CONFIRM){
++   Gk176Result r=gk176_transfer(&s->enhanced_continuation,
++     &s->enhanced_year2,&s->enhanced_assign,&s->enhanced_summer,
++     &s->enhanced_fall,&s->enhanced_winter,&s->stock_checkpoint,
++     s->assign_from,s->assign_to,s->assign_quantity);
++   snprintf(s->status,sizeof s->status,
++    "ENHANCED CONTINUATION %s; %u OF 3 LABOR ORDERS USED; NO NES EFFECTS",
++    r==GK176_OK?"COMMITTED":r==GK176_NO_WORKER?"NO WORKERS":
++    r==GK176_NO_ORDERS?"EXHAUSTED":"REFUSED",
++    (unsigned)s->enhanced_continuation.receipts[s->enhanced_continuation.season_index].action_count);
++   return 1;
++  }
++  return 1;
++ }
+  case GK1_SCREEN_ENHANCED_YEAR2:{
+   if(cmd==GK1_INPUT_CANCEL){s->screen=GK1_SCREEN_STOCK_COMMANDS;
+    strcpy(s->status,"ENHANCED YEAR2 CLOSED; ORIGINAL NES SOURCE UNCHANGED");return 1;}
+@@ -1560,7 +1633,8 @@ Gk172Status gk1_app_source_rng_xref(const Gk1App *s,
+     s->worlds[s->active_world].phase!=GK1_PRE_SETUP_TEMPLATE||
+     s->stock_checkpoint.valid||s->enhanced_assign.active||
+     s->enhanced_summer.active||s->enhanced_fall.active||
+-    s->enhanced_winter.active||s->enhanced_year2.active)
++    s->enhanced_winter.active||s->enhanced_year2.active||
++    s->enhanced_continuation.active)
+   return GK172_ARGUMENT;
+  return gk172_scan_authenticated(private_rom,out);
+ }
+diff --git a/gk1_app_state.h b/gk1_app_state.h
+index 7dcbaab..3fb1c64 100644
+--- a/gk1_app_state.h
++++ b/gk1_app_state.h
+@@ -21,6 +21,7 @@
+ #include "gk159_enhanced_fall.h"
+ #include "gk160_enhanced_winter.h"
+ #include "gk161_enhanced_year2.h"
++#include "gk176_enhanced_cycle.h"
+ #include "gk119_order_bridge.h"
+ #include "gk137_stock_rng.h"
+ #include "gk138_rng_reverse.h"
+@@ -47,7 +48,7 @@
+  */
+ typedef enum {GK1_SCREEN_TITLE=0, GK1_SCREEN_CAMPAIGNS=1,
+  GK1_SCREEN_RESEARCH_BATTLE=2, GK1_SCREEN_UNIMPLEMENTED=3, GK1_SCREEN_PATH_PICK=4, GK1_SCREEN_PATH_BATTLE=5, GK1_SCREEN_DIVIDE_PICK=6, GK1_SCREEN_DIVIDE_BATTLE=7, GK1_SCREEN_SCENARIO_COUNTRIES=8, GK1_SCREEN_SETUP_WIZARD=9, GK1_SCREEN_LABOR_PLAN=10,GK1_SCREEN_DEMOBILIZE=11, GK1_SCREEN_MARKET_EXPLORER=12,
+- GK1_SCREEN_MANUAL_RULES=13, GK1_SCREEN_BATTLE_TIMELINE=14,GK1_SCREEN_REST_CASE=15,GK1_SCREEN_ORDER_BUDGET_RESEARCH=32,GK1_SCREEN_BATTLE_PASS_DRILL=16,GK1_SCREEN_SPRING_ARCHIVE=33,GK1_SCREEN_STOCK_CONTINUE=34,GK1_SCREEN_STOCK_COMMANDS=35,GK1_SCREEN_STOCK_TRADE_REFERENCE=36,GK1_SCREEN_ENHANCED_ASSIGN=37,GK1_SCREEN_ENHANCED_SUMMER=38,GK1_SCREEN_ENHANCED_FALL=39,GK1_SCREEN_ENHANCED_WINTER=40,GK1_SCREEN_ENHANCED_YEAR2=41, GK1_SCREEN_STOCK_STORAGE=42} Gk1Screen;
++ GK1_SCREEN_MANUAL_RULES=13, GK1_SCREEN_BATTLE_TIMELINE=14,GK1_SCREEN_REST_CASE=15,GK1_SCREEN_ORDER_BUDGET_RESEARCH=32,GK1_SCREEN_BATTLE_PASS_DRILL=16,GK1_SCREEN_SPRING_ARCHIVE=33,GK1_SCREEN_STOCK_CONTINUE=34,GK1_SCREEN_STOCK_COMMANDS=35,GK1_SCREEN_STOCK_TRADE_REFERENCE=36,GK1_SCREEN_ENHANCED_ASSIGN=37,GK1_SCREEN_ENHANCED_SUMMER=38,GK1_SCREEN_ENHANCED_FALL=39,GK1_SCREEN_ENHANCED_WINTER=40,GK1_SCREEN_ENHANCED_YEAR2=41, GK1_SCREEN_STOCK_STORAGE=42,GK1_SCREEN_ENHANCED_CONTINUATION=43} Gk1Screen;
+ typedef enum {GK1_INPUT_UP=1, GK1_INPUT_DOWN=2, GK1_INPUT_LEFT=3,
+  GK1_INPUT_RIGHT=4, GK1_INPUT_CONFIRM=5, GK1_INPUT_CANCEL=6, GK1_INPUT_SETUP=7, GK1_INPUT_DRAFT_UNDO_ONE=8,
+  GK1_INPUT_DRAFT_UNDO_TEN=9, GK1_INPUT_LABOR_PLAN=10} Gk1Input;
+@@ -109,6 +110,7 @@ typedef struct {
+   Gk159EnhancedFall enhanced_fall; /* sequential Enhanced-only Fall, NO original harvest */
+   Gk160EnhancedWinter enhanced_winter; /* 4th ENHANCED labor-only season; no NES winter effects */
+   Gk161EnhancedYear2 enhanced_year2; /* next Enhanced Spring; NOT original NES annual effects */
++  Gk176EnhancedCycle enhanced_continuation; /* subsequent 20 Enhanced labor-only seasons; NO NES economy */
+   uint8_t assign_from,assign_to; /* exact source validated by gk77_load, not game startup */
+   uint16_t assign_quantity; /* Enhanced-only source-attested requested labor amount */
+   uint8_t stock_reconcile_view; /* VIEW cycles decoded / raw / finance / deltas / source goods */
+diff --git a/gk1_native_shell.c b/gk1_native_shell.c
+index 37563b7..e33f74d 100644
+--- a/gk1_native_shell.c
++++ b/gk1_native_shell.c
+@@ -62,7 +62,7 @@
+ # include <linux/joystick.h>
+ # include <sys/stat.h>
+ #endif
+-#define GK1_PORT_VERSION "1.75.0-dev1"
++#define GK1_PORT_VERSION "1.76.0-dev1"
+ #define WIDTH 1280
+ #define HEIGHT 720
+ #define BG UINT32_C(0x10202b)
+@@ -680,6 +680,27 @@ static void render(void){
+    label(104,583,summer_mode?"ENHANCED SUMMER LABOR+PASS ONLY; NO ORIGINAL SEASON ECONOMY OR AI":
+      "CLASSIC X SAVE / Y RESTORE; OTHER=PORT STORAGE; NES ACTIONS STILL LOCKED",WARN);
+   }
++ }else if(app.screen==GK1_SCREEN_ENHANCED_CONTINUATION){
++  static const char *pool_names[5]={"TROOPS","TOWN","MASONS","ARTISANS","FOOD WORKERS"};
++  static const char *seasons[4]={"SPRING","SUMMER","FALL","WINTER"};
++  const Gk176EnhancedCycle *e=&app.enhanced_continuation;
++  const Gk1CountryTemplate *c=&e->mutable_world.countries[app.enhanced_assign.player_index];
++  frame(72,135,1134,473);
++  label(104,166,"ENHANCED LABOR CONTINUATION - NOT ORIGINAL NES GAMEPLAY",EDGE);
++  snprintf(line,sizeof line,"%s %u / SEASON %u OF %u / %u ORDERS LEFT",
++   seasons[e->budget.season],(unsigned)e->year,
++   (unsigned)e->season_index+1u,(unsigned)GK176_MAX_SEASONS,
++   (unsigned)e->budget.remaining);label(104,208,line,FG);
++  snprintf(line,sizeof line,"FROM %s / TO %s / QUANTITY %u",
++   pool_names[app.assign_from],pool_names[app.assign_to],
++   (unsigned)app.assign_quantity);label(104,255,line,EDGE);
++  snprintf(line,sizeof line,"TROOPS %u TOWN %u MASONS %u ARTISANS %u FARM %u",
++   (unsigned)c->troops,(unsigned)c->town,(unsigned)c->masons,
++   (unsigned)c->artisans,(unsigned)c->food_workers);label(104,311,line,FG);
++  label(104,367,"DPAD POOLS / START+ VIEW- QUANTITY / A MOVE / B COMMAND MENU",FG);
++  label(104,405,"COMMAND MENU > PASS: END SEASON; THEN PASS AGAIN TO ADVANCE",FG);
++  label(104,448,"NO NES FOOD/TAX/RNG/AI/DYNASTY/MERCHANT OR ORIGINAL SEASON PROCESS",WARN);
++  label(104,496,"CLASSIC STOCK SOURCE IMMUTABLE; CONTINUATION SAVES NOT YET IMPLEMENTED",WARN);
+  }else if(app.screen==GK1_SCREEN_ENHANCED_YEAR2){
+   static const char *pool_names[5]={"TROOPS","TOWN","MASONS","ARTISANS","FOOD WORKERS"};
+   const Gk161EnhancedYear2 *e=&app.enhanced_year2;
+@@ -1350,7 +1371,7 @@ static int in_campaign_screens(void){
+  return app.screen==GK1_SCREEN_CAMPAIGNS||app.screen==GK1_SCREEN_SCENARIO_COUNTRIES||
+         app.screen==GK1_SCREEN_SETUP_WIZARD||app.screen==GK1_SCREEN_LABOR_PLAN||app.screen==GK1_SCREEN_DEMOBILIZE||
+         app.screen==GK1_SCREEN_MARKET_EXPLORER||app.screen==GK1_SCREEN_MANUAL_RULES||
+-        app.screen==GK1_SCREEN_ORDER_BUDGET_RESEARCH||app.screen==GK1_SCREEN_STOCK_CONTINUE||app.screen==GK1_SCREEN_STOCK_COMMANDS||app.screen==GK1_SCREEN_STOCK_TRADE_REFERENCE||app.screen==GK1_SCREEN_STOCK_STORAGE||app.screen==GK1_SCREEN_ENHANCED_ASSIGN||app.screen==GK1_SCREEN_ENHANCED_SUMMER||app.screen==GK1_SCREEN_ENHANCED_FALL||app.screen==GK1_SCREEN_ENHANCED_WINTER||app.screen==GK1_SCREEN_ENHANCED_YEAR2;
++        app.screen==GK1_SCREEN_ORDER_BUDGET_RESEARCH||app.screen==GK1_SCREEN_STOCK_CONTINUE||app.screen==GK1_SCREEN_STOCK_COMMANDS||app.screen==GK1_SCREEN_STOCK_TRADE_REFERENCE||app.screen==GK1_SCREEN_STOCK_STORAGE||app.screen==GK1_SCREEN_ENHANCED_ASSIGN||app.screen==GK1_SCREEN_ENHANCED_SUMMER||app.screen==GK1_SCREEN_ENHANCED_FALL||app.screen==GK1_SCREEN_ENHANCED_WINTER||app.screen==GK1_SCREEN_ENHANCED_YEAR2||app.screen==GK1_SCREEN_ENHANCED_CONTINUATION;
+ }
+ static void slot_action(int direction){
+  if(app.screen==GK1_SCREEN_SPRING_ARCHIVE){cycle_stock_profile(direction);return;}
+@@ -1485,6 +1506,12 @@ static void refresh_private_title_preview(void){
+  private_title_preview_valid=1;
+ }
+ static void replay_key(int save){
++ /* Continuation has not yet received an exact cold-load format: refuse rather
++  * than silently write the older Year2 checkpoint and lose later progress. */
++ if(app.enhanced_continuation.active){
++  strcpy(app.status,"CONTINUATION SAVE/LOAD NOT IMPLEMENTED: NO FILE OR STATE CHANGED");
++  return;
++ }
+  /* Self-contained original-stock save: X creates a user-private local file;
+   * Y from the TITLE works after a true process restart without reattaching
+   * the ROM or original snapshot, provided canonical country CSV is installed.
+@@ -2130,7 +2157,7 @@ int main(int argc,char **argv){
+   return 0;
+  }
+  if(argc==2&&strcmp(argv[1],"--version")==0){
+-  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0174 exact original stock CPU boot/RAM provenance boundary; EXEC0173 bounded executed RNG control-transfer telemetry; EXEC0172 static source RNG xref; EXEC0171 controller X TITLE source-attested Enhanced labor-season cold resume, no NES season parity; EXEC0170 read-only SHA-verified TITLE private slot inventory; EXEC0169 port-only controller OTHER private checkpoint save/load; EXEC0168 Linux protected owner-private cold-save reload/flush; EXEC0167 owner-private self-contained source-attested Spring save/cold resume, NOT a full campaign; EXEC0166 integrated fresh WorkRAM JSON in-memory checkpoint + EXEC0164 archived Mesen .mss; original NES initialization still NOT reconstructed; EXEC0164 in-memory archived original Mesen controller checkpoint entry (VIEW/PASS only, no independent Spring); EXEC0163 genuine archived Mesen .mss import verified against exact original stock country SHA (no NES first-Spring generation); EXEC0162 source-attested original-stock checkpoint controller re-entry and atomic profile replacement, including clearing stale Enhanced YEAR2; VIEW/PASS only; not NES first-Spring independent generation; EXEC0161 authenticated Enhanced YEAR2 SPRING rollover after Winter, three labor-only orders and exclusive GY21 save/cold-load; NO original NES Spring economics, first Spring or character RNG; EXEC0160 Enhanced-only research Winter with Spring/Summer/Fall source-attested receipts, no original weather/AI; EXEC0159 Enhanced-only research Fall with Spring/Summer receipt chaining; EXEC0158 Enhanced-only research Summer with 3 labor orders, no original seasonal economy/RNG, preserving EXEC0157 symbolic PPUSTATUS low7 guarded trace, preserving EXEC0156 exhaustive 128-variant matrix; EXEC0155 source-verified sign-only polling of $2002 only inside a BPL loop (unverified PPU origin; first edge explicitly hypothetical; NO independent Spring), EXEC0154 explicitly hypothetical single VBlank-edge source branch; EXEC0153 executed country-write watch; EXEC0152 source-authenticated raw Spring country-store candidate inventory (not executed), EXEC0151 explicitly assumed EVEN pre-render source trace, NOT original Mesen parity; EXEC0150 bounded render-on-source progression (not Mesen parity); EXEC0149 verified stock PPU phase gate/source scan (NOT original Mesen parity); EXEC0148 private-source bank-aware original 15-stage reset/Spring chronology; EXEC0147 original stock source-backed ten-goods controller VIEW; EXEC0146 Enhanced authentic-checkpoint variable-quantity labor; EXEC0145 fresh progress gate (no Spring creation), EXEC0144 archived Mesen PRG-page mapping, EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
++  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0176 source-attested Enhanced 20-season labor-only continuation; EXEC0174 original stock CPU boot/RAM provenance boundary; EXEC0173 bounded executed RNG control-transfer telemetry; EXEC0172 static source RNG xref; EXEC0171 controller X TITLE source-attested Enhanced labor-season cold resume, no NES season parity; EXEC0170 read-only SHA-verified TITLE private slot inventory; EXEC0169 port-only controller OTHER private checkpoint save/load; EXEC0168 Linux protected owner-private cold-save reload/flush; EXEC0167 owner-private self-contained source-attested Spring save/cold resume, NOT a full campaign; EXEC0166 integrated fresh WorkRAM JSON in-memory checkpoint + EXEC0164 archived Mesen .mss; original NES initialization still NOT reconstructed; EXEC0164 in-memory archived original Mesen controller checkpoint entry (VIEW/PASS only, no independent Spring); EXEC0163 genuine archived Mesen .mss import verified against exact original stock country SHA (no NES first-Spring generation); EXEC0162 source-attested original-stock checkpoint controller re-entry and atomic profile replacement, including clearing stale Enhanced YEAR2; VIEW/PASS only; not NES first-Spring independent generation; EXEC0161 authenticated Enhanced YEAR2 SPRING rollover after Winter, three labor-only orders and exclusive GY21 save/cold-load; NO original NES Spring economics, first Spring or character RNG; EXEC0160 Enhanced-only research Winter with Spring/Summer/Fall source-attested receipts, no original weather/AI; EXEC0159 Enhanced-only research Fall with Spring/Summer receipt chaining; EXEC0158 Enhanced-only research Summer with 3 labor orders, no original seasonal economy/RNG, preserving EXEC0157 symbolic PPUSTATUS low7 guarded trace, preserving EXEC0156 exhaustive 128-variant matrix; EXEC0155 source-verified sign-only polling of $2002 only inside a BPL loop (unverified PPU origin; first edge explicitly hypothetical; NO independent Spring), EXEC0154 explicitly hypothetical single VBlank-edge source branch; EXEC0153 executed country-write watch; EXEC0152 source-authenticated raw Spring country-store candidate inventory (not executed), EXEC0151 explicitly assumed EVEN pre-render source trace, NOT original Mesen parity; EXEC0150 bounded render-on-source progression (not Mesen parity); EXEC0149 verified stock PPU phase gate/source scan (NOT original Mesen parity); EXEC0148 private-source bank-aware original 15-stage reset/Spring chronology; EXEC0147 original stock source-backed ten-goods controller VIEW; EXEC0146 Enhanced authentic-checkpoint variable-quantity labor; EXEC0145 fresh progress gate (no Spring creation), EXEC0144 archived Mesen PRG-page mapping, EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
+  }
+  /* Preserve EXEC0056's tested synthetic-pad correction/export contract. */
+  if(argc==3&&strcmp(argv[1],"--bonus-correction-export")==0){
+diff --git a/packaging/gk1-native-research.desktop b/packaging/gk1-native-research.desktop
+index 9e49c47..cba9fd7 100644
+--- a/packaging/gk1-native-research.desktop
++++ b/packaging/gk1-native-research.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-Name=Genghis Khan I Research 1.75.0-dev1
++Name=Genghis Khan I Research 1.76.0-dev1
+ GenericName=NES-to-Windows Port Research Prototype
+ Comment=Incomplete native Genghis Khan I research game; source-bounded battles only
+ Exec=gk1-native-research
+diff --git a/packaging/test_gk176_version_contract.py b/packaging/test_gk176_version_contract.py
+new file mode 100644
+index 0000000..a0f8b1e
+--- /dev/null
++++ b/packaging/test_gk176_version_contract.py
+@@ -0,0 +1,21 @@
++#!/usr/bin/env python3
++"""EXEC0176 reproducible package/launcher consistency (not Win32 runtime QA)."""
++import pathlib,re,subprocess,sys
++if len(sys.argv)!=5: raise SystemExit('need binary, CMakeLists, desktop, CPackConfig')
++binfile,cmfile,desktopfile,configfile=map(pathlib.Path,sys.argv[1:])
++source=cmfile.read_text(); desk=desktopfile.read_text(); pkg=configfile.read_text()
++version='1.76.0'; display=version+'-dev1'
++assert all(p.is_file() for p in (binfile,cmfile,desktopfile,configfile))
++assert source.count('set(CPACK_PACKAGE_VERSION "'+version+'")') == 2 # Windows and Debian
++assert 'set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research '+display+'")' in source
++assert 'set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_'+version+'~dev1_amd64")' in source
++assert 'Name=Genghis Khan I Research '+display+'\n' in desk
++assert 'Exec=gk1-native-research\n' in desk
++assert 'CPACK_PACKAGE_VERSION:STRING' not in pkg # do not infer CMakeCache format
++assert 'CPACK_PACKAGE_VERSION "'+version+'"' in pkg
++assert 'CPACK_PACKAGE_FILE_NAME "gk1-native-research_'+version+'~dev1_amd64"' in pkg
++r=subprocess.run([str(binfile),'--version'],capture_output=True,text=True,timeout=20)
++assert r.returncode==0 and ('research prototype '+display) in r.stdout
++assert 'not full game' in r.stdout
++assert not re.search(r'Name=Genghis Khan I Research 1\.(?:73|74)\.0',desk)
++print('GK176 launcher, Linux runtime, DEB, authored NSIS version: PASS; actual NSIS/Win32 NOT RUN')
+diff --git a/packaging/test_package_contract.py b/packaging/test_package_contract.py
+index 8d7921a..87d466e 100644
+--- a/packaging/test_package_contract.py
++++ b/packaging/test_package_contract.py
+@@ -5,14 +5,14 @@ exe,csv,desktop=map(pathlib.Path,sys.argv[1:4])
+ assert exe.is_file() and csv.is_file() and desktop.is_file()
+ assert hashlib.sha256(csv.read_bytes()).hexdigest()=="fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581"
+ entry=desktop.read_text()
+-assert "Name=Genghis Khan I Research 1.75.0-dev1" in entry
++assert "Name=Genghis Khan I Research 1.76.0-dev1" in entry
+ assert "Exec=gk1-native-research\n" in entry
+ assert "Terminal=false\n" in entry
+ with tempfile.TemporaryDirectory(prefix='gk1_exec54_') as tmp:
+     def run(*args,env=None):
+         return subprocess.run([str(exe),*args],cwd=tmp,env=env,capture_output=True,text=True,timeout=15)
+     v=run('--version')
+-    assert v.returncode==0 and '1.75.0-dev1' in v.stdout and 'not full game' in v.stdout
++    assert v.returncode==0 and '1.76.0-dev1' in v.stdout and 'not full game' in v.stdout
+     for sc,num in ((1,14),(2,27)):
+         r=run('--scenario-report',str(sc))
+         assert r.returncode==0,(r.stdout,r.stderr)
+diff --git a/test_gk176_enhanced_cycle.c b/test_gk176_enhanced_cycle.c
+new file mode 100644
+index 0000000..fcdff1c
+--- /dev/null
++++ b/test_gk176_enhanced_cycle.c
+@@ -0,0 +1,116 @@
++#include "gk1_app_state.h"
++#include "gk117_stock_pristine_gate.h"
++#include "gk1_source_identity.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#ifdef NDEBUG
++#undef NDEBUG
++#endif
++#include <assert.h>
++static unsigned checks=0;
++#define CHECK(x) do{checks++;if(!(x)){fprintf(stderr,"GK176 CHECK %u line %d: %s\n",checks,__LINE__,#x);abort();}}while(0)
++static void negatives(void){
++ Gk176EnhancedCycle s={0},old={0};
++ Gk161EnhancedYear2 y={0};Gk116EnhancedAssign sp={0};
++ Gk158EnhancedSummer su={0};Gk159EnhancedFall fa={0};
++ Gk160EnhancedWinter wi={0};Gk79Checkpoint o={0};
++ CHECK(gk176_open(&y,&sp,&su,&fa,&wi,&o,&s)==GK176_SOURCE);
++ CHECK(gk176_open(&y,&sp,&su,&fa,&wi,&o,NULL)==GK176_INPUT);
++ CHECK(!gk176_attestation_intact(&s,&y,&sp,&su,&fa,&wi,&o));
++ CHECK(gk176_transfer(&s,&y,&sp,&su,&fa,&wi,&o,0,4,1)==GK176_SOURCE);
++ CHECK(gk176_pass(&s,&y,&sp,&su,&fa,&wi,&o)==GK176_SOURCE);
++ CHECK(gk176_advance(&s,&y,&sp,&su,&fa,&wi,&o)==GK176_SOURCE);
++ CHECK(!memcmp(&old,&s,sizeof s));
++}
++static void original_positive(const char *csv,const char *records){
++ Gk1TemplateDataset *dataset=malloc(sizeof *dataset);
++ Gk1App *a=calloc(1,sizeof *a);
++ CHECK(dataset!=NULL&&a!=NULL);
++ CHECK(gk1_template_load(csv,dataset)==GK1_LOAD_OK);
++ gk1_app_init(a);
++ CHECK(gk1_app_install_templates(a,dataset));
++ CHECK(gk117_open_attested_original(csv,&a->worlds[0],records,
++   GK77_FRESH_MONGOL_WORKRAM,0,&a->stock_checkpoint)==GK117_OK);
++ Gk79Checkpoint original=a->stock_checkpoint;
++ CHECK(gk116_open(&original,1,&a->enhanced_assign)==GK116_OK);
++ CHECK(gk116_transfer(&a->enhanced_assign,&original,0,4,5)==GK116_OK);
++ CHECK(gk116_pass_remaining(&a->enhanced_assign,&original)==GK116_OK);
++ CHECK(gk158_open(&a->enhanced_assign,&original,&a->enhanced_summer)==GK158_OK);
++ CHECK(gk158_transfer(&a->enhanced_summer,&a->enhanced_assign,&original,0,4,5)==GK158_OK);
++ CHECK(gk158_pass(&a->enhanced_summer,&a->enhanced_assign,&original)==GK158_OK);
++ CHECK(gk159_open(&a->enhanced_assign,&a->enhanced_summer,&original,&a->enhanced_fall)==GK159_OK);
++ CHECK(gk159_transfer(&a->enhanced_fall,&a->enhanced_assign,&a->enhanced_summer,&original,0,4,5)==GK159_OK);
++ CHECK(gk159_pass(&a->enhanced_fall,&a->enhanced_assign,&a->enhanced_summer,&original)==GK159_OK);
++ CHECK(gk160_open(&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&original,&a->enhanced_winter)==GK160_OK);
++ CHECK(gk160_transfer(&a->enhanced_winter,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&original,0,4,5)==GK160_OK);
++ CHECK(gk160_pass(&a->enhanced_winter,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&original)==GK160_OK);
++ CHECK(gk161_open(&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original,&a->enhanced_year2)==GK161_OK);
++ CHECK(gk176_open(&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original,&a->enhanced_continuation)==GK176_SOURCE);
++ CHECK(gk161_transfer(&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original,0,4,5)==GK161_OK);
++ CHECK(gk161_pass(&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original)==GK161_OK);
++ Gk176EnhancedCycle *e=&a->enhanced_continuation;
++ CHECK(gk176_open(&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original,e)==GK176_OK);
++ CHECK(e->year==1176u&&e->budget.season==GK71_SUMMER&&e->budget.remaining==3u);
++ CHECK(gk176_attestation_intact(e,&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original));
++ /* The inherited controller path must open the actual mutable continuation,
++  * not a sidecar component, and B must return without source mutation. */
++ Gk1App *controller=malloc(sizeof *controller);CHECK(controller!=NULL);
++ *controller=*a;controller->rules_profile=1u;
++ controller->screen=GK1_SCREEN_STOCK_COMMANDS;controller->stock_command_cursor=1u;
++ CHECK(gk1_app_input(controller,GK1_INPUT_CONFIRM));
++ CHECK(controller->screen==GK1_SCREEN_ENHANCED_CONTINUATION);
++ CHECK(gk1_app_input(controller,GK1_INPUT_SETUP));
++ CHECK(controller->assign_quantity==5u);
++ CHECK(gk1_app_input(controller,GK1_INPUT_CONFIRM));
++ CHECK(controller->enhanced_continuation.receipts[0].action_count==1u);
++ CHECK(controller->enhanced_continuation.budget.remaining==2u);
++ CHECK(gk1_app_input(controller,GK1_INPUT_CANCEL));
++ CHECK(controller->screen==GK1_SCREEN_STOCK_COMMANDS);
++ CHECK(!memcmp(&controller->stock_checkpoint,&original,sizeof original));
++ CHECK(!memcmp(e,&a->enhanced_continuation,sizeof *e));
++ free(controller);
++ Gk176EnhancedCycle before=*e;
++ CHECK(gk176_transfer(e,&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original,1,1,1)==GK176_INPUT);
++ CHECK(!memcmp(e,&before,sizeof *e));
++ CHECK(gk176_transfer(e,&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original,2,4,65535)==GK176_NO_WORKER);
++ CHECK(!memcmp(e,&before,sizeof *e));
++ CHECK(gk176_advance(e,&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original)==GK176_NO_ORDERS);
++ CHECK(!memcmp(e,&before,sizeof *e));
++ for(unsigned i=0;i<GK176_MAX_SEASONS;i++){
++  CHECK(e->season_index==i);
++  CHECK(e->year==1176u+(i+1u)/4u);
++  CHECK(e->budget.season==(i+1u)%4u);
++  CHECK(gk176_transfer(e,&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original,0,4,1)==GK176_OK);
++  CHECK(e->receipts[i].action_count==1u);
++  CHECK(e->budget.remaining==2u);
++  Gk176EnhancedCycle corrupt=*e;
++  corrupt.receipts[i].actions[0].quantity++;
++  CHECK(!gk176_attestation_intact(&corrupt,&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original));
++  corrupt=*e;corrupt.mutable_world.countries[0].food_workers++;
++  CHECK(!gk176_attestation_intact(&corrupt,&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original));
++  CHECK(gk176_pass(e,&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original)==GK176_OK);
++  CHECK(e->budget.ended==1u&&e->budget.remaining==0u);
++  before=*e;
++  CHECK(gk176_pass(e,&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original)==GK176_NO_ORDERS);
++  CHECK(!memcmp(e,&before,sizeof *e));
++  if(i+1u<GK176_MAX_SEASONS){
++   CHECK(gk176_advance(e,&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original)==GK176_OK);
++   CHECK(e->budget.remaining==3u);
++  }
++ }
++ before=*e;
++ CHECK(gk176_advance(e,&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original)==GK176_END);
++ CHECK(!memcmp(e,&before,sizeof *e));
++ CHECK(!memcmp(&a->stock_checkpoint,&original,sizeof original));
++ CHECK(gk116_attestation_intact(&a->enhanced_assign,&original));
++ CHECK(gk176_attestation_intact(e,&a->enhanced_year2,&a->enhanced_assign,&a->enhanced_summer,&a->enhanced_fall,&a->enhanced_winter,&original));
++ free(a);free(dataset);
++}
++int main(int argc,char **argv){
++ negatives();
++ if(argc==3)original_positive(argv[1],argv[2]);
++ else CHECK(argc==2);
++ printf("GK176 %u assertions PASS, %s; Enhanced labor only; no original NES season parity\n",checks,argc==3?"private authenticated original stock fresh reset":"public negatives");
++ return 0;
++}
