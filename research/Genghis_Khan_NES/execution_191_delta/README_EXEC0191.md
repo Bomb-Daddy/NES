@@ -1,0 +1,11 @@
+# EXEC0191 — Authenticated Original Stock Fixed-Bank Dispatcher Source Trace
+
+Source update on top of **complete EXEC0190 C11 game**, preserving all Classic/Enhanced systems and historical evidence.
+
+`gk181_bank_seed_trace.c/.h`: add fixed-bank `$EF85` dispatcher inline-selector table edge for authenticated stock ROM. In 6502 source, `JSR $EF85` consumes its caller's fourth byte as the selector and indexes fixed PRG-bank15 low/high tables at `$F788/$F888`. The static analysis now records conditional table target reachability under each explicitly assumed low bank, alongside unresolved mapper barriers and indirect jumps. No original initialization output is invented; it remains static bounded reachability, **not executed original NES controller frames, RNG, merchant availability or authentic first Spring**. Decoder refuses invalid ROM, selector outside table, inaccessible target and never writes source game state.
+
+`test_gk191_dispatch_rng_tables.c` tests selected, unreachable, misbanked and unmapped table destinations, exact `JSR $C289` candidate attribution, invalid image refusal, output-unchanged rollback and separate authenticated original USA stock SHA gate. Original stock ROM is PRIVATE and is only a CLI test input; its code, RAM and graphics are not shipped.
+
+Authentic original static source result under 15 possible low banks: **8 conditional dispatcher-table edges**, **0 direct conditional `JSR $C289` candidates**. These negative results explicitly do NOT rule out source RNG via dynamic bank switching, other calls/branches/interrupts or indirect dispatch. The stock ROM is present and authenticated SHA256 `ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3`.
+
+Unfinished: genuine setup/difficulty/character seed chronology, independently synthesized original stock first Spring all 14/27 countries, merchant scheduler, three executable original commands, autonomous AI, dynasty/diplomacy, war aftermath, two full campaigns, original art/audio, Windows NSIS and physical Xbox tests. Earlier source-attested imported Classic ASSIGN is manual-derived; do not equate it with NES parity. Do not stop recurring development absent Director release acceptance.
