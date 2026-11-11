@@ -1,0 +1,346 @@
+diff -ruN execution_190/CMakeLists.txt execution_191/CMakeLists.txt
+--- execution_190/CMakeLists.txt	2026-11-11 12:14:07.849671418 +0000
++++ execution_191/CMakeLists.txt	2026-11-11 12:12:26.085693451 +0000
+@@ -1,5 +1,5 @@
+ cmake_minimum_required(VERSION 3.15)
+-project(GK1NativeShell188 C)
++project(GK1NativeShell191 C)
+ find_package(ZLIB QUIET)
+ set(CMAKE_C_STANDARD 11)
+ set(CMAKE_C_STANDARD_REQUIRED ON)
+@@ -55,18 +55,18 @@
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+-  set(CPACK_PACKAGE_VERSION "1.90.0")
++  set(CPACK_PACKAGE_VERSION "1.91.0")
+   set(CPACK_PACKAGE_VENDOR "GK1 native research prototype")
+   set(CPACK_PACKAGE_INSTALL_DIRECTORY "Genghis Khan I Native Research")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Incomplete native Genghis Khan I research; original first Spring still unfinished")
+-  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.90.0-dev1")
+-  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.90.0-dev1")
++  set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research 1.91.0-dev1")
++  set(CPACK_NSIS_PACKAGE_NAME "Genghis Khan I Research 1.91.0-dev1")
+   set(CPACK_NSIS_MUI_FINISHPAGE_RUN "gk1_native_shell.exe")
+   set(CPACK_NSIS_MODIFY_PATH OFF)
+-  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.90.0-dev1")
++  set(CPACK_PACKAGE_EXECUTABLES "gk1_native_shell" "Genghis Khan I Research 1.91.0-dev1")
+   set(CPACK_CREATE_DESKTOP_LINKS "gk1_native_shell")
+   include(CPack)
+ endif()
+@@ -150,10 +150,10 @@
+           DESTINATION opt/gk1-native-research)
+   install(PROGRAMS packaging/gk1-native-research DESTINATION usr/bin)
+   install(FILES packaging/gk1-native-research.desktop DESTINATION usr/share/applications)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md DESTINATION usr/share/doc/gk1-native-research)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+-  set(CPACK_PACKAGE_VERSION "1.90.0")
++  set(CPACK_PACKAGE_VERSION "1.91.0")
+   set(CPACK_DEBIAN_PACKAGE_RELEASE "dev1")
+   set(CPACK_PACKAGE_CONTACT "GK1 research prototype (offline source distribution)")
+   set(CPACK_DEBIAN_PACKAGE_MAINTAINER "GK1 Native Research")
+@@ -165,7 +165,7 @@
+   set(CPACK_DEBIAN_PACKAGE_SECTION "games")
+   set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+   set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Genghis Khan I native research prototype, not completed game")
+-  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.90.0~dev1_amd64")
++  set(CPACK_PACKAGE_FILE_NAME "gk1-native-research_1.91.0~dev1_amd64")
+   set(CPACK_SET_DESTDIR OFF)
+   set(CPACK_PACKAGING_INSTALL_PREFIX "/")
+   find_package(Python3 COMPONENTS Interpreter)
+@@ -892,3 +892,9 @@
+ target_link_libraries(test_gk190_classic_undo PRIVATE gk1_app_state)
+ add_test(NAME GK1_190_ControllerClassicUndoAtomicReplayAndColdSave COMMAND test_gk190_classic_undo
+  "${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv")
++
++# EXEC0191: source-only inline $EF85 dispatch-table target graph, not NES execution.
++add_executable(test_gk191_dispatch_rng_tables test_gk191_dispatch_rng_tables.c)
++target_link_libraries(test_gk191_dispatch_rng_tables PRIVATE gk1_app_state)
++add_test(NAME GK1_191_ConditionalDispatcherRngTableAndAtomicNegativeTests
++ COMMAND test_gk191_dispatch_rng_tables)
+diff -ruN execution_190/README_EXEC0191.md execution_191/README_EXEC0191.md
+--- execution_190/README_EXEC0191.md	1970-01-01 00:00:00.000000000 +0000
++++ execution_191/README_EXEC0191.md	2026-11-11 12:12:25.212800842 +0000
+@@ -0,0 +1,11 @@
++# EXEC0191 — Authenticated Original Stock Fixed-Bank Dispatcher Source Trace
++
++Source update on top of **complete EXEC0190 C11 game**, preserving all Classic/Enhanced systems and historical evidence.
++
++`gk181_bank_seed_trace.c/.h`: add fixed-bank `$EF85` dispatcher inline-selector table edge for authenticated stock ROM. In 6502 source, `JSR $EF85` consumes its caller's fourth byte as the selector and indexes fixed PRG-bank15 low/high tables at `$F788/$F888`. The static analysis now records conditional table target reachability under each explicitly assumed low bank, alongside unresolved mapper barriers and indirect jumps. No original initialization output is invented; it remains static bounded reachability, **not executed original NES controller frames, RNG, merchant availability or authentic first Spring**. Decoder refuses invalid ROM, selector outside table, inaccessible target and never writes source game state.
++
++`test_gk191_dispatch_rng_tables.c` tests selected, unreachable, misbanked and unmapped table destinations, exact `JSR $C289` candidate attribution, invalid image refusal, output-unchanged rollback and separate authenticated original USA stock SHA gate. Original stock ROM is PRIVATE and is only a CLI test input; its code, RAM and graphics are not shipped.
++
++Authentic original static source result under 15 possible low banks: **8 conditional dispatcher-table edges**, **0 direct conditional `JSR $C289` candidates**. These negative results explicitly do NOT rule out source RNG via dynamic bank switching, other calls/branches/interrupts or indirect dispatch. The stock ROM is present and authenticated SHA256 `ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3`.
++
++Unfinished: genuine setup/difficulty/character seed chronology, independently synthesized original stock first Spring all 14/27 countries, merchant scheduler, three executable original commands, autonomous AI, dynasty/diplomacy, war aftermath, two full campaigns, original art/audio, Windows NSIS and physical Xbox tests. Earlier source-attested imported Classic ASSIGN is manual-derived; do not equate it with NES parity. Do not stop recurring development absent Director release acceptance.
+Binary files execution_190/__pycache__/gk139_archived_state_extract.cpython-313.pyc and execution_191/__pycache__/gk139_archived_state_extract.cpython-313.pyc differ
+diff -ruN execution_190/gk181_bank_seed_trace.c execution_191/gk181_bank_seed_trace.c
+--- execution_190/gk181_bank_seed_trace.c	2026-11-11 12:14:07.891984325 +0000
++++ execution_191/gk181_bank_seed_trace.c	2026-11-11 12:07:08.461278311 +0000
+@@ -130,11 +130,24 @@
+       rc=GK181_OVERFLOW;break;
+     }
+     if(op==0x20u&&target==0xef85u){
+-     /* Known dispatcher inline selector after JSR. We do not resolve a
+-      * bank/mapping change through the dispatcher. */
++     /* Original fixed-bank $EF85 dispatcher pops the JSR return address,
++      * consumes its INLINE selector at PC+3, and indexes the two 256-byte
++      * destination tables at $F788/$F888. Resolve that *static conditional*
++      * edge under the caller's selected-low-bank assumption. The actual
++      * mapper sequence and runtime branch history are still unobserved.
++      * Do not read a wrapped PC+3 from the next CPU page. */
+      r->dispatcher_calls++;
+      enqueue(target,queue,&tail,seen,r);
+-     if(next<65535u)enqueue((uint16_t)(next+1u),queue,&tail,seen,r);
++     if(next<65535u){
++      uint8_t selector=at(image,bank,(uint16_t)(next));
++      uint16_t dest=(uint16_t)at(image,bank,(uint16_t)(0xf788u+selector))|
++       ((uint16_t)at(image,bank,(uint16_t)(0xf888u+selector))<<8u);
++      if(dest>=LOW_FIRST){
++       r->dispatcher_table_edges++;
++       enqueue(dest,queue,&tail,seen,r);
++      }else r->dispatcher_unmapped_targets++;
++      enqueue((uint16_t)(next+1u),queue,&tail,seen,r);
++     }else r->dispatcher_truncated_selectors++;
+     }else{
+      enqueue(target,queue,&tail,seen,r);
+      if(op==0x20u&&next<=65535u)enqueue((uint16_t)next,queue,&tail,seen,r);
+diff -ruN execution_190/gk181_bank_seed_trace.h execution_191/gk181_bank_seed_trace.h
+--- execution_190/gk181_bank_seed_trace.h	2026-11-11 12:14:07.892069682 +0000
++++ execution_191/gk181_bank_seed_trace.h	2026-11-11 12:07:08.461420872 +0000
+@@ -31,6 +31,10 @@
+  uint32_t low_seed_candidates, high_seed_candidates, source_sites;
+  uint32_t mapper_barriers, indirect_jumps, unresolved_indexed_writes;
+  uint32_t unsupported_opcodes, external_edges, dispatcher_calls;
++ /* Source-only: conditional inline-selector table targets, never proof that
++  * the MMC1 bank, interrupt branch or RNG call actually ran. */
++ uint32_t dispatcher_table_edges,dispatcher_unmapped_targets;
++ uint32_t dispatcher_truncated_selectors;
+  Gk181Site sites[GK181_MAX_SITES];
+  uint16_t rng_call_count; /* source-decoded JSR $C289, NOT executed */
+  uint16_t fixed_rng_call_count,low_rng_call_count;
+diff -ruN execution_190/gk1_native_shell.c execution_191/gk1_native_shell.c
+--- execution_190/gk1_native_shell.c	2026-11-11 12:14:07.896456124 +0000
++++ execution_191/gk1_native_shell.c	2026-11-11 12:12:26.085019204 +0000
+@@ -66,7 +66,7 @@
+ # include <linux/joystick.h>
+ # include <sys/stat.h>
+ #endif
+-#define GK1_PORT_VERSION "1.90.0-dev1"
++#define GK1_PORT_VERSION "1.91.0-dev1"
+ #define WIDTH 1280
+ #define HEIGHT 720
+ #define BG UINT32_C(0x10202b)
+@@ -2368,7 +2368,7 @@
+   return 0;
+  }
+  if(argc==2&&strcmp(argv[1],"--version")==0){
+-  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0190 Y controller source-replay undo of last unpassed manual-derived Classic ASSIGN (NOT stock NES Undo); EXEC0189 private self-contained source-attested Classic ASSIGN cold-save/restore (not independent NES first Spring); EXEC0188 source-attested Classic ASSIGN exclusive GC18 receipt, controller X save/Y cold-reattach, NO full independent cold-load; EXEC0187 source-attested Classic manual-derived ASSIGN with three real native budget actions, NO original stock NES parity or startup; EXEC0186 authenticated fixed/low-bank JSR-to-$C289 CFG audit (static negatives remain negatives; no NES run); EXEC0185 controller X/Y stock snapshot refuses source/profile mismatch before I/O; EXEC0184 production controller synthetic-source refusal (existing authentic original VIEW/PASS); EXEC0183 original checkpoint lineage isolation / protected private Classic storage; EXEC0182 authenticated archived Mesen saved-instant mapper/CPU seed (NOT RESET/first Spring); EXEC0181 explicit-bank static original seed-writer hypothesis with mapper barrier; EXEC0180 source-authenticated static seed-writer CFG (not boot execution or first Spring); EXEC0179 source-authentic RNG only after validated setup/difficulty/Classic-vs-Enhanced guards, not original first-Spring; EXEC0178 fixed-bank 6502 RNG 128-source-vector crosscheck (not NES first Spring), EXEC0177 durable source-attested Enhanced 20-season receipt/cold resume; EXEC0176 Enhanced 20-season labor-only continuation; EXEC0174 original stock CPU boot/RAM provenance boundary; EXEC0173 bounded executed RNG control-transfer telemetry; EXEC0172 static source RNG xref; EXEC0171 controller X TITLE source-attested Enhanced labor-season cold resume, no NES season parity; EXEC0170 read-only SHA-verified TITLE private slot inventory; EXEC0169 port-only controller OTHER private checkpoint save/load; EXEC0168 Linux protected owner-private cold-save reload/flush; EXEC0167 owner-private self-contained source-attested Spring save/cold resume, NOT a full campaign; EXEC0166 integrated fresh WorkRAM JSON in-memory checkpoint + EXEC0164 archived Mesen .mss; original NES initialization still NOT reconstructed; EXEC0164 in-memory archived original Mesen controller checkpoint entry (VIEW/PASS only, no independent Spring); EXEC0163 genuine archived Mesen .mss import verified against exact original stock country SHA (no NES first-Spring generation)"); puts("EXEC0162 source-attested original-stock checkpoint controller re-entry and atomic profile replacement, including clearing stale Enhanced YEAR2; VIEW/PASS only; not NES first-Spring independent generation; EXEC0161 authenticated Enhanced YEAR2 SPRING rollover after Winter, three labor-only orders and exclusive GY21 save/cold-load; NO original NES Spring economics, first Spring or character RNG; EXEC0160 Enhanced-only research Winter with Spring/Summer/Fall source-attested receipts, no original weather/AI; EXEC0159 Enhanced-only research Fall with Spring/Summer receipt chaining; EXEC0158 Enhanced-only research Summer with 3 labor orders, no original seasonal economy/RNG, preserving EXEC0157 symbolic PPUSTATUS low7 guarded trace, preserving EXEC0156 exhaustive 128-variant matrix; EXEC0155 source-verified sign-only polling of $2002 only inside a BPL loop (unverified PPU origin; first edge explicitly hypothetical; NO independent Spring), EXEC0154 explicitly hypothetical single VBlank-edge source branch; EXEC0153 executed country-write watch; EXEC0152 source-authenticated raw Spring country-store candidate inventory (not executed), EXEC0151 explicitly assumed EVEN pre-render source trace, NOT original Mesen parity; EXEC0150 bounded render-on-source progression (not Mesen parity); EXEC0149 verified stock PPU phase gate/source scan (NOT original Mesen parity); EXEC0148 private-source bank-aware original 15-stage reset/Spring chronology; EXEC0147 original stock source-backed ten-goods controller VIEW; EXEC0146 Enhanced authentic-checkpoint variable-quantity labor; EXEC0145 fresh progress gate (no Spring creation), EXEC0144 archived Mesen PRG-page mapping, EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
++  puts("Genghis Khan I native research prototype " GK1_PORT_VERSION " (EXEC0191 source-only authentic fixed-bank EF85 inline dispatcher audit (NO source RNG executed); EXEC0190 Y controller source-replay undo of last unpassed manual-derived Classic ASSIGN (NOT stock NES Undo); EXEC0189 private self-contained source-attested Classic ASSIGN cold-save/restore (not independent NES first Spring); EXEC0188 source-attested Classic ASSIGN exclusive GC18 receipt, controller X save/Y cold-reattach, NO full independent cold-load; EXEC0187 source-attested Classic manual-derived ASSIGN with three real native budget actions, NO original stock NES parity or startup; EXEC0186 authenticated fixed/low-bank JSR-to-$C289 CFG audit (static negatives remain negatives; no NES run); EXEC0185 controller X/Y stock snapshot refuses source/profile mismatch before I/O; EXEC0184 production controller synthetic-source refusal (existing authentic original VIEW/PASS); EXEC0183 original checkpoint lineage isolation / protected private Classic storage; EXEC0182 authenticated archived Mesen saved-instant mapper/CPU seed (NOT RESET/first Spring); EXEC0181 explicit-bank static original seed-writer hypothesis with mapper barrier; EXEC0180 source-authenticated static seed-writer CFG (not boot execution or first Spring); EXEC0179 source-authentic RNG only after validated setup/difficulty/Classic-vs-Enhanced guards, not original first-Spring; EXEC0178 fixed-bank 6502 RNG 128-source-vector crosscheck (not NES first Spring), EXEC0177 durable source-attested Enhanced 20-season receipt/cold resume; EXEC0176 Enhanced 20-season labor-only continuation; EXEC0174 original stock CPU boot/RAM provenance boundary; EXEC0173 bounded executed RNG control-transfer telemetry; EXEC0172 static source RNG xref; EXEC0171 controller X TITLE source-attested Enhanced labor-season cold resume, no NES season parity; EXEC0170 read-only SHA-verified TITLE private slot inventory; EXEC0169 port-only controller OTHER private checkpoint save/load; EXEC0168 Linux protected owner-private cold-save reload/flush; EXEC0167 owner-private self-contained source-attested Spring save/cold resume, NOT a full campaign; EXEC0166 integrated fresh WorkRAM JSON in-memory checkpoint + EXEC0164 archived Mesen .mss; original NES initialization still NOT reconstructed; EXEC0164 in-memory archived original Mesen controller checkpoint entry (VIEW/PASS only, no independent Spring); EXEC0163 genuine archived Mesen .mss import verified against exact original stock country SHA (no NES first-Spring generation)"); puts("EXEC0162 source-attested original-stock checkpoint controller re-entry and atomic profile replacement, including clearing stale Enhanced YEAR2; VIEW/PASS only; not NES first-Spring independent generation; EXEC0161 authenticated Enhanced YEAR2 SPRING rollover after Winter, three labor-only orders and exclusive GY21 save/cold-load; NO original NES Spring economics, first Spring or character RNG; EXEC0160 Enhanced-only research Winter with Spring/Summer/Fall source-attested receipts, no original weather/AI; EXEC0159 Enhanced-only research Fall with Spring/Summer receipt chaining; EXEC0158 Enhanced-only research Summer with 3 labor orders, no original seasonal economy/RNG, preserving EXEC0157 symbolic PPUSTATUS low7 guarded trace, preserving EXEC0156 exhaustive 128-variant matrix; EXEC0155 source-verified sign-only polling of $2002 only inside a BPL loop (unverified PPU origin; first edge explicitly hypothetical; NO independent Spring), EXEC0154 explicitly hypothetical single VBlank-edge source branch; EXEC0153 executed country-write watch; EXEC0152 source-authenticated raw Spring country-store candidate inventory (not executed), EXEC0151 explicitly assumed EVEN pre-render source trace, NOT original Mesen parity; EXEC0150 bounded render-on-source progression (not Mesen parity); EXEC0149 verified stock PPU phase gate/source scan (NOT original Mesen parity); EXEC0148 private-source bank-aware original 15-stage reset/Spring chronology; EXEC0147 original stock source-backed ten-goods controller VIEW; EXEC0146 Enhanced authentic-checkpoint variable-quantity labor; EXEC0145 fresh progress gate (no Spring creation), EXEC0144 archived Mesen PRG-page mapping, EXEC0143 bank-hypothesis CFG source audit, EXEC0142 fixed-bank 6502 CFG source screen, EXEC0141 dispatcher byte-pattern audit, EXEC0140 bounded saved-state RNG lineage, EXEC0139 archived original Mesen CPU-RNG proof (read-only), EXEC0138 48-bit inverse source history, EXEC0137 source-mapped 48-bit RNG/rate proof, EXEC0136 constant-time PPU, EXEC0135 atomic PPU refusal, EXEC0134 TAX/ASSIGN controller route, EXEC0133 boot read-before-write provenance, EXEC0132 conditional F5 source gate, EXEC0131 boot provenance, EXEC0130 DMA bus, EXEC0129 source-gated CPU-RAM OAM DMA, EXEC0128 PPU OAM writes, EXEC0127 atomic I/O rollback, EXEC0126 source I/O refusal, EXEC0125 ADC/SBC, EXEC0124 2A03 compare, EXEC0123 load/store, EXEC0122 logic, EXEC0120 save routing; independent first Spring not yet implemented; not full game)");return 0;
+  }
+  /* Preserve EXEC0056's tested synthetic-pad correction/export contract. */
+  if(argc==3&&strcmp(argv[1],"--bonus-correction-export")==0){
+@@ -3378,7 +3378,7 @@
+    else if(e.type==ClientMessage && (Atom)e.xclient.data.l[0]==delete_window)running=0;
+   }
+   poll_joystick(&joystick,pad);render();XFlush(display);frames++;
+-  if(smoke && frames>=smoke){printf("EXEC0190 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
++  if(smoke && frames>=smoke){printf("EXEC0191 integrated research X11 native smoke: %d frames, %dx%d requested, PASS; stock_spring=%s stock_checkpoint_pass=%s order_budget=%s battle_pass=%s\n",frames,WIDTH,HEIGHT,show_stock_spring?"yes":"no",show_stock_checkpoint?"yes":"no",show_order_budget?"yes":"no",show_pass?"yes":"no");break;}
+   struct timespec t={0,16000000};nanosleep(&t,NULL);
+  }
+  if(joystick>=0)close(joystick);
+diff -ruN execution_190/packaging/gk1-native-research.desktop execution_191/packaging/gk1-native-research.desktop
+--- execution_190/packaging/gk1-native-research.desktop	2026-11-11 12:14:07.907581551 +0000
++++ execution_191/packaging/gk1-native-research.desktop	2026-11-11 12:09:10.636003522 +0000
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-Name=Genghis Khan I Research 1.90.0-dev1
++Name=Genghis Khan I Research 1.91.0-dev1
+ GenericName=NES-to-Windows Port Research Prototype
+ Comment=Incomplete native Genghis Khan I research game; source-bounded battles only
+ Exec=gk1-native-research
+diff -ruN execution_190/packaging/test_gk176_version_contract.py execution_191/packaging/test_gk176_version_contract.py
+--- execution_190/packaging/test_gk176_version_contract.py	2026-11-11 12:14:07.907762469 +0000
++++ execution_191/packaging/test_gk176_version_contract.py	2026-11-11 12:09:10.635695997 +0000
+@@ -4,7 +4,7 @@
+ if len(sys.argv)!=5: raise SystemExit('need binary, CMakeLists, desktop, CPackConfig')
+ binfile,cmfile,desktopfile,configfile=map(pathlib.Path,sys.argv[1:])
+ source=cmfile.read_text(); desk=desktopfile.read_text(); pkg=configfile.read_text()
+-version='1.90.0'; display=version+'-dev1'
++version='1.91.0'; display=version+'-dev1'
+ assert all(p.is_file() for p in (binfile,cmfile,desktopfile,configfile))
+ assert source.count('set(CPACK_PACKAGE_VERSION "'+version+'")') == 2 # Windows and Debian
+ assert 'set(CPACK_NSIS_DISPLAY_NAME "Genghis Khan I Research '+display+'")' in source
+diff -ruN execution_190/packaging/test_gk179_version_contract.py execution_191/packaging/test_gk179_version_contract.py
+--- execution_190/packaging/test_gk179_version_contract.py	2026-11-11 12:14:07.907858781 +0000
++++ execution_191/packaging/test_gk179_version_contract.py	2026-11-11 12:09:10.635898446 +0000
+@@ -3,6 +3,6 @@
+ shell=Path(sys.argv[1]).read_text()
+ cmake=Path(sys.argv[2]).read_text()
+ assert 'EXEC0179 source-authentic RNG only after validated setup' in shell
+-assert '1.90.0~dev1_amd64' in cmake
++assert '1.91.0~dev1_amd64' in cmake
+ assert 'test_gk179_rng_setup_boundary' in cmake
+ print('GK179 version source contract PASS')
+diff -ruN execution_190/packaging/test_gk181_version_contract.py execution_191/packaging/test_gk181_version_contract.py
+--- execution_190/packaging/test_gk181_version_contract.py	2026-11-11 12:14:07.908062473 +0000
++++ execution_191/packaging/test_gk181_version_contract.py	2026-11-11 12:09:10.636301482 +0000
+@@ -1,9 +1,9 @@
+ from pathlib import Path
+ import sys
+ shell=Path(sys.argv[1]).read_text();cmake=Path(sys.argv[2]).read_text()
+-assert '#define GK1_PORT_VERSION "1.90.0-dev1"' in shell
++assert '#define GK1_PORT_VERSION "1.91.0-dev1"' in shell
+ assert '--source-bank-seed-writers' in shell
+ assert 'gk181_bank_seed_trace.c' in cmake
+ assert 'test_gk181_bank_seed_trace' in cmake
+-assert '1.90.0~dev1_amd64' in cmake
++assert '1.91.0~dev1_amd64' in cmake
+ print("GK181 version / source + deb contract PASS")
+diff -ruN execution_190/packaging/test_gk182_version_contract.py execution_191/packaging/test_gk182_version_contract.py
+--- execution_190/packaging/test_gk182_version_contract.py	2026-11-11 12:14:07.908242649 +0000
++++ execution_191/packaging/test_gk182_version_contract.py	2026-11-11 12:09:10.636087946 +0000
+@@ -1,9 +1,9 @@
+ from pathlib import Path
+ import sys
+ shell=Path(sys.argv[1]).read_text();cmake=Path(sys.argv[2]).read_text()
+-assert '#define GK1_PORT_VERSION "1.90.0-dev1"' in shell
++assert '#define GK1_PORT_VERSION "1.91.0-dev1"' in shell
+ assert '--source-archived-bank' in shell
+ assert 'gk182_archived_source_bank.c' in cmake
+ assert 'test_gk182_archived_source_bank' in cmake
+-assert '1.90.0~dev1_amd64' in cmake
++assert '1.91.0~dev1_amd64' in cmake
+ print('GK182 version, saved-state original provenance, source + Debian contract PASS')
+diff -ruN execution_190/packaging/test_gk183_version_contract.py execution_191/packaging/test_gk183_version_contract.py
+--- execution_190/packaging/test_gk183_version_contract.py	2026-11-11 12:14:07.908329708 +0000
++++ execution_191/packaging/test_gk183_version_contract.py	2026-11-11 12:09:10.635808333 +0000
+@@ -1,9 +1,9 @@
+ from pathlib import Path
+ import sys
+ shell=Path(sys.argv[1]).read_text();cmake=Path(sys.argv[2]).read_text()
+-assert '#define GK1_PORT_VERSION "1.90.0-dev1"' in shell
++assert '#define GK1_PORT_VERSION "1.91.0-dev1"' in shell
+ assert 'gk183_checkpoint_isolation.c' in cmake
+ assert 'test_gk183_checkpoint_isolation' in cmake
+-assert '1.90.0~dev1_amd64' in cmake
++assert '1.91.0~dev1_amd64' in cmake
+ assert 'README_EXEC0183.md' in cmake
+ print('GK183 checkpoint isolation and Linux/NSIS package version contract PASS')
+diff -ruN execution_190/packaging/test_gk184_version_contract.py execution_191/packaging/test_gk184_version_contract.py
+--- execution_190/packaging/test_gk184_version_contract.py	2026-11-11 12:14:07.908566068 +0000
++++ execution_191/packaging/test_gk184_version_contract.py	2026-11-11 12:09:10.635481640 +0000
+@@ -3,8 +3,8 @@
+ assert len(sys.argv)==3
+ shell=Path(sys.argv[1]).read_text()
+ cmake=Path(sys.argv[2]).read_text()
+-assert '#define GK1_PORT_VERSION "1.90.0-dev1"' in shell
+-assert '1.90.0~dev1_amd64' in cmake
++assert '#define GK1_PORT_VERSION "1.91.0-dev1"' in shell
++assert '1.91.0~dev1_amd64' in cmake
+ assert 'README_EXEC0184.md' in cmake
+ assert 'test_gk184_controller_source_gate' in cmake
+ print('EXEC0184 version/package and controller gate contract PASS')
+diff -ruN execution_190/packaging/test_package_contract.py execution_191/packaging/test_package_contract.py
+--- execution_190/packaging/test_package_contract.py	2026-11-11 12:14:07.908979420 +0000
++++ execution_191/packaging/test_package_contract.py	2026-11-11 12:09:10.636190859 +0000
+@@ -5,14 +5,14 @@
+ assert exe.is_file() and csv.is_file() and desktop.is_file()
+ assert hashlib.sha256(csv.read_bytes()).hexdigest()=="fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581"
+ entry=desktop.read_text()
+-assert "Name=Genghis Khan I Research 1.90.0-dev1" in entry
++assert "Name=Genghis Khan I Research 1.91.0-dev1" in entry
+ assert "Exec=gk1-native-research\n" in entry
+ assert "Terminal=false\n" in entry
+ with tempfile.TemporaryDirectory(prefix='gk1_exec54_') as tmp:
+     def run(*args,env=None):
+         return subprocess.run([str(exe),*args],cwd=tmp,env=env,capture_output=True,text=True,timeout=15)
+     v=run('--version')
+-    assert v.returncode==0 and '1.90.0-dev1' in v.stdout and 'not full game' in v.stdout
++    assert v.returncode==0 and '1.91.0-dev1' in v.stdout and 'not full game' in v.stdout
+     for sc,num in ((1,14),(2,27)):
+         r=run('--scenario-report',str(sc))
+         assert r.returncode==0,(r.stdout,r.stderr)
+diff -ruN execution_190/test_gk191_dispatch_rng_tables.c execution_191/test_gk191_dispatch_rng_tables.c
+--- execution_190/test_gk191_dispatch_rng_tables.c	1970-01-01 00:00:00.000000000 +0000
++++ execution_191/test_gk191_dispatch_rng_tables.c	2026-11-11 12:08:11.124227710 +0000
+@@ -0,0 +1,71 @@
++#include "gk181_bank_seed_trace.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define CHECK(c) do { checks++; if(!(c)){fprintf(stderr,"GK191 failure line %d: %s\n",__LINE__,#c);return 1;} }while(0)
++static unsigned checks;
++static void put(uint8_t *rom,unsigned bank,unsigned pc,const uint8_t *b,size_t n){
++ size_t pos=16u+(pc>=0xc000u?15u:bank)*16384u+(pc&0x3fffu);
++ memcpy(rom+pos,b,n);
++}
++static void table(uint8_t *rom,unsigned selector,uint16_t dest){
++ size_t base=16u+15u*16384u;
++ rom[base+0x3788u+selector]=(uint8_t)dest;
++ rom[base+0x3888u+selector]=(uint8_t)(dest>>8);
++}
++int main(int argc,char **argv){
++ uint8_t *rom=calloc(1,GK180_ROM_BYTES);CHECK(rom!=NULL);
++ memcpy(rom,"NES\032",4u);rom[4]=16u;rom[6]=0x12u;
++ for(unsigned b=0;b<16;b++)memset(rom+16u+b*16384u,0x60,16384u);
++ static const uint8_t reset[]={0x20,0x85,0xef,0x05,0x60};
++ static const uint8_t rngcall[]={0x20,0x89,0xc2,0x60};
++ static const uint8_t rts[]={0x60};
++ put(rom,0,0xc100,reset,sizeof reset);put(rom,0,0xc110,rts,sizeof rts);
++ put(rom,0,0xc120,rts,sizeof rts);put(rom,0,0xc200,rngcall,sizeof rngcall);
++ size_t base=16u+15u*16384u;
++ rom[base+0x3ffc]=0x00;rom[base+0x3ffd]=0xc1;
++ rom[base+0x3ffa]=0x10;rom[base+0x3ffb]=0xc1;
++ rom[base+0x3ffe]=0x20;rom[base+0x3fff]=0xc1;
++ table(rom,5u,0xc200u);
++ Gk181Map *m=calloc(1,sizeof *m);CHECK(m!=NULL);
++ CHECK(gk181_scan_image(rom,GK180_ROM_BYTES,0u,m)==GK181_OK);
++ CHECK(m->dispatcher_calls==1u&&m->dispatcher_table_edges==1u);
++ CHECK(m->rng_call_count==1u&&m->rng_calls[0].pc==0xc200u);
++ CHECK(m->rng_calls[0].bank==15u&&m->rng_calls[0].roots==1u);
++ table(rom,5u,0x6060u);
++ CHECK(gk181_scan_image(rom,GK180_ROM_BYTES,0u,m)==GK181_OK);
++ CHECK(m->dispatcher_unmapped_targets==1u&&m->dispatcher_table_edges==0u);
++ CHECK(m->rng_call_count==0u);
++ table(rom,5u,0x8120u);put(rom,0,0x8120u,rngcall,sizeof rngcall);
++ CHECK(gk181_scan_image(rom,GK180_ROM_BYTES,0u,m)==GK181_OK);
++ CHECK(m->rng_call_count==1u&&m->rng_calls[0].bank==0u&&m->rng_calls[0].pc==0x8120u);
++ CHECK(gk181_scan_image(rom,GK180_ROM_BYTES,1u,m)==GK181_OK);
++ CHECK(m->dispatcher_table_edges==1u&&m->rng_call_count==0u);
++ /* An unrelated, unreachable table entry and disassembly byte are not calls. */
++ table(rom,6u,0xc200u);
++ CHECK(gk181_scan_image(rom,GK180_ROM_BYTES,1u,m)==GK181_OK);
++ CHECK(m->rng_call_count==0u);
++ Gk181Map *snap=malloc(sizeof *m);CHECK(snap!=NULL);
++ memcpy(snap,m,sizeof *m);
++ CHECK(gk181_scan_image(rom,GK180_ROM_BYTES-1u,0u,m)==GK181_BAD_INPUT);
++ CHECK(memcmp(snap,m,sizeof *m)==0);
++ CHECK(gk181_scan_authenticated("/missing-auth-stock-rom",0u,m)==GK181_SOURCE);
++ CHECK(memcmp(snap,m,sizeof *m)==0);
++ if(argc==2){
++  unsigned total=0,edges=0,missing=0;
++  for(unsigned b=0;b<15u;b++){
++   CHECK(gk181_scan_authenticated(argv[1],(uint8_t)b,m)==GK181_OK);
++   CHECK(m->assumed_low_bank==b);
++   total+=m->rng_call_count;edges+=m->dispatcher_table_edges;
++   missing+=m->dispatcher_unmapped_targets;
++   printf("VERIFIED_STATIC BANK=%u conditional-RNG-JSR=%u dispatcher-calls=%u resolved-table=%u outside=%u mapper-barriers=%u\n",
++    b,(unsigned)m->rng_call_count,(unsigned)m->dispatcher_calls,
++    (unsigned)m->dispatcher_table_edges,(unsigned)m->dispatcher_unmapped_targets,
++    (unsigned)m->mapper_barriers);
++  }
++  printf("VERIFIED_STATIC total=%u conditional-JSR, table-edges=%u outside=%u (NOT a runtime trace)\n",total,edges,missing);
++ }
++ free(snap);free(m);free(rom);
++ printf("GK191 %u assertions PASS\n",checks);
++ return 0;
++}
