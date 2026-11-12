@@ -1,0 +1,49 @@
+{
+  "execution": "EXEC0206",
+  "date": "2026-11-11 local / 2026-11-12 UTC",
+  "predecessor": "EXEC0205 exact integrated source",
+  "predecessor_sha256": "b53872ee3f721bdcbe827121edd93b767cd19261bb8bd210d66daa4702bdfd3a",
+  "original_stock_rom_sha256": "ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3",
+  "source_replay_files_equal": 683,
+  "changed_or_new_source_files": 5,
+  "verified_static": {
+    "original_stock_hash": "PASS, kept private",
+    "crosschecks": {
+      "seed_cases": 512,
+      "source_6502_draw_comparisons": 2048,
+      "first_draw_by_difficulty_comparisons": 2560,
+      "mismatches": 0
+    },
+    "counterfeit_rom_exit_code": 8,
+    "source_coefficient_negative_control": "PASS",
+    "patch_replay": "PASS"
+  },
+  "observed_runtime_stock": {
+    "new_mesen_execution": false,
+    "fresh_vs_archived": "historical data preserved separately, not redone"
+  },
+  "tested_port_linux": {
+    "release_ctest": "169/169 PASS",
+    "debug_ctest": "169/169 PASS",
+    "independent_clean_source_ctest": "169/169 PASS",
+    "focused_asan_ubsan": "PASS",
+    "native_x11_frames": 120,
+    "debian_extracted_x11_frames": 120,
+    "debian_extracted_rng_crosscheck": "PASS"
+  },
+  "not_run": [
+    "Windows Win32 native binary",
+    "NSIS installer",
+    "physical Xbox controller",
+    "complete 14 and 27 country campaigns"
+  ],
+  "not_implemented": [
+    "source-executed exact first Spring reset/character/difficulty/RNG",
+    "merchant presence scheduler",
+    "full AI/dynasty/diplomacy/war-aftercare",
+    "full campaign save/quit/coldload",
+    "complete authentic AV"
+  ],
+  "source_only_no_gameplay_unlocked": true,
+  "no_licensed_rom_or_assets_public": true
+}
