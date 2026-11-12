@@ -174,7 +174,12 @@ jobs:
               try { $p.Kill() } catch {}
               throw "EXEC0233 Windows $mode timed out"
             }
-            if ($p.ExitCode -ne 0) { throw "EXEC0233 Windows $mode exit=$($p.ExitCode)" }
+            if ($p.ExitCode -ne 0) {
+              if (Test-Path $env:GK1_SMOKE_TRACE) {
+                Get-Content $env:GK1_SMOKE_TRACE | Select-Object -Last 35 | ForEach-Object { Write-Host "GK233 DEBUG $_" }
+              }
+              throw "EXEC0233 Windows $mode exit=$($p.ExitCode)"
+            }
           }
           $cases = @(
             @{ Exe = (Resolve-Path 'build-gk1-win32/Release/gk1_native_shell.exe').Path; Csv = (Resolve-Path 'build-gk1-win32/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv').Path; Label = 'built' },
@@ -185,6 +190,8 @@ jobs:
               throw "EXEC0233 missing Windows executable or canonical country source"
             }
             $env:GK1_SCENARIO_CSV = $case.Csv
+            $env:GK1_SMOKE_TRACE = Join-Path $env:RUNNER_TEMP ("GK1_EXEC0233_" + $case.Label + ".trace")
+            Remove-Item $env:GK1_SMOKE_TRACE -ErrorAction SilentlyContinue
             $env:GK1_ENHANCED_PRACTICE_SAVE_FILE = Join-Path $env:RUNNER_TEMP ("GK1_EXEC0233_" + $case.Label + ".gk24")
             Remove-Item $env:GK1_ENHANCED_PRACTICE_SAVE_FILE -ErrorAction SilentlyContinue
             Check-Run $case.Exe '--smoke-gamepad-practice-save'
