@@ -45,7 +45,7 @@ def apply(source: str) -> str:
         raise ValueError("EXEC0231 overlay already present")
     for before, after in ANCHORS:
         if source.count(before)!=1:
-            raise ValueError("refusing changed predecessor anchor: "+before[:85])
+            raise ValueError("refusing changed predecessor anchor count="+str(source.count(before))+" token="+repr(before[:85])+" nearby="+repr([line for line in source.splitlines() if "gk230_painted" in line][:4]))
         source=source.replace(before,after,1)
     return source
 
