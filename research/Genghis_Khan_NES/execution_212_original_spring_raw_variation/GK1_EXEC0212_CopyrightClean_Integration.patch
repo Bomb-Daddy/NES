@@ -1,0 +1,265 @@
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -1012,3 +1012,11 @@
+ add_executable(test_gk211_fresh_sequence test_gk211_fresh_sequence.c)
+ target_link_libraries(test_gk211_fresh_sequence PRIVATE gk1_app_state)
+ add_test(NAME GK1_211_OriginalFreshStock14StageSourceChronologyAndNegativeGates COMMAND test_gk211_fresh_sequence)
++
++# EXEC0212: independently authenticated original-stock byte variation across
++# two different history/choice paths. Always run refusal tests; positive proof
++# uses user-private originals out of tree, never published as assets.
++add_executable(test_gk212_stock_raw_variation test_gk212_stock_raw_variation.c)
++target_link_libraries(test_gk212_stock_raw_variation PRIVATE gk1_app_state)
++add_test(NAME GK1_212_OriginalMongolRawVariationAndSourceRefusal
++ COMMAND test_gk212_stock_raw_variation ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -177,6 +177,16 @@
+ /* Country state belongs to this SAME native game, not a second standalone CLI.
+  * Installing a dataset never alters the active battle or save/replay objects.
+  * PRE_SETUP means first playable seasonal setup is explicitly NOT implemented. */
++Gk212Status gk1_app_original_raw_variation(const Gk1App *app,
++ const char *csv,const Gk79Checkpoint *fresh,
++ const Gk79Checkpoint *archived,Gk212Variation *out){
++ if(!app||!csv||!fresh||!archived||!out||!app->world_ready[0])
++  return GK212_INVALID;
++ /* Same world as the existing 1280x720 game. Never updates setup phase,
++  * country statistics, original stock checkpoint, or the three orders. */
++ return gk212_compare_original_mongol_raw(csv,&app->worlds[0],fresh,archived,out);
++}
++
+ Gk112Status gk1_app_stock_setup_deltas(const Gk1App *app,
+  const char *csv,Gk112StockDeltas *out){
+  if(!app||!csv||!out||!app->stock_checkpoint.valid)return GK112_ARGUMENT;
+--- a/execution_199/gk1_app_state.h
++++ b/execution_199/gk1_app_state.h
+@@ -14,6 +14,7 @@
+ #include "gk110_spring_stage.h"
+ #include "gk111_stock_spring_audit.h"
+ #include "gk112_stock_setup_deltas.h"
++#include "gk212_stock_raw_variation.h"
+ #include "gk114_stock_spring_timeline.h"
+ #include "gk211_fresh_sequence.h"
+ #include "gk79_stock_checkpoint.h"
+@@ -137,6 +138,11 @@
+   char status[128];
+ } Gk1App;
+ void gk1_app_init(Gk1App *s);
++/* Aggregate read-only comparison of two ORIGINAL, separately authenticated
++ * Spring1175 histories. No source records embedded, no gameplay mutation. */
++Gk212Status gk1_app_original_raw_variation(const Gk1App *app,
++ const char *canonical_csv,const Gk79Checkpoint *fresh,
++ const Gk79Checkpoint *archived,Gk212Variation *out);
+ /* Exact-original BRK-vector jump-table RNG source proof, NOT actual setup. */
+ Gk202Status gk1_app_source_irq_rng_path(const Gk1App *app,
+  const char *private_stock_rom,Gk202Proof *out);
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -2028,6 +2028,28 @@
+  Gk1PadSample s=joystick_sample();pad_actions(&s);
+ }
+ int main(int argc,char **argv){
++ /* EXEC0212: two authenticated original stock Spring histories, read-only.
++  * No original country bytes or RNG seed values printed or published. */
++ if(argc==4&&strcmp(argv[1],"--audit-original-mongol-variation")==0){
++  gk1_app_init(&app);
++  if(!load_scenario_data())return 8;
++  Gk79Checkpoint *fresh=(Gk79Checkpoint*)calloc(1,sizeof *fresh);
++  Gk79Checkpoint *archived=(Gk79Checkpoint*)calloc(1,sizeof *archived);
++  if(!fresh||!archived){free(fresh);free(archived);return 9;}
++  const Gk1LoadedScenario *original=&app.worlds[0];
++  int accepted=(gk79_open_original(original,argv[2],GK77_FRESH_MONGOL_WORKRAM,0,fresh)==GK79_OK &&
++    gk79_open_original(original,argv[3],GK77_ARCHIVED_MONGOL_SAVERAM,0,archived)==GK79_OK);
++  Gk212Variation report={0};
++  if(accepted)accepted=gk1_app_original_raw_variation(&app,scenario_csv_path(),fresh,archived,&report)==GK212_OK;
++  free(fresh);free(archived);
++  if(!accepted){fputs("GK212 private original source/record/RAW bank evidence refused; no state changed\n",stderr);return 9;}
++  printf("VERIFIED_STATIC original stock two-history raw source variation: %u/%u byte cells differ, %u/83 offsets, %u/14 countries, %u/24 source-projected metrics.\n",
++   report.differing_cells,report.cells_compared,report.offsets_differing,
++   report.countries_differing,report.numeric_fields_differing);
++  puts("TWO observed original histories only: NOT original first-Spring RNG reconstruction, NOT a universal starting constant, no new Mesen execution.");
++  return 0;
++ }
++
+  /* Coefficients loaded only from SHA-verified PRIVATE stock cartridge.
+   * This proves bounded arithmetic parity, NOT a runtime RNG invocation. */
+  if(argc==3 && strcmp(argv[1],"--audit-stock-rng-parity")==0){
+--- a/execution_199/gk212_stock_raw_variation.c
++++ b/execution_199/gk212_stock_raw_variation.c
+@@ -0,0 +1,44 @@
++#include "gk212_stock_raw_variation.h"
++#include <string.h>
++Gk212Status gk212_compare_original_mongol_raw(const char *csv,
++ const Gk1LoadedScenario *pre,const Gk79Checkpoint *fresh,
++ const Gk79Checkpoint *archived,Gk212Variation *out){
++ if(!csv||!pre||!fresh||!archived||!out)return GK212_INVALID;
++ if(fresh->profile!=GK77_FRESH_MONGOL_WORKRAM ||
++    archived->profile!=GK77_ARCHIVED_MONGOL_SAVERAM ||
++    fresh->year!=1175u||archived->year!=1175u ||
++    fresh->orders.season!=GK71_SPRING||archived->orders.season!=GK71_SPRING ||
++    pre->scenario_id!=GK1_MONGOL_CONQUEST ||
++    pre->country_count!=GK212_COUNTRIES ||
++    fresh->world.country_count!=GK212_COUNTRIES ||
++    archived->world.country_count!=GK212_COUNTRIES)
++  return GK212_WRONG_PROFILE;
++ Gk112PairedHistories checked={0};
++ Gk112Status r=gk112_compare_mongol_histories(csv,pre,fresh,archived,&checked);
++ if(r!=GK112_OK)return r==GK112_TEMPLATE_REFUSED?GK212_SETUP_REFUSED:
++                         GK212_SOURCE_REFUSED;
++ Gk212Variation next={0};
++ next.country_count=GK212_COUNTRIES;
++ next.cells_compared=GK212_COUNTRIES*GK212_RAW_BYTES;
++ for(unsigned offset=0;offset<GK212_RAW_BYTES;offset++){
++  for(unsigned country=0;country<GK212_COUNTRIES;country++){
++   if(fresh->stock_raw[country][offset]==archived->stock_raw[country][offset])
++    continue;
++   next.differences_per_offset[offset]++;
++   next.differences_per_country[country]++;
++   next.differing_cells++;
++  }
++  next.equal_in_two_histories[offset]=next.differences_per_offset[offset]==0u;
++  if(next.differences_per_offset[offset])next.offsets_differing++;
++ }
++ for(unsigned country=0;country<GK212_COUNTRIES;country++)
++  if(next.differences_per_country[country])next.countries_differing++;
++ for(unsigned field=0;field<GK112_METRIC_COUNT;field++){
++  next.numeric_metric_differences+=checked.countries_changed[field];
++  if(checked.countries_changed[field])next.numeric_fields_differing++;
++ }
++ /* Both the 83-byte raw and decoded numeric projections are source attested.
++  * No field's apparent stability is interpreted as a universal RNG rule. */
++ *out=next;
++ return GK212_OK;
++}
+--- a/execution_199/gk212_stock_raw_variation.h
++++ b/execution_199/gk212_stock_raw_variation.h
+@@ -0,0 +1,35 @@
++#ifndef GK212_STOCK_RAW_VARIATION_H
++#define GK212_STOCK_RAW_VARIATION_H
++#include "gk112_stock_setup_deltas.h"
++/* Comparison of TWO distinct authenticated ORIGINAL stock Spring1175 histories.
++ * This never identifies causality, RNG consumption order or universal constants.
++ * The raw 83-byte records are private caller inputs; output contains only
++ * aggregate counts, never licensed/source records or individual byte values. */
++#define GK212_RAW_BYTES GK77_RECORD_BYTES
++#define GK212_COUNTRIES GK1_COUNTRIES_MONGOL
++typedef enum {
++ GK212_OK=0,GK212_INVALID=1,GK212_WRONG_PROFILE=2,
++ GK212_SOURCE_REFUSED=3,GK212_SETUP_REFUSED=4
++} Gk212Status;
++typedef struct {
++ uint8_t country_count;
++ uint16_t cells_compared; /* 14*83 */
++ uint16_t differing_cells;
++ uint8_t offsets_differing;
++ uint8_t countries_differing;
++ uint8_t differences_per_offset[GK212_RAW_BYTES];
++ uint8_t differences_per_country[GK212_COUNTRIES];
++ /* Exact source-projected numeric metrics; NOT an exhaustive raw-field map. */
++ uint16_t numeric_metric_differences;
++ uint8_t numeric_fields_differing;
++ /* 1 marks only an observed equality in the TWO histories.  Never an
++  * assertion of an NES invariant over other RNG/choice histories. */
++ uint8_t equal_in_two_histories[GK212_RAW_BYTES];
++} Gk212Variation;
++/* Validates canonical 41-country CSV, pristine pre-setup, exact original 83B
++ * country hash, correct WorkRAM-vs-SaveRAM provenance and raw/projected
++ * integrity for BOTH states. Atomic refusal: output and inputs untouched. */
++Gk212Status gk212_compare_original_mongol_raw(const char *canonical_csv,
++ const Gk1LoadedScenario *pre,const Gk79Checkpoint *fresh,
++ const Gk79Checkpoint *archived,Gk212Variation *out);
++#endif
+--- a/execution_199/test_gk212_stock_raw_variation.c
++++ b/execution_199/test_gk212_stock_raw_variation.c
+@@ -0,0 +1,82 @@
++#include "gk1_app_state.h"
++#include "gk1_source_identity.h"
++#include <stdio.h>
++#include <string.h>
++#define CHECK(x) do{if(!(x)){fprintf(stderr,"GK212 FAIL line %d: %s\n",__LINE__,#x);return 1;}}while(0)
++int main(int argc,char **argv){
++ CHECK(argc==2||argc==4);
++ CHECK(gk1_verified_original_csv(argv[1]));
++ Gk1TemplateDataset data={0};
++ CHECK(gk1_template_load(argv[1],&data)==GK1_LOAD_OK);
++ Gk1LoadedScenario original={0};
++ CHECK(gk1_open_loaded_scenario(&data,GK1_MONGOL_CONQUEST,&original)==GK1_LOAD_OK);
++ Gk79Checkpoint fake={0};Gk212Variation result,sentinel;
++ memset(&result,0xA5,sizeof result);sentinel=result;
++ CHECK(gk212_compare_original_mongol_raw(argv[1],&original,&fake,&fake,&result)==GK212_WRONG_PROFILE);
++ CHECK(memcmp(&result,&sentinel,sizeof result)==0);
++ CHECK(gk212_compare_original_mongol_raw(argv[1],&original,NULL,&fake,&result)==GK212_INVALID);
++ CHECK(memcmp(&result,&sentinel,sizeof result)==0);
++ if(argc==4){
++  Gk79Checkpoint fresh={0},archived={0};
++  CHECK(gk79_open_original(&original,argv[2],GK77_FRESH_MONGOL_WORKRAM,0,&fresh)==GK79_OK);
++  CHECK(gk79_open_original(&original,argv[3],GK77_ARCHIVED_MONGOL_SAVERAM,0,&archived)==GK79_OK);
++  Gk79Checkpoint fresh0=fresh,archived0=archived;
++  CHECK(gk212_compare_original_mongol_raw(argv[1],&original,&fresh,&archived,&result)==GK212_OK);
++  CHECK(memcmp(&fresh,&fresh0,sizeof fresh)==0);
++  CHECK(memcmp(&archived,&archived0,sizeof archived)==0);
++  CHECK(result.country_count==14&&result.cells_compared==14u*83u);
++  unsigned sum_offset=0,sum_country=0,n_offsets=0,n_countries=0;
++  for(unsigned off=0;off<83;off++){
++   unsigned changed=0;
++   for(unsigned i=0;i<14;i++)
++    changed+=(fresh.stock_raw[i][off]!=archived.stock_raw[i][off]);
++   CHECK(result.differences_per_offset[off]==changed);
++   CHECK(result.equal_in_two_histories[off]==(changed==0));
++   n_offsets+=(changed!=0);sum_offset+=changed;
++  }
++  for(unsigned c=0;c<14;c++){
++   unsigned changed=0;
++   for(unsigned i=0;i<83;i++)
++    changed+=(fresh.stock_raw[c][i]!=archived.stock_raw[c][i]);
++   CHECK(result.differences_per_country[c]==changed);
++   n_countries+=(changed!=0);sum_country+=changed;
++  }
++  CHECK(result.differing_cells==sum_offset&&sum_offset==sum_country);
++  CHECK(result.offsets_differing==n_offsets&&result.countries_differing==n_countries);
++  CHECK(result.differing_cells>0 && result.numeric_metric_differences>0);
++  Gk112PairedHistories metrics={0};
++  CHECK(gk112_compare_mongol_histories(argv[1],&original,&fresh,&archived,&metrics)==GK112_OK);
++  unsigned total=0,n_fields=0;
++  for(unsigned field=0;field<GK112_METRIC_COUNT;field++){
++   total+=metrics.countries_changed[field];n_fields+=(metrics.countries_changed[field]>0);
++  }
++  CHECK(result.numeric_metric_differences==total&&result.numeric_fields_differing==n_fields);
++  Gk1App app;gk1_app_init(&app);
++  CHECK(gk1_app_install_templates(&app,&data));
++  Gk1App old=app;Gk212Variation from_app={0};
++  CHECK(gk1_app_original_raw_variation(&app,argv[1],&fresh,&archived,&from_app)==GK212_OK);
++  CHECK(memcmp(&from_app,&result,sizeof result)==0);
++  CHECK(memcmp(&old,&app,sizeof app)==0);
++  memset(&from_app,0x8D,sizeof from_app);Gk212Variation unchanged=from_app;
++  CHECK(gk212_compare_original_mongol_raw(argv[1],&original,&archived,&fresh,&from_app)==GK212_WRONG_PROFILE);
++  CHECK(memcmp(&unchanged,&from_app,sizeof unchanged)==0);
++  fresh.stock_raw[13][82]^=1; /* OUT-OF-PROJECTION BYTE CORRUPTION */
++  CHECK(gk212_compare_original_mongol_raw(argv[1],&original,&fresh,&archived,&from_app)==GK212_SOURCE_REFUSED);
++  CHECK(memcmp(&unchanged,&from_app,sizeof unchanged)==0);
++  fresh=fresh0;
++  archived.world.countries[13].skill++;
++  CHECK(gk212_compare_original_mongol_raw(argv[1],&original,&fresh,&archived,&from_app)==GK212_SOURCE_REFUSED);
++  CHECK(memcmp(&unchanged,&from_app,sizeof unchanged)==0);
++  archived=archived0;
++  original.countries[13].morale++;
++  CHECK(gk212_compare_original_mongol_raw(argv[1],&original,&fresh,&archived,&from_app)==GK212_SETUP_REFUSED);
++  CHECK(memcmp(&unchanged,&from_app,sizeof unchanged)==0);
++  original.countries[13].morale--;
++  CHECK(gk212_compare_original_mongol_raw("/missing/canonical.csv",&original,&fresh,&archived,&from_app)==GK212_SETUP_REFUSED);
++  CHECK(memcmp(&unchanged,&from_app,sizeof unchanged)==0);
++  printf("GK212 VERIFIED_STATIC ORIGINAL STOCK 2-HISTORY: raw %u/%u differing bytes, %u/83 byte offsets, %u/14 countries; numeric fields %u/24; no startup RNG inferred\n",
++   result.differing_cells,result.cells_compared,result.offsets_differing,
++   result.countries_differing,result.numeric_fields_differing);
++ }else puts("GK212 public source-refusal controls PASS; authentic private profile comparisons NOT RUN");
++ return 0;
++}
