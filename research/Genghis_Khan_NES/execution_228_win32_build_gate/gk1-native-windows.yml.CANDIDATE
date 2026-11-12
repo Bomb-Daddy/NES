@@ -1,0 +1,46 @@
+name: GK1 native Win32 compile and NSIS verification (research only)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/gk1-native-windows.yml'
+      - 'research/Genghis_Khan_NES/execution_228_win32_build_gate/**'
+
+permissions:
+  contents: read
+
+jobs:
+  native-win32:
+    runs-on: windows-2022
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install NSIS for actual Windows packaging
+        shell: pwsh
+        run: |
+          choco install nsis --no-progress --yes
+          echo 'C:\Program Files (x86)\NSIS' >> $env:GITHUB_PATH
+      - name: Build same C11 WinMain and Xbox XInput-linked application
+        shell: pwsh
+        run: |
+          cmake -S research/Genghis_Khan_NES/execution_228_win32_build_gate/execution_199 -B build-gk1-win32 -G 'Visual Studio 17 2022' -A x64
+          cmake --build build-gk1-win32 --config Release --parallel 4
+      - name: Execute genuine Win32 native integration and hostile-source tests
+        shell: pwsh
+        run: |
+          ctest --test-dir build-gk1-win32 -C Release --output-on-failure -R 'GK1_228_|GK1_099_|GK1_062_'
+      - name: Create genuine NSIS Windows setup executable
+        shell: pwsh
+        run: |
+          cpack --config build-gk1-win32/CPackConfig.cmake -G NSIS -C Release -B build-gk1-win32/out
+          $setup = Get-ChildItem build-gk1-win32/out -Filter '*.exe' | Select-Object -First 1
+          if (-not $setup) { throw 'NSIS did not produce Windows setup EXE' }
+          $target = Join-Path $env:RUNNER_TEMP 'GK1ResearchInstall'
+          $p = Start-Process -FilePath $setup.FullName -ArgumentList @('/S', "/D=$target") -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "NSIS installation exited $($p.ExitCode)" }
+          if (-not (Test-Path (Join-Path $target 'gk1_native_shell.exe'))) { throw 'Installed native game missing' }
+          if (-not (Test-Path (Join-Path $target 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'))) { throw 'Installed canonical CSV missing' }
+          Get-FileHash (Join-Path $target 'gk1_native_shell.exe') -Algorithm SHA256
+          Write-Output 'Win32 installer extraction verified; physical Xbox and full campaigns NOT RUN'
+      # Intentionally no upload-artifact: storage pressure, unaccepted research build.
