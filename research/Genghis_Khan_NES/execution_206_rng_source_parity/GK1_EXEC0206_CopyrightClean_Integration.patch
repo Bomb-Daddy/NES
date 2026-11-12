@@ -1,0 +1,227 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+index 6850314..46ccb1f 100644
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -982,3 +982,8 @@ add_test(NAME GK1_204_OriginalSelectorStoreCandidatesStaticOnly COMMAND test_gk2
+ add_executable(test_gk205_selector_runtime_watch test_gk205_selector_runtime_watch.c)
+ target_link_libraries(test_gk205_selector_runtime_watch PRIVATE gk1_app_state)
+ add_test(NAME GK1_205_BoundedStockCPUSelectorWriteTelemetry COMMAND test_gk205_selector_runtime_watch)
++
++# EXEC0206: independent original fixed-bank 6502 vs native 48-bit RNG parity.
++add_executable(test_gk206_rng_source_parity test_gk206_rng_source_parity.c)
++target_link_libraries(test_gk206_rng_source_parity PRIVATE gk1_app_state)
++add_test(NAME GK1_206_StockRng6502CoefficientParityFailClosed COMMAND test_gk206_rng_source_parity)
+diff --git a/execution_199/gk1_native_shell.c b/execution_199/gk1_native_shell.c
+index add5f7d..53dcd1a 100644
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -5,6 +5,7 @@
+  */
+ #define _POSIX_C_SOURCE 200809L
+ #include "gk174_setup_boundary.h"
++#include "gk206_rng_source_parity.h"
+ #include "gk185_stock_hotkey.h"
+ #include "gk80_full_checkpoint.h"
+ #include "gk171_enhanced_title_resume.h"
+@@ -2024,6 +2025,22 @@ static void poll_joystick(int *pfd,const char *path){
+  Gk1PadSample s=joystick_sample();pad_actions(&s);
+ }
+ int main(int argc,char **argv){
++ /* Coefficients loaded only from SHA-verified PRIVATE stock cartridge.
++  * This proves bounded arithmetic parity, NOT a runtime RNG invocation. */
++ if(argc==3 && strcmp(argv[1],"--audit-stock-rng-parity")==0){
++  Gk206Audit audit={0};
++  Gk206Status status=gk206_compare_original_stock(argv[2],&audit);
++  if(status!=GK206_PASS){
++   fprintf(stderr,"ORIGINAL STOCK RNG PARITY REFUSED status=%u; no world state changed\n",
++     (unsigned)status);
++   return 8;
++  }
++  printf("VERIFIED_STATIC stock fixed-bank RNG C289 parity: seed_cases=%u 6502_draw_pairs=%u source_rate_pairs=%u mismatches=%u\n",
++    (unsigned)audit.initial_seeds,(unsigned)audit.draw_pairs,
++    (unsigned)audit.spring_rate_pairs,(unsigned)audit.mismatches);
++  puts("SOURCE_BOUNDED_ONLY; no original-Mesen CPU event, source seed initialization, or playable Spring generated");
++  return 0;
++ }
+  /* An offline reproducible ROM-derived 6502 bootstrap report. It is source
+   * tracing only; no X11, NES hardware synthesis, or campaign state mutation. */
+  if(argc==3 && strcmp(argv[1],"--audit-stock-reset")==0){
+diff --git a/execution_199/gk206_rng_source_parity.c b/execution_199/gk206_rng_source_parity.c
+new file mode 100644
+index 0000000..926bab9
+--- /dev/null
++++ b/execution_199/gk206_rng_source_parity.c
+@@ -0,0 +1,90 @@
++#include "gk206_rng_source_parity.h"
++#include "gk137_stock_rng.h"
++#include "gk178_source_rng.h"
++#include "gk82_stock_cartridge.h"
++#include <stdio.h>
++#include <string.h>
++
++#define GK206_PRG15_COEFFICIENT_OFFSET (16L+15L*16384L+0x2ecL)
++#define GK206_SEED_CASES 512u
++#define GK206_DRAWS_EACH 4u
++/* Reproducible seed space includes zero, all ones, all upper/lower masks,
++ * and varied states without requiring original gameplay RNG seeds. */
++static uint64_t sample_seed(unsigned n){
++ const uint64_t fixed[]={UINT64_C(0),UINT64_C(1),UINT64_C(2),
++  UINT64_C(0xffffffffffff),UINT64_C(0x800000000000),
++  UINT64_C(0x000000ffffff),UINT64_C(0xffffff000000),
++  UINT64_C(0x123456789abc),UINT64_C(0x010203040506)};
++ if(n<sizeof fixed/sizeof fixed[0])return fixed[n];
++ uint64_t x=(uint64_t)n*UINT64_C(0x9e3779b97f4a7c15);
++ x^=x>>30;x*=UINT64_C(0xbf58476d1ce4e5b9);
++ x^=x>>27;x*=UINT64_C(0x94d049bb133111eb);
++ return (x^(x>>31))&UINT64_C(0xffffffffffff);
++}
++static int checked_next(Gk137StockRng *arithmetic,
++ const uint8_t coefficients[6]){
++ uint8_t before[6],after[6];
++ Gk178RngResult exact={0};uint16_t draw=0;
++ gk137_to_nes_bytes(arithmetic,before);
++ if(gk178_step(before,coefficients,&exact)!=GK178_OK)return 0;
++ if(gk137_draw15(arithmetic,&draw)!=GK137_OK)return 0;
++ gk137_to_nes_bytes(arithmetic,after);
++ if(memcmp(before,exact.before,6u)!=0||
++    memcmp(after,exact.after,6u)!=0||
++    draw!=(uint16_t)(((uint16_t)exact.result_67<<8)|exact.result_66))
++  return 0;
++ return 1;
++}
++Gk206Status gk206_compare_coefficients(const uint8_t coefficients[6],
++ Gk206Audit *out){
++ if(!coefficients||!out)return GK206_BAD_ARGUMENT;
++ Gk206Audit result={0};
++ for(unsigned n=0;n<GK206_SEED_CASES;n++){
++  const uint64_t seed=sample_seed(n);
++  Gk137StockRng rng={seed,0u};
++  result.initial_seeds++;
++  for(unsigned j=0;j<GK206_DRAWS_EACH;j++){
++   result.draw_pairs++;
++   if(!checked_next(&rng,coefficients))result.mismatches++;
++  }
++  /* Rate formula is source-attested, but seed/number of prior draws is NOT.
++   * Check each difficulty independently, never infer observed stock Rate. */
++  for(unsigned difficulty=1u;difficulty<=5u;difficulty++){
++   Gk137StockRng source={seed,0u};
++   Gk137StockRng projected=source;
++   uint16_t value=UINT16_MAX;
++   if(!checked_next(&source,coefficients))result.mismatches++;
++   if(gk137_spring_rate(&projected,(uint8_t)difficulty,&value)!=GK137_OK)
++    result.mismatches++;
++   /* The source-derived bounded rate uses one full 15-bit draw. */
++   uint16_t next=(uint16_t)((source.seed48>>32u)&0x7fffu);
++   if(value!=50u+(next%(94u+7u*difficulty))||
++       projected.seed48!=source.seed48||projected.draws!=1u)
++    result.mismatches++;
++   result.spring_rate_pairs++;
++  }
++ }
++ if(result.mismatches)return GK206_COEFFICIENT_MISMATCH;
++ *out=result;return GK206_PASS;
++}
++Gk206Status gk206_compare_original_stock(const char *path,Gk206Audit *out){
++ if(!path||!*path||!out)return GK206_BAD_ARGUMENT;
++ Gk82RomBootstrap verified={0};
++ if(gk82_probe_stock_rom(path,&verified)!=GK82_ROM_OK)
++  return GK206_SOURCE_REFUSED;
++ FILE *f=fopen(path,"rb");if(!f)return GK206_SOURCE_REFUSED;
++ uint8_t coeff[6]={0};
++ int good=fseek(f,GK206_PRG15_COEFFICIENT_OFFSET,SEEK_SET)==0&&
++           fread(coeff,1,sizeof coeff,f)==sizeof coeff;
++ int read_error=ferror(f);
++ int close_error=fclose(f)!=0;
++ int bad=read_error||close_error;
++ if(!good||bad){memset(coeff,0,sizeof coeff);return GK206_SOURCE_REFUSED;}
++ Gk206Audit candidate={0};
++ Gk206Status result=gk206_compare_coefficients(coeff,&candidate);
++ memset(coeff,0,sizeof coeff);
++ if(result!=GK206_PASS)return result;
++ candidate.source_authenticated=1u;
++ candidate.original_first_spring_generated=0u;
++ *out=candidate;return GK206_PASS;
++}
+diff --git a/execution_199/gk206_rng_source_parity.h b/execution_199/gk206_rng_source_parity.h
+new file mode 100644
+index 0000000..60a2c5e
+--- /dev/null
++++ b/execution_199/gk206_rng_source_parity.h
+@@ -0,0 +1,29 @@
++#ifndef GK206_RNG_SOURCE_PARITY_H
++#define GK206_RNG_SOURCE_PARITY_H
++#include <stdint.h>
++/* Bounded, deterministic original-stock RNG arithmetic QA. NOT a replay of
++ * original reset, mapper/PPU timing or inferred first-Spring seed history.
++ * No original cartridge bytes or screenshots are stored in this report. */
++typedef enum {
++ GK206_PASS=0, GK206_BAD_ARGUMENT=1, GK206_SOURCE_REFUSED=2,
++ GK206_COEFFICIENT_MISMATCH=3
++} Gk206Status;
++typedef struct {
++ uint32_t initial_seeds;
++ uint32_t draw_pairs;
++ uint32_t spring_rate_pairs;
++ uint32_t mismatches;
++ uint8_t source_authenticated;
++ uint8_t original_first_spring_generated; /* Always false. */
++} Gk206Audit;
++/* The provided bytes are arbitrary test coefficients, NOT authenticated
++ * cartridge data. If they are wrong, the test must refuse rather than
++ * unconditionally report agreement with the native arithmetic model. */
++Gk206Status gk206_compare_coefficients(const uint8_t coefficients[6],
++ Gk206Audit *out);
++/* Authenticates the exact private 262160B USA NES image and reads the
++ * six coefficients in source ROM fixed PRG bank 15, CPU $C2EC. No licensed
++ * bytes are emitted or retained after use. Bad source leaves out unchanged. */
++Gk206Status gk206_compare_original_stock(const char *private_rom,
++ Gk206Audit *out);
++#endif
+diff --git a/execution_199/test_gk206_rng_source_parity.c b/execution_199/test_gk206_rng_source_parity.c
+new file mode 100644
+index 0000000..0042776
+--- /dev/null
++++ b/execution_199/test_gk206_rng_source_parity.c
+@@ -0,0 +1,33 @@
++#include "gk206_rng_source_parity.h"
++#include <stdlib.h>
++#include <stdint.h>
++#include <string.h>
++#include <stdio.h>
++static unsigned checks;
++#define CHECK(p) do{checks++;if(!(p)){fprintf(stderr,"ASSERT line %d: %s\n",__LINE__,#p);abort();}}while(0)
++int main(void){
++ Gk206Audit a={0}, before=a;
++ CHECK(gk206_compare_original_stock(NULL,&a)==GK206_BAD_ARGUMENT);
++ CHECK(gk206_compare_original_stock("",&a)==GK206_BAD_ARGUMENT);
++ CHECK(gk206_compare_original_stock("/does-not-exist.nes",&a)==GK206_SOURCE_REFUSED);
++ CHECK(!memcmp(&a,&before,sizeof a));
++ CHECK(gk206_compare_coefficients(NULL,&a)==GK206_BAD_ARGUMENT);
++ CHECK(gk206_compare_coefficients((const uint8_t[6]){0},NULL)==GK206_BAD_ARGUMENT);
++ /* This deliberately INCORRECT six-byte coefficient array must not silently
++  * match the independent fixed-multiplier arithmetic. */
++ CHECK(gk206_compare_coefficients((const uint8_t[6]){0},&a)==GK206_COEFFICIENT_MISMATCH);
++ CHECK(!memcmp(&a,&before,sizeof a));
++ const char *private_rom=getenv("GK1_ORIGINAL_STOCK_ROM");
++ if(private_rom&&*private_rom){
++  CHECK(gk206_compare_original_stock(private_rom,&a)==GK206_PASS);
++  CHECK(a.source_authenticated==1&&a.original_first_spring_generated==0);
++  CHECK(a.initial_seeds==512u&&a.draw_pairs==2048u&&a.spring_rate_pairs==2560u);
++  CHECK(a.mismatches==0u);
++  Gk206Audit old=a;
++  CHECK(gk206_compare_original_stock("/does-not-exist.nes",&a)==GK206_SOURCE_REFUSED);
++  CHECK(!memcmp(&a,&old,sizeof a));
++ }
++ printf("GK206 SOURCE RNG CONTRACT PASS (%u assertions, private-verified=%u, pairs=%u)\n",
++  checks,a.source_authenticated,a.draw_pairs+a.spring_rate_pairs);
++ return 0;
++}
