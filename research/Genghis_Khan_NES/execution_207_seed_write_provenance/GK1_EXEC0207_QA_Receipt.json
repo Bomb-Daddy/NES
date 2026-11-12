@@ -1,0 +1,36 @@
+{
+  "execution": "EXEC0207",
+  "status": "UNCERTIFIED_NATIVE_C11_CANDIDATE",
+  "predecessor": "EXEC0206",
+  "source_count": 712,
+  "orig_stock_sha256": "ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3",
+  "private_evidence_sha256": "8b757e11b12aeb3efe93e36c10628599ca5f12e91b15c02354cd3ebbd11bf52a",
+  "source_bounded_cpu_cli_stdout": "SOURCE_BOUNDED profile=UNKNOWN_RAM_POWER_ON gate=3 pc=$8060 completed_instructions=70 completed_seed_stores=0 written_mask=00 full_seed_written=0\nSOURCE_BOUNDED profile=DOCUMENTED_MESEN_ALLZEROS_MODE gate=2 pc=$C5BE completed_instructions=142 completed_seed_stores=0 written_mask=00 full_seed_written=0\nNOT STOCK MESEN EXECUTION: source-CPU bounded write provenance only. Unknown seed bytes remain UNKNOWN. Original first Spring is NOT generated.\n",
+  "original_stock_mesen_new_run": false,
+  "first_playable_spring_implemented": false,
+  "port_CTest": {
+    "release": "170/170 PASS",
+    "debug": "170/170 PASS",
+    "independent_clean_replay": "170/170 PASS"
+  },
+  "ASAN_UBSAN": "93 assertions PASS",
+  "graphical": "native X11 1280x720 120 frames PASS; extracted Debian 120 frames PASS",
+  "private_original_profiles": "fresh Mongol 1175, archived Mongol 1175, archived World 1206 separate 120-frame import simulations PASS",
+  "wrong_hash_rom": "exit 8 rejected",
+  "windows_nsis": "NOT RUN",
+  "physical_xbox": "NOT RUN",
+  "full_campaign": "NOT RUN",
+  "source_trace_gates": {
+    "unknown_RAM": {
+      "instructions": 70,
+      "stop": "$8060",
+      "completed_seed_stores": 0
+    },
+    "allzeros_mode": {
+      "instructions": 142,
+      "stop": "$C5BE",
+      "completed_seed_stores": 0
+    }
+  },
+  "publication_gate": "No private ROM, original Mesen licensed evidence or graphics distributed; publication not agent execution or Director release approval"
+}
