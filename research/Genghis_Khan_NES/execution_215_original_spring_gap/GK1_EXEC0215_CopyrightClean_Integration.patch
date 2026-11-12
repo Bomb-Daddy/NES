@@ -1,0 +1,258 @@
+--- execution_199/CMakeLists.txt
++++ execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk215_original_spring_gap.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -1030,3 +1030,12 @@
+ target_link_libraries(test_gk214_spring_batch PRIVATE gk1_app_state)
+ add_test(NAME GK1_214_BothCampaignsAtomicSpringFinanceNoInventedSetup
+  COMMAND test_gk214_spring_batch ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0215: three independently SHA-verified original NES Spring histories
++# versus original source finance-only baseline. Public regression refuses fake
++# stock data; private positive control invoked separately in QA.
++add_executable(test_gk215_original_spring_gap test_gk215_original_spring_gap.c)
++target_link_libraries(test_gk215_original_spring_gap PRIVATE gk1_app_state)
++add_test(NAME GK1_215_OriginalSpringThreeProfilesGapAndForgeryRefusal
++ COMMAND test_gk215_original_spring_gap
++ ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+--- execution_199/gk1_native_shell.c
++++ execution_199/gk1_native_shell.c
+@@ -14,6 +14,7 @@
+ #include "gk171_enhanced_title_resume.h"
+ #include "gk177_enhanced_receipt.h"
+ #include "gk1_app_state.h"
++#include "gk215_original_spring_gap.h"
+ #include "gk195_classic_view.h"
+ #include "gk196_classic_trade_status.h"
+ #include "gk198_tax_forecast.h"
+@@ -2028,6 +2029,30 @@
+  Gk1PadSample s=joystick_sample();pad_actions(&s);
+ }
+ int main(int argc,char **argv){
++ /* EXEC0215: original first-Spring three-history parity GAP test, not a
++  * general initialization generator. External private RAM never bundled. */
++ if(argc==5&&strcmp(argv[1],"--audit-original-first-spring-gaps")==0){
++  Gk1TemplateDataset *data=calloc(1,sizeof *data);
++  Gk1LoadedScenario *pre=calloc(1,sizeof *pre);
++  Gk79Checkpoint *source=calloc(1,sizeof *source);
++  Gk215Gap *gap=calloc(1,sizeof *gap);
++  int ok=data&&pre&&source&&gap&&gk1_verified_original_csv(scenario_csv_path())&&
++     gk1_template_load(scenario_csv_path(),data)==GK1_LOAD_OK;
++  for(unsigned p=1;p<=3u&&ok;p++){
++   Gk1ScenarioId campaign=(Gk1ScenarioId)(p==3u?2u:1u);
++   ok=gk1_open_loaded_scenario(data,campaign,pre)==GK1_LOAD_OK &&
++      gk79_open_original(pre,argv[p+1],(Gk77Profile)p,0,source)==GK79_OK &&
++      gk215_compare_original_spring(scenario_csv_path(),pre,source,gap)==GK215_OK;
++   if(ok)printf("VERIFIED_STATIC profile=%u countries=%u original_spring_vs_template_finance_differs=%u gold=%u food=%u troops=%u labor=%u; never independent first Spring\n",
++     p,gap->country_count,gap->differing_countries,gap->gold_mismatches,
++     gap->food_mismatches,gap->troop_mismatches,gap->workforce_mismatches);
++  }
++  free(gap);free(source);free(pre);free(data);
++  if(!ok){fputs("GK215 private source/profile refused; no game state changed\n",stderr);return 9;}
++  puts("Previous ORIGINAL Mesen evidence only; NOT new Mesen execution, not generated 14/27 first Spring.");
++  return 0;
++ }
++
+  /* GK214: both native campaign datasets and the source-based Spring finance
+   * engine, without claiming original setup/RNG or awarding player orders. */
+  if(argc==2&&strcmp(argv[1],"--audit-both-spring-finance-batches")==0){
+--- /dev/null
++++ execution_199/gk215_original_spring_gap.c
+@@ -0,0 +1,70 @@
++#include "gk215_original_spring_gap.h"
++#include "gk1_source_identity.h"
++#include "../execution_049/gk1_scenario_factory.h"
++#include <stdlib.h>
++#include <string.h>
++
++Gk215Status gk215_compare_original_spring(const char *csv,
++ const Gk1LoadedScenario *pre,const Gk79Checkpoint *stock,Gk215Gap *out){
++ if(!csv||!*csv||!pre||!stock||!out)return GK215_BAD_ARGUMENT;
++ if(!gk1_verified_original_csv(csv))return GK215_TEMPLATE_REFUSED;
++ /* No caller-supplied rewritten PRE_SETUP templates are trusted. Reload
++  * the identity-checked canonical CSV, then compare all world fields. */
++ Gk1TemplateDataset *dataset=malloc(sizeof *dataset);
++ Gk1LoadedScenario *clean=malloc(sizeof *clean);
++ Gk214Batch *projected=malloc(sizeof *projected);
++ if(!dataset||!clean||!projected){free(dataset);free(clean);free(projected);
++   return GK215_BAD_ARGUMENT;}
++ Gk215Status status=GK215_TEMPLATE_REFUSED;
++ if(gk1_template_load(csv,dataset)!=GK1_LOAD_OK||
++    (pre->scenario_id!=GK1_MONGOL_CONQUEST&&
++     pre->scenario_id!=GK1_WORLD_CONQUEST)||
++    gk1_open_loaded_scenario(dataset,pre->scenario_id,clean)!=GK1_LOAD_OK||
++    memcmp(clean,pre,sizeof *clean)!=0)goto done;
++ if(stock->valid!=1u||stock->source_verified!=1u||
++    !gk85_raw_source_intact(stock)||!gk88_stock_projection_intact(stock)||
++    stock->world.scenario_id!=pre->scenario_id||
++    stock->world.country_count!=pre->country_count||
++    stock->world.phase!=(Gk1ScenarioPhase)GK71_RESERVED_VERIFIED_PLAYABLE_PHASE||
++    stock->orders.playable!=1u||stock->orders.remaining!=3u||
++    stock->orders.ended||stock->orders.season!=GK71_SPRING||
++    stock->year!=(pre->scenario_id==GK1_MONGOL_CONQUEST?1175u:1206u)||
++    (stock->profile==GK77_ARCHIVED_WORLD_SAVERAM)!=
++       (pre->scenario_id==GK1_WORLD_CONQUEST)){
++  status=GK215_SOURCE_REFUSED;goto done;
++ }
++ status=GK215_FINANCE_REFUSED;
++ if(gk214_project_spring_batch(clean,projected)!=GK214_OK)goto done;
++ Gk215Gap result={0};
++ result.profile=stock->profile;result.scenario=(uint8_t)pre->scenario_id;
++ result.country_count=(uint8_t)pre->country_count;
++ result.source_observation_only=1u;
++ for(unsigned i=0;i<pre->country_count;i++){
++  const Gk1CountryTemplate *p=&projected->after.countries[i];
++  const Gk1CountryTemplate *r=&stock->world.countries[i];
++  Gk215CountryGap *diff=result.country+i;
++  diff->gold=(int32_t)r->gold-p->gold;
++  diff->food=(int32_t)r->goods[10]-p->goods[10];
++  diff->troops=(int32_t)r->troops-p->troops;
++  diff->town=(int32_t)r->town-p->town;
++  diff->masons=(int32_t)r->masons-p->masons;
++  diff->artisans=(int32_t)r->artisans-p->artisans;
++  diff->food_workers=(int32_t)r->food_workers-p->food_workers;
++  result.gold_residual_sum+=diff->gold;
++  result.food_residual_sum+=diff->food;
++  result.troop_residual_sum+=diff->troops;
++  if(diff->gold)result.gold_mismatches++;
++  if(diff->food)result.food_mismatches++;
++  if(diff->troops)result.troop_mismatches++;
++  if(diff->town||diff->masons||diff->artisans||diff->food_workers)
++    result.workforce_mismatches++;
++  diff->differs=(uint8_t)!!(diff->gold||diff->food||diff->troops||
++   diff->town||diff->masons||diff->artisans||diff->food_workers);
++  result.differing_countries+=diff->differs;
++  result.zero_residual_countries+=(uint16_t)!diff->differs;
++ }
++ *out=result;status=GK215_OK;
++done:
++ free(projected);free(clean);free(dataset);
++ return status;
++}
+--- /dev/null
++++ execution_199/gk215_original_spring_gap.h
+@@ -0,0 +1,34 @@
++#ifndef GK215_ORIGINAL_SPRING_GAP_H
++#define GK215_ORIGINAL_SPRING_GAP_H
++#include "gk79_stock_checkpoint.h"
++#include "gk214_spring_batch.h"
++/* EXEC0215: Compare real, SHA-authenticated ORIGINAL-stock first-Spring
++ * country states against the inherited ORIGINAL-source bounded finance
++ * formula applied to untouched pre-setup templates. The residual is the
++ * *unimplemented* setup, RNG, growth, AI, diplomacy/other season processing.
++ * This diagnostic NEVER interprets a matching field as a verified complete
++ * original Spring. The original stock ROM and raw private RAM are external. */
++typedef enum {
++ GK215_OK=0,GK215_BAD_ARGUMENT=1,GK215_SOURCE_REFUSED=2,
++ GK215_TEMPLATE_REFUSED=3,GK215_FINANCE_REFUSED=4
++} Gk215Status;
++typedef struct {
++ int32_t gold,food,troops,town,masons,artisans,food_workers;
++ uint8_t differs;
++} Gk215CountryGap;
++typedef struct {
++ uint8_t profile,scenario,country_count,source_observation_only;
++ uint8_t generated_setup,generated_rng,generated_ai,orders_granted;
++ uint16_t differing_countries,zero_residual_countries;
++ uint16_t gold_mismatches,food_mismatches,troop_mismatches;
++ uint16_t workforce_mismatches;
++ int64_t gold_residual_sum,food_residual_sum,troop_residual_sum;
++ Gk215CountryGap country[GK1_COUNTRIES_WORLD];
++} Gk215Gap;
++/* Identity must be the canonical independently checked original 41-country
++ * CSV; original checkpoint only admits previously SHA-verified private NES
++ * WorkRAM / SaveRAM. Inputs and output remain byte-identical on failure. */
++Gk215Status gk215_compare_original_spring(const char *canonical_csv,
++ const Gk1LoadedScenario *original_template,
++ const Gk79Checkpoint *authentic_spring,Gk215Gap *out);
++#endif
+--- /dev/null
++++ execution_199/test_gk215_original_spring_gap.c
+@@ -0,0 +1,80 @@
++#include "gk215_original_spring_gap.h"
++#include "gk1_source_identity.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define CHECK(x) do{if(!(x)){fprintf(stderr,"GK215 failure line %d: %s\n",__LINE__,#x);return 1;}checks++;}while(0)
++int main(int argc,char **argv){
++ int checks=0;
++ if(argc!=2&&argc!=5){fprintf(stderr,"usage: %s CSV [FRESH_RAW ARCHIVED_MONGOL_RAW ARCHIVED_WORLD_RAW]\n",argv[0]);return 2;}
++ CHECK(gk1_verified_original_csv(argv[1]));
++ Gk1TemplateDataset *all=calloc(1,sizeof *all);
++ Gk1LoadedScenario *pre=calloc(1,sizeof *pre),*saved=calloc(1,sizeof *saved);
++ Gk79Checkpoint *stock=calloc(1,sizeof *stock),*prior=calloc(1,sizeof *prior);
++ Gk215Gap *out=malloc(sizeof *out),*old=malloc(sizeof *old);
++ CHECK(all&&pre&&saved&&stock&&prior&&out&&old);
++ CHECK(gk1_template_load(argv[1],all)==GK1_LOAD_OK);
++ for(unsigned scenario=1;scenario<=2;scenario++){
++  CHECK(gk1_open_loaded_scenario(all,(Gk1ScenarioId)scenario,pre)==GK1_LOAD_OK);
++  *saved=*pre;memset(out,0xa5,sizeof *out);*old=*out;
++  CHECK(gk215_compare_original_spring(NULL,pre,stock,out)==GK215_BAD_ARGUMENT);
++  CHECK(!memcmp(old,out,sizeof *out));
++  CHECK(gk215_compare_original_spring(argv[1],pre,stock,out)==GK215_SOURCE_REFUSED);
++  CHECK(!memcmp(old,out,sizeof *out));
++  pre->countries[0].gold++;
++  CHECK(gk215_compare_original_spring(argv[1],pre,stock,out)==GK215_TEMPLATE_REFUSED);
++  CHECK(!memcmp(old,out,sizeof *out));*pre=*saved;
++  pre->country_count--;
++  CHECK(gk215_compare_original_spring(argv[1],pre,stock,out)==GK215_TEMPLATE_REFUSED);
++  CHECK(!memcmp(old,out,sizeof *out));*pre=*saved;
++  CHECK(gk215_compare_original_spring("/definitely/noncanonical.csv",pre,stock,out)==GK215_TEMPLATE_REFUSED);
++  CHECK(!memcmp(old,out,sizeof *out));
++ }
++ if(argc==5){
++  for(unsigned profile=1;profile<=3;profile++){
++   unsigned scenario=profile==3u?2u:1u;
++   CHECK(gk1_open_loaded_scenario(all,(Gk1ScenarioId)scenario,pre)==GK1_LOAD_OK);
++   CHECK(gk79_open_original(pre,argv[profile+1],(Gk77Profile)profile,0,stock)==GK79_OK);
++   *saved=*pre;*prior=*stock;
++   CHECK(gk215_compare_original_spring(argv[1],pre,stock,out)==GK215_OK);
++   CHECK(out->profile==profile&&out->scenario==scenario);
++   CHECK(out->country_count==(scenario==1u?14u:27u));
++   CHECK(out->source_observation_only==1u&&!out->generated_setup&&
++     !out->generated_rng&&!out->generated_ai&&!out->orders_granted);
++   CHECK(out->differing_countries+out->zero_residual_countries==out->country_count);
++   CHECK(out->differing_countries>0u);
++   CHECK(out->gold_mismatches<=out->country_count &&
++         out->food_mismatches<=out->country_count &&
++         out->troop_mismatches<=out->country_count);
++   CHECK(!memcmp(pre,saved,sizeof *pre)&&!memcmp(stock,prior,sizeof *stock));
++   printf("OBSERVED_RUNTIME_STOCK_%s (ARCHIVED SOURCE, NOT NEW MESEN): countries=%u finance_model_differing=%u gold_mismatches=%u food_mismatches=%u troop_mismatches=%u labor_mismatches=%u signed_gold_gap=%lld food_gap=%lld troops_gap=%lld, NO independently generated Spring\n",
++     profile==1?"FRESH_WORKRAM":"ARCHIVED_SAVERAM",
++     out->country_count,out->differing_countries,out->gold_mismatches,
++     out->food_mismatches,out->troop_mismatches,out->workforce_mismatches,
++     (long long)out->gold_residual_sum,(long long)out->food_residual_sum,
++     (long long)out->troop_residual_sum);
++   *old=*out;
++   stock->stock_raw[0][0]^=1u;
++   CHECK(gk215_compare_original_spring(argv[1],pre,stock,out)==GK215_SOURCE_REFUSED);
++   CHECK(!memcmp(old,out,sizeof *out));*stock=*prior;
++   stock->raw_sha256[0]^=1u;
++   CHECK(gk215_compare_original_spring(argv[1],pre,stock,out)==GK215_SOURCE_REFUSED);
++   CHECK(!memcmp(old,out,sizeof *out));*stock=*prior;
++   stock->world.countries[0].gold++;
++   CHECK(gk215_compare_original_spring(argv[1],pre,stock,out)==GK215_SOURCE_REFUSED);
++   CHECK(!memcmp(old,out,sizeof *out));*stock=*prior;
++   stock->orders.remaining=2;
++   CHECK(gk215_compare_original_spring(argv[1],pre,stock,out)==GK215_SOURCE_REFUSED);
++   CHECK(!memcmp(old,out,sizeof *out));*stock=*prior;
++   stock->year++;
++   CHECK(gk215_compare_original_spring(argv[1],pre,stock,out)==GK215_SOURCE_REFUSED);
++   CHECK(!memcmp(old,out,sizeof *out));*stock=*prior;
++   stock->source_verified=0;
++   CHECK(gk215_compare_original_spring(argv[1],pre,stock,out)==GK215_SOURCE_REFUSED);
++   CHECK(!memcmp(old,out,sizeof *out));*stock=*prior;
++  }
++ }else puts("PUBLIC NEGATIVE QA only; private original-stock positive paths not supplied, no authentic-source execution claimed.");
++ printf("GK215 %d assertions PASSED; this diagnostic CANNOT generate original first Spring.\n",checks);
++ free(all);free(pre);free(saved);free(stock);free(prior);free(out);free(old);
++ return 0;
++}
