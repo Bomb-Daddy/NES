@@ -1,0 +1,19 @@
+{
+  "execution": "GK1_EXEC0210",
+  "predecessor": "EXEC0209",
+  "certification": "uncertified candidate",
+  "release_ctest": "173/173 PASS",
+  "debug_ctest": "173/173 PASS",
+  "asan_ubsan_private_focused": "19/19 PASS",
+  "predecessor_negative": "FAILED EXPECTED: unmodified EXEC0209 accepted forged CPU-view Gold",
+  "new_private_source": "legacy root zero metadata and corrected aliases both pass",
+  "native_xvfb": "120 frames 1280x720 PASS",
+  "debian_extracted_xvfb": "120 frames 1280x720 PASS",
+  "new_original_mesen": "NOT RUN",
+  "win32_nsis": "NOT RUN",
+  "physical_xbox": "NOT RUN",
+  "complete_campaigns": "NOT RUN",
+  "first_spring_dynamic_generation": "NOT IMPLEMENTED",
+  "stock_archived_restored": "PRIOR EVIDENCE, NOT NEW RUN",
+  "stock_fresh_reset": "PRIOR EVIDENCE, NOT NEW RUN"
+}
