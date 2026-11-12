@@ -1,0 +1,25 @@
+{
+  "execution": "0225",
+  "counts": {
+    "release_ctest": 194,
+    "debug_ctest": 194,
+    "independent_replay_ctest": 194,
+    "patch_changed_paths": 7
+  },
+  "tests": {
+    "full_asan_ubsan": "PASS",
+    "three_native_X11_processes": "PASS",
+    "physical_xbox": "NOT RUN",
+    "win32": "NOT RUN",
+    "original_stock_NES_runtime": "NOT RUN"
+  },
+  "sha256_files": {
+    "GK1_EXEC0225_CANDIDATE_LinuxResearch_1.99.0-dev1_amd64.deb": "53eb5bf9a5e1dbaf790286d8a40d04b59633a874b26b4419bb6b6f31b0414350",
+    "GK1_EXEC0225_Changed_Source_SHA256.json": "b242b2525ab03a3ef68b206cbb8c3a12c8e8fa0455cdce970ceb5444a98f25a2",
+    "GK1_EXEC0225_Complete_Integrated_C11_Source_QA.zip": "a16c31a03ec398aeffdb9d5e95d7d97590963378fc20793136ea2cb9a4c64705",
+    "GK1_EXEC0225_Completion_Ledger_v1.00.md": "b141e25f508f6b71701de665135bf37446330dc65e94207f773a90f478a15b60",
+    "GK1_EXEC0225_CopyrightClean_Integration.patch": "7de19597d5f452ef1195636002f46eb8564d7f947d351ed471ea8b37c1e08c9e",
+    "GK1_EXEC0225_Cumulative_Master_v3.79.md": "71f421884d88b2ca240e11cb5f31a79f6e0bfb585b306461308161b713b8f76d",
+    "GK1_EXEC0225_Implementer_HostileQA_Handoff.md": "197cdefdcea1aae59373ee413d0e83d55fe37d91d6360bda8248fed0571eaa8d"
+  }
+}

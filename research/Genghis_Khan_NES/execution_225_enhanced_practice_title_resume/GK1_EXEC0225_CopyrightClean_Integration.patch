@@ -1,0 +1,398 @@
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk224_practice_save.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk224_practice_save.c gk225_practice_resume.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -1141,3 +1141,16 @@
+      $<TARGET_FILE:gk1_native_shell>)
+  endif()
+ endif()
++
++# EXEC0225: real two-process title Y Enhanced practice replay (not NES).
++add_executable(test_gk225_title_resume test_gk225_title_resume.c)
++target_link_libraries(test_gk225_title_resume PRIVATE gk1_app_state)
++add_test(NAME GK1_225_EnhancedTitleColdResumeBothCampaignsAndFailClosed
++ COMMAND test_gk225_title_resume ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0225 distinct real X11 processes: authenticated Enhanced practice save,
++# title-controller cold load and malicious on-disk mutation rejection.
++add_test(NAME GK1_225_TwoProcessTitleControllerColdLoad
++ COMMAND ${Python3_EXECUTABLE}
++   ${CMAKE_CURRENT_SOURCE_DIR}/packaging/test_gk225_two_process_resume.py
++   $<TARGET_FILE:gk1_native_shell>)
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -474,7 +474,10 @@
+  case GK1_SCREEN_ENHANCED_SPRING_LAB:{
+   Gk222Spring *lab=&s->port_spring;
+   if(cmd==GK1_INPUT_CANCEL){
+-    s->screen=GK1_SCREEN_SETUP_WIZARD;
++    /* A cold-resumed practice has no authority to recreate an unrecorded
++     * ruler/difficulty setup. Return to the source country picker instead. */
++    s->screen=(s->setup_stage[s->active_world]==GK53_SETUP_AWAIT_SOURCE)?
++      GK1_SCREEN_SETUP_WIZARD:GK1_SCREEN_SCENARIO_COUNTRIES;
+     strcpy(s->status,"ENHANCED PRACTICE CLOSED; ORIGINAL SETUP STILL OPEN");return 1;
+   }
+   if(!lab->active)return 0;
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -16,6 +16,7 @@
+ #include "gk177_enhanced_receipt.h"
+ #include "gk1_app_state.h"
+ #include "gk224_practice_save.h"
++#include "gk225_practice_resume.h"
+ #include "gk215_original_spring_gap.h"
+ #include "gk195_classic_view.h"
+ #include "gk196_classic_trade_status.h"
+@@ -66,6 +67,7 @@
+ #include <stdint.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <errno.h>
+ #ifdef _WIN32
+ # include <windows.h>
+ # include <xinput.h>
+@@ -426,7 +428,7 @@
+   menu_line(355,app.menu_index==2,"CONTROLLED TWO-STEP TACTICAL PATH (MOD ROM)");
+   menu_line(421,app.menu_index==3,"CONTROLLER-DRIVEN DIVIDE / ZERO-SOLDIER OUTCOME (MOD)");
+   menu_line(487,app.menu_index==4,"MOD ROM SPRING REST A/B SOURCE CASE (1175)");
+-  label(150,536,"A SELECT / X ENHANCED RESUME / Y CLASSIC RESUME / LB RB SLOT",FG);
++  label(150,536,"A SELECT / X ENHANCED / Y PRACTICE OR CLASSIC RESUME / LB RB SLOT",FG);
+   if(!private_title_preview_valid)refresh_private_title_preview();
+   if(private_title_preview.status==GK170_SLOT_VERIFIED){
+    snprintf(line,sizeof line,
+@@ -1818,12 +1820,7 @@
+ /* EXEC0224: X/Y are working, source-locked ENHANCED PRACTICE receipts.
+  * This is deliberately disjoint from authenticated Classic private state and
+  * all existing research and campaign slot families. */
+-static void practice_io(int save){
+- if(app.rules_profile!=1u || app.screen!=GK1_SCREEN_ENHANCED_SPRING_LAB ||
+-    !app.port_spring.active || app.active_world>1u ||
+-    !app.world_ready[app.active_world]){
+-  strcpy(app.status,"PORT PRACTICE SAVE REFUSED: WRONG PROFILE/PHASE");return;
+- }
++static int practice_slot_path(char *out,size_t cap){
+  const char *base=getenv("GK1_ENHANCED_PRACTICE_SAVE_FILE");
+  if(!base||!*base){
+ #ifdef _WIN32
+@@ -1832,8 +1829,36 @@
+   base=gk120_linux_default(5,"gk1_enhanced_practice_slot1.gk24");
+ #endif
+  }
+- if(!base||!*base || !gk58_slot_path(base,campaign_slot,
+-       selected_slot_path,sizeof selected_slot_path)){
++ return base&&*base&&gk58_slot_path(base,campaign_slot,out,cap);
++}
++/* Y on TITLE only chooses Enhanced practice when this exact separate slot
++ * exists. Missing practice preserves the prior Classic/stock Y behavior.
++ * Corruption never silently loads a different save family. */
++static int practice_resume_title(void){
++ if(app.screen!=GK1_SCREEN_TITLE||app.rules_profile!=1u)return 0;
++ if(!practice_slot_path(selected_slot_path,sizeof selected_slot_path)){
++  strcpy(app.status,"ENHANCED PRACTICE TITLE PATH INVALID - NO STATE CHANGED");return 1;
++ }
++ FILE *probe=fopen(selected_slot_path,"rb");
++ if(!probe){
++  if(errno==ENOENT)return 0;
++  strcpy(app.status,"ENHANCED PRACTICE SLOT INACCESSIBLE - NO OTHER RESUME");return 1;
++ }
++ fclose(probe);
++ Gk225Status r=gk225_resume_title(&app,scenario_csv_path(),selected_slot_path);
++ snprintf(app.status,sizeof app.status,"ENHANCED PRACTICE TITLE COLD LOAD: %s (NOT NES)",
++   r==GK225_OK?"SOURCE-REPLAY VERIFIED":r==GK225_SOURCE?"SOURCE MISMATCH - UNCHANGED":
++   r==GK225_CORRUPT?"CORRUPT - UNCHANGED":r==GK225_MISSING?"MISSING - UNCHANGED":
++   "WRONG PROFILE/PHASE - UNCHANGED");
++ return 1;
++}
++static void practice_io(int save){
++ if(app.rules_profile!=1u || app.screen!=GK1_SCREEN_ENHANCED_SPRING_LAB ||
++    !app.port_spring.active || app.active_world>1u ||
++    !app.world_ready[app.active_world]){
++  strcpy(app.status,"PORT PRACTICE SAVE REFUSED: WRONG PROFILE/PHASE");return;
++ }
++ if(!practice_slot_path(selected_slot_path,sizeof selected_slot_path)){
+   strcpy(app.status,"PORT PRACTICE SAVE REFUSED: NO SECURE SLOT PATH");return;
+  }
+  Gk224Status r;
+@@ -1855,6 +1880,7 @@
+ }
+ static void replay_key(int save){
+  if(app.screen==GK1_SCREEN_ENHANCED_SPRING_LAB){practice_io(save);return;}
++ if(app.screen==GK1_SCREEN_TITLE&&!save && practice_resume_title())return;
+  if(app.screen==GK1_SCREEN_TITLE&&!save && classic_cold_load_title())return;
+  if(app.classic_assign.active && app.rules_profile==0u){
+   if(app.screen==GK1_SCREEN_STOCK_CONTINUE||app.screen==GK1_SCREEN_STOCK_COMMANDS||
+@@ -3240,7 +3266,7 @@
+  }
+  int show_stock_finance=0,show_stock_trade=0,show_stock_setup=0,show_stock_goods=0,show_enhanced_summer=0,show_enhanced_fall=0,show_enhanced_winter=0,show_enhanced_year2=0;
+  int play_fresh_json=0,smoke_private_controller=0,smoke_classic_storage_original=0,smoke_classic_view_original=0,smoke_classic_trade_original=0,smoke_classic_tax_original=0;
+- int smoke=0,show_snapshot=0,show_path=0,show_divide=0,show_scenario=0,show_setup=0,show_labor=0,show_classic_finance=0,show_finance_compare=0,show_labor_undo=0,show_enhanced_lab=0,show_enhanced_lab_save=0,show_demob=0,show_manual=0,show_market=0,show_clock=0,show_whatif=0,show_rest=0,show_mesen=0,show_order_budget=0,show_pass=0,show_spring=0,show_stock_spring=0,show_stock_checkpoint=0,show_stock_commands=0;
++ int smoke=0,show_snapshot=0,show_path=0,show_divide=0,show_scenario=0,show_setup=0,show_labor=0,show_classic_finance=0,show_finance_compare=0,show_labor_undo=0,show_enhanced_lab=0,show_enhanced_lab_save=0,show_enhanced_lab_title_resume=0,show_enhanced_lab_title_reject=0,show_demob=0,show_manual=0,show_market=0,show_clock=0,show_whatif=0,show_rest=0,show_mesen=0,show_order_budget=0,show_pass=0,show_spring=0,show_stock_spring=0,show_stock_checkpoint=0,show_stock_commands=0;
+  if(argc==5&&strcmp(argv[1],"--smoke-original-private-controller")==0){
+   smoke=atoi(argv[4]);if(smoke<1||smoke>120)return 4;
+   play_fresh_json=1;smoke_private_controller=1;
+@@ -3255,7 +3281,7 @@
+                  strcmp(argv[1],"--smoke-divide")==0 ||
+                  strcmp(argv[1],"--smoke-scenario")==0 ||
+                  strcmp(argv[1],"--smoke-setup")==0 ||
+-                 strcmp(argv[1],"--smoke-labor")==0 || strcmp(argv[1],"--smoke-classic-labor-undo")==0 || strcmp(argv[1],"--smoke-enhanced-spring-lab")==0 || strcmp(argv[1],"--smoke-enhanced-practice-save")==0 || strcmp(argv[1],"--smoke-classic-finance")==0 || strcmp(argv[1],"--smoke-classic-finance-delta")==0 || strcmp(argv[1],"--smoke-demob")==0 ||
++                 strcmp(argv[1],"--smoke-labor")==0 || strcmp(argv[1],"--smoke-classic-labor-undo")==0 || strcmp(argv[1],"--smoke-enhanced-spring-lab")==0 || strcmp(argv[1],"--smoke-enhanced-practice-save")==0 || strcmp(argv[1],"--smoke-enhanced-practice-title-resume")==0 || strcmp(argv[1],"--smoke-enhanced-practice-title-reject")==0 || strcmp(argv[1],"--smoke-classic-finance")==0 || strcmp(argv[1],"--smoke-classic-finance-delta")==0 || strcmp(argv[1],"--smoke-demob")==0 ||
+                  strcmp(argv[1],"--smoke-manual-rules")==0 || strcmp(argv[1],"--smoke-order-budget")==0 || strcmp(argv[1],"--smoke-market")==0 ||
+                  strcmp(argv[1],"--smoke-battle-clock")==0 ||
+                  strcmp(argv[1],"--smoke-battle-whatif")==0 ||
+@@ -3283,6 +3309,8 @@
+   show_labor=(strcmp(argv[1],"--smoke-labor")==0);
+   show_labor_undo=(strcmp(argv[1],"--smoke-classic-labor-undo")==0);
+   show_enhanced_lab_save=(strcmp(argv[1],"--smoke-enhanced-practice-save")==0);
++  show_enhanced_lab_title_resume=(strcmp(argv[1],"--smoke-enhanced-practice-title-resume")==0);
++  show_enhanced_lab_title_reject=(strcmp(argv[1],"--smoke-enhanced-practice-title-reject")==0);
+   show_enhanced_lab=(strcmp(argv[1],"--smoke-enhanced-spring-lab")==0)||show_enhanced_lab_save;
+   show_finance_compare=(strcmp(argv[1],"--smoke-classic-finance-delta")==0);
+   show_classic_finance=(strcmp(argv[1],"--smoke-classic-finance")==0)||show_finance_compare;
+@@ -3962,6 +3990,31 @@
+   input(GK1_INPUT_SETUP);
+   if(app.screen!=GK1_SCREEN_DEMOBILIZE)return 13;
+  }
++ if(show_enhanced_lab_title_resume||show_enhanced_lab_title_reject){
++  /* A separate fresh process reloaded both original source templates, and
++   * uses the exact title Y controller route. No synthetic initialized world. */
++  if(!scenario_loaded||app.screen!=GK1_SCREEN_TITLE||
++     !app.world_ready[0]||!app.world_ready[1])return 91;
++  Gk1LoadedScenario template_worlds[2];
++  memcpy(template_worlds,app.worlds,sizeof template_worlds);
++  pad_test_press(GK1_PAD_Y);
++  if(show_enhanced_lab_title_resume){
++   if(app.screen!=GK1_SCREEN_ENHANCED_SPRING_LAB||
++      !app.port_spring.active||app.port_spring.remaining!=2u||
++      app.port_spring.actions_committed!=1u||
++      strstr(app.status,"SOURCE-REPLAY VERIFIED")==NULL)return 92;
++   pad_test_press(GK1_PAD_A);
++   if(app.port_spring.remaining!=1u||app.port_spring.actions_committed!=2u)return 93;
++   pad_test_press(GK1_PAD_B);
++   if(app.screen!=GK1_SCREEN_SCENARIO_COUNTRIES)return 94;
++   puts("TESTED_PORT_LINUX EXEC0225 2ND PROCESS TITLE Y -> ENHANCED PRACTICE -> A SECOND ORDER -> B country picker; NOT original NES/Win32/Xbox");
++  }else{
++   if(app.screen!=GK1_SCREEN_TITLE||strstr(app.status,"CORRUPT - UNCHANGED")==NULL||
++      app.port_spring.active)return 95;
++   puts("TESTED_PORT_LINUX EXEC0225 2ND PROCESS TITLE Y corrupted receipt rejects without fallback");
++  }
++  if(memcmp(template_worlds,app.worlds,sizeof template_worlds)!=0)return 96;
++ }
+  if(show_enhanced_lab){
+   if(!scenario_loaded)return 12;
+   input(GK1_INPUT_CONFIRM);input(GK1_INPUT_CONFIRM); /* enhanced Mongol country */
+--- /dev/null
++++ b/execution_199/gk225_practice_resume.c
+@@ -0,0 +1,41 @@
++#include "gk225_practice_resume.h"
++#include "gk224_practice_save.h"
++#include <stdlib.h>
++#include <string.h>
++
++Gk225Status gk225_resume_title(Gk1App *app,const char *csv,const char *path){
++ if(!app||app->screen!=GK1_SCREEN_TITLE||app->rules_profile!=1u||
++    app->port_spring.active||app->classic_assign.active||
++    app->enhanced_assign.active||!app->world_ready[0]||!app->world_ready[1]||
++    app->worlds[0].phase!=GK1_PRE_SETUP_TEMPLATE||
++    app->worlds[1].phase!=GK1_PRE_SETUP_TEMPLATE)return GK225_WRONG_PHASE;
++ if(!path||!*path||!csv||!*csv)return GK225_SOURCE;
++ /* The full native app state is committed only after source-authenticated
++  * disk read, 80-byte SHA, both original CSV identities and receipt replay.
++  * One candidate at a time avoids destructive partial transition on fail. */
++ Gk222Spring *candidate=calloc(1,sizeof *candidate);
++ if(!candidate)return GK225_SOURCE;
++ Gk225Status result=GK225_SOURCE;
++ for(unsigned w=0;w<2;w++){
++  uint8_t command=0;
++  Gk224Status r=gk224_load(path,csv,&app->worlds[w],candidate,&command);
++  if(r==GK224_OK){
++   if(candidate->scenario!=(uint8_t)app->worlds[w].scenario_id ||
++      candidate->player_index>=app->worlds[w].country_count){
++    result=GK225_CORRUPT;break;
++   }
++   app->port_spring=*candidate;
++   app->port_spring_command=command;
++   app->active_world=(uint8_t)w;
++   app->country_cursor[w]=candidate->player_index;
++   app->screen=GK1_SCREEN_ENHANCED_SPRING_LAB;
++   result=GK225_OK;break;
++  }
++  if(r==GK224_UNAVAILABLE){result=GK225_MISSING;break;}
++  if(r==GK224_CORRUPT||r==GK224_STATE){result=GK225_CORRUPT;break;}
++  /* A valid World receipt will fail the Mongol source digest. The second
++   * attempt must independently pass the full same-source replay. */
++ }
++ free(candidate);
++ return result;
++}
+--- /dev/null
++++ b/execution_199/gk225_practice_resume.h
+@@ -0,0 +1,14 @@
++#ifndef GK225_PRACTICE_RESUME_H
++#define GK225_PRACTICE_RESUME_H
++#include "gk1_app_state.h"
++/* A genuine second-process ENHANCED PORT PRACTICE title resume.
++ * No Classic NES game setup or seasonal order is initialized here. */
++typedef enum {
++ GK225_OK=0, GK225_WRONG_PHASE, GK225_MISSING,
++ GK225_SOURCE, GK225_CORRUPT
++} Gk225Status;
++/* Reads an EXEC0224 receipt from a source-verified user-private slot.
++ * The record independently selects 14/27-country model by source digest.
++ * On any failure, the entire Gk1App is byte-identical to the input. */
++Gk225Status gk225_resume_title(Gk1App *app,const char *csv,const char *path);
++#endif
+--- /dev/null
++++ b/execution_199/packaging/test_gk225_two_process_resume.py
+@@ -0,0 +1,55 @@
++#!/usr/bin/env python3
++"""EXEC0225 X11 evidence: two separate app processes and disk corruption gate.
++
++Software-injected controller events through native input adapter, not hardware Xbox.
++"""
++import hashlib
++import os
++from pathlib import Path
++import subprocess
++import sys
++import tempfile
++
++
++def run(executable, action, env):
++    command = ['xvfb-run', '-a', '-s', '-screen 0 1280x720x24',
++               executable, action, '120']
++    result = subprocess.run(command, env=env, capture_output=True,
++                            text=True, timeout=45)
++    if result.returncode or 'PASS' not in result.stdout:
++        print('FAIL:', action, result.returncode, result.stdout, result.stderr)
++        return False
++    return True
++
++
++def main():
++    if len(sys.argv) != 2:
++        return 2
++    with tempfile.TemporaryDirectory(prefix='gk225_two_process_') as scratch:
++        slot = Path(scratch) / 'source-locked.gk24'
++        env = os.environ.copy()
++        env['GK1_ENHANCED_PRACTICE_SAVE_FILE'] = str(slot)
++        if not run(sys.argv[1], '--smoke-enhanced-practice-save', env):
++            return 1
++        original = slot.read_bytes()
++        if len(original) != 80 or original[:8] != b'GK1P224!' or \
++                hashlib.sha256(original[:48]).digest() != original[48:]:
++            return 3
++        # Fresh application process must enter via TITLE Y, not the saved process.
++        if not run(sys.argv[1], '--smoke-enhanced-practice-title-resume', env):
++            return 4
++        if slot.read_bytes() != original:
++            return 5
++        altered = bytearray(original)
++        altered[19] ^= 0x80
++        slot.write_bytes(altered)
++        if not run(sys.argv[1], '--smoke-enhanced-practice-title-reject', env):
++            return 6
++        if slot.read_bytes() != altered:
++            return 7
++    print('EXEC0225 actual 3 separate X11 processes + controller path + SHA corruption rejection PASS; no physical Xbox/Win32/NES parity')
++    return 0
++
++
++if __name__ == '__main__':
++    raise SystemExit(main())
+--- /dev/null
++++ b/execution_199/test_gk225_title_resume.c
+@@ -0,0 +1,87 @@
++#include "gk225_practice_resume.h"
++#include "gk224_practice_save.h"
++#include "gk1_source_identity.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define ASSERT(x) do{if(!(x)){fprintf(stderr,"GK225 FAIL line %d: %s\n",__LINE__,#x);return 1;}}while(0)
++static int case_world(const Gk1TemplateDataset *dataset,const char *csv,unsigned w){
++ Gk1App *original=calloc(1,sizeof *original),*fresh=calloc(1,sizeof *fresh),
++        *before=malloc(sizeof *before);
++ Gk222Spring *spring=calloc(1,sizeof *spring);
++ ASSERT(original&&fresh&&before&&spring);
++ gk1_app_init(original);ASSERT(gk1_app_install_templates(original,dataset));
++ uint8_t player=(uint8_t)(w?6u:0u);
++ ASSERT(gk222_open(&original->worlds[w],player,spring)==GK222_OK);
++ ASSERT(gk222_apply(spring,player,GK222_PASS)==GK222_OK);
++ ASSERT(gk222_apply(spring,player,GK222_ASSIGN_TOWN_TO_FOOD)==GK222_OK);
++ spring->selected_country=(uint8_t)(original->worlds[w].country_count-1u);
++ char path[512];
++#ifdef _WIN32
++ const char *tmp=getenv("TEMP");if(!tmp||!*tmp)tmp=".";
++ const char slash='\\';
++#else
++ const char *tmp=getenv("TMPDIR");if(!tmp||!*tmp)tmp="/tmp";
++ const char slash='/';
++#endif
++ ASSERT(snprintf(path,sizeof path,"%s%cgk225_%lu_%u.gk24",tmp,slash,
++   (unsigned long)(uintptr_t)original,w)>0);
++ remove(path);
++ ASSERT(gk224_save_new(path,csv,&original->worlds[w],spring,1)==GK224_OK);
++ gk1_app_init(fresh);ASSERT(gk1_app_install_templates(fresh,dataset));
++ Gk1LoadedScenario *world_copy=malloc(2*sizeof *world_copy);
++ ASSERT(world_copy);memcpy(world_copy,fresh->worlds,2*sizeof *world_copy);
++ ASSERT(gk225_resume_title(fresh,csv,path)==GK225_OK);
++ ASSERT(fresh->screen==GK1_SCREEN_ENHANCED_SPRING_LAB);
++ ASSERT(fresh->active_world==w&&fresh->rules_profile==1u);
++ ASSERT(fresh->setup_stage[w]==GK53_SETUP_PLAYERS);
++ ASSERT(fresh->country_cursor[w]==player&&fresh->port_spring_command==1u);
++ ASSERT(memcmp(&fresh->port_spring,spring,sizeof *spring)==0);
++ ASSERT(memcmp(fresh->worlds,world_copy,2*sizeof *world_copy)==0);
++ ASSERT(gk1_app_input(fresh,GK1_INPUT_CANCEL));
++ ASSERT(fresh->screen==GK1_SCREEN_SCENARIO_COUNTRIES);
++ ASSERT(memcmp(fresh->worlds,world_copy,2*sizeof *world_copy)==0);
++ /* A valid resumed model supports continued controller-committed orders. */
++ fresh->screen=GK1_SCREEN_ENHANCED_SPRING_LAB;
++ fresh->port_spring.selected_country=player;
++ ASSERT(gk1_app_input(fresh,GK1_INPUT_CONFIRM));
++ ASSERT(fresh->port_spring.remaining==0&&fresh->port_spring.ended);
++ /* A different profile must never resume Enhanced practice. */
++ gk1_app_init(fresh);ASSERT(gk1_app_install_templates(fresh,dataset));
++ fresh->rules_profile=0;*before=*fresh;
++ ASSERT(gk225_resume_title(fresh,csv,path)==GK225_WRONG_PHASE);
++ ASSERT(memcmp(before,fresh,sizeof *before)==0);
++ fresh->rules_profile=1;
++ /* Source mismatch, including in a non-player province, rejects atomically. */
++ fresh->worlds[w].countries[3].gold++;
++ *before=*fresh;
++ ASSERT(gk225_resume_title(fresh,csv,path)==GK225_SOURCE);
++ ASSERT(memcmp(before,fresh,sizeof *before)==0);
++ /* The fail-closed original game phase is never silently upgraded. */
++ fresh->worlds[w].countries[3].gold--;
++ fresh->worlds[w].phase=(Gk1ScenarioPhase)2;
++ *before=*fresh;
++ ASSERT(gk225_resume_title(fresh,csv,path)==GK225_WRONG_PHASE);
++ ASSERT(memcmp(before,fresh,sizeof *before)==0);
++ gk1_app_init(fresh);ASSERT(gk1_app_install_templates(fresh,dataset));
++ *before=*fresh;
++ FILE *f=fopen(path,"rb+");ASSERT(f);
++ ASSERT(fseek(f,12,SEEK_SET)==0);int old=fgetc(f);ASSERT(old!=EOF);
++ ASSERT(fseek(f,12,SEEK_SET)==0);ASSERT(fputc(old^1,f)!=EOF);ASSERT(fclose(f)==0);
++ ASSERT(gk225_resume_title(fresh,csv,path)==GK225_CORRUPT);
++ ASSERT(memcmp(before,fresh,sizeof *before)==0);
++ remove(path);
++ ASSERT(gk225_resume_title(fresh,csv,path)==GK225_MISSING);
++ ASSERT(memcmp(before,fresh,sizeof *before)==0);
++ free(world_copy);free(before);free(spring);free(fresh);free(original);
++ return 0;
++}
++int main(int argc,char **argv){
++ ASSERT(argc==2&&gk1_verified_original_csv(argv[1]));
++ Gk1TemplateDataset *d=calloc(1,sizeof *d);ASSERT(d);
++ ASSERT(gk1_template_load(argv[1],d)==GK1_LOAD_OK);
++ ASSERT(case_world(d,argv[1],0u)==0);
++ ASSERT(case_world(d,argv[1],1u)==0);
++ free(d);
++ puts("EXEC0225 14/27 Enhanced practice TITLE cold-resume, full source replay, Y controller semantics, profile/phase/corruption rollback PASS; original NES FIRST SPRING NOT GENERATED");return 0;
++}
