@@ -20,13 +20,15 @@ jobs:
           python "$root/test_hydrate_verified_bundle.py"
           python "$root/hydrate_verified_bundle.py" --parts "$root/parts" --manifest "$root/manifest.json" --dest 'gk1-integrated-source'
           if ($LASTEXITCODE -ne 0) { throw 'Source verification failed' }
+          python "$root/apply_win32_portability.py" 'gk1-integrated-source'
+          if ($LASTEXITCODE -ne 0) { throw 'Win32 source compatibility patch refused' }
           if (-not (Test-Path 'gk1-integrated-source/execution_199/gk1_native_shell.c')) { throw 'Integrated native source missing' }
       - name: Build the actual 1280x720 native WinMain and XInput game
         shell: pwsh
         run: |
           cmake -S 'gk1-integrated-source/execution_199' -B 'build-gk1-win32' -G 'Visual Studio 17 2022' -A x64
           if ($LASTEXITCODE -ne 0) { throw 'Configure failed' }
-          cmake --build 'build-gk1-win32' --config Release --parallel 4
+          cmake --build 'build-gk1-win32' --config Release --target gk1_native_shell gk228_win32_smoke test_gk99_xinput_bridge test_gk62_game_market_guard --parallel 4
           if ($LASTEXITCODE -ne 0) { throw 'Native Win32 compile failed' }
       - name: Execute actual Win32 source/XInput and hostile controls
         shell: pwsh
