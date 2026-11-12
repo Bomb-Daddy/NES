@@ -19,8 +19,8 @@ static void gk231_trace(const char *stage) {
 
 ANCHORS = [
 (
- '#ifdef _WIN32\nstatic unsigned gk230_painted_frames=0u;',
- '#ifdef _WIN32\n'+TRACE+'\nstatic unsigned gk230_painted_frames=0u;'
+ 'static unsigned gk230_painted_frames=0u;',
+ TRACE+'\nstatic unsigned gk230_painted_frames=0u;'
 ),
 (
  'if(msg==WM_PAINT){PAINTSTRUCT p;screen_dc=BeginPaint(h,&p);render();EndPaint(h,&p);\n  ++gk230_painted_frames;return 0;}',
