@@ -1,0 +1,49 @@
+{
+  "artifacts": {
+    "GK1_EXEC0209_CANDIDATE_LinuxResearch_1.99.0-dev1_amd64.deb": {
+      "sha256": "d1fc703ab6cfcd0c97415ac6d21754f73f2ac6b84110d0a5647acc6b194fb1cc",
+      "size": 332460
+    },
+    "GK1_EXEC0209_Complete_Integrated_C11_Source_QA.zip": {
+      "sha256": "5ec3b77dcdf11a08d1300e380707c097a9d4544949bd71f8a5b3ff502d360f53",
+      "size": 1333386
+    },
+    "GK1_EXEC0209_CopyrightClean_Integration.patch": {
+      "sha256": "8f35f7b0e4ab90eca7800b0022a856b2ee2aa1b26ead7ef8bc9d11db99aa26ad",
+      "size": 28698
+    },
+    "GK1_EXEC0209_CopyrightClean_SourcePatch_and_QA.zip": {
+      "sha256": "0f8e4e42b81ac2f4221d445989da81570b6f69e190abbaf71806023c563a88e5",
+      "size": 145005
+    },
+    "GK1_EXEC0209_Cumulative_Completion_Ledger_v1.00.md": {
+      "sha256": "5300f46711ac71219c25f986f3b39980d6728f1cd1da7033b41870e099f4353f",
+      "size": 95669
+    },
+    "GK1_EXEC0209_Cumulative_Master_v3.63.md": {
+      "sha256": "3b74893d0e6136cdc91071cf137f0b65e9b0e5b43bbe5221b7cbdf38bf21e818",
+      "size": 415909
+    },
+    "GK1_EXEC0209_Implementer_HostileQA_Handoff.md": {
+      "sha256": "4b2292342acc373be79519ca86d226b22187392d4e7a43f76308212f90062767",
+      "size": 5902
+    },
+    "GK1_EXEC0209_Source_SHA256_Manifest.json": {
+      "sha256": "bc2f4364bc963f27b0dd2eaa6d9aea3c4c69b8a0033f029d0bfc6af5924834af",
+      "size": 113595
+    }
+  },
+  "predecessor": "EXEC0208",
+  "private_original_rom_or_savestate_in_public": false,
+  "release": "EXEC0209 UNCERTIFIED",
+  "tests": {
+    "asan_ubsan": 38,
+    "deb_extracted_x11_frames": 120,
+    "debug": "172/172",
+    "independent_patch_replay": "172/172",
+    "negative_controls": 3,
+    "release": "172/172",
+    "stock_original_private_fixture_checks": 38
+  },
+  "timestamp_local": "2026-11-11"
+}
