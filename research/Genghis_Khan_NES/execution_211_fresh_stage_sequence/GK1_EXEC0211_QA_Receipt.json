@@ -1,0 +1,41 @@
+{
+  "execution": "EXEC0211",
+  "predecessor": "EXACT_EXEC0210",
+  "source_sha256_predecessor": "23049050b89272369a12dbfd9acfc7d859e74628e1838201bef43ba402e0f902",
+  "classification": {
+    "VERIFIED_STATIC": "14 exact original stock fresh observation SHAs; WorkRAM/SaveRAM/CPU crosschecks; patch replay 7/7",
+    "OBSERVED_RUNTIME_STOCK": "earlier 2026-11-07 source capture, not rerun this execution",
+    "TESTED_PORT_LINUX": {
+      "release_ctest": "174/174 PASS",
+      "debug_ctest": "174/174 PASS",
+      "independent_clean_replay_ctest": "174/174 PASS",
+      "focused": "58 PASS",
+      "asan_ubsan": "58 PASS",
+      "hostile_negative_cases": "17/17 reject",
+      "native_xvfb": "120 frames PASS 1280x720",
+      "debian_extracted_xvfb": "120 frames PASS 1280x720"
+    },
+    "NOT_RUN": [
+      "new original Mesen session",
+      "Win32",
+      "NSIS",
+      "physical Xbox",
+      "full campaigns"
+    ]
+  },
+  "release_certified": false,
+  "dynamic_first_playable_spring_complete": false,
+  "stock_original_rom_in_public_artifacts": false,
+  "changed_paths": [
+    "execution_199/CMakeLists.txt",
+    "execution_199/gk1_app_state.c",
+    "execution_199/gk1_app_state.h",
+    "execution_199/gk211_fresh_sequence.c",
+    "execution_199/gk211_fresh_sequence.h",
+    "execution_199/test_gk211_fresh_sequence.c",
+    "execution_199/README_EXEC0211.md"
+  ],
+  "GK1_EXEC0211_Complete_Integrated_C11_Source_QA.zip_sha256": "1b5e19d3af45c48e06f7fc4044677f8218da6f9e27cefe143f082ff9d1a1d0c4",
+  "GK1_EXEC0211_CANDIDATE_LinuxResearch_1.99.0-dev1_amd64.deb_sha256": "cef2163d28e25677eeadc0b46a182ef4ae7b3c6033f680cda2c1cf05c7cf84e0",
+  "GK1_EXEC0211_CopyrightClean_Integration.patch_sha256": "8fe833b232112f91f14937f1bd14d636840ebb4ce79b5993035be35853fc8ac5"
+}
