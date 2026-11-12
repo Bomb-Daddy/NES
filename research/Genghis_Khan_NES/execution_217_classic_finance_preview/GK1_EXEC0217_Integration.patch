@@ -1,0 +1,376 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+index 11cffbe..c3183db 100644
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk217_finance_preview.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -1041,7 +1041,22 @@ add_test(NAME GK1_215_OriginalSpringThreeProfilesGapAndForgeryRefusal
+  ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+ 
+ # EXEC0216: private original stock CPU sample provenance, never published ROM.
++add_executable(test_gk217_finance_preview test_gk217_finance_preview.c)
++target_link_libraries(test_gk217_finance_preview PRIVATE gk1_app_state)
++add_test(NAME GK1_EXEC0217_ControllerClassicSourceFinanceNoSpringUnlock
++ COMMAND test_gk217_finance_preview ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+ add_executable(test_gk216_fresh_cpu_pc test_gk216_fresh_cpu_pc.c)
+ target_link_libraries(test_gk216_fresh_cpu_pc PRIVATE gk1_app_state)
+ add_test(NAME GK1_216_OriginalFreshCpuCaptureProvenanceNegativeSourceRefusals
+  COMMAND test_gk216_fresh_cpu_pc)
++
++# EXEC0217: actual graphical controller-route integration test. Distinct from
++# ordinary standalone batch math: Classic Start twice reaches real X11 view.
++if(UNIX AND NOT APPLE)
++ find_program(GK217_XVFB_RUN xvfb-run)
++ if(GK217_XVFB_RUN)
++  add_test(NAME GK1_217_Linux1280x720_ClassicControllerFinanceActualRendered
++   COMMAND ${GK217_XVFB_RUN} -a -s "-screen 0 1280x720x24"
++    $<TARGET_FILE:gk1_native_shell> --smoke-classic-finance 120)
++ endif()
++endif()
+diff --git a/execution_199/gk1_app_state.c b/execution_199/gk1_app_state.c
+index 07ffcb9..20cb8ea 100644
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -335,9 +335,21 @@ int gk1_app_input(Gk1App *s,Gk1Input cmd){
+     if(s->example_rate<50||s->example_rate>999)s->example_rate=100;
+     strcpy(s->status,"MANUAL-DERIVED QUOTE EXPLORER: NO REAL MERCHANT/TRADE");return 1;
+   }
++  if(cmd!=GK1_INPUT_SETUP)s->finance_armed=0u;
+   if(cmd==GK1_INPUT_SETUP){
+-    if(s->rules_profile!=1){
+-      strcpy(s->status,"CLASSIC STOCK: ENHANCED DEMOBILIZE UNAVAILABLE");return 1;
++    if(s->rules_profile==0u){
++      if(!s->finance_armed){
++       s->finance_armed=1u;
++       strcpy(s->status,"CLASSIC: NO DEMOBILIZE. START AGAIN FOR FINANCE MODEL");return 1;
++      }
++      s->finance_armed=0u;
++      Gk217Preview check;
++      if(gk217_preview_country(world,selected,&check)!=GK217_OK){
++       strcpy(s->status,"CLASSIC FINANCE VIEW REFUSED: INCOMPLETE 14/27-COUNTRY SOURCE");return 1;
++      }
++      s->finance_cursor=selected;
++      s->screen=GK1_SCREEN_SPRING_FINANCE_PREVIEW;
++      strcpy(s->status,"CLASSIC SPRING FINANCE MODEL: NOT ORIGINAL INITIALIZATION");return 1;
+     }
+     s->demob_quantity=gk60_demob_max(country)?1u:0u;
+     s->screen=GK1_SCREEN_DEMOBILIZE;
+@@ -361,6 +373,29 @@ int gk1_app_input(Gk1App *s,Gk1Input cmd){
+   }
+   return 1;
+  }
++ case GK1_SCREEN_SPRING_FINANCE_PREVIEW:{
++  if(s->active_world>1u||s->rules_profile!=0u||!s->world_ready[s->active_world]||
++     s->worlds[s->active_world].phase!=GK1_PRE_SETUP_TEMPLATE)return 0;
++  Gk1LoadedScenario *world=&s->worlds[s->active_world];
++  Gk217Preview result;
++  if(gk217_preview_country(world,s->finance_cursor,&result)!=GK217_OK){
++    strcpy(s->status,"FINANCE VIEW INVALID: SOURCE IDENTITY/FINANCE REFUSED");return 0;
++  }
++  if(cmd==GK1_INPUT_CANCEL||cmd==GK1_INPUT_SETUP){
++    s->screen=GK1_SCREEN_LABOR_PLAN;
++    strcpy(s->status,"FINANCE MODEL CLOSED; NO SEASON/ORDER/COUNTRY MUTATION");return 1;
++  }
++  if(cmd==GK1_INPUT_UP||cmd==GK1_INPUT_LEFT){
++    s->finance_cursor=(uint8_t)((s->finance_cursor+world->country_count-1u)%world->country_count);return 1;
++  }
++  if(cmd==GK1_INPUT_DOWN||cmd==GK1_INPUT_RIGHT){
++    s->finance_cursor=(uint8_t)((s->finance_cursor+1u)%world->country_count);return 1;
++  }
++  if(cmd==GK1_INPUT_CONFIRM){
++    strcpy(s->status,"READ-ONLY FINANCE MODEL; ORIGINAL SETUP/SEED/ORDERS UNVERIFIED");return 1;
++  }
++  return 1;
++ }
+  case GK1_SCREEN_DEMOBILIZE:{
+   /* The NES-approved modified-ROM number transfer is source-proven, but this
+    * interface deliberately remains a PRE_SETUP research preview. Never turn
+diff --git a/execution_199/gk1_app_state.h b/execution_199/gk1_app_state.h
+index f4284b3..bf8e1ab 100644
+--- a/execution_199/gk1_app_state.h
++++ b/execution_199/gk1_app_state.h
+@@ -17,6 +17,7 @@
+ #include "gk212_stock_raw_variation.h"
+ #include "gk213_stock_spring_boundary.h"
+ #include "gk214_spring_batch.h"
++#include "gk217_finance_preview.h"
+ #include "gk216_fresh_cpu_pc.h"
+ #include "gk114_stock_spring_timeline.h"
+ #include "gk211_fresh_sequence.h"
+@@ -61,7 +62,7 @@
+  */
+ typedef enum {GK1_SCREEN_TITLE=0, GK1_SCREEN_CAMPAIGNS=1,
+  GK1_SCREEN_RESEARCH_BATTLE=2, GK1_SCREEN_UNIMPLEMENTED=3, GK1_SCREEN_PATH_PICK=4, GK1_SCREEN_PATH_BATTLE=5, GK1_SCREEN_DIVIDE_PICK=6, GK1_SCREEN_DIVIDE_BATTLE=7, GK1_SCREEN_SCENARIO_COUNTRIES=8, GK1_SCREEN_SETUP_WIZARD=9, GK1_SCREEN_LABOR_PLAN=10,GK1_SCREEN_DEMOBILIZE=11, GK1_SCREEN_MARKET_EXPLORER=12,
+- GK1_SCREEN_MANUAL_RULES=13, GK1_SCREEN_BATTLE_TIMELINE=14,GK1_SCREEN_REST_CASE=15,GK1_SCREEN_ORDER_BUDGET_RESEARCH=32,GK1_SCREEN_BATTLE_PASS_DRILL=16,GK1_SCREEN_SPRING_ARCHIVE=33,GK1_SCREEN_STOCK_CONTINUE=34,GK1_SCREEN_STOCK_COMMANDS=35,GK1_SCREEN_STOCK_TRADE_REFERENCE=36,GK1_SCREEN_ENHANCED_ASSIGN=37,GK1_SCREEN_ENHANCED_SUMMER=38,GK1_SCREEN_ENHANCED_FALL=39,GK1_SCREEN_ENHANCED_WINTER=40,GK1_SCREEN_ENHANCED_YEAR2=41, GK1_SCREEN_STOCK_STORAGE=42,GK1_SCREEN_ENHANCED_CONTINUATION=43,GK1_SCREEN_CLASSIC_ASSIGN=44,GK1_SCREEN_CLASSIC_TAX=45} Gk1Screen;
++ GK1_SCREEN_MANUAL_RULES=13, GK1_SCREEN_BATTLE_TIMELINE=14,GK1_SCREEN_REST_CASE=15,GK1_SCREEN_ORDER_BUDGET_RESEARCH=32,GK1_SCREEN_BATTLE_PASS_DRILL=16,GK1_SCREEN_SPRING_ARCHIVE=33,GK1_SCREEN_STOCK_CONTINUE=34,GK1_SCREEN_STOCK_COMMANDS=35,GK1_SCREEN_STOCK_TRADE_REFERENCE=36,GK1_SCREEN_ENHANCED_ASSIGN=37,GK1_SCREEN_ENHANCED_SUMMER=38,GK1_SCREEN_ENHANCED_FALL=39,GK1_SCREEN_ENHANCED_WINTER=40,GK1_SCREEN_ENHANCED_YEAR2=41, GK1_SCREEN_STOCK_STORAGE=42,GK1_SCREEN_ENHANCED_CONTINUATION=43,GK1_SCREEN_CLASSIC_ASSIGN=44,GK1_SCREEN_CLASSIC_TAX=45,GK1_SCREEN_SPRING_FINANCE_PREVIEW=46} Gk1Screen;
+ typedef enum {GK1_INPUT_UP=1, GK1_INPUT_DOWN=2, GK1_INPUT_LEFT=3,
+  GK1_INPUT_RIGHT=4, GK1_INPUT_CONFIRM=5, GK1_INPUT_CANCEL=6, GK1_INPUT_SETUP=7, GK1_INPUT_DRAFT_UNDO_ONE=8,
+  GK1_INPUT_DRAFT_UNDO_TEN=9, GK1_INPUT_LABOR_PLAN=10} Gk1Input;
+@@ -107,6 +108,8 @@ typedef struct {
+   uint8_t manual_bonus_ability[2];
+   uint8_t manual_bonus[2][5][6];
+   uint8_t labor_from, labor_to; /* EXEC0057 PRE_SETUP planner cursor ONLY */
++  uint8_t finance_armed; /* first Classic START keeps prior blocked contract */
++  uint8_t finance_cursor; /* EXEC0217 Classic source-bounded finance; PRE_SETUP only */
+   uint8_t market_merchant,market_item,market_sell;
+   uint16_t example_rate; /* illustrative only, NOT original merchant Rate */
+   uint8_t spring_stock_mode; /* EXEC0077 validated external STOCK read-only source profile */
+diff --git a/execution_199/gk1_native_shell.c b/execution_199/gk1_native_shell.c
+index 28d5590..d83baa3 100644
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -534,8 +534,33 @@ static void render(void){
+   label(670,396,"LEFT/RIGHT SOURCE | UP/DOWN TARGET",FG);
+   snprintf(line,sizeof line,"A TRANSFER / B BACK / X SAVE Y LOAD SLOT %u / LB RB CHANGE",(unsigned)campaign_slot);
+   label(670,438,line,FG);
+-  label(104,527,"START = ENHANCED DEMOBILIZE PREVIEW (CLASSIC BLOCKED)",EDGE);
++  label(104,527,"START x2 = CLASSIC FINANCE / ENHANCED DEMOBILIZE PREVIEW",EDGE);
+   label(104,557,"PRE-SETUP EDIT ONLY. NO ORIGINAL MOBILITY, ORDER, COST OR SPRING CLAIM.",WARN);
++ }else if(app.screen==GK1_SCREEN_SPRING_FINANCE_PREVIEW){
++  const Gk1LoadedScenario *world=&app.worlds[app.active_world];
++  Gk217Preview v;
++  frame(62,130,1152,475);
++  label(100,174,"CLASSIC ORIGINAL-SOURCE SPRING FINANCE MODEL / NOT GAME START",EDGE);
++  if(gk217_preview_country(world,app.finance_cursor,&v)==GK217_OK){
++    const Gk1CountryTemplate *c=&world->countries[v.selected_country];
++    snprintf(line,sizeof line,"COUNTRY %u/%u: %.30s",(unsigned)v.selected_country+1u,
++      (unsigned)v.country_count,c->country_name);label(102,224,line,FG);
++    snprintf(line,sizeof line,"GOLD %u -> %u   TAX +%u   WAGES -%u",
++      (unsigned)v.before_gold,(unsigned)v.after_gold,(unsigned)v.taxes,(unsigned)v.payroll);
++    label(102,276,line,FG);
++    snprintf(line,sizeof line,"FOOD %u -> %u   FEEDING -%u",
++      (unsigned)v.before_food,(unsigned)v.after_food,(unsigned)v.food_consumed);
++    label(102,326,line,FG);
++    snprintf(line,sizeof line,"TROOPS %u -> %u   STARVATION LOSS %u",
++      (unsigned)v.before_troops,(unsigned)v.after_troops,(unsigned)v.troops_lost);
++    label(102,376,line,FG);
++    snprintf(line,sizeof line,"ALL %u: TAX %u  WAGES %u  FOOD %u  STARVED %u",
++      (unsigned)v.country_count,(unsigned)v.total_taxes,(unsigned)v.total_payroll,
++      (unsigned)v.total_food_consumed,(unsigned)v.countries_starved);
++    label(102,428,line,EDGE);
++  }else label(102,292,"COUNTRY SOURCE OR FINANCE REFUSED",WARN);
++  label(102,496,"DPAD SELECT ANY COUNTRY / A VERIFY READ ONLY / B OR START RETURN",FG);
++  label(102,538,"PRE_SETUP ONLY: NO RNG, CHARACTER SETUP, SEASON, AI OR 3 ORDERS",WARN);
+  }else if(app.screen==GK1_SCREEN_DEMOBILIZE){
+   const Gk1LoadedScenario *world=&app.worlds[app.active_world];
+   const Gk1CountryTemplate *c=&world->countries[app.country_cursor[app.active_world]];
+@@ -1470,7 +1495,7 @@ static void input(Gk1Input command){
+ }
+ static int in_campaign_screens(void){
+  return app.screen==GK1_SCREEN_CAMPAIGNS||app.screen==GK1_SCREEN_SCENARIO_COUNTRIES||
+-        app.screen==GK1_SCREEN_SETUP_WIZARD||app.screen==GK1_SCREEN_LABOR_PLAN||app.screen==GK1_SCREEN_DEMOBILIZE||
++        app.screen==GK1_SCREEN_SETUP_WIZARD||app.screen==GK1_SCREEN_LABOR_PLAN||app.screen==GK1_SCREEN_SPRING_FINANCE_PREVIEW||app.screen==GK1_SCREEN_DEMOBILIZE||
+         app.screen==GK1_SCREEN_MARKET_EXPLORER||app.screen==GK1_SCREEN_MANUAL_RULES||
+         app.screen==GK1_SCREEN_ORDER_BUDGET_RESEARCH||app.screen==GK1_SCREEN_STOCK_CONTINUE||app.screen==GK1_SCREEN_STOCK_COMMANDS||app.screen==GK1_SCREEN_STOCK_TRADE_REFERENCE||app.screen==GK1_SCREEN_STOCK_STORAGE||app.screen==GK1_SCREEN_CLASSIC_ASSIGN||app.screen==GK1_SCREEN_CLASSIC_TAX||app.screen==GK1_SCREEN_ENHANCED_ASSIGN||app.screen==GK1_SCREEN_ENHANCED_SUMMER||app.screen==GK1_SCREEN_ENHANCED_FALL||app.screen==GK1_SCREEN_ENHANCED_WINTER||app.screen==GK1_SCREEN_ENHANCED_YEAR2||app.screen==GK1_SCREEN_ENHANCED_CONTINUATION;
+ }
+@@ -1899,7 +1924,7 @@ static void replay_key(int save){
+  if(app.screen==GK1_SCREEN_BATTLE_PASS_DRILL || app.screen==GK1_SCREEN_SPRING_ARCHIVE){
+    strcpy(app.status,"READ-ONLY SPRING / MANUAL DRILL: SAVE/LOAD DISABLED");return;
+  }
+- if(app.screen==GK1_SCREEN_CAMPAIGNS||app.screen==GK1_SCREEN_SCENARIO_COUNTRIES||app.screen==GK1_SCREEN_SETUP_WIZARD||app.screen==GK1_SCREEN_LABOR_PLAN||app.screen==GK1_SCREEN_DEMOBILIZE){
++ if(app.screen==GK1_SCREEN_CAMPAIGNS||app.screen==GK1_SCREEN_SCENARIO_COUNTRIES||app.screen==GK1_SCREEN_SETUP_WIZARD||app.screen==GK1_SCREEN_LABOR_PLAN||app.screen==GK1_SCREEN_SPRING_FINANCE_PREVIEW||app.screen==GK1_SCREEN_DEMOBILIZE){
+   if(!gk58_slot_path(pre_setup_file(),campaign_slot,selected_slot_path,sizeof selected_slot_path)){
+    strcpy(app.status,"PRE_SETUP SLOT PATH INVALID: NO FILE TOUCHED");return;
+   }
+@@ -3117,7 +3142,7 @@ if(argc==3 && strcmp(argv[1],"--pre-setup-pad-smoke")==0){
+  }
+  int show_stock_finance=0,show_stock_trade=0,show_stock_setup=0,show_stock_goods=0,show_enhanced_summer=0,show_enhanced_fall=0,show_enhanced_winter=0,show_enhanced_year2=0;
+  int play_fresh_json=0,smoke_private_controller=0,smoke_classic_storage_original=0,smoke_classic_view_original=0,smoke_classic_trade_original=0,smoke_classic_tax_original=0;
+- int smoke=0,show_snapshot=0,show_path=0,show_divide=0,show_scenario=0,show_setup=0,show_labor=0,show_demob=0,show_manual=0,show_market=0,show_clock=0,show_whatif=0,show_rest=0,show_mesen=0,show_order_budget=0,show_pass=0,show_spring=0,show_stock_spring=0,show_stock_checkpoint=0,show_stock_commands=0;
++ int smoke=0,show_snapshot=0,show_path=0,show_divide=0,show_scenario=0,show_setup=0,show_labor=0,show_classic_finance=0,show_demob=0,show_manual=0,show_market=0,show_clock=0,show_whatif=0,show_rest=0,show_mesen=0,show_order_budget=0,show_pass=0,show_spring=0,show_stock_spring=0,show_stock_checkpoint=0,show_stock_commands=0;
+  if(argc==5&&strcmp(argv[1],"--smoke-original-private-controller")==0){
+   smoke=atoi(argv[4]);if(smoke<1||smoke>120)return 4;
+   play_fresh_json=1;smoke_private_controller=1;
+@@ -3132,7 +3157,7 @@ if(argc==3 && strcmp(argv[1],"--pre-setup-pad-smoke")==0){
+                  strcmp(argv[1],"--smoke-divide")==0 ||
+                  strcmp(argv[1],"--smoke-scenario")==0 ||
+                  strcmp(argv[1],"--smoke-setup")==0 ||
+-                 strcmp(argv[1],"--smoke-labor")==0 || strcmp(argv[1],"--smoke-demob")==0 ||
++                 strcmp(argv[1],"--smoke-labor")==0 || strcmp(argv[1],"--smoke-classic-finance")==0 || strcmp(argv[1],"--smoke-demob")==0 ||
+                  strcmp(argv[1],"--smoke-manual-rules")==0 || strcmp(argv[1],"--smoke-order-budget")==0 || strcmp(argv[1],"--smoke-market")==0 ||
+                  strcmp(argv[1],"--smoke-battle-clock")==0 ||
+                  strcmp(argv[1],"--smoke-battle-whatif")==0 ||
+@@ -3158,6 +3183,7 @@ if(argc==3 && strcmp(argv[1],"--pre-setup-pad-smoke")==0){
+   show_scenario=(strcmp(argv[1],"--smoke-scenario")==0);
+   show_setup=(strcmp(argv[1],"--smoke-setup")==0);
+   show_labor=(strcmp(argv[1],"--smoke-labor")==0);
++  show_classic_finance=(strcmp(argv[1],"--smoke-classic-finance")==0);
+   show_demob=(strcmp(argv[1],"--smoke-demob")==0);
+   show_manual=(strcmp(argv[1],"--smoke-manual-rules")==0);
+   show_order_budget=(strcmp(argv[1],"--smoke-order-budget")==0);
+@@ -3834,6 +3860,22 @@ if(argc==3 && strcmp(argv[1],"--pre-setup-pad-smoke")==0){
+   input(GK1_INPUT_SETUP);
+   if(app.screen!=GK1_SCREEN_DEMOBILIZE)return 13;
+  }
++ if(show_classic_finance){
++  if(!scenario_loaded)return 12;
++  input(GK1_INPUT_CONFIRM); /* title -> campaign menu */
++  input(GK1_INPUT_LEFT); /* CLASSIC */
++  input(GK1_INPUT_CONFIRM); /* Mongol country list */
++  input(GK1_INPUT_LABOR_PLAN); /* Classic labor research */
++  input(GK1_INPUT_SETUP); /* old contract: blocked Enhanced Demobilize */
++  if(app.screen!=GK1_SCREEN_LABOR_PLAN)return 34;
++  input(GK1_INPUT_SETUP); /* deliberate second START opens actual finance UI */
++  if(app.screen!=GK1_SCREEN_SPRING_FINANCE_PREVIEW)return 35;
++  Gk217Preview preview;
++  if(gk217_preview_country(&app.worlds[0],app.finance_cursor,&preview)!=GK217_OK||
++     preview.country_count!=14||preview.original_spring_generated)return 36;
++  input(GK1_INPUT_DOWN);
++  if(app.finance_cursor!=1u||app.worlds[0].phase!=GK1_PRE_SETUP_TEMPLATE)return 37;
++ }
+  if(show_labor){
+   input(GK1_INPUT_CONFIRM);input(GK1_INPUT_CONFIRM);
+   input(GK1_INPUT_LABOR_PLAN);
+diff --git a/execution_199/gk217_finance_preview.c b/execution_199/gk217_finance_preview.c
+new file mode 100644
+index 0000000..dd26887
+--- /dev/null
++++ b/execution_199/gk217_finance_preview.c
+@@ -0,0 +1,38 @@
++#include "gk217_finance_preview.h"
++#include <string.h>
++Gk217Status gk217_preview_country(const Gk1LoadedScenario *world,
++                                  unsigned country_index,Gk217Preview *out){
++ if(!world||!out||world->phase!=GK1_PRE_SETUP_TEMPLATE||
++    (world->scenario_id!=GK1_MONGOL_CONQUEST &&
++     world->scenario_id!=GK1_WORLD_CONQUEST)||
++    country_index>=world->country_count)return GK217_INVALID;
++ /* Existing source-grounded full-country engine rejects malformed identities,
++  * capacity/finance problems; do not silently fall back to a single-country
++  * computation that could mask corruption elsewhere in the 14/27-country map. */
++ Gk214Batch batch;
++ if(gk214_project_spring_batch(world,&batch)!=GK214_OK)
++  return GK217_FINANCE_REFUSED;
++ if(!batch.source_bounded_only||batch.generated_setup||batch.generated_rng||
++    batch.orders_granted||batch.after.phase!=GK1_PRE_SETUP_TEMPLATE||
++    batch.count!=world->country_count)return GK217_FINANCE_REFUSED;
++ const Gk1CountryTemplate *before=&world->countries[country_index];
++ const Gk1CountryTemplate *after=&batch.after.countries[country_index];
++ const Gk75SpringResult *delta=&batch.country[country_index];
++ Gk217Preview candidate={0};
++ candidate.country_count=batch.count;
++ candidate.selected_country=(uint8_t)country_index;
++ candidate.before_gold=before->gold;candidate.after_gold=after->gold;
++ candidate.before_food=before->goods[10];candidate.after_food=after->goods[10];
++ candidate.before_troops=before->troops;candidate.after_troops=after->troops;
++ candidate.troops_lost=delta->troops_lost;
++ candidate.taxes=delta->gross_tax;
++ candidate.payroll=delta->payroll;
++ candidate.food_consumed=delta->food_consumed;
++ candidate.total_taxes=batch.gross_taxes;
++ candidate.total_payroll=batch.payroll;
++ candidate.total_food_consumed=batch.food_consumed;
++ candidate.countries_starved=batch.starved_country_count;
++ candidate.original_spring_generated=0u;
++ *out=candidate;
++ return GK217_OK;
++}
+diff --git a/execution_199/gk217_finance_preview.h b/execution_199/gk217_finance_preview.h
+new file mode 100644
+index 0000000..6a065db
+--- /dev/null
++++ b/execution_199/gk217_finance_preview.h
+@@ -0,0 +1,23 @@
++#ifndef GK217_FINANCE_PREVIEW_H
++#define GK217_FINANCE_PREVIEW_H
++#include "gk214_spring_batch.h"
++/* Copyright-clean, player-facing Classic finance explorer. This is an actual
++ * executable model of food/tax/pay over 14/27 country template data, NOT a
++ * reconstructed original NES setup, RNG scheduler, or playable first Spring.
++ * All results are value-only; no app state, orders or seasons are mutated. */
++typedef enum { GK217_OK=0, GK217_INVALID=1, GK217_FINANCE_REFUSED=2 } Gk217Status;
++typedef struct {
++  uint8_t country_count, selected_country, original_spring_generated;
++  uint16_t before_gold, after_gold, before_food, after_food;
++  uint16_t before_troops, after_troops;
++  uint16_t troops_lost;
++  uint32_t taxes, payroll, food_consumed;
++  uint32_t total_taxes, total_payroll, total_food_consumed;
++  uint16_t countries_starved;
++} Gk217Preview;
++/* Atomic failure: leaves the caller's output byte-for-byte unchanged.
++ * country_index is zero-based; world must be a native, legitimate 14/27-country
++ * PRE_SETUP dataset with fixed source country identities. */
++Gk217Status gk217_preview_country(const Gk1LoadedScenario *world,
++                                  unsigned country_index,Gk217Preview *out);
++#endif
+diff --git a/execution_199/test_gk217_finance_preview.c b/execution_199/test_gk217_finance_preview.c
+new file mode 100644
+index 0000000..ee5b49a
+--- /dev/null
++++ b/execution_199/test_gk217_finance_preview.c
+@@ -0,0 +1,67 @@
++#include "gk1_app_state.h"
++#include "gk217_finance_preview.h"
++#include <stdio.h>
++#include <string.h>
++int main(int argc,char **argv){
++ if(argc!=2)return 2;
++ Gk1TemplateDataset data;
++ if(gk1_template_load(argv[1],&data)!=GK1_LOAD_OK)return 3;
++ Gk1App app;gk1_app_init(&app);
++ if(!gk1_app_install_templates(&app,&data))return 4;
++ unsigned cases=0;
++ for(unsigned w=0;w<2;w++){
++  const Gk1LoadedScenario original=app.worlds[w];
++  Gk214Batch all;
++  if(gk214_project_spring_batch(&app.worlds[w],&all)!=GK214_OK)return 5;
++  for(unsigned i=0;i<original.country_count;i++){
++   Gk217Preview view;
++   if(gk217_preview_country(&app.worlds[w],i,&view)!=GK217_OK)return 6;
++   if(view.country_count!=original.country_count||view.selected_country!=i||
++      view.original_spring_generated||view.before_gold!=original.countries[i].gold||
++      view.after_gold!=all.after.countries[i].gold||
++      view.before_food!=original.countries[i].goods[10]||
++      view.after_food!=all.after.countries[i].goods[10]||
++      view.total_taxes!=all.gross_taxes||view.total_payroll!=all.payroll||
++      view.total_food_consumed!=all.food_consumed)return 7;
++   ++cases;
++  }
++  if(memcmp(&original,&app.worlds[w],sizeof original))return 8;
++  Gk217Preview untouched;memset(&untouched,0xA5,sizeof untouched);
++  Gk217Preview marker=untouched;
++  if(gk217_preview_country(&app.worlds[w],original.country_count,&untouched)==GK217_OK||
++     memcmp(&marker,&untouched,sizeof marker))return 9;
++  Gk1LoadedScenario corrupt=original;
++  corrupt.countries[original.country_count-1].country_id=0;
++  if(gk217_preview_country(&corrupt,0,&untouched)==GK217_OK||
++     memcmp(&marker,&untouched,sizeof marker))return 10;
++  corrupt=original;corrupt.phase=(Gk1ScenarioPhase)2;
++  if(gk217_preview_country(&corrupt,0,&untouched)==GK217_OK||
++     memcmp(&marker,&untouched,sizeof marker))return 11;
++ }
++ /* Controller-only path, Classic vs Enhanced separation, actual D-pad scan,
++  * immutable original world and no invented playable Spring/merchant offers. */
++ app.screen=GK1_SCREEN_LABOR_PLAN;app.active_world=0;app.rules_profile=0;
++ Gk1LoadedScenario before=app.worlds[0];
++ if(!gk1_app_input(&app,GK1_INPUT_SETUP)||
++    app.screen!=GK1_SCREEN_LABOR_PLAN)return 12;
++ if(!gk1_app_input(&app,GK1_INPUT_SETUP)||
++    app.screen!=GK1_SCREEN_SPRING_FINANCE_PREVIEW)return 12;
++ if(!gk1_app_input(&app,GK1_INPUT_DOWN)||app.finance_cursor!=1u)return 13;
++ if(!gk1_app_input(&app,GK1_INPUT_LEFT)||app.finance_cursor!=0u)return 14;
++ if(!gk1_app_input(&app,GK1_INPUT_CANCEL)||
++    app.screen!=GK1_SCREEN_LABOR_PLAN)return 15;
++ if(memcmp(&before,&app.worlds[0],sizeof before)||
++    app.stock_checkpoint.valid||app.setup_stage[0]==GK53_SETUP_AWAIT_SOURCE)return 16;
++ app.active_world=1;app.rules_profile=0;app.screen=GK1_SCREEN_LABOR_PLAN;
++ if(!gk1_app_input(&app,GK1_INPUT_SETUP)||
++    app.screen!=GK1_SCREEN_LABOR_PLAN)return 17;
++ if(!gk1_app_input(&app,GK1_INPUT_SETUP)||
++    app.screen!=GK1_SCREEN_SPRING_FINANCE_PREVIEW)return 17;
++ if(app.finance_cursor!=0u)return 18;
++ if(!gk1_app_input(&app,GK1_INPUT_CANCEL))return 19;
++ app.rules_profile=1;app.screen=GK1_SCREEN_LABOR_PLAN;
++ if(!gk1_app_input(&app,GK1_INPUT_SETUP)||
++    app.screen!=GK1_SCREEN_DEMOBILIZE)return 20;
++ printf("EXEC0217 14+27=%u countries; Classic controller finance preview, source-bounded atomic refusal, Enhanced path preserved: PASS\n",cases);
++ return cases==41u?0:21;
++}
