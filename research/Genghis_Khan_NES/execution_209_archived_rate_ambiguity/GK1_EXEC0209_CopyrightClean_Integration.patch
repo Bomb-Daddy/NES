@@ -1,0 +1,244 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+index 592f3fb..ab18522 100644
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -55,7 +55,7 @@ endif()
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0193.md README_EXEC0194.md README_EXEC0195.md README_EXEC0196.md README_EXEC0197.md README_EXEC0198.md README_EXEC0199.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0193.md README_EXEC0194.md README_EXEC0195.md README_EXEC0196.md README_EXEC0197.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+   set(CPACK_PACKAGE_VERSION "1.99.0")
+@@ -150,7 +150,7 @@ if(UNIX AND NOT APPLE)
+           DESTINATION opt/gk1-native-research)
+   install(PROGRAMS packaging/gk1-native-research DESTINATION usr/bin)
+   install(FILES packaging/gk1-native-research.desktop DESTINATION usr/share/applications)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0198.md README_EXEC0199.md DESTINATION usr/share/doc/gk1-native-research)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+   set(CPACK_PACKAGE_VERSION "1.99.0")
+@@ -998,3 +998,7 @@ add_executable(test_gk208_archived_rng test_gk208_archived_rng.c)
+ target_link_libraries(test_gk208_archived_rng PRIVATE gk1_app_state)
+ add_test(NAME GK1_208_ArchiveSourceSeedIdentityAndAtomicFailureGates
+  COMMAND test_gk208_archived_rng)
++
++add_executable(test_gk209_archived_rate_ambiguity test_gk209_archived_rate_ambiguity.c)
++target_link_libraries(test_gk209_archived_rate_ambiguity PRIVATE gk1_app_state)
++add_test(NAME GK1_209_ArchivedStockRngRateAmbiguity_MustNotInferSpring COMMAND test_gk209_archived_rate_ambiguity)
+diff --git a/execution_199/README_EXEC0209.md b/execution_199/README_EXEC0209.md
+new file mode 100644
+index 0000000..8fb4f1e
+--- /dev/null
++++ b/execution_199/README_EXEC0209.md
+@@ -0,0 +1,18 @@
++# GK1 EXEC0209 — Original archived Spring Rate RNG ambiguity proof (development candidate)
++
++**Source inherited:** complete EXEC0208 native C11 application, unchanged beyond six integration paths. No original ROM, Mesen savestate, raw country data or licensed art is part of this package. This is an authentic-stock *retrospective arithmetic audit*, not a new NES playthrough or independently initialized game.
++
++`gk209_archived_rate_ambiguity.c/.h` links to the application's exact full-source Mesen CPU state authentication (GK208) and original 48-bit inverse PRNG (GK138). The public deterministic command is:
++
++```
++gk1_native_shell --audit-stock-archived-rate-ambiguity PRIVATE_ORIGINAL_ROM PRIVATE_MESEN_MSS mongol1175 4096
++gk1_native_shell --audit-stock-archived-rate-ambiguity PRIVATE_ORIGINAL_ROM PRIVATE_MESEN_MSS world1206 4096
++```
++
++The source verifies the entire original USA ROM and the complete distinct archived Mesen state, ensures country bank was SaveRAM, checks the archived CPU seed is on an odd post-draw boundary, and searches 4096 prior *possible* draws for each of the five difficulty formulas. The result is an ambiguity count, **never a selected causal draw or claimed actual difficulty**. Actual CPU seed writes, event RNG call order and first Spring seed remain unknown.
++
++**Original archived Spring 1175 Mongol, rate 101**: matches over 4096 possible prior draws, difficulty 1–5 respectively: **45, 31, 28, 42, 29**. **World Spring 1206, rate 114**: **46, 39, 40, 24, 38**. All five difficulties have many mathematical matches. These are NOT claims of source-executed calls. Original controller choices and fresh reset are independent and are NOT part of this archive-derived scan. This underdetermination is evidence against selecting a convenient apparent random draw and hardcoding first Spring.
++
++**VERIFIED_STATIC:** source, archived-Mesen and ROM identity gates, 5×4096 inversion arithmetic per archived profile, deterministic outcome and adversarial rollback. **OBSERVED_RUNTIME_STOCK_ARCHIVED_RESTORED:** prior archived Mongol/World original Mesen sessions are authenticated inputs; **no new emulator execution**. **OBSERVED_RUNTIME_STOCK_FRESH_RESET:** separate prior fresh WorkRAM capture preserved, not scanned or interpreted as SaveRAM. **TESTED_PORT_LINUX:** source integration, Release/Debug/independent builds, executable CLI, regression/negative tests, native Linux/Xvfb and Debian extraction. **NOT RUN:** native Win32, NSIS, physical Xbox, full campaigns, live Mesen CPU logging.
++
++**Unfinished priority:** run authenticated Mesen stock from fresh reset with CPU memory-write watch on `$0084–$0089`, instruction/mapping provenance and real setup/difficulty/controller chronology; then implement the *dynamic* 14/27-country Spring in the existing app. The current code **does not grant a playable original Spring via pre-setup bypass**, and does not pretend that the 101/114/121 observations are constants.
+diff --git a/execution_199/gk1_native_shell.c b/execution_199/gk1_native_shell.c
+index 944d06c..cf1ea86 100644
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -8,6 +8,7 @@
+ #include "gk91_reset_zero.h"
+ #include "gk206_rng_source_parity.h"
+ #include "gk208_archived_rng.h"
++#include "gk209_archived_rate_ambiguity.h"
+ #include "gk185_stock_hotkey.h"
+ #include "gk80_full_checkpoint.h"
+ #include "gk171_enhanced_title_resume.h"
+@@ -3107,6 +3108,37 @@ if(argc==3 && strcmp(argv[1],"--pre-setup-pad-smoke")==0){
+   puts("NOT ORIGINAL RESET, NOT NEW MESEN EXECUTION, NOT VERIFIED DRAW ORDER, NOT PLAYABLE FIRST SPRING");
+   return 0;
+  }
++ else if(argc==6&&strcmp(argv[1],"--audit-stock-archived-rate-ambiguity")==0){
++  Gk77Profile profile=strcmp(argv[4],"mongol1175")==0?
++    GK77_ARCHIVED_MONGOL_SAVERAM:strcmp(argv[4],"world1206")==0?
++    GK77_ARCHIVED_WORLD_SAVERAM:0;
++  char *end=0;
++  unsigned long depth=strtoul(argv[5],&end,10);
++  if(!profile||!argv[5][0]||!end||*end||depth<1ul||depth>65536ul){
++   fputs("GK209 invalid archived profile or search depth 1..65536\n",stderr);return 8;
++  }
++  Gk209RateAmbiguity scan={0};
++  Gk209Status result=gk209_archived_rate_ambiguity(argv[2],argv[3],profile,
++    (uint32_t)depth,&scan);
++  if(result!=GK209_OK){
++   fprintf(stderr,"GK209 authentic archive analysis refused code=%u\n",(unsigned)result);
++   return 8;
++  }
++  printf("VERIFIED_STATIC_RETROSPECTIVE_SOURCE_AMBIGUITY profile=%s rate=%u search_window=%u countries=%u\n",
++   argv[4],(unsigned)scan.observed_spring_rate,scan.window,
++   profile==GK77_ARCHIVED_WORLD_SAVERAM?27u:14u);
++  for(unsigned d=0;d<5u;d++){
++   const Gk138RateScan *r=&scan.by_difficulty[d];
++   printf("  hypothetical_difficulty=%u backwards_matches=%u closest_offset=%s",
++    d+1u,r->matches,r->matches?"AVAILABLE":"NONE");
++   if(r->matches)printf(" (%u)",r->nearest_offset);
++   putchar('\n');
++  }
++  printf("candidate_difficulties=%u single-match_difficulties=%u; chronology_proved=0 first_spring_generated=0\n",
++    scan.candidate_difficulties,scan.uniquely_located_difficulties);
++  puts("PRIOR AUTHENTIC MESEN SAVESTATE, NOT NEW EMULATOR EXECUTION. RETROACTIVE NUMERIC MATCHES CANNOT IDENTIFY THE ACTUAL RANDOM DRAW, CHARACTER SETUP, DIFFICULTY, OR ORIGINAL SPRING.");
++  return 0;
++ }
+  else if(argc==3&&strcmp(argv[1],"--audit-stock-seed-writes")==0){
+   Gk83Trace unknown={0},zero={0};
+   Gk83Stop strict=gk83_trace_original_reset(argv[2],20000u,&unknown);
+diff --git a/execution_199/gk209_archived_rate_ambiguity.c b/execution_199/gk209_archived_rate_ambiguity.c
+new file mode 100644
+index 0000000..44f7eb7
+--- /dev/null
++++ b/execution_199/gk209_archived_rate_ambiguity.c
+@@ -0,0 +1,34 @@
++#include "gk209_archived_rate_ambiguity.h"
++#include <string.h>
++Gk209Status gk209_archived_rate_ambiguity(const char *rom,const char *mss,
++ Gk77Profile profile,uint32_t window,Gk209RateAmbiguity *out){
++ if(!rom||!*rom||!mss||!*mss||!out||window==0u||window>65536u||
++    (profile!=GK77_ARCHIVED_MONGOL_SAVERAM&&
++     profile!=GK77_ARCHIVED_WORLD_SAVERAM))return GK209_ARGUMENT;
++ Gk208ArchiveProof source={0};
++ Gk208Status status=gk208_archived_source_rng(rom,mss,profile,&source);
++ if(status!=GK208_OK)
++  return (status==GK208_ARCHIVE||status==GK208_ARCHIVE_IDENTITY)?
++      GK209_ARCHIVE_REFUSED:GK209_SOURCE_REFUSED;
++ /* Source arithmetic produces odd output seed; even Mesen state could be
++  * mid-calculation or externally altered. Do not pretend it is an output. */
++ if(!(source.archived_seed48&UINT64_C(1)))return GK209_NOT_A_DRAW_BOUNDARY;
++ Gk209RateAmbiguity candidate={0};
++ candidate.profile=profile;
++ candidate.archived_pc=source.archived_pc;
++ candidate.window=window;
++ candidate.observed_spring_rate=(profile==GK77_ARCHIVED_WORLD_SAVERAM)?114u:101u;
++ for(unsigned d=1;d<=5u;d++){
++  Gk138RateScan scan={0};
++  if(gk138_scan_spring_rate(source.archived_seed48,(uint8_t)d,
++       candidate.observed_spring_rate,window,&scan)!=GK138_OK)
++   return GK209_NOT_A_DRAW_BOUNDARY;
++  candidate.by_difficulty[d-1u]=scan;
++  if(scan.matches>0u)candidate.candidate_difficulties++;
++  if(scan.matches==1u)candidate.uniquely_located_difficulties++;
++ }
++ /* Neither a single candidate nor an apparent unique match establishes
++  * an authentic 6502 call chronology. Always mark both gates false. */
++ *out=candidate;
++ return GK209_OK;
++}
+diff --git a/execution_199/gk209_archived_rate_ambiguity.h b/execution_199/gk209_archived_rate_ambiguity.h
+new file mode 100644
+index 0000000..67e10c6
+--- /dev/null
++++ b/execution_199/gk209_archived_rate_ambiguity.h
+@@ -0,0 +1,32 @@
++#ifndef GK209_ARCHIVED_RATE_AMBIGUITY_H
++#define GK209_ARCHIVED_RATE_AMBIGUITY_H
++#include "gk208_archived_rng.h"
++#include "gk138_rng_reverse.h"
++/* EXEC0209: ROM-and-full-Mesen-state-attested *candidate* past Rate draws.
++ * This is retrospective arithmetic only: a matching value cannot prove
++ * which RNG call (if any) was used for Spring Rate, or recover startup setup.
++ * Never modifies an original checkpoint, mutable campaign, ROM or Mesen file.
++ */
++typedef enum {
++ GK209_OK=0,GK209_ARGUMENT=1,GK209_SOURCE_REFUSED=2,
++ GK209_ARCHIVE_REFUSED=3,GK209_NOT_A_DRAW_BOUNDARY=4
++} Gk209Status;
++typedef struct {
++ Gk77Profile profile;
++ uint16_t observed_spring_rate;
++ uint16_t archived_pc;
++ uint32_t window;
++ uint8_t candidate_difficulties;
++ uint8_t uniquely_located_difficulties;
++ uint8_t chronology_proved; /* always zero: no runtime RNG call log */
++ uint8_t first_spring_generated; /* always zero */
++ Gk138RateScan by_difficulty[5];
++} Gk209RateAmbiguity;
++/* Bounded 1..65536 reverse draws, independent for each difficulty (1..5).
++ * Returns NOT_A_DRAW_BOUNDARY if the original CPU seed is even: a partial
++ * RNG computation/non-draw write is possible, so reverse-draw provenance
++ * must not be fabricated. On every refusal, *out is byte-identical. */
++Gk209Status gk209_archived_rate_ambiguity(const char *original_rom,
++ const char *archived_mss,Gk77Profile profile,uint32_t window,
++ Gk209RateAmbiguity *out);
++#endif
+diff --git a/execution_199/test_gk209_archived_rate_ambiguity.c b/execution_199/test_gk209_archived_rate_ambiguity.c
+new file mode 100644
+index 0000000..9e47a55
+--- /dev/null
++++ b/execution_199/test_gk209_archived_rate_ambiguity.c
+@@ -0,0 +1,47 @@
++#include "gk209_archived_rate_ambiguity.h"
++#include <stdio.h>
++#include <string.h>
++static int checks=0;
++#define CHECK(x) do{if(!(x)){fprintf(stderr,"GK209 FAIL:%d %s\n",__LINE__,#x);return 2;}checks++;}while(0)
++int main(int argc,char **argv){
++ Gk209RateAmbiguity out,old;
++ memset(&out,0xa5,sizeof out);old=out;
++ CHECK(gk209_archived_rate_ambiguity(0,"mss",GK77_ARCHIVED_MONGOL_SAVERAM,64,&out)==GK209_ARGUMENT);
++ CHECK(gk209_archived_rate_ambiguity("rom",0,GK77_ARCHIVED_MONGOL_SAVERAM,64,&out)==GK209_ARGUMENT);
++ CHECK(gk209_archived_rate_ambiguity("rom","mss",GK77_FRESH_MONGOL_WORKRAM,64,&out)==GK209_ARGUMENT);
++ CHECK(gk209_archived_rate_ambiguity("rom","mss",GK77_ARCHIVED_MONGOL_SAVERAM,0,&out)==GK209_ARGUMENT);
++ CHECK(gk209_archived_rate_ambiguity("rom","mss",GK77_ARCHIVED_WORLD_SAVERAM,65537,&out)==GK209_ARGUMENT);
++ CHECK(!memcmp(&out,&old,sizeof out));
++ CHECK(gk209_archived_rate_ambiguity("badrom","no_file",GK77_ARCHIVED_MONGOL_SAVERAM,64,&out)==GK209_ARCHIVE_REFUSED);
++ CHECK(!memcmp(&out,&old,sizeof out));
++ if(argc==4){
++  const char *rom=argv[1],*mongol=argv[2],*world=argv[3];
++  Gk209RateAmbiguity a,b;
++  Gk209Status ra=gk209_archived_rate_ambiguity(rom,mongol,GK77_ARCHIVED_MONGOL_SAVERAM,4096,&a);
++  Gk209Status rb=gk209_archived_rate_ambiguity(rom,world,GK77_ARCHIVED_WORLD_SAVERAM,4096,&b);
++  CHECK(ra==GK209_OK||ra==GK209_NOT_A_DRAW_BOUNDARY);
++  CHECK(rb==GK209_OK||rb==GK209_NOT_A_DRAW_BOUNDARY);
++  if(ra==GK209_OK){
++   const uint32_t mongol_expected[5]={45,31,28,42,29};
++   for(unsigned d=0;d<5u;d++)CHECK(a.by_difficulty[d].matches==mongol_expected[d]);
++   CHECK(a.candidate_difficulties==5u && a.uniquely_located_difficulties==0u);
++   CHECK(a.observed_spring_rate==101u && a.window==4096u);
++   CHECK(a.chronology_proved==0u&&a.first_spring_generated==0u);
++   for(unsigned d=0;d<5;d++)CHECK(a.by_difficulty[d].inspected==4096u);
++   Gk209RateAmbiguity tmp=out;
++   CHECK(gk209_archived_rate_ambiguity(rom,world,GK77_ARCHIVED_MONGOL_SAVERAM,64,&out)==GK209_ARCHIVE_REFUSED);
++   CHECK(!memcmp(&out,&tmp,sizeof out));
++  }
++  if(rb==GK209_OK){
++   const uint32_t world_expected[5]={46,39,40,24,38};
++   for(unsigned d=0;d<5u;d++)CHECK(b.by_difficulty[d].matches==world_expected[d]);
++   CHECK(b.candidate_difficulties==5u && b.uniquely_located_difficulties==0u);
++   CHECK(b.observed_spring_rate==114u && b.window==4096u);
++   CHECK(b.chronology_proved==0u&&b.first_spring_generated==0u);
++   for(unsigned d=0;d<5;d++)CHECK(b.by_difficulty[d].inspected==4096u);
++  }
++  printf("AUTHENTIC MONGOL archive diagnostic status=%d; WORLD=%d; no startup claim\n",ra,rb);
++ }
++ printf("GK209 PASS %d checks; no original session or first Spring generated\n",checks);
++ return 0;
++}
