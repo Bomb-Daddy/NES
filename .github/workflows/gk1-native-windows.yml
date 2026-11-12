@@ -8,6 +8,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_230_win32_gui_smoke/**'
       - 'research/Genghis_Khan_NES/execution_231_win32_gui_trace/**'
       - 'research/Genghis_Khan_NES/execution_232_win32_controller_navigation/**'
+      - 'research/Genghis_Khan_NES/execution_233_win32_practice_persistence/**'
 permissions:
   contents: read
 jobs:
@@ -59,6 +60,13 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0232 native game controller route integration refused' }
           if (-not (Select-String -Path 'gk1-integrated-source/execution_199/gk1_native_shell.c' -Pattern 'EXEC0232 scripted raw XInput' -Quiet)) {
             throw 'EXEC0232 actual WinMain source integration missing'
+          }
+          python 'research/Genghis_Khan_NES/execution_233_win32_practice_persistence/test_practice_smoke.py'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0233 adversarial overlay test failed' }
+          python 'research/Genghis_Khan_NES/execution_233_win32_practice_persistence/apply_practice_smoke.py' 'gk1-integrated-source'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0233 real WinMain practice persistence integration refused' }
+          if (-not (Select-String -Path 'gk1-integrated-source/execution_199/gk1_native_shell.c' -Pattern 'EXEC0233: private, Enhanced-only' -Quiet)) {
+            throw 'EXEC0233 WinMain integration postcondition absent'
           }
       - name: Build the actual 1280x720 native WinMain and XInput game
         shell: pwsh
@@ -154,4 +162,55 @@ jobs:
         run: |
           if ('${{ steps.native_gui.outcome }}' -ne 'success') { throw 'Native GUI smoke failed: not Windows gameplay accepted' }
           if ('${{ steps.installed_gui.outcome }}' -ne 'success') { throw 'Installed GUI smoke failed: not Windows gameplay accepted' }
+      - name: EXEC0233 actual WinMain Enhanced practice X-save / Y-cold-resume / corruption refusal
+        shell: pwsh
+        run: |
+          # Real MSVC-compiled and NSIS-installed WinMain EXEs, not a second prototype.
+          # Each invocation starts a separate process. Input is synthetic raw XInput
+          # routed through the live app, NOT a tested physical Xbox controller.
+          function Check-Run([string]$exe,[string]$mode) {
+            $p = Start-Process -FilePath $exe -ArgumentList $mode -PassThru
+            if (-not $p.WaitForExit(20000)) {
+              try { $p.Kill() } catch {}
+              throw "EXEC0233 Windows $mode timed out"
+            }
+            if ($p.ExitCode -ne 0) { throw "EXEC0233 Windows $mode exit=$($p.ExitCode)" }
+          }
+          $cases = @(
+            @{ Exe = (Resolve-Path 'build-gk1-win32/Release/gk1_native_shell.exe').Path; Csv = (Resolve-Path 'build-gk1-win32/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv').Path; Label = 'built' },
+            @{ Exe = (Join-Path $env:RUNNER_TEMP 'GK1ResearchInstall/gk1_native_shell.exe'); Csv = (Join-Path $env:RUNNER_TEMP 'GK1ResearchInstall/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'); Label = 'installed' }
+          )
+          foreach ($case in $cases) {
+            if (-not (Test-Path $case.Exe) -or -not (Test-Path $case.Csv)) {
+              throw "EXEC0233 missing Windows executable or canonical country source"
+            }
+            $env:GK1_SCENARIO_CSV = $case.Csv
+            $env:GK1_ENHANCED_PRACTICE_SAVE_FILE = Join-Path $env:RUNNER_TEMP ("GK1_EXEC0233_" + $case.Label + ".gk24")
+            Remove-Item $env:GK1_ENHANCED_PRACTICE_SAVE_FILE -ErrorAction SilentlyContinue
+            Check-Run $case.Exe '--smoke-gamepad-practice-save'
+            if (-not (Test-Path $env:GK1_ENHANCED_PRACTICE_SAVE_FILE)) { throw 'EXEC0233 X never wrote practice save' }
+            $first = [IO.File]::ReadAllBytes($env:GK1_ENHANCED_PRACTICE_SAVE_FILE)
+            if ($first.Length -ne 80) { throw "EXEC0233 unexpected receipt bytes $($first.Length)" }
+            Check-Run $case.Exe '--smoke-gamepad-practice-resume'
+            $second = [IO.File]::ReadAllBytes($env:GK1_ENHANCED_PRACTICE_SAVE_FILE)
+            if ($second.Length -ne 80) { throw 'EXEC0233 second receipt truncated' }
+            if ([Convert]::ToBase64String($first) -eq [Convert]::ToBase64String($second)) {
+              throw 'EXEC0233 X recheckpoint did not advance saved game state'
+            }
+            Check-Run $case.Exe '--smoke-gamepad-practice-verify'
+            # A damaged saved receipt must NOT be treated as valid or cause a
+            # fallback to another Classic/Enhanced profile or alter file bytes.
+            $corrupt = [byte[]]$second.Clone()
+            $corrupt[39] = $corrupt[39] -bxor 90
+            [IO.File]::WriteAllBytes($env:GK1_ENHANCED_PRACTICE_SAVE_FILE,$corrupt)
+            Check-Run $case.Exe '--smoke-gamepad-practice-corrupt'
+            $after = [IO.File]::ReadAllBytes($env:GK1_ENHANCED_PRACTICE_SAVE_FILE)
+            if ([Convert]::ToBase64String($corrupt) -ne [Convert]::ToBase64String($after)) {
+              throw 'EXEC0233 corrupted save mutated during refusal'
+            }
+            [IO.File]::WriteAllBytes($env:GK1_ENHANCED_PRACTICE_SAVE_FILE,$second)
+            Write-Host "EXEC0233 TESTED_PORT_WIN32 $($case.Label) 4 fresh-process controller/disk tests PASS; not stock NES or hardware"
+          }
+          Remove-Item Env:GK1_SCENARIO_CSV -ErrorAction SilentlyContinue
+          Remove-Item Env:GK1_ENHANCED_PRACTICE_SAVE_FILE -ErrorAction SilentlyContinue
       # No workflow artifact uploads: known GitHub Actions storage pressure.
