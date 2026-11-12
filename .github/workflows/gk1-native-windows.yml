@@ -25,14 +25,16 @@ jobs:
           python "$root/apply_win32_portability.py" 'gk1-integrated-source'
           if ($LASTEXITCODE -ne 0) { throw 'Win32 source compatibility patch refused' }
           if (-not (Test-Path 'gk1-integrated-source/execution_199/gk1_native_shell.c')) { throw 'Integrated native source missing' }
-          Push-Location 'gk1-integrated-source'
-          try {
-            $patch = '../research/Genghis_Khan_NES/execution_230_win32_gui_smoke/GK1_EXEC0230_CopyrightClean_Integration.patch'
-            git apply --check $patch
-            if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 exact patch precheck failed' }
-            git apply $patch
-            if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 patch application failed' }
-          } finally { Pop-Location }
+          # Git apply from a child of a checkout can silently SKIP all patch paths.
+          # Apply from repository ROOT with an explicit verified hydrated-tree prefix.
+          $patch = 'research/Genghis_Khan_NES/execution_230_win32_gui_smoke/GK1_EXEC0230_CopyrightClean_Integration.patch'
+          git apply --check --directory=gk1-integrated-source $patch
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 exact rooted patch precheck failed' }
+          git apply --directory=gk1-integrated-source $patch
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 rooted patch application failed' }
+          if (-not (Select-String -Path 'gk1-integrated-source/execution_199/gk1_native_shell.c' -Pattern 'gk230_painted_frames' -Quiet)) {
+            throw 'EXEC0230 postcondition absent: git apply returned success but skipped game source'
+          }
           python 'research/Genghis_Khan_NES/execution_231_win32_gui_trace/test_trace.py'
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0231 diagnostic patch tests failed' }
           python 'research/Genghis_Khan_NES/execution_231_win32_gui_trace/apply_trace.py' 'gk1-integrated-source'
