@@ -1,0 +1,275 @@
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -1120,3 +1120,9 @@
+      $<TARGET_FILE:gk1_native_shell> --smoke-enhanced-spring-lab 120)
+  endif()
+ endif()
++
++# EXEC0223: independent explicit undo/replay audit of isolated Enhanced practice.
++add_executable(test_gk223_practice_history test_gk223_practice_history.c)
++target_link_libraries(test_gk223_practice_history PRIVATE gk1_app_state)
++add_test(NAME GK1_223_EnhancedPractice_ThreeOrderUndoReplayAndTamperAtomic
++ COMMAND test_gk223_practice_history ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+--- a/execution_199/gk222_enhanced_spring_lab.c
++++ b/execution_199/gk222_enhanced_spring_lab.c
+@@ -19,10 +19,53 @@
+  tmp.player_index=tmp.selected_country=player_index;
+  tmp.remaining=3u;
+  tmp.working=batch.after; /* only bounded finance, not full original Spring */
++ tmp.initial_town=tmp.working.countries[player_index].town;
++ tmp.initial_food_workers=tmp.working.countries[player_index].food_workers;
+  tmp.taxes=batch.gross_taxes;
+  tmp.payroll=batch.payroll;
+  tmp.food_used=batch.food_consumed;
+  *out=tmp;return GK222_OK;
++}
++/* Three receipts, one player and a two-pool conserved transformation.
++ * Validation detects forged counters, edited source identity and resource tamper
++ * before either commit or undo. No state writes on failure. */
++Gk222Status gk222_verify_receipts(const Gk222Spring *state){
++ if(!state||!state->active||state->scenario<1u||state->scenario>2u||
++    state->working.country_count!=(state->scenario==1u?14u:27u)||
++    state->working.scenario_id!=(Gk1ScenarioId)state->scenario||
++    state->working.phase!=GK1_PRE_SETUP_TEMPLATE||
++    state->player_index>=state->working.country_count||
++    state->actions_committed>3u||state->remaining>3u||
++    state->remaining+state->actions_committed!=3u||
++    !!state->ended!=(state->remaining==0u))return GK222_CORRUPT_HISTORY;
++ unsigned assignments=0;
++ for(unsigned i=0;i<state->actions_committed;i++){
++   if(state->order_receipts[i]>GK222_ASSIGN_TOWN_TO_FOOD)return GK222_CORRUPT_HISTORY;
++   assignments+=state->order_receipts[i]==GK222_ASSIGN_TOWN_TO_FOOD;
++ }
++ for(unsigned i=state->actions_committed;i<3u;i++)
++  if(state->order_receipts[i]!=0u)return GK222_CORRUPT_HISTORY;
++ const Gk1CountryTemplate *country=&state->working.countries[state->player_index];
++ if(state->initial_town<assignments||
++    (unsigned)state->initial_food_workers+assignments>999u||
++    country->town!=(unsigned)state->initial_town-assignments||
++    country->food_workers!=(unsigned)state->initial_food_workers+assignments||
++    country->country_id!=state->player_index+1u)return GK222_CORRUPT_HISTORY;
++ return GK222_OK;
++}
++Gk222Status gk222_undo_last(Gk222Spring *state){
++ Gk222Status r=gk222_verify_receipts(state);
++ if(r!=GK222_OK)return r;
++ if(!state->actions_committed)return GK222_NO_HISTORY;
++ uint8_t action=state->order_receipts[state->actions_committed-1u];
++ if(action==GK222_ASSIGN_TOWN_TO_FOOD){
++   Gk1CountryTemplate *country=&state->working.countries[state->player_index];
++   if(!country->food_workers||country->town>=999u)return GK222_CORRUPT_HISTORY;
++   country->food_workers--;country->town++;
++ }
++ state->order_receipts[--state->actions_committed]=0u;
++ state->remaining++;state->ended=0u;
++ return GK222_OK;
+ }
+ Gk222Status gk222_apply(Gk222Spring *in_out,
+                         uint8_t selected_country,Gk222Action action){
+@@ -34,6 +77,7 @@
+  if(selected_country>=in_out->working.country_count || selected_country!=in_out->player_index)
+     return GK222_WRONG_COUNTRY;
+  if(action!=GK222_PASS&&action!=GK222_ASSIGN_TOWN_TO_FOOD)return GK222_BAD_ACTION;
++ if(gk222_verify_receipts(in_out)!=GK222_OK)return GK222_CORRUPT_HISTORY;
+  if(in_out->remaining==0u||in_out->ended)return GK222_NO_ORDERS;
+  if(action==GK222_ASSIGN_TOWN_TO_FOOD){
+   Gk1CountryTemplate *country=&in_out->working.countries[selected_country];
+@@ -42,6 +86,7 @@
+   country->food_workers++;
+   /* Reallocation is explicitly a port drill, NOT a proven NES Assign cost. */
+  }
++ in_out->order_receipts[in_out->actions_committed]=(uint8_t)action;
+  in_out->remaining--;
+  in_out->actions_committed++;
+  in_out->ended=(uint8_t)(in_out->remaining==0u);
+--- a/execution_199/gk222_enhanced_spring_lab.h
++++ b/execution_199/gk222_enhanced_spring_lab.h
+@@ -7,7 +7,8 @@
+  * A real mutable three-order drill separate from Classic original gameplay. */
+ typedef enum {
+  GK222_OK=0, GK222_BAD_SOURCE, GK222_BAD_PLAYER, GK222_NOT_STARTED,
+- GK222_NO_ORDERS, GK222_WRONG_COUNTRY, GK222_NO_WORKER, GK222_BAD_ACTION
++ GK222_NO_ORDERS, GK222_WRONG_COUNTRY, GK222_NO_WORKER, GK222_BAD_ACTION,
++ GK222_NO_HISTORY, GK222_CORRUPT_HISTORY
+ } Gk222Status;
+ typedef enum {GK222_PASS=0,GK222_ASSIGN_TOWN_TO_FOOD=1} Gk222Action;
+ typedef struct {
+@@ -16,9 +17,16 @@
+  Gk1LoadedScenario working; /* distinct from immutable original-source world */
+  uint32_t taxes,payroll,food_used;
+  uint8_t actions_committed;
++ /* EXEC0223: bounded replayable Enhanced-only practice. No campaign persistence. */
++ uint16_t initial_town,initial_food_workers;
++ uint8_t order_receipts[3];
+ } Gk222Spring;
+ Gk222Status gk222_open(const Gk1LoadedScenario *source,
+                        uint8_t player_index,Gk222Spring *out);
+ Gk222Status gk222_apply(Gk222Spring *in_out,
+                         uint8_t selected_country,Gk222Action action);
++Gk222Status gk222_undo_last(Gk222Spring *in_out);
++/* Replays Enhanced practice receipts and audits the live player resource counts.
++ * Does not verify any original NES initialization or stock orders. */
++Gk222Status gk222_verify_receipts(const Gk222Spring *state);
+ #endif
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -478,6 +478,13 @@
+     strcpy(s->status,"ENHANCED PRACTICE CLOSED; ORIGINAL SETUP STILL OPEN");return 1;
+   }
+   if(!lab->active)return 0;
++  if(cmd==GK1_INPUT_DRAFT_UNDO_ONE){
++    Gk222Status r=gk222_undo_last(lab);
++    strcpy(s->status,r==GK222_OK?
++      "ENHANCED PRACTICE ORDER REVERSED - NOT ORIGINAL NES":
++      "PRACTICE UNDO REFUSED: NO HISTORY / TAMPERED SOURCE");
++    return 1;
++  }
+   if(cmd==GK1_INPUT_LEFT||cmd==GK1_INPUT_RIGHT){
+     s->port_spring_command^=1u;return 1;
+   }
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -610,7 +610,7 @@
+   snprintf(line,sizeof line,"SOURCE FINANCE TOTAL TAX %u / PAYROLL %u / FOOD USED %u",
+     (unsigned)lab->taxes,(unsigned)lab->payroll,(unsigned)lab->food_used);
+   label(108,386,line,EDGE);
+-  label(108,427,"DPAD UP/DOWN COUNTRY | LEFT/RIGHT ACTION | A SPEND | B EXIT",FG);
++  label(108,427,"DPAD COUNTRY/ACTION | A SPEND | LB UNDO LAST | B EXIT",FG);
+   label(108,480,"ONLY PLAYER COUNTRY CAN ACT; 3 ORDERS. NO ORIGINAL RNG/AI/SEASON.",WARN);
+   label(108,519,"PRACTICE IS NOT PERSISTED AND NEVER MODIFIES CLASSIC SOURCE.",WARN);
+  }else if(app.screen==GK1_SCREEN_SETUP_WIZARD){
+@@ -1570,7 +1570,8 @@
+   case GK1_PAD_ACT_MENU:input(GK1_INPUT_SETUP);break;
+   case GK1_PAD_ACT_VIEW:input(GK1_INPUT_LABOR_PLAN);break;
+   case GK1_PAD_ACT_LB:
+-   if(app.screen==GK1_SCREEN_LABOR_PLAN)input(GK1_INPUT_DRAFT_UNDO_ONE);
++   if(app.screen==GK1_SCREEN_LABOR_PLAN || app.screen==GK1_SCREEN_ENHANCED_SPRING_LAB)
++     input(GK1_INPUT_DRAFT_UNDO_ONE);
+    else slot_action(-1);
+    break;
+   case GK1_PAD_ACT_RB:slot_action(1);break;
+@@ -3940,6 +3941,14 @@
+   input(GK1_INPUT_LEFT);
+   pad_test_press(GK1_PAD_A); /* PASS 3 */
+   if(app.port_spring.remaining||!app.port_spring.ended)return 75;
++  pad_test_press(GK1_PAD_LB); /* physical-path synthetic LB: undo PASS */
++  if(app.port_spring.remaining!=1u||app.port_spring.ended||
++     app.port_spring.actions_committed!=2u)return 77;
++  pad_test_press(GK1_PAD_LB); /* undo worker change and restore both pools */
++  if(app.port_spring.remaining!=2u||app.port_spring.actions_committed!=1u)return 78;
++  pad_test_press(GK1_PAD_A); /* replay PASS */
++  pad_test_press(GK1_PAD_A); /* replay PASS */
++  if(app.port_spring.remaining||!app.port_spring.ended)return 79;
+   if(memcmp(&source_world,&app.worlds[0],sizeof source_world)!=0||
+      app.worlds[0].phase!=GK1_PRE_SETUP_TEMPLATE)return 76;
+   printf("TESTED_PORT_LINUX EXEC0222 controller-only Enhanced 3-order finance practice X11 PASS; Classic/stock remain PRE_SETUP\n");
+--- a/execution_199/test_gk222_enhanced_spring_lab.c
++++ b/execution_199/test_gk222_enhanced_spring_lab.c
+@@ -38,6 +38,30 @@
+  ASSERT(gk222_apply(d,0,GK222_PASS)==GK222_OK);
+  ASSERT(d->remaining==0&&d->ended&&d->actions_committed==3);
+  snapshot=*d;
++ ASSERT(gk222_verify_receipts(d)==GK222_OK);
++ ASSERT(gk222_undo_last(d)==GK222_OK);
++ ASSERT(d->remaining==1u&&!d->ended&&d->actions_committed==2u);
++ ASSERT(gk222_undo_last(d)==GK222_OK);
++ ASSERT(d->remaining==2u&&d->actions_committed==1u);
++ ASSERT(gk222_undo_last(d)==GK222_OK);
++ ASSERT(d->remaining==3u&&d->actions_committed==0u);
++ ASSERT(d->working.countries[0].town==old_town);
++ ASSERT(d->working.countries[0].food_workers==old_food);
++ Gk222Spring clean=*d;
++ ASSERT(gk222_undo_last(d)==GK222_NO_HISTORY);
++ ASSERT(memcmp(d,&clean,sizeof clean)==0);
++ ASSERT(gk222_apply(d,0,GK222_PASS)==GK222_OK);
++ ASSERT(gk222_apply(d,0,GK222_PASS)==GK222_OK);
++ ASSERT(gk222_apply(d,0,GK222_PASS)==GK222_OK);
++ snapshot=*d;
++ Gk222Spring forged=*d;
++ forged.remaining=1;ASSERT(gk222_verify_receipts(&forged)==GK222_CORRUPT_HISTORY);
++ ASSERT(gk222_apply(&forged,0,GK222_PASS)==GK222_CORRUPT_HISTORY);
++ ASSERT(gk222_undo_last(&forged)==GK222_CORRUPT_HISTORY);
++ forged=*d;forged.working.countries[0].food_workers++;
++ ASSERT(gk222_verify_receipts(&forged)==GK222_CORRUPT_HISTORY);
++ forged=*d;forged.order_receipts[2]=99u;
++ ASSERT(gk222_verify_receipts(&forged)==GK222_CORRUPT_HISTORY);
+  ASSERT(gk222_apply(d,0,GK222_PASS)==GK222_NO_ORDERS);
+  ASSERT(memcmp(d,&snapshot,sizeof snapshot)==0);
+  ASSERT(memcmp(source,&before,sizeof before)==0);
+@@ -80,6 +104,9 @@
+  ASSERT(gk1_app_input(app,GK1_INPUT_RIGHT));
+  ASSERT(gk1_app_input(app,GK1_INPUT_CONFIRM));
+  ASSERT(app->port_spring.remaining<=2);
++ ASSERT(gk1_app_input(app,GK1_INPUT_DRAFT_UNDO_ONE));
++ ASSERT(app->port_spring.actions_committed==1u);
++ ASSERT(app->port_spring.remaining==2u);
+  ASSERT(gk1_app_input(app,GK1_INPUT_CANCEL));
+  ASSERT(app->screen==GK1_SCREEN_SETUP_WIZARD);
+  free(snapshot);free(app);
+--- /dev/null
++++ b/execution_199/test_gk223_practice_history.c
+@@ -0,0 +1,64 @@
++/* Independent bounded Enhanced-only three-order replay/undo test.
++ * Does not assert original-stock first Spring or original controller parity. */
++#include "gk222_enhanced_spring_lab.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define CHECK(q) do { if(!(q)){fprintf(stderr,"EXEC0223 FAIL %s at %d\n",#q,__LINE__);return 1;} }while(0)
++static int run(const Gk1LoadedScenario *source){
++ Gk222Spring *s=calloc(1,sizeof *s),*saved=malloc(sizeof *saved);
++ CHECK(s&&saved);
++ CHECK(gk222_open(source,0,s)==GK222_OK);
++ CHECK(gk222_verify_receipts(s)==GK222_OK);
++ unsigned base_town=s->working.countries[0].town;
++ unsigned base_food=s->working.countries[0].food_workers;
++ CHECK(gk222_apply(s,0,GK222_PASS)==GK222_OK);
++ CHECK(gk222_apply(s,0,GK222_ASSIGN_TOWN_TO_FOOD)==GK222_OK);
++ CHECK(gk222_apply(s,0,GK222_PASS)==GK222_OK);
++ CHECK(s->remaining==0 && s->ended);
++ CHECK(gk222_verify_receipts(s)==GK222_OK);
++ CHECK(gk222_undo_last(s)==GK222_OK);
++ CHECK(gk222_undo_last(s)==GK222_OK);
++ CHECK(s->remaining==2 && !s->ended);
++ CHECK(s->working.countries[0].town==base_town);
++ CHECK(s->working.countries[0].food_workers==base_food);
++ CHECK(gk222_apply(s,0,GK222_ASSIGN_TOWN_TO_FOOD)==GK222_OK);
++ CHECK(gk222_apply(s,0,GK222_PASS)==GK222_OK);
++ CHECK(s->remaining==0 && s->ended && gk222_verify_receipts(s)==GK222_OK);
++ *saved=*s;
++ CHECK(gk222_apply(s,0,GK222_PASS)==GK222_NO_ORDERS);
++ CHECK(memcmp(s,saved,sizeof *s)==0);
++ CHECK(gk222_apply(s,1,GK222_PASS)==GK222_WRONG_COUNTRY);
++ CHECK(memcmp(s,saved,sizeof *s)==0);
++ s->order_receipts[1]=99;
++ Gk222Spring before=*s;
++ CHECK(gk222_undo_last(s)==GK222_CORRUPT_HISTORY);
++ CHECK(memcmp(s,&before,sizeof before)==0);
++ CHECK(gk222_apply(s,0,GK222_PASS)==GK222_CORRUPT_HISTORY);
++ CHECK(memcmp(s,&before,sizeof before)==0);
++ *s=*saved;
++ s->working.countries[0].town++;
++ before=*s;
++ CHECK(gk222_undo_last(s)==GK222_CORRUPT_HISTORY);
++ CHECK(memcmp(s,&before,sizeof before)==0);
++ *s=*saved;
++ while(s->actions_committed)CHECK(gk222_undo_last(s)==GK222_OK);
++ CHECK(s->remaining==3 && !s->ended && gk222_verify_receipts(s)==GK222_OK);
++ CHECK(gk222_undo_last(s)==GK222_NO_HISTORY);
++ CHECK(s->working.countries[0].town==base_town);
++ CHECK(s->working.countries[0].food_workers==base_food);
++ free(saved);free(s);return 0;
++}
++int main(int argc,char **argv){
++ CHECK(argc==2);
++ Gk1TemplateDataset *dataset=calloc(1,sizeof *dataset);
++ Gk1LoadedScenario *m=calloc(1,sizeof *m),*w=calloc(1,sizeof *w);
++ CHECK(dataset&&m&&w);
++ CHECK(gk1_template_load(argv[1],dataset)==GK1_LOAD_OK);
++ CHECK(gk1_open_loaded_scenario(dataset,GK1_MONGOL_CONQUEST,m)==GK1_LOAD_OK);
++ CHECK(gk1_open_loaded_scenario(dataset,GK1_WORLD_CONQUEST,w)==GK1_LOAD_OK);
++ CHECK(run(m)==0);CHECK(run(w)==0);
++ free(dataset);free(m);free(w);
++ puts("EXEC0223 14/27-country bounded replay, LB undo, tamper atomicity PASS; not original NES");
++ return 0;
++}
