@@ -1,0 +1,383 @@
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk217_finance_preview.c gk219_finance_compare.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -1080,3 +1080,18 @@
+    COMMAND ${GK219_XVFB_RUN} -a -s "-screen 0 1280x720x24" $<TARGET_FILE:gk1_native_shell> --smoke-classic-finance-delta 120)
+  endif()
+ endif()
++
++# EXEC0220 source-attested, reversible, controller-operated PORT-only labor edits.
++add_executable(test_gk220_labor_history test_gk220_labor_history.c)
++target_link_libraries(test_gk220_labor_history PRIVATE gk1_pre_setup_store gk1_app_state)
++add_test(NAME GK1_220_PortOnlyLaborUndo_SourceIdentityAndAtomicControls
++ COMMAND test_gk220_labor_history ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++if(UNIX AND NOT APPLE)
++  find_program(XVFB_RUN_EXECUTABLE xvfb-run)
++  if(XVFB_RUN_EXECUTABLE)
++    add_test(NAME GK1_220_Linux1280x720_ControllerLaborUndoActualX11
++      COMMAND ${XVFB_RUN_EXECUTABLE} -a -s "-screen 0 1280x720x24"
++        $<TARGET_FILE:gk1_native_shell> --smoke-classic-labor-undo 120)
++  endif()
++endif()
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -203,6 +203,7 @@
+     gk1_open_loaded_scenario(dataset,GK1_WORLD_CONQUEST,&b)!=GK1_LOAD_OK)return 0;
+  s->worlds[0]=a;s->worlds[1]=b;
+  s->finance_source_baseline[0]=a;s->finance_source_baseline[1]=b;
++ memset(&s->labor_history,0,sizeof s->labor_history);
+  s->world_ready[0]=1;s->world_ready[1]=1;
+  s->country_cursor[0]=s->country_cursor[1]=0;
+  s->active_world=0;s->setup_candidate[0]=255;s->setup_candidate[1]=255;
+@@ -328,8 +329,6 @@
+   uint8_t selected=s->country_cursor[s->active_world];
+   if(selected>=world->country_count)return 0;
+   Gk1CountryTemplate *country=&world->countries[selected];
+-  uint16_t *fields[5]={&country->troops,&country->town,&country->masons,
+-                        &country->artisans,&country->food_workers};
+   if(cmd==GK1_INPUT_LABOR_PLAN){
+     s->screen=GK1_SCREEN_MARKET_EXPLORER;
+     s->market_merchant=0;s->market_item=0;s->market_sell=0;
+@@ -363,14 +362,26 @@
+   if(cmd==GK1_INPUT_RIGHT){s->labor_from=(uint8_t)((s->labor_from+1)%5);return 1;}
+   if(cmd==GK1_INPUT_UP){s->labor_to=(uint8_t)((s->labor_to+4)%5);return 1;}
+   if(cmd==GK1_INPUT_DOWN){s->labor_to=(uint8_t)((s->labor_to+1)%5);return 1;}
+-  if(cmd==GK1_INPUT_CONFIRM){
+-    uint16_t *from=fields[s->labor_from],*to=fields[s->labor_to];
+-    if(from==to || *from==0 || *to==UINT16_MAX){
+-      strcpy(s->status,"LABOR PLAN REFUSED: SAME POOL / EMPTY / OVERFLOW");return 1;
+-    }
+-    /* Population fields remain unmodified; only within-pool assignment. */
+-    --(*from);++(*to);
+-    strcpy(s->status,"ONE DRAFTED WORKER REASSIGNED - PRE_SETUP ONLY");return 1;
++  if(cmd==GK1_INPUT_DRAFT_UNDO_ONE){
++    Gk220Result result=gk220_labor_undo(
++     &s->finance_source_baseline[s->active_world],world,
++     &s->labor_history,s->active_world,selected);
++    strcpy(s->status,result==GK220_OK?
++     "PORT LABOR DRAFT UNDO: LAST TRANSFER REVERSED, NO NES ORDER":
++     result==GK220_NO_HISTORY?"NO PRIOR UNSAVED PORT LABOR TRANSFER TO UNDO":
++     result==GK220_WRONG_COUNTRY?"UNDO REFUSED: LAST TRANSFER IN DIFFERENT COUNTRY":
++     "UNDO REFUSED: SOURCE/HISTORY INVALID, STATE UNCHANGED");
++    return 1;
++  }
++  if(cmd==GK1_INPUT_CONFIRM){
++    Gk220Result result=gk220_labor_transfer(
++     &s->finance_source_baseline[s->active_world],world,
++     &s->labor_history,s->active_world,selected,s->labor_from,s->labor_to);
++    strcpy(s->status,result==GK220_OK?
++     "ONE PORT DRAFT WORKER TRANSFERRED - X TO UNDO; NOT NES ASSIGN":
++     result==GK220_FULL?"PORT LABOR UNDO HISTORY FULL: NO TRANSFER MADE":
++     "LABOR PLAN REFUSED: SAME/EMPTY/OVERFLOW/SOURCE DRIFT");
++    return 1;
+   }
+   return 1;
+  }
+--- a/execution_199/gk1_app_state.h
++++ b/execution_199/gk1_app_state.h
+@@ -19,6 +19,7 @@
+ #include "gk214_spring_batch.h"
+ #include "gk217_finance_preview.h"
+ #include "gk219_finance_compare.h"
++#include "gk220_labor_history.h"
+ #include "gk216_fresh_cpu_pc.h"
+ #include "gk114_stock_spring_timeline.h"
+ #include "gk211_fresh_sequence.h"
+@@ -110,6 +111,7 @@
+   uint8_t manual_bonus_ability[2];
+   uint8_t manual_bonus[2][5][6];
+   uint8_t labor_from, labor_to; /* EXEC0057 PRE_SETUP planner cursor ONLY */
++  Gk220History labor_history; /* EXEC0220 PORT-only reversible workforce edits; never NES orders */
+   uint8_t finance_armed; /* first Classic START keeps prior blocked contract */
+   uint8_t finance_cursor; /* EXEC0217 Classic source-bounded finance; PRE_SETUP only */
+   uint8_t finance_compare; /* EXEC0218 A toggles original template vs PORT labor-planning delta */
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -533,7 +533,7 @@
+   snprintf(line,sizeof line,"DRAFTED TOTAL: %u  RESERVE: %u",c->drafted_population,c->undrafted_reserve);
+   label(670,335,line,EDGE);
+   label(670,396,"LEFT/RIGHT SOURCE | UP/DOWN TARGET",FG);
+-  snprintf(line,sizeof line,"A TRANSFER / B BACK / X SAVE Y LOAD SLOT %u / LB RB CHANGE",(unsigned)campaign_slot);
++  snprintf(line,sizeof line,"A TRANSFER / LB UNDO / X SAVE Y LOAD SLOT %u / RB NEXT",(unsigned)campaign_slot);
+   label(670,438,line,FG);
+   label(104,527,"START x2 = CLASSIC FINANCE / ENHANCED DEMOBILIZE PREVIEW",EDGE);
+   label(104,557,"PRE-SETUP EDIT ONLY. NO ORIGINAL MOBILITY, ORDER, COST OR SPRING CLAIM.",WARN);
+@@ -1545,7 +1545,10 @@
+    break;
+   case GK1_PAD_ACT_MENU:input(GK1_INPUT_SETUP);break;
+   case GK1_PAD_ACT_VIEW:input(GK1_INPUT_LABOR_PLAN);break;
+-  case GK1_PAD_ACT_LB:slot_action(-1);break;
++  case GK1_PAD_ACT_LB:
++   if(app.screen==GK1_SCREEN_LABOR_PLAN)input(GK1_INPUT_DRAFT_UNDO_ONE);
++   else slot_action(-1);
++   break;
+   case GK1_PAD_ACT_RB:slot_action(1);break;
+  }
+ }
+@@ -3172,7 +3175,7 @@
+  }
+  int show_stock_finance=0,show_stock_trade=0,show_stock_setup=0,show_stock_goods=0,show_enhanced_summer=0,show_enhanced_fall=0,show_enhanced_winter=0,show_enhanced_year2=0;
+  int play_fresh_json=0,smoke_private_controller=0,smoke_classic_storage_original=0,smoke_classic_view_original=0,smoke_classic_trade_original=0,smoke_classic_tax_original=0;
+- int smoke=0,show_snapshot=0,show_path=0,show_divide=0,show_scenario=0,show_setup=0,show_labor=0,show_classic_finance=0,show_finance_compare=0,show_demob=0,show_manual=0,show_market=0,show_clock=0,show_whatif=0,show_rest=0,show_mesen=0,show_order_budget=0,show_pass=0,show_spring=0,show_stock_spring=0,show_stock_checkpoint=0,show_stock_commands=0;
++ int smoke=0,show_snapshot=0,show_path=0,show_divide=0,show_scenario=0,show_setup=0,show_labor=0,show_classic_finance=0,show_finance_compare=0,show_labor_undo=0,show_demob=0,show_manual=0,show_market=0,show_clock=0,show_whatif=0,show_rest=0,show_mesen=0,show_order_budget=0,show_pass=0,show_spring=0,show_stock_spring=0,show_stock_checkpoint=0,show_stock_commands=0;
+  if(argc==5&&strcmp(argv[1],"--smoke-original-private-controller")==0){
+   smoke=atoi(argv[4]);if(smoke<1||smoke>120)return 4;
+   play_fresh_json=1;smoke_private_controller=1;
+@@ -3187,7 +3190,7 @@
+                  strcmp(argv[1],"--smoke-divide")==0 ||
+                  strcmp(argv[1],"--smoke-scenario")==0 ||
+                  strcmp(argv[1],"--smoke-setup")==0 ||
+-                 strcmp(argv[1],"--smoke-labor")==0 || strcmp(argv[1],"--smoke-classic-finance")==0 || strcmp(argv[1],"--smoke-classic-finance-delta")==0 || strcmp(argv[1],"--smoke-demob")==0 ||
++                 strcmp(argv[1],"--smoke-labor")==0 || strcmp(argv[1],"--smoke-classic-labor-undo")==0 || strcmp(argv[1],"--smoke-classic-finance")==0 || strcmp(argv[1],"--smoke-classic-finance-delta")==0 || strcmp(argv[1],"--smoke-demob")==0 ||
+                  strcmp(argv[1],"--smoke-manual-rules")==0 || strcmp(argv[1],"--smoke-order-budget")==0 || strcmp(argv[1],"--smoke-market")==0 ||
+                  strcmp(argv[1],"--smoke-battle-clock")==0 ||
+                  strcmp(argv[1],"--smoke-battle-whatif")==0 ||
+@@ -3213,6 +3216,7 @@
+   show_scenario=(strcmp(argv[1],"--smoke-scenario")==0);
+   show_setup=(strcmp(argv[1],"--smoke-setup")==0);
+   show_labor=(strcmp(argv[1],"--smoke-labor")==0);
++  show_labor_undo=(strcmp(argv[1],"--smoke-classic-labor-undo")==0);
+   show_finance_compare=(strcmp(argv[1],"--smoke-classic-finance-delta")==0);
+   show_classic_finance=(strcmp(argv[1],"--smoke-classic-finance")==0)||show_finance_compare;
+   show_demob=(strcmp(argv[1],"--smoke-demob")==0);
+@@ -3891,6 +3895,25 @@
+   input(GK1_INPUT_SETUP);
+   if(app.screen!=GK1_SCREEN_DEMOBILIZE)return 13;
+  }
++ if(show_labor_undo){
++  if(!scenario_loaded)return 12;
++  input(GK1_INPUT_CONFIRM); /* title -> campaigns */
++  input(GK1_INPUT_LEFT); /* Classic */
++  input(GK1_INPUT_CONFIRM); /* Mongol */
++  input(GK1_INPUT_LABOR_PLAN);
++  if(app.screen!=GK1_SCREEN_LABOR_PLAN)return 51;
++  Gk1LoadedScenario saved=app.worlds[0];
++  pad_test_press(GK1_PAD_A); /* controller commit */
++  if(app.labor_history.count!=1u ||
++     app.worlds[0].countries[0].troops!=saved.countries[0].troops-1u)return 52;
++  pad_test_press(GK1_PAD_LB); /* controller Undo, NOT slot selection */
++  if(app.labor_history.count!=0u ||
++     memcmp(&saved,&app.worlds[0],sizeof saved)!=0 ||
++     app.screen!=GK1_SCREEN_LABOR_PLAN)return 53;
++  if(app.worlds[0].phase!=GK1_PRE_SETUP_TEMPLATE ||
++     app.stock_checkpoint.valid)return 54;
++  printf("TESTED_PORT_LINUX EXEC0220 controller A/LB workforce transfer + undo, same source world, no original NES order PASS\n");
++ }
+  if(show_classic_finance){
+   if(!scenario_loaded)return 12;
+   input(GK1_INPUT_CONFIRM); /* title -> campaign menu */
+--- /dev/null
++++ b/execution_199/gk220_labor_history.c
+@@ -0,0 +1,61 @@
++#include "gk220_labor_history.h"
++#include <string.h>
++#include <limits.h>
++static uint16_t *pool(Gk1CountryTemplate *c,unsigned k){
++ switch(k){
++ case 0:return &c->troops;
++ case 1:return &c->town;
++ case 2:return &c->masons;
++ case 3:return &c->artisans;
++ case 4:return &c->food_workers;
++ default:return NULL;
++ }
++}
++static int valid_world(const Gk1LoadedScenario *src,
++ const Gk1LoadedScenario *draft,unsigned w,unsigned idx){
++ Gk219Comparison audit={0};
++ return src&&draft&&w<2u&&idx<draft->country_count&&
++  src->country_count==draft->country_count&&
++  gk219_compare_finance(src,draft,idx,&audit)==GK219_OK;
++}
++Gk220Result gk220_labor_transfer(const Gk1LoadedScenario *source,
++ Gk1LoadedScenario *draft,Gk220History *h,
++ uint8_t world,uint8_t country,uint8_t from,uint8_t to){
++ if(!source||!draft||!h||world>1u||from>=5u||to>=5u||from==to||
++    h->count>GK220_HISTORY_CAP||country>=draft->country_count)return GK220_INVALID;
++ if(!valid_world(source,draft,world,country))return GK220_SOURCE_DRIFT;
++ if(h->count==GK220_HISTORY_CAP)return GK220_FULL;
++ Gk1LoadedScenario next=*draft;
++ uint16_t *p=pool(&next.countries[country],from);
++ uint16_t *q=pool(&next.countries[country],to);
++ if(!p||!q||!*p||*q>=999u)return GK220_INVALID;
++ const Gk220Move move={world,country,from,to,*p,*q};
++ --(*p);++(*q);
++ if(!valid_world(source,&next,world,country))return GK220_SOURCE_DRIFT;
++ *draft=next;
++ h->moves[h->count++]=move;
++ return GK220_OK;
++}
++Gk220Result gk220_labor_undo(const Gk1LoadedScenario *source,
++ Gk1LoadedScenario *draft,Gk220History *h,
++ uint8_t world,uint8_t country){
++ if(!source||!draft||!h||world>1u||h->count>GK220_HISTORY_CAP||
++    country>=draft->country_count)return GK220_INVALID;
++ if(!valid_world(source,draft,world,country))return GK220_SOURCE_DRIFT;
++ if(!h->count)return GK220_NO_HISTORY;
++ Gk220Move move=h->moves[h->count-1u];
++ if(move.world!=world||move.country!=country)return GK220_WRONG_COUNTRY;
++ if(move.from>=5u||move.to>=5u||move.from==move.to||
++    !move.from_before||move.to_before>=999u)return GK220_INVALID;
++ Gk1LoadedScenario next=*draft;
++ uint16_t *p=pool(&next.countries[country],move.from);
++ uint16_t *q=pool(&next.countries[country],move.to);
++ if(!p||!q||*p!=(uint16_t)(move.from_before-1u)||
++    *q!=(uint16_t)(move.to_before+1u))return GK220_SOURCE_DRIFT;
++ ++(*p);--(*q);
++ if(!valid_world(source,&next,world,country))return GK220_SOURCE_DRIFT;
++ *draft=next;
++ h->count--;
++ memset(&h->moves[h->count],0,sizeof h->moves[h->count]);
++ return GK220_OK;
++}
+--- /dev/null
++++ b/execution_199/gk220_labor_history.h
+@@ -0,0 +1,26 @@
++#ifndef GK220_LABOR_HISTORY_H
++#define GK220_LABOR_HISTORY_H
++#include "gk219_finance_compare.h"
++#include <stdint.h>
++/* PORT-only reversible PRE_SETUP workforce drafting. NOT an original NES
++ * Assign, first Spring, RNG draw or a turn/order mutation. */
++#define GK220_HISTORY_CAP 64u
++typedef enum {
++ GK220_OK=0,GK220_INVALID=1,GK220_SOURCE_DRIFT=2,
++ GK220_NO_HISTORY=3,GK220_WRONG_COUNTRY=4,GK220_FULL=5
++} Gk220Result;
++typedef struct {
++ uint8_t world,country,from,to;
++ uint16_t from_before,to_before;
++} Gk220Move;
++typedef struct {
++ uint8_t count;
++ Gk220Move moves[GK220_HISTORY_CAP];
++} Gk220History;
++Gk220Result gk220_labor_transfer(const Gk1LoadedScenario *source,
++ Gk1LoadedScenario *draft, Gk220History *history,
++ uint8_t world,uint8_t country,uint8_t from,uint8_t to);
++Gk220Result gk220_labor_undo(const Gk1LoadedScenario *source,
++ Gk1LoadedScenario *draft,Gk220History *history,
++ uint8_t world,uint8_t country);
++#endif
+--- /dev/null
++++ b/execution_199/test_gk220_labor_history.c
+@@ -0,0 +1,110 @@
++#include "gk1_app_state.h"
++#include "gk220_labor_history.h"
++#include "gk1_pre_setup_store.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define CK(c) do{if(!(c)){fprintf(stderr,"GK220 FAIL line %d: %s\n",__LINE__,#c);return __LINE__;}}while(0)
++int main(int argc,char **argv){
++ CK(argc==2);
++ Gk1TemplateDataset data;
++ CK(gk1_template_load(argv[1],&data)==GK1_LOAD_OK);
++ Gk1App *app=calloc(1,sizeof *app);CK(app!=NULL);
++ gk1_app_init(app);CK(gk1_app_install_templates(app,&data));
++ unsigned checks=0u;
++ for(unsigned world=0;world<2u;world++){
++  Gk1LoadedScenario pristine=app->worlds[world];
++  app->active_world=(uint8_t)world;
++  app->screen=GK1_SCREEN_LABOR_PLAN;app->rules_profile=0;
++  app->country_cursor[world]=0u;app->labor_from=0u;app->labor_to=1u;
++  CK(gk1_app_input(app,GK1_INPUT_CONFIRM)==1);
++  CK(app->labor_history.count==1u);
++  CK(app->worlds[world].countries[0].troops==pristine.countries[0].troops-1u);
++  CK(app->worlds[world].countries[0].town==pristine.countries[0].town+1u);
++  CK(memcmp(&app->finance_source_baseline[world],&pristine,sizeof pristine)==0);
++  CK(gk1_app_input(app,GK1_INPUT_DRAFT_UNDO_ONE)==1);
++  CK(app->labor_history.count==0u);
++  CK(memcmp(&pristine,&app->worlds[world],sizeof pristine)==0);
++  CK(gk1_app_input(app,GK1_INPUT_DRAFT_UNDO_ONE)==1);
++  CK(app->labor_history.count==0u);
++  CK(memcmp(&pristine,&app->worlds[world],sizeof pristine)==0);
++  ++checks;
++ }
++ /* Whole-state hostile gates: an unrelated Gold/identity mutation must never
++  * be silently rolled back, nor count as a reversible labor draft. */
++ app->active_world=0;app->country_cursor[0]=0;
++ app->screen=GK1_SCREEN_LABOR_PLAN;app->labor_from=0;app->labor_to=1;
++ CK(gk1_app_input(app,GK1_INPUT_CONFIRM));CK(app->labor_history.count==1u);
++ Gk1LoadedScenario saved=app->worlds[0];
++ app->worlds[0].countries[0].gold++;
++ Gk1LoadedScenario tainted=app->worlds[0];
++ Gk220History history=app->labor_history;
++ CK(gk220_labor_undo(&app->finance_source_baseline[0],&app->worlds[0],
++   &app->labor_history,0,0)==GK220_SOURCE_DRIFT);
++ CK(!memcmp(&tainted,&app->worlds[0],sizeof tainted));
++ CK(!memcmp(&history,&app->labor_history,sizeof history));
++ app->worlds[0]=saved;
++ CK(gk220_labor_undo(&app->finance_source_baseline[0],&app->worlds[0],
++   &app->labor_history,0,1)==GK220_WRONG_COUNTRY);
++ CK(!memcmp(&saved,&app->worlds[0],sizeof saved));
++ CK(!memcmp(&history,&app->labor_history,sizeof history));
++ CK(gk220_labor_undo(&app->finance_source_baseline[0],&app->worlds[0],
++   &app->labor_history,0,0)==GK220_OK);
++ ++checks;
++ /* LIFO sequence across two countries; undo must not touch a later country
++  * unless the move is on top of the stack and in that same country. */
++ for(unsigned i=0;i<2u;i++){
++  app->country_cursor[0]=(uint8_t)i;
++  CK(gk1_app_input(app,GK1_INPUT_CONFIRM));
++ }
++ CK(app->labor_history.count==2u);
++ CK(gk220_labor_undo(&app->finance_source_baseline[0],&app->worlds[0],
++   &app->labor_history,0,0)==GK220_WRONG_COUNTRY);
++ for(int i=1;i>=0;i--){
++  app->country_cursor[0]=(uint8_t)i;
++  CK(gk1_app_input(app,GK1_INPUT_DRAFT_UNDO_ONE));
++ }
++ CK(app->labor_history.count==0u);
++ CK(!memcmp(&app->worlds[0],&app->finance_source_baseline[0],sizeof app->worlds[0]));
++ ++checks;
++ /* Bounds and 64-stack rollback: no 65th commit even if source pool valid. */
++ for(unsigned i=0;i<GK220_HISTORY_CAP;i++){
++  app->labor_from=(uint8_t)(i%2u);app->labor_to=(uint8_t)(1u-i%2u);
++  CK(gk1_app_input(app,GK1_INPUT_CONFIRM));
++  CK(app->labor_history.count==i+1u);
++ }
++ CK(app->labor_history.count==GK220_HISTORY_CAP);
++ Gk1LoadedScenario full=app->worlds[0];
++ CK(gk220_labor_transfer(&app->finance_source_baseline[0],&app->worlds[0],
++   &app->labor_history,0,0,0,1)==GK220_FULL);
++ CK(!memcmp(&full,&app->worlds[0],sizeof full));
++ for(unsigned i=0;i<GK220_HISTORY_CAP;i++){
++  CK(gk220_labor_undo(&app->finance_source_baseline[0],&app->worlds[0],
++   &app->labor_history,0,0)==GK220_OK);
++ }
++ CK(app->labor_history.count==0u);
++ CK(!memcmp(&app->worlds[0],&app->finance_source_baseline[0],sizeof app->worlds[0]));
++ ++checks;
++ /* Existing versioned pre-setup save is unchanged. A restored draft cannot
++  * contain a phantom undo from the previous in-memory runtime. */
++ app->screen=GK1_SCREEN_LABOR_PLAN;app->labor_from=0;app->labor_to=1;
++ CK(gk1_app_input(app,GK1_INPUT_CONFIRM));CK(app->labor_history.count==1u);
++ uint8_t bytes[GK51_PRE_SETUP_BYTES];
++ CK(gk51_pre_setup_encode(app,&data,bytes,sizeof bytes)==GK1_STORE_OK);
++ CK(gk51_pre_setup_decode(bytes,sizeof bytes,&data,app)==GK1_STORE_OK);
++ CK(app->labor_history.count==0u);
++ CK(app->worlds[0].countries[0].troops==app->finance_source_baseline[0].countries[0].troops-1u);
++ CK(!app->stock_checkpoint.valid);
++ ++checks;
++ /* Negative inputs have unchanged output and unchanged source worlds. */
++ saved=app->worlds[0];history=app->labor_history;
++ CK(gk220_labor_transfer(&app->finance_source_baseline[0],&app->worlds[0],
++   &app->labor_history,0,0,1,1)==GK220_INVALID);
++ CK(gk220_labor_transfer(&app->finance_source_baseline[0],&app->worlds[0],
++   &app->labor_history,0,255,0,1)==GK220_INVALID);
++ CK(!memcmp(&saved,&app->worlds[0],sizeof saved));
++ CK(!memcmp(&history,&app->labor_history,sizeof history));
++ ++checks;
++ printf("EXEC0220 source-bound portable undo, 14+27 countries, 64 LIFO edits, corruption/refusal, save/cold-load %u/7 suites PASS; no NES first Spring or orders invented\n",checks);
++ free(app);return 0;
++}
