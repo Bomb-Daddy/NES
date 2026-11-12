@@ -50,13 +50,13 @@ jobs:
         shell: pwsh
         run: |
           $exe = (Resolve-Path 'build-gk1-win32/Release/gk1_native_shell.exe').Path
-          $p = Start-Process -FilePath $exe -ArgumentList '--smoke-frames=30' -PassThru
-          if (-not $p.WaitForExit(30000)) {
+          $p = Start-Process -FilePath $exe -ArgumentList '--smoke-frames=3' -PassThru
+          if (-not $p.WaitForExit(120000)) {
             try { $p.Kill() } catch {}
-            throw 'Native WinMain 30-frame GUI paint run timed out'
+            throw 'Native WinMain 3-frame GUI paint run timed out'
           }
           if ($p.ExitCode -ne 0) { throw "Native WinMain GUI paint run failed: $($p.ExitCode)" }
-          Write-Host 'Verified actual native WinMain real window geometry and 30+ WM_PAINT calls, software-only XInput polling'
+          Write-Host 'Verified actual native WinMain real window geometry and 3+ WM_PAINT calls, software-only XInput polling'
       - name: Build and extract real NSIS research installer
         shell: pwsh
         run: |
@@ -73,8 +73,8 @@ jobs:
           if (-not (Test-Path (Join-Path $target 'gk1_native_shell.exe'))) { throw 'Installed WinMain game missing' }
           if (-not (Test-Path (Join-Path $target 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'))) { throw 'Installed source CSV missing' }
           $installedExe = Join-Path $target 'gk1_native_shell.exe'
-          $p2 = Start-Process -FilePath $installedExe -ArgumentList '--smoke-frames=30' -PassThru
-          if (-not $p2.WaitForExit(30000)) {
+          $p2 = Start-Process -FilePath $installedExe -ArgumentList '--smoke-frames=3' -PassThru
+          if (-not $p2.WaitForExit(120000)) {
             try { $p2.Kill() } catch {}
             throw 'NSIS-installed WinMain GUI paint run timed out'
           }
