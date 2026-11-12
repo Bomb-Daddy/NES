@@ -95,6 +95,10 @@ jobs:
           Write-Host 'Verified actual native WinMain real window geometry and 3+ WM_PAINT calls, software-only XInput polling'
           # EXEC0232: drive the REAL WinMain renderer and pad_actions router with
           # deterministic raw XInput bits. A passing test does NOT prove hardware.
+          # Built MSVC EXE lives in Release/, but CMake copied the canonical
+          # original-country CSV into the build/ parent. An explicit SHA-gated
+          # CSV override is required for source-authenticated controller entry.
+          $env:GK1_SCENARIO_CSV = (Resolve-Path 'build-gk1-win32/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv').Path
           $pad = Start-Process -FilePath $exe -ArgumentList '--smoke-gamepad-nav' -PassThru
           if (-not $pad.WaitForExit(20000)) {
             try { $pad.Kill() } catch {}
