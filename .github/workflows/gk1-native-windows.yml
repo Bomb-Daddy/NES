@@ -6,6 +6,7 @@ on:
       - '.github/workflows/gk1-native-windows.yml'
       - 'research/Genghis_Khan_NES/execution_229_windows_ci_bundle/**'
       - 'research/Genghis_Khan_NES/execution_230_win32_gui_smoke/**'
+      - 'research/Genghis_Khan_NES/execution_231_win32_gui_trace/**'
 permissions:
   contents: read
 jobs:
@@ -32,6 +33,10 @@ jobs:
             git apply $patch
             if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 patch application failed' }
           } finally { Pop-Location }
+          python 'research/Genghis_Khan_NES/execution_231_win32_gui_trace/test_trace.py'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0231 diagnostic patch tests failed' }
+          python 'research/Genghis_Khan_NES/execution_231_win32_gui_trace/apply_trace.py' 'gk1-integrated-source'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0231 diagnostic patch refused' }
       - name: Build the actual 1280x720 native WinMain and XInput game
         shell: pwsh
         run: |
@@ -52,14 +57,18 @@ jobs:
         shell: pwsh
         run: |
           $exe = (Resolve-Path 'build-gk1-win32/Release/gk1_native_shell.exe').Path
+          $env:GK1_SMOKE_TRACE = Join-Path $env:RUNNER_TEMP 'gk231_winmain_trace.txt'
+          Remove-Item $env:GK1_SMOKE_TRACE -ErrorAction SilentlyContinue
           $p = Start-Process -FilePath $exe -ArgumentList '--smoke-frames=3' -PassThru
           if (-not $p.WaitForExit(20000)) {
             $p.Refresh()
             Write-Host "Bounded WinMain diagnostic: PID=$($p.Id) HWND=$($p.MainWindowHandle) CPU=$($p.TotalProcessorTime) RAM=$($p.WorkingSet64)"
+            if (Test-Path $env:GK1_SMOKE_TRACE) { Get-Content $env:GK1_SMOKE_TRACE | ForEach-Object { Write-Host "GK231 TRACE $_" } }
             try { $p.Kill() } catch {}
             throw 'Native WinMain 3-frame GUI paint timed out; verify hosted runner GUI desktop / startup path'
           }
           if ($p.ExitCode -ne 0) { throw "Native WinMain GUI paint run failed: $($p.ExitCode)" }
+          if (Test-Path $env:GK1_SMOKE_TRACE) { Get-Content $env:GK1_SMOKE_TRACE | ForEach-Object { Write-Host "GK231 TRACE $_" } }
           Write-Host 'Verified actual native WinMain real window geometry and 3+ WM_PAINT calls, software-only XInput polling'
       - name: Build and extract real NSIS research installer
         shell: pwsh
