@@ -1,0 +1,17 @@
+# GK1 EXEC0230 — real WinMain graphical smoke qualification — 2026-11-12
+
+**Source inheritance**: exact complete EXEC0228 copyrighted-material-free game ZIP (922 files), + the single EXEC0229 platform header patch, followed by an independent five-path source integration patch. All original 922 archive members are retained; two modified and three added, resulting in **925 files**. This work does not replace the existing native executable or any player/campaign file. All original NES material remains in private research storage.
+
+**Actual code change**: WinMain of the SAME 1280×720 C11/XInput app accepts tightly bounded `--smoke-frames=N` for integers 1..120. It creates its real window, checks 1280×720 client geometry, routes WM_PAINT to the original `render()` function for at least N rendered frames, polls the existing XInput layer (without claiming hardware), exits 0 only after the graphical check, and exits nonzero on malformed flags, wrong geometry, failed window, premature close or missing paints. Normal launches retain unbounded original interactive behavior. Parser logic is linked into the native app with independent malformed CLI adversarial tests.
+
+**VERIFIED_STATIC**: 5/5 changed/new C11/CMake files exactly reproduced by `git apply --check` and strict SHA256 readback from original EXEC0228 + EXEC0229 portability overlay. No ROM/media in source. Full archive preserves all original 922 paths and is CRC verified. 925-member exact output ZIP.
+
+**TESTED_PORT_LINUX**: actual compiler/Ninja native release build 527/527 targets, CTest **200/200 PASS** (12.14 sec, 10-way parallel), focused 230 / inherited 228 tests 3/3 PASS; 230 parser AddressSanitizer + UndefinedBehaviorSanitizer PASS. Debian native installer created from identical executable; this is NOT a Windows build test.
+
+**OBSERVED_RUNTIME_STOCK fresh vs archived-restored**: no new original Mesen run. Prior original stock WorkRAM fresh reset and independent archived SaveRAM histories retained; no new emulator proof, no universal Gold/Rate constants. ROM private and recovered, not missing.
+
+**NOT RUN / release limits**: native Win32 visual paint execution until new CI workflow actually runs and passes; physical Xbox; 14/27 original authentic Spring; original RNG/ability/difficulty; full original campaigns and NSIS graphical acceptance until CI completes. EXEC0229 prior Windows native compilation/tests/NSIS successes remain distinct from this new graphical-run qualification.
+
+**Owner next**: run actual GitHub Windows 2022 workflow with new `--smoke-frames=30` on built and installed native GUI; inspect both exit codes, never infer from build alone. Follow by original stock Mesen write trace and true original Spring integration, then merchant AI/dynasty/battle aftermath. Keep hourly task enabled until explicit stop or verified complete release. Publication alone is not Nobunaga/agent acknowledgment.
+
+**Reproduce**: unpack exact EXEC0228 source ZIP, apply existing EXEC0229 `apply_win32_portability.py`, `git apply --check GK1_EXEC0230_CopyrightClean_Integration.patch` then `git apply ...`; `cmake -S execution_199 -B build -G Ninja -DCMAKE_BUILD_TYPE=Release`; `cmake --build build -j8`; `ctest --test-dir build -j10 --output-on-failure`; `cpack --config build/CPackConfig.cmake -G DEB`. Native Windows GUI test requires a Windows desktop-capable runner and must check exit code of `gk1_native_shell.exe --smoke-frames=30` within timeout, both from fresh build and extracted NSIS install.
