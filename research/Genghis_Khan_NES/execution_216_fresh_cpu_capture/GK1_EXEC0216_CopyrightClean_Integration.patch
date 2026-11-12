@@ -1,0 +1,306 @@
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -1756,6 +1756,25 @@
+   private_96bytes,out);
+ }
+ 
++Gk216Status gk1_app_original_fresh_cpu_pc(const Gk1App *app,
++ const char *verified_csv,const char *stock_rom,
++ const char *private_dir,Gk216CpuReport *out){
++ if(!app||!verified_csv||!stock_rom||!private_dir||!out)
++  return GK216_BAD_ARGUMENT;
++ if(app->rules_profile!=0u||!app->world_ready[0]||
++    app->worlds[0].phase!=GK1_PRE_SETUP_TEMPLATE||
++    app->stock_checkpoint.valid||
++    app->setup_stage[0]!=GK53_SETUP_AWAIT_SOURCE||
++    !gk1_verified_original_csv(verified_csv))
++  return GK216_SOURCE_REFUSED;
++ Gk1TemplateDataset source={0};Gk1LoadedScenario original={0};
++ if(gk1_template_load(verified_csv,&source)!=GK1_LOAD_OK||
++    gk1_open_loaded_scenario(&source,GK1_MONGOL_CONQUEST,&original)!=GK1_LOAD_OK||
++    memcmp(&original,&app->worlds[0],sizeof original)!=0)
++  return GK216_SOURCE_REFUSED;
++ return gk216_verify_fresh_cpu_pc(stock_rom,private_dir,out);
++}
++
+ Gk211Status gk1_app_original_fresh_sequence(const Gk1App *app,
+  const char *verified_csv,const char *private_dir,Gk211Report *out){
+  if(!app||!verified_csv||!private_dir||!out)return GK211_ARGUMENT;
+--- a/execution_199/gk1_app_state.h
++++ b/execution_199/gk1_app_state.h
+@@ -17,6 +17,7 @@
+ #include "gk212_stock_raw_variation.h"
+ #include "gk213_stock_spring_boundary.h"
+ #include "gk214_spring_batch.h"
++#include "gk216_fresh_cpu_pc.h"
+ #include "gk114_stock_spring_timeline.h"
+ #include "gk211_fresh_sequence.h"
+ #include "gk79_stock_checkpoint.h"
+@@ -140,6 +141,11 @@
+   char status[128];
+ } Gk1App;
+ void gk1_app_init(Gk1App *s);
++/* Fresh ORIGINAL Mesen CPU sample PCs, full exact-stock and 14-stage SHA gated.
++ * Read-only diagnostic; setup remains AWAIT_SOURCE, cannot award orders. */
++Gk216Status gk1_app_original_fresh_cpu_pc(const Gk1App *app,
++ const char *verified_csv,const char *stock_rom,
++ const char *private_dir,Gk216CpuReport *out);
+ /* SOURCE-BOUNDED multination finance batch for an already installed world.
+  * The native app never accepts this as setup evidence or grants a turn.
+  * Original 14/27 PRE_SETUP templates remain unchanged on success/failure. */
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -2029,6 +2029,32 @@
+  Gk1PadSample s=joystick_sample();pad_actions(&s);
+ }
+ int main(int argc,char **argv){
++ /* EXEC0216: direct ORIGINAL Mesen capture CPU sample PCs, source gated.
++  * Neither sampled PC nor a breakpoint suggestion proves executed writes. */
++ if(argc==5&&strcmp(argv[1],"--audit-original-fresh-cpu-pcs")==0){
++  gk1_app_init(&app);
++  if(!load_scenario_data())return 9;
++  app.rules_profile=0u;
++  app.setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;
++  Gk216CpuReport report={0};
++  Gk216Status status=gk1_app_original_fresh_cpu_pc(&app,
++    scenario_csv_path(),argv[2],argv[3],&report);
++  /* argv[4] is a required, explicit typed confirmation that private
++   * Mesen evidence is *only* an archived observation. */
++  if(strcmp(argv[4],"OBSERVATION_ONLY")!=0||status!=GK216_OK){
++   fputs("GK216 original-stock ROM or 14-stage Mesen source refused; no application state changed\n",stderr);
++   return 9;
++  }
++  for(unsigned i=0;i<report.count;i++){
++   const Gk216CpuStage *s=&report.stages[i];
++   printf("OBSERVED_RUNTIME_STOCK_FRESH_CAPTURE stage=%02u frame=%u cycles=%llu sampled_PC=$%04X cpu_window=%s change_mask=%u\n",
++     i+1u,s->frame,(unsigned long long)s->cycles,s->pc,
++     s->upper_program_window?"upper_4000_mapper_unknown":"lower_4000_mapper_unknown",s->change_mask);
++  }
++  puts("PC sampled at end of each archived stage; no runtime memory-write/RNG-dispatch chronology and no generated first Spring. NOT a new Mesen execution.");
++  return 0;
++ }
++
+  /* EXEC0215: original first-Spring three-history parity GAP test, not a
+   * general initialization generator. External private RAM never bundled. */
+  if(argc==5&&strcmp(argv[1],"--audit-original-first-spring-gaps")==0){
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk215_original_spring_gap.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -1039,3 +1039,9 @@
+ add_test(NAME GK1_215_OriginalSpringThreeProfilesGapAndForgeryRefusal
+  COMMAND test_gk215_original_spring_gap
+  ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0216: private original stock CPU sample provenance, never published ROM.
++add_executable(test_gk216_fresh_cpu_pc test_gk216_fresh_cpu_pc.c)
++target_link_libraries(test_gk216_fresh_cpu_pc PRIVATE gk1_app_state)
++add_test(NAME GK1_216_OriginalFreshCpuCaptureProvenanceNegativeSourceRefusals
++ COMMAND test_gk216_fresh_cpu_pc)
+--- a/execution_199/gk216_fresh_cpu_pc.c
++++ b/execution_199/gk216_fresh_cpu_pc.c
+@@ -0,0 +1,101 @@
++#include "gk216_fresh_cpu_pc.h"
++#include <ctype.h>
++#include <limits.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++
++/* Paths identify the exact already authenticated original Mesen captures.
++ * ROM bytes and licensed capture bytes MUST remain private. */
++static const char *const files[GK211_STAGES]={
++ "fresh_01_after_start.json", "fresh_02_after_a.json",
++ "fresh_03_after_a.json", "fresh_04_after_a.json",
++ "fresh_05_after_a.json", "fresh_06_after_b.json",
++ "fresh_07_after_a.json", "fresh_08_after_a.json",
++ "fresh_09_after_a.json", "fresh_10_after_wait.json",
++ "fresh_11_after_wait.json", "fresh_12_after_wait.json",
++ "fresh_13_after_a.json", "fresh_14_after_wait.json"
++};
++/* Data is parsed only after its entire file has passed the SHA gates from
++ * GK211. The local parser still checks bounds and decimal terminators. */
++static const char *cpu_scope(const char *text){
++ const char *p=strstr(text,"\"cpu\"");
++ if(!p)return NULL;
++ p=strchr(p,':');if(!p)return NULL;
++ for(++p;isspace((unsigned char)*p);p++);
++ return *p=='{'?p:NULL;
++}
++static int read_field(const char *cpu,const char *key,uint64_t *value){
++ const char *end=strchr(cpu,'}'),*p=strstr(cpu,key);
++ if(!end||!p||p>=end)return 0;
++ p+=strlen(key);
++ while(p<end&&isspace((unsigned char)*p))p++;
++ if(p>=end||*p++!=':')return 0;
++ while(p<end&&isspace((unsigned char)*p))p++;
++ if(p>=end||!isdigit((unsigned char)*p))return 0;
++ uint64_t v=0;
++ while(p<end&&isdigit((unsigned char)*p)){
++  unsigned d=(unsigned)(*p++-'0');
++  if(v>(UINT64_MAX-d)/10u)return 0;
++  v=10u*v+d;
++ }
++ if(p<end&&*p!=','&&*p!='}'&&!isspace((unsigned char)*p))return 0;
++ *value=v;return 1;
++}
++static int read_cpu(const char *path,Gk216CpuStage *stage,
++ const Gk211Stage *source){
++ FILE *f=fopen(path,"rb");if(!f)return 0;
++ char text[16385];size_t n=fread(text,1,16385,f);
++ int failed=ferror(f);if(fclose(f)!=0)failed=1;
++ if(failed||!n||n>16384||memchr(text,'\0',n))return 0;
++ text[n]='\0';
++ const char *cpu=cpu_scope(text);
++ if(!cpu)return 0;
++ const char *keys[]={"\"pc\"","\"a\"","\"x\"","\"y\"",
++  "\"sp\"","\"ps\"","\"cycleCount\""};
++ uint64_t v[7]={0};
++ for(unsigned k=0;k<7;k++)if(!read_field(cpu,keys[k],v+k))return 0;
++ if(v[0]<0x8000u||v[0]>0xffffu||
++    v[1]>255u||v[2]>255u||v[3]>255u||
++    v[4]>255u||v[5]>255u||v[6]!=source->cpu_cycles)return 0;
++ stage->pc=(uint16_t)v[0];stage->a=(uint8_t)v[1];
++ stage->x=(uint8_t)v[2];stage->y=(uint8_t)v[3];
++ stage->sp=(uint8_t)v[4];stage->ps=(uint8_t)v[5];
++ stage->cycles=v[6];stage->frame=source->frame;
++ stage->change_mask=source->changed_mask;
++ stage->upper_program_window=(uint8_t)(stage->pc>=0xc000u);
++ return 1;
++}
++Gk216Status gk216_verify_fresh_cpu_pc(const char *stock_rom,
++ const char *private_dir,Gk216CpuReport *out){
++ if(!stock_rom||!*stock_rom||!private_dir||!*private_dir||!out)
++  return GK216_BAD_ARGUMENT;
++ Gk82RomBootstrap rom={0};
++ if(gk82_probe_stock_rom(stock_rom,&rom)!=GK82_ROM_OK)
++  return GK216_SOURCE_REFUSED;
++ Gk211Report captures={0};
++ if(gk211_verify_fresh_reset_sequence(private_dir,&captures)!=GK211_OK)
++  return GK216_EVIDENCE_REFUSED;
++ if(captures.validated_stages!=GK211_STAGES||
++    captures.source_observation_only!=1u||
++    captures.independent_initialization_implemented!=0u)
++  return GK216_EVIDENCE_REFUSED;
++ Gk216CpuReport candidate={0};
++ for(unsigned i=0;i<GK211_STAGES;i++){
++  char path[4096];
++  int n=snprintf(path,sizeof path,"%s/%s",private_dir,files[i]);
++  if(n<0||(size_t)n>=sizeof path)return GK216_BAD_ARGUMENT;
++  if(!read_cpu(path,&candidate.stages[i],&captures.stage[i]))
++   return GK216_CPU_REFUSED;
++  if(i&&candidate.stages[i].cycles<=candidate.stages[i-1].cycles)
++   return GK216_CHRONOLOGY_REFUSED;
++  candidate.count=(uint8_t)(i+1u);
++ }
++ candidate.fresh_workram_only=1u;
++ candidate.sampled_at_capture_end=1u;
++ candidate.mapper_bank_not_derived=1u;
++ candidate.actual_memory_writes_not_traced=1u;
++ candidate.first_spring_not_generated=1u;
++ *out=candidate;
++ return GK216_OK;
++}
+--- a/execution_199/gk216_fresh_cpu_pc.h
++++ b/execution_199/gk216_fresh_cpu_pc.h
+@@ -0,0 +1,36 @@
++#ifndef GK216_FRESH_CPU_PC_H
++#define GK216_FRESH_CPU_PC_H
++#include "gk211_fresh_sequence.h"
++#include "gk82_stock_cartridge.h"
++#include <stdint.h>
++/* EXEC0216: CPU snapshots from the 14 exact already-archived original Mesen
++ * captures. Each PC is the sampled PC at capture end, NOT a memory-write
++ * instruction, RNG call or an NES initialization formula. Capture provenance
++ * is fresh nesWorkRam, never the archived nesSaveRam. ROM/RAM not embedded. */
++typedef enum {
++ GK216_OK=0, GK216_BAD_ARGUMENT=1, GK216_SOURCE_REFUSED=2,
++ GK216_EVIDENCE_REFUSED=3, GK216_CPU_REFUSED=4,
++ GK216_CHRONOLOGY_REFUSED=5
++} Gk216Status;
++typedef struct {
++ uint16_t pc;
++ uint8_t a,x,y,sp,ps;
++ uint32_t frame;
++ uint64_t cycles;
++ uint8_t change_mask;
++ uint8_t upper_program_window; /* 0 lower $8000-BFFF, 1 upper $C000-FFFF */
++} Gk216CpuStage;
++typedef struct {
++ Gk216CpuStage stages[GK211_STAGES];
++ uint8_t count;
++ uint8_t fresh_workram_only;
++ uint8_t sampled_at_capture_end;
++ uint8_t mapper_bank_not_derived;
++ uint8_t actual_memory_writes_not_traced;
++ uint8_t first_spring_not_generated;
++} Gk216CpuReport;
++/* Independent original ROM SHA+header and all-14 full JSON SHA proofs are
++ * prerequisites. NEVER changes *out on any error. */
++Gk216Status gk216_verify_fresh_cpu_pc(const char *stock_rom,
++ const char *private_dir,Gk216CpuReport *out);
++#endif
+--- a/execution_199/test_gk216_fresh_cpu_pc.c
++++ b/execution_199/test_gk216_fresh_cpu_pc.c
+@@ -0,0 +1,54 @@
++#include "gk216_fresh_cpu_pc.h"
++#include "gk1_app_state.h"
++#ifdef NDEBUG
++#undef NDEBUG
++#endif
++#include <assert.h>
++#include <stdint.h>
++#include <stdio.h>
++#include <string.h>
++int main(int argc,char **argv){
++ /* Private ROM and JSON are NEVER bundled with public binary/source/CTest.
++  * Baseline CTest exercises atomic invalid-input and forged-source refusal.
++  * Run with private ROM and fresh directory for real positive
++  * and negative provenance gates. */
++ Gk216CpuReport value;
++ memset(&value,0xa5,sizeof value);
++ Gk216CpuReport before=value;
++ assert(gk216_verify_fresh_cpu_pc(NULL,"x",&value)==GK216_BAD_ARGUMENT);
++ assert(memcmp(&before,&value,sizeof value)==0);
++ assert(gk216_verify_fresh_cpu_pc("","x",&value)==GK216_BAD_ARGUMENT);
++ assert(gk216_verify_fresh_cpu_pc("x",NULL,&value)==GK216_BAD_ARGUMENT);
++ assert(gk216_verify_fresh_cpu_pc("x","",&value)==GK216_BAD_ARGUMENT);
++ assert(gk216_verify_fresh_cpu_pc("x","x",NULL)==GK216_BAD_ARGUMENT);
++ assert(gk216_verify_fresh_cpu_pc("/absent/stock.nes","/absent",&value)==GK216_SOURCE_REFUSED);
++ assert(memcmp(&before,&value,sizeof value)==0);
++ Gk1App app;gk1_app_init(&app);
++ Gk1App same=app;
++ assert(gk1_app_original_fresh_cpu_pc(&app,"/missing/canonical.csv",
++  "/missing/stock.nes","/missing/fresh",&value)==GK216_SOURCE_REFUSED);
++ assert(memcmp(&same,&app,sizeof app)==0);
++ assert(memcmp(&before,&value,sizeof value)==0);
++ if(argc==1){puts("GK216 negative-source CTest PASS; original evidence remains private");return 0;}
++ if(argc!=3)return 2;
++ Gk216Status status=gk216_verify_fresh_cpu_pc(argv[1],argv[2],&value);
++ if(status!=GK216_OK){printf("GK216 private positive validation FAILED status=%d\n",(int)status);return 3;}
++ assert(value.count==14&&value.fresh_workram_only==1);
++ assert(value.sampled_at_capture_end==1&&value.mapper_bank_not_derived==1);
++ assert(value.actual_memory_writes_not_traced==1&&value.first_spring_not_generated==1);
++ assert(value.stages[0].frame<value.stages[13].frame);
++ assert(value.stages[13].change_mask==32u);
++ for(unsigned i=0;i<14;i++){
++  assert(value.stages[i].pc>=0x8000);
++  assert(value.stages[i].upper_program_window==(value.stages[i].pc>=0xc000));
++  if(i)assert(value.stages[i].cycles>value.stages[i-1].cycles);
++ }
++ /* Regression: absent/corrupted source must not clobber output. */
++ Gk216CpuReport accepted=value;
++ assert(gk216_verify_fresh_cpu_pc("/absent/stock.nes",argv[2],&value)==GK216_SOURCE_REFUSED);
++ assert(memcmp(&accepted,&value,sizeof value)==0);
++ assert(gk216_verify_fresh_cpu_pc(argv[1],"/absent/fresh",&value)==GK216_EVIDENCE_REFUSED);
++ assert(memcmp(&accepted,&value,sizeof value)==0);
++ puts("GK216 authenticated private original Mesen 14 CPU samples and rollback PASS");
++ return 0;
++}
