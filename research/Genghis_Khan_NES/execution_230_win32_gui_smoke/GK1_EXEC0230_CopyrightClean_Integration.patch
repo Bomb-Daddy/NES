@@ -1,0 +1,170 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+index 30b2704..cfcf961 100644
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk224_practice_save.c gk225_practice_resume.c gk226_practice_checkpoint.c gk227_practice_title_preview.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk230_win32_smoke_args.c gk224_practice_save.c gk225_practice_resume.c gk226_practice_checkpoint.c gk227_practice_title_preview.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -1186,3 +1186,8 @@ if(Python3_Interpreter_FOUND)
+    ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+ endif()
+ # The actual release installer includes only the game, not this diagnostic.
++
++# EXEC0230: finite real WinMain WM_PAINT smoke uses this same exact parser.
++add_executable(test_gk230_win32_smoke_args test_gk230_win32_smoke_args.c)
++target_link_libraries(test_gk230_win32_smoke_args PRIVATE gk1_app_state)
++add_test(NAME GK1_230_BoundedWinMainSmokeParserNegativeControls COMMAND test_gk230_win32_smoke_args)
+diff --git a/execution_199/gk1_native_shell.c b/execution_199/gk1_native_shell.c
+index 5cddc62..7f64389 100644
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -29,6 +29,7 @@
+ #include "gk97_nmi_trace.h"
+ #include "gk98_controller_trace.h"
+ #include "gk99_xinput_bridge.h"
++#include "gk230_win32_smoke_args.h"
+ #include "gk89_spring_reconcile.h"
+ #include "gk90_verified_finance.h"
+ #include "../execution_049/gk1_scenario_factory.h"
+@@ -2091,11 +2092,13 @@ static void replay_key(int save){
+ }
+ 
+ #ifdef _WIN32
++static unsigned gk230_painted_frames=0u;
+ static LRESULT CALLBACK window_proc(HWND h,UINT msg,WPARAM w,LPARAM l){
+  (void)l;
+  if(msg==WM_DESTROY){running=0;PostQuitMessage(0);return 0;}
+  /* No keyboard gameplay or secret keyboard save paths: controller only. */
+- if(msg==WM_PAINT){PAINTSTRUCT p;screen_dc=BeginPaint(h,&p);render();EndPaint(h,&p);return 0;}
++ if(msg==WM_PAINT){PAINTSTRUCT p;screen_dc=BeginPaint(h,&p);render();EndPaint(h,&p);
++  ++gk230_painted_frames;return 0;}
+  return DefWindowProcA(h,msg,w,l);
+ }
+ typedef DWORD(WINAPI *XinputGetStateFn)(DWORD,XINPUT_STATE*);
+@@ -2128,7 +2131,10 @@ static void poll_xinput(void){
+  pad_actions(&sample);
+ }
+ int WINAPI WinMain(HINSTANCE instance,HINSTANCE prev,LPSTR cmd,int show){
+- (void)prev;(void)cmd;
++ (void)prev;
++ unsigned smoke_frames=0u;
++ const int smoke_mode=gk230_win32_smoke_frames(cmd,&smoke_frames);
++ if(smoke_mode<0)return 4;
+  gk1_app_init(&app);gk1_pad_init(&pad);load_optional_battle_view();load_optional_mesen_map();load_optional_spring_archive();load_optional_stock_spring();(void)load_scenario_data();
+ 
+  WNDCLASSA cl={0};cl.lpfnWndProc=window_proc;cl.hInstance=instance;
+@@ -2141,7 +2147,29 @@ int WINAPI WinMain(HINSTANCE instance,HINSTANCE prev,LPSTR cmd,int show){
+  if(!hwnd)return 3;
+  font=CreateFontA(22,0,0,0,FW_BOLD,FALSE,FALSE,FALSE,ANSI_CHARSET,OUT_DEFAULT_PRECIS,
+  CLIP_DEFAULT_PRECIS,DEFAULT_QUALITY,FIXED_PITCH,"Consolas");
+- ShowWindow(hwnd,show);UpdateWindow(hwnd);
++ ShowWindow(hwnd,smoke_mode?SW_SHOWNORMAL:show);UpdateWindow(hwnd);
++ if(smoke_mode){
++  RECT client={0};
++  if(!IsWindow(hwnd)||!GetClientRect(hwnd,&client)||
++     client.right-client.left!=WIDTH||client.bottom-client.top!=HEIGHT){
++   DestroyWindow(hwnd);if(font)DeleteObject(font);return 5;
++  }
++  /* Deterministic actual WM_PAINT frames; no controller impersonation. */
++  for(unsigned frame=0;frame<smoke_frames&&running;frame++){
++   MSG m;
++   while(PeekMessageA(&m,NULL,0,0,PM_REMOVE)){
++    if(m.message==WM_QUIT){running=0;break;}
++    TranslateMessage(&m);DispatchMessageA(&m);
++   }
++   if(!running)break;
++   poll_xinput();InvalidateRect(hwnd,NULL,FALSE);UpdateWindow(hwnd);
++   Sleep(1);
++  }
++  int ok=running&&gk230_painted_frames>=smoke_frames;
++  if(IsWindow(hwnd))DestroyWindow(hwnd);
++  if(font)DeleteObject(font);
++  return ok?0:6;
++ }
+  while(running){MSG message;while(PeekMessageA(&message,NULL,0,0,PM_REMOVE)){
+   if(message.message==WM_QUIT)running=0;TranslateMessage(&message);DispatchMessageA(&message);}
+   if(!running)break;
+diff --git a/execution_199/gk230_win32_smoke_args.c b/execution_199/gk230_win32_smoke_args.c
+new file mode 100644
+index 0000000..8972c59
+--- /dev/null
++++ b/execution_199/gk230_win32_smoke_args.c
+@@ -0,0 +1,27 @@
++#include "gk230_win32_smoke_args.h"
++#include <stddef.h>
++#include <string.h>
++
++int gk230_win32_smoke_frames(const char *command_line, unsigned *frames){
++ static const char prefix[]="--smoke-frames=";
++ const char *p=command_line;
++ unsigned value=0u;
++ unsigned digits=0u;
++ if(!p||!frames)return -1;
++ while(*p==' '||*p=='\t')p++;
++ /* Preserve legacy non-smoke arguments; do not change normal game path. */
++ if(strncmp(p,"--smoke-frames",14)!=0)return 0;
++ if(strncmp(p,prefix,sizeof prefix-1u)!=0)return -1;
++ p+=sizeof prefix-1u;
++ if(*p=='0')return -1;
++ while(*p>='0'&&*p<='9'){
++   value=value*10u+(unsigned)(*p-'0');
++   if(value>120u)return -1;
++   p++;digits++;
++ }
++ if(!digits||value==0u)return -1;
++ while(*p==' '||*p=='\t')p++;
++ if(*p!='\0')return -1;
++ *frames=value;
++ return 1;
++}
+diff --git a/execution_199/gk230_win32_smoke_args.h b/execution_199/gk230_win32_smoke_args.h
+new file mode 100644
+index 0000000..500344b
+--- /dev/null
++++ b/execution_199/gk230_win32_smoke_args.h
+@@ -0,0 +1,8 @@
++#ifndef GK230_WIN32_SMOKE_ARGS_H
++#define GK230_WIN32_SMOKE_ARGS_H
++/* Exact bounded WinMain GUI smoke mode. Only positive 1..120 frame counts.
++ *  1 = run finite GUI loop; 0 = unmodified normal launch; -1 = reject.
++ * WinMain supplies the command tail without executable path.
++ */
++int gk230_win32_smoke_frames(const char *command_line, unsigned *frames);
++#endif
+diff --git a/execution_199/test_gk230_win32_smoke_args.c b/execution_199/test_gk230_win32_smoke_args.c
+new file mode 100644
+index 0000000..9ccfd79
+--- /dev/null
++++ b/execution_199/test_gk230_win32_smoke_args.c
+@@ -0,0 +1,25 @@
++#include "gk230_win32_smoke_args.h"
++#include <stdlib.h>
++#include <stdio.h>
++
++#define CHECK(e) do { if(!(e)){fprintf(stderr,"GK1_230 FAIL line %d\n", __LINE__);return 1;} }while(0)
++int main(void){
++ unsigned n=777u;
++ CHECK(gk230_win32_smoke_frames("",&n)==0&&n==777u);
++ CHECK(gk230_win32_smoke_frames(" --version ",&n)==0&&n==777u);
++ CHECK(gk230_win32_smoke_frames("--smoke-frames=1",&n)==1&&n==1u);
++ CHECK(gk230_win32_smoke_frames("  --smoke-frames=30 ", &n)==1&&n==30u);
++ CHECK(gk230_win32_smoke_frames("--smoke-frames=120",&n)==1&&n==120u);
++ const char *reject[]={"--smoke-frames", "--smoke-frames=", "--smoke-frames=0",
++  "--smoke-frames=121", "--smoke-frames=-1", "--smoke-frames=30 --other",
++  "--smoke-frames=4294967296", "--smoke-frames=3x", "--smoke-frames=+2",
++  "--smoke-frames 20", "--smoke-frames=00", "--smoke-frames=9999999999999"};
++ for(unsigned i=0;i<sizeof reject/sizeof *reject;i++){
++  n=777u;
++  CHECK(gk230_win32_smoke_frames(reject[i],&n)==-1&&n==777u);
++ }
++ CHECK(gk230_win32_smoke_frames("--smoke-frames=30",NULL)==-1);
++ CHECK(gk230_win32_smoke_frames(NULL,&n)==-1);
++ puts("GK1_230_PASS: bounded WinMain parser and invalid controls");
++ return 0;
++}
