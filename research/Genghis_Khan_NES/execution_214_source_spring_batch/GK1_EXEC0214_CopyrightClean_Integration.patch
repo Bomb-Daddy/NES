@@ -1,0 +1,263 @@
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -1024,3 +1024,9 @@
+ add_executable(test_gk213_stock_spring_boundary test_gk213_stock_spring_boundary.c)
+ target_link_libraries(test_gk213_stock_spring_boundary PRIVATE gk1_app_state)
+ add_test(NAME GK1_213_OriginalSpring1175BoundedFoodTaxPayrollConsistencyNoPhantomRng COMMAND test_gk213_stock_spring_boundary)
++
++# GK214: source-bounded, all-14/27-country atomic Spring economic batch.
++add_executable(test_gk214_spring_batch test_gk214_spring_batch.c)
++target_link_libraries(test_gk214_spring_batch PRIVATE gk1_app_state)
++add_test(NAME GK1_214_BothCampaignsAtomicSpringFinanceNoInventedSetup
++ COMMAND test_gk214_spring_batch ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+--- a/execution_199/gk1_app_state.h
++++ b/execution_199/gk1_app_state.h
+@@ -16,6 +16,7 @@
+ #include "gk112_stock_setup_deltas.h"
+ #include "gk212_stock_raw_variation.h"
+ #include "gk213_stock_spring_boundary.h"
++#include "gk214_spring_batch.h"
+ #include "gk114_stock_spring_timeline.h"
+ #include "gk211_fresh_sequence.h"
+ #include "gk79_stock_checkpoint.h"
+@@ -139,6 +140,12 @@
+   char status[128];
+ } Gk1App;
+ void gk1_app_init(Gk1App *s);
++/* SOURCE-BOUNDED multination finance batch for an already installed world.
++ * The native app never accepts this as setup evidence or grants a turn.
++ * Original 14/27 PRE_SETUP templates remain unchanged on success/failure. */
++Gk214Status gk1_app_spring_batch_projection(const Gk1App *app,
++ uint8_t world_index,Gk214Batch *out);
++
+ /* Aggregate read-only comparison of two ORIGINAL, separately authenticated
+  * Spring1175 histories. No source records embedded, no gameplay mutation. */
+ Gk212Status gk1_app_original_raw_variation(const Gk1App *app,
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -1668,6 +1668,19 @@
+  * if the original Spring initialization had already occurred. No code path
+  * in EXEC0062 manufactures that phase. A future original setup/season module
+  * must establish post-setup and authoritative merchant Rate/offers itself. */
++/* EXEC0214: exact existing source arithmetic now runs atomically over
++ * every country in BOTH inherited scenario worlds, not just country one.
++ * Original setup/ruler/season RNG remains unimplemented. This is only a
++ * non-mutating port calculation and cannot set the world to PLAYABLE. */
++Gk214Status gk1_app_spring_batch_projection(const Gk1App *app,
++ uint8_t world_index,Gk214Batch *out){
++ if(!app||!out||world_index>1u||!app->world_ready[world_index]||
++    app->worlds[world_index].phase!=GK1_PRE_SETUP_TEMPLATE||
++    app->worlds[world_index].scenario_id!=(Gk1ScenarioId)(world_index+1u))
++  return GK214_BAD_INPUT;
++ return gk214_project_spring_batch(&app->worlds[world_index],out);
++}
++
+ Gk61Result gk1_app_trade(Gk1App *app,Gk61Actor *actor,
+                          const Gk61Market *market,uint8_t country_one_based,
+                          Gk61Merchant merchant,Gk61Action action,uint8_t item,
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -2028,6 +2028,28 @@
+  Gk1PadSample s=joystick_sample();pad_actions(&s);
+ }
+ int main(int argc,char **argv){
++ /* GK214: both native campaign datasets and the source-based Spring finance
++  * engine, without claiming original setup/RNG or awarding player orders. */
++ if(argc==2&&strcmp(argv[1],"--audit-both-spring-finance-batches")==0){
++  gk1_app_init(&app);
++  if(!load_scenario_data()){
++   fputs("GK214 canonical 41-country source unavailable/invalid\n",stderr);
++   return 9;
++  }
++  for(unsigned branch=0;branch<2u;branch++){
++   Gk214Batch result={0};
++   if(gk1_app_spring_batch_projection(&app,(uint8_t)branch,&result)!=GK214_OK){
++    fputs("GK214 source-bounded all-country batch refused\n",stderr);
++    return 9;
++   }
++   printf("SOURCE_BOUNDED_TEMPLATE_PROJECTION original_campaign=%s countries=%u gross_tax=%u wage=%u food_consumed=%u starved=%u; source_setup=0 rng_generated=0 orders_granted=0\n",
++     branch?"WORLD":"MONGOL",result.count,result.gross_taxes,result.payroll,
++     result.food_consumed,result.starved_country_count);
++  }
++  puts("These are original bank1 finance equations applied to UNINITIALIZED templates. NOT authentic first playable Spring or independent original NES execution.");
++  return 0;
++ }
++
+  /* EXEC0213 original single-history Spring arithmetic boundary, not startup.
+   * Authenticates all private fresh-reset stages and canonical source CSV.
+   * This diagnostic does not advance the controller or a campaign. */
+--- a/execution_199/gk214_spring_batch.c
++++ b/execution_199/gk214_spring_batch.c
+@@ -0,0 +1,45 @@
++#include "gk214_spring_batch.h"
++#include <string.h>
++Gk214Status gk214_project_spring_batch(const Gk1LoadedScenario *prepared,
++ Gk214Batch *out){
++ if(!prepared||!out||
++    (prepared->scenario_id!=GK1_MONGOL_CONQUEST&&
++     prepared->scenario_id!=GK1_WORLD_CONQUEST)||
++    prepared->country_count!=(prepared->scenario_id==GK1_MONGOL_CONQUEST?
++      GK1_COUNTRIES_MONGOL:GK1_COUNTRIES_WORLD))return GK214_BAD_INPUT;
++ Gk214Batch next={0};next.after=*prepared;
++ for(unsigned i=0;i<prepared->country_count;i++){
++  const Gk1CountryTemplate *c=&prepared->countries[i];
++  if(c->scenario_id!=(uint8_t)prepared->scenario_id||
++     c->country_id!=i+1u||c->index!=i||
++     c->specialty_index>=10u)return GK214_BAD_COUNTRY;
++  Gk75SpringFields before={c->troops,c->town,c->masons,
++   c->artisans,c->food_workers,c->goods[10],c->gold,
++   c->economy,c->morale,c->tax};
++  Gk75SpringResult result={0};
++  if(gk75_spring_food_tax_pay(&before,&result)!=GK75_OK)
++   return GK214_BAD_FINANCE;
++  next.country[i]=result;
++  Gk1CountryTemplate *target=&next.after.countries[i];
++  target->troops=result.after.troops;
++  target->town=result.after.town;
++  target->masons=result.after.masons;
++  target->artisans=result.after.artisans;
++  target->food_workers=result.after.food_workers;
++  target->gold=result.after.gold;
++  target->goods[10]=result.after.food;
++  /* The source-derived engine concerns only food, tax and wage. Other
++   * derived fields (e.g. civilian draft pool, population, family) require
++   * independent chronology. Do NOT recalculate/fabricate those fields. */
++  next.gross_taxes+=result.gross_tax;
++  next.payroll+=result.payroll;
++  next.food_consumed+=result.food_consumed;
++  next.troops_lost=(uint16_t)(next.troops_lost+result.troops_lost);
++  next.starved_country_count+=(uint16_t)!!result.starved;
++ }
++ next.count=prepared->country_count;
++ next.source_bounded_only=1u;
++ next.generated_setup=next.generated_rng=next.orders_granted=0u;
++ *out=next;
++ return GK214_OK;
++}
+--- a/execution_199/gk214_spring_batch.h
++++ b/execution_199/gk214_spring_batch.h
+@@ -0,0 +1,24 @@
++#ifndef GK214_SPRING_BATCH_H
++#define GK214_SPRING_BATCH_H
++#include "gk75_spring_economy.h"
++/* Executes the authentic source-bounded Spring FOOD/TAX/PAY arithmetic for
++ * ALL 14/27 countries in one atomic pass. The caller supplies a PREPARED
++ * snapshot; this function does not invent setup, initial food bonuses, RNG,
++ * ages, growth, AI, order grants or a new season. PRE_SETUP inputs are valid
++ * research projections ONLY, not post-setup playable-world evidence. */
++typedef enum {GK214_OK=0,GK214_BAD_INPUT=1,GK214_BAD_COUNTRY=2,
++              GK214_BAD_FINANCE=3} Gk214Status;
++typedef struct {
++ Gk1LoadedScenario after;
++ Gk75SpringResult country[GK1_COUNTRIES_WORLD];
++ uint32_t gross_taxes,payroll,food_consumed;
++ uint16_t starved_country_count,troops_lost;
++ uint8_t count,source_bounded_only,generated_setup,generated_rng,orders_granted;
++} Gk214Batch;
++/* No output writes on failure. PRESERVES world.phase and all non-finance
++ * fields, including goods0..9 and rulers. Supports distinct 14/27 campaigns.
++ * Call only on an appropriately PREPARED state; never interpret this call as
++ * proof that a template is an initialized original Spring. */
++Gk214Status gk214_project_spring_batch(const Gk1LoadedScenario *prepared,
++ Gk214Batch *out);
++#endif
+--- a/execution_199/test_gk214_spring_batch.c
++++ b/execution_199/test_gk214_spring_batch.c
+@@ -0,0 +1,88 @@
++#include "gk214_spring_batch.h"
++#include "gk1_app_state.h"
++#include "../execution_049/gk1_scenario_factory.h"
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++#define CHECK(x) do{if(!(x)){fprintf(stderr,"GK214 FAIL at %d: %s\n",__LINE__,#x);return 1;} checks++;}while(0)
++int main(int argc,char **argv){
++ unsigned checks=0;
++ Gk214Batch *out=malloc(sizeof *out),*backup=malloc(sizeof *backup);
++ Gk1TemplateDataset *source=malloc(sizeof *source);
++ Gk1LoadedScenario *a=malloc(sizeof *a),*unaltered=malloc(sizeof *unaltered);
++ CHECK(out&&backup&&source&&a&&unaltered);
++ memset(out,0xAB,sizeof *out);memcpy(backup,out,sizeof *out);
++ CHECK(gk214_project_spring_batch(NULL,out)==GK214_BAD_INPUT);
++ CHECK(!memcmp(out,backup,sizeof *out));
++ CHECK(gk214_project_spring_batch(a,NULL)==GK214_BAD_INPUT);
++ if(argc<2){fprintf(stderr,"Usage: %s CANONICAL_41_COUNTRY_CSV\n",argv[0]);return 2;}
++ CHECK(gk1_template_load(argv[1],source)==GK1_LOAD_OK);
++ for(int branch=0;branch<2;branch++){
++  const unsigned total=branch?27u:14u;
++  CHECK(gk1_open_loaded_scenario(source,(Gk1ScenarioId)(branch+1),a)==GK1_LOAD_OK);
++  memcpy(unaltered,a,sizeof *a);
++  CHECK(gk214_project_spring_batch(a,out)==GK214_OK);
++  CHECK(!memcmp(a,unaltered,sizeof *a));
++  CHECK(out->count==total&&out->source_bounded_only&&
++    !out->generated_setup&&!out->generated_rng&&!out->orders_granted);
++  CHECK(out->after.phase==GK1_PRE_SETUP_TEMPLATE);
++  CHECK(out->after.country_count==total&&out->after.scenario_id==a->scenario_id);
++  unsigned taxes=0,payroll=0,food=0,loss=0,starved=0;
++  for(unsigned c=0;c<total;c++){
++   Gk75SpringResult single={0};
++   CHECK(gk75_template_projection(&a->countries[c],&single)==GK75_OK);
++   CHECK(!memcmp(&single,&out->country[c],sizeof single));
++   CHECK(out->after.countries[c].gold==single.after.gold &&
++     out->after.countries[c].troops==single.after.troops &&
++     out->after.countries[c].goods[10]==single.after.food);
++   CHECK(out->after.countries[c].country_id==a->countries[c].country_id &&
++     out->after.countries[c].goods[0]==a->countries[c].goods[0] &&
++     out->after.countries[c].skill==a->countries[c].skill &&
++     out->after.countries[c].morale==a->countries[c].morale);
++   taxes+=single.gross_tax;payroll+=single.payroll;
++   food+=single.food_consumed;loss+=single.troops_lost;
++   starved+=!!single.starved;
++  }
++  CHECK(out->gross_taxes==taxes&&out->payroll==payroll&&
++    out->food_consumed==food&&out->troops_lost==loss&&
++    out->starved_country_count==starved);
++  memcpy(backup,out,sizeof *out);
++  a->countries[0].country_id=99;
++  CHECK(gk214_project_spring_batch(a,out)==GK214_BAD_COUNTRY);
++  CHECK(!memcmp(out,backup,sizeof *out));
++  *a=*unaltered;
++  a->countries[total-1u].goods[10]=1000;
++  CHECK(gk214_project_spring_batch(a,out)==GK214_BAD_FINANCE);
++  CHECK(!memcmp(out,backup,sizeof *out));
++  *a=*unaltered;
++  a->countries[total-1u].index=99;
++  CHECK(gk214_project_spring_batch(a,out)==GK214_BAD_COUNTRY);
++  CHECK(!memcmp(out,backup,sizeof *out));
++  *a=*unaltered;
++  a->country_count--;
++  CHECK(gk214_project_spring_batch(a,out)==GK214_BAD_INPUT);
++  CHECK(!memcmp(out,backup,sizeof *out));
++ }
++ /* Exact SAME native app state, not a detached market/season prototype. */
++ Gk1App *game=calloc(1,sizeof *game),*saved=malloc(sizeof *saved);
++ CHECK(game&&saved);
++ gk1_app_init(game);
++ CHECK(gk1_app_spring_batch_projection(game,0,out)==GK214_BAD_INPUT);
++ CHECK(gk1_app_install_templates(game,source));
++ memcpy(saved,game,sizeof *game);
++ for(uint8_t branch=0;branch<2u;branch++){
++  CHECK(gk1_app_spring_batch_projection(game,branch,out)==GK214_OK);
++  CHECK(out->count==(branch?27u:14u));
++  CHECK(!out->orders_granted&&!out->generated_setup&&!out->generated_rng);
++  CHECK(!memcmp(game,saved,sizeof *game));
++ }
++ game->worlds[0].phase=(Gk1ScenarioPhase)2;
++ memcpy(backup,out,sizeof *out);
++ CHECK(gk1_app_spring_batch_projection(game,0,out)==GK214_BAD_INPUT);
++ CHECK(!memcmp(out,backup,sizeof *out));
++ free(saved);free(game);
++ printf("GK214 14/27-country atomic Spring finance engine %u assertions PASS; "
++        "setup/RNG and playable original Spring NOT generated\n",checks);
++ free(out);free(backup);free(source);free(a);free(unaltered);
++ return 0;
++}
