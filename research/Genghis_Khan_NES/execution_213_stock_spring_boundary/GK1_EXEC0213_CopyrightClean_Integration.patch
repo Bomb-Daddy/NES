@@ -1,0 +1,326 @@
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -55,7 +55,7 @@
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0193.md README_EXEC0194.md README_EXEC0195.md README_EXEC0196.md README_EXEC0197.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md README_EXEC0210.md README_EXEC0211.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0193.md README_EXEC0194.md README_EXEC0195.md README_EXEC0196.md README_EXEC0197.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md README_EXEC0210.md README_EXEC0211.md README_EXEC0212.md README_EXEC0213.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+   set(CPACK_PACKAGE_VERSION "1.99.0")
+@@ -1020,3 +1020,7 @@
+ target_link_libraries(test_gk212_stock_raw_variation PRIVATE gk1_app_state)
+ add_test(NAME GK1_212_OriginalMongolRawVariationAndSourceRefusal
+  COMMAND test_gk212_stock_raw_variation ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++add_executable(test_gk213_stock_spring_boundary test_gk213_stock_spring_boundary.c)
++target_link_libraries(test_gk213_stock_spring_boundary PRIVATE gk1_app_state)
++add_test(NAME GK1_213_OriginalSpring1175BoundedFoodTaxPayrollConsistencyNoPhantomRng COMMAND test_gk213_stock_spring_boundary)
+--- /dev/null
++++ b/execution_199/README_EXEC0213.md
+@@ -0,0 +1,18 @@
++# GK1 EXEC0213 — authentic original-stock Spring boundary, source-bounded native C11
++
++Implemented in the existing `gk1_app_state` and native Win32/X11 source, not a disconnected example. The C11 `gk213_stock_spring_boundary.c/h` module separates a source-observed country-one beginning-food bonus, Spring feeding, tax-before-wages, and a later observed troop increment. `gk1_app_observed_first_spring_boundary` authenticates unchanged original 41-country pre-setup CSV, all fourteen *private* original-USA Mesen fresh-reset event receipts, correct WorkRAM final source bytes, and computes a bounded numeric consistency result without changing source countries or granting orders.
++
++Original observed country-one boundaries in ONE specific reset/choice history: pre-setup Food129 Gold425 Troops60; intermediate Food258; Spring Food208 Gold430 Troops61, original three orders granted later. The bounded C11 6502-derived food/tax/wage equations are consistent with source-observed economy186, morale118, tax35, yielding tax65, payroll60, Food208 and Gold430; the observed troop61 is explicitly a later **input**, not generated growth. Economy186 and economy187 can both give the same tax65 by integer truncation; matching finance is **not proof** of setup/RNG chronology or unique intermediate values. The new C11 regression checks this ambiguity and corruption/rollback guards.
++
++## Reproduce
++
++```sh
++cmake -S execution_199 -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
++cmake --build build -j8
++ctest --test-dir build -j8 --output-on-failure
++# Private evidence never included in the public source ZIP/GitHub:
++./build/test_gk213_stock_spring_boundary /PRIVATE/fresh_stage_directory execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv
++./build/gk1_native_shell --audit-original-first-spring-boundary /PRIVATE/fresh_stage_directory execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv
++```
++
++Source-static consistency and 2026-11-07 previously captured original evidence, NOT a fresh Mesen run. Unresolved: original power-on RNG seed and draw order, generalized first-Spring all14/27, merchant presence, autonomous AI/diplomacy/dynasty, battles/captures, Windows NSIS and physical Xbox acceptance. Never infer a universal country bonus from this one observation. All original ROM/STATE/RAM/private JSON remain in private Genghis research.
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -1,4 +1,5 @@
+ #include "gk1_app_state.h"
++#include "gk165_fresh_json.h"
+ #include "gk199_classic_tax_undo.h"
+ #include "gk1_source_identity.h"
+ #include "gk194_classic_storage_gate.h"
+@@ -1691,6 +1692,47 @@
+                     actor,merchant,action,item,quantity,hire_morale_roll11);
+ }
+ 
++/* EXEC0213: one original-stock first-Spring numeric *boundary*, not
++ * original startup reconstruction. All inputs are read from the canonical
++ * installed original PRE_SETUP CSV and the SHA-verified final original
++ * fresh WorkRAM snapshot. The 14-stage provenance is verified separately.
++ * This never sets a playable phase or grants an order. */
++Gk213Status gk1_app_observed_first_spring_boundary(const Gk1App *app,
++ const char *csv,const char *private_dir,Gk213Boundary *out){
++ if(!app||!csv||!*csv||!private_dir||!*private_dir||!out)return GK213_ARGUMENT;
++ if(!app->world_ready[0]||app->worlds[0].phase!=GK1_PRE_SETUP_TEMPLATE||
++    app->worlds[0].scenario_id!=GK1_MONGOL_CONQUEST||
++    app->worlds[0].country_count!=GK1_COUNTRIES_MONGOL||
++    !gk1_verified_original_csv(csv))return GK213_UNGROUNDED;
++ Gk1TemplateDataset all;
++ Gk1LoadedScenario canonical;
++ if(gk1_template_load(csv,&all)!=GK1_LOAD_OK||
++    gk1_open_loaded_scenario(&all,GK1_MONGOL_CONQUEST,&canonical)!=GK1_LOAD_OK||
++    memcmp(&canonical,&app->worlds[0],sizeof canonical)!=0)return GK213_UNGROUNDED;
++ Gk211Report timeline;
++ if(gk211_verify_fresh_reset_sequence(private_dir,&timeline)!=GK211_OK)
++  return GK213_UNGROUNDED;
++ char path[4096];
++ int n=snprintf(path,sizeof path,"%s/fresh_14_after_wait.json",private_dir);
++ if(n<0||(size_t)n>=sizeof path)return GK213_ARGUMENT;
++ uint8_t raw[GK165_FRESH_SIZE];
++ if(gk165_extract_fresh_json(path,raw)!=GK165_OK)return GK213_UNGROUNDED;
++ Gk77Country observed;
++ if(gk77_decode(raw,GK77_RECORD_BYTES,&observed)!=GK77_OK)
++  return GK213_UNGROUNDED;
++ const Gk1CountryTemplate *c=&canonical.countries[0];
++ Gk213Inputs inputs={c->goods[10],c->gold,c->troops,c->town,c->masons,
++                    c->artisans,c->food_workers,observed.economy,
++                    observed.morale,observed.tax,observed.troops};
++ Gk213Boundary candidate;
++ Gk213Status result=gk213_check_observed_mongol_boundary(&inputs,&timeline,&candidate);
++ if(result!=GK213_OK)return result;
++ if(candidate.food_after_feeding!=observed.food||
++    candidate.gold_after_taxes_and_wages!=observed.gold)
++  return GK213_INCONSISTENT;
++ *out=candidate;return GK213_OK;
++}
++
+ /* EXEC0114: authenticate a private original fresh-stock Spring chronology.
+  * Do not claim Mesen execution here or unlock native game orders. */
+ Gk114Status gk1_app_original_fresh_timeline(const Gk1App *app,
+--- a/execution_199/gk1_app_state.h
++++ b/execution_199/gk1_app_state.h
+@@ -15,6 +15,7 @@
+ #include "gk111_stock_spring_audit.h"
+ #include "gk112_stock_setup_deltas.h"
+ #include "gk212_stock_raw_variation.h"
++#include "gk213_stock_spring_boundary.h"
+ #include "gk114_stock_spring_timeline.h"
+ #include "gk211_fresh_sequence.h"
+ #include "gk79_stock_checkpoint.h"
+@@ -143,6 +144,13 @@
+ Gk212Status gk1_app_original_raw_variation(const Gk1App *app,
+  const char *canonical_csv,const Gk79Checkpoint *fresh,
+  const Gk79Checkpoint *archived,Gk212Variation *out);
++/* Validates the real fresh original 14-stage owner-private evidence and
++ * observes one pre-growth human first-Spring finance boundary in the EXISTING
++ * application without mutating its countries or granting orders. Does NOT
++ * derive the underlying setup/RNG, generalize other countries, or unlock
++ * game phase. Original source records remain private. */
++Gk213Status gk1_app_observed_first_spring_boundary(const Gk1App *,
++ const char *canonical_csv,const char *private_fresh_dir,Gk213Boundary *out);
+ /* Exact-original BRK-vector jump-table RNG source proof, NOT actual setup. */
+ Gk202Status gk1_app_source_irq_rng_path(const Gk1App *app,
+  const char *private_stock_rom,Gk202Proof *out);
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -2028,6 +2028,29 @@
+  Gk1PadSample s=joystick_sample();pad_actions(&s);
+ }
+ int main(int argc,char **argv){
++ /* EXEC0213 original single-history Spring arithmetic boundary, not startup.
++  * Authenticates all private fresh-reset stages and canonical source CSV.
++  * This diagnostic does not advance the controller or a campaign. */
++ if(argc==4&&strcmp(argv[1],"--audit-original-first-spring-boundary")==0){
++  Gk1TemplateDataset *all=(Gk1TemplateDataset*)calloc(1,sizeof *all);
++  if(!all)return 9;
++  int ok=gk1_verified_original_csv(argv[3]) &&
++      gk1_template_load(argv[3],all)==GK1_LOAD_OK;
++  gk1_app_init(&app);
++  if(ok)ok=gk1_app_install_templates(&app,all)!=0;
++  free(all);
++  Gk213Boundary result={0};
++  if(ok)ok=gk1_app_observed_first_spring_boundary(&app,argv[3],argv[2],&result)==GK213_OK;
++  if(!ok){fputs("GK213 original first-Spring source boundary refused; no game state changed\n",stderr);return 9;}
++  printf("OBSERVED_RUNTIME_STOCK_FRESH_RESET (archived evidence; no new Mesen): start Food %u, fed Food %u, tax %u, wages %u, Gold %u; troops before observed growth %u, after %u.\n",
++   (unsigned)result.food_after_start_bonus,(unsigned)result.food_after_feeding,
++   (unsigned)result.tax_gross,(unsigned)result.wages,
++   (unsigned)result.gold_after_taxes_and_wages,
++   (unsigned)result.troops_before_growth,(unsigned)result.troops_after_observed_growth);
++  puts("Bounded arithmetic consistency only. Economy timing/RNG/first Spring for 14/27 countries, player turns and merchants NOT generated.");
++  return 0;
++ }
++
+  /* EXEC0212: two authenticated original stock Spring histories, read-only.
+   * No original country bytes or RNG seed values printed or published. */
+  if(argc==4&&strcmp(argv[1],"--audit-original-mongol-variation")==0){
+--- /dev/null
++++ b/execution_199/gk213_stock_spring_boundary.c
+@@ -0,0 +1,50 @@
++#include "gk213_stock_spring_boundary.h"
++#include <string.h>
++Gk213Status gk213_check_observed_mongol_boundary(const Gk213Inputs *in,
++ const Gk211Report *tr,Gk213Boundary *out){
++ if(!in||!tr||!out)return GK213_ARGUMENT;
++ /* Caller must obtain tr from the authenticated gk211 private-source
++  * reader, not synthesize this structure. The current observed history has
++  * a distinct start-food bonus before the Spring feed and a later troop
++  * increment. We do not generalize bonus to other rulers or nations. */
++ if(tr->validated_stages!=GK211_STAGES||!tr->source_observation_only||
++    tr->independent_initialization_implemented||
++    tr->observed_food_doubling_step!=9u||
++    tr->observed_spring_economy_step!=12u||
++    tr->observed_order_grant_step!=14u||
++    tr->stage[7].year!=1174u||tr->stage[11].year!=1175u||
++    tr->stage[13].orders!=3u)return GK213_UNGROUNDED;
++ if(in->stock_pre_food!=tr->stage[7].food||
++    in->stock_pre_gold!=tr->stage[7].gold||
++    in->stock_pre_troops!=tr->stage[7].troops||
++    in->stock_pre_food>499u||
++    in->observed_post_season_troops!=tr->stage[11].troops ||
++    in->observed_post_season_troops<in->stock_pre_troops)
++  return GK213_UNGROUNDED;
++ Gk75SpringFields pre={0};
++ pre.food=(uint16_t)(2u*in->stock_pre_food);
++ pre.gold=in->stock_pre_gold;pre.troops=in->stock_pre_troops;
++ pre.town=in->stock_pre_town;pre.masons=in->stock_pre_masons;
++ pre.artisans=in->stock_pre_artisans;pre.food_workers=in->stock_pre_food_workers;
++ pre.economy=in->observed_post_setup_economy;
++ pre.morale=in->observed_post_setup_morale;pre.tax=in->observed_tax;
++ if(pre.food!=tr->stage[8].food)return GK213_INCONSISTENT;
++ Gk75SpringResult calc;
++ if(gk75_spring_food_tax_pay(&pre,&calc)!=GK75_OK||calc.starved||
++    calc.after.food!=tr->stage[11].food||
++    calc.after.gold!=tr->stage[11].gold||
++    calc.after.troops!=in->stock_pre_troops)
++  return GK213_INCONSISTENT;
++ Gk213Boundary next={0};
++ next.food_after_start_bonus=pre.food;
++ next.food_after_feeding=calc.after.food;
++ next.gold_after_taxes_and_wages=calc.after.gold;
++ next.troops_before_growth=calc.after.troops;
++ next.troops_after_observed_growth=in->observed_post_season_troops;
++ next.tax_gross=calc.gross_tax;next.wages=calc.payroll;
++ next.source_observation_only=1;
++ /* Source attests input/output, but NOT the provenance of all intermediate
++  * economy/morale values, initial RNG seed, or general setup chronology. */
++ *out=next;
++ return GK213_OK;
++}
+--- /dev/null
++++ b/execution_199/gk213_stock_spring_boundary.h
+@@ -0,0 +1,32 @@
++#ifndef GK213_STOCK_SPRING_BOUNDARY_H
++#define GK213_STOCK_SPRING_BOUNDARY_H
++#include "gk75_spring_economy.h"
++#include "gk211_fresh_sequence.h"
++/* EXEC0213: a source-arithmetic consistency check of the authenticated
++ * SINGLE Mongol country-one fresh Spring1175 history. Never generates
++ * character RNG, remaining countries, merchant events, or playable orders.
++ * The source-observed post-setup economy/morale and observed new troops are
++ * INPUTS, not presumed changes derived by this function. */
++typedef enum { GK213_OK=0, GK213_ARGUMENT=1, GK213_UNGROUNDED=2,
++               GK213_INCONSISTENT=3 } Gk213Status;
++typedef struct {
++ uint16_t stock_pre_food,stock_pre_gold,stock_pre_troops;
++ uint16_t stock_pre_town,stock_pre_masons,stock_pre_artisans,stock_pre_food_workers;
++ uint16_t observed_post_setup_economy,observed_post_setup_morale,observed_tax;
++ uint16_t observed_post_season_troops;
++} Gk213Inputs;
++typedef struct {
++ uint16_t food_after_start_bonus;
++ uint16_t food_after_feeding;
++ uint16_t gold_after_taxes_and_wages;
++ uint16_t troops_before_growth,troops_after_observed_growth;
++ uint16_t tax_gross,wages;
++ uint8_t source_observation_only,generated_rng,independent_first_spring,orders_granted;
++} Gk213Boundary;
++/* Requires externally authenticated GK211 full fresh chronology and exact
++ * country-one original stock template values. Only checks two source-bounded
++ * finance boundaries, without claiming intermediate economy was observed.
++ * Refuses impossible numbers atomically. */
++Gk213Status gk213_check_observed_mongol_boundary(const Gk213Inputs *,
++ const Gk211Report *authenticated_trace,Gk213Boundary *);
++#endif
+--- /dev/null
++++ b/execution_199/test_gk213_stock_spring_boundary.c
+@@ -0,0 +1,74 @@
++#include "gk213_stock_spring_boundary.h"
++#include "gk1_app_state.h"
++#include "gk1_source_identity.h"
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++#define CHECK(cond) do{if(!(cond)){fprintf(stderr,"GK213 FAIL line %d: %s\n",__LINE__,#cond);return 1;} n++;}while(0)
++int main(int argc,char **argv){
++ unsigned n=0;Gk213Boundary out,old;
++ memset(&out,0xA5,sizeof out);old=out;
++ CHECK(gk213_check_observed_mongol_boundary(NULL,NULL,NULL)==GK213_ARGUMENT);
++ Gk211Report tr={0};Gk213Inputs in={0};
++ CHECK(gk213_check_observed_mongol_boundary(&in,&tr,&out)==GK213_UNGROUNDED);
++ CHECK(!memcmp(&out,&old,sizeof out));
++ if(argc>=2){
++  CHECK(gk211_verify_fresh_reset_sequence(argv[1],&tr)==GK211_OK);
++  /* Only these inputs are from the one recorded, authenticated original
++   * history; the post-setup stats are observations at the final snapshot,
++   * not independently time-stamped intermediate source events. */
++  in=(Gk213Inputs){129,425,60,4,3,6,27,186,118,35,61};
++  CHECK(gk213_check_observed_mongol_boundary(&in,&tr,&out)==GK213_OK);
++  CHECK(out.food_after_start_bonus==258u);
++  CHECK(out.food_after_feeding==208u);
++  CHECK(out.gold_after_taxes_and_wages==430u);
++  CHECK(out.troops_before_growth==60u&&out.troops_after_observed_growth==61u);
++  CHECK(out.tax_gross==65u&&out.wages==60u);
++  CHECK(out.source_observation_only&&!out.generated_rng&&
++        !out.independent_first_spring&&!out.orders_granted);
++  old=out;
++  Gk213Inputs mutated=in;
++  mutated.stock_pre_food++;
++  CHECK(gk213_check_observed_mongol_boundary(&mutated,&tr,&out)==GK213_UNGROUNDED);
++  CHECK(!memcmp(&out,&old,sizeof out));
++  mutated=in;mutated.observed_post_setup_economy++;
++  /* Integer truncation leaves economy 186 and 187 observationally
++   * indistinguishable: this calculation is NOT a uniqueness proof. */
++  CHECK(gk213_check_observed_mongol_boundary(&mutated,&tr,&out)==GK213_OK);
++  CHECK(out.gold_after_taxes_and_wages==old.gold_after_taxes_and_wages);
++  mutated=in;mutated.observed_post_setup_economy+=4u;
++  CHECK(gk213_check_observed_mongol_boundary(&mutated,&tr,&out)==GK213_INCONSISTENT);
++  CHECK(!memcmp(&out,&old,sizeof out));
++  mutated=in;mutated.observed_post_season_troops--;
++  CHECK(gk213_check_observed_mongol_boundary(&mutated,&tr,&out)==GK213_UNGROUNDED);
++  CHECK(!memcmp(&out,&old,sizeof out));
++  /* Real existing game integration: all inputs come from verified ORIGINAL
++   * owner-private WorkRAM evidence, not hard-coded into the game executable. */
++  if(argc>=3){
++   Gk1TemplateDataset all={0};
++   Gk1App *app=calloc(1,sizeof *app);
++   Gk1App *preserved=malloc(sizeof *preserved);
++   CHECK(app&&preserved);
++   CHECK(gk1_verified_original_csv(argv[2]));
++   CHECK(gk1_template_load(argv[2],&all)==GK1_LOAD_OK);
++   gk1_app_init(app);
++   CHECK(gk1_app_install_templates(app,&all));
++   *preserved=*app;
++   CHECK(gk1_app_observed_first_spring_boundary(app,argv[2],argv[1],&out)==GK213_OK);
++   CHECK(!memcmp(app,preserved,sizeof *app));
++   CHECK(!out.independent_first_spring&&!out.orders_granted);
++   old=out;
++   app->worlds[0].countries[13].gold++;
++   CHECK(gk1_app_observed_first_spring_boundary(app,argv[2],argv[1],&out)==GK213_UNGROUNDED);
++   CHECK(!memcmp(&out,&old,sizeof out));
++   CHECK(gk1_app_observed_first_spring_boundary(preserved,argv[2],"/invalid/fresh/source",&out)==GK213_UNGROUNDED);
++   CHECK(!memcmp(&out,&old,sizeof out));
++   free(preserved);free(app);
++  }
++  Gk211Report forged=tr;forged.stage[13].orders=2;
++  CHECK(gk213_check_observed_mongol_boundary(&in,&forged,&out)==GK213_UNGROUNDED);
++  CHECK(!memcmp(&out,&old,sizeof out));
++ }
++ printf("GK213 first-Spring source-bounded food/tax/pay arithmetic checks: %u PASS; generalized startup NOT implemented\n",n);
++ return 0;
++}
