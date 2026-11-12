@@ -47,13 +47,17 @@ jobs:
           python 'gk1-integrated-source/execution_199/packaging/test_gk228_windows_contract.py' 'build-gk1-win32/Release/gk228_win32_smoke.exe' 'build-gk1-win32/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'
           if ($LASTEXITCODE -ne 0) { throw 'Native Win32 hostile source tests failed' }
       - name: Execute actual 1280x720 WinMain WM_PAINT bounded graphics (no hardware claims)
+        id: native_gui
+        continue-on-error: true
         shell: pwsh
         run: |
           $exe = (Resolve-Path 'build-gk1-win32/Release/gk1_native_shell.exe').Path
           $p = Start-Process -FilePath $exe -ArgumentList '--smoke-frames=3' -PassThru
-          if (-not $p.WaitForExit(120000)) {
+          if (-not $p.WaitForExit(20000)) {
+            $p.Refresh()
+            Write-Host "Bounded WinMain diagnostic: PID=$($p.Id) HWND=$($p.MainWindowHandle) CPU=$($p.TotalProcessorTime) RAM=$($p.WorkingSet64)"
             try { $p.Kill() } catch {}
-            throw 'Native WinMain 3-frame GUI paint run timed out'
+            throw 'Native WinMain 3-frame GUI paint timed out; verify hosted runner GUI desktop / startup path'
           }
           if ($p.ExitCode -ne 0) { throw "Native WinMain GUI paint run failed: $($p.ExitCode)" }
           Write-Host 'Verified actual native WinMain real window geometry and 3+ WM_PAINT calls, software-only XInput polling'
@@ -73,12 +77,28 @@ jobs:
           if (-not (Test-Path (Join-Path $target 'gk1_native_shell.exe'))) { throw 'Installed WinMain game missing' }
           if (-not (Test-Path (Join-Path $target 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'))) { throw 'Installed source CSV missing' }
           $installedExe = Join-Path $target 'gk1_native_shell.exe'
-          $p2 = Start-Process -FilePath $installedExe -ArgumentList '--smoke-frames=3' -PassThru
-          if (-not $p2.WaitForExit(120000)) {
-            try { $p2.Kill() } catch {}
-            throw 'NSIS-installed WinMain GUI paint run timed out'
-          }
-          if ($p2.ExitCode -ne 0) { throw "NSIS-installed WinMain GUI paint run failed: $($p2.ExitCode)" }
           Get-FileHash $installedExe -Algorithm SHA256
           Write-Host 'Win32 candidate packaged/extracted. Original first Spring, physical Xbox and full campaign NOT certified.'
+      - name: NSIS-installed WinMain GUI acceptance (only after built GUI passes)
+        if: steps.native_gui.outcome == 'success'
+        id: installed_gui
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          $exe = Join-Path $env:RUNNER_TEMP 'GK1ResearchInstall/gk1_native_shell.exe'
+          if (-not (Test-Path $exe)) { throw 'NSIS installed binary missing' }
+          $p = Start-Process -FilePath $exe -ArgumentList '--smoke-frames=3' -PassThru
+          if (-not $p.WaitForExit(20000)) {
+            $p.Refresh()
+            Write-Host "Installed WinMain diagnostic: PID=$($p.Id) HWND=$($p.MainWindowHandle) CPU=$($p.TotalProcessorTime)"
+            try { $p.Kill() } catch {}
+            throw 'NSIS-installed WinMain 3-frame GUI paint timed out'
+          }
+          if ($p.ExitCode -ne 0) { throw "Installed WinMain paint failed: $($p.ExitCode)" }
+      - name: Enforce fail-closed Windows graphical acceptance
+        if: always()
+        shell: pwsh
+        run: |
+          if ('${{ steps.native_gui.outcome }}' -ne 'success') { throw 'Native GUI smoke failed: not Windows gameplay accepted' }
+          if ('${{ steps.installed_gui.outcome }}' -ne 'success') { throw 'Installed GUI smoke failed: not Windows gameplay accepted' }
       # No workflow artifact uploads: known GitHub Actions storage pressure.
