@@ -1,0 +1,245 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+index 46ccb1f..bd754f6 100644
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -987,3 +987,8 @@ add_test(NAME GK1_205_BoundedStockCPUSelectorWriteTelemetry COMMAND test_gk205_s
+ add_executable(test_gk206_rng_source_parity test_gk206_rng_source_parity.c)
+ target_link_libraries(test_gk206_rng_source_parity PRIVATE gk1_app_state)
+ add_test(NAME GK1_206_StockRng6502CoefficientParityFailClosed COMMAND test_gk206_rng_source_parity)
++
++# EXEC0207: source-executed seed RAM write provenance, not original Mesen runtime.
++add_executable(test_gk207_seed_write_watch test_gk207_seed_write_watch.c)
++target_link_libraries(test_gk207_seed_write_watch PRIVATE gk1_app_state)
++add_test(NAME GK1_207_Bounded6502SourceCompletedSeedWriteProvenance COMMAND test_gk207_seed_write_watch)
+diff --git a/execution_199/gk1_native_shell.c b/execution_199/gk1_native_shell.c
+index 53dcd1a..79cab99 100644
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -5,6 +5,7 @@
+  */
+ #define _POSIX_C_SOURCE 200809L
+ #include "gk174_setup_boundary.h"
++#include "gk91_reset_zero.h"
+ #include "gk206_rng_source_parity.h"
+ #include "gk185_stock_hotkey.h"
+ #include "gk80_full_checkpoint.h"
+@@ -3088,6 +3089,33 @@ if(argc==3 && strcmp(argv[1],"--pre-setup-pad-smoke")==0){
+  else if(argc==5&&strcmp(argv[1],"--smoke-original-mss")==0){
+   smoke=atoi(argv[4]);if(smoke<1||smoke>120)return 4;
+  }
++ else if(argc==3&&strcmp(argv[1],"--audit-stock-seed-writes")==0){
++  Gk83Trace unknown={0},zero={0};
++  Gk83Stop strict=gk83_trace_original_reset(argv[2],20000u,&unknown);
++  Gk83Stop mesen=gk91_trace_reset_mesen_allzeros(argv[2],20000u,&zero);
++  if(strict==GK83_INVALID||strict==GK83_SOURCE_REFUSED||
++     mesen==GK83_INVALID||mesen==GK83_SOURCE_REFUSED){
++   fputs("GK207 refused unauthenticated original stock ROM or trace failure\n",stderr);
++   return 8;
++  }
++  const Gk83Trace *trace[2]={&unknown,&zero};
++  const Gk83Stop stop[2]={strict,mesen};
++  const char *labels[2]={"UNKNOWN_RAM_POWER_ON","DOCUMENTED_MESEN_ALLZEROS_MODE"};
++  for(unsigned k=0;k<2;k++){
++   const Gk207SeedWatch *w=&trace[k]->source_seed_writes;
++   printf("SOURCE_BOUNDED profile=%s gate=%u pc=$%04X completed_instructions=%u completed_seed_stores=%u written_mask=%02X full_seed_written=%d\n",
++       labels[k],(unsigned)stop[k],trace[k]->stop_pc,trace[k]->instructions,
++       w->completed_writes,w->written_mask,gk207_source_written_complete(w));
++   for(unsigned i=0;i<w->completed_writes&&i<GK207_MAX_STORED_EVENTS;i++){
++    const Gk207SeedEvent *e=&w->first[i];
++    printf("  source pc=$%04X ram=$%04X byte_index=%u value=$%02X cycle=%llu mapper=%s\n",
++      e->pc,e->cpu_address,e->byte_index,e->value,
++      (unsigned long long)e->cpu_cycle,e->bank_known?"known":"unknown");
++   }
++  }
++  puts("NOT STOCK MESEN EXECUTION: source-CPU bounded write provenance only. Unknown seed bytes remain UNKNOWN. Original first Spring is NOT generated.");
++  return 0;
++ }
+  else if(argc==3&&strcmp(argv[1],"--audit-stock-selector-runtime")==0){
+   Gk83Trace t={0};
+   Gk83Stop status=gk83_trace_original_reset(argv[2],20000u,&t);
+diff --git a/execution_199/gk207_seed_write_watch.c b/execution_199/gk207_seed_write_watch.c
+new file mode 100644
+index 0000000..82d716c
+--- /dev/null
++++ b/execution_199/gk207_seed_write_watch.c
+@@ -0,0 +1,27 @@
++#include "gk207_seed_write_watch.h"
++#include <limits.h>
++Gk207Status gk207_note_completed_seed_store(Gk207SeedWatch *watch,
++ uint16_t pc,uint16_t address,uint8_t value,
++ uint8_t bank_known,uint8_t bank,uint64_t cycle){
++ if(!watch||pc<0x8000u||bank_known>1u||bank>15u||!cycle)
++  return GK207_INVALID;
++ if(address>=0x2000u || (address&0x07ffu)<0x0084u ||
++    (address&0x07ffu)>0x0089u)return GK207_OUTSIDE;
++ if(watch->completed_writes==UINT32_MAX ||
++    (watch->completed_writes>=GK207_MAX_STORED_EVENTS &&
++     watch->dropped_details==UINT32_MAX))return GK207_INVALID;
++ const uint8_t index=(uint8_t)((address&0x07ffu)-0x84u);
++ const Gk207SeedEvent event={pc,address,index,value,bank_known,
++                             bank_known?bank:0xffu,cycle};
++ if(watch->completed_writes<GK207_MAX_STORED_EVENTS)
++  watch->first[watch->completed_writes]=event;
++ else watch->dropped_details++;
++ watch->completed_writes++;
++ watch->latest_written[index]=value;
++ watch->written_mask=(uint8_t)(watch->written_mask|(1u<<index));
++ watch->last=event;
++ return GK207_RECORDED;
++}
++int gk207_source_written_complete(const Gk207SeedWatch *w){
++ return w && w->written_mask==GK207_FULL_SIX_WRITES;
++}
+diff --git a/execution_199/gk207_seed_write_watch.h b/execution_199/gk207_seed_write_watch.h
+new file mode 100644
+index 0000000..f8bd677
+--- /dev/null
++++ b/execution_199/gk207_seed_write_watch.h
+@@ -0,0 +1,28 @@
++#ifndef GK207_SEED_WRITE_WATCH_H
++#define GK207_SEED_WRITE_WATCH_H
++#include <stdint.h>
++/* Execution of actual decoded 6502 RAM stores by the guarded interpreter;
++ * not a static ROM-pattern search and NOT live Mesen gameplay. Only writes
++ * witnessed after reset count. Unknown power-on bytes never become a seed. */
++#define GK207_MAX_STORED_EVENTS 32u
++#define GK207_FULL_SIX_WRITES UINT8_C(0x3f)
++typedef enum {GK207_INVALID=0,GK207_OUTSIDE=1,GK207_RECORDED=2} Gk207Status;
++typedef struct {
++ uint16_t pc, cpu_address;
++ uint8_t byte_index, value, bank_known, bank;
++ uint64_t cpu_cycle;
++} Gk207SeedEvent;
++typedef struct {
++ uint32_t completed_writes, dropped_details;
++ uint8_t written_mask; /* 1 bit per $0084..$0089, NEVER inferred from power-on */
++ uint8_t latest_written[6]; /* only valid where corresponding mask bit set */
++ Gk207SeedEvent first[GK207_MAX_STORED_EVENTS],last;
++} Gk207SeedWatch;
++/* Reject bad arguments/overflow atomically. All internal RAM mirrors accepted.
++ * RAM stores at $0084..$0089 only; PPU, mapper, PRG-RAM stores never alias.
++ * Caller provides CPU-executed instruction PC and final STORE bus cycle. */
++Gk207Status gk207_note_completed_seed_store(Gk207SeedWatch *watch,
++ uint16_t source_pc,uint16_t cpu_address,uint8_t value,
++ uint8_t bank_known,uint8_t bank,uint64_t final_cpu_cycle);
++int gk207_source_written_complete(const Gk207SeedWatch *watch);
++#endif
+diff --git a/execution_199/gk83_reset_trace.c b/execution_199/gk83_reset_trace.c
+index c7f0916..e98f3d4 100644
+--- a/execution_199/gk83_reset_trace.c
++++ b/execution_199/gk83_reset_trace.c
+@@ -343,6 +343,10 @@ static void write_byte(Machine *m,uint16_t addr,uint8_t v){
+   if(at==0x50u)(void)gk205_note_completed_selector_store(
+    &m->result.selector_runtime,m->result.stop_pc,addr,v,
+    m->prg_known,m->prg,m->write_end_cycle);
++  if(at>=0x84u && at<=0x89u)
++   (void)gk207_note_completed_seed_store(
++    &m->result.source_seed_writes,m->result.stop_pc,addr,v,
++    m->prg_known,m->prg,m->write_end_cycle);
+   if(at==0x00f5u){m->result.source_f5_writes++;
+    m->result.source_f5_last_writer_pc=m->result.stop_pc;}
+  }else if(addr>=0x6000u && addr<0x8000u){
+diff --git a/execution_199/gk83_reset_trace.h b/execution_199/gk83_reset_trace.h
+index b5fe68a..d76e674 100644
+--- a/execution_199/gk83_reset_trace.h
++++ b/execution_199/gk83_reset_trace.h
+@@ -3,6 +3,7 @@
+ #include <stdint.h>
+ #include "gk153_country_write_watch.h"
+ #include "gk205_selector_runtime_watch.h"
++#include "gk207_seed_write_watch.h"
+ #include "gk173_rng_control.h"
+ /* Exact, private STOCK ROM 6502 reset-source trace. Only executes instructions
+  * while every RAM read is initialized by the trace and every PRG-bank mapping
+@@ -29,6 +30,7 @@ typedef struct {
+  Gk173RngControl executed_rng_transfers;
+  Gk153CountryWatch country_writes; /* only source-executed, successful PRG-RAM writes */
+  Gk205SelectorWatch selector_runtime; /* bounded CPU completed stores, BRK is a GATE */
++ Gk207SeedWatch source_seed_writes; /* completed CPU stores only, NOT a power-on seed */
+  uint16_t first_jsr,first_banked_pc;
+  /* EXEC0126: first actual ROM-sourced write requiring peripheral behavior
+   * absent from the bounded CPU interpreter; the attempt is NOT completed. */
+diff --git a/execution_199/test_gk207_seed_write_watch.c b/execution_199/test_gk207_seed_write_watch.c
+new file mode 100644
+index 0000000..b56e9b5
+--- /dev/null
++++ b/execution_199/test_gk207_seed_write_watch.c
+@@ -0,0 +1,69 @@
++#include "gk207_seed_write_watch.h"
++#include "gk83_reset_trace.h"
++#include "gk91_reset_zero.h"
++#include <assert.h>
++#include <stdint.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++static unsigned checks;
++#define CHECK(x) do{if(!(x)){fprintf(stderr,"FAIL line %d: %s\n",__LINE__,#x);exit(8);}checks++;}while(0)
++static void observer_controls(void){
++ Gk207SeedWatch w={0}, old;
++ CHECK(!gk207_source_written_complete(&w));
++ CHECK(gk207_note_completed_seed_store(&w,0xc101,0x83,42,1,15,10)==GK207_OUTSIDE);
++ CHECK(gk207_note_completed_seed_store(&w,0xc101,0x8a,42,1,15,10)==GK207_OUTSIDE);
++ CHECK(gk207_note_completed_seed_store(&w,0xc101,0x2084,42,1,15,10)==GK207_OUTSIDE);
++ CHECK(gk207_note_completed_seed_store(&w,0xc101,0x6084,42,1,15,10)==GK207_OUTSIDE);
++ CHECK(w.completed_writes==0 && !w.written_mask);
++ for(unsigned i=0;i<6;i++){
++  Gk207Status r=gk207_note_completed_seed_store(&w,0xc100+(uint16_t)i,
++      (uint16_t)(0x1884u+i),(uint8_t)(0x10u+i),1,15,30+i);
++  CHECK(r==GK207_RECORDED);
++  CHECK(w.written_mask==(uint8_t)((1u<<(i+1u))-1u));
++  CHECK(w.first[i].byte_index==i&&w.first[i].cpu_address==0x1884u+i);
++  CHECK(w.first[i].cpu_cycle==30u+i && w.first[i].bank==15u);
++  CHECK(w.latest_written[i]==0x10u+i);
++ }
++ CHECK(gk207_source_written_complete(&w));
++ CHECK(gk207_note_completed_seed_store(&w,0x9000,0x0084,0xaa,0,0,99)==GK207_RECORDED);
++ CHECK(w.latest_written[0]==0xaau && w.first[6].bank==0xffu);
++ CHECK(w.written_mask==GK207_FULL_SIX_WRITES);
++ memcpy(&old,&w,sizeof w);
++ CHECK(gk207_note_completed_seed_store(&w,0x7fff,0x84,0,1,15,100)==GK207_INVALID);
++ CHECK(!memcmp(&w,&old,sizeof w));
++ CHECK(gk207_note_completed_seed_store(&w,0x8000,0x84,0,2,15,100)==GK207_INVALID);
++ CHECK(!memcmp(&w,&old,sizeof w));
++ CHECK(gk207_note_completed_seed_store(&w,0x8000,0x84,0,1,16,100)==GK207_INVALID);
++ CHECK(!memcmp(&w,&old,sizeof w));
++ CHECK(gk207_note_completed_seed_store(&w,0x8000,0x84,0,1,15,0)==GK207_INVALID);
++ CHECK(!memcmp(&w,&old,sizeof w));
++ CHECK(gk207_note_completed_seed_store(NULL,0x8000,0x84,0,1,15,100)==GK207_INVALID);
++ for(unsigned i=7;i<37;i++)
++  CHECK(gk207_note_completed_seed_store(&w,0x9000,0x84,0x11,1,14,100+i)==GK207_RECORDED);
++ CHECK(w.completed_writes==37 && w.dropped_details==5);
++ CHECK(w.first[0].value==0x10 && w.last.value==0x11);
++ w.completed_writes=UINT32_MAX;old=w;
++ CHECK(gk207_note_completed_seed_store(&w,0x9000,0x84,0,1,14,1000)==GK207_INVALID);
++ CHECK(!memcmp(&w,&old,sizeof w));
++}
++static void stock_controls(void){
++ const char *rom=getenv("GK1_ORIGINAL_STOCK_ROM");
++ if(!rom||!*rom){puts("GK207 original ROM not supplied: observer negative controls only");return;}
++ Gk83Trace strict={0},zero={0};
++ Gk83Stop a=gk83_trace_original_reset(rom,20000,&strict);
++ Gk83Stop b=gk91_trace_reset_mesen_allzeros(rom,20000,&zero);
++ CHECK(a==GK83_UNKNOWN_RAM_GATE);
++ CHECK(strict.instructions==70 && strict.stop_pc==0x8060u);
++ CHECK(b==GK83_HARDWARE_GATE);
++ CHECK(zero.instructions==142 && zero.stop_pc==0xc5beu);
++ /* THIS DOES NOT SAY THE GAME NEVER WRITES RNG: only first 70/142
++  * authenticated completed original-source instructions were executed. */
++ CHECK(strict.source_seed_writes.completed_writes==0u);
++ CHECK(zero.source_seed_writes.completed_writes==0u);
++ CHECK(strict.source_seed_writes.written_mask==0u);
++ CHECK(zero.source_seed_writes.written_mask==0u);
++ CHECK(!gk207_source_written_complete(&strict.source_seed_writes));
++ CHECK(!gk207_source_written_complete(&zero.source_seed_writes));
++}
++int main(void){observer_controls();stock_controls();printf("GK207 PASS %u checks; executable source writes only; first Spring NOT generated\n",checks);return 0;}
