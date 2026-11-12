@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""EXEC0231 strict, instrumentation-only overlay for inherited EXEC0230 WinMain."""
+"""EXEC0231 WinMain trace and bounded graphical smoke for small hosted desktops."""
 from pathlib import Path
 import sys
 
@@ -37,6 +37,18 @@ ANCHORS = [
 (
  'poll_xinput();InvalidateRect(hwnd,NULL,FALSE);UpdateWindow(hwnd);\n   Sleep(1);',
  'gk231_trace("before XInput");poll_xinput();gk231_trace("after XInput");\n   InvalidateRect(hwnd,NULL,FALSE);gk231_trace("before frame UpdateWindow");\n   UpdateWindow(hwnd);gk231_trace("after frame UpdateWindow");\n   Sleep(1);'
+),
+(
+ 'RECT r={0,0,WIDTH,HEIGHT};AdjustWindowRect(&r,WS_OVERLAPPEDWINDOW,FALSE);',
+ 'RECT r={0,0,WIDTH,HEIGHT};\n DWORD style=smoke_mode?WS_POPUP:WS_OVERLAPPEDWINDOW;\n if(!smoke_mode)AdjustWindowRect(&r,WS_OVERLAPPEDWINDOW,FALSE);'
+),
+(
+ 'hwnd=CreateWindowA(cl.lpszClassName,"Genghis Khan I - Native Port " GK1_PORT_VERSION,WS_OVERLAPPEDWINDOW,',
+ 'hwnd=CreateWindowA(cl.lpszClassName,"Genghis Khan I - Native Port " GK1_PORT_VERSION,style,'
+),
+(
+ 'CW_USEDEFAULT,CW_USEDEFAULT,r.right-r.left,r.bottom-r.top,NULL,NULL,instance,NULL);',
+ 'smoke_mode?0:CW_USEDEFAULT,smoke_mode?0:CW_USEDEFAULT,\n r.right-r.left,r.bottom-r.top,NULL,NULL,instance,NULL);'
 )
 ]
 
@@ -56,7 +68,7 @@ if __name__=="__main__":
         old=p.read_text(encoding="utf-8")
         new=apply(old)
         p.write_text(new,encoding="utf-8",newline="")
-        print("EXEC0231 opt-in WinMain stage tracing applied (no game-state changes)")
+        print("EXEC0231 WinMain stage trace and 1280x720 popup paint smoke applied (normal window unchanged)")
     except (OSError,ValueError) as exc:
         print("EXEC0231 TRACE REFUSED: "+str(exc),file=sys.stderr)
         raise SystemExit(1)
