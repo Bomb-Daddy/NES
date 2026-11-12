@@ -1,0 +1,256 @@
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -55,7 +55,7 @@
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0193.md README_EXEC0194.md README_EXEC0195.md README_EXEC0196.md README_EXEC0197.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0193.md README_EXEC0194.md README_EXEC0195.md README_EXEC0196.md README_EXEC0197.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md README_EXEC0210.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+   set(CPACK_PACKAGE_VERSION "1.99.0")
+@@ -150,7 +150,7 @@
+           DESTINATION opt/gk1-native-research)
+   install(PROGRAMS packaging/gk1-native-research DESTINATION usr/bin)
+   install(FILES packaging/gk1-native-research.desktop DESTINATION usr/share/applications)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md DESTINATION usr/share/doc/gk1-native-research)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md README_EXEC0210.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+   set(CPACK_PACKAGE_VERSION "1.99.0")
+@@ -1002,3 +1002,8 @@
+ add_executable(test_gk209_archived_rate_ambiguity test_gk209_archived_rate_ambiguity.c)
+ target_link_libraries(test_gk209_archived_rate_ambiguity PRIVATE gk1_app_state)
+ add_test(NAME GK1_209_ArchivedStockRngRateAmbiguity_MustNotInferSpring COMMAND test_gk209_archived_rate_ambiguity)
++
++# EXEC0210: exact-original fresh WorkRAM/nesMemory/save-bank gate.
++add_executable(test_gk210_fresh_bank_provenance test_gk210_fresh_bank_provenance.c)
++target_link_libraries(test_gk210_fresh_bank_provenance PRIVATE gk1_app_state)
++add_test(NAME GK1_210_FreshOriginalMemoryBankProvenanceAndRollback COMMAND test_gk210_fresh_bank_provenance)
+--- a/execution_199/gk165_fresh_json.c
++++ b/execution_199/gk165_fresh_json.c
+@@ -68,9 +68,22 @@
+  const char *end=text+n,*w0=NULL,*w1=NULL,*s0=NULL,*s1=NULL;
+  unsigned year=0,rate=0,gold=0,orders=0,countries=0,save_countries=1;
+  unsigned food=0,troops=0;
++ /* EXEC0210: the original capture script incorrectly populated its root
++  * display fields from SaveRAM even though fresh reset stores the live
++  * original country records in WorkRAM. Trust *neither* root aliases nor
++  * a single WorkRAM view without cross-checking the CPU-mapped address
++  * view and the distinct blank SaveRAM view. The known erroneous root
++  * zeroes are permitted only as one complete legacy display mode. */
++ const char *m0=NULL,*m1=NULL,*cpu0=NULL,*cpu1=NULL;
++ static const char *keys[]={"\"year\"","\"rate\"","\"gold\"",
++   "\"food\"","\"troops\"","\"orders\"","\"country_count\""};
++ unsigned mapped=0,work=0,saved=0;
++ unsigned root_year=0,root_rate=0,root_gold=0,root_orders=0,root_countries=0;
+  Gk165Status result=GK165_FORMAT;
+  if(!key_object(text,end,"\"nesWorkRam\"",&w0,&w1)||
+     !key_object(text,end,"\"nesSaveRam\"",&s0,&s1)||
++    !key_object(text,end,"\"nesMemory\"",&m0,&m1)||
++    !key_object(text,end,"\"cpu\"",&cpu0,&cpu1)||
+     !number(w0,w1,"\"year\"",&year)||
+     !number(w0,w1,"\"rate\"",&rate)||
+     !number(w0,w1,"\"gold\"",&gold)||
+@@ -79,6 +92,26 @@
+     !number(w0,w1,"\"orders\"",&orders)||
+     !number(w0,w1,"\"country_count\"",&countries)||
+     !number(s0,s1,"\"country_count\"",&save_countries))goto done;
++ for(size_t i=0;i<sizeof keys/sizeof keys[0];i++){
++  if(!number(m0,m1,keys[i],&mapped)||
++     !number(w0,w1,keys[i],&work)||
++     !number(s0,s1,keys[i],&saved))goto done;
++  if(mapped!=work || saved!=0u){result=GK165_PROFILE;goto done;}
++ }
++ if(!number(cpu1,end,"\"year\"",&root_year)||
++    !number(cpu1,end,"\"rate\"",&root_rate)||
++    !number(cpu1,end,"\"gold\"",&root_gold)||
++    !number(cpu1,end,"\"orders\"",&root_orders)||
++    !number(cpu1,end,"\"countries\"",&root_countries))goto done;
++ /* The legacy original probe read those five labels from the wrong bank;
++  * their zeros are NOT evidence of an empty Spring. A corrected reader
++  * must instead report all five authentic WorkRAM values as a group. */
++ if(!((root_year==0u && root_rate==0u && root_gold==0u &&
++       root_orders==0u && root_countries==0u)||
++      (root_year==year && root_rate==rate && root_gold==gold &&
++       root_orders==orders && root_countries==countries))){
++   result=GK165_PROFILE;goto done;
++ }
+  /* Receipt-specific checks: these values belong ONLY to the named owner
+   * Mesen fresh observation, NOT a universally hardcoded initial Spring. */
+  if(year!=1175u||rate!=121u||gold!=430u||food!=208u||
+--- /dev/null
++++ b/execution_199/test_gk210_fresh_bank_provenance.c
+@@ -0,0 +1,110 @@
++#ifndef _WIN32
++#define _POSIX_C_SOURCE 200809L
++#endif
++#include "gk165_fresh_json.h"
++#include "gk1_source_identity.h"
++#include "gk77_stock_spring.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <stdint.h>
++#ifndef _WIN32
++#include <unistd.h>
++#endif
++#define CHECK(x) do {if(!(x)){fprintf(stderr,"GK210 check %u failed: %s\n",__LINE__,#x);return 1;}++checks;}while(0)
++static unsigned checks;
++/* Only tests source-file membership and metadata. Never embeds the original
++ * 83-byte licensed country records in the source or public QA artifacts. */
++static char *read_text(const char *path,size_t *n){
++ FILE *f=fopen(path,"rb");if(!f)return NULL;
++ if(fseek(f,0,SEEK_END)!=0){fclose(f);return NULL;}
++ long l=ftell(f);if(l<1||l>100000){fclose(f);return NULL;}
++ if(fseek(f,0,SEEK_SET)!=0){fclose(f);return NULL;}
++ char *b=malloc((size_t)l+1u);
++ if(!b){fclose(f);return NULL;}
++ if(fread(b,1,(size_t)l,f)!=(size_t)l||fclose(f)!=0){free(b);return NULL;}
++ b[l]=0;*n=(size_t)l;return b;
++}
++/* A replacement MUST be confined to an exact named object. For the original
++ * root aliases, use the unique tail after the flat CPU register object. */
++static int patch_digit(char *b,const char *scope,const char *key,char old,char newer){
++ char *p=strstr(b,scope);if(!p)return 0;
++ p=strstr(p,key);if(!p)return 0;
++ p=strchr(p,':');if(!p)return 0;
++ p++;while(*p==' '||*p=='\t')p++;
++ if(*p!=old)return 0;
++ *p=newer;return 1;
++}
++static int probe(const char *source,const char *scope,const char *key,
++ char old,char newer,Gk165Status expected){
++ size_t n;char *b=read_text(source,&n);if(!b)return 0;
++ if(!patch_digit(b,scope,key,old,newer)){free(b);return 0;}
++ #ifdef _WIN32
++ char tmp[L_tmpnam];
++#endif
++#ifndef _WIN32
++ char name[]="/tmp/gk210_fresh_bank_XXXXXX";
++ int fd=mkstemp(name);if(fd<0){free(b);return 0;}
++ FILE *f=fdopen(fd,"wb");if(!f){close(fd);remove(name);free(b);return 0;}
++#else
++ if(tmpnam_s(tmp,sizeof tmp)!=0){free(b);return 0;}
++ FILE *f=fopen(tmp,"wbx");if(!f){free(b);return 0;}
++#endif
++ int ok=fwrite(b,1,n,f)==n&&fclose(f)==0;
++ free(b);
++ if(!ok){
++#ifndef _WIN32
++  remove(name);
++#else
++  remove(tmp);
++#endif
++  return 0;
++ }
++ uint8_t out[GK165_FRESH_SIZE],baseline[GK165_FRESH_SIZE];
++ memset(out,0xa6,sizeof out);memcpy(baseline,out,sizeof out);
++#ifndef _WIN32
++ Gk165Status r=gk165_extract_fresh_json(name,out);remove(name);
++#else
++ Gk165Status r=gk165_extract_fresh_json(tmp,out);remove(tmp);
++#endif
++ return r==expected && (r==GK165_OK || memcmp(out,baseline,sizeof out)==0);
++}
++int main(int argc,char **argv){
++ uint8_t out[GK165_FRESH_SIZE],before[GK165_FRESH_SIZE];
++ memset(out,0xa6,sizeof out);memcpy(before,out,sizeof out);
++ CHECK(gk165_extract_fresh_json(NULL,out)==GK165_ARGUMENT);
++ CHECK(gk165_extract_fresh_json("/GK210/missing",out)==GK165_IO);
++ CHECK(memcmp(out,before,sizeof out)==0);
++ if(argc==2 || argc==3){
++  const char *p=argv[1];
++  CHECK(gk165_extract_fresh_json(p,out)==GK165_OK);
++  uint8_t sha[32];gk1_sha256_bytes(out,sizeof out,sha);
++  CHECK(gk77_known_source_digest(GK77_FRESH_MONGOL_WORKRAM,sha));
++  Gk77Country first;CHECK(gk77_decode(out,83u,&first)==GK77_OK);
++  CHECK(first.gold==430u&&first.food==208u&&first.troops==61u);
++  /* Same valid signed country array, but inconsistent CPU mapping: rejected. */
++  CHECK(probe(p,"\"nesMemory\"","\"gold\"",'4','5',GK165_PROFILE));
++  CHECK(probe(p,"\"nesMemory\"","\"rate\"",'1','2',GK165_PROFILE));
++  /* SaveRAM is empty in this original fresh capture, never a stock save. */
++  CHECK(probe(p,"\"nesSaveRam\"","\"gold\"",'0','1',GK165_PROFILE));
++  CHECK(probe(p,"\"nesSaveRam\"","\"food\"",'0','1',GK165_PROFILE));
++  CHECK(probe(p,"\"nesSaveRam\"","\"orders\"",'0','1',GK165_PROFILE));
++  CHECK(probe(p,"\"nesSaveRam\"","\"country_count\"",'0','1',GK165_PROFILE));
++  /* Legacy probe's root aliases are all zero because it read the wrong
++   * bank. A mixed root display is corruption, NOT an empty original spring. */
++  CHECK(probe(p,"\"cpu\"","\"gold\"",'0','1',GK165_PROFILE));
++  CHECK(probe(p,"\"cpu\"","\"year\"",'0','1',GK165_PROFILE));
++  CHECK(probe(p,"\"cpu\"","\"countries\"",'0','1',GK165_PROFILE));
++  /* The authentic WorkRAM receipt is pinned and is not universal. */
++  CHECK(probe(p,"\"nesWorkRam\"","\"rate\"",'1','2',GK165_PROFILE));
++  if(argc==3){
++   memset(out,0xa6,sizeof out);
++   CHECK(gk165_extract_fresh_json(argv[2],out)==GK165_OK);
++   gk1_sha256_bytes(out,sizeof out,sha);
++   CHECK(gk77_known_source_digest(GK77_FRESH_MONGOL_WORKRAM,sha));
++  }
++  puts("GK210 authentic fresh WorkRAM/CPU mapping and blank SaveRAM negative-bank controls PASS");
++ }else CHECK(argc==1);
++ printf("GK210 %u assertions PASS; private original fresh source %s\n",checks,argc>=2?"TESTED":"NOT SUPPLIED");
++ return 0;
++}
+--- /dev/null
++++ b/execution_199/README_EXEC0210.md
+@@ -0,0 +1,59 @@
++# GK1 EXEC0210 — Original fresh Mesen WorkRAM bank provenance admission
++
++Predecessor: complete and unchanged EXEC0209 C11 game. This changes the existing
++`gk165_extract_fresh_json` admission path invoked by the real native game via
++`gk166_enter_original_fresh_json`, not a separate game. Existing original stock
++Classic and approved Enhanced states, 14/27-country templates, researched
++controller orders, persistence, prices, battle and sound modules remain intact.
++
++## Actual identified bug and correction
++
++The original archived fresh NES reset was captured with real first Spring 1175
++country state in physical `nesWorkRam` offset `0x0DCD`. The original helper's
++root `year/gold/rate/orders/countries` aliases read **nesSaveRam**, which was
++blank on that fresh reset, displaying zeros. The CPU-visible `nesMemory` view
++and named `nesWorkRam` view correctly showed 1175, Gold430, Rate121, Food208,
++Troops61, three orders and 14 countries. The valid original archived restored
++checkpoints instead have live data in `nesSaveRam`, not `nesWorkRam`. The wrong
++bank's zeros do not mean no real first Spring existed.
++
++Before EXEC0210, `gk165` pinned a verified 14×83 WorkRAM SHA but did not verify
++that other representations of the same original first Spring remained coherent.
++A forged `nesMemory` Gold or false nonempty `nesSaveRam` could accompany an
++unchanged signed country record and still be admitted. EXEC0210 now compares
++seven fields between the CPU-visible `nesMemory` and authentic `nesWorkRam`,
++and requires all seven SaveRAM fields zero, for this **one pinned fresh-reset
++capture**. It accepts the legacy capture's *all-zero* five root aliases **only
++as a known capture-script defect**, or a corrected five-field root matching
++WorkRAM. Mixed aliases are refused. All refusal paths preserve caller output,
++and the exact authenticated 14×83 WorkRAM digest remains mandatory.
++
++## Reproducibility
++
++```sh
++cmake -S execution_199 -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
++cmake --build build -j8
++ctest --test-dir build -j8 --output-on-failure
++# Private original source receipt must be provided separately:
++./build/test_gk210_fresh_bank_provenance PRIVATE_fresh_14_after_wait.json PRIVATE_corrected_fresh_14.json
++./build/test_gk165_fresh_json PRIVATE_fresh_14_after_wait.json
++```
++
++The private `fresh_14_after_wait.json` and corrected private copy are NOT
++public artifacts. Standalone public CTest tests only argument/failure gates,
++while the private data assertion suite proves historical evidence admits and
++rejects deliberately mismatched bank views. Rest of CTest remains unchanged.
++
++## Evidence classifications and remaining work
++
++- **VERIFIED_STATIC:** Exact original USA ROM SHA256 `ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3` and private first-Spring evidence ZIP SHA256 `8b757e11b12aeb3efe93e36c10628599ca5f12e91b15c02354cd3ebbd11bf52a`. The new code itself contains NO ROM, SRAM, raw original 83-byte country records, screenshots, states or licensed assets.
++- **OBSERVED_RUNTIME_STOCK_FRESH_RESET:** Previously captured actual Spring1175 WorkRAM stage14 from original Mesen; not a new emulator execution.
++- **OBSERVED_RUNTIME_STOCK_ARCHIVED_RESTORED:** Prior SaveRAM Mongol1175/World1206 distinct history preserved; not retested here.
++- **TESTED_PORT_LINUX:** Existing full native C11 app successfully built and new negative bank checks exercised against original private receipt. Linux software/controller tests are not physical Xbox acceptance.
++- **NOT RUN:** New Mesen runtime, native Win32/NSIS, physical Xbox controller, complete campaign.
++
++**Critical limit:** EXEC0210 makes one original first-Spring source import
++harder to misrepresent, but does NOT generate arbitrary authentic Spring RNG,
++character/difficulty setup, merchant presence, AI, diplomacy, dynasty, battle
++aftermath, original sounds/graphics or both complete campaigns. The original
++Gold430/Rate121 observed result is one history, not a universal constant.
