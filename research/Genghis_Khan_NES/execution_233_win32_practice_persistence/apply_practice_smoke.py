@@ -56,6 +56,13 @@ CHANGES = [
      if(font)DeleteObject(font);return 9;
     }
     pad_actions(&decoded);
+    char gk233_diag[320];
+    snprintf(gk233_diag,sizeof gk233_diag,
+      "EXEC0233 mode=%d frame=%u screen=%u stage=%u actions=%u remaining=%u status=%.150s",
+      gk233_practice_mode,(unsigned)frame,(unsigned)app.screen,
+      (unsigned)app.setup_stage[0],(unsigned)app.port_spring.actions_committed,
+      (unsigned)app.port_spring.remaining,app.status);
+    gk231_trace(gk233_diag);
     int valid=1;
     if(gk233_practice_mode==1){
      if(frame==7u)valid=app.screen==GK1_SCREEN_SETUP_WIZARD;
