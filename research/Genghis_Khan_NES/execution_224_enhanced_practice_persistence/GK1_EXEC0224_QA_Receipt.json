@@ -1,0 +1,42 @@
+{
+  "execution": "EXEC0224",
+  "date": "2026-11-12",
+  "source_predecessor": "EXEC0223",
+  "predecessor_zip_sha256": "163112f847d961b009f283f3059543519c2dd059b07dbc006d5e6c66316e589b",
+  "original_source_members_preserved": 861,
+  "source_changed_existing_paths": 2,
+  "new_source_paths": 5,
+  "new_document_members": 4,
+  "archive_members": 870,
+  "independent_GNU_patch_strict_replay_paths": "7/7 SHA256 exact",
+  "build_qa": {
+    "release": "192/192 CTest PASS",
+    "debug": "192/192 CTest PASS",
+    "independent_clean_zip_release": "192/192 CTest PASS",
+    "asan_ubsan": "new source and tests instrumented under clang, inherited lib static noninstrumented, PASS",
+    "linux_xvfb_controller": "1280x720 X save Y load and refuse overwrite PASS",
+    "debian_extracted_controller": "1280x720 X save Y load and refuse overwrite PASS"
+  },
+  "stock_original": {
+    "fresh_workram": "earlier evidence preserved, not rerun",
+    "archived_saveram": "earlier evidence preserved, not rerun",
+    "current_stock_mesen_execution": "NOT RUN"
+  },
+  "unverified": [
+    "native Win32",
+    "NSIS",
+    "physical Xbox",
+    "complete campaigns",
+    "original 14/27 first playable Spring"
+  ],
+  "original_rom_in_public": "no",
+  "authentic_first_spring_implemented": false,
+  "core_artifacts_sha256": {
+    "GK1_EXEC0224_Cumulative_Master_v3.78.md": "f4d6a85c26ef6673c47451bfddae0fdebe9e0b0df735dbc4ea11d8e6a6c11b87",
+    "GK1_EXEC0224_CANDIDATE_LinuxResearch_1.99.0-dev1_amd64.deb": "0a78e2d32a1a758667db92c80cca407799208d068774bf336446ab530e6ab09b",
+    "GK1_EXEC0224_CopyrightClean_Integration.patch": "faec215fcb08d2fe78d0228f312ec13bdc6808a4c1a01f1fd2db05ef3216d686",
+    "GK1_EXEC0224_Complete_Integrated_C11_Source_QA.zip": "78fd9188b2cfd36645583507f0dee45a8e5320a11332bf7c8216dd58f122a363",
+    "GK1_EXEC0224_Completion_Ledger_v1.00.md": "685cf471a0dcbd968b7ae5894ffbde886af4e2e2b1e7a55832c1aa939f62fdad",
+    "GK1_EXEC0224_Implementer_HostileQA_Handoff.md": "be3d82af6ad72076c7a9a5e2d0e8d58701533a3472d9e595f0033da007e7d044"
+  }
+}
