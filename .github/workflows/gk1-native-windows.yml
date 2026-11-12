@@ -1,0 +1,55 @@
+name: GK1 actual native Windows C11 build and NSIS candidate
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/gk1-native-windows.yml'
+      - 'research/Genghis_Khan_NES/execution_229_windows_ci_bundle/**'
+permissions:
+  contents: read
+jobs:
+  native-win32:
+    runs-on: windows-2022
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and hydrate COMPLETE inherited source (EXEC0228)
+        shell: pwsh
+        run: |
+          $root = 'research/Genghis_Khan_NES/execution_229_windows_ci_bundle'
+          python "$root/test_hydrate_verified_bundle.py"
+          python "$root/hydrate_verified_bundle.py" --parts "$root/parts" --manifest "$root/manifest.json" --dest 'gk1-integrated-source'
+          if ($LASTEXITCODE -ne 0) { throw 'Source verification failed' }
+          if (-not (Test-Path 'gk1-integrated-source/execution_199/gk1_native_shell.c')) { throw 'Integrated native source missing' }
+      - name: Build the actual 1280x720 native WinMain and XInput game
+        shell: pwsh
+        run: |
+          cmake -S 'gk1-integrated-source/execution_199' -B 'build-gk1-win32' -G 'Visual Studio 17 2022' -A x64
+          if ($LASTEXITCODE -ne 0) { throw 'Configure failed' }
+          cmake --build 'build-gk1-win32' --config Release --parallel 4
+          if ($LASTEXITCODE -ne 0) { throw 'Native Win32 compile failed' }
+      - name: Execute actual Win32 source/XInput and hostile controls
+        shell: pwsh
+        run: |
+          ctest --test-dir 'build-gk1-win32' -C Release --output-on-failure -R 'GK1_228_|GK1_099_|GK1_062_'
+          if ($LASTEXITCODE -ne 0) { throw 'Native Win32 smoke tests failed' }
+          python 'gk1-integrated-source/execution_199/packaging/test_gk228_windows_contract.py' 'build-gk1-win32/Release/gk228_win32_smoke.exe' 'build-gk1-win32/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'
+          if ($LASTEXITCODE -ne 0) { throw 'Native Win32 hostile source tests failed' }
+      - name: Build and extract real NSIS research installer
+        shell: pwsh
+        run: |
+          choco install nsis --no-progress --yes
+          if ($LASTEXITCODE -ne 0) { throw 'NSIS install failed' }
+          $env:PATH += ';C:\Program Files (x86)\NSIS'
+          cpack --config 'build-gk1-win32/CPackConfig.cmake' -G NSIS -C Release -B 'build-gk1-win32/out'
+          if ($LASTEXITCODE -ne 0) { throw 'NSIS packaging failed' }
+          $setup = Get-ChildItem 'build-gk1-win32/out' -Filter '*.exe' | Select-Object -First 1
+          if (-not $setup) { throw 'No Windows setup EXE' }
+          $target = Join-Path $env:RUNNER_TEMP 'GK1ResearchInstall'
+          $p = Start-Process -FilePath $setup.FullName -ArgumentList @('/S', "/D=$target") -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "NSIS exited $($p.ExitCode)" }
+          if (-not (Test-Path (Join-Path $target 'gk1_native_shell.exe'))) { throw 'Installed WinMain game missing' }
+          if (-not (Test-Path (Join-Path $target 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'))) { throw 'Installed source CSV missing' }
+          Get-FileHash (Join-Path $target 'gk1_native_shell.exe') -Algorithm SHA256
+          Write-Host 'Win32 candidate packaged/extracted. Original first Spring, physical Xbox and full campaign NOT certified.'
+      # No workflow artifact uploads: known GitHub Actions storage pressure.
