@@ -25,13 +25,18 @@ jobs:
           python "$root/apply_win32_portability.py" 'gk1-integrated-source'
           if ($LASTEXITCODE -ne 0) { throw 'Win32 source compatibility patch refused' }
           if (-not (Test-Path 'gk1-integrated-source/execution_199/gk1_native_shell.c')) { throw 'Integrated native source missing' }
-          # Git apply from a child of a checkout can silently SKIP all patch paths.
-          # Apply from repository ROOT with an explicit verified hydrated-tree prefix.
-          $patch = 'research/Genghis_Khan_NES/execution_230_win32_gui_smoke/GK1_EXEC0230_CopyrightClean_Integration.patch'
-          git apply --check --directory=gk1-integrated-source $patch
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 exact rooted patch precheck failed' }
-          git apply --directory=gk1-integrated-source $patch
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 rooted patch application failed' }
+          # EXEC0231: Git apply from a subdirectory of the parent repository
+          # silently returned success while skipping every hunk. Give hydrated
+          # source its own temporary Git root so paths cannot be skipped.
+          $patch = (Resolve-Path 'research/Genghis_Khan_NES/execution_230_win32_gui_smoke/GK1_EXEC0230_CopyrightClean_Integration.patch').Path
+          git -C 'gk1-integrated-source' init --quiet
+          if ($LASTEXITCODE -ne 0) { throw 'Hydrated source git-root initialization failed' }
+          Write-Host 'Original 230 target hash:'
+          git -C 'gk1-integrated-source' hash-object 'execution_199/CMakeLists.txt' 'execution_199/gk1_native_shell.c'
+          git -C 'gk1-integrated-source' apply --check $patch
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 isolated-root patch precheck failed' }
+          git -C 'gk1-integrated-source' apply $patch
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 isolated-root patch application failed' }
           if (-not (Select-String -Path 'gk1-integrated-source/execution_199/gk1_native_shell.c' -Pattern 'gk230_painted_frames' -Quiet)) {
             throw 'EXEC0230 postcondition absent: git apply returned success but skipped game source'
           }
