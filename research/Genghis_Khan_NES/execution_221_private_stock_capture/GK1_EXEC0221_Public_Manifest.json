@@ -1,0 +1,26 @@
+{
+  "GK1_EXEC0221_Implementer_HostileQA_Handoff.md": {
+    "bytes": 5074,
+    "sha256": "f953772b3018da4a725ebff26a7a793629612886a2dc1c0e2e61ab68c7b532f6"
+  },
+  "GK1_EXEC0221_CopyrightClean_Integration.patch": {
+    "bytes": 14942,
+    "sha256": "1c501be0e5d023914f41befaa8f97f37eefcce98c3e3fc004521cd16f0501977"
+  },
+  "GK1_EXEC0221_Cumulative_Master_v3.75.md": {
+    "bytes": 442844,
+    "sha256": "97ff0905e6ca51903283006e645fb0eb9fd30b8d0f3ff641a179db7732056494"
+  },
+  "GK1_EXEC0221_CANDIDATE_LinuxResearch_1.99.0-dev1_amd64.deb": {
+    "bytes": 351528,
+    "sha256": "cdc11022f6213d0b29ae79058a5a9c5c75eee478d8f9541bef87feff81b57a90"
+  },
+  "GK1_EXEC0221_Complete_Integrated_C11_Source_QA.zip": {
+    "bytes": 2239970,
+    "sha256": "a8aff329553175963f11179b26aa1c80e68b91617c0160dadd49fe42ce09ab2a"
+  },
+  "GK1_EXEC0221_Completion_Ledger_v1.00.md": {
+    "bytes": 1243,
+    "sha256": "acd42b8cfdccecfd769adc2cc5aede8da8929d800ec98fe82b14d4e5d069db44"
+  }
+}
