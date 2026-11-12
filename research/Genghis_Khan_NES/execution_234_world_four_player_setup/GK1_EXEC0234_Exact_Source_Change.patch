@@ -1,0 +1,37 @@
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -661,6 +661,21 @@
+    snprintf(line,sizeof line,"PLAYER %u/%u LORD: %s (COUNTRY %u)",p+1,
+       app.setup_player_count[w],c->lord_name,(unsigned)c->country_id);label(113,298,line,FG);
+    label(113,337,"ALLOWED WORLD: GENGHIS / RICHARD / ALEXIOUS / YORITOMO",EDGE);
++   /* EXEC0234: real 1-4 player setup audit on the gameplay screen.
++    * Show the committed human lords only. Unchosen slots remain blank;
++    * never imply an initialized ruler, original ROM RNG, or Spring turn. */
++   if(w==1u){
++    char picked[4][8];
++    for(unsigned j=0;j<4u;j++){
++     uint8_t ix=app.setup_rulers[1][j];
++     if(j>=app.setup_player_count[1]||ix==255u)
++      snprintf(picked[j],sizeof picked[j],"--");
++     else snprintf(picked[j],sizeof picked[j],"%u",(unsigned)ix+1u);
++    }
++    snprintf(line,sizeof line,"COMMITTED WORLD LORD COUNTRIES: P1 %s / P2 %s / P3 %s / P4 %s",
++     picked[0],picked[1],picked[2],picked[3]);
++    label(113,372,line,EDGE);
++   }
+   }else if(stage==GK53_SETUP_ABILITIES){
+    snprintf(line,sizeof line,"SIX ABILITIES / FIVE CHARACTERS: %s",
+      app.setup_method_cursor[w]?"MANUAL +100 POINTS":"AUTOMATIC RANDOM");label(113,298,line,FG);
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -1191,3 +1191,10 @@
+ add_executable(test_gk230_win32_smoke_args test_gk230_win32_smoke_args.c)
+ target_link_libraries(test_gk230_win32_smoke_args PRIVATE gk1_app_state)
+ add_test(NAME GK1_230_BoundedWinMainSmokeParserNegativeControls COMMAND test_gk230_win32_smoke_args)
++
++# EXEC0234: the same native controller/app 27-country, four-ruler World flow.
++# This is a genuine compiled game-state regression, not original Spring parity.
++add_executable(test_gk234_world_four_players test_gk234_world_four_players.c)
++target_link_libraries(test_gk234_world_four_players PRIVATE gk1_manual_setup_store gk1_pad_router)
++add_test(NAME GK1_234_NativeWorldFourPlayerSetupAndRollback
++ COMMAND test_gk234_world_four_players ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
