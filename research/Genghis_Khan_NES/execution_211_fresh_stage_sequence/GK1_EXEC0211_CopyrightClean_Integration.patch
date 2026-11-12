@@ -1,0 +1,400 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -55,7 +55,7 @@
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0193.md README_EXEC0194.md README_EXEC0195.md README_EXEC0196.md README_EXEC0197.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md README_EXEC0210.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0193.md README_EXEC0194.md README_EXEC0195.md README_EXEC0196.md README_EXEC0197.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md README_EXEC0210.md README_EXEC0211.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+   set(CPACK_PACKAGE_VERSION "1.99.0")
+@@ -150,7 +150,7 @@
+           DESTINATION opt/gk1-native-research)
+   install(PROGRAMS packaging/gk1-native-research DESTINATION usr/bin)
+   install(FILES packaging/gk1-native-research.desktop DESTINATION usr/share/applications)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md README_EXEC0210.md DESTINATION usr/share/doc/gk1-native-research)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md README_EXEC0210.md README_EXEC0211.md DESTINATION usr/share/doc/gk1-native-research)
+   set(CPACK_GENERATOR "DEB")
+   set(CPACK_PACKAGE_NAME "gk1-native-research")
+   set(CPACK_PACKAGE_VERSION "1.99.0")
+@@ -1007,3 +1007,8 @@
+ add_executable(test_gk210_fresh_bank_provenance test_gk210_fresh_bank_provenance.c)
+ target_link_libraries(test_gk210_fresh_bank_provenance PRIVATE gk1_app_state)
+ add_test(NAME GK1_210_FreshOriginalMemoryBankProvenanceAndRollback COMMAND test_gk210_fresh_bank_provenance)
++
++# EXEC0211: 14 authenticated fresh reset source stage events, no stock gameplay unlocked.
++add_executable(test_gk211_fresh_sequence test_gk211_fresh_sequence.c)
++target_link_libraries(test_gk211_fresh_sequence PRIVATE gk1_app_state)
++add_test(NAME GK1_211_OriginalFreshStock14StageSourceChronologyAndNegativeGates COMMAND test_gk211_fresh_sequence)
+diff --git a/execution_199/gk1_app_state.c b/execution_199/gk1_app_state.c
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -1,5 +1,6 @@
+ #include "gk1_app_state.h"
+ #include "gk199_classic_tax_undo.h"
++#include "gk1_source_identity.h"
+ #include "gk194_classic_storage_gate.h"
+ #include "gk195_classic_view.h"
+ #include "gk115_market_gate.h"
+@@ -1690,6 +1691,21 @@
+   private_96bytes,out);
+ }
+ 
++Gk211Status gk1_app_original_fresh_sequence(const Gk1App *app,
++ const char *verified_csv,const char *private_dir,Gk211Report *out){
++ if(!app||!verified_csv||!private_dir||!out)return GK211_ARGUMENT;
++ if(app->rules_profile!=0u || !app->world_ready[0] ||
++    app->worlds[0].phase!=GK1_PRE_SETUP_TEMPLATE ||
++    app->stock_checkpoint.valid!=0u)return GK211_SOURCE_REFUSED;
++ if(!gk1_verified_original_csv(verified_csv))return GK211_SOURCE_REFUSED;
++ Gk1TemplateDataset dataset={0};Gk1LoadedScenario original={0};
++ if(gk1_template_load(verified_csv,&dataset)!=GK1_LOAD_OK||
++    gk1_open_loaded_scenario(&dataset,GK1_MONGOL_CONQUEST,&original)!=GK1_LOAD_OK||
++    memcmp(&original,&app->worlds[0],sizeof original)!=0)
++  return GK211_SOURCE_REFUSED;
++ return gk211_verify_fresh_reset_sequence(private_dir,out);
++}
++
+ /* EXEC0148: source-attested fresh reset progression and RAM-bank guard.
+  * Genuine original CPU events; never unlock original Classic commands.
+  * Do not replace an archived SaveRAM checkpoint with a fresh WorkRAM trace. */
+diff --git a/execution_199/gk1_app_state.h b/execution_199/gk1_app_state.h
+--- a/execution_199/gk1_app_state.h
++++ b/execution_199/gk1_app_state.h
+@@ -15,6 +15,7 @@
+ #include "gk111_stock_spring_audit.h"
+ #include "gk112_stock_setup_deltas.h"
+ #include "gk114_stock_spring_timeline.h"
++#include "gk211_fresh_sequence.h"
+ #include "gk79_stock_checkpoint.h"
+ #include "gk116_enhanced_assign.h"
+ #include "gk187_classic_assign.h"
+@@ -258,6 +259,9 @@
+  const char *private_fresh_events,Gk148FreshTimeline *out);
+ Gk114Status gk1_app_original_fresh_timeline(const Gk1App *app,
+  const char *verified_csv,const char *private_96bytes,Gk114Timeline *out);
++/* Authenticated original fresh stock source timeline. Does not unlock gameplay. */
++Gk211Status gk1_app_original_fresh_sequence(const Gk1App *app,
++ const char *verified_csv,const char *private_dir,Gk211Report *out);
+ /* 1 indicates input handled; 0 rejects null/invalid. All paths controller reachable. */
+ int gk1_app_input(Gk1App *s,Gk1Input command);
+ const char *gk1_app_case_label(unsigned i);
+diff --git a/execution_199/gk211_fresh_sequence.h b/execution_199/gk211_fresh_sequence.h
+new file mode 100644
+--- /dev/null
++++ b/execution_199/gk211_fresh_sequence.h
+@@ -0,0 +1,32 @@
++#ifndef GK211_FRESH_SEQUENCE_H
++#define GK211_FRESH_SEQUENCE_H
++#include <stdint.h>
++#define GK211_STAGES 14u
++/* A fixed, archived, ORIGINAL STOCK fresh-reset history. Not a general NES
++ * first-Spring generator. Raw RAM, ROM and screenshots remain PRIVATE. */
++typedef enum {
++ GK211_OK=0, GK211_ARGUMENT, GK211_SOURCE_REFUSED,
++ GK211_EVIDENCE_REFUSED, GK211_BANK_REFUSED, GK211_CHRONOLOGY_REFUSED
++} Gk211Status;
++typedef struct {
++ uint32_t frame;
++ uint64_t cpu_cycles;
++ uint16_t year,gold,food,troops,rate;
++ uint8_t orders,countries;
++ uint8_t changed_mask; /* year=1,gold=2,food=4,troops=8,rate=16,orders=32,countries=64 */
++} Gk211Stage;
++typedef struct {
++ Gk211Stage stage[GK211_STAGES];
++ uint8_t validated_stages;
++ uint8_t observed_setup_step,observed_food_doubling_step;
++ uint8_t observed_year_rate_step,observed_spring_economy_step;
++ uint8_t observed_order_grant_step;
++ uint8_t source_observation_only;
++ uint8_t independent_initialization_implemented;
++} Gk211Report;
++/* Read exactly the 14 owner-authenticated 2026-11-07 archived stage JSON
++ * receipts from private_dir. Digest is checked for EACH complete file.
++ * No caller output is changed on ANY rejection. */
++Gk211Status gk211_verify_fresh_reset_sequence(const char *private_dir,
++ Gk211Report *out);
++#endif
+diff --git a/execution_199/gk211_fresh_sequence.c b/execution_199/gk211_fresh_sequence.c
+new file mode 100644
+--- /dev/null
++++ b/execution_199/gk211_fresh_sequence.c
+@@ -0,0 +1,171 @@
++#include "gk211_fresh_sequence.h"
++#include "gk1_source_identity.h"
++#include "gk165_fresh_json.h"
++#include "gk77_stock_spring.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <ctype.h>
++#include <limits.h>
++#define GK211_JSON_MAX 16384u
++#define MASK_ALL 127u
++/* Complete SHA-256 identities only, NOT ROM/RAM/audio/art or copied game text.
++ * Every snapshot is one actual archived fresh ORIGINAL-USA Mesen observation;
++ * do not extrapolate these values to other RNG/difficulty histories. */
++static const struct {const char *name,*sha;} samples[GK211_STAGES]={
++ {"fresh_01_after_start.json","217df40eaf6698cef2b395cbacabbf079cc9eb122c3ab2412489e88334188d15"},
++ {"fresh_02_after_a.json","636ca8892b1c0d0d24ab9bcf2161f206127d0e38dfdeb7c47c403b6326657319"},
++ {"fresh_03_after_a.json","d37e4f9ddb1494e62831bcc3557de14bf2255c73fa77cab417a7344a06bc3503"},
++ {"fresh_04_after_a.json","42a2b1668572bcfffa1279180c438340fbc153133fa249adc295a860f0786452"},
++ {"fresh_05_after_a.json","b269e1fa37a1ea163f571b1a1afe6111543b19bcfb1c430ca2b749dc42a99154"},
++ {"fresh_06_after_b.json","01db2c106feeb8eb417fae05e02ca3450fd25e05b849882bf8f1bbc8e64dc34d"},
++ {"fresh_07_after_a.json","3923330e9f763b38af0eca683d62866658a16675eea04297c62680278e9663fc"},
++ {"fresh_08_after_a.json","3d7749ca42cbe9e510968be27db797111113f74ea3e5bf29a39f9eec0ea13b2d"},
++ {"fresh_09_after_a.json","faf5917010c182c4736bff031e9e869d1b320d9969a6a3329235ca38026b0ca7"},
++ {"fresh_10_after_wait.json","5c11be560f945c838c4e8e36eaa33c0c449e2a1ce1a60556d958a7dc186092f3"},
++ {"fresh_11_after_wait.json","6bab5b6499dbbfacc93b371501925f472b75c20facf7d883574029941f1bc6d9"},
++ {"fresh_12_after_wait.json","b7abfff044307c6eb4ffb55f9c507f543c758e2546b0ee69dd228ef42f5d8d7d"},
++ {"fresh_13_after_a.json","a5ff637291776a8a6abc916531ee5de773fad8d33e895476ddf56123ae10a143"},
++ {"fresh_14_after_wait.json","70bddae0b818474ef646b9a08fda0f2266055b6e01d1c5bb30f46e545d4ee7f0"}
++};
++static int hexval(char c){
++ if(c>='0'&&c<='9')return c-'0';
++ if(c>='a'&&c<='f')return c-'a'+10;
++ return -1;
++}
++static int hash_equals(const uint8_t *bytes,size_t n,const char *hex){
++ uint8_t hash[32];gk1_sha256_bytes(bytes,n,hash);
++ if(strlen(hex)!=64u)return 0;
++ for(unsigned i=0;i<32u;i++){
++  int hi=hexval(hex[2u*i]),lo=hexval(hex[2u*i+1u]);
++  if(hi<0||lo<0||hash[i]!=(uint8_t)((hi<<4)|lo))return 0;
++ }
++ return 1;
++}
++/* This deliberately small parser is ONLY allowed to interpret byte-for-byte
++ * authenticated fixed receipts. Never use it on arbitrary untrusted JSON. */
++static const char *named_block(const char *all,const char *name){
++ const char *p=strstr(all,name);if(!p)return NULL;
++ p=strchr(p,':');if(!p)return NULL;
++ p++;while(isspace((unsigned char)*p))p++;
++ return *p=='{'?p:NULL;
++}
++static int read_u64(const char *scope,const char *key,uint64_t *out){
++ const char *end=strchr(scope,'}'),*at=strstr(scope,key);
++ if(!end||!at||at>=end)return 0;
++ at+=strlen(key);while(at<end&&isspace((unsigned char)*at))at++;
++ if(at>=end||*at++!=':')return 0;
++ while(at<end&&isspace((unsigned char)*at))at++;
++ if(at>=end||!isdigit((unsigned char)*at))return 0;
++ uint64_t n=0;
++ while(at<end&&isdigit((unsigned char)*at)){
++  unsigned d=(unsigned)(*at++-'0');
++  if(n>(UINT64_MAX-d)/10u)return 0;
++  n=n*10u+d;
++ }
++ if(at<end&&*at!=','&&*at!='}'&&!isspace((unsigned char)*at))return 0;
++ *out=n;return 1;
++}
++static int one_view(const char *j,const char *name,uint64_t v[7]){
++ static const char *keys[]={"\"year\"","\"gold\"","\"food\"","\"troops\"",
++   "\"rate\"","\"orders\"","\"country_count\""};
++ const char *at=named_block(j,name);if(!at)return 0;
++ for(unsigned i=0;i<7u;i++)if(!read_u64(at,keys[i],v+i))return 0;
++ return 1;
++}
++static int read_stage(const char *buf,Gk211Stage *row){
++ uint64_t work[7],memory[7],save[7],frame=0,cycles=0;
++ if(!one_view(buf,"\"nesWorkRam\"",work)||
++    !one_view(buf,"\"nesMemory\"",memory)||
++    !one_view(buf,"\"nesSaveRam\"",save))return 0;
++ for(unsigned i=0;i<7u;i++){
++  if(work[i]!=memory[i]||save[i]!=0u||work[i]>65535u)return 0;
++ }
++ /* Frame is a unique top-level capture field. Exact-file SHA already gated. */
++ const char *v=strstr(buf,"\"frame\"");if(!v)return 0;
++ v=strchr(v,':');if(!v)return 0;
++ unsigned long long parsed_frame=0;
++ if(sscanf(v+1," %llu",&parsed_frame)!=1)return 0;
++ frame=(uint64_t)parsed_frame;
++ const char *cpu=named_block(buf,"\"cpu\"");
++ if(!cpu||!read_u64(cpu,"\"cycleCount\"",&cycles)||
++    !frame||frame>UINT32_MAX||!cycles)return 0;
++ row->frame=(uint32_t)frame;row->cpu_cycles=cycles;
++ row->year=(uint16_t)work[0];row->gold=(uint16_t)work[1];
++ row->food=(uint16_t)work[2];row->troops=(uint16_t)work[3];
++ row->rate=(uint16_t)work[4];row->orders=(uint8_t)work[5];
++ row->countries=(uint8_t)work[6];
++ return work[5]<=3u&&work[6]<=27u;
++}
++static uint8_t changes(const Gk211Stage *a,const Gk211Stage *b){
++ return (uint8_t)((a->year!=b->year?1u:0u)|
++  (a->gold!=b->gold?2u:0u)|(a->food!=b->food?4u:0u)|
++  (a->troops!=b->troops?8u:0u)|(a->rate!=b->rate?16u:0u)|
++  (a->orders!=b->orders?32u:0u)|(a->countries!=b->countries?64u:0u));
++}
++Gk211Status gk211_verify_fresh_reset_sequence(const char *private_dir,
++ Gk211Report *out){
++ if(!private_dir||!*private_dir||!out)return GK211_ARGUMENT;
++ Gk211Report result={0};
++ for(unsigned i=0;i<GK211_STAGES;i++){
++  char path[4096];
++  int w=snprintf(path,sizeof path,"%s/%s",private_dir,samples[i].name);
++  if(w<0||(size_t)w>=sizeof path)return GK211_ARGUMENT;
++  FILE *f=fopen(path,"rb");if(!f)return GK211_EVIDENCE_REFUSED;
++  char data[GK211_JSON_MAX+1];
++  size_t n=fread(data,1,sizeof data,f);
++  int fail=ferror(f),closefail=fclose(f);
++  if(fail||closefail||n==0||n>GK211_JSON_MAX||memchr(data,'\0',n))
++   return GK211_EVIDENCE_REFUSED;
++  data[n]='\0';
++  if(!hash_equals((const uint8_t *)data,n,samples[i].sha))
++   return GK211_EVIDENCE_REFUSED;
++  if(!read_stage(data,result.stage+i))return GK211_BANK_REFUSED;
++  if(i){
++   if(result.stage[i].frame<=result.stage[i-1].frame||
++      result.stage[i].cpu_cycles<=result.stage[i-1].cpu_cycles)
++    return GK211_CHRONOLOGY_REFUSED;
++   result.stage[i].changed_mask=changes(result.stage+i-1,result.stage+i);
++  }else result.stage[i].changed_mask=MASK_ALL;
++  result.validated_stages=(uint8_t)(i+1);
++ }
++ /* Verify the actual archived sequence's event ordering; masks and stats
++  * describe ONE stock game history, never formulas for random new games. */
++ static const uint8_t masks[GK211_STAGES]={
++  127u,0x4fu,0u,0u,0u,0u,0u,0u,4u,17u,0u,14u,0u,32u
++ };
++ for(unsigned i=1;i<GK211_STAGES;i++)
++  if(result.stage[i].changed_mask!=masks[i])return GK211_CHRONOLOGY_REFUSED;
++ const Gk211Stage *a=result.stage;
++ if(a[0].year||a[0].gold||a[0].food||a[0].troops||
++    a[0].rate||a[0].orders||a[0].countries||
++    a[1].year!=1174u||a[1].countries!=14u||a[1].orders!=0u||
++    a[8].food!=(uint16_t)(2u*a[7].food)||
++    a[9].year!=a[8].year+1u||a[9].rate==0u||
++    a[11].year!=1175u||a[11].food>=a[10].food||
++    a[11].gold<a[10].gold||a[11].troops<a[10].troops||
++    a[13].orders!=3u||a[13].countries!=14u||
++    a[13].gold!=430u||a[13].food!=208u||
++    a[13].troops!=61u||a[13].rate!=121u)
++  return GK211_CHRONOLOGY_REFUSED;
++ /* Last JSON must ALSO pass the actual native game admission/83-byte
++  * source digest check, not just its full-document identity. */
++ char final_path[4096];
++ int w=snprintf(final_path,sizeof final_path,"%s/%s",private_dir,samples[13].name);
++ if(w<0||(size_t)w>=sizeof final_path)return GK211_ARGUMENT;
++ uint8_t raw[GK165_FRESH_SIZE];
++ if(gk165_extract_fresh_json(final_path,raw)!=GK165_OK)
++  return GK211_EVIDENCE_REFUSED;
++ uint8_t sha[32];gk1_sha256_bytes(raw,sizeof raw,sha);
++ if(!gk77_known_source_digest(GK77_FRESH_MONGOL_WORKRAM,sha))
++  return GK211_EVIDENCE_REFUSED;
++ result.observed_setup_step=2u;
++ result.observed_food_doubling_step=9u;
++ result.observed_year_rate_step=10u;
++ result.observed_spring_economy_step=12u;
++ result.observed_order_grant_step=14u;
++ result.source_observation_only=1u;
++ result.independent_initialization_implemented=0u;
++ *out=result;
++ return GK211_OK;
++}
+diff --git a/execution_199/test_gk211_fresh_sequence.c b/execution_199/test_gk211_fresh_sequence.c
+new file mode 100644
+--- /dev/null
++++ b/execution_199/test_gk211_fresh_sequence.c
+@@ -0,0 +1,60 @@
++#include "gk211_fresh_sequence.h"
++#include "gk1_app_state.h"
++#include "gk1_source_identity.h"
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++#define CHECK(x) do{if(!(x)){fprintf(stderr,"GK211 line %u fail: %s\n",__LINE__,#x);return 1;}checks++;}while(0)
++static unsigned checks;
++int main(int argc,char **argv){
++ Gk211Report report,blank;memset(&report,0xa7,sizeof report);blank=report;
++ CHECK(gk211_verify_fresh_reset_sequence(NULL,&report)==GK211_ARGUMENT);
++ CHECK(gk211_verify_fresh_reset_sequence("",&report)==GK211_ARGUMENT);
++ CHECK(gk211_verify_fresh_reset_sequence("/GK211/no/fresh/stages",&report)==GK211_EVIDENCE_REFUSED);
++ CHECK(!memcmp(&report,&blank,sizeof report));
++ if(argc>=2){
++  CHECK(gk211_verify_fresh_reset_sequence(argv[1],&report)==GK211_OK);
++  CHECK(report.validated_stages==14u);
++  CHECK(report.observed_setup_step==2u&&report.observed_food_doubling_step==9u);
++  CHECK(report.observed_year_rate_step==10u&&report.observed_spring_economy_step==12u);
++  CHECK(report.observed_order_grant_step==14u);
++  CHECK(report.source_observation_only==1u&&!report.independent_initialization_implemented);
++  CHECK(report.stage[0].countries==0u&&report.stage[1].countries==14u);
++  CHECK(report.stage[7].food==129u&&report.stage[8].food==258u);
++  CHECK(report.stage[9].year==1175u&&report.stage[9].rate==121u);
++  CHECK(report.stage[10].gold==425u&&report.stage[11].gold==430u);
++  CHECK(report.stage[10].food==258u&&report.stage[11].food==208u);
++  CHECK(report.stage[10].troops==60u&&report.stage[11].troops==61u);
++  CHECK(report.stage[12].orders==0u&&report.stage[13].orders==3u);
++  for(unsigned i=1;i<14;i++){
++   CHECK(report.stage[i].cpu_cycles>report.stage[i-1].cpu_cycles);
++   CHECK(report.stage[i].frame>report.stage[i-1].frame);
++  }
++  Gk211Report snapshot=report;
++  /* Missing original stage: atomic refusal, never synthetic replacement. */
++  CHECK(gk211_verify_fresh_reset_sequence("/GK211/missing",&report)==GK211_EVIDENCE_REFUSED);
++  CHECK(!memcmp(&report,&snapshot,sizeof report));
++  if(argc>=4){
++   CHECK(gk211_verify_fresh_reset_sequence(argv[3],&report)==GK211_EVIDENCE_REFUSED);
++   CHECK(!memcmp(&report,&snapshot,sizeof report));
++  }
++  if(argc>=3){
++   Gk1TemplateDataset ds={0};Gk1App *app=calloc(1,sizeof *app);
++   CHECK(app!=NULL);CHECK(gk1_verified_original_csv(argv[2]));
++   CHECK(gk1_template_load(argv[2],&ds)==GK1_LOAD_OK);
++   gk1_app_init(app);CHECK(gk1_app_install_templates(app,&ds));
++   Gk1App *copy=malloc(sizeof *app);CHECK(copy!=NULL);*copy=*app;
++   CHECK(gk1_app_original_fresh_sequence(app,argv[2],argv[1],&report)==GK211_SOURCE_REFUSED);
++   CHECK(!memcmp(&report,&snapshot,sizeof report));
++   app->rules_profile=0u;*copy=*app;
++   CHECK(gk1_app_original_fresh_sequence(app,argv[2],argv[1],&report)==GK211_OK);
++   CHECK(!memcmp(app,copy,sizeof *app));
++   app->worlds[0].countries[0].gold++;
++   CHECK(gk1_app_original_fresh_sequence(app,argv[2],argv[1],&report)==GK211_SOURCE_REFUSED);
++   CHECK(!memcmp(&report,&snapshot,sizeof report));
++   free(copy);free(app);
++  }
++  printf("GK211 authenticated ORIGINAL-stock 14-stage chronology read; NOT new Mesen execution and NOT generalized first-Spring source: %u checks PASS\n",checks);
++ }else printf("GK211 public negative and atomic refusal controls: %u checks PASS; original source not supplied\n",checks);
++ return 0;
++}
+diff --git a/execution_199/README_EXEC0211.md b/execution_199/README_EXEC0211.md
+new file mode 100644
+--- /dev/null
++++ b/execution_199/README_EXEC0211.md
+@@ -0,0 +1,25 @@
++# GK1 EXEC0211 — authenticated original-stock fresh-reset event ordering
++
++**Predecessor:** exact EXEC0210 complete native C11 research game. All inherited code, test modules, controller UI, Classic/Enhanced separation and historical source are preserved. This is an incremental executable investigation, not a new game or a certified release.
++
++## Executable implementation
++
++`gk211_fresh_sequence.c/h` validates all fourteen distinct **previously archived** authentic original-USA-Mesen fresh-reset observation JSON files, checking a complete SHA-256 for every file before interpreting it. It requires the actual CPU-visible `nesMemory` statistics to equal physical `nesWorkRam` in all fourteen captures and independently verifies that `nesSaveRam` is blank at each stage. The actual private original 83-byte records in final stage 14 must ALSO pass the inherited `gk165_extract_fresh_json` digest/source check.
++
++The new same-app `gk1_app_original_fresh_sequence()` gate verifies the canonical original 41-country CSV, the untouched Mongol PRE_SETUP native world, Classic mode and absence of a different imported stock checkpoint. Only then is the read-only source chronology returned. No game world, controller state, save state, profile, player orders or country records are changed.
++
++The program identifies the **observed** event boundaries: at capture 2 a 14-country 1174 template is visible; at 9 Food 129→258; at 10 year 1174→1175 and Rate 0→121; at 12 Gold 425→430, Food 258→208, Troops 60→61; at 14 actual 3 orders appear. Those are **one source input/controller/RNG history**, not the universal original NES Spring transformation or original RNG algorithm. Earlier EXEC0114 had only a 6-stage compressed receipt; EXEC0211 binds the entire 14 raw source JSON captures and their distinct RAM banks and CPU frame ordering.
++
++## Reproducible tests
++
++- Configure and build existing native executable: `cmake -S execution_199 -B build -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build -j8`.
++- Run complete native tests: `ctest --test-dir build -j8 --output-on-failure`.
++- Public fail-closed testing, no copyrighted input: `build/test_gk211_fresh_sequence`.
++- Private original fourteen-stage verification, ONLY in private workspace: `build/test_gk211_fresh_sequence /private/fresh_dir execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv`.
++- Hostile tamper: copy all fourteen files to a PRIVATE temporary directory, flip one byte in `fresh_12_after_wait.json`, and pass the temporary directory as the third argument. The complete file SHA gate must reject it without changing the caller report.
++
++Raw original stock ROM, Mesen screenshots, audio, savestates, 14 JSON observations and 14×83 source bytes are owner-private; public GitHub and ZIP carry only general C source, test source, names and SHA-256 fingerprints.
++
++## Scope and evidence labels
++
++**VERIFIED_STATIC:** source identities and 14 authentic pre-existing original observation receipts checked, with distinct WorkRAM/SaveRAM and event-order witness. **OBSERVED_RUNTIME_STOCK_FRESH_RESET:** only the captured November 7 original run; this execution did NOT run original Mesen anew. **TESTED_PORT_LINUX:** C11 test/rebuild and GUI smoke, if listed in the accompanying execution receipt. **NOT RUN:** native Windows, NSIS, physical Xbox controller, original complete campaigns. Independent, variable-RNG new first Spring generation for all 14/27 countries remains OPEN. Trade merchant scheduling, autonomous AI, battle terminal aftermath, diplomacy, dynasty, authentic art/sound and full release acceptance likewise OPEN. Keep hourly development until Director stops or release is complete.
