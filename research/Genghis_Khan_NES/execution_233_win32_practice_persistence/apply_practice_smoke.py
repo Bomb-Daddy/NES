@@ -73,7 +73,7 @@ CHANGES = [
      if(frame==19u)valid=app.port_spring.actions_committed==1u&&
        app.port_spring.remaining==2u;
      if(frame==21u)valid=strstr(app.status,"SOURCE-REPLAY VERIFIED")!=NULL;
-     if(frame==23u)valid=app.screen==GK1_SCREEN_SCENARIO_COUNTRIES;
+     if(frame==23u)valid=app.screen==GK1_SCREEN_SETUP_WIZARD;
     }else if(gk233_practice_mode==2){
      if(frame==1u)valid=app.screen==GK1_SCREEN_ENHANCED_SPRING_LAB&&
        app.port_spring.actions_committed==1u&&app.port_spring.remaining==2u;
@@ -108,6 +108,8 @@ CHANGES = [
      memcmp(gk232_original_worlds,app.worlds,sizeof gk232_original_worlds)==0;
    if(gk233_practice_mode==4)
      ok=ok&&app.screen==GK1_SCREEN_TITLE&&!app.port_spring.active;
+   else if(gk233_practice_mode==1)
+     ok=ok&&app.screen==GK1_SCREEN_SETUP_WIZARD;
    else
      ok=ok&&app.screen==GK1_SCREEN_SCENARIO_COUNTRIES;
    gk231_trace(ok?"EXEC0233 Win32 Enhanced save/cold-load/corruption stage PASS":
