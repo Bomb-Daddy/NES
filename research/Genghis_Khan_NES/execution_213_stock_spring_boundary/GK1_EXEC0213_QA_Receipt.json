@@ -1,0 +1,27 @@
+{
+  "execution": "EXEC0213",
+  "predecessor": "EXEC0212",
+  "inherited_files": 740,
+  "inherited_unchanged": 736,
+  "changed_new_source_files": 8,
+  "new_log_files": 6,
+  "full_zip_files": 750,
+  "test_results": {
+    "release_ctest": "176/176 PASS",
+    "debug_ctest": "176/176 PASS",
+    "clean_source_rebuild": "176/176 PASS",
+    "focused_private_stock_asan_ubsan": "32 assertions PASS",
+    "linux_x11_120frames": "PASS",
+    "debian_extracted_x11_120frames": "PASS",
+    "native_windows": "NOT RUN",
+    "physical_xbox": "NOT RUN",
+    "new_original_mesen": "NOT RUN"
+  },
+  "limitations": [
+    "single-observation bounded food/tax/pay consistency only",
+    "no generalized 14/27 independent Spring generator",
+    "no RNG-seed or draw chronology",
+    "no merchant AI/dynasty/complete campaigns"
+  ],
+  "privacy": "original licensed ROM/states/JSON not in public source"
+}
