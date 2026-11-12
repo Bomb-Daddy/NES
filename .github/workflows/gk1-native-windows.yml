@@ -33,10 +33,18 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Hydrated source git-root initialization failed' }
           Write-Host 'Original 230 target hash:'
           git -C 'gk1-integrated-source' hash-object 'execution_199/CMakeLists.txt' 'execution_199/gk1_native_shell.c'
-          git -C 'gk1-integrated-source' apply --check $patch
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 isolated-root patch precheck failed' }
-          git -C 'gk1-integrated-source' apply $patch
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 isolated-root patch application failed' }
+          # Windows checkout can expose CRLF working-tree text while git
+          # hash-object normalizes to the exact source blobs below. Permit
+          # line-ending-only context differences, not arbitrary source edits.
+          $baseCmake = (git -C 'gk1-integrated-source' hash-object 'execution_199/CMakeLists.txt').Trim()
+          $baseShell = (git -C 'gk1-integrated-source' hash-object 'execution_199/gk1_native_shell.c').Trim()
+          if ($baseCmake -ne '30b270426bd02b3e3f41ce0f6f2302e4c8b32a1f' -or $baseShell -ne '5cddc62f0551de11830c6b446be496ce57ff943b') {
+            throw 'Source-hash precondition failed before EXEC0230'
+          }
+          git -C 'gk1-integrated-source' apply --check --ignore-space-change $patch
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 CRLF-aware exact patch precheck failed' }
+          git -C 'gk1-integrated-source' apply --ignore-space-change $patch
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 CRLF-aware patch application failed' }
           if (-not (Select-String -Path 'gk1-integrated-source/execution_199/gk1_native_shell.c' -Pattern 'gk230_painted_frames' -Quiet)) {
             throw 'EXEC0230 postcondition absent: git apply returned success but skipped game source'
           }
