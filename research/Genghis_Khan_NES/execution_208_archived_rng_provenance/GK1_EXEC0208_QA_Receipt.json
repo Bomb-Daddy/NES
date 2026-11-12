@@ -1,0 +1,37 @@
+{
+  "execution": "EXEC0208",
+  "candidate": true,
+  "predecessor": "EXEC0207",
+  "version_metadata": "1.99.0-dev1",
+  "source_entries": 719,
+  "changed_new_paths": 8,
+  "original_rom_sha256": "ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3",
+  "authentic_private_archived_files": {
+    "Mongol1175": {
+      "sha256": "a3838705c58010a11cac37ae2d8f446cccf29aa7b904f41b199a604a98245cce",
+      "bank": "nesSaveRam",
+      "countries": 14
+    },
+    "World1206": {
+      "sha256": "d0806e73bd98f3f2c4df1d1458dc668dbe8a711d925da95ae5ef82393d1389fb",
+      "bank": "nesSaveRam",
+      "countries": 27
+    }
+  },
+  "archive_seed_internal_verified": true,
+  "next_draw_hypothetical_only": true,
+  "fresh_reset_run_new": false,
+  "new_original_mesen_run": false,
+  "first_playable_spring": false,
+  "CTest": {
+    "Release": "171/171 PASS",
+    "Debug": "171/171 PASS",
+    "clean_replay": "171/171 PASS"
+  },
+  "private_archived_regression_assertions": 41,
+  "sanitizers": "ASan+UBSan focused 41 assertions PASS",
+  "Linux_graphical": "Xvfb native 120 and Debian extracted 120 frames PASS",
+  "Windows_NSIS": "NOT RUN",
+  "Physical_Xbox": "NOT RUN",
+  "full_campaigns": "NOT RUN"
+}
