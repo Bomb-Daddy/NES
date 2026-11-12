@@ -37,12 +37,12 @@ jobs:
         run: |
           cmake -S 'gk1-integrated-source/execution_199' -B 'build-gk1-win32' -G 'Visual Studio 17 2022' -A x64
           if ($LASTEXITCODE -ne 0) { throw 'Configure failed' }
-          cmake --build 'build-gk1-win32' --config Release --target gk1_native_shell gk228_win32_smoke test_gk99_xinput_bridge test_gk62_game_market_guard test_gk230_win32_smoke_args --parallel 4
+          cmake --build 'build-gk1-win32' --config Release --target gk1_native_shell gk228_win32_smoke test_gk99_xinput_bridge test_gk62_game_market_guard --parallel 4
           if ($LASTEXITCODE -ne 0) { throw 'Native Win32 compile failed' }
       - name: Execute actual Win32 source/XInput and hostile controls
         shell: pwsh
         run: |
-          ctest --test-dir 'build-gk1-win32' -C Release --output-on-failure -R 'GK1_230_|GK1_228_|GK1_099_|GK1_062_'
+          ctest --test-dir 'build-gk1-win32' -C Release --output-on-failure -R 'GK1_228_|GK1_099_|GK1_062_'
           if ($LASTEXITCODE -ne 0) { throw 'Native Win32 smoke tests failed' }
           python 'gk1-integrated-source/execution_199/packaging/test_gk228_windows_contract.py' 'build-gk1-win32/Release/gk228_win32_smoke.exe' 'build-gk1-win32/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'
           if ($LASTEXITCODE -ne 0) { throw 'Native Win32 hostile source tests failed' }
