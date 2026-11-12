@@ -7,6 +7,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_229_windows_ci_bundle/**'
       - 'research/Genghis_Khan_NES/execution_230_win32_gui_smoke/**'
       - 'research/Genghis_Khan_NES/execution_231_win32_gui_trace/**'
+      - 'research/Genghis_Khan_NES/execution_232_win32_controller_navigation/**'
 permissions:
   contents: read
 jobs:
@@ -52,6 +53,13 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0231 diagnostic patch tests failed' }
           python 'research/Genghis_Khan_NES/execution_231_win32_gui_trace/apply_trace.py' 'gk1-integrated-source'
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0231 diagnostic patch refused' }
+          python 'research/Genghis_Khan_NES/execution_232_win32_controller_navigation/test_gamepad_smoke.py'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0232 hostile integration tests failed' }
+          python 'research/Genghis_Khan_NES/execution_232_win32_controller_navigation/apply_gamepad_smoke.py' 'gk1-integrated-source'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0232 native game controller route integration refused' }
+          if (-not (Select-String -Path 'gk1-integrated-source/execution_199/gk1_native_shell.c' -Pattern 'EXEC0232 scripted raw XInput' -Quiet)) {
+            throw 'EXEC0232 actual WinMain source integration missing'
+          }
       - name: Build the actual 1280x720 native WinMain and XInput game
         shell: pwsh
         run: |
@@ -85,6 +93,16 @@ jobs:
           if ($p.ExitCode -ne 0) { throw "Native WinMain GUI paint run failed: $($p.ExitCode)" }
           if (Test-Path $env:GK1_SMOKE_TRACE) { Get-Content $env:GK1_SMOKE_TRACE | ForEach-Object { Write-Host "GK231 TRACE $_" } }
           Write-Host 'Verified actual native WinMain real window geometry and 3+ WM_PAINT calls, software-only XInput polling'
+          # EXEC0232: drive the REAL WinMain renderer and pad_actions router with
+          # deterministic raw XInput bits. A passing test does NOT prove hardware.
+          $pad = Start-Process -FilePath $exe -ArgumentList '--smoke-gamepad-nav' -PassThru
+          if (-not $pad.WaitForExit(20000)) {
+            try { $pad.Kill() } catch {}
+            throw 'EXEC0232 WinMain real controller menu smoke timed out'
+          }
+          if ($pad.ExitCode -ne 0) { throw "EXEC0232 WinMain gamepad route exit=$($pad.ExitCode)" }
+          if (Test-Path $env:GK1_SMOKE_TRACE) { Get-Content $env:GK1_SMOKE_TRACE | Select-Object -Last 15 }
+          Write-Host 'EXEC0232 actual native WinMain rendered controller navigation PASS; physical Xbox NOT TESTED'
       - name: Build and extract real NSIS research installer
         shell: pwsh
         run: |
@@ -119,6 +137,13 @@ jobs:
             throw 'NSIS-installed WinMain 3-frame GUI paint timed out'
           }
           if ($p.ExitCode -ne 0) { throw "Installed WinMain paint failed: $($p.ExitCode)" }
+          $pad = Start-Process -FilePath $exe -ArgumentList '--smoke-gamepad-nav' -PassThru
+          if (-not $pad.WaitForExit(20000)) {
+            try { $pad.Kill() } catch {}
+            throw 'NSIS-installed EXEC0232 controller nav timed out'
+          }
+          if ($pad.ExitCode -ne 0) { throw "NSIS-installed EXEC0232 route failed: $($pad.ExitCode)" }
+          Write-Host 'NSIS-installed WinMain scripted raw XInput navigation PASS; not a physical device test'
       - name: Enforce fail-closed Windows graphical acceptance
         if: always()
         shell: pwsh
