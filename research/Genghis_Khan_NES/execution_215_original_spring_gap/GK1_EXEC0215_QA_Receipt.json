@@ -1,0 +1,76 @@
+{
+  "country_counts": [
+    14,
+    14,
+    27
+  ],
+  "date": "2026-11-12",
+  "execution": "EXEC0215",
+  "inherited_members": 764,
+  "modified_source_paths": 2,
+  "new_source_paths": 3,
+  "patch_roundtrip_paths": 5,
+  "predecessor": "EXEC0214",
+  "results": {
+    "deb_extracted_x11": "120 frames PASS 1280x720",
+    "debug_ctest": "178/178 PASS",
+    "finance_only_vs_authentic_original_by_country": [
+      {
+        "countries": 14,
+        "differing": 14,
+        "food_mismatch": 14,
+        "gold_mismatch": 14,
+        "sum_food": 9,
+        "sum_gold": -253,
+        "sum_troops": -156,
+        "troop_mismatch": 14,
+        "workforce_mismatch": 14
+      },
+      {
+        "countries": 14,
+        "differing": 14,
+        "food_mismatch": 14,
+        "gold_mismatch": 14,
+        "sum_food": 60,
+        "sum_gold": -367,
+        "sum_troops": -188,
+        "troop_mismatch": 14,
+        "workforce_mismatch": 14
+      },
+      {
+        "countries": 27,
+        "differing": 27,
+        "food_mismatch": 27,
+        "gold_mismatch": 27,
+        "sum_food": 162,
+        "sum_gold": -517,
+        "sum_troops": -452,
+        "troop_mismatch": 27,
+        "workforce_mismatch": 27
+      }
+    ],
+    "native_x11": "120 frames PASS 1280x720",
+    "private_original_profiles_sanitizer": "91/91 assertions PASS under ASan/UBSan",
+    "release_ctest": "178/178 PASS"
+  },
+  "source_history_profiles": [
+    "FRESH_1175_WORK_RAM",
+    "ARCHIVED_1175_SAVE_RAM",
+    "ARCHIVED_1206_SAVE_RAM"
+  ],
+  "source_sha256": {
+    "execution_199/CMakeLists.txt": "98e1a3e11e849ceb9441eb13cd9beb8dcaa9b3eba6258d61e5c8fbb8861eb500",
+    "execution_199/gk1_native_shell.c": "d7380da4158172748f52eb46ad60d376d0689f7e91622a41571de3f75761f20e",
+    "execution_199/gk215_original_spring_gap.c": "e9d568d7ef4526d0388c1f1f2b3e67585cce1671d5e68e0f3d2875bf9ff97201",
+    "execution_199/gk215_original_spring_gap.h": "8205c886fe4a7e729609fe00574b702724016a09ad9cffe17e720cbce7508a82",
+    "execution_199/test_gk215_original_spring_gap.c": "d74d487cb92efb8bf5f90e481a8977a620cda8e5e80f85fca4f87e6b855ef434"
+  },
+  "unsupported": [
+    "new stock Mesen runtime",
+    "independently generated authentic first Spring",
+    "Win32 NSIS",
+    "physical Xbox",
+    "full campaign"
+  ],
+  "verify_original_private_sha": "ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3"
+}
