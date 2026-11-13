@@ -1,0 +1,38 @@
+{
+  "execution": "EXEC0241",
+  "predecessor_sha256": "b2b362b146ee89b4d874ca1c54c82c2ee1a187b6014a32aca8fcd00d583dface",
+  "changed": {
+    "source/execution_199/CMakeLists.txt": {
+      "before_sha256": "7646a9509bb350a97b0da5632bfa9ab761eaf07d20b47b377e1b5bf60ef5ade9",
+      "after_sha256": "dab3dde0ddae88eb0519c27ef3faa06217a95c05826b777727e5e0a2040ee129",
+      "bytes": 86523
+    },
+    "source/execution_199/gk1_native_shell.c": {
+      "before_sha256": "8f4ebd4cd8c6cb69774301b21f54033ad251194580b1240a33a716ad1bba3c44",
+      "after_sha256": "651421d0b0a1ada2d568e582e15caaa49becd3e7b76faf2bd7409772748eee23",
+      "bytes": 255109
+    },
+    "source/execution_199/gk241_archived_import_capability.c": {
+      "before_sha256": null,
+      "after_sha256": "4845e89a2414dd91c77b72553887fada31c0a4a5f2eca8f7d21a1b2b5ac69f2f",
+      "bytes": 479
+    },
+    "source/execution_199/gk241_archived_import_capability.h": {
+      "before_sha256": null,
+      "after_sha256": "a9b442f4f83d5d6b70f1fb94f494aaaf88d3e22678a55f72f0802cdadde53d18",
+      "bytes": 506
+    },
+    "source/execution_199/test_gk241_archived_import_capability.c": {
+      "before_sha256": null,
+      "after_sha256": "bbdb6d7c1aac6872860aea68152c84b0b85b793d263f9563730f63c1c6b7e523",
+      "bytes": 1774
+    }
+  },
+  "original_stock_rom_included": false,
+  "latest_windows_test": "NOT RUN",
+  "current_linux_tests": "207/207 with zlib;204/204 without zlib (three disabled)",
+  "linux_release_tests": 207,
+  "linux_nozlib_applicable_tests": 204,
+  "linux_nozlib_disabled_tests": 3,
+  "independent_replay_checks": 5
+}
