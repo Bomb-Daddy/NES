@@ -1,0 +1,14 @@
+{
+  "execution": 246,
+  "parent_execution": 245,
+  "source_sha256": {
+    "gk188_classic_receipt.c": "fa22bdc21e72a8894794944e11350596a9ef11556e8956bb27e8f201d7888248",
+    "CMakeLists.txt": "d16347781c7388bf42745352b22ba5368f41798cb368d96cb7c30223108407c6",
+    "test_gk246_classic_tax_receipt.c": "d7f0a6d127e28ef9480a7edcc5932d775a5a685b6e3d0d4b1932922e9d58cb1c"
+  },
+  "source_patch_sha256": "06d03deee6fe8ac8befa5420fc423ebb9743849b1d25713001bf4600a3343a24",
+  "prior_full_source_zip_sha256": "9dabc055e885644f04d4e7e787b39748e684b38730451a86ab43e850929f7edd",
+  "source_private_evidence_sha256": "8b757e11b12aeb3efe93e36c10628599ca5f12e91b15c02354cd3ebbd11bf52a",
+  "privacy": "No original ROM, WorkRAM/SaveRAM source records or private gameplay captures published",
+  "test_status": "Release targeted 3/3 CTest; private 234 assertions; native full build not completed"
+}
