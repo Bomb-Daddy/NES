@@ -1,0 +1,31 @@
+diff --git a/execution_199/gk1_app_state.c b/execution_199/gk1_app_state.c
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -227,13 +227,20 @@
+  Gk1LoadedScenario a,b;
+  if(gk1_open_loaded_scenario(dataset,GK1_MONGOL_CONQUEST,&a)!=GK1_LOAD_OK ||
+     gk1_open_loaded_scenario(dataset,GK1_WORLD_CONQUEST,&b)!=GK1_LOAD_OK)return 0;
+- s->worlds[0]=a;s->worlds[1]=b;
+- s->finance_source_baseline[0]=a;s->finance_source_baseline[1]=b;
+- memset(&s->labor_history,0,sizeof s->labor_history);
+- s->world_ready[0]=1;s->world_ready[1]=1;
+- s->country_cursor[0]=s->country_cursor[1]=0;
+- s->active_world=0;s->setup_candidate[0]=255;s->setup_candidate[1]=255;
+- reset_setup(s,0);reset_setup(s,1);
++ /* EXEC0264: replacing the campaign templates is a NEW campaign, not
++  * a navigation command. Previously this reset countries but left a live
++  * Classic checkpoint, old controller screen, derived orders and pending
++  * private storage request in the same app. Commit a clean initialized app
++  * only AFTER both source scenarios validate. Failed installs stay atomic. */
++ Gk1App fresh;
++ gk1_app_init(&fresh);
++ /* Preserve only the Director-selected profile, not the prior campaign. */
++ fresh.rules_profile=s->rules_profile<=1u?s->rules_profile:1u;
++ fresh.worlds[0]=a;fresh.worlds[1]=b;
++ fresh.finance_source_baseline[0]=a;
++ fresh.finance_source_baseline[1]=b;
++ fresh.world_ready[0]=1;fresh.world_ready[1]=1;
++ *s=fresh;
+  return 1;
+ }
+ const Gk1CountryTemplate *gk1_app_selected_country(const Gk1App *s){
