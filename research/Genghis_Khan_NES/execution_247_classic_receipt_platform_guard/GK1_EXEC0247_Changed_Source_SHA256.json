@@ -1,0 +1,38 @@
+{
+  "CMakeLists.txt": {
+    "before_sha256": "d16347781c7388bf42745352b22ba5368f41798cb368d96cb7c30223108407c6",
+    "after_sha256": "633111df6ccb6947180bb111652162140429a1c7168d5133c3d0eb490f414f23",
+    "after_git_blob_sha1": "17a274be9963aa8600946454bd85a1dd8ef80ef4",
+    "bytes": 88854
+  },
+  "gk188_classic_receipt.c": {
+    "before_sha256": "fa22bdc21e72a8894794944e11350596a9ef11556e8956bb27e8f201d7888248",
+    "after_sha256": "08c8798ba2aa41768c7146c3c11819fe334ec484a62d9ac42d3369fda4e88b6b",
+    "after_git_blob_sha1": "41b3fcc667ab3949708ab162b33fadf984b9059b",
+    "bytes": 4672
+  },
+  "test_gk246_classic_tax_receipt.c": {
+    "before_sha256": "d7f0a6d127e28ef9480a7edcc5932d775a5a685b6e3d0d4b1932922e9d58cb1c",
+    "after_sha256": "82ae89d29398e58e8958b9f91a4307f4c68254239a5397306e9beabd841feb0e",
+    "after_git_blob_sha1": "ed1d5b8a959c1674dad940486af736daec307985",
+    "bytes": 4566
+  },
+  "gk247_receipt_file_guard.h": {
+    "before_sha256": null,
+    "after_sha256": "29f19d62cc13d8ff09dea6ef651c824c0a3695521b89ed1f237fbe43ff0c2c95",
+    "after_git_blob_sha1": "eb1e1e26cbec88659963c9e12c69fa1dab195854",
+    "bytes": 509
+  },
+  "gk247_receipt_file_guard.c": {
+    "before_sha256": null,
+    "after_sha256": "2c40e7fffeca6493d64eaa5933c432ef1f7496a14fc1206db423deabb711325d",
+    "after_git_blob_sha1": "e9a215f73c0fdbda2758da2377a5fda64bd47506",
+    "bytes": 1243
+  },
+  "test_gk247_receipt_file_guard.c": {
+    "before_sha256": null,
+    "after_sha256": "fd65fb24560606bf87ed40b58e83d2e4e18aec3928e05578f1746c2212cbc188",
+    "after_git_blob_sha1": "ab04efbd5752386af806d35f95cab9fbf835feb0",
+    "bytes": 2384
+  }
+}
