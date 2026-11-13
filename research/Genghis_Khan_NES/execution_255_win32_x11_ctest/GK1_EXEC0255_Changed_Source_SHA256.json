@@ -1,0 +1,14 @@
+{
+  "execution": 255,
+  "predecessor_zip_sha256": "b714f55fe52fbd58d5bedae96f7a407799f9e37df698ab95c38704ccb1c283ca",
+  "predecessor_entries": 995,
+  "predecessor_cmake_sha256": "4aa20570282b08fb41802af99b9c5c3ca9cd213f3c431b36fac89c55d7242653",
+  "changed_files": {
+    "execution_199/CMakeLists.txt": "2e0fbea901fa291157417887c8c380f449302fd6aeddf78c1350855c7373e66c",
+    "execution_199/packaging/test_gk255_x11_ci_gate.py": "11266167012ba041a05d643d3aa3881e5ff4d774ccb54dd8e56488791feb2788"
+  },
+  "integration_patch_sha256": "b8b41b3a8550c3194aeb9542de90d296ba216d0e4aecfe7e9ca9443f8adbe343",
+  "original_stock_rom_included": false,
+  "win32_native_tested": false,
+  "physical_xbox_tested": false
+}
