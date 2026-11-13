@@ -1,0 +1,107 @@
+--- a/source/execution_199/CMakeLists.txt
++++ b/source/execution_199/CMakeLists.txt
+@@ -1227,3 +1227,20 @@
+ target_link_libraries(test_gk239_owner_world_mss PRIVATE gk1_app_state)
+ add_test(NAME GK1_239_OwnerArchivedWorldSaveRAM_FailClosed
+  COMMAND test_gk239_owner_world_mss ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0240: genuine dual-zlib compilation/hostile source refusal check.
++add_executable(test_gk240_archived_optional_zlib test_gk240_archived_optional_zlib.c)
++target_link_libraries(test_gk240_archived_optional_zlib PRIVATE gk1_app_state)
++add_test(NAME GK1_240_ArchivedImportOptionalZlibCompileAndPrivacy
++ COMMAND test_gk240_archived_optional_zlib)
++
++# EXEC0240: Historical source-positive Mesen tests require DEFLATE.
++# Do not misreport zlib-disabled as a ROM-source failure.  The new fail-closed
++# test still runs in *both* configurations.  Keep historical test names.
++if(NOT ZLIB_FOUND)
++  set_tests_properties(
++    GK1_164_PrivateOriginalMssDirectControllerSourceGuard
++    GK1_182_SourceAuthenticatedSavedInstantMapperAndSeed
++    GK1_193_OriginalBankAwarePrivateSourceAutoEntryAtomicRollback
++    PROPERTIES DISABLED TRUE)
++endif()
+--- a/source/execution_199/gk182_archived_source_bank.c
++++ b/source/execution_199/gk182_archived_source_bank.c
+@@ -10,7 +10,11 @@
+ #endif
+ #define GK182_MAX_MSS (1024u*1024u)
+ #define GK182_MAX_STATE (1024u*1024u)
+-/* Published DIGESTS ONLY, no original ROM, graphics, RAM or savestate bytes. */
++/* Published DIGESTS ONLY, no original ROM, graphics, RAM or savestate bytes.
++ * Keep these source-gate oracles inside the inflater feature guard.  MSVC
++ * builds without ZLIB and Linux -Werror no-ZLIB builds must both compile,
++ * while source-only imports remain explicitly unavailable in that mode. */
++#ifdef GK163_HAS_ZLIB
+ static const uint8_t archived_mongol_sha[32]={
+  0xa3,0x83,0x87,0x05,0xc5,0x80,0x10,0xa1,
+  0x1c,0xac,0x37,0xae,0x2d,0x8f,0x44,0x6c,
+@@ -21,7 +25,6 @@
+  0xc4,0xdf,0x1d,0x14,0x58,0xdc,0x66,0x8d,
+  0xbe,0x8a,0x71,0x1d,0x92,0x5d,0xa9,0x5a,
+  0xe5,0xef,0x82,0x39,0x3d,0x13,0x89,0xfb};
+-#ifdef GK163_HAS_ZLIB
+ static uint32_t le32(const uint8_t *p){
+  return (uint32_t)p[0]|((uint32_t)p[1]<<8)|((uint32_t)p[2]<<16)|((uint32_t)p[3]<<24);
+ }
+--- a/source/execution_199/gk163_mesen_import.c
++++ b/source/execution_199/gk163_mesen_import.c
+@@ -33,6 +33,7 @@
+     (profile!=GK77_ARCHIVED_MONGOL_SAVERAM&&
+      profile!=GK77_ARCHIVED_WORLD_SAVERAM))return GK163_ARGUMENT;
+ #ifndef GK163_HAS_ZLIB
++ (void)proof_out; /* no inflater: no private-state access or mutation */
+  return GK163_UNAVAILABLE;
+ #else
+  Gk163Status status=GK163_FORMAT;
+--- /dev/null
++++ b/source/execution_199/test_gk240_archived_optional_zlib.c
+@@ -0,0 +1,48 @@
++/* EXEC0240: build-contract test for optional Mesen inflater.
++ * No copyrighted source bytes, no owner paths, no artificial successful import.
++ * It deliberately differentiates no-zlib from a zlib-enabled build.
++ */
++#include "gk182_archived_source_bank.h"
++#include "gk163_mesen_import.h"
++#include <stdio.h>
++#include <string.h>
++int main(void){
++ Gk182SavedBankProof proof;
++ memset(&proof,0x5a,sizeof proof);
++ if(gk182_original_saved_bank(NULL,"/missing/private.mss",
++    GK77_ARCHIVED_WORLD_SAVERAM,&proof)!=GK182_ARGUMENT)return 1;
++ if(gk182_original_saved_bank("/missing/private.nes",NULL,
++    GK77_ARCHIVED_WORLD_SAVERAM,&proof)!=GK182_ARGUMENT)return 2;
++ if(gk182_original_saved_bank("/missing/private.nes","/missing/private.mss",
++    (Gk77Profile)99,&proof)!=GK182_ARGUMENT)return 3;
++ Gk182Status status=gk182_original_saved_bank("/missing/private.nes",
++    "/missing/private.mss",GK77_ARCHIVED_WORLD_SAVERAM,&proof);
++#ifdef GK163_HAS_ZLIB
++ if(status!=GK182_SOURCE)return 4;
++ puts("EXEC0240 PASS: zlib build refuses missing original source; no private input used");
++#else
++ if(status!=GK182_UNAVAILABLE)return 5;
++ puts("EXEC0240 PASS: no-zlib build explicitly refuses original importer");
++#endif
++ /* Both entry points reject absent private source and do not mutate output. */
++ unsigned char records[GK163_MAX_RECORDS];
++ memset(records,0xc3,sizeof records);
++ size_t count=17u;
++ Gk139MesenProof cpu;
++ memset(&cpu,0xa1,sizeof cpu);
++ Gk163Status unpack=gk163_mesen_extract_with_proof("/missing/private.mss",
++    GK77_ARCHIVED_WORLD_SAVERAM,records,&count,&cpu);
++#ifdef GK163_HAS_ZLIB
++ if(unpack!=GK163_IO)return 7;
++#else
++ if(unpack!=GK163_UNAVAILABLE)return 8;
++#endif
++ if(count!=17u)return 9;
++ for(size_t i=0;i<sizeof records;i++)if(records[i]!=0xc3)return 10;
++ const unsigned char *cp=(const unsigned char *)&cpu;
++ for(size_t i=0;i<sizeof cpu;i++)if(cp[i]!=0xa1)return 11;
++ /* Failure must not hand back fabricated source proof. */
++ const unsigned char *b=(const unsigned char *)&proof;
++ for(size_t i=0;i<sizeof proof;i++)if(b[i]!=0x5a)return 6;
++ return 0;
++}
