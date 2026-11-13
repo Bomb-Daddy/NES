@@ -30,7 +30,7 @@ def audit(app: bytes, test: bytes, cmake: str, workflow: str):
             return False
     for token in (
         'GK1_EXEC0265_AtomicRestart_SourceOnly.patch',
-        'git apply --directory=current-gk1 --check',
+        'apply_gk265_atomic_restart.py',
         'GK1_EXEC0265 current-source SHA mismatch',
         'GK1_264_AtomicScenarioReinstallClearsSourceAndPortState',
         'test_gk265_current_win32_source.py',
