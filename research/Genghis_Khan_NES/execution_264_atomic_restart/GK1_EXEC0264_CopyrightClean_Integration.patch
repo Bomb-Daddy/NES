@@ -1,0 +1,109 @@
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -227,13 +227,20 @@
+  Gk1LoadedScenario a,b;
+  if(gk1_open_loaded_scenario(dataset,GK1_MONGOL_CONQUEST,&a)!=GK1_LOAD_OK ||
+     gk1_open_loaded_scenario(dataset,GK1_WORLD_CONQUEST,&b)!=GK1_LOAD_OK)return 0;
+- s->worlds[0]=a;s->worlds[1]=b;
+- s->finance_source_baseline[0]=a;s->finance_source_baseline[1]=b;
+- memset(&s->labor_history,0,sizeof s->labor_history);
+- s->world_ready[0]=1;s->world_ready[1]=1;
+- s->country_cursor[0]=s->country_cursor[1]=0;
+- s->active_world=0;s->setup_candidate[0]=255;s->setup_candidate[1]=255;
+- reset_setup(s,0);reset_setup(s,1);
++ /* EXEC0264: replacing the campaign templates is a NEW campaign, not
++  * a navigation command. Previously this reset countries but left a live
++  * Classic checkpoint, old controller screen, derived orders and pending
++  * private storage request in the same app. Commit a clean initialized app
++  * only AFTER both source scenarios validate. Failed installs stay atomic. */
++ Gk1App fresh;
++ gk1_app_init(&fresh);
++ /* Preserve only the Director-selected profile, not the prior campaign. */
++ fresh.rules_profile=s->rules_profile<=1u?s->rules_profile:1u;
++ fresh.worlds[0]=a;fresh.worlds[1]=b;
++ fresh.finance_source_baseline[0]=a;
++ fresh.finance_source_baseline[1]=b;
++ fresh.world_ready[0]=1;fresh.world_ready[1]=1;
++ *s=fresh;
+  return 1;
+ }
+ const Gk1CountryTemplate *gk1_app_selected_country(const Gk1App *s){
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -1427,3 +1427,11 @@
+    ${CMAKE_CURRENT_SOURCE_DIR}/../.github/workflows/gk1-native-windows.yml
+    ${CMAKE_CURRENT_SOURCE_DIR}/packaging/test_gk257_win32_acceptance.ps1)
+ endif()
++
++# EXEC0264: a fresh player campaign must not inherit prior stock source,
++# private storage request, Classic/Enhanced orders, or controller cursor.
++add_executable(test_gk264_scenario_restart test_gk264_scenario_restart.c)
++target_link_libraries(test_gk264_scenario_restart PRIVATE gk1_app_state)
++add_test(NAME GK1_264_AtomicScenarioReinstallClearsSourceAndPortState
++ COMMAND test_gk264_scenario_restart
++ ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+--- /dev/null
++++ b/execution_199/test_gk264_scenario_restart.c
+@@ -0,0 +1,62 @@
++/* EXEC0264: a new campaign must never inherit the prior source-attested
++ * Classic/Enhanced controller, budget, or private save request. No ROM data
++ * is used in this lifecycle test and no original Spring is generated. */
++#include "gk1_app_state.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++static unsigned checks=0;
++#define CK(x) do{++checks;if(!(x)){fprintf(stderr,"FAIL line %d: %s\n",__LINE__,#x);exit(1);}}while(0)
++int main(int argc,char **argv){
++ if(argc!=2)return 2;
++ Gk1TemplateDataset *ds=malloc(sizeof *ds);
++ Gk1App *s=malloc(sizeof *s),*before=malloc(sizeof *before);
++ if(!ds||!s||!before)return 3;
++ CK(gk1_template_load(argv[1],ds)==GK1_LOAD_OK);
++ gk1_app_init(s);CK(gk1_app_install_templates(s,ds));
++ for(unsigned profile=0;profile<=1;profile++){
++  s->rules_profile=(uint8_t)profile;
++  s->screen=GK1_SCREEN_STOCK_COMMANDS;
++  s->stock_checkpoint.valid=1;
++  s->stock_checkpoint.source_verified=1;
++  s->stock_checkpoint.pending_pass=1;
++  s->stock_checkpoint.stock_raw[0][0]=37;
++  s->classic_assign.active=1;
++  s->enhanced_assign.active=1;
++  s->enhanced_summer.active=1;
++  s->enhanced_fall.active=1;
++  s->enhanced_winter.active=1;
++  s->stock_storage_request=2;
++  s->stock_storage_confirm=1;
++  s->stock_command_cursor=13;
++  s->country_cursor[0]=13;s->country_cursor[1]=26;
++  s->worlds[0].countries[0].gold=777;
++  s->worlds[1].countries[0].gold=888;
++  s->setup_candidate[0]=0;
++  s->setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;
++  /* A malformed replacement is atomic, even with live old state. */
++  memcpy(before,s,sizeof *s);
++  ds->countries[0].country_id=99;
++  CK(!gk1_app_install_templates(s,ds));
++  CK(memcmp(s,before,sizeof *s)==0);
++  ds->countries[0].country_id=1;
++  CK(gk1_app_install_templates(s,ds));
++  CK(s->rules_profile==profile);
++  CK(s->screen==GK1_SCREEN_TITLE);
++  CK(s->stock_checkpoint.valid==0 && s->stock_checkpoint.source_verified==0);
++  CK(s->stock_checkpoint.pending_pass==0 && s->stock_checkpoint.stock_raw[0][0]==0);
++  CK(s->classic_assign.active==0 && s->enhanced_assign.active==0);
++  CK(s->enhanced_summer.active==0 && s->enhanced_fall.active==0 && s->enhanced_winter.active==0);
++  CK(s->stock_storage_request==0 && s->stock_storage_confirm==0);
++  CK(s->stock_command_cursor==0 && s->country_cursor[0]==0 && s->country_cursor[1]==0);
++  CK(s->setup_candidate[0]==255 && s->setup_stage[0]==GK53_SETUP_PLAYERS);
++  CK(s->world_ready[0]==1 && s->world_ready[1]==1);
++  CK(s->worlds[0].phase==GK1_PRE_SETUP_TEMPLATE && s->worlds[1].phase==GK1_PRE_SETUP_TEMPLATE);
++  CK(s->worlds[0].country_count==14 && s->worlds[1].country_count==27);
++  CK(s->worlds[0].countries[0].gold==425);
++  CK(s->worlds[1].countries[0].gold==ds->countries[14].gold);
++  CK(gk1_app_input(s,GK1_INPUT_CONFIRM)==1 && s->screen==GK1_SCREEN_CAMPAIGNS);
++ }
++ printf("EXEC0264 atomic fresh campaign/safe source reset: %u checks PASS\n",checks);
++ free(before);free(s);free(ds);return 0;
++}
