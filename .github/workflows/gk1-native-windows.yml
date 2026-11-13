@@ -256,8 +256,16 @@ jobs:
       - name: Run real WinMain controller simulation, paint and CLI hostile controls
         shell: pwsh
         run: |
-          & current-gk1/execution_199/packaging/test_gk257_win32_acceptance.ps1 -Executable (Resolve-Path 'build-gk1-win32/Release/gk1_native_shell.exe').Path
-          if ($LASTEXITCODE -ne 0) { throw 'Actual current WinMain acceptance failed' }
+          # The invoked acceptance is a PowerShell script (Start-Process
+          # internally), not a native CLI returning $LASTEXITCODE. Reusing
+          # $LASTEXITCODE here rechecks the previous external program and
+          # wrongly rejects a printed WinMain PASS (actual run 43509083020).
+          $acceptance = & current-gk1/execution_199/packaging/test_gk257_win32_acceptance.ps1 -Executable (Resolve-Path 'build-gk1-win32/Release/gk1_native_shell.exe').Path
+          if (-not $?) { throw 'Actual current WinMain acceptance script failed' }
+          if (-not (@($acceptance) -match 'EXEC0257 WinMain GUI rendering / software controller / malformed args PASS')) {
+            throw 'Actual current WinMain acceptance did not report tested GUI/controller PASS'
+          }
+          $acceptance
       - name: Build and silently install actual current NSIS package
         shell: pwsh
         run: |
@@ -271,8 +279,12 @@ jobs:
           $exe = Join-Path $target 'gk1_native_shell.exe'
           $csv = Join-Path $target 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'
           if (-not (Test-Path $exe) -or -not (Test-Path $csv)) { throw 'Native installed EXE or canonical CSV missing' }
-          & current-gk1/execution_199/packaging/test_gk257_win32_acceptance.ps1 -Executable $exe
-          if ($LASTEXITCODE -ne 0) { throw 'Installed native WinMain acceptance failed' }
+          $installedAcceptance = & current-gk1/execution_199/packaging/test_gk257_win32_acceptance.ps1 -Executable $exe
+          if (-not $?) { throw 'Installed native WinMain acceptance script failed' }
+          if (-not (@($installedAcceptance) -match 'EXEC0257 WinMain GUI rendering / software controller / malformed args PASS')) {
+            throw 'Installed WinMain acceptance did not report tested GUI/controller PASS'
+          }
+          $installedAcceptance
           Get-FileHash $exe -Algorithm SHA256
           Write-Output 'TESTED_WIN32_CI native compiled, full CTest, WinMain GUI and NSIS installation; PHYSICAL_XBOX_NOT_RUN; FULL_CAMPAIGNS_NOT_RUN'
       # No copyrighted original NES ROM, private Mesen source, raw RAM, or private original checkpoints.
