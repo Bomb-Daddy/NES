@@ -1,0 +1,204 @@
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -1278,3 +1278,11 @@
+   add_test(NAME GK1_242_RequiredZlibBackend_LinkAndCorruption
+            COMMAND test_gk242_win32_archive_link)
+ endif()
++
++# EXEC0245: actual Linux/Win32 owner-private first-Spring import parity.
++# This is an authenticated checkpoint loader, NOT independent NES RNG.
++target_sources(gk1_app_state PRIVATE gk245_owner_source.c)
++add_executable(test_gk245_owner_source test_gk245_owner_source.c)
++target_link_libraries(test_gk245_owner_source PRIVATE gk1_app_state)
++add_test(NAME GK1_245_CrossPlatformOwnerSourceEntrypointIsolationAndRollback
++ COMMAND test_gk245_owner_source ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -58,6 +58,7 @@
+ #include "gk237_owner_fresh_win.h"
+ #include "gk238_owner_startup.h"
+ #include "gk239_owner_world_mss.h"
++#include "gk245_owner_source.h"
+ #include "gk167_private_cold_save.h"
+ #include "gk188_classic_receipt.h"
+ #include "gk189_classic_cold_save.h"
+@@ -2110,6 +2111,26 @@
+  }
+ }
+ 
++/* EXEC0245: presentation is shell-local; the shared import decision is
++ * platform-neutral, and refusal leaves all original country state intact. */
++static void gk245_report_owner_status(Gk245Outcome outcome){
++ switch(outcome){
++  case GK245_CONFLICT:
++   snprintf(app.status,sizeof app.status,
++      "OWNER IMPORT REFUSED: FRESH AND ARCHIVED WORLD SOURCES CONFLICT");break;
++  case GK245_ARCHIVED_REFUSED:
++   snprintf(app.status,sizeof app.status,"%s",gk241_archived_refusal_message());break;
++  case GK245_FRESH_REFUSED:
++   snprintf(app.status,sizeof app.status,
++      "OWNER FRESH SOURCE REFUSED; PRIVATE ORIGINAL WORKRAM EVIDENCE REQUIRED");break;
++  case GK245_ARCHIVED_IMPORTED:
++   stock_selected=GK77_ARCHIVED_WORLD_SAVERAM;break;
++  case GK245_FRESH_IMPORTED:
++   stock_selected=GK77_FRESH_MONGOL_WORKRAM;break;
++  default:break;
++ }
++}
++
+ #ifdef _WIN32
+ /* EXEC0231: opt-in per-stage Windows GUI diagnosis; never reads gameplay bytes. */
+ static int gk231_diagnostic_active=0;
+@@ -2184,30 +2205,13 @@
+  gk231_diagnostic_active=smoke_mode>0;
+  gk231_trace("WinMain arguments accepted");
+  gk1_app_init(&app);gk1_pad_init(&pad);load_optional_battle_view();load_optional_mesen_map();load_optional_spring_archive();load_optional_stock_spring();(void)load_scenario_data();
+- /* EXEC0238: single source-pure gate for normal WinMain, smoke isolation,
+-  * and source refusal; no original RNG or source bytes are manufactured. */
+- const char *owner_fresh=getenv("GK1_OWNER_STOCK_FRESH_JSON");
+- const char *owner_world=getenv("GK1_OWNER_STOCK_WORLD_MSS");
+- /* EXEC0239: explicit, mutually exclusive owner sources; diagnostic modes
+-  * never open either source. Archived World is SaveRAM, not fresh WorkRAM. */
+- Gk239Status world_result=gk239_owner_world_startup(&app,scenario_csv_path(),
+-    owner_world,owner_fresh,scenario_loaded,smoke_mode!=0);
+- Gk238Startup owner_result=GK238_UNREQUESTED;
+- if(world_result==GK239_UNREQUESTED)
+-  owner_result=gk238_owner_startup(&app,scenario_csv_path(),owner_fresh,
+-    scenario_loaded,smoke_mode!=0);
+- if(world_result==GK239_CONFLICTING_SOURCES)
+-  snprintf(app.status,sizeof app.status,
+-   "OWNER IMPORT REFUSED: FRESH AND ARCHIVED WORLD SOURCES CONFLICT");
+- else if(world_result==GK239_REFUSED)
+-  snprintf(app.status,sizeof app.status,"%s",gk241_archived_refusal_message());
+- else if(world_result==GK239_IMPORTED)
+-  stock_selected=GK77_ARCHIVED_WORLD_SAVERAM;
+- else if(owner_result==GK238_REFUSED)
+-  snprintf(app.status,sizeof app.status,
+-   "OWNER FRESH SOURCE REFUSED; PRIVATE ORIGINAL WORKRAM EVIDENCE REQUIRED");
+- else if(owner_result==GK238_OWNER_IMPORTED)
+-  stock_selected=GK77_FRESH_MONGOL_WORKRAM;
++ /* EXEC0245: one fail-closed owner-source startup path on both Linux and
++  * Windows. A diagnostic run NEVER accesses owner-private original bytes.
++  * No independent original NES first-Spring RNG is implied by imports. */
++ Gk245Outcome owner_result=gk245_owner_source_startup(&app,scenario_csv_path(),
++   scenario_loaded,smoke_mode!=0,getenv("GK1_OWNER_STOCK_FRESH_JSON"),
++   getenv("GK1_OWNER_STOCK_WORLD_MSS"));
++ gk245_report_owner_status(owner_result);
+  gk231_trace("app and scenario initialized");
+  static Gk1LoadedScenario gk232_original_worlds[2];
+  if(gk232_scripted_gamepad||gk233_practice_mode){
+@@ -3796,6 +3800,15 @@
+  }
+  else if(argc!=1){fprintf(stderr,"Usage: gk1_native_shell [--smoke-frames 1..120 | --smoke-snapshot 1..120 | --smoke-path 1..120 | --path-export path scenario 1/2/b-script | --path-import path | --cold-export path case events | --cold-import path]\n");return 4;}
+  gk1_app_init(&app);gk1_pad_init(&pad);load_optional_battle_view();load_optional_mesen_map();load_optional_spring_archive();load_optional_stock_spring();(void)load_scenario_data();
++ /* EXEC0245: actual interactive Linux startup now honors the SAME
++  * authenticated owner-private source environment as WinMain. A CLI
++  * test/diagnostic never reads it. No fake default source is created. */
++ if(argc==1){
++  Gk245Outcome owner=gk245_owner_source_startup(&app,scenario_csv_path(),
++    scenario_loaded,0,getenv("GK1_OWNER_STOCK_FRESH_JSON"),
++    getenv("GK1_OWNER_STOCK_WORLD_MSS"));
++  gk245_report_owner_status(owner);
++ }
+  if((argc==3&&strcmp(argv[1],"--play-original-auto")==0)||
+     (argc==4&&strcmp(argv[1],"--smoke-original-auto")==0)||
+     smoke_classic_storage_original||smoke_classic_view_original||smoke_classic_trade_original||smoke_classic_tax_original){
+--- /dev/null
++++ b/execution_199/gk245_owner_source.c
+@@ -0,0 +1,25 @@
++#include "gk245_owner_source.h"
++/* The original archived World checkpoint is distinct from the fresh Mongol
++ * reset: SaveRAM vs WorkRAM and source-specific 83-byte record proof. */
++Gk245Outcome gk245_owner_source_startup(Gk1App *app,const char *csv,
++ int loaded,int diagnostic,const char *fresh,const char *world){
++ /* Preserve the existing Win32 precedence, including diagnostics refusing
++  * access to private evidence before conflicting-path interpretation. */
++ Gk239Status w=gk239_owner_world_startup(app,csv,world,fresh,loaded,diagnostic);
++ switch(w){
++  case GK239_CONFLICTING_SOURCES:return GK245_CONFLICT;
++  case GK239_REFUSED:return GK245_ARCHIVED_REFUSED;
++  case GK239_IMPORTED:return GK245_ARCHIVED_IMPORTED;
++  case GK239_SMOKE_ISOLATED:return GK245_ISOLATED;
++  case GK239_UNREQUESTED:break;
++  default:return GK245_ARCHIVED_REFUSED;
++ }
++ Gk238Startup f=gk238_owner_startup(app,csv,fresh,loaded,diagnostic);
++ switch(f){
++  case GK238_UNREQUESTED:return GK245_NO_REQUEST;
++  case GK238_OWNER_IMPORTED:return GK245_FRESH_IMPORTED;
++  case GK238_REFUSED:return GK245_FRESH_REFUSED;
++  case GK238_SMOKE_ISOLATED:return GK245_ISOLATED;
++  default:return GK245_FRESH_REFUSED;
++ }
++}
+--- /dev/null
++++ b/execution_199/gk245_owner_source.h
+@@ -0,0 +1,16 @@
++#ifndef GK245_OWNER_SOURCE_H
++#define GK245_OWNER_SOURCE_H
++#include "gk239_owner_world_mss.h"
++#include "gk238_owner_startup.h"
++/* Authenticated owner-private stock import for the SAME native C11 app,
++ * never a generated original Spring. Both OS entrypoints must use this gate.
++ * No source paths are retained, copied into public logs or written to disk. */
++typedef enum {
++ GK245_NO_REQUEST=0, GK245_FRESH_IMPORTED=1, GK245_ARCHIVED_IMPORTED=2,
++ GK245_FRESH_REFUSED=3, GK245_ARCHIVED_REFUSED=4,
++ GK245_CONFLICT=5, GK245_ISOLATED=6
++} Gk245Outcome;
++Gk245Outcome gk245_owner_source_startup(Gk1App *app,const char *canonical_csv,
++ int loaded,int diagnostic,const char *fresh_workram_json,
++ const char *archived_world_saveram_mss);
++#endif
+--- /dev/null
++++ b/execution_199/test_gk245_owner_source.c
+@@ -0,0 +1,49 @@
++#include "gk245_owner_source.h"
++#include "gk1_source_identity.h"
++#include <stdlib.h>
++#include <string.h>
++#include <stdio.h>
++#define CK(x) do{if(!(x)){fprintf(stderr,"GK245 test fail at %d: %s\n",__LINE__,#x);return 1;}}while(0)
++int main(int argc,char **argv){
++ CK(argc==2||argc==3);
++ Gk1TemplateDataset *ds=calloc(1,sizeof *ds);
++ Gk1App *app=calloc(1,sizeof *app),*before=malloc(sizeof *before);
++ CK(ds&&app&&before);
++ CK(gk1_verified_original_csv(argv[1]));
++ CK(gk1_template_load(argv[1],ds)==GK1_LOAD_OK);
++ gk1_app_init(app);CK(gk1_app_install_templates(app,ds));
++ memcpy(before,app,sizeof *app);
++ CK(gk245_owner_source_startup(app,argv[1],1,0,NULL,NULL)==GK245_NO_REQUEST);
++ CK(memcmp(app,before,sizeof *app)==0);
++ CK(gk245_owner_source_startup(app,argv[1],1,1,"/never/fresh.json","/never/world.mss")==GK245_ISOLATED);
++ CK(memcmp(app,before,sizeof *app)==0);
++ CK(gk245_owner_source_startup(app,argv[1],1,0,"/never/fresh.json","/never/world.mss")==GK245_CONFLICT);
++ CK(memcmp(app,before,sizeof *app)==0);
++ CK(gk245_owner_source_startup(app,argv[1],1,0,"/never/fresh.json",NULL)==GK245_FRESH_REFUSED);
++ CK(memcmp(app,before,sizeof *app)==0);
++ CK(gk245_owner_source_startup(app,argv[1],1,0,NULL,"/never/world.mss")==GK245_ARCHIVED_REFUSED);
++ CK(memcmp(app,before,sizeof *app)==0);
++ CK(gk245_owner_source_startup(app,argv[1],0,0,NULL,"/never/world.mss")==GK245_ARCHIVED_REFUSED);
++ CK(memcmp(app,before,sizeof *app)==0);
++ /* Fresh and archive source never become interchangeable or pre-setup
++  * bypassed by a failed owner request. */
++ CK(app->worlds[0].phase==GK1_PRE_SETUP_TEMPLATE&&app->worlds[1].phase==GK1_PRE_SETUP_TEMPLATE);
++ CK(!app->stock_checkpoint.valid);
++ if(argc==3){
++  /* Optional owner-only oracle. This licensed original Mesen state is NOT
++   * bundled with source, the installer, public GitHub, or public CTest. */
++  CK(gk245_owner_source_startup(app,argv[1],1,0,NULL,argv[2])==GK245_ARCHIVED_IMPORTED);
++  CK(app->screen==GK1_SCREEN_STOCK_CONTINUE);
++  CK(app->rules_profile==0u&&app->stock_checkpoint.valid);
++  CK(app->stock_checkpoint.source_verified&&app->stock_checkpoint.year==1206u);
++  CK(app->stock_checkpoint.world.country_count==27u);
++  CK(app->stock_checkpoint.orders.remaining==3u);
++  CK(gk85_raw_source_intact(&app->stock_checkpoint));
++  CK(gk88_stock_projection_intact(&app->stock_checkpoint));
++  CK(app->worlds[0].phase==GK1_PRE_SETUP_TEMPLATE);
++  CK(app->worlds[1].phase==GK1_PRE_SETUP_TEMPLATE);
++ }
++ free(before);free(app);free(ds);
++ puts("EXEC0245 PASS: common Win32/Linux owner source gate, conflict, isolation and failure atomicity; owner-only World SaveRAM positive oracle optional; original independent first Spring RNG STILL OPEN");
++ return 0;
++}
