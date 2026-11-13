@@ -8,6 +8,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_257_current_win32_gate/**'
       - 'research/Genghis_Khan_NES/execution_259_win32_posix_test_port/**'
       - 'research/Genghis_Khan_NES/execution_260_win32_patch_scope/**'
+      - 'research/Genghis_Khan_NES/execution_261_win32_ctest_registry/**'
 
 permissions:
   contents: read
@@ -112,6 +113,45 @@ jobs:
           Copy-Item $src259 $dst259 -Force
           if ((Get-FileHash $src259 -Algorithm SHA256).Hash -ne (Get-FileHash $dst259 -Algorithm SHA256).Hash) { throw 'EXEC0259 copied Windows test SHA mismatch' }
           if (-not (Select-String -LiteralPath 'current-gk1/execution_199/CMakeLists.txt' -Pattern 'GK1_259_Win32LocalAppDataPathAndRefusal' -SimpleMatch -Quiet)) { throw 'EXEC0259 Win32 CTest registration missing' }
+          # EXEC0261: preserve Linux-only tests on POSIX but never launch the
+          # Linux/X11 command-line shell on the WinMain host or require xvfb-run.
+          # Real native Windows WinMain GUI/gamepad and NSIS tests remain required.
+          $cmakeNow = [IO.File]::ReadAllText($cmake).Replace("`r`n", "`n")
+          $linuxGui = @(
+            'GK1_071_NativeControllerVIEWASafeGateAndBothWorldsImmutable',
+            'GK1_073_MergedControllerBudgetAndBattlePassPreSetupWorldImmutable',
+            'GK1_074_MergedSpringControllerNoWorldMutation',
+            'GK1_075_ActualNativeControllerSpringPreviewNoMutation'
+          )
+          foreach ($testName in $linuxGui) {
+            $needle = 'add_test(NAME ' + $testName
+            $begin = $cmakeNow.IndexOf($needle)
+            if ($begin -lt 0 -or $cmakeNow.IndexOf($needle,$begin+1) -ge 0) { throw "Unexpected GUI test CMake anchor: $testName" }
+            $end = $cmakeNow.IndexOf(')', $begin)
+            if ($end -lt 0) { throw "Unclosed GUI test: $testName" }
+            $original = $cmakeNow.Substring($begin,$end-$begin+1)
+            $cmakeNow = $cmakeNow.Replace($original, "if(NOT WIN32)`n" + $original + "`nendif()")
+          }
+          $p176 = "if(Python3_Interpreter_FOUND)`n add_test(NAME GK1_176_LauncherAndDualPackagingVersionContract"
+          $p221 = "if(Python3_Interpreter_FOUND)`n add_test(NAME GK1_221_PrivateStockMesenCaptureRunnerAdversarialHarness"
+          foreach ($spec in @($p176,$p221)) {
+            if (-not $cmakeNow.Contains($spec)) { throw "Missing platform-specific source test registration: $spec" }
+            $cmakeNow = $cmakeNow.Replace($spec,$spec.Replace('if(Python3_Interpreter_FOUND)','if(Python3_Interpreter_FOUND AND NOT WIN32)'))
+          }
+          $p250 = 'add_test(NAME GK1_250_OriginalThreeOrderFullColdSmoke_FailClosed'
+          $s250 = $cmakeNow.IndexOf($p250)
+          $e250 = $cmakeNow.IndexOf('set_tests_properties(GK1_250_OriginalThreeOrderFullColdSmoke_FailClosed', $s250)
+          if ($s250 -lt 0 -or $e250 -lt 0) { throw 'Missing original Linux-only WinMain-incompatible 250 test' }
+          $end250 = $cmakeNow.IndexOf(')', $e250)
+          if ($end250 -lt 0) { throw 'Malformed original 250 CMake test' }
+          $fragment250 = $cmakeNow.Substring($s250,$end250-$s250+1)
+          $cmakeNow = $cmakeNow.Replace($fragment250,"if(NOT WIN32)`n"+$fragment250+"`nendif()")
+          [IO.File]::WriteAllText($cmake,$cmakeNow)
+          # Source-level guard: the exclusion must be specific, not global.
+          if (-not $cmakeNow.Contains('GK1_259_Win32LocalAppDataPathAndRefusal') -or
+              -not $cmakeNow.Contains('GK1_257_CurrentWin32Workflow_RejectsStaleSourceAndFalsePass')) {
+            throw 'Native Windows acceptance tests must remain registered'
+          }
           if (-not (Test-Path current-gk1/execution_199/gk1_native_shell.c)) { throw 'Current complete C11 app missing' }
           if (-not (Test-Path current-gk1/execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)) { throw 'Exact public source CSV missing' }
       - name: Install the actual NSIS packager
@@ -148,6 +188,8 @@ jobs:
       - name: Execute complete Win32 CTest registry, not an old subset
         shell: pwsh
         run: |
+          python research/Genghis_Khan_NES/execution_261_win32_ctest_registry/test_gk261_win32_registry.py build-gk1-win32/CTestTestfile.cmake
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0261 host-specific Windows test registry QA failed' }
           ctest --test-dir build-gk1-win32 -C Release --output-on-failure --timeout 90 -j 4
           if ($LASTEXITCODE -ne 0) { throw 'Current Win32 regression suite failed' }
       - name: Run real WinMain controller simulation, paint and CLI hostile controls
