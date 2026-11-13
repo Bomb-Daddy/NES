@@ -1,0 +1,165 @@
+--- a/source/execution_199/CMakeLists.txt
++++ b/source/execution_199/CMakeLists.txt
+@@ -64,7 +64,7 @@
+ if(WIN32)
+   install(TARGETS gk1_native_shell RUNTIME DESTINATION .)
+   install(FILES ../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv DESTINATION .)
+-  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0193.md README_EXEC0194.md README_EXEC0195.md README_EXEC0196.md README_EXEC0197.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md README_EXEC0210.md README_EXEC0211.md README_EXEC0212.md README_EXEC0213.md README_EXEC0224.md README_EXEC0227.md DESTINATION .)
++  install(FILES README_EXEC0059.md README_EXEC0060.md README_EXEC0062.md README_EXEC0065.md README_EXEC0066.md README_EXEC0067.md README_EXEC0068.md README_EXEC0069.md README_EXEC0071.md README_EXEC0072.md README_EXEC0073.md README_EXEC0074.md README_EXEC0075.md README_EXEC0077.md README_EXEC0078.md README_EXEC0079.md README_EXEC0080.md README_EXEC0081.md README_EXEC0083.md README_EXEC0084.md README_EXEC0085.md README_EXEC0086.md README_EXEC0087.md README_EXEC0088.md README_EXEC0089.md README_EXEC0090.md README_EXEC0091.md README_EXEC0092.md README_EXEC0093.md README_EXEC0094.md README_EXEC0095.md README_EXEC0097.md README_EXEC0098.md README_EXEC0099.md README_EXEC0100.md README_EXEC0101.md README_EXEC0102.md README_EXEC0103.md README_EXEC0104.md README_EXEC0105.md README_EXEC0106.md README_EXEC0107.md README_EXEC0108.md README_EXEC0109.md README_EXEC0110.md README_EXEC0111.md README_EXEC0112.md README_EXEC0114.md README_EXEC0115.md HANDOFF_EXEC0117.md HANDOFF_EXEC0118.md HANDOFF_EXEC0119.md HANDOFF_EXEC0120.md README_EXEC0120.md README_EXEC0121.md README_EXEC0123.md README_EXEC0125.md README_EXEC0126.md README_EXEC0127.md README_EXEC0128.md README_EXEC0129.md README_EXEC0132.md README_EXEC0133.md README_EXEC0135.md README_EXEC0136.md README_EXEC0138.md README_EXEC0139.md README_EXEC0140.md README_EXEC0142.md README_EXEC0143.md README_EXEC0144.md README_EXEC0145.md README_EXEC0147.md README_EXEC0148.md README_EXEC0149.md README_EXEC0151.md README_EXEC0152.md README_EXEC0153.md README_EXEC0154.md README_EXEC0155.md README_EXEC0156.md README_EXEC0157.md README_EXEC0158.md README_EXEC0159.md README_EXEC0160.md README_EXEC0161.md README_EXEC0162.md README_EXEC0163.md README_EXEC0164.md README_EXEC0165.md README_EXEC0166.md README_EXEC0167.md README_EXEC0168.md README_EXEC0170.md README_EXEC0171.md README_EXEC0172.md README_EXEC0173.md README_EXEC0174.md README_EXEC0175.md README_EXEC0176.md README_EXEC0177.md README_EXEC0178.md README_EXEC0179.md README_EXEC0180.md README_EXEC0181.md README_EXEC0182.md README_EXEC0183.md README_EXEC0184.md README_EXEC0185.md README_EXEC0186.md README_EXEC0187.md README_EXEC0188.md README_EXEC0189.md README_EXEC0190.md README_EXEC0191.md README_EXEC0192.md README_EXEC0193.md README_EXEC0194.md README_EXEC0195.md README_EXEC0196.md README_EXEC0197.md README_EXEC0198.md README_EXEC0199.md README_EXEC0209.md README_EXEC0210.md README_EXEC0211.md README_EXEC0212.md README_EXEC0213.md README_EXEC0224.md README_EXEC0227.md README_EXEC0253.md DESTINATION .)
+   set(CPACK_GENERATOR "NSIS")
+   set(CPACK_PACKAGE_NAME "GK1-Native-Research")
+   set(CPACK_PACKAGE_VERSION "1.99.0")
+@@ -1319,3 +1319,10 @@
+   COMMAND gk1_native_shell --smoke-classic-three-cold-original
+     ${CMAKE_CURRENT_BINARY_DIR}/GK1_250_PRIVATE_STOCK_NOT_DISTRIBUTED.mss 1)
+ set_tests_properties(GK1_250_OriginalThreeOrderFullColdSmoke_FailClosed PROPERTIES WILL_FAIL TRUE)
++
++# EXEC0253: controller menu must not mark a playable Classic Tax LOCKED,
++# nor hide the final-order undo path, nor mark consumed PASS AVAILABLE.
++add_executable(test_gk253_command_availability test_gk253_command_availability.c)
++target_link_libraries(test_gk253_command_availability PRIVATE gk1_app_state)
++add_test(NAME GK1_253_ControllerClassicMenuAvailabilityAccurate
++ COMMAND test_gk253_command_availability)
+--- a/source/execution_199/gk134_stock_command_route.h
++++ b/source/execution_199/gk134_stock_command_route.h
+@@ -16,4 +16,13 @@
+ } Gk134CommandRoute;
+ const char *gk134_command_name(unsigned ordinal);
+ Gk134CommandRoute gk134_command_route(unsigned ordinal);
++/* EXEC0253: truthful controller-menu availability for an independently
++ * source-authenticated Spring.  This is only a UI classification; it never
++ * authorizes a command, applies a rule, or advances an original NES season.
++ * The caller must first pass its raw-record and mutable-world integrity gates.
++ * An unpassed third action may still be undone from TAX/ASSIGN's Y command.
++ */
++const char *gk134_menu_capability(unsigned ordinal,uint8_t enhanced,
++ uint8_t orders_remaining,uint8_t actions,uint8_t passed);
++
+ #endif
+--- a/source/execution_199/gk134_stock_command_route.c
++++ b/source/execution_199/gk134_stock_command_route.c
+@@ -22,3 +22,28 @@
+   default:return GK134_ROUTE_LOCKED_STOCK_ACTION;
+  }
+ }
++
++const char *gk134_menu_capability(unsigned ordinal,uint8_t enhanced,
++ uint8_t orders_remaining,uint8_t actions,uint8_t passed){
++ if(ordinal>=14u||enhanced>1u||orders_remaining>3u||actions>3u||passed>1u)
++  return "REFUSED";
++ switch(ordinal){
++ case 0u: /* TAX: previously mislabeled LOCKED even when playable. */
++  if(enhanced)return "CLASSIC ONLY";
++  if(passed)return "ENDED";
++  if(orders_remaining)return "SET RATE";
++  return actions?"UNDO ONLY":"ENDED";
++ case 1u: /* CLASSIC ASSIGN: retain access to PORT-ONLY Y undo. */
++  if(enhanced)return "ENHANCED";
++  if(passed)return "ENDED";
++  if(orders_remaining)return "MANUAL";
++  return actions?"UNDO ONLY":"ENDED";
++ case 4u:return "PRICE VIEW"; /* Not actual merchant availability. */
++ case 6u:return "READ ONLY";
++ case 12u:
++  if(enhanced)return "PROFILE PASS";
++  return passed||!orders_remaining?"ENDED":"PASS";
++ case 13u:return "PORT SAVE";
++ default:return "LOCKED";
++ }
++}
+--- a/source/execution_199/gk1_native_shell.c
++++ b/source/execution_199/gk1_native_shell.c
+@@ -26,6 +26,7 @@
+ #include "gk198_tax_forecast.h"
+ #include "gk199_classic_tax_undo.h"
+ #include "gk95_stock_trade_reference.h"
++#include "gk134_stock_command_route.h"
+ #include "gk96_ppu_warmup.h"
+ #include "gk97_nmi_trace.h"
+ #include "gk98_controller_trace.h"
+@@ -793,14 +794,31 @@
+     order_status==GK119_OK?(app.enhanced_assign.active?"ENHANCED":"BASE"):"SOURCE REFUSED",
+     order_status==GK119_OK?(unsigned)effective:0u,(unsigned)cp->player_index+1u,
+     gk77_profile_name((Gk77Profile)cp->profile));label(104,204,line,FG);
++   /* EXEC0253: show the real Classic Tax/Assign/Pass state, including
++    * UNDO ONLY after the third order.  The menu is observational: the
++    * guarded gk1_app_input dispatcher remains sole action authority. */
++   uint8_t menu_remaining=order_status==GK119_OK?effective:4u;
++   uint8_t menu_actions=0u,menu_passed=0u;
++   if(app.rules_profile==0u && app.classic_assign.active){
++    if(gk187_intact(&app.classic_assign,cp)){
++     menu_remaining=app.classic_assign.budget.remaining;
++     menu_actions=app.classic_assign.action_count;
++     menu_passed=app.classic_assign.passed;
++    }else menu_remaining=4u; /* refuse invalid derived ledger */
++   }
+    for(unsigned i=0;i<14u;i++){
+     unsigned column=i/7u,row=i%7u;
++    const char *availability=gk134_menu_capability(i,app.rules_profile,
++      menu_remaining,menu_actions,menu_passed);
+     snprintf(line,sizeof line,"%s %2u. %-8s %s",
+      app.stock_command_cursor==i?">":" ",i+1u,
+-     gk87_stock_command_name(i),i==6u?"READ ONLY":i==4u?"PRICE VIEW":i==12u?"AVAILABLE":
+-     i==13u?"PORT SAVE":i==1u?(app.rules_profile?"ENHANCED":"MANUAL") :"LOCKED");
++     gk87_stock_command_name(i),availability);
++    int blocked=strcmp(availability,"REFUSED")==0||
++      strcmp(availability,"LOCKED")==0||
++      strcmp(availability,"ENDED")==0||
++      strcmp(availability,"CLASSIC ONLY")==0;
+     label(105+(int)column*510,242+(int)row*44,line,
+-       app.stock_command_cursor==i?EDGE:i==6u||i==4u||i==12u?FG:WARN);
++       app.stock_command_cursor==i?EDGE:blocked?WARN:FG);
+    }
+    label(104,555,cp->pending_pass?"A CONFIRM PASS / B CANCEL (NO CHANGE)":
+      "DPAD SELECT / A COMMAND / B COUNTRY / START VERIFY PRIVATE ROM",FG);
+--- /dev/null
++++ b/source/execution_199/test_gk253_command_availability.c
+@@ -0,0 +1,38 @@
++#include "gk134_stock_command_route.h"
++#ifdef NDEBUG
++#undef NDEBUG
++#endif
++#include <assert.h>
++#include <string.h>
++#include <stdio.h>
++#define EQ(i,e,r,a,p,want) assert(strcmp(gk134_menu_capability(i,e,r,a,p),want)==0)
++int main(void){
++ /* SOURCE-VALIDATED menu contracts: 3 available Classic orders. */
++ EQ(0,0,3,0,0,"SET RATE"); EQ(1,0,3,0,0,"MANUAL");
++ EQ(12,0,3,0,0,"PASS"); EQ(4,0,3,0,0,"PRICE VIEW");
++ EQ(6,0,3,0,0,"READ ONLY"); EQ(13,0,3,0,0,"PORT SAVE");
++ for(unsigned i=0;i<14;i++)
++  if(i!=0&&i!=1&&i!=4&&i!=6&&i!=12&&i!=13)
++   EQ(i,0,3,0,0,"LOCKED");
++ /* Three actions consumed: don't mark TAX locked; leave Y UNDO accessible. */
++ EQ(0,0,0,3,0,"UNDO ONLY");EQ(1,0,0,3,0,"UNDO ONLY");
++ EQ(12,0,0,3,0,"ENDED");
++ /* PASS ends the season irreversibly and is not a fourth action. */
++ EQ(0,0,0,2,1,"ENDED");EQ(1,0,0,2,1,"ENDED");
++ EQ(12,0,0,2,1,"ENDED");
++ /* No source means no route authorization; presenter validates args. */
++ EQ(0,0,4,0,0,"REFUSED"); EQ(0,2,3,0,0,"REFUSED");
++ EQ(0,0,3,4,0,"REFUSED"); EQ(0,0,3,0,2,"REFUSED");
++ EQ(14,0,3,0,0,"REFUSED");
++ EQ(0,1,3,0,0,"CLASSIC ONLY");EQ(1,1,3,0,0,"ENHANCED");
++ EQ(12,1,3,0,0,"PROFILE PASS");
++ /* 14 commands x every remaining order value and the 2 profiles. */
++ for(unsigned profile=0;profile<2;profile++)
++  for(unsigned remaining=0;remaining<=3;remaining++)
++   for(unsigned i=0;i<14;i++){
++    const char *p=gk134_menu_capability(i,profile,remaining,3-remaining,0);
++    assert(p && *p && strcmp(p,"REFUSED")!=0);
++   }
++ puts("EXEC0253 PASS: Classic Tax/Assign/Pass actionable labels and undo-only visibility; no new NES action");
++ return 0;
++}
+--- /dev/null
++++ b/source/execution_199/README_EXEC0253.md
+@@ -0,0 +1,7 @@
++# EXEC0253 — Classic controller command availability (not original first Spring)
++
++Inherited, complete native C11 source: EXEC0252. This increment repairs the live 1280x720 command menu in gk1_native_shell.c; it had marked Classic TAX `LOCKED` although its existing source-authenticated controller route actually supports manual-derived Tax-rate actions. The new source-authored gk134_menu_capability classifies all 14 commands, distinguishes quoted Trade prices from real merchants, and changes PASS to ENDED after orders are exhausted. After exactly three Classic actions but before irreversible Pass, TAX and ASSIGN display `UNDO ONLY` so the existing Y-port-undo path remains discoverable.
++
++No original country record or ROM is embedded/changed. All changes are presentation only. The source/derived integrity gate remains in the existing dispatcher. This does NOT implement independent original first Spring, original 6502 RNG/history, an actual merchant encounter, subsequent seasons, AI, diplomacy, dynasty or full battles. Original fresh Mongol WorkRAM evidence and archived Mongol/World SaveRAM evidence remain distinct and private.
++
++Reproduction: CMake configure, build and ctest against source/execution_199. With zlib required, the 215/215 full Release native Linux CTest suite passes. Owner-private original source is required for an on-screen original command menu; generic Xvfb smoke cannot prove that visual path.
