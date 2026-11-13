@@ -1,0 +1,96 @@
+name: GK1 EXEC0242 exact 241 native Windows ZLIB + NSIS acceptance
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/gk1-exec242-win32-zlib.yml'
+      - 'research/Genghis_Khan_NES/execution_242_win32_zlib/**'
+permissions:
+  contents: read
+jobs:
+  native-archive:
+    runs-on: windows-2022
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct EXACT inherited native 230 baseline then source 242
+        shell: pwsh
+        run: |
+          $root='research/Genghis_Khan_NES/execution_229_windows_ci_bundle'
+          python "$root/test_hydrate_verified_bundle.py"
+          if ($LASTEXITCODE -ne 0) { throw 'Hydrated complete baseline QA refused' }
+          python "$root/hydrate_verified_bundle.py" --parts "$root/parts" --manifest "$root/manifest.json" --dest 'gk1-integrated-source'
+          if ($LASTEXITCODE -ne 0) { throw 'Complete source hydration failed' }
+          python "$root/apply_win32_portability.py" 'gk1-integrated-source'
+          if ($LASTEXITCODE -ne 0) { throw 'Windows portability baseline refused' }
+          $patch=(Resolve-Path 'research/Genghis_Khan_NES/execution_230_win32_gui_smoke/GK1_EXEC0230_CopyrightClean_Integration.patch').Path
+          git -C 'gk1-integrated-source' init --quiet
+          git -C 'gk1-integrated-source' apply --check --ignore-space-change $patch
+          if ($LASTEXITCODE -ne 0) { throw 'Original EXEC0230 source patch not applicable' }
+          git -C 'gk1-integrated-source' apply --ignore-space-change $patch
+          if ($LASTEXITCODE -ne 0) { throw 'Original EXEC0230 native paint integration failed' }
+          if (-not (Select-String 'gk1-integrated-source/execution_199/gk1_native_shell.c' -Pattern 'gk230_painted_frames' -Quiet)) { throw 'EXEC0230 native game postcondition missing' }
+          python 'research/Genghis_Khan_NES/execution_242_win32_zlib/apply242.py' 'gk1-integrated-source'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0242 full inherited source exact SHA/apply gate refused' }
+      - name: Install and validate STATIC zlib library for real Windows .mss importer
+        shell: pwsh
+        run: |
+          $vcpkg=if ($env:VCPKG_INSTALLATION_ROOT) { $env:VCPKG_INSTALLATION_ROOT } else { 'C:\vcpkg' }
+          if (-not (Test-Path (Join-Path $vcpkg 'vcpkg.exe'))) { throw "No vcpkg executable in $vcpkg" }
+          & (Join-Path $vcpkg 'vcpkg.exe') install zlib:x64-windows-static --triplet x64-windows-static
+          if ($LASTEXITCODE -ne 0) { throw 'Static Windows zlib installation failed' }
+          if (-not (Test-Path (Join-Path $vcpkg 'scripts/buildsystems/vcpkg.cmake'))) { throw 'vcpkg toolchain missing' }
+          "GK1_VCPKG_ROOT=$vcpkg" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+      - name: Build SAME native WinMain/XInput app with required archived original importer
+        shell: pwsh
+        run: |
+          $tool=Join-Path $env:GK1_VCPKG_ROOT 'scripts/buildsystems/vcpkg.cmake'
+          cmake -S gk1-integrated-source/execution_199 -B build-gk1-242 -G 'Visual Studio 17 2022' -A x64 -DCMAKE_TOOLCHAIN_FILE="$tool" -DVCPKG_TARGET_TRIPLET=x64-windows-static -DGK1_REQUIRE_ARCHIVED_WORLD_IMPORT=ON
+          if ($LASTEXITCODE -ne 0) { throw 'REQUIRED Windows archived importer CMake configure failed' }
+          cmake --build build-gk1-242 --config Release --target gk1_native_shell gk228_win32_smoke test_gk99_xinput_bridge test_gk62_game_market_guard test_gk234_world_four_players test_gk235_world_multi_guard test_gk239_owner_world_mss test_gk240_archived_optional_zlib test_gk241_archived_import_capability test_gk242_win32_archive_link --parallel 4
+          if ($LASTEXITCODE -ne 0) { throw 'Real archived-world-linked WinMain build failed' }
+      - name: Run source, zlib and controller CTests against Windows native binaries
+        shell: pwsh
+        run: |
+          ctest --test-dir build-gk1-242 -C Release --output-on-failure -R 'GK1_228_|GK1_099_|GK1_062_|GK1_234_|GK1_235_|GK1_239_|GK1_240_|GK1_241_|GK1_242_'
+          if ($LASTEXITCODE -ne 0) { throw 'Windows-native archived backend or original-source regression failed' }
+          $exe=(Resolve-Path 'build-gk1-242/Release/gk1_native_shell.exe').Path
+          $env:GK1_SCENARIO_CSV=(Resolve-Path 'build-gk1-242/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv').Path
+          foreach($mode in @('--smoke-frames=3','--smoke-gamepad-nav')) {
+            $p=Start-Process -FilePath $exe -ArgumentList $mode -PassThru
+            if(-not $p.WaitForExit(20000)){ try {$p.Kill()}catch{}; throw "WinMain $mode timeout" }
+            if($p.ExitCode -ne 0){ throw "WinMain $mode failed exit=$($p.ExitCode)" }
+          }
+          Write-Host 'TESTED_PORT_WIN32: real GUI and software-only controller routing; owner-private original Mesen not bundled'
+      - name: Build, install and re-run native NSIS candidate
+        shell: pwsh
+        run: |
+          choco install nsis --no-progress --yes
+          if($LASTEXITCODE -ne 0){throw 'NSIS install failed'}
+          $env:PATH+=';C:\Program Files (x86)\NSIS'
+          cpack --config build-gk1-242/CPackConfig.cmake -G NSIS -C Release -B build-gk1-242/out
+          if($LASTEXITCODE -ne 0){throw 'NSIS build failed'}
+          $setups=@(Get-ChildItem build-gk1-242/out -Filter '*.exe' -File)
+          if($setups.Count -ne 1){throw 'Missing or ambiguous installer EXE'}
+          $root=Join-Path $env:RUNNER_TEMP 'GK1_EX242_Install'
+          $p=Start-Process -FilePath $setups[0].FullName -ArgumentList @('/S',"/D=$root") -Wait -PassThru
+          if($p.ExitCode -ne 0){throw 'NSIS installer returned failure'}
+          $exe=Join-Path $root 'gk1_native_shell.exe'
+          if(-not (Test-Path $exe)){throw 'Real WinMain EXE not installed'}
+          if(-not (Test-Path (Join-Path $root 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'))){throw 'Authentic CSV not installed'}
+          $private=@(Get-ChildItem $root -File -Recurse | Where-Object {$_.Extension -in @('.nes','.srm','.sav','.mss','.ips','.bps','.nsf','.fds','.rom')})
+          if($private.Count){throw 'Private or copyrighted source payload in installer'}
+          $env:GK1_SCENARIO_CSV=Join-Path $root 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'
+          $p=Start-Process -FilePath $exe -ArgumentList '--smoke-frames=3' -PassThru
+          if(-not $p.WaitForExit(20000)){try {$p.Kill()}catch{};throw 'Installed WinMain graphical smoke timed out'}
+          if($p.ExitCode -ne 0){throw 'Installed graphical smoke failed'}
+          Get-FileHash $setups[0].FullName -Algorithm SHA256
+          Get-FileHash $exe -Algorithm SHA256
+          Write-Host 'RESEARCH CANDIDATE ONLY — original stock Spring/RNG, physical Xbox, full campaigns NOT certified'
+      - name: Retain actual accepted Windows NSIS research candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: GK1_EXEC0242_Windows_StaticZlib_NSIS_ResearchCandidate
+          path: build-gk1-242/out/*.exe
+          if-no-files-found: error
+          retention-days: 2
