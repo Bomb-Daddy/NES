@@ -287,5 +287,71 @@ jobs:
           $installedAcceptance
           Get-FileHash $exe -Algorithm SHA256
           Write-Output 'TESTED_WIN32_CI native compiled, full CTest, WinMain GUI and NSIS installation; PHYSICAL_XBOX_NOT_RUN; FULL_CAMPAIGNS_NOT_RUN'
+      # EXEC0263: only after genuine Win32 CTest, WinMain and installed-exe PASS.
+      # This is a short-lived QA-only test artifact, NOT an accepted release.
+      - name: Verify and manifest QA-only installer payload
+        shell: pwsh
+        run: |
+          $packages = @(Get-ChildItem -LiteralPath 'build-gk1-win32/out' -File -Filter 'GK1-Native-Research-*-win64.exe')
+          if ($packages.Count -ne 1) { throw "Expected exactly one versioned Win64 NSIS installer; found $($packages.Count)" }
+          $setup = $packages[0]
+          $target = Join-Path $env:RUNNER_TEMP 'GK1CurrentInstall'
+          $exe = Join-Path $target 'gk1_native_shell.exe'
+          $buildExe = 'build-gk1-win32/Release/gk1_native_shell.exe'
+          $csv = Join-Path $target 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'
+          if (-not (Test-Path -LiteralPath $exe) -or -not (Test-Path -LiteralPath $buildExe) -or -not (Test-Path -LiteralPath $csv)) {
+            throw 'QA installer was not successfully installed with the native game and original public source CSV'
+          }
+          $privatePayload = @(Get-ChildItem -LiteralPath $target -Recurse -File | Where-Object {
+            $_.Extension.ToLowerInvariant() -in @('.nes','.rom','.mss','.srm','.sram','.gc19','.sav')
+          })
+          if ($privatePayload.Count -ne 0) { throw 'QA installer contains original NES/private research data' }
+          $installerHash = (Get-FileHash -LiteralPath $setup.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+          $exeHash = (Get-FileHash -LiteralPath $exe -Algorithm SHA256).Hash.ToLowerInvariant()
+          $buildHash = (Get-FileHash -LiteralPath $buildExe -Algorithm SHA256).Hash.ToLowerInvariant()
+          $csvHash = (Get-FileHash -LiteralPath $csv -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($exeHash -ne $buildHash) { throw 'Installed and accepted WinMain executables differ' }
+          if ($csvHash -ne 'fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581') {
+            throw 'Installed country source CSV SHA mismatch'
+          }
+          $manifest = [ordered]@{
+            schema = 'GK1_EXEC0263_QA_ONLY'
+            github_sha = $env:GITHUB_SHA
+            github_run_id = $env:GITHUB_RUN_ID
+            installer_name = $setup.Name
+            installer_sha256 = $installerHash
+            installed_exe_sha256 = $exeHash
+            built_exe_sha256 = $buildHash
+            country_csv_sha256 = $csvHash
+            tested_port_win32_ci = $true
+            native_ctest_passed = $true
+            winmain_software_controller_passed = $true
+            nsis_installed_executable_passed = $true
+            release_accepted = $false
+            physical_xbox_tested = $false
+            full_campaign_tested = $false
+          }
+          $manifestPath = 'build-gk1-win32/out/GK1_EXEC0263_QA_ONLY_manifest.json'
+          $manifest | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath $manifestPath -Encoding utf8
+          $readback = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
+          if ($readback.installer_sha256 -ne $installerHash -or $readback.release_accepted -ne $false) {
+            throw 'QA manifest round-trip mismatch'
+          }
+          Write-Output "GK1 EXEC0263 Windows QA-only NSIS manifest PASS: installer SHA256 $installerHash"
+          Write-Output 'PHYSICAL_XBOX_NOT_RUN; FULL_CAMPAIGNS_NOT_RUN; NOT A RELEASE'
+      - name: Hostile source gate for QA-only artifact publication
+        shell: pwsh
+        run: |
+          python research/Genghis_Khan_NES/execution_263_win64_qa_artifact/test_gk263_qa_artifact_gate.py .github/workflows/gk1-native-windows.yml
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0263 hostile publication QA failed' }
+      - name: Upload tested Windows installer for QA only, not release
+        uses: actions/upload-artifact@v4
+        with:
+          name: GK1_EXEC0263_WIN64_QA_ONLY_NOT_RELEASE
+          path: |
+            build-gk1-win32/out/GK1-Native-Research-*-win64.exe
+            build-gk1-win32/out/GK1_EXEC0263_QA_ONLY_manifest.json
+          if-no-files-found: error
+          retention-days: 3
       # No copyrighted original NES ROM, private Mesen source, raw RAM, or private original checkpoints.
-      # No artifact upload until an accepted distribution release.
+      # QA-only, time-limited artifact. NO accepted game distribution release.
