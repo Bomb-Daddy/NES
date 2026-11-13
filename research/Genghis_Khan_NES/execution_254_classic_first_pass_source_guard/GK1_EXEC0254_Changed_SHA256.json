@@ -1,0 +1,24 @@
+{
+  "execution": "EXEC0254",
+  "base_execution": "EXEC0253",
+  "base_source_zip_sha256": "ceb3ad89731502a1b14b1c7100861c3105c6472ce7ea77dec8b7a446776e65ff",
+  "changed_source": {
+    "execution_199/gk1_app_state.c": {
+      "sha256": "37b785fee2192370e7428cd418e2c69ad0182fbd45a164e99f6fc393faf9c431",
+      "size": 109105,
+      "existed_before": true
+    },
+    "execution_199/CMakeLists.txt": {
+      "sha256": "4aa20570282b08fb41802af99b9c5c3ca9cd213f3c431b36fac89c55d7242653",
+      "size": 91073,
+      "existed_before": true
+    },
+    "execution_199/test_gk254_classic_pass_before_action.c": {
+      "sha256": "53040f07a3bbef621cf58b741f320a9583cb70df119c3e7c005d818d479acb86",
+      "size": 7360,
+      "existed_before": false
+    }
+  },
+  "inherited_unchanged_exact_count": 980,
+  "patch_sha256": "58cebd7114d6d879efe1070a94ab51360f8778e2c2719c04225f8025b194f294"
+}
