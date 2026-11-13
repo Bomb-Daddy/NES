@@ -1,0 +1,38 @@
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -35,6 +35,12 @@
+    s->setup_stage[s->active_world]!=GK53_SETUP_AWAIT_SOURCE||
+    s->setup_ability_method[s->active_world]==0u)return GK222_BAD_SOURCE;
+  uint8_t w=s->active_world;
++ /* EXEC0235: the Enhanced finance practice ledger has exactly ONE active
++  * ruler and ONE three-order budget. World setup may legitimately nominate
++  * 2-4 human rulers, but treating player one as everybody's campaign would
++  * silently discard the other players. Refuse before mutating any game state.
++  * This is NOT an original-stock Spring implementation. */
++ if(s->setup_player_count[w]!=1u)return GK222_BAD_SOURCE;
+  uint8_t player=s->setup_candidate[w];
+  if(player>=s->worlds[w].country_count)return GK222_BAD_PLAYER;
+  Gk222Spring next;
+@@ -647,7 +653,9 @@
+      s->rules_profile==1u && !s->manual_bonus_active[w]){
+      Gk222Status result=gk1_app_enhanced_spring_lab_open(s);
+      if(result!=GK222_OK)
+-       strcpy(s->status,"ENHANCED FINANCE PRACTICE REFUSED; SOURCE IS INVALID");
++       strcpy(s->status,(w==1u && s->setup_player_count[w]>1u)?
++         "WORLD MULTI-HUMAN SPRING NOT IMPLEMENTED: ALL RULERS PRESERVED":
++         "ENHANCED FINANCE PRACTICE REFUSED; SOURCE IS INVALID");
+      return 1;
+   }
+   /* A recorded draft never produces original attributes or Spring. */
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -1198,3 +1198,9 @@
+ target_link_libraries(test_gk234_world_four_players PRIVATE gk1_manual_setup_store gk1_pad_router)
+ add_test(NAME GK1_234_NativeWorldFourPlayerSetupAndRollback
+  COMMAND test_gk234_world_four_players ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0235: fail-closed multi-human World setup to Enhanced-only practice guard.
++add_executable(test_gk235_world_multi_guard test_gk235_world_multi_guard.c)
++target_link_libraries(test_gk235_world_multi_guard PRIVATE gk1_app_state gk1_pad_router)
++add_test(NAME GK1_235_WorldMultiplayerPracticeGuard
++ COMMAND test_gk235_world_multi_guard ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
