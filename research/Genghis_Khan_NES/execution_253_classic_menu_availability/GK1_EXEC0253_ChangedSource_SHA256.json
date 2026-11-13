@@ -1,0 +1,14 @@
+{
+  "execution": "EXEC0253",
+  "predecessor": "EXEC0252",
+  "predecessor_zip_sha256": "093e51087a80b26b880c5c22e22ce5394a8a95c9fbd1c5e1a964151aa077b340",
+  "changed_source_sha256": {
+    "source/execution_199/CMakeLists.txt": "68362b7c3cd2f0bfe3dae7724ff4c380b6a7cb08a0f3b6707d5cd4b043170597",
+    "source/execution_199/gk134_stock_command_route.h": "b3fcda3c39ba20c7d68153dc1c2a76ea5ca299480f215585118f23461abb1202",
+    "source/execution_199/gk134_stock_command_route.c": "720538caa7c7cb8d630ce98835b20ac950d812f3c44755e95694b94c8f5a58ba",
+    "source/execution_199/gk1_native_shell.c": "29fb529883e0fcdf991380c44aebd34dec3dc6a0d77413fad7ced75476c38cf5",
+    "source/execution_199/test_gk253_command_availability.c": "0410b84e1941b6dd25e50a8cdb2d4973bd21b962a8efec9a759bb430d6ee6836",
+    "source/execution_199/README_EXEC0253.md": "61bcfd1da9b76ef7b9ae122924f9426e49aee3c58a50e4ca5e2d7c68a667d440"
+  },
+  "provenance": "copyright-clean source; no original ROM/Mesen evidence"
+}
