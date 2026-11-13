@@ -25,7 +25,7 @@ def sha(b):return hashlib.sha256(b).hexdigest()
 def apply(root):
     p=Path(root)/'execution_199'/'CMakeLists.txt'
     raw=p.read_bytes()
-    if sha(raw)!=PRE: raise ValueError('wrong predecessor/duplicate application: refused before write')
+    if sha(raw)!=PRE: raise ValueError('wrong predecessor/duplicate application: refused before write; actual sha='+sha(raw))
     if raw.count(OLD)!=1:raise ValueError('CMake source context mismatch')
     after=raw.replace(OLD,NEW,1)
     if sha(after)!=POST:raise ValueError('unexpected postimage')
