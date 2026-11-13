@@ -155,22 +155,48 @@ jobs:
           }
           if (-not (Test-Path current-gk1/execution_199/gk1_native_shell.c)) { throw 'Current complete C11 app missing' }
           if (-not (Test-Path current-gk1/execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)) { throw 'Exact public source CSV missing' }
-          # EXEC0262: actual 2026-11-13 Windows runner compiled MSVC and
-          # passed 201/201 CTests but failed --smoke-gamepad-nav with exit 7.
-          # Visual Studio stages the EXE under Release/, while configure_file
-          # staged the 41-country source CSV in the build root. Stage the
-          # verified canonical CSV beside the real binary in CMake POST_BUILD.
-          $patch262 = 'research/Genghis_Khan_NES/execution_262_exe_csv_stage/GK1_EXEC0262_Integration_From0256.patch'
-          if (-not (Test-Path -LiteralPath $patch262)) { throw 'EXEC0262 source patch missing' }
-          git apply --directory=current-gk1 --check "$patch262"
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0262 source patch rejected: refuse unpatched Windows acceptance' }
-          git apply --directory=current-gk1 "$patch262"
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0262 native source stage patch failed' }
-          $test262 = 'current-gk1/execution_199/packaging/test_gk262_binary_csv_stage.py'
-          if (-not (Test-Path -LiteralPath $test262)) { throw 'EXEC0262 executable-stage CTest missing after patch' }
-          $expected262 = 'research/Genghis_Khan_NES/execution_262_exe_csv_stage/test_gk262_binary_csv_stage.py'
-          if ((Get-FileHash -LiteralPath $test262 -Algorithm SHA256).Hash -ne (Get-FileHash -LiteralPath $expected262 -Algorithm SHA256).Hash) {
-            throw 'EXEC0262 executable-stage CTest differs from reviewed GitHub source'
+          # EXEC0262: reviewer-independent, exact anchored source transform
+          # after 0261 platform edits. The original pristine-source patch is
+          # published separately and was replayed, but its CMake hunk does not
+          # apply after the 0261 CMake Win32 host source transformations.
+          # Never skip the source stage or imply a successful gamepad smoke.
+          $source262 = 'research/Genghis_Khan_NES/execution_262_exe_csv_stage/test_gk262_binary_csv_stage.py'
+          $dest262 = 'current-gk1/execution_199/packaging/test_gk262_binary_csv_stage.py'
+          if (-not (Test-Path -LiteralPath $source262)) { throw 'EXEC0262 reviewed test is missing' }
+          if (Test-Path -LiteralPath $dest262) { throw 'Unexpected duplicate EXEC0262 source test' }
+          Copy-Item -LiteralPath $source262 -Destination $dest262
+          if ((Get-FileHash -LiteralPath $source262 -Algorithm SHA256).Hash -ne (Get-FileHash -LiteralPath $dest262 -Algorithm SHA256).Hash) {
+            throw 'EXEC0262 source test differs from verified GitHub version'
+          }
+          $s262 = [IO.File]::ReadAllText($cmake).Replace("`r`n", "`n")
+          $a262 = @(
+            'configure_file(../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv',
+            '  ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv COPYONLY)'
+          ) -join "`n"
+          if (-not $s262.Contains($a262) -or $s262.Contains('GK1_262_NativeExecutableSourceCSVLayoutAndNegativeControls')) {
+            throw 'EXEC0262 original-country CMake source anchor missing or duplicate; fail closed'
+          }
+          $stage262 = @(
+            '# EXEC0262: stage authenticated source beside WinMain Release/Debug EXE.',
+            'add_custom_command(TARGET gk1_native_shell POST_BUILD',
+            ' COMMAND ${CMAKE_COMMAND} -E copy_if_different',
+            '  "${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv"',
+            '  "$<TARGET_FILE_DIR:gk1_native_shell>/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv"',
+            ' COMMENT "Stage authenticated original-country source beside native executable"',
+            ' VERBATIM)',
+            'find_package(Python3 COMPONENTS Interpreter QUIET)',
+            'if(Python3_Interpreter_FOUND)',
+            ' add_test(NAME GK1_262_NativeExecutableSourceCSVLayoutAndNegativeControls',
+            '  COMMAND ${Python3_EXECUTABLE}',
+            '   ${CMAKE_CURRENT_SOURCE_DIR}/packaging/test_gk262_binary_csv_stage.py',
+            '   "$<TARGET_FILE:gk1_native_shell>"',
+            '   "${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv"',
+            '   "${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt")',
+            'endif()'
+          ) -join "`n"
+          [IO.File]::WriteAllText($cmake, $s262.Replace($a262, $a262+"`n"+$stage262))
+          if (-not (Select-String -LiteralPath $cmake -SimpleMatch -Pattern 'GK1_262_NativeExecutableSourceCSVLayoutAndNegativeControls' -Quiet)) {
+            throw 'EXEC0262 compiled CMake stage disappeared'
           }
       - name: Install the actual NSIS packager
         shell: pwsh
