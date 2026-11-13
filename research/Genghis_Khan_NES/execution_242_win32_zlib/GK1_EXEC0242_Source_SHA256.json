@@ -1,0 +1,35 @@
+{
+  "execution": "EXEC0242",
+  "source": "original complete EXEC0230 -> EXEC0242 additive, unchanged rest",
+  "pre_sha256": {
+    "CMakeLists.txt": "e88ae7e908cb6be646ed44bf8297337437ec30583bc1b6bbdc35f11c3a615027",
+    "gk1_app_state.c": "960bb0fbdc5693d32c9257f95797219b5180082db599e641f8296444a0a7b7d8",
+    "gk1_native_shell.c": "c4dfba7d1925080dd1ab7e9af5ff4f69bd2fefc2128911baa70bfa57a84d178a",
+    "gk182_archived_source_bank.c": "13d20dbd420a2a21028c027effc5af880438affde40264fd7583a8c4de23d39a",
+    "gk163_mesen_import.c": "0fc0daa83c60bbdb8dea41c713c7970276b25247851b072f6e472d11b0db07a3"
+  },
+  "post_sha256": {
+    "CMakeLists.txt": "2bda9246ca69ba5b5ff36ad5a3f8f4091625b7482d91404bdbae1c4310ce2ff2",
+    "gk163_mesen_import.c": "09df744d2ad3020abe31272f4ed40fbeceebd139a01c5a91c3912cdda863f737",
+    "gk182_archived_source_bank.c": "d7210e1e53c9c1c4c41bfad6eac33801345944c36368ecae48ae42c2d2240778",
+    "gk1_app_state.c": "fde00c45a8d8d4b3d906def4bac1c9fa417662a5d8e683e4afd58a5f2e463310",
+    "gk1_native_shell.c": "651421d0b0a1ada2d568e582e15caaa49becd3e7b76faf2bd7409772748eee23",
+    "gk237_owner_fresh_win.c": "ee961555e647076e6f4dcd07c9f425859b90347e8d7ff3b899ebbdc985f551e1",
+    "gk237_owner_fresh_win.h": "07ddeffc18958beefab4c07d37c9efe3b7b7718fc9fb8cd0f6dc307266eead63",
+    "gk238_owner_startup.c": "9a0e7560ed483fe73f9f91db667133011b660b7588545ca747e9bd03b629c469",
+    "gk238_owner_startup.h": "39d838ad4a3aa58e66e549bf7f0380ca650b850c69469ee109c6819004855473",
+    "gk239_owner_world_mss.c": "8a6163d33eea2a8f8915818ffe89ad03baf55d770c91d33529bce38e870839fe",
+    "gk239_owner_world_mss.h": "5b1c6bffc11ef5a29ed4d2c0be79c88496cb896d0316ee466df57cb5dbb96ae4",
+    "gk241_archived_import_capability.c": "4845e89a2414dd91c77b72553887fada31c0a4a5f2eca8f7d21a1b2b5ac69f2f",
+    "gk241_archived_import_capability.h": "a9b442f4f83d5d6b70f1fb94f494aaaf88d3e22678a55f72f0802cdadde53d18",
+    "test_gk234_world_four_players.c": "73d517b24e550a9d57bb9d61603321ba0650198a20d6ebd1dea8ffb7a5c2bd75",
+    "test_gk235_world_multi_guard.c": "ccc5edf4fbdc9b1ed6c345314860191a4e343c74462a0c0eab1aa09f61b3c990",
+    "test_gk237_owner_fresh_win.c": "7627a923af315b2f9190e65b8b7f3358764fb361bdc95d3cfa50930c88ad690c",
+    "test_gk238_owner_startup.c": "3379d172df3214799da13284fe65fb32b2ec5314bc91b89aadd368a3e7c3ad12",
+    "test_gk239_owner_world_mss.c": "e1d2421ccb1f4b5e08ef0ce229bf1a0bc5dc27f987668409280e1c8cef93344e",
+    "test_gk240_archived_optional_zlib.c": "e47e5e6ac2423fbe79f23a511e7c4efa0e8eaefd7447bbe6d971fea011a12cc5",
+    "test_gk241_archived_import_capability.c": "bbdb6d7c1aac6872860aea68152c84b0b85b793d263f9563730f63c1c6b7e523",
+    "test_gk242_win32_archive_link.c": "0feff80a9f4d9a39ef7387077413e15b150a965283651bbae029dbddeebc7a62"
+  },
+  "patch_sha256": "11d29b651a103a450c77f2e0003e6bda6c649cabead2ad1730dda748f65d1cbe"
+}
