@@ -10,6 +10,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_260_win32_patch_scope/**'
       - 'research/Genghis_Khan_NES/execution_261_win32_ctest_registry/**'
       - 'research/Genghis_Khan_NES/execution_262_exe_csv_stage/**'
+      - 'research/Genghis_Khan_NES/execution_263_win64_qa_artifact/**'
 
 permissions:
   contents: read
