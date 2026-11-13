@@ -111,7 +111,7 @@ jobs:
           $dst259 = 'current-gk1/execution_199/test_gk259_win_user_home.c'
           Copy-Item $src259 $dst259 -Force
           if ((Get-FileHash $src259 -Algorithm SHA256).Hash -ne (Get-FileHash $dst259 -Algorithm SHA256).Hash) { throw 'EXEC0259 copied Windows test SHA mismatch' }
-          if (-not (Select-String 'current-gk1/execution_199/CMakeLists.txt' -SimpleMatch 'GK1_259_Win32LocalAppDataPathAndRefusal' -Quiet)) { throw 'EXEC0259 Win32 CTest registration missing' }
+          if (-not (Select-String -LiteralPath 'current-gk1/execution_199/CMakeLists.txt' -Pattern 'GK1_259_Win32LocalAppDataPathAndRefusal' -SimpleMatch -Quiet)) { throw 'EXEC0259 Win32 CTest registration missing' }
           if (-not (Test-Path current-gk1/execution_199/gk1_native_shell.c)) { throw 'Current complete C11 app missing' }
           if (-not (Test-Path current-gk1/execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)) { throw 'Exact public source CSV missing' }
       - name: Install the actual NSIS packager
