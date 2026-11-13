@@ -27,6 +27,13 @@ jobs:
           $actual = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
           if ($actual -ne $expected) { throw "Inherited native source SHA mismatch $actual" }
           Expand-Archive -LiteralPath $archive -DestinationPath current-gk1 -Force
+          # EXEC0260: capture the actual SHA-pinned ZIP contents (not assumptions
+          # about the historical parent build) when the patch fails.
+          Write-Output '=== PINNED ARCHIVE WORKFLOW FIRST LINES ==='
+          Get-Content 'current-gk1/.github/workflows/gk1-native-windows.yml' -TotalCount 12
+          Write-Output '=== PINNED ARCHIVE CMAKE FINAL LINES ==='
+          Get-Content 'current-gk1/execution_199/CMakeLists.txt' -Tail 25
+          Write-Output ('=== PREEXISTING 0257 TEST: ' + (Test-Path 'current-gk1/execution_199/packaging/test_gk257_win32_acceptance.ps1'))
           $patch = 'research/Genghis_Khan_NES/execution_257_current_win32_gate/GK1_EXEC0257_Integration_From0256.patch'
           # EXEC0260: apply from repository root, with an explicit destination directory.
           # "git -C current-gk1 apply" silently skips outside-prefix paths when
