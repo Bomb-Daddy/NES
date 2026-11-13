@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/gk1-native-windows.yml'
       - 'research/Genghis_Khan_NES/execution_257_current_win32_gate/**'
+      - 'research/Genghis_Khan_NES/execution_259_win32_posix_test_port/**'
 
 permissions:
   contents: read
@@ -30,6 +31,14 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0257 patch does not apply to pinned complete source' }
           git -C current-gk1 apply "../$patch"
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0257 integration patch failed' }
+          # EXEC0259: compile nonportable historical test sources under MSVC without
+          # sacrificing Linux XDG coverage or silently skipping Win32 path policy.
+          $patch259 = 'research/Genghis_Khan_NES/execution_259_win32_posix_test_port/GK1_EXEC0259_Integration_From0257.patch'
+          git -C current-gk1 apply --check "../$patch259"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0259 Win32 portability patch does not match pinned source' }
+          git -C current-gk1 apply "../$patch259"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0259 Win32 portability patch failed' }
+          if (-not (Test-Path current-gk1/execution_199/test_gk259_win_user_home.c)) { throw 'Win32 LocalAppData test missing' }
           if (-not (Test-Path current-gk1/execution_199/gk1_native_shell.c)) { throw 'Current complete C11 app missing' }
           if (-not (Test-Path current-gk1/execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)) { throw 'Exact public source CSV missing' }
       - name: Install the actual NSIS packager

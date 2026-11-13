@@ -1,0 +1,106 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -492,10 +492,19 @@
+  COMMAND test_gk119_order_bridge)
+ 
+ # EXEC0120 portable user-data policy is real native shell code, not a mock.
+-add_executable(test_gk120_save_home test_gk120_save_home.c)
+-target_link_libraries(test_gk120_save_home PRIVATE gk120_save_home gk58_slots gk59_storage)
+-add_test(NAME GK1_120_NativeLinuxXDGHomeAndWinEnhancedUserDataNoCWD
+- COMMAND test_gk120_save_home)
++# Linux's XDG/mkdtemp/access/rmdir integration is POSIX-only.  Keep real
++# LocalAppData path-policy assertions live on native Win32, not a mock binary.
++if(WIN32)
++ add_executable(test_gk259_win_user_home test_gk259_win_user_home.c)
++ target_link_libraries(test_gk259_win_user_home PRIVATE gk59_storage)
++ add_test(NAME GK1_259_Win32LocalAppDataPathAndRefusal
++  COMMAND test_gk259_win_user_home)
++else()
++ add_executable(test_gk120_save_home test_gk120_save_home.c)
++ target_link_libraries(test_gk120_save_home PRIVATE gk120_save_home gk58_slots gk59_storage)
++ add_test(NAME GK1_120_NativeLinuxXDGHomeAndWinEnhancedUserDataNoCWD
++  COMMAND test_gk120_save_home)
++endif()
+ 
+ # EXEC0121 original 6502 BIT/CLV/BVC/BVS source execution & full arithmetic test.
+ add_executable(test_gk121_bit_flags test_gk121_bit_flags.c)
+diff --git a/execution_199/test_gk91_reset_zero.c b/execution_199/test_gk91_reset_zero.c
+--- a/execution_199/test_gk91_reset_zero.c
++++ b/execution_199/test_gk91_reset_zero.c
+@@ -3,7 +3,13 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
+-#include <unistd.h>
++#ifdef _WIN32
++# include <process.h>
++# define GK91_PROCESS_ID _getpid
++#else
++# include <unistd.h>
++# define GK91_PROCESS_ID getpid
++#endif
+ #define CHECK(x) do {if(!(x)){fprintf(stderr,"GK91 FAIL %s:%d %s\n",__FILE__,__LINE__,#x);return 1;}}while(0)
+ int main(void){
+  Gk83Trace result,before;memset(&result,0xA5,sizeof result);before=result;
+@@ -35,7 +41,14 @@
+   CHECK(gk91_trace_reset_mesen_allzeros(path,4,&short_run)==GK83_BUDGET_GATE);
+   CHECK(short_run.instructions==4);
+   /* Altered original ROM SHA must refuse with an unchanged output. */
+-  char badname[512];snprintf(badname,sizeof badname,"/tmp/gk91-altered-%ld.nes",(long)getpid());
++  char badname[512];
++#ifdef _WIN32
++  const char *temp=getenv("TEMP");
++  CHECK(temp&&*temp);
++  snprintf(badname,sizeof badname,"%s\\gk91-altered-%ld.nes",temp,(long)GK91_PROCESS_ID());
++#else
++  snprintf(badname,sizeof badname,"/tmp/gk91-altered-%ld.nes",(long)GK91_PROCESS_ID());
++#endif
+   FILE *in=fopen(path,"rb");CHECK(in!=NULL);
+   FILE *out=fopen(badname,"wb");CHECK(out!=NULL);
+   unsigned char b[4096];size_t nr;size_t pos=0;
+diff --git a/execution_199/test_gk1_pre_setup_store.c b/execution_199/test_gk1_pre_setup_store.c
+--- a/execution_199/test_gk1_pre_setup_store.c
++++ b/execution_199/test_gk1_pre_setup_store.c
+@@ -4,7 +4,6 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdint.h>
+-#include <unistd.h>
+ static unsigned checks;
+ static uint32_t checksum(const uint8_t *p,size_t n){
+  uint32_t c=UINT32_C(0xffffffff);
+diff --git a/execution_199/test_gk259_win_user_home.c b/execution_199/test_gk259_win_user_home.c
+new file mode 100644
+--- /dev/null
++++ b/execution_199/test_gk259_win_user_home.c
+@@ -0,0 +1,29 @@
++/* EXEC0259: Native Win32 LocalAppData path contract, hostile negatives. */
++#include "gk59_storage.h"
++#include <stdio.h>
++#include <string.h>
++#define CK(x) do {if(!(x)){fprintf(stderr,"GK259 FAIL %d: %s\n",__LINE__,#x);return 1;} ++checks;}while(0)
++int main(void){
++ unsigned checks=0;
++ char output[1024];
++ const char *root="C:\\Users\\player\\AppData\\Local";
++ const char *expect="C:\\Users\\player\\AppData\\Local\\GK1NativeResearch\\gk1_enhanced_assign_slot1.gk16";
++ CK(gk59_user_file(root,"gk1_enhanced_assign_slot1.gk16",output,sizeof output));
++ CK(strcmp(output,expect)==0);
++ CK(gk59_user_file("C:\\Users\\player\\AppData\\Local\\","gk1_enhanced_assign_slot1.gk16",output,sizeof output));
++ CK(strcmp(output,expect)==0);
++ strcpy(output,"UNCHANGED");
++ CK(!gk59_user_file(root,"../escape.gk16",output,sizeof output));
++ CK(!strcmp(output,"UNCHANGED"));
++ CK(!gk59_user_file(root,"a/b.gk16",output,sizeof output));
++ CK(!gk59_user_file(root,"a\\b.gk16",output,sizeof output));
++ CK(!gk59_user_file(root,"a b.gk16",output,sizeof output));
++ CK(!gk59_user_file(root,"",output,sizeof output));
++ CK(!gk59_user_file(NULL,"valid.gk16",output,sizeof output));
++ CK(!gk59_user_file(root,NULL,output,sizeof output));
++ CK(!gk59_user_file(root,"valid.gk16",NULL,sizeof output));
++ CK(!gk59_user_file(root,"valid.gk16",output,4));
++ CK(!strcmp(output,"UNCHANGED"));
++ puts("GK1 EXEC0259 Windows LocalAppData pure C11 path-policy PASS; native WinMain and physical Xbox not implied");
++ printf("checks=%u\n",checks);return 0;
++}
