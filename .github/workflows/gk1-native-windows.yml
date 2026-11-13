@@ -221,10 +221,14 @@ jobs:
           if ($actual -ne $beforeSHA) { throw "EXEC0265 unexpected old C11 source SHA $actual" }
           $patch265 = 'research/Genghis_Khan_NES/execution_265_win32_source_provenance/GK1_EXEC0265_AtomicRestart_SourceOnly.patch'
           if (-not (Test-Path -LiteralPath $patch265)) { throw 'EXEC0265 verified source patch missing' }
-          git apply --directory=current-gk1 --check "$patch265"
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0265 patch cannot apply to exact inherited app source' }
-          git apply --directory=current-gk1 "$patch265"
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0265 patch failed' }
+          # Native Git apply rejected the exact pinned ZIP preimage in CI run
+          # 43524230853. This independent interpreter checks complete old
+          # source SHA, complete published patch SHA, unique context hunk,
+          # exact new source SHA and three mutations before an atomic write.
+          $apply265 = 'research/Genghis_Khan_NES/execution_265_win32_source_provenance/apply_gk265_atomic_restart.py'
+          if (-not (Test-Path -LiteralPath $apply265)) { throw 'EXEC0265 source transform missing' }
+          python $apply265 $app $patch265
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0265 exact source transform rejected' }
           $actual = (Get-FileHash -LiteralPath $app -Algorithm SHA256).Hash.ToLowerInvariant()
           if ($actual -ne $afterSHA) { throw "GK1_EXEC0265 current-source SHA mismatch $actual" }
           # Reuse the published original EXEC0264 regression as executable proof.
