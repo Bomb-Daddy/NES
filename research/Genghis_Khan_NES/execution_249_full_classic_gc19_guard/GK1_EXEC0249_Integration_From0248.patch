@@ -1,0 +1,209 @@
+--- a/execution_199/gk189_classic_cold_save.c
++++ b/execution_199/gk189_classic_cold_save.c
+@@ -4,6 +4,7 @@
+ #include "gk189_classic_cold_save.h"
+ #include "gk162_original_entry.h"
+ #include "gk1_source_identity.h"
++#include "gk247_receipt_file_guard.h"
+ #include <stdint.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -23,6 +24,17 @@
+ static void put16(uint8_t *p,unsigned v){p[0]=(uint8_t)v;p[1]=(uint8_t)(v>>8);}
+ static unsigned get16(const uint8_t *p){return (unsigned)p[0]|((unsigned)p[1]<<8);}
+ static void wipe(void *v,size_t n){volatile uint8_t *p=v;while(n--)*p++=0;}
++/* The .gc19 full cold-save is a different, larger private file than the
++ * 96-byte legacy GC18 receipt. Its original NES record count is exactly
++ * 14 or 27. Validate the OPEN handle against either canonical byte size
++ * before decoding; do not trust a pathname, extension, or embedded count.
++ * This is an IO guard only; original SHA, replay and CSV checks follow. */
++int gk249_classic_cold_file_guard(int fd,const char *path){
++ return gk247_receipt_file_guard(fd,path,
++           GK189_HEAD+14u*GK77_RECORD_BYTES+GK189_TAIL) ||
++        gk247_receipt_file_guard(fd,path,
++           GK189_HEAD+27u*GK77_RECORD_BYTES+GK189_TAIL);
++}
+ static int profile_numbers(unsigned p,unsigned count,unsigned year,unsigned rate){
+  return (p==GK77_FRESH_MONGOL_WORKRAM&&count==14u&&year==1175u&&rate==121u)||
+         (p==GK77_ARCHIVED_MONGOL_SAVERAM&&count==14u&&year==1175u&&rate==101u)||
+@@ -109,8 +121,11 @@
+     !gk1_verified_original_csv(csv))return GK189_SOURCE;
+  int fd=-1;FILE *f=NULL;
+ #ifdef _WIN32
+- errno_t e=_sopen_s(&fd,path,_O_RDONLY|_O_BINARY,_SH_DENYNO,0);
++ errno_t e=_sopen_s(&fd,path,_O_RDONLY|_O_BINARY,_SH_DENYWR,0);
+  if(e)return e==ENOENT?GK189_MISSING:GK189_IO;
++ /* Win32: reject symlinks/junctions, multi-link files and wrong size
++  * using the same opened HANDLE as the read. Deny concurrent writers. */
++ if(!gk249_classic_cold_file_guard(fd,path)){_close(fd);return GK189_IO;}
+  f=_fdopen(fd,"rb");
+ #else
+  fd=open(path,O_RDONLY
+@@ -122,11 +137,9 @@
+ #endif
+  );
+  if(fd<0)return errno==ENOENT?GK189_MISSING:GK189_IO;
+- struct stat st;
+- if(fstat(fd,&st)!=0||!S_ISREG(st.st_mode)||st.st_nlink!=1||
+-    st.st_uid!=geteuid()||(st.st_mode&077)!=0||
+-    st.st_size<(off_t)(GK189_HEAD+GK189_TAIL)||
+-    st.st_size>(off_t)GK189_LIMIT){close(fd);return GK189_IO;}
++ /* POSIX: same open-handle exact-size/owner/private/link validation.
++  * Both country counts are permitted, all intermediate sizes refused. */
++ if(!gk249_classic_cold_file_guard(fd,path)){close(fd);return GK189_IO;}
+  f=fdopen(fd,"rb");
+ #endif
+  if(!f){
+--- a/execution_199/gk189_classic_cold_save.h
++++ b/execution_199/gk189_classic_cold_save.h
+@@ -8,6 +8,8 @@
+  * It does not generate an NES first Spring, RNG, AI, or next season. */
+ typedef enum { GK189_OK=0, GK189_INVALID=1, GK189_SOURCE=2,
+  GK189_EXISTS=3, GK189_IO=4, GK189_CORRUPT=5, GK189_MISSING=6 } Gk189Result;
++/* Public, data-free verification of an opened private .gc19 save handle. */
++int gk249_classic_cold_file_guard(int fd,const char *path);
+ Gk189Result gk189_save_new(const char *private_path,const Gk1App *app);
+ /* After process restart: strict canonical original CSV and original 14x83 or
+  * 27x83 stock SHA attestation, deterministic replay of all saved actions.
+--- a/execution_199/test_gk189_classic_cold_save.c
++++ b/execution_199/test_gk189_classic_cold_save.c
+@@ -14,6 +14,9 @@
+ #ifndef _WIN32
+ #include <sys/stat.h>
+ #include <unistd.h>
++#else
++#define WIN32_LEAN_AND_MEAN
++#include <windows.h>
+ #endif
+ static unsigned checks;
+ #define CHECK(x) do{assert(x);++checks;}while(0)
+@@ -46,9 +49,18 @@
+  CHECK(gk187_pass(&a->classic_assign,&a->stock_checkpoint)==GK187_OK);
+  a->stock_checkpoint.view_index=0u;
+  CHECK(gk187_intact(&a->classic_assign,&a->stock_checkpoint));
+- char path[]="/tmp/gk189-authentic-XXXXXX";
++ char path[1024];
+ #ifndef _WIN32
++ strcpy(path,"/tmp/gk189-authentic-XXXXXX");
+  int f=mkstemp(path);CHECK(f>=0);CHECK(close(f)==0);CHECK(unlink(path)==0);
++#else
++ char directory[MAX_PATH],reserved[MAX_PATH];
++ DWORD bytes=GetTempPathA(MAX_PATH,directory);
++ CHECK(bytes>0u&&bytes<MAX_PATH);
++ CHECK(GetTempFileNameA(directory,"g19",0,reserved)!=0);
++ CHECK(strlen(reserved)<sizeof path);
++ strcpy(path,reserved);
++ CHECK(DeleteFileA(path)!=0);
+ #endif
+  CHECK(gk189_save_new(path,a)==GK189_OK);
+  CHECK(gk189_save_new(path,a)==GK189_EXISTS);
+@@ -91,6 +103,16 @@
+  CHECK(gk189_cold_load(sym,csv,loaded)==GK189_IO);
+  CHECK(!memcmp(loaded,check,sizeof *loaded));
+  CHECK(unlink(sym)==0);
++#else
++ /* Native Win32 link-count hostile control: same full cold-load function,
++  * not only the lightweight file-guard unit test. This demands an NTFS
++  * filesystem supporting hard links; otherwise record a skipped control. */
++ char hard[1100];snprintf(hard,sizeof hard,"%s.link",path);
++ if(CreateHardLinkA(hard,path,NULL)){
++  CHECK(gk189_cold_load(path,csv,loaded)==GK189_IO);
++  CHECK(!memcmp(loaded,check,sizeof *loaded));
++  CHECK(DeleteFileA(hard)!=0);
++ }
+ #endif
+  /* Attack 1: unrelated byte in real original record. File SHA recomputed;
+   * original-stock exact-profile SHA still rejects the changed payload. */
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -1306,3 +1306,8 @@
+ target_link_libraries(test_gk248_original_three_order_controller PRIVATE gk1_app_state)
+ add_test(NAME GK1_248_IntegratedClassicThreeControllerOrders_FailClosed
+   COMMAND test_gk248_original_three_order_controller)
++
++# EXEC0249: real full GC19 cold-save cross-platform opened-file gate.
++add_executable(test_gk249_full_classic_cold_file_guard test_gk249_full_classic_cold_file_guard.c)
++target_link_libraries(test_gk249_full_classic_cold_file_guard PRIVATE gk1_app_state)
++add_test(NAME GK1_249_FullClassicColdSaveHandleGate COMMAND test_gk249_full_classic_cold_file_guard)
+--- a/execution_199/test_gk249_full_classic_cold_file_guard.c
++++ b/execution_199/test_gk249_full_classic_cold_file_guard.c
+@@ -0,0 +1,79 @@
++#ifndef _WIN32
++#define _POSIX_C_SOURCE 200809L
++#endif
++#include "gk189_classic_cold_save.h"
++#ifdef NDEBUG
++#undef NDEBUG
++#endif
++#include <assert.h>
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++#ifdef _WIN32
++#define WIN32_LEAN_AND_MEAN
++#include <windows.h>
++#include <io.h>
++#include <fcntl.h>
++#include <share.h>
++#else
++#include <unistd.h>
++#include <fcntl.h>
++#include <sys/stat.h>
++#endif
++#define CHECK(x) do{assert(x);checks++;}while(0)
++static unsigned checks;
++static void size_file(int fd,unsigned size){
++#ifdef _WIN32
++ CHECK(_chsize_s(fd,size)==0);
++#else
++ CHECK(ftruncate(fd,(off_t)size)==0);
++#endif
++}
++int main(void){
++ char path[1024];int fd=-1;
++#ifdef _WIN32
++ char dir[MAX_PATH],temp[MAX_PATH];
++ DWORD n=GetTempPathA(MAX_PATH,dir);CHECK(n>0u&&n<MAX_PATH);
++ CHECK(GetTempFileNameA(dir,"g48",0,temp)!=0);
++ CHECK(strlen(temp)<sizeof path);strcpy(path,temp);
++ CHECK(_sopen_s(&fd,path,_O_RDWR|_O_BINARY,_SH_DENYNO,0)==0);
++#else
++ strcpy(path,"/tmp/gk248-gc19-private-XXXXXX");
++ fd=mkstemp(path);CHECK(fd>=0);
++#endif
++ /* All assertions are data-free. These are only accepted file envelopes,
++  * never false claims that synthetic bytes are authenticated NES saves. */
++ CHECK(!gk249_classic_cold_file_guard(fd,path));
++ size_file(fd,64u+14u*83u+32u);
++ CHECK(gk249_classic_cold_file_guard(fd,path));
++ size_file(fd,64u+27u*83u+32u);
++ CHECK(gk249_classic_cold_file_guard(fd,path));
++ size_file(fd,64u+20u*83u+32u);
++ CHECK(!gk249_classic_cold_file_guard(fd,path));
++ size_file(fd,64u+27u*83u+33u);
++ CHECK(!gk249_classic_cold_file_guard(fd,path));
++ CHECK(!gk249_classic_cold_file_guard(-1,path));
++ CHECK(!gk249_classic_cold_file_guard(fd,NULL));
++#ifndef _WIN32
++ size_file(fd,64u+14u*83u+32u);
++ CHECK(fchmod(fd,0644)==0);
++ CHECK(!gk249_classic_cold_file_guard(fd,path));
++ CHECK(fchmod(fd,0600)==0);
++ CHECK(gk249_classic_cold_file_guard(fd,path));
++ char hard[1100];snprintf(hard,sizeof hard,"%s.link",path);
++ CHECK(link(path,hard)==0);
++ CHECK(!gk249_classic_cold_file_guard(fd,path));
++ CHECK(unlink(hard)==0);
++ CHECK(gk249_classic_cold_file_guard(fd,path));
++ if(geteuid()==0){
++  CHECK(fchown(fd,65534u,(gid_t)-1)==0);
++  CHECK(!gk249_classic_cold_file_guard(fd,path));
++  CHECK(fchown(fd,0u,(gid_t)-1)==0);
++ }
++ CHECK(close(fd)==0);CHECK(unlink(path)==0);
++#else
++ CHECK(_close(fd)==0);CHECK(DeleteFileA(path)!=0);
++#endif
++ printf("GK249 full Classic cold-save 14/27 private HANDLE guard: %u public checks pass; no original NES data\n",checks);
++ return 0;
++}
