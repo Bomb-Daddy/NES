@@ -1,0 +1,243 @@
+diff --git a/.github/workflows/gk1-native-windows.yml b/.github/workflows/gk1-native-windows.yml
+--- a/.github/workflows/gk1-native-windows.yml
++++ b/.github/workflows/gk1-native-windows.yml
+@@ -1,46 +1,82 @@
+-name: GK1 native Win32 compile and NSIS verification (research only)
++name: GK1 current inherited native Win32 and NSIS acceptance
+ 
+ on:
+   workflow_dispatch:
+   push:
+     paths:
+       - '.github/workflows/gk1-native-windows.yml'
+-      - 'research/Genghis_Khan_NES/execution_228_win32_build_gate/**'
++      - 'research/Genghis_Khan_NES/execution_257_current_win32_gate/**'
+ 
+ permissions:
+   contents: read
+ 
+ jobs:
+-  native-win32:
++  native-win32-current:
+     runs-on: windows-2022
+-    timeout-minutes: 40
++    timeout-minutes: 55
+     steps:
+       - uses: actions/checkout@v4
+-      - name: Install NSIS for actual Windows packaging
++      - name: Verify and expand SHA-pinned complete current-game build source
++        shell: pwsh
++        run: |
++          $archive = 'research/Genghis_Khan_NES/execution_257_current_win32_gate/GK1_EXEC0256_Lean_Inherited_Build_Source.zip'
++          $expected = '97421aa2ef45288684bf22d868ad110b850396c316bce9253b0fc8a05166b619'
++          if (-not (Test-Path -LiteralPath $archive)) { throw 'Pinned complete inherited C11 build source missing; never substitute EXEC0228' }
++          $actual = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
++          if ($actual -ne $expected) { throw "Inherited native source SHA mismatch $actual" }
++          Expand-Archive -LiteralPath $archive -DestinationPath current-gk1 -Force
++          $patch = 'research/Genghis_Khan_NES/execution_257_current_win32_gate/GK1_EXEC0257_Integration_From0256.patch'
++          git -C current-gk1 apply --check "../$patch"
++          if ($LASTEXITCODE -ne 0) { throw 'EXEC0257 patch does not apply to pinned complete source' }
++          git -C current-gk1 apply "../$patch"
++          if ($LASTEXITCODE -ne 0) { throw 'EXEC0257 integration patch failed' }
++          if (-not (Test-Path current-gk1/execution_199/gk1_native_shell.c)) { throw 'Current complete C11 app missing' }
++          if (-not (Test-Path current-gk1/execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)) { throw 'Exact public source CSV missing' }
++      - name: Install the actual NSIS packager
+         shell: pwsh
+         run: |
+           choco install nsis --no-progress --yes
+-          echo 'C:\Program Files (x86)\NSIS' >> $env:GITHUB_PATH
+-      - name: Build same C11 WinMain and Xbox XInput-linked application
++          if ($LASTEXITCODE -ne 0) { throw 'NSIS installation failed' }
++          'C:\Program Files (x86)\NSIS' >> $env:GITHUB_PATH
++      - name: Install static zlib for authentic archived World-import capability
+         shell: pwsh
+         run: |
+-          cmake -S research/Genghis_Khan_NES/execution_228_win32_build_gate/execution_199 -B build-gk1-win32 -G 'Visual Studio 17 2022' -A x64
+-          cmake --build build-gk1-win32 --config Release --parallel 4
+-      - name: Execute genuine Win32 native integration and hostile-source tests
++          if (-not $env:VCPKG_ROOT) { throw 'Windows runner did not supply VCPKG_ROOT' }
++          & "$env:VCPKG_ROOT\vcpkg.exe" install zlib:x64-windows-static
++          if ($LASTEXITCODE -ne 0) { throw 'static zlib install failed' }
++      - name: Compile actual current 1280x720 WinMain C11 XInput game
+         shell: pwsh
+         run: |
+-          ctest --test-dir build-gk1-win32 -C Release --output-on-failure -R 'GK1_228_|GK1_099_|GK1_062_'
+-      - name: Create genuine NSIS Windows setup executable
++          cmake -S current-gk1/execution_199 -B build-gk1-win32 -G 'Visual Studio 17 2022' -A x64 -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-windows-static -DGK1_REQUIRE_ARCHIVED_WORLD_IMPORT=ON
++          if ($LASTEXITCODE -ne 0) { throw 'Current native Windows CMake configure failed' }
++          cmake --build build-gk1-win32 --config Release --parallel 4
++          if ($LASTEXITCODE -ne 0) { throw 'Current native Win32 C11 compilation failed' }
++      - name: Execute complete Win32 CTest registry, not an old subset
++        shell: pwsh
++        run: |
++          ctest --test-dir build-gk1-win32 -C Release --output-on-failure --timeout 90 -j 4
++          if ($LASTEXITCODE -ne 0) { throw 'Current Win32 regression suite failed' }
++      - name: Run real WinMain controller simulation, paint and CLI hostile controls
++        shell: pwsh
++        run: |
++          & current-gk1/execution_199/packaging/test_gk257_win32_acceptance.ps1 -Executable (Resolve-Path 'build-gk1-win32/Release/gk1_native_shell.exe').Path
++          if ($LASTEXITCODE -ne 0) { throw 'Actual current WinMain acceptance failed' }
++      - name: Build and silently install actual current NSIS package
+         shell: pwsh
+         run: |
+           cpack --config build-gk1-win32/CPackConfig.cmake -G NSIS -C Release -B build-gk1-win32/out
++          if ($LASTEXITCODE -ne 0) { throw 'NSIS CPack failed' }
+           $setup = Get-ChildItem build-gk1-win32/out -Filter '*.exe' | Select-Object -First 1
+-          if (-not $setup) { throw 'NSIS did not produce Windows setup EXE' }
+-          $target = Join-Path $env:RUNNER_TEMP 'GK1ResearchInstall'
++          if (-not $setup) { throw 'NSIS did not produce setup executable' }
++          $target = Join-Path $env:RUNNER_TEMP 'GK1CurrentInstall'
+           $p = Start-Process -FilePath $setup.FullName -ArgumentList @('/S', "/D=$target") -Wait -PassThru
+-          if ($p.ExitCode -ne 0) { throw "NSIS installation exited $($p.ExitCode)" }
+-          if (-not (Test-Path (Join-Path $target 'gk1_native_shell.exe'))) { throw 'Installed native game missing' }
+-          if (-not (Test-Path (Join-Path $target 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'))) { throw 'Installed canonical CSV missing' }
+-          Get-FileHash (Join-Path $target 'gk1_native_shell.exe') -Algorithm SHA256
+-          Write-Output 'Win32 installer extraction verified; physical Xbox and full campaigns NOT RUN'
+-      # Intentionally no upload-artifact: storage pressure, unaccepted research build.
++          if ($p.ExitCode -ne 0) { throw "NSIS installer exit $($p.ExitCode)" }
++          $exe = Join-Path $target 'gk1_native_shell.exe'
++          $csv = Join-Path $target 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'
++          if (-not (Test-Path $exe) -or -not (Test-Path $csv)) { throw 'Native installed EXE or canonical CSV missing' }
++          & current-gk1/execution_199/packaging/test_gk257_win32_acceptance.ps1 -Executable $exe
++          if ($LASTEXITCODE -ne 0) { throw 'Installed native WinMain acceptance failed' }
++          Get-FileHash $exe -Algorithm SHA256
++          Write-Output 'TESTED_WIN32_CI native compiled, full CTest, WinMain GUI and NSIS installation; PHYSICAL_XBOX_NOT_RUN; FULL_CAMPAIGNS_NOT_RUN'
++      # No copyrighted original NES ROM, private Mesen source, raw RAM, or private original checkpoints.
++      # No artifact upload until an accepted distribution release.
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -1381,3 +1381,16 @@
+ target_link_libraries(test_gk256_classic_view_first_pass PRIVATE gk1_app_state)
+ add_test(NAME GK1_256_ClassicViewFirstPass_SourceImmutable
+  COMMAND test_gk256_classic_view_first_pass)
++
++# EXEC0257: version-pinned current full native C11 Win32 acceptance pipeline.
++# The workflow bootstraps authenticated complete EXEC0256 source + exact patch,
++# never the stale EXEC0228 game, and requires zlib, GUI/NSIS and full Win32 CTest.
++# This test is STATIC on Linux; a passing test is NOT a Windows execution.
++find_package(Python3 COMPONENTS Interpreter QUIET)
++if(Python3_Interpreter_FOUND)
++ add_test(NAME GK1_257_CurrentWin32Workflow_RejectsStaleSourceAndFalsePass
++  COMMAND ${Python3_EXECUTABLE}
++   ${CMAKE_CURRENT_SOURCE_DIR}/packaging/test_gk257_windows_ci_gate.py
++   ${CMAKE_CURRENT_SOURCE_DIR}/../.github/workflows/gk1-native-windows.yml
++   ${CMAKE_CURRENT_SOURCE_DIR}/packaging/test_gk257_win32_acceptance.ps1)
++endif()
+diff --git a/execution_199/packaging/test_gk257_win32_acceptance.ps1 b/execution_199/packaging/test_gk257_win32_acceptance.ps1
+new file mode 100644
+--- /dev/null
++++ b/execution_199/packaging/test_gk257_win32_acceptance.ps1
+@@ -0,0 +1,27 @@
++param([Parameter(Mandatory=$true)][string]$Executable)
++$ErrorActionPreference = 'Stop'
++if (-not (Test-Path -LiteralPath $Executable)) { throw "Native WinMain EXE missing: $Executable" }
++$Executable = (Resolve-Path -LiteralPath $Executable).Path
++$cwd = Split-Path -Parent $Executable
++$trace = Join-Path $env:RUNNER_TEMP 'gk257_winmain_trace.log'
++if (Test-Path $trace) { Remove-Item $trace -Force }
++$env:GK1_SMOKE_TRACE = $trace
++function Invoke-NativeExit([string]$arg, [int]$expected) {
++  $p = Start-Process -FilePath $Executable -WorkingDirectory $cwd -ArgumentList $arg -Wait -PassThru
++  if ($p.ExitCode -ne $expected) { throw "Native WinMain [$arg] exit $($p.ExitCode), expected $expected" }
++}
++try {
++  # Real Windows GUI WM_PAINT path with software-injected XInput mapping only.
++  Invoke-NativeExit '--smoke-frames=15' 0
++  if (-not (Test-Path $trace)) { throw 'WM_PAINT trace was not produced by native EXE' }
++  $content = Get-Content -LiteralPath $trace -Raw
++  if (-not $content.Contains('WM_PAINT completed')) { throw 'Native Windows WM_PAINT did not complete' }
++  Invoke-NativeExit '--smoke-gamepad-nav' 0
++  # Incorrect or excessively long frame arguments must be refused before GUI execution.
++  Invoke-NativeExit '--smoke-frames=121' 4
++  Invoke-NativeExit '--smoke-frames=4294967297' 4
++  Write-Output 'EXEC0257 WinMain GUI rendering / software controller / malformed args PASS; hardware Xbox NOT RUN'
++} finally {
++  Remove-Item Env:GK1_SMOKE_TRACE -ErrorAction SilentlyContinue
++  if (Test-Path $trace) { Remove-Item $trace -Force }
++}
+diff --git a/execution_199/packaging/test_gk257_windows_ci_gate.py b/execution_199/packaging/test_gk257_windows_ci_gate.py
+new file mode 100644
+--- /dev/null
++++ b/execution_199/packaging/test_gk257_windows_ci_gate.py
+@@ -0,0 +1,80 @@
++#!/usr/bin/env python3
++"""Hostile, executable static gate for the version-pinned *current* Win32 CI.
++
++This verifies that the Windows workflow doesn't silently build the old
++EXEC0228 application, skip the WinMain GUI, disable archived-World zlib,
++substitute unverified source, or describe software XInput as physical Xbox.
++Does not claim a native Windows run from Linux.
++"""
++import pathlib
++import re
++import sys
++
++ARCHIVE_SHA = '97421aa2ef45288684bf22d868ad110b850396c316bce9253b0fc8a05166b619'
++
++
++def audit(workflow: str, script: str):
++    required = [
++        'execution_257_current_win32_gate/GK1_EXEC0256_Lean_Inherited_Build_Source.zip',
++        ARCHIVE_SHA,
++        'git -C current-gk1 apply --check',
++        'git -C current-gk1 apply "../$patch"',
++        'cmake -S current-gk1/execution_199',
++        'GK1_REQUIRE_ARCHIVED_WORLD_IMPORT=ON',
++        'zlib:x64-windows-static',
++        'ctest --test-dir build-gk1-win32 -C Release --output-on-failure --timeout 90 -j 4',
++        'test_gk257_win32_acceptance.ps1',
++        'cpack --config build-gk1-win32/CPackConfig.cmake -G NSIS',
++        "Join-Path $target 'gk1_native_shell.exe'",
++        'PHYSICAL_XBOX_NOT_RUN',
++    ]
++    if any(item not in workflow for item in required):
++        return False
++    if 'cmake -S research/Genghis_Khan_NES/execution_228_win32_build_gate/' in workflow:
++        return False
++    if re.search(r'ctest[^\n]*\s-R\s', workflow):
++        return False  # no narrow historical subset masquerading as full acceptance
++    scripted = ['--smoke-frames=15', '--smoke-gamepad-nav',
++                '--smoke-frames=121', '--smoke-frames=4294967297',
++                'WM_PAINT completed', 'Invoke-NativeExit', 'hardware Xbox NOT RUN']
++    if any(item not in script for item in scripted):
++        return False
++    if script.count('Invoke-NativeExit') < 5:
++        return False
++    return True
++
++
++def main(argv):
++    if len(argv) != 3:
++        print('Usage: test_gk257_windows_ci_gate.py WORKFLOW PS1', file=sys.stderr)
++        return 2
++    w = pathlib.Path(argv[1]).read_text(encoding='utf-8')
++    s = pathlib.Path(argv[2]).read_text(encoding='utf-8')
++    assert audit(w, s), 'current-source Win32 acceptance gate invalid'
++    count = 1
++    for bad in (
++        w.replace(ARCHIVE_SHA, '0' * 64),
++        w.replace('current-gk1/execution_199', 'execution_228_win32_build_gate/execution_199'),
++        w.replace('-DGK1_REQUIRE_ARCHIVED_WORLD_IMPORT=ON', '-DGK1_REQUIRE_ARCHIVED_WORLD_IMPORT=OFF'),
++        w.replace('zlib:x64-windows-static', 'zlib:x64-windows'),
++        w.replace('ctest --test-dir build-gk1-win32 -C Release --output-on-failure --timeout 90 -j 4',
++                  'ctest --test-dir build-gk1-win32 -C Release --output-on-failure -R GK1_0228'),
++        w.replace('cpack --config build-gk1-win32/CPackConfig.cmake -G NSIS', 'echo dummy-package'),
++        w.replace('PHYSICAL_XBOX_NOT_RUN', 'PHYSICAL_XBOX_TESTED'),
++    ):
++        assert not audit(bad, s), 'workflow corruption passed hostile gate'
++        count += 1
++    for bad in (
++        s.replace('--smoke-gamepad-nav', '--version'),
++        s.replace('WM_PAINT completed', 'NO_RENDER'),
++        s.replace('hardware Xbox NOT RUN', 'hardware Xbox TESTED'),
++    ):
++        assert not audit(w, bad), 'acceptance script corruption passed hostile gate'
++        count += 1
++    print(f'GK1_EXEC0257 Windows source/CI gate PASS {count}/11 positive+negative cases; '
++          'Windows executable / NSIS / physical Xbox NOT RUN by this test')
++    return 0
++
++
++if __name__ == '__main__':
++    raise SystemExit(main(sys.argv))

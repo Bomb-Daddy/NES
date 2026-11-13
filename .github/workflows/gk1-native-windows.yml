@@ -1,264 +1,82 @@
-name: GK1 actual native Windows C11 build and NSIS candidate
+name: GK1 current inherited native Win32 and NSIS acceptance
+
 on:
   workflow_dispatch:
   push:
     paths:
       - '.github/workflows/gk1-native-windows.yml'
-      - 'research/Genghis_Khan_NES/execution_229_windows_ci_bundle/**'
-      - 'research/Genghis_Khan_NES/execution_230_win32_gui_smoke/**'
-      - 'research/Genghis_Khan_NES/execution_231_win32_gui_trace/**'
-      - 'research/Genghis_Khan_NES/execution_232_win32_controller_navigation/**'
-      - 'research/Genghis_Khan_NES/execution_233_win32_practice_persistence/**'
-      - 'research/Genghis_Khan_NES/execution_234_world_four_player_setup/**'
-      - 'research/Genghis_Khan_NES/execution_235_world_multiplayer_practice_guard/**'
+      - 'research/Genghis_Khan_NES/execution_257_current_win32_gate/**'
+
 permissions:
   contents: read
+
 jobs:
-  native-win32:
+  native-win32-current:
     runs-on: windows-2022
-    timeout-minutes: 60
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
-      - name: Verify and hydrate COMPLETE inherited source (EXEC0228)
+      - name: Verify and expand SHA-pinned complete current-game build source
         shell: pwsh
         run: |
-          $root = 'research/Genghis_Khan_NES/execution_229_windows_ci_bundle'
-          python "$root/test_hydrate_verified_bundle.py"
-          python "$root/hydrate_verified_bundle.py" --parts "$root/parts" --manifest "$root/manifest.json" --dest 'gk1-integrated-source'
-          if ($LASTEXITCODE -ne 0) { throw 'Source verification failed' }
-          python "$root/apply_win32_portability.py" 'gk1-integrated-source'
-          if ($LASTEXITCODE -ne 0) { throw 'Win32 source compatibility patch refused' }
-          if (-not (Test-Path 'gk1-integrated-source/execution_199/gk1_native_shell.c')) { throw 'Integrated native source missing' }
-          # EXEC0231: Git apply from a subdirectory of the parent repository
-          # silently returned success while skipping every hunk. Give hydrated
-          # source its own temporary Git root so paths cannot be skipped.
-          $patch = (Resolve-Path 'research/Genghis_Khan_NES/execution_230_win32_gui_smoke/GK1_EXEC0230_CopyrightClean_Integration.patch').Path
-          git -C 'gk1-integrated-source' init --quiet
-          if ($LASTEXITCODE -ne 0) { throw 'Hydrated source git-root initialization failed' }
-          Write-Host 'Original 230 target hash:'
-          git -C 'gk1-integrated-source' hash-object 'execution_199/CMakeLists.txt' 'execution_199/gk1_native_shell.c'
-          # Windows checkout can expose CRLF working-tree text while git
-          # hash-object normalizes to the exact source blobs below. Permit
-          # line-ending-only context differences, not arbitrary source edits.
-          $baseCmake = (git -C 'gk1-integrated-source' hash-object 'execution_199/CMakeLists.txt').Trim()
-          $baseShell = (git -C 'gk1-integrated-source' hash-object 'execution_199/gk1_native_shell.c').Trim()
-          if ($baseCmake -ne '30b270426bd02b3e3f41ce0f6f2302e4c8b32a1f' -or $baseShell -ne '5cddc62f0551de11830c6b446be496ce57ff943b') {
-            throw 'Source-hash precondition failed before EXEC0230'
-          }
-          git -C 'gk1-integrated-source' apply --check --ignore-space-change $patch
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 CRLF-aware exact patch precheck failed' }
-          git -C 'gk1-integrated-source' apply --ignore-space-change $patch
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0230 CRLF-aware patch application failed' }
-          if (-not (Select-String -Path 'gk1-integrated-source/execution_199/gk1_native_shell.c' -Pattern 'gk230_painted_frames' -Quiet)) {
-            throw 'EXEC0230 postcondition absent: git apply returned success but skipped game source'
-          }
-          python 'research/Genghis_Khan_NES/execution_231_win32_gui_trace/test_trace.py'
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0231 diagnostic patch tests failed' }
-          python 'research/Genghis_Khan_NES/execution_231_win32_gui_trace/apply_trace.py' 'gk1-integrated-source'
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0231 diagnostic patch refused' }
-          python 'research/Genghis_Khan_NES/execution_232_win32_controller_navigation/test_gamepad_smoke.py'
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0232 hostile integration tests failed' }
-          python 'research/Genghis_Khan_NES/execution_232_win32_controller_navigation/apply_gamepad_smoke.py' 'gk1-integrated-source'
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0232 native game controller route integration refused' }
-          if (-not (Select-String -Path 'gk1-integrated-source/execution_199/gk1_native_shell.c' -Pattern 'EXEC0232 scripted raw XInput' -Quiet)) {
-            throw 'EXEC0232 actual WinMain source integration missing'
-          }
-          python 'research/Genghis_Khan_NES/execution_233_win32_practice_persistence/test_practice_smoke.py'
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0233 adversarial overlay test failed' }
-          python 'research/Genghis_Khan_NES/execution_233_win32_practice_persistence/apply_practice_smoke.py' 'gk1-integrated-source'
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0233 real WinMain practice persistence integration refused' }
-          if (-not (Select-String -Path 'gk1-integrated-source/execution_199/gk1_native_shell.c' -Pattern 'EXEC0233: private, Enhanced-only' -Quiet)) {
-            throw 'EXEC0233 WinMain integration postcondition absent'
-          }
-          # EXEC0234: same inherited C11 native app, World 4-player setup HUD and test.
-          python 'research/Genghis_Khan_NES/execution_234_world_four_player_setup/apply_world_roster.py' 'gk1-integrated-source'
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0234 source/GUI overlay refused' }
-          if (-not (Select-String -Path 'gk1-integrated-source/execution_199/gk1_native_shell.c' -Pattern 'COMMITTED WORLD LORD COUNTRIES' -Quiet)) { throw 'EXEC0234 in-game World HUD missing' }
-          # EXEC0235: preserve 2-4 committed human rulers; reject single-ruler Enhanced practice.
-          python 'research/Genghis_Khan_NES/execution_235_world_multiplayer_practice_guard/apply_multiplayer_guard.py' 'gk1-integrated-source'
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0235 multi-human World native game overlay refused' }
-          python 'research/Genghis_Khan_NES/execution_235_world_multiplayer_practice_guard/test_multiplayer_overlay.py' 'gk1-integrated-source'
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0235 hostile replay controls failed' }
-          if (-not (Select-String -Path 'gk1-integrated-source/execution_199/gk1_app_state.c' -Pattern 'EXEC0235:' -Quiet)) { throw 'EXEC0235 native World multiplayer practice guard missing' }
-      - name: Build the actual 1280x720 native WinMain and XInput game
-        shell: pwsh
-        run: |
-          cmake -S 'gk1-integrated-source/execution_199' -B 'build-gk1-win32' -G 'Visual Studio 17 2022' -A x64
-          if ($LASTEXITCODE -ne 0) { throw 'Configure failed' }
-          cmake --build 'build-gk1-win32' --config Release --target gk1_native_shell gk228_win32_smoke test_gk99_xinput_bridge test_gk62_game_market_guard test_gk234_world_four_players test_gk235_world_multi_guard --parallel 4
-          if ($LASTEXITCODE -ne 0) { throw 'Native Win32 compile failed' }
-      - name: Execute actual Win32 source/XInput and hostile controls
-        shell: pwsh
-        run: |
-          ctest --test-dir 'build-gk1-win32' -C Release --output-on-failure -R 'GK1_228_|GK1_099_|GK1_062_|GK1_234_|GK1_235_'
-          if ($LASTEXITCODE -ne 0) { throw 'Native Win32 smoke tests failed' }
-          python 'gk1-integrated-source/execution_199/packaging/test_gk228_windows_contract.py' 'build-gk1-win32/Release/gk228_win32_smoke.exe' 'build-gk1-win32/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'
-          if ($LASTEXITCODE -ne 0) { throw 'Native Win32 hostile source tests failed' }
-      - name: Execute actual 1280x720 WinMain WM_PAINT bounded graphics (no hardware claims)
-        id: native_gui
-        continue-on-error: true
-        shell: pwsh
-        run: |
-          $exe = (Resolve-Path 'build-gk1-win32/Release/gk1_native_shell.exe').Path
-          $env:GK1_SMOKE_TRACE = Join-Path $env:RUNNER_TEMP 'gk231_winmain_trace.txt'
-          Remove-Item $env:GK1_SMOKE_TRACE -ErrorAction SilentlyContinue
-          $p = Start-Process -FilePath $exe -ArgumentList '--smoke-frames=3' -PassThru
-          if (-not $p.WaitForExit(20000)) {
-            $p.Refresh()
-            Write-Host "Bounded WinMain diagnostic: PID=$($p.Id) HWND=$($p.MainWindowHandle) CPU=$($p.TotalProcessorTime) RAM=$($p.WorkingSet64)"
-            if (Test-Path $env:GK1_SMOKE_TRACE) { Get-Content $env:GK1_SMOKE_TRACE | ForEach-Object { Write-Host "GK231 TRACE $_" } }
-            try { $p.Kill() } catch {}
-            throw 'Native WinMain 3-frame GUI paint timed out; verify hosted runner GUI desktop / startup path'
-          }
-          if ($p.ExitCode -ne 0) { throw "Native WinMain GUI paint run failed: $($p.ExitCode)" }
-          if (Test-Path $env:GK1_SMOKE_TRACE) { Get-Content $env:GK1_SMOKE_TRACE | ForEach-Object { Write-Host "GK231 TRACE $_" } }
-          Write-Host 'Verified actual native WinMain real window geometry and 3+ WM_PAINT calls, software-only XInput polling'
-          # EXEC0232: drive the REAL WinMain renderer and pad_actions router with
-          # deterministic raw XInput bits. A passing test does NOT prove hardware.
-          # Built MSVC EXE lives in Release/, but CMake copied the canonical
-          # original-country CSV into the build/ parent. An explicit SHA-gated
-          # CSV override is required for source-authenticated controller entry.
-          $env:GK1_SCENARIO_CSV = (Resolve-Path 'build-gk1-win32/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv').Path
-          $pad = Start-Process -FilePath $exe -ArgumentList '--smoke-gamepad-nav' -PassThru
-          if (-not $pad.WaitForExit(20000)) {
-            try { $pad.Kill() } catch {}
-            throw 'EXEC0232 WinMain real controller menu smoke timed out'
-          }
-          if ($pad.ExitCode -ne 0) { throw "EXEC0232 WinMain gamepad route exit=$($pad.ExitCode)" }
-          if (Test-Path $env:GK1_SMOKE_TRACE) { Get-Content $env:GK1_SMOKE_TRACE | Select-Object -Last 15 }
-          Write-Host 'EXEC0232 actual native WinMain rendered controller navigation PASS; physical Xbox NOT TESTED'
-      - name: Build and extract real NSIS research installer
+          $archive = 'research/Genghis_Khan_NES/execution_257_current_win32_gate/GK1_EXEC0256_Lean_Inherited_Build_Source.zip'
+          $expected = '97421aa2ef45288684bf22d868ad110b850396c316bce9253b0fc8a05166b619'
+          if (-not (Test-Path -LiteralPath $archive)) { throw 'Pinned complete inherited C11 build source missing; never substitute EXEC0228' }
+          $actual = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -ne $expected) { throw "Inherited native source SHA mismatch $actual" }
+          Expand-Archive -LiteralPath $archive -DestinationPath current-gk1 -Force
+          $patch = 'research/Genghis_Khan_NES/execution_257_current_win32_gate/GK1_EXEC0257_Integration_From0256.patch'
+          git -C current-gk1 apply --check "../$patch"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0257 patch does not apply to pinned complete source' }
+          git -C current-gk1 apply "../$patch"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0257 integration patch failed' }
+          if (-not (Test-Path current-gk1/execution_199/gk1_native_shell.c)) { throw 'Current complete C11 app missing' }
+          if (-not (Test-Path current-gk1/execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)) { throw 'Exact public source CSV missing' }
+      - name: Install the actual NSIS packager
         shell: pwsh
         run: |
           choco install nsis --no-progress --yes
-          if ($LASTEXITCODE -ne 0) { throw 'NSIS install failed' }
-          $env:PATH += ';C:\Program Files (x86)\NSIS'
-          cpack --config 'build-gk1-win32/CPackConfig.cmake' -G NSIS -C Release -B 'build-gk1-win32/out'
-          if ($LASTEXITCODE -ne 0) { throw 'NSIS packaging failed' }
-          $setup = Get-ChildItem 'build-gk1-win32/out' -Filter '*.exe' | Select-Object -First 1
-          if (-not $setup) { throw 'No Windows setup EXE' }
-          $target = Join-Path $env:RUNNER_TEMP 'GK1ResearchInstall'
+          if ($LASTEXITCODE -ne 0) { throw 'NSIS installation failed' }
+          'C:\Program Files (x86)\NSIS' >> $env:GITHUB_PATH
+      - name: Install static zlib for authentic archived World-import capability
+        shell: pwsh
+        run: |
+          if (-not $env:VCPKG_ROOT) { throw 'Windows runner did not supply VCPKG_ROOT' }
+          & "$env:VCPKG_ROOT\vcpkg.exe" install zlib:x64-windows-static
+          if ($LASTEXITCODE -ne 0) { throw 'static zlib install failed' }
+      - name: Compile actual current 1280x720 WinMain C11 XInput game
+        shell: pwsh
+        run: |
+          cmake -S current-gk1/execution_199 -B build-gk1-win32 -G 'Visual Studio 17 2022' -A x64 -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-windows-static -DGK1_REQUIRE_ARCHIVED_WORLD_IMPORT=ON
+          if ($LASTEXITCODE -ne 0) { throw 'Current native Windows CMake configure failed' }
+          cmake --build build-gk1-win32 --config Release --parallel 4
+          if ($LASTEXITCODE -ne 0) { throw 'Current native Win32 C11 compilation failed' }
+      - name: Execute complete Win32 CTest registry, not an old subset
+        shell: pwsh
+        run: |
+          ctest --test-dir build-gk1-win32 -C Release --output-on-failure --timeout 90 -j 4
+          if ($LASTEXITCODE -ne 0) { throw 'Current Win32 regression suite failed' }
+      - name: Run real WinMain controller simulation, paint and CLI hostile controls
+        shell: pwsh
+        run: |
+          & current-gk1/execution_199/packaging/test_gk257_win32_acceptance.ps1 -Executable (Resolve-Path 'build-gk1-win32/Release/gk1_native_shell.exe').Path
+          if ($LASTEXITCODE -ne 0) { throw 'Actual current WinMain acceptance failed' }
+      - name: Build and silently install actual current NSIS package
+        shell: pwsh
+        run: |
+          cpack --config build-gk1-win32/CPackConfig.cmake -G NSIS -C Release -B build-gk1-win32/out
+          if ($LASTEXITCODE -ne 0) { throw 'NSIS CPack failed' }
+          $setup = Get-ChildItem build-gk1-win32/out -Filter '*.exe' | Select-Object -First 1
+          if (-not $setup) { throw 'NSIS did not produce setup executable' }
+          $target = Join-Path $env:RUNNER_TEMP 'GK1CurrentInstall'
           $p = Start-Process -FilePath $setup.FullName -ArgumentList @('/S', "/D=$target") -Wait -PassThru
-          if ($p.ExitCode -ne 0) { throw "NSIS exited $($p.ExitCode)" }
-          if (-not (Test-Path (Join-Path $target 'gk1_native_shell.exe'))) { throw 'Installed WinMain game missing' }
-          if (-not (Test-Path (Join-Path $target 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'))) { throw 'Installed source CSV missing' }
-          $installedExe = Join-Path $target 'gk1_native_shell.exe'
-          Get-FileHash $installedExe -Algorithm SHA256
-          Write-Host 'Win32 candidate packaged/extracted. Original first Spring, physical Xbox and full campaign NOT certified.'
-      - name: NSIS-installed WinMain GUI acceptance (only after built GUI passes)
-        if: steps.native_gui.outcome == 'success'
-        id: installed_gui
-        continue-on-error: true
-        shell: pwsh
-        run: |
-          $exe = Join-Path $env:RUNNER_TEMP 'GK1ResearchInstall/gk1_native_shell.exe'
-          if (-not (Test-Path $exe)) { throw 'NSIS installed binary missing' }
-          $p = Start-Process -FilePath $exe -ArgumentList '--smoke-frames=3' -PassThru
-          if (-not $p.WaitForExit(20000)) {
-            $p.Refresh()
-            Write-Host "Installed WinMain diagnostic: PID=$($p.Id) HWND=$($p.MainWindowHandle) CPU=$($p.TotalProcessorTime)"
-            try { $p.Kill() } catch {}
-            throw 'NSIS-installed WinMain 3-frame GUI paint timed out'
-          }
-          if ($p.ExitCode -ne 0) { throw "Installed WinMain paint failed: $($p.ExitCode)" }
-          $pad = Start-Process -FilePath $exe -ArgumentList '--smoke-gamepad-nav' -PassThru
-          if (-not $pad.WaitForExit(20000)) {
-            try { $pad.Kill() } catch {}
-            throw 'NSIS-installed EXEC0232 controller nav timed out'
-          }
-          if ($pad.ExitCode -ne 0) { throw "NSIS-installed EXEC0232 route failed: $($pad.ExitCode)" }
-          Write-Host 'NSIS-installed WinMain scripted raw XInput navigation PASS; not a physical device test'
-      - name: Enforce fail-closed Windows graphical acceptance
-        if: always()
-        shell: pwsh
-        run: |
-          if ('${{ steps.native_gui.outcome }}' -ne 'success') { throw 'Native GUI smoke failed: not Windows gameplay accepted' }
-          if ('${{ steps.installed_gui.outcome }}' -ne 'success') { throw 'Installed GUI smoke failed: not Windows gameplay accepted' }
-      - name: EXEC0233 actual WinMain Enhanced practice X-save / Y-cold-resume / corruption refusal
-        shell: pwsh
-        run: |
-          # Real MSVC-compiled and NSIS-installed WinMain EXEs, not a second prototype.
-          # Each invocation starts a separate process. Input is synthetic raw XInput
-          # routed through the live app, NOT a tested physical Xbox controller.
-          function Check-Run([string]$exe,[string]$mode) {
-            $p = Start-Process -FilePath $exe -ArgumentList $mode -PassThru
-            if (-not $p.WaitForExit(20000)) {
-              try { $p.Kill() } catch {}
-              throw "EXEC0233 Windows $mode timed out"
-            }
-            if ($p.ExitCode -ne 0) {
-              if (Test-Path $env:GK1_SMOKE_TRACE) {
-                Get-Content $env:GK1_SMOKE_TRACE | Select-Object -Last 35 | ForEach-Object { Write-Host "GK233 DEBUG $_" }
-              }
-              throw "EXEC0233 Windows $mode exit=$($p.ExitCode)"
-            }
-          }
-          $cases = @(
-            @{ Exe = (Resolve-Path 'build-gk1-win32/Release/gk1_native_shell.exe').Path; Csv = (Resolve-Path 'build-gk1-win32/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv').Path; Label = 'built' },
-            @{ Exe = (Join-Path $env:RUNNER_TEMP 'GK1ResearchInstall/gk1_native_shell.exe'); Csv = (Join-Path $env:RUNNER_TEMP 'GK1ResearchInstall/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'); Label = 'installed' }
-          )
-          foreach ($case in $cases) {
-            if (-not (Test-Path $case.Exe) -or -not (Test-Path $case.Csv)) {
-              throw "EXEC0233 missing Windows executable or canonical country source"
-            }
-            $env:GK1_SCENARIO_CSV = $case.Csv
-            $env:GK1_SMOKE_TRACE = Join-Path $env:RUNNER_TEMP ("GK1_EXEC0233_" + $case.Label + ".trace")
-            Remove-Item $env:GK1_SMOKE_TRACE -ErrorAction SilentlyContinue
-            $env:GK1_ENHANCED_PRACTICE_SAVE_FILE = Join-Path $env:RUNNER_TEMP ("GK1_EXEC0233_" + $case.Label + ".gk24")
-            Remove-Item $env:GK1_ENHANCED_PRACTICE_SAVE_FILE -ErrorAction SilentlyContinue
-            Check-Run $case.Exe '--smoke-gamepad-practice-save'
-            if (-not (Test-Path $env:GK1_ENHANCED_PRACTICE_SAVE_FILE)) { throw 'EXEC0233 X never wrote practice save' }
-            $first = [IO.File]::ReadAllBytes($env:GK1_ENHANCED_PRACTICE_SAVE_FILE)
-            if ($first.Length -ne 80) { throw "EXEC0233 unexpected receipt bytes $($first.Length)" }
-            Check-Run $case.Exe '--smoke-gamepad-practice-resume'
-            $second = [IO.File]::ReadAllBytes($env:GK1_ENHANCED_PRACTICE_SAVE_FILE)
-            if ($second.Length -ne 80) { throw 'EXEC0233 second receipt truncated' }
-            if ([Convert]::ToBase64String($first) -eq [Convert]::ToBase64String($second)) {
-              throw 'EXEC0233 X recheckpoint did not advance saved game state'
-            }
-            Check-Run $case.Exe '--smoke-gamepad-practice-verify'
-            # A damaged saved receipt must NOT be treated as valid or cause a
-            # fallback to another Classic/Enhanced profile or alter file bytes.
-            $corrupt = [byte[]]$second.Clone()
-            $corrupt[39] = $corrupt[39] -bxor 90
-            [IO.File]::WriteAllBytes($env:GK1_ENHANCED_PRACTICE_SAVE_FILE,$corrupt)
-            Check-Run $case.Exe '--smoke-gamepad-practice-corrupt'
-            $after = [IO.File]::ReadAllBytes($env:GK1_ENHANCED_PRACTICE_SAVE_FILE)
-            if ([Convert]::ToBase64String($corrupt) -ne [Convert]::ToBase64String($after)) {
-              throw 'EXEC0233 corrupted save mutated during refusal'
-            }
-            [IO.File]::WriteAllBytes($env:GK1_ENHANCED_PRACTICE_SAVE_FILE,$second)
-            Write-Host "EXEC0233 TESTED_PORT_WIN32 $($case.Label) 4 fresh-process controller/disk tests PASS; not stock NES or hardware"
-          }
-          Remove-Item Env:GK1_SCENARIO_CSV -ErrorAction SilentlyContinue
-          Remove-Item Env:GK1_ENHANCED_PRACTICE_SAVE_FILE -ErrorAction SilentlyContinue
-      # EXEC0236: publish only the independently tested NSIS research candidate
-      # after all native/installed graphical and disk regression checks succeed.
-      # No original NES ROM, SRAM, Mesen state, screenshots or licensed asset.
-      - name: EXEC0236 gate NSIS package provenance and privacy
-        shell: pwsh
-        run: |
-          $setups = @(Get-ChildItem 'build-gk1-win32/out' -Filter '*.exe' -File)
-          if ($setups.Count -ne 1) { throw "Expected precisely one candidate NSIS EXE; found $($setups.Count)" }
-          $installed = Join-Path $env:RUNNER_TEMP 'GK1ResearchInstall'
-          if (-not (Test-Path (Join-Path $installed 'gk1_native_shell.exe'))) { throw 'Executable absent from installed candidate' }
-          if (-not (Test-Path (Join-Path $installed 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'))) { throw 'Canonical country dataset absent from installed candidate' }
-          $forbidden = @(Get-ChildItem $installed -Recurse -File | Where-Object {
-            $_.Extension -in @('.nes','.srm','.sav','.mss','.ips','.bps','.nsf','.fds','.rom')
-          })
-          if ($forbidden.Count -gt 0) { throw 'Private ROM, patch, save or raw audio payload included in installer: publication refused' }
-          $setupHash = (Get-FileHash $setups[0].FullName -Algorithm SHA256).Hash.ToLowerInvariant()
-          $binaryHash = (Get-FileHash (Join-Path $installed 'gk1_native_shell.exe') -Algorithm SHA256).Hash.ToLowerInvariant()
-          if ($setups[0].Length -lt 20000) { throw 'NSIS package unexpectedly small' }
-          Write-Host "EXEC0236 VERIFIED_STATIC package=$($setups[0].Name) bytes=$($setups[0].Length) sha256=$setupHash"
-          Write-Host "EXEC0236 TESTED_PORT_WIN32 installed exe sha256=$binaryHash"
-          Write-Host 'EXEC0236 classification: research candidate only; no original first Spring, full campaigns, or physical Xbox acceptance.'
-      - name: EXEC0236 publish Windows research NSIS candidate
-        uses: actions/upload-artifact@v4
-        with:
-          name: GK1_EXEC0236_Windows_NSIS_ResearchCandidate
-          path: build-gk1-win32/out/*.exe
-          if-no-files-found: error
-          retention-days: 1
-          compression-level: 0
-
+          if ($p.ExitCode -ne 0) { throw "NSIS installer exit $($p.ExitCode)" }
+          $exe = Join-Path $target 'gk1_native_shell.exe'
+          $csv = Join-Path $target 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'
+          if (-not (Test-Path $exe) -or -not (Test-Path $csv)) { throw 'Native installed EXE or canonical CSV missing' }
+          & current-gk1/execution_199/packaging/test_gk257_win32_acceptance.ps1 -Executable $exe
+          if ($LASTEXITCODE -ne 0) { throw 'Installed native WinMain acceptance failed' }
+          Get-FileHash $exe -Algorithm SHA256
+          Write-Output 'TESTED_WIN32_CI native compiled, full CTest, WinMain GUI and NSIS installation; PHYSICAL_XBOX_NOT_RUN; FULL_CAMPAIGNS_NOT_RUN'
+      # No copyrighted original NES ROM, private Mesen source, raw RAM, or private original checkpoints.
+      # No artifact upload until an accepted distribution release.
