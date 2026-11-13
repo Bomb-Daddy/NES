@@ -1,3 +1,9 @@
+## Native Windows acceptance (verified after initial handoff)
+
+GitHub Actions [43334708027](https://github.com/Bomb-Daddy/NES/actions/runs/43334708027) completed successfully on 2026-11-13 UTC: true MSVC WinMain build, 6/6 targeted CTests including native 0235, 8/8 hostile overlay replay checks, NSIS build/silent install and installed GUI/scripted XInput, plus prior Enhanced disk save/cold resume tests. Failed prior attempts [43334396915](https://github.com/Bomb-Daddy/NES/actions/runs/43334396915) and [43334577298](https://github.com/Bomb-Daddy/NES/actions/runs/43334577298) exposed Windows cp1252 Python default decoding; the two scripts now explicitly decode UTF-8. The recovered original ROM stays private; authentic original Spring/actual multi-human turns, physical Xbox, full campaigns were NOT tested. Use the corrected `GK1_EXEC0235_Complete_Inherited_C11_Source_QA_v1.02.zip` in Collaboration Drive. This heading supersedes the original early-in-run Win32-NOT-RUN label below; it does not rewrite the inherited evidence.
+
+---
+
 # Genghis Khan I — EXEC0235 — World multi-human Spring state integrity
 
 **Date:** 2026-11-12. **Predecessor:** EXEC0234 v3.88.1, Windows CI accepted (run `43326322387`). This is a narrow correction inside the **same** inherited C11 game, not a new standalone prototype.
