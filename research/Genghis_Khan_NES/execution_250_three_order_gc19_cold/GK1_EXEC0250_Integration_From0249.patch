@@ -1,0 +1,103 @@
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -3533,7 +3533,7 @@
+   puts("EXEC0071 native software controller View/A/DPAD/B PASS; original two worlds unchanged PRE_SETUP");return 0;
+  }
+  int show_stock_finance=0,show_stock_trade=0,show_stock_setup=0,show_stock_goods=0,show_enhanced_summer=0,show_enhanced_fall=0,show_enhanced_winter=0,show_enhanced_year2=0;
+- int play_fresh_json=0,smoke_private_controller=0,smoke_classic_storage_original=0,smoke_classic_view_original=0,smoke_classic_trade_original=0,smoke_classic_tax_original=0,smoke_classic_three_original=0;
++ int play_fresh_json=0,smoke_private_controller=0,smoke_classic_storage_original=0,smoke_classic_view_original=0,smoke_classic_trade_original=0,smoke_classic_tax_original=0,smoke_classic_three_original=0,smoke_classic_three_cold_original=0;
+  int smoke=0,show_snapshot=0,show_path=0,show_divide=0,show_scenario=0,show_setup=0,show_labor=0,show_classic_finance=0,show_finance_compare=0,show_labor_undo=0,show_enhanced_lab=0,show_enhanced_lab_save=0,show_enhanced_lab_title_resume=0,show_enhanced_lab_title_reject=0,show_gk226_title_update=0,show_gk226_title_verify=0,show_gk226_title_final=0,show_demob=0,show_manual=0,show_market=0,show_clock=0,show_whatif=0,show_rest=0,show_mesen=0,show_order_budget=0,show_pass=0,show_spring=0,show_stock_spring=0,show_stock_checkpoint=0,show_stock_commands=0;
+  if(argc==5&&strcmp(argv[1],"--smoke-original-private-controller")==0){
+   smoke=atoi(argv[4]);if(smoke<1||smoke>120)return 4;
+@@ -3625,9 +3625,11 @@
+   smoke=atoi(argv[3]);if(smoke<1||smoke>120)return 4;
+   smoke_classic_trade_original=1;
+  }
+- else if(argc==4&&strcmp(argv[1],"--smoke-classic-three-original")==0){
++ else if(argc==4&&(strcmp(argv[1],"--smoke-classic-three-original")==0 ||
++                         strcmp(argv[1],"--smoke-classic-three-cold-original")==0)){
+   smoke=atoi(argv[3]);if(smoke<1||smoke>120)return 4;
+   smoke_classic_three_original=1;
++  smoke_classic_three_cold_original=(strcmp(argv[1],"--smoke-classic-three-cold-original")==0);
+  }
+  else if(argc==4&&strcmp(argv[1],"--smoke-classic-tax-original")==0){
+   smoke=atoi(argv[3]);if(smoke<1||smoke>120)return 4;
+@@ -3863,6 +3865,64 @@
+       !gk88_stock_projection_intact(&app.stock_checkpoint)||
+       original.orders.remaining!=app.stock_checkpoint.orders.remaining||
+       memcmp(original.stock_raw,app.stock_checkpoint.stock_raw,sizeof original.stock_raw))return 300;
++   if(smoke_classic_three_cold_original){
++    /* EXEC0250: the REAL native-controller path above has performed three
++     * source-backed PORT orders. Save a private GC19, recreate a pristine
++     * application from the installed CSV (not by copying the live app),
++     * cold-load it, and verify full mutable country/action/budget equality.
++     * Intentionally corrupt the resulting private file: loader MUST refuse
++     * without altering the previously restored application. The temporary
++     * private source is deleted; no NES records or hashes are printed. */
++    char private_path[1024];
++#ifdef _WIN32
++    char temp_dir[MAX_PATH],temp_name[MAX_PATH];
++    DWORD temp_n=GetTempPathA(MAX_PATH,temp_dir);
++    if(!temp_n||temp_n>=MAX_PATH||!GetTempFileNameA(temp_dir,"g50",0,temp_name))return 301;
++    if(strlen(temp_name)>=sizeof private_path||!DeleteFileA(temp_name))return 302;
++    strcpy(private_path,temp_name);
++#else
++    strcpy(private_path,"/tmp/gk250-gc19-XXXXXX");
++    int private_fd=mkstemp(private_path);
++    if(private_fd<0)return 301;
++    if(close(private_fd)!=0||unlink(private_path)!=0)return 302;
++#endif
++    Gk1TemplateDataset *templates=malloc(sizeof *templates);
++    Gk1App *restored=malloc(sizeof *restored),*snapshot=malloc(sizeof *snapshot);
++    if(!templates||!restored||!snapshot){free(templates);free(restored);free(snapshot);return 303;}
++    gk1_app_init(restored);
++    int good=(gk1_template_load(scenario_csv_path(),templates)==GK1_LOAD_OK &&
++       gk1_app_install_templates(restored,templates)!=0 &&
++       gk189_save_new(private_path,&app)==GK189_OK &&
++       gk189_cold_load(private_path,scenario_csv_path(),restored)==GK189_OK &&
++       restored->screen==GK1_SCREEN_CLASSIC_ASSIGN &&
++       restored->classic_assign.action_count==3u &&
++       restored->classic_assign.budget.remaining==0u &&
++       restored->classic_assign.mutable_world.countries[0].tax==original_tax+2u &&
++       gk187_intact(&restored->classic_assign,&restored->stock_checkpoint) &&
++       memcmp(&restored->classic_assign,&app.classic_assign,sizeof completed)==0 &&
++       memcmp(restored->stock_checkpoint.stock_raw,original.stock_raw,
++              sizeof original.stock_raw)==0);
++    if(good){
++      *snapshot=*restored;
++      FILE *f=fopen(private_path,"r+b");
++      if(!f||fseek(f,100,SEEK_SET)!=0)good=0;
++      else{
++       int byte=fgetc(f);
++       if(byte==EOF||fseek(f,100,SEEK_SET)!=0||
++          fputc(byte^0x01,f)==EOF||fflush(f)!=0)good=0;
++      }
++      if(f&&fclose(f)!=0)good=0;
++      if(good && (gk189_cold_load(private_path,scenario_csv_path(),restored)!=GK189_CORRUPT ||
++          memcmp(restored,snapshot,sizeof *restored)!=0))good=0;
++    }
++    (void)remove(private_path);
++    memset(templates,0,sizeof *templates);memset(restored,0,sizeof *restored);
++    memset(snapshot,0,sizeof *snapshot);
++    free(templates);free(restored);free(snapshot);
++    if(!good)return 304;
++    printf("TESTED_PORT_NATIVE EXEC0250 %s authenticated original checkpoint -> actual native 3-controller-order Tax/Assign/Tax -> private GC19 -> fresh-process-equivalent template reset + exact source/action cold-resume -> corrupt-file atomic rollback PASS; NOT NES PARITY, NOT PHYSICAL XBOX\n",gk77_profile_name(detected));
++   }
++
+    printf("TESTED_PORT_LINUX EXEC0248 %s 1280x720 X11 + INJECTED PAD THREE ORDERS TAX->ASSIGN->TAX: 3/3, FOURTH REFUSED, ORIGINAL 14/27 COUNTRIES IMMUTABLE; NO ORIGINAL NES RNG/PARITY OR PHYSICAL XBOX\n",gk77_profile_name(detected));
+   }
+   if(smoke_classic_tax_original){
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -1311,3 +1311,11 @@
+ add_executable(test_gk249_full_classic_cold_file_guard test_gk249_full_classic_cold_file_guard.c)
+ target_link_libraries(test_gk249_full_classic_cold_file_guard PRIVATE gk1_app_state)
+ add_test(NAME GK1_249_FullClassicColdSaveHandleGate COMMAND test_gk249_full_classic_cold_file_guard)
++
++# EXEC0250: actual main native binary, source-private three-controller-order
++# GC19 cold-load/hostile test. Default public CI has no private evidence:
++# it MUST fail closed. Opt-in authentic evidence tested outside public CTest.
++add_test(NAME GK1_250_OriginalThreeOrderFullColdSmoke_FailClosed
++  COMMAND gk1_native_shell --smoke-classic-three-cold-original
++    ${CMAKE_CURRENT_BINARY_DIR}/GK1_250_PRIVATE_STOCK_NOT_DISTRIBUTED.mss 1)
++set_tests_properties(GK1_250_OriginalThreeOrderFullColdSmoke_FailClosed PROPERTIES WILL_FAIL TRUE)
