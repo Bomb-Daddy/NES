@@ -1,0 +1,25 @@
+{
+  "release": "EXEC0240",
+  "predecessor_archive_sha256": "b62baad2ea16734ed5d9c17c0106faecc1583635b4cedfa9b165f65ea52d24da",
+  "files": {
+    "source/execution_199/CMakeLists.txt": {
+      "predecessor_sha256": "6a59787d95cef8d3178af2f414e261f62b8d05449add433320cf2ea7be0a67bd",
+      "result_sha256": "7646a9509bb350a97b0da5632bfa9ab761eaf07d20b47b377e1b5bf60ef5ade9"
+    },
+    "source/execution_199/gk182_archived_source_bank.c": {
+      "predecessor_sha256": "13d20dbd420a2a21028c027effc5af880438affde40264fd7583a8c4de23d39a",
+      "result_sha256": "d7210e1e53c9c1c4c41bfad6eac33801345944c36368ecae48ae42c2d2240778"
+    },
+    "source/execution_199/gk163_mesen_import.c": {
+      "predecessor_sha256": "0fc0daa83c60bbdb8dea41c713c7970276b25247851b072f6e472d11b0db07a3",
+      "result_sha256": "09df744d2ad3020abe31272f4ed40fbeceebd139a01c5a91c3912cdda863f737"
+    },
+    "source/execution_199/test_gk240_archived_optional_zlib.c": {
+      "predecessor_sha256": null,
+      "result_sha256": "e47e5e6ac2423fbe79f23a511e7c4efa0e8eaefd7447bbe6d971fea011a12cc5"
+    }
+  },
+  "private_rom_included": false,
+  "windows_native_0240": "NOT RUN",
+  "physical_xbox": "NOT RUN"
+}
