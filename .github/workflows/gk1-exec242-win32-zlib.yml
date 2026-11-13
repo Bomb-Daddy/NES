@@ -1,10 +1,11 @@
-name: GK1 EXEC0242 exact 241 native Windows ZLIB + NSIS acceptance
+name: GK1 EXEC0243 Win32 native parser correction + static ZLIB + NSIS acceptance
 on:
   workflow_dispatch:
   push:
     paths:
       - '.github/workflows/gk1-exec242-win32-zlib.yml'
       - 'research/Genghis_Khan_NES/execution_242_win32_zlib/**'
+      - 'research/Genghis_Khan_NES/execution_243_win32_brace/**'
 permissions:
   contents: read
 jobs:
@@ -32,6 +33,12 @@ jobs:
           if (-not (Select-String 'gk1-integrated-source/execution_199/gk1_native_shell.c' -Pattern 'gk230_painted_frames' -Quiet)) { throw 'EXEC0230 native game postcondition missing' }
           python 'research/Genghis_Khan_NES/execution_242_win32_zlib/apply242.py' 'gk1-integrated-source'
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0242 full inherited source exact SHA/apply gate refused' }
+          # EXEC0243: true MSVC build exposed an inherited double closing
+          # brace in the actual WinMain WM_PAINT handler, masked by Linux.
+          # Exact predecessor/postimage SHA gates prevent accidental edits.
+          python 'research/Genghis_Khan_NES/execution_243_win32_brace/apply243.py' 'gk1-integrated-source'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0243 Win32 source correction refused' }
+
       - name: Install and validate STATIC zlib library for real Windows .mss importer
         shell: pwsh
         run: |
