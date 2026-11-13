@@ -1,0 +1,48 @@
+{
+  "predecessor_file": "GK1_EXEC0238_Complete_Integrated_C11_Source_QA.zip",
+  "predecessor_sha256": "9f7131078ff3f87e03c8ab707df4f9506a2e607577138114e0f8087cc311e06b",
+  "changed_paths": [
+    {
+      "path": "source/execution_199/CMakeLists.txt",
+      "previous_sha256": "78f91cdffa16711d847d73c5a309a5676ea90fcbbd8a83114e00d11c88550f28",
+      "current_sha256": "6a59787d95cef8d3178af2f414e261f62b8d05449add433320cf2ea7be0a67bd",
+      "current_bytes": 84744
+    },
+    {
+      "path": "source/execution_199/gk1_native_shell.c",
+      "previous_sha256": "8377e2aed105ebefda690baacc9e17686874702b726b22d9a925912c8d803417",
+      "current_sha256": "8f4ebd4cd8c6cb69774301b21f54033ad251194580b1240a33a716ad1bba3c44",
+      "current_bytes": 255103
+    },
+    {
+      "path": "source/execution_199/gk239_owner_world_mss.h",
+      "previous_sha256": null,
+      "current_sha256": "5b1c6bffc11ef5a29ed4d2c0be79c88496cb896d0316ee466df57cb5dbb96ae4",
+      "current_bytes": 781
+    },
+    {
+      "path": "source/execution_199/gk239_owner_world_mss.c",
+      "previous_sha256": null,
+      "current_sha256": "8a6163d33eea2a8f8915818ffe89ad03baf55d770c91d33529bce38e870839fe",
+      "current_bytes": 3060
+    },
+    {
+      "path": "source/execution_199/test_gk239_owner_world_mss.c",
+      "previous_sha256": null,
+      "current_sha256": "e1d2421ccb1f4b5e08ef0ce229bf1a0bc5dc27f987668409280e1c8cef93344e",
+      "current_bytes": 2923
+    }
+  ],
+  "original_stock_rom_sha256_private": "ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3",
+  "stock_private_evidence_sha256": "8b757e11b12aeb3efe93e36c10628599ca5f12e91b15c02354cd3ebbd11bf52a",
+  "original_rom_distributed": false,
+  "new_mesen_run": false,
+  "linux_ctest_full": "205/205 PASS",
+  "linux_independent_rebuild": "205/205 PASS",
+  "linux_xvfb": "1280x720, 15 frames EXIT0",
+  "private_archived_world_positive": "30/30 PASS",
+  "hostile_patch_qa": "9/9 PASS",
+  "win32_new_code": "NOT RUN",
+  "physical_xbox": "NOT RUN",
+  "original_independent_first_spring": "OPEN"
+}
