@@ -1,0 +1,258 @@
+--- a/source/execution_199/CMakeLists.txt
++++ b/source/execution_199/CMakeLists.txt
+@@ -15,9 +15,9 @@
+ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk241_archived_import_capability.c gk237_owner_fresh_win.c gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk230_win32_smoke_args.c gk224_practice_save.c gk225_practice_resume.c gk226_practice_checkpoint.c gk227_practice_title_preview.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk247_receipt_file_guard.c gk241_archived_import_capability.c gk237_owner_fresh_win.c gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk230_win32_smoke_args.c gk224_practice_save.c gk225_practice_resume.c gk226_practice_checkpoint.c gk227_practice_title_preview.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+ add_library(gk1_manual_setup_store STATIC gk1_manual_setup_store.c)
+@@ -1293,4 +1293,8 @@
+ add_executable(test_gk246_classic_tax_receipt test_gk246_classic_tax_receipt.c)
+ target_link_libraries(test_gk246_classic_tax_receipt PRIVATE gk1_app_state)
+ add_test(NAME GK1_246_SourceBoundClassicTaxReceipt_AtomicPublicNegative
+  COMMAND test_gk246_classic_tax_receipt)
++
++# EXEC0247: private Classic receipt on-disk safety, native Win32/POSIX gates.
++add_executable(test_gk247_receipt_file_guard test_gk247_receipt_file_guard.c gk247_receipt_file_guard.c)
++add_test(NAME GK1_247_CrossPlatformOwnerPrivateReceiptGuard COMMAND test_gk247_receipt_file_guard)
+--- a/source/execution_199/gk188_classic_receipt.c
++++ b/source/execution_199/gk188_classic_receipt.c
+@@ -2,8 +2,9 @@
+ #define _POSIX_C_SOURCE 200809L
+ #endif
+ #include "gk188_classic_receipt.h"
+ #include "gk1_source_identity.h"
++#include "gk247_receipt_file_guard.h"
+ #include <errno.h>
+ #include <stdint.h>
+ #include <stdio.h>
+ #include <string.h>
+@@ -83,25 +84,38 @@
+  if(!path||!*path||!cp||!out)return GK188_INVALID;
+  Gk187ClassicAssign fresh;
+  if(gk187_open(cp,&fresh)!=GK187_OK)return GK188_SOURCE;
+ 
++/* Verify the *opened* file, not only its pathname. Windows uses an
++ * exclusive writer share gate and HANDLE metadata; POSIX refuses links,
++ * foreign-owner files, and group/world access. The private source still
++ * has to pass SHA and action-replay checks before any state is published. */
++ int fd=-1;
+ #ifdef _WIN32
+- FILE *f=fopen(path,"rb");if(!f)return GK188_IO;
++ errno_t e=_sopen_s(&fd,path,_O_RDONLY|_O_BINARY,_SH_DENYWR,0);
++ if(e)return GK188_IO;
+ #else
+- int fd=open(path,O_RDONLY
++ fd=open(path,O_RDONLY
+ #ifdef O_NOFOLLOW
+  |O_NOFOLLOW
+ #endif
+ #ifdef O_CLOEXEC
+  |O_CLOEXEC
+ #endif
+  );
+  if(fd<0)return GK188_IO;
+- struct stat st;
+- if(fstat(fd,&st)!=0||!S_ISREG(st.st_mode)||st.st_nlink!=1||
+-    (st.st_mode&077)!=0||st.st_size!=(off_t)GK188_BYTES){
+-  close(fd);return GK188_IO;
++#endif
++ if(!gk247_receipt_file_guard(fd,path,GK188_BYTES)){
++#ifdef _WIN32
++  _close(fd);
++#else
++  close(fd);
++#endif
++  return GK188_IO;
+  }
++#ifdef _WIN32
++ FILE *f=_fdopen(fd,"rb");if(!f){_close(fd);return GK188_IO;}
++#else
+  FILE *f=fdopen(fd,"rb");if(!f){close(fd);return GK188_IO;}
+ #endif
+  uint8_t b[GK188_BYTES+1];
+  size_t n=fread(b,1,sizeof b,f);
+--- a/source/execution_199/test_gk246_classic_tax_receipt.c
++++ b/source/execution_199/test_gk246_classic_tax_receipt.c
+@@ -13,8 +13,11 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #ifndef _WIN32
+ #include <unistd.h>
++#else
++#define WIN32_LEAN_AND_MEAN
++#include <windows.h>
+ #endif
+ static unsigned assertions;
+ #define TEST(x) do { assert(x); assertions++; } while (0)
+ static void public_negative(void) {
+@@ -46,14 +49,23 @@
+   TEST(gk187_set_tax(live,cp,tax)==GK187_OK);
+   if(sequence==1u)TEST(gk187_transfer(live,cp,0,4,1u)==GK187_OK);
+   if(sequence==2u)TEST(gk187_pass(live,cp)==GK187_OK);
+   TEST(gk187_intact(live,cp));
+-  char path[]="/tmp/gk246-classic-XXXXXX";
++  char path[1024]="/tmp/gk246-classic-XXXXXX";
+ #ifndef _WIN32
+   int fd=mkstemp(path);TEST(fd>=0);TEST(close(fd)==0);TEST(unlink(path)==0);
+ #else
+-  /* Private original records are not distributed with CI/Windows releases. */
+-  TEST(0 && "Private provenance test requires Linux secure temporary fixture");
++  /* Opt-in *private* fixture parity on Windows; do not bundle private ROM,
++   * screenshots or RAM arrays into CI or public executable resources.
++   * GetTempFileName creates the file: delete it to preserve GC18 O_EXCL. */
++  char temp_dir[MAX_PATH];
++  DWORD len=GetTempPathA(MAX_PATH,temp_dir);
++  TEST(len>0u&&len<MAX_PATH);
++  char temp_file[MAX_PATH];
++  TEST(GetTempFileNameA(temp_dir,"gk2",0u,temp_file)!=0);
++  TEST(DeleteFileA(temp_file)!=0);
++  TEST(strlen(temp_file)<sizeof path);
++  strcpy(path,temp_file);
+ #endif
+   TEST(gk188_save_new(path,cp,live)==GK188_OK);
+   memset(loaded,0xa6,sizeof *loaded);*prior=*loaded;
+   TEST(gk188_load(path,cp,loaded)==GK188_OK);
+--- a/source/execution_199/gk247_receipt_file_guard.h
++++ b/source/execution_199/gk247_receipt_file_guard.h
+@@ -0,0 +1,9 @@
++#ifndef GK247_RECEIPT_FILE_GUARD_H
++#define GK247_RECEIPT_FILE_GUARD_H
++/* Check exact-sized, regular, non-linked owner-private receipt file opened
++ * by the caller. Returns zero without altering fd, files or gameplay.
++ * Windows checks the opened HANDLE and rejects direct reparse-point paths;
++ * POSIX additionally requires sole ownership and mode 0600-or-stricter.
++ * Not a replacement for SHA/source/action validation. */
++int gk247_receipt_file_guard(int fd,const char *path,unsigned expected_size);
++#endif
+--- a/source/execution_199/gk247_receipt_file_guard.c
++++ b/source/execution_199/gk247_receipt_file_guard.c
+@@ -0,0 +1,37 @@
++#ifndef _WIN32
++#define _POSIX_C_SOURCE 200809L
++#endif
++#include "gk247_receipt_file_guard.h"
++#ifdef _WIN32
++#include <windows.h>
++#include <io.h>
++#include <stdint.h>
++int gk247_receipt_file_guard(int fd,const char *path,unsigned expected_size){
++ if(fd<0||!path||!*path||!expected_size)return 0;
++ const intptr_t raw=_get_osfhandle(fd);
++ if(raw==-1)return 0;
++ const HANDLE h=(HANDLE)raw;
++ BY_HANDLE_FILE_INFORMATION info;
++ LARGE_INTEGER sz;
++ DWORD attr=GetFileAttributesA(path);
++ if(attr==INVALID_FILE_ATTRIBUTES ||
++    (attr&(FILE_ATTRIBUTE_DIRECTORY|FILE_ATTRIBUTE_REPARSE_POINT)) ||
++    GetFileType(h)!=FILE_TYPE_DISK ||
++    !GetFileInformationByHandle(h,&info) ||
++    info.nNumberOfLinks!=1u ||
++    (info.dwFileAttributes&(FILE_ATTRIBUTE_DIRECTORY|FILE_ATTRIBUTE_REPARSE_POINT)) ||
++    !GetFileSizeEx(h,&sz) ||
++    sz.QuadPart!=(LONGLONG)expected_size)return 0;
++ return 1;
++}
++#else
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
++int gk247_receipt_file_guard(int fd,const char *path,unsigned expected_size){
++ struct stat st;
++ return fd>=0&&path&&*path&&expected_size>0&&fstat(fd,&st)==0&&S_ISREG(st.st_mode)&&
++        st.st_uid==geteuid()&&st.st_nlink==1&&
++        (st.st_mode&077)==0&&st.st_size==(off_t)expected_size;
++}
++#endif
+--- a/source/execution_199/test_gk247_receipt_file_guard.c
++++ b/source/execution_199/test_gk247_receipt_file_guard.c
+@@ -0,0 +1,83 @@
++#ifndef _WIN32
++#define _POSIX_C_SOURCE 200809L
++#endif
++#include "gk247_receipt_file_guard.h"
++#ifdef NDEBUG
++#undef NDEBUG
++#endif
++#include <assert.h>
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++#ifdef _WIN32
++#define WIN32_LEAN_AND_MEAN
++#include <windows.h>
++#include <io.h>
++#include <fcntl.h>
++#include <share.h>
++#else
++#include <unistd.h>
++#include <fcntl.h>
++#include <sys/stat.h>
++#endif
++#define CHECK(expr) do {assert(expr);checks++;} while(0)
++static unsigned checks;
++int main(void){
++ char path[1024];
++#ifdef _WIN32
++ char dir[MAX_PATH],temp[MAX_PATH];
++ DWORD n=GetTempPathA(MAX_PATH,dir);
++ CHECK(n>0u&&n<MAX_PATH);
++ CHECK(GetTempFileNameA(dir,"gc2",0,temp)!=0);
++ CHECK(strlen(temp)<sizeof path);
++ strcpy(path,temp);
++ int fd=-1;
++ CHECK(_sopen_s(&fd,path,_O_RDWR|_O_BINARY,_SH_DENYNO,0)==0);
++#else
++ strcpy(path,"/tmp/gk247-private-receipt-XXXXXX");
++ int fd=mkstemp(path);
++ CHECK(fd>=0);
++#endif
++ unsigned char b[96]={0};
++#ifdef _WIN32
++ CHECK(_write(fd,b,sizeof b)==sizeof b);
++#else
++ CHECK(write(fd,b,sizeof b)==(ssize_t)sizeof b);
++#endif
++ CHECK(gk247_receipt_file_guard(fd,path,96u));
++ CHECK(!gk247_receipt_file_guard(fd,path,95u));
++ CHECK(!gk247_receipt_file_guard(fd,path,97u));
++ CHECK(!gk247_receipt_file_guard(-1,path,96u));
++ CHECK(!gk247_receipt_file_guard(fd,NULL,96u));
++ CHECK(!gk247_receipt_file_guard(fd,path,0u));
++#ifdef _WIN32
++ CHECK(_write(fd,b,1)==1);
++ CHECK(!gk247_receipt_file_guard(fd,path,96u));
++ CHECK(_close(fd)==0);
++ CHECK(DeleteFileA(path)!=0);
++#else
++ CHECK(write(fd,b,1)==1);
++ CHECK(!gk247_receipt_file_guard(fd,path,96u));
++ CHECK(ftruncate(fd,96)==0);
++ CHECK(fchmod(fd,0644)==0);
++ CHECK(!gk247_receipt_file_guard(fd,path,96u));
++ CHECK(fchmod(fd,0600)==0);
++ /* Root-only hostile control: a foreign-owned file must be rejected.
++  * Unprivileged Linux CI skips this branch without claiming it ran. */
++ if(geteuid()==0){
++  CHECK(fchown(fd,65534u,(gid_t)-1)==0);
++  CHECK(!gk247_receipt_file_guard(fd,path,96u));
++  CHECK(fchown(fd,0u,(gid_t)-1)==0);
++ }
++ char linkpath[1100];
++ snprintf(linkpath,sizeof linkpath,"%s-link",path);
++ CHECK(link(path,linkpath)==0);
++ CHECK(!gk247_receipt_file_guard(fd,path,96u));
++ CHECK(unlink(linkpath)==0);
++ CHECK(gk247_receipt_file_guard(fd,path,96u));
++ CHECK(close(fd)==0);
++ CHECK(unlink(path)==0);
++#endif
++ printf("GK247 private receipt file guard: %u public platform assertions passed; no NES data used\n",checks);
++ return 0;
++}
