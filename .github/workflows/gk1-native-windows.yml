@@ -236,6 +236,10 @@ jobs:
           $dest264 = 'current-gk1/execution_199/test_gk264_scenario_restart.c'
           if (-not (Test-Path -LiteralPath $test264) -or (Test-Path -LiteralPath $dest264)) { throw 'EXEC0264 regression missing or duplicate' }
           Copy-Item -LiteralPath $test264 -Destination $dest264
+          # Git-for-Windows may checkout text C files with CRLF. Normalize
+          # before checking against the LF source blob used by Linux QA.
+          python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $dest264
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0265 test newline normalization failed' }
           $expectedTestSHA = '6e62d9a2ba4317f0e6d3a23942203612861f501b64a7b90f18198c384cbd0d59'
           if ((Get-FileHash -LiteralPath $dest264 -Algorithm SHA256).Hash.ToLowerInvariant() -ne $expectedTestSHA) { throw 'EXEC0264 regression SHA mismatch' }
           $source265 = 'research/Genghis_Khan_NES/execution_265_win32_source_provenance/test_gk265_current_win32_source.py'
