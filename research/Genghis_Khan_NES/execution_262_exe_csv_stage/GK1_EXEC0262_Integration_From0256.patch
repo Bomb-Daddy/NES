@@ -1,0 +1,117 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -128,6 +128,30 @@
+ # The launched program resolves it next to the binary, never assumes a CWD.
+ configure_file(../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv
+   ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv COPYONLY)
++# EXEC0262: Visual Studio multi-config places the native WinMain EXE under
++# build/Release (or Debug), not under ${CMAKE_CURRENT_BINARY_DIR}. The legacy
++# configure_file above stages only to the build ROOT for CTest fixtures. The
++# actual game uses GetModuleFileNameA to resolve the SHA-gated CSV next to its
++# executable: without this POST_BUILD step --smoke-gamepad-nav fails code 7.
++# Use $<TARGET_FILE_DIR> for both single- and multi-config generators. Never
++# copy private original ROM/RAM/checkpoints, and never fall back to working CWD.
++add_custom_command(TARGET gk1_native_shell POST_BUILD
++ COMMAND ${CMAKE_COMMAND} -E copy_if_different
++  "${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv"
++  "$<TARGET_FILE_DIR:gk1_native_shell>/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv"
++ COMMENT "Stage authenticated original-country source beside native executable"
++ VERBATIM)
++# Native executable/path verification, including Windows Release/Debug layout.
++# Source authenticity remains validated inside gk1_native_shell itself.
++find_package(Python3 COMPONENTS Interpreter QUIET)
++if(Python3_Interpreter_FOUND)
++ add_test(NAME GK1_262_NativeExecutableSourceCSVLayoutAndNegativeControls
++  COMMAND ${Python3_EXECUTABLE}
++   ${CMAKE_CURRENT_SOURCE_DIR}/packaging/test_gk262_binary_csv_stage.py
++   "$<TARGET_FILE:gk1_native_shell>"
++   "${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv"
++   "${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt")
++endif()
+ add_executable(test_gk1_scenario_factory ../execution_049/test_gk1_scenario_factory.c)
+ target_link_libraries(test_gk1_scenario_factory PRIVATE gk1_app_state)
+ add_test(NAME GK1_049_OriginalCountryFactory COMMAND test_gk1_scenario_factory ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+diff --git a/execution_199/packaging/test_gk262_binary_csv_stage.py b/execution_199/packaging/test_gk262_binary_csv_stage.py
+new file mode 100644
+--- /dev/null
++++ b/execution_199/packaging/test_gk262_binary_csv_stage.py
+@@ -0,0 +1,78 @@
++#!/usr/bin/env python3
++"""EXEC0262: require real exe-adjacent original-country source in *all* generators.
++
++Never supplies ROM files. The public canonical CSV is hash-pinned and the
++application itself independently re-checks it at startup. All negative cases
++are isolated in Python's temporary directory and cannot mutate shipped data.
++"""
++from pathlib import Path
++import hashlib
++import sys
++import tempfile
++
++EXPECTED_SHA = "fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581"
++BASENAME = "GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv"
++NEEDED = (
++    "add_custom_command(TARGET gk1_native_shell POST_BUILD",
++    "$<TARGET_FILE_DIR:gk1_native_shell>/" + BASENAME,
++    "${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/" + BASENAME,
++    "copy_if_different",
++    "GK1_262_NativeExecutableSourceCSVLayoutAndNegativeControls",
++)
++
++
++def digest(path: Path) -> str:
++    return hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else ""
++
++
++def valid_layout(binary: Path, canonical: Path) -> bool:
++    if not binary.is_file() or not canonical.is_file():
++        return False
++    target = binary.parent / BASENAME
++    return digest(canonical) == EXPECTED_SHA and digest(target) == EXPECTED_SHA
++
++
++def valid_cmake(source: str) -> bool:
++    return all(part in source for part in NEEDED) and source.count(NEEDED[0]) == 1
++
++
++def main(argv):
++    if len(argv) != 4:
++        print("Usage: test_gk262_binary_csv_stage.py NATIVE_EXE CANONICAL_CSV CMakeLists", file=sys.stderr)
++        return 2
++    binary, canonical, cmake = map(Path, argv[1:])
++    if not valid_layout(binary, canonical) or not valid_cmake(cmake.read_text()):
++        print("EXEC0262 native exe source CSV stage FAIL", file=sys.stderr)
++        return 1
++    checks = 2
++    source = cmake.read_text()
++    for token in NEEDED:
++        assert not valid_cmake(source.replace(token, "FORGED")), token
++        checks += 1
++    with tempfile.TemporaryDirectory(prefix="gk262-public-") as temp:
++        folder = Path(temp)
++        fake = folder / binary.name
++        fake.write_bytes(b"synthetic executable")
++        sibling = folder / BASENAME
++        assert not valid_layout(fake, canonical)
++        checks += 1
++        sibling.write_bytes(canonical.read_bytes())
++        assert valid_layout(fake, canonical)
++        checks += 1
++        sibling.write_bytes(sibling.read_bytes() + b"tamper")
++        assert not valid_layout(fake, canonical)
++        checks += 1
++        sibling.unlink()
++        assert not valid_layout(fake, canonical)
++        checks += 1
++        wrong_canonical = folder / "wrong.csv"
++        wrong_canonical.write_bytes(b"forged original CSV")
++        assert not valid_layout(fake, wrong_canonical)
++        checks += 1
++    print(f"EXEC0262 real exe-adjacent, SHA-gated 41-country source layout PASS {checks}/{checks}; "
++          "no private NES ROM; MSVC/Xbox tested only on actual host")
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main(sys.argv))
