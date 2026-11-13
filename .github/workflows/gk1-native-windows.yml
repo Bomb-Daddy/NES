@@ -9,6 +9,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_259_win32_posix_test_port/**'
       - 'research/Genghis_Khan_NES/execution_260_win32_patch_scope/**'
       - 'research/Genghis_Khan_NES/execution_261_win32_ctest_registry/**'
+      - 'research/Genghis_Khan_NES/execution_262_exe_csv_stage/**'
 
 permissions:
   contents: read
@@ -154,6 +155,23 @@ jobs:
           }
           if (-not (Test-Path current-gk1/execution_199/gk1_native_shell.c)) { throw 'Current complete C11 app missing' }
           if (-not (Test-Path current-gk1/execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)) { throw 'Exact public source CSV missing' }
+          # EXEC0262: actual 2026-11-13 Windows runner compiled MSVC and
+          # passed 201/201 CTests but failed --smoke-gamepad-nav with exit 7.
+          # Visual Studio stages the EXE under Release/, while configure_file
+          # staged the 41-country source CSV in the build root. Stage the
+          # verified canonical CSV beside the real binary in CMake POST_BUILD.
+          $patch262 = 'research/Genghis_Khan_NES/execution_262_exe_csv_stage/GK1_EXEC0262_Integration_From0256.patch'
+          if (-not (Test-Path -LiteralPath $patch262)) { throw 'EXEC0262 source patch missing' }
+          git apply --directory=current-gk1 --check "$patch262"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0262 source patch rejected: refuse unpatched Windows acceptance' }
+          git apply --directory=current-gk1 "$patch262"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0262 native source stage patch failed' }
+          $test262 = 'current-gk1/execution_199/packaging/test_gk262_binary_csv_stage.py'
+          if (-not (Test-Path -LiteralPath $test262)) { throw 'EXEC0262 executable-stage CTest missing after patch' }
+          $expected262 = 'research/Genghis_Khan_NES/execution_262_exe_csv_stage/test_gk262_binary_csv_stage.py'
+          if ((Get-FileHash -LiteralPath $test262 -Algorithm SHA256).Hash -ne (Get-FileHash -LiteralPath $expected262 -Algorithm SHA256).Hash) {
+            throw 'EXEC0262 executable-stage CTest differs from reviewed GitHub source'
+          }
       - name: Install the actual NSIS packager
         shell: pwsh
         run: |
@@ -185,6 +203,15 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Current native Windows CMake configure failed' }
           cmake --build build-gk1-win32 --config Release --parallel 4
           if ($LASTEXITCODE -ne 0) { throw 'Current native Win32 C11 compilation failed' }
+          # Actual WinMain resolves this SHA-pinned public CSV beside the
+          # executable, not in CWD or the parent build directory.
+          $installedSource = 'build-gk1-win32/Release/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'
+          if (-not (Test-Path -LiteralPath $installedSource)) {
+            throw 'EXEC0262 WinMain executable-adjacent scenario CSV is missing'
+          }
+          $expectedCsvSHA = 'fa3958f156f09d4b4c15bb559c12aa357fc617a9b1f9217505fe07e8800de581'
+          $actualCsvSHA = (Get-FileHash -LiteralPath $installedSource -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actualCsvSHA -ne $expectedCsvSHA) { throw "EXEC0262 executable CSV SHA mismatch $actualCsvSHA" }
       - name: Execute complete Win32 CTest registry, not an old subset
         shell: pwsh
         run: |
