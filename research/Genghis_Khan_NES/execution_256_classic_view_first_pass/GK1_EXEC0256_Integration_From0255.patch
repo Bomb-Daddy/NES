@@ -1,0 +1,296 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+index 1047b8c..b10f47e 100644
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -1372,3 +1372,12 @@ if(UNIX AND NOT APPLE AND Python3_Interpreter_FOUND AND GK224_XVFB_RUN)
+    ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt
+    ${CMAKE_CTEST_COMMAND} ${CMAKE_CURRENT_BINARY_DIR})
+ endif()
++
++# EXEC0256: shared Classic PASS path for country VIEW and 14-command menu.
++# This C11 regression is linked to the complete inherited native app; public
++# CTest refuses missing source, and private owner inputs exercise true 14/27
++# original stock WorkRAM/SaveRAM and authenticated GC19 cold replay.
++add_executable(test_gk256_classic_view_first_pass test_gk256_classic_view_first_pass.c)
++target_link_libraries(test_gk256_classic_view_first_pass PRIVATE gk1_app_state)
++add_test(NAME GK1_256_ClassicViewFirstPass_SourceImmutable
++ COMMAND test_gk256_classic_view_first_pass)
+diff --git a/execution_199/gk1_app_state.c b/execution_199/gk1_app_state.c
+index 8eef061..42b1cc0 100644
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -254,6 +254,46 @@ Gk147GoodsStatus gk1_app_source_goods_view(const Gk1App *s,
+  return gk147_source_goods(&s->stock_checkpoint,&s->enhanced_assign,
+      s->rules_profile,country_index,out);
+ }
++/* EXEC0256: BOTH the 14-command menu PASS and the original-country VIEW
++ * A-confirm PASS MUST debit the same source-authenticated Classic ledger.
++ * Neither entry point may call gk119_pass on the original checkpoint.
++ * First A only arms; B cancellation is handled by the caller's screen.
++ * The pristine checkpoint (including its original three orders) remains
++ * untouched. Do not synthesize an NES season or RNG transition here. */
++static int classic_ui_pass(Gk1App *s,Gk79Checkpoint *cp){
++ if(!s||!cp||s->rules_profile!=0u)return 0;
++ if(!s->classic_assign.active){
++  Gk187ClassicAssign next={0};
++  if(gk187_open(cp,&next)!=GK187_OK){
++   cp->pending_pass=0u;
++   strcpy(s->status,"CLASSIC PASS REFUSED: AUTHENTIC SPRING REQUIRED");return 1;
++  }
++  /* Do not activate the mutable ledger just for a cancellable prompt. */
++  if(!cp->pending_pass){
++   cp->pending_pass=1u;
++   strcpy(s->status,"PASS REMAINING CLASSIC ORDERS? A CONFIRM / B CANCEL");return 1;
++  }
++  s->classic_assign=next;
++ }
++ if(!gk187_intact(&s->classic_assign,cp)){
++  cp->pending_pass=0u;
++  strcpy(s->status,"CLASSIC PASS REFUSED: SOURCE/REPLAY CHANGED");return 1;
++ }
++ if(s->classic_assign.budget.ended||s->classic_assign.passed){
++  cp->pending_pass=0u;
++  strcpy(s->status,"CLASSIC ORDERS EXHAUSTED: NEXT NES SEASON UNIMPLEMENTED");return 1;
++ }
++ if(!cp->pending_pass){
++  cp->pending_pass=1u;
++  strcpy(s->status,"PASS REMAINING CLASSIC ORDERS? A CONFIRM / B CANCEL");return 1;
++ }
++ Gk187Result r=gk187_pass(&s->classic_assign,cp);
++ cp->pending_pass=0u;
++ strcpy(s->status,r==GK187_OK?
++   "CLASSIC MANUAL-DERIVED PASS: SEASON ENDED; NES AI/ADVANCE OPEN":
++   "CLASSIC PASS REFUSED: NO SOURCE CHANGED");return 1;
++}
++
+ int gk1_app_input(Gk1App *s,Gk1Input cmd){
+  if(!s || cmd<GK1_INPUT_UP || cmd>GK1_INPUT_LABOR_PLAN)return 0;
+  switch(s->screen){
+@@ -935,42 +975,8 @@ int gk1_app_input(Gk1App *s,Gk1Input cmd){
+     strcpy(s->status,"PORT-ONLY OTHER: OWNER-PRIVATE CHECKPOINT SAVE/LOAD");return 1;
+    }
+    if(route==GK134_ROUTE_PASS){
+-    /* EXEC0254: Classic PASS must ALWAYS operate on the source-bound
+-     * mutable Classic ledger, including before the FIRST Tax/Assign.
+-     * Falling through to gk119_pass() would spend the *original checkpoint*
+-     * budget, destroying its pristine three-order source and preventing any
+-     * subsequent Classic action or authenticated GC19 cold-load.  An A/B
+-     * confirmation is still required; cancel never opens a new ledger. */
+-    if(s->rules_profile==0u){
+-     if(!s->classic_assign.active){
+-      Gk187ClassicAssign next={0};
+-      if(gk187_open(cp,&next)!=GK187_OK){
+-       cp->pending_pass=0u;
+-       strcpy(s->status,"CLASSIC PASS REFUSED: AUTHENTIC SPRING REQUIRED");return 1;
+-      }
+-      if(!cp->pending_pass){
+-       cp->pending_pass=1u;
+-       strcpy(s->status,"PASS REMAINING CLASSIC ORDERS? A CONFIRM / B CANCEL");return 1;
+-      }
+-      s->classic_assign=next;
+-     }
+-     if(!gk187_intact(&s->classic_assign,cp)){
+-      cp->pending_pass=0u;
+-      strcpy(s->status,"CLASSIC PASS REFUSED: SOURCE/REPLAY CHANGED");return 1;
+-     }
+-     if(s->classic_assign.budget.ended){
+-      cp->pending_pass=0u;
+-      strcpy(s->status,"CLASSIC ORDERS EXHAUSTED: NEXT NES SEASON UNIMPLEMENTED");return 1;
+-     }
+-     if(!cp->pending_pass){
+-      cp->pending_pass=1u;
+-      strcpy(s->status,"PASS REMAINING CLASSIC ORDERS? A CONFIRM / B CANCEL");return 1;
+-     }
+-     Gk187Result r=gk187_pass(&s->classic_assign,cp);
+-     cp->pending_pass=0u;
+-     strcpy(s->status,r==GK187_OK?"CLASSIC MANUAL-DERIVED PASS: SEASON ENDED; NES AI/ADVANCE OPEN":
+-        "CLASSIC PASS REFUSED: NO SOURCE CHANGED");return 1;
+-    }
++    /* EXEC0256: shared authenticated UI PASS gate (also used by VIEW A). */
++    if(s->rules_profile==0u)return classic_ui_pass(s,cp);
+     if(s->rules_profile==1u&&s->enhanced_continuation.active==1u){
+      Gk176EnhancedCycle *e=&s->enhanced_continuation;
+      if(!gk176_attestation_intact(e,&s->enhanced_year2,&s->enhanced_assign,
+@@ -1472,25 +1478,11 @@ int gk1_app_input(Gk1App *s,Gk1Input cmd){
+    return 1;
+   }
+   if(cmd==GK1_INPUT_CONFIRM){
+-   /* EXEC0195: Classic VIEW A must operate on the exact same mutable
+-    * source-replayed Classic budget as command-menu PASS. Do not debit
+-    * the detached stock checkpoint's independent three-order receipt. */
+-   if(s->rules_profile==0u&&s->classic_assign.active){
+-    if(!gk187_intact(&s->classic_assign,cp))return 0;
+-    if(s->classic_assign.budget.ended||s->classic_assign.passed){
+-     cp->pending_pass=0u;
+-     strcpy(s->status,"CLASSIC ORDERS COMPLETE; NEXT STOCK SEASON NOT IMPLEMENTED");return 1;
+-    }
+-    if(!cp->pending_pass){
+-     cp->pending_pass=1u;
+-     strcpy(s->status,"PASS REMAINING CLASSIC ORDERS? A CONFIRM / B CANCEL");return 1;
+-    }
+-    Gk187Result r=gk187_pass(&s->classic_assign,cp);
+-    cp->pending_pass=0u;
+-    strcpy(s->status,r==GK187_OK?
+-      "CLASSIC PASS COMMITTED; NES SEASON/AI NOT YET IMPLEMENTED":
+-      "CLASSIC PASS REFUSED; ORIGINAL SOURCE/ORDERS PRESERVED");return 1;
+-   }
++   /* EXEC0256: zero-action Classic VIEW-A must not fall through to
++    * gk119_pass(), which writes cp->orders instead of the derived ledger.
++    * This is the exact same source-authenticated PASS used by the 14-command
++    * screen, including first-action A/B cancellation and A/A confirmation. */
++   if(s->rules_profile==0u)return classic_ui_pass(s,cp);
+    uint8_t remaining=0u;
+    if(gk119_effective_remaining(cp,&s->enhanced_assign,s->rules_profile,&remaining)!=GK119_OK){
+     cp->pending_pass=0;strcpy(s->status,"PASS REFUSED: SOURCE/PROFILE INVALID");return 1;}
+diff --git a/execution_199/test_gk256_classic_view_first_pass.c b/execution_199/test_gk256_classic_view_first_pass.c
+new file mode 100644
+index 0000000..5666898
+--- /dev/null
++++ b/execution_199/test_gk256_classic_view_first_pass.c
+@@ -0,0 +1,146 @@
++#ifndef _WIN32
++#define _POSIX_C_SOURCE 200809L
++#endif
++/* EXEC0256: source-authenticated controller VIEW-A must NEVER call gk119_pass
++ * on pristine NES original orders. Optional private three-profile QA; no ROM,
++ * snapshots, raw 83-byte records or licensed assets bundled here. */
++#include "gk193_auto_source_entry.h"
++#include "gk188_classic_receipt.h"
++#include "gk1_app_state.h"
++#ifdef NDEBUG
++#undef NDEBUG
++#endif
++#include <assert.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#ifdef _WIN32
++# include <windows.h>
++#else
++# include <unistd.h>
++#endif
++static unsigned checks=0;
++#define CK(x) do { assert((x)); checks++; } while(0)
++static Gk1App *new_app(const char *csv,const char *source,Gk77Profile profile){
++ Gk1App *a=calloc(1,sizeof *a);CK(a!=NULL);
++ Gk1TemplateDataset *d=malloc(sizeof *d);CK(d!=NULL);
++ gk1_app_init(a);CK(gk1_template_load(csv,d)==GK1_LOAD_OK);
++ CK(gk1_app_install_templates(a,d)==1);free(d);a->rules_profile=0u;
++ Gk77Profile found=0;
++ CK(gk193_enter_original_auto(a,csv,source,0u,&found)==GK193_OK);
++ CK(found==profile);CK(a->screen==GK1_SCREEN_STOCK_CONTINUE);
++ CK(a->stock_checkpoint.orders.remaining==3u);
++ CK(a->classic_assign.active==0u);return a;
++}
++static void original_unmodified(const Gk1App *a,const Gk79Checkpoint *before){
++ CK(gk85_raw_source_intact(&a->stock_checkpoint));
++ CK(gk88_stock_projection_intact(&a->stock_checkpoint));
++ CK(memcmp(a->stock_checkpoint.stock_raw,before->stock_raw,
++   sizeof before->stock_raw)==0);
++ CK(memcmp(&a->stock_checkpoint.orders,&before->orders,sizeof before->orders)==0);
++ CK(memcmp(a->stock_checkpoint.raw_sha256,before->raw_sha256,32u)==0);
++ CK(a->stock_checkpoint.year==before->year);
++ CK(a->stock_checkpoint.world.country_count==before->world.country_count);
++ CK(a->stock_checkpoint.orders.remaining==3u);
++}
++static void cold_receipt(Gk1App *a){
++ char path[1024]={0};
++#ifdef _WIN32
++ char dir[MAX_PATH]={0},tmp[MAX_PATH]={0};
++ CK(GetTempPathA(MAX_PATH,dir)>0);CK(GetTempFileNameA(dir,"g56",0,tmp)!=0);
++ CK(DeleteFileA(tmp)!=0);CK(strlen(tmp)<sizeof path);strcpy(path,tmp);
++#else
++ strcpy(path,"/tmp/gk256-view-pass-XXXXXX");
++ int fd=mkstemp(path);CK(fd>=0);CK(close(fd)==0);CK(unlink(path)==0);
++#endif
++ CK(gk188_save_new(path,&a->stock_checkpoint,&a->classic_assign)==GK188_OK);
++ Gk187ClassicAssign *r=malloc(sizeof *r);CK(r!=NULL);
++ memset(r,0xa5,sizeof *r);
++ CK(gk188_load(path,&a->stock_checkpoint,r)==GK188_OK);
++ CK(memcmp(r,&a->classic_assign,sizeof *r)==0);
++ CK(gk187_intact(r,&a->stock_checkpoint));
++ CK(remove(path)==0);free(r);
++}
++static void check_view_first_pass(const char *csv,const char *source,Gk77Profile profile){
++ Gk1App *a=new_app(csv,source,profile);
++ Gk79Checkpoint *before=malloc(sizeof *before);CK(before!=NULL);
++ *before=a->stock_checkpoint;
++ /* Native source View screen, first A arms without activating ledger. */
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->stock_checkpoint.pending_pass==1u);
++ CK(a->classic_assign.active==0u);
++ original_unmodified(a,before);
++ /* B cancels, no ledger, no source change. */
++ CK(gk1_app_input(a,GK1_INPUT_CANCEL)==1);
++ CK(a->stock_checkpoint.pending_pass==0u);
++ CK(a->classic_assign.active==0u);original_unmodified(a,before);
++ /* A/A commits PASS in derived ledger, preserving stock orders = 3. */
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->classic_assign.active==0u&&a->stock_checkpoint.pending_pass==1u);
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->classic_assign.active==1u&&a->classic_assign.passed==1u);
++ CK(a->classic_assign.action_count==0u);
++ CK(a->classic_assign.budget.ended==1u);
++ CK(a->classic_assign.budget.remaining==0u);
++ CK(a->stock_checkpoint.pending_pass==0u);
++ CK(gk187_intact(&a->classic_assign,&a->stock_checkpoint));
++ original_unmodified(a,before);cold_receipt(a);
++ Gk187ClassicAssign after=a->classic_assign;
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(memcmp(&after,&a->classic_assign,sizeof after)==0);
++ original_unmodified(a,before);
++ printf("EXEC0256 authentic %s: first VIEW A-B/A-A, immutable NES, source-bound cold receipt PASS\n",
++  gk77_profile_name(profile));free(before);free(a);
++}
++static void check_tax_then_view_pass(const char *csv,const char *source){
++ Gk1App *a=new_app(csv,source,GK77_FRESH_MONGOL_WORKRAM);
++ Gk79Checkpoint *before=malloc(sizeof *before);CK(before!=NULL);
++ *before=a->stock_checkpoint;
++ CK(gk1_app_input(a,GK1_INPUT_SETUP)==1);
++ CK(a->screen==GK1_SCREEN_STOCK_COMMANDS);
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->screen==GK1_SCREEN_CLASSIC_TAX);
++ CK(gk1_app_input(a,GK1_INPUT_UP)==1);
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->classic_assign.action_count==1u);
++ CK(a->classic_assign.budget.remaining==2u);
++ CK(gk1_app_input(a,GK1_INPUT_CANCEL)==1);
++ /* Enter VIEW from menu, then use A/A to PASS the remaining 2 orders. */
++ for(unsigned j=0;j<6;j++)CK(gk1_app_input(a,GK1_INPUT_DOWN)==1);
++ CK(a->stock_command_cursor==6u);
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->screen==GK1_SCREEN_STOCK_CONTINUE);
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->stock_checkpoint.pending_pass==1u);
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->classic_assign.passed==1u);
++ CK(a->classic_assign.action_count==1u);
++ CK(a->classic_assign.budget.remaining==0u);
++ CK(gk187_intact(&a->classic_assign,&a->stock_checkpoint));
++ original_unmodified(a,before);cold_receipt(a);
++ free(before);free(a);
++}
++static void public_fail_closed(void){
++ Gk1App *a=calloc(1,sizeof *a);CK(a!=NULL);gk1_app_init(a);
++ a->rules_profile=0u;a->screen=GK1_SCREEN_STOCK_CONTINUE;
++ Gk1App *before=malloc(sizeof *before);CK(before!=NULL);
++ memcpy(before,a,sizeof *a);
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==0);
++ CK(memcmp(before,a,sizeof *a)==0);
++ a->stock_checkpoint.valid=1u;memcpy(before,a,sizeof *a);
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==0);
++ CK(memcmp(before,a,sizeof *a)==0);
++ free(before);free(a);
++}
++int main(int argc,char **argv){
++ if(argc!=1&&argc!=5)return 2;
++ public_fail_closed();
++ if(argc==5){
++  check_view_first_pass(argv[1],argv[2],GK77_FRESH_MONGOL_WORKRAM);
++  check_view_first_pass(argv[1],argv[3],GK77_ARCHIVED_MONGOL_SAVERAM);
++  check_view_first_pass(argv[1],argv[4],GK77_ARCHIVED_WORLD_SAVERAM);
++  check_tax_then_view_pass(argv[1],argv[2]);
++ }
++ printf("EXEC0256 %u linked C11 assertions PASS (%s). Original NES RNG, next season, Win32 and Xbox not certified.\n",checks,argc==5?"three authentic source profiles":"public fail-closed");
++ return 0;
++}
