@@ -1,0 +1,211 @@
+diff --git a/source/execution_199/CMakeLists.txt b/source/execution_199/CMakeLists.txt
+--- a/source/execution_199/CMakeLists.txt
++++ b/source/execution_199/CMakeLists.txt
+@@ -1220,3 +1220,10 @@
+ target_link_libraries(test_gk238_owner_startup PRIVATE gk1_app_state)
+ add_test(NAME GK1_238_WinMainOwnerPrivacyAndSmokeIsolation
+  COMMAND test_gk238_owner_startup ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0239: archived World owner-only Mesen SaveRAM source gate
++target_sources(gk1_app_state PRIVATE gk239_owner_world_mss.c)
++add_executable(test_gk239_owner_world_mss test_gk239_owner_world_mss.c)
++target_link_libraries(test_gk239_owner_world_mss PRIVATE gk1_app_state)
++add_test(NAME GK1_239_OwnerArchivedWorldSaveRAM_FailClosed
++ COMMAND test_gk239_owner_world_mss ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+diff --git a/source/execution_199/gk1_native_shell.c b/source/execution_199/gk1_native_shell.c
+--- a/source/execution_199/gk1_native_shell.c
++++ b/source/execution_199/gk1_native_shell.c
+@@ -56,6 +56,7 @@
+ #include "gk166_fresh_entry.h"
+ #include "gk237_owner_fresh_win.h"
+ #include "gk238_owner_startup.h"
++#include "gk239_owner_world_mss.h"
+ #include "gk167_private_cold_save.h"
+ #include "gk188_classic_receipt.h"
+ #include "gk189_classic_cold_save.h"
+@@ -2184,9 +2185,25 @@
+  gk1_app_init(&app);gk1_pad_init(&pad);load_optional_battle_view();load_optional_mesen_map();load_optional_spring_archive();load_optional_stock_spring();(void)load_scenario_data();
+  /* EXEC0238: single source-pure gate for normal WinMain, smoke isolation,
+   * and source refusal; no original RNG or source bytes are manufactured. */
+- const Gk238Startup owner_result=gk238_owner_startup(&app,scenario_csv_path(),
+-    getenv("GK1_OWNER_STOCK_FRESH_JSON"),scenario_loaded,smoke_mode!=0);
+- if(owner_result==GK238_REFUSED)
++ const char *owner_fresh=getenv("GK1_OWNER_STOCK_FRESH_JSON");
++ const char *owner_world=getenv("GK1_OWNER_STOCK_WORLD_MSS");
++ /* EXEC0239: explicit, mutually exclusive owner sources; diagnostic modes
++  * never open either source. Archived World is SaveRAM, not fresh WorkRAM. */
++ Gk239Status world_result=gk239_owner_world_startup(&app,scenario_csv_path(),
++    owner_world,owner_fresh,scenario_loaded,smoke_mode!=0);
++ Gk238Startup owner_result=GK238_UNREQUESTED;
++ if(world_result==GK239_UNREQUESTED)
++  owner_result=gk238_owner_startup(&app,scenario_csv_path(),owner_fresh,
++    scenario_loaded,smoke_mode!=0);
++ if(world_result==GK239_CONFLICTING_SOURCES)
++  snprintf(app.status,sizeof app.status,
++   "OWNER IMPORT REFUSED: FRESH AND ARCHIVED WORLD SOURCES CONFLICT");
++ else if(world_result==GK239_REFUSED)
++  snprintf(app.status,sizeof app.status,
++   "OWNER WORLD ARCHIVED SOURCE REFUSED; ORIGINAL SAVERAM EVIDENCE REQUIRED");
++ else if(world_result==GK239_IMPORTED)
++  stock_selected=GK77_ARCHIVED_WORLD_SAVERAM;
++ else if(owner_result==GK238_REFUSED)
+   snprintf(app.status,sizeof app.status,
+    "OWNER FRESH SOURCE REFUSED; PRIVATE ORIGINAL WORKRAM EVIDENCE REQUIRED");
+  else if(owner_result==GK238_OWNER_IMPORTED)
+diff --git a/source/execution_199/gk239_owner_world_mss.h b/source/execution_199/gk239_owner_world_mss.h
+new file mode 100644
+--- /dev/null
++++ b/source/execution_199/gk239_owner_world_mss.h
+@@ -0,0 +1,16 @@
++#ifndef GK239_OWNER_WORLD_MSS_H
++#define GK239_OWNER_WORLD_MSS_H
++#include "gk1_app_state.h"
++/* Owner-only archived original World Spring 1206 SaveRAM checkpoint, NOT a
++ * fresh reset, generated NES setup/RNG or a release-complete campaign. */
++typedef enum {
++ GK239_UNREQUESTED=0, GK239_IMPORTED=1, GK239_REFUSED=2,
++ GK239_SMOKE_ISOLATED=3, GK239_CONFLICTING_SOURCES=4
++} Gk239Status;
++/* Both source selectors originate from explicit owner-local environment
++ * variables. 'fresh_json' is the existing EXEC0238 WorkRAM import selector.
++ * Refuse ambiguous simultaneous selection without opening either file. */
++Gk239Status gk239_owner_world_startup(Gk1App *app,
++ const char *canonical_csv,const char *world_mss,const char *fresh_json,
++ int scenario_loaded,int diagnostic_mode);
++#endif
+diff --git a/source/execution_199/gk239_owner_world_mss.c b/source/execution_199/gk239_owner_world_mss.c
+new file mode 100644
+--- /dev/null
++++ b/source/execution_199/gk239_owner_world_mss.c
+@@ -0,0 +1,73 @@
++#include "gk239_owner_world_mss.h"
++#include "gk163_mesen_import.h"
++#include "gk162_original_entry.h"
++#include "gk1_source_identity.h"
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++
++static void secure_clear(void *p,size_t n){
++ volatile unsigned char *v=(volatile unsigned char *)p;
++ while(n--)*v++=0;
++}
++Gk239Status gk239_owner_world_startup(Gk1App *a,
++ const char *csv,const char *mss,const char *fresh_json,
++ int loaded,int diagnostic){
++ if(!mss||!*mss)return GK239_UNREQUESTED;
++ /* A diagnostic run must not open owner files, even on inherited env vars. */
++ if(diagnostic)return GK239_SMOKE_ISOLATED;
++ if(fresh_json&&*fresh_json)return GK239_CONFLICTING_SOURCES;
++ if(!a||!csv||!*csv||!loaded||a->screen!=GK1_SCREEN_TITLE||
++    a->rules_profile>1u||a->stock_checkpoint.valid||
++    !a->world_ready[0]||!a->world_ready[1]||
++    a->worlds[0].phase!=GK1_PRE_SETUP_TEMPLATE||
++    a->worlds[1].phase!=GK1_PRE_SETUP_TEMPLATE||
++    a->worlds[0].country_count!=14u||a->worlds[1].country_count!=27u||
++    a->worlds[1].scenario_id!=GK1_WORLD_CONQUEST||
++    !gk1_verified_original_csv(csv))return GK239_REFUSED;
++ /* Original Mesen archive contains native 8 KiB nesSaveRam, not fresh
++  * nesWorkRam. GK163 verifies the matching state schema, physical bank and
++  * pinned stock 27x83 country SHA before exposing any record bytes. */
++ uint8_t raw[GK163_MAX_RECORDS];
++ size_t size=0u;
++ Gk139MesenProof proof={0};
++ Gk163Status src=gk163_mesen_extract_with_proof(mss,
++    GK77_ARCHIVED_WORLD_SAVERAM,raw,&size,&proof);
++ if(src!=GK163_OK||size!=27u*GK77_RECORD_BYTES){
++  secure_clear(raw,sizeof raw);return GK239_REFUSED;
++ }
++ Gk77StockSpring *observed=(Gk77StockSpring*)calloc(1,sizeof *observed);
++ Gk79Checkpoint *candidate=(Gk79Checkpoint*)calloc(1,sizeof *candidate);
++ if(!observed||!candidate){free(observed);free(candidate);
++  secure_clear(raw,sizeof raw);return GK239_REFUSED;}
++ observed->profile=GK77_ARCHIVED_WORLD_SAVERAM;
++ observed->scenario=GK1_WORLD_CONQUEST;
++ observed->country_count=27u;
++ observed->orders=3u;
++ observed->year=1206u;
++ observed->rate=114u; /* only this archived original observation */
++ Gk239Status result=GK239_REFUSED;
++ for(unsigned i=0;i<27u;i++){
++  if(gk77_decode(raw+i*GK77_RECORD_BYTES,GK77_RECORD_BYTES,
++      &observed->countries[i])!=GK77_OK)goto done;
++ }
++ if(gk79_from_decoded(&a->worlds[1],observed,0u,candidate)!=GK79_OK)
++  goto done;
++ /* Source authenticity derives from GK163 bank+known source SHA, never
++  * from this user-visible import request or a synthetic profile. */
++ candidate->source_verified=1u;
++ if(!gk85_raw_source_intact(candidate)||!gk88_stock_projection_intact(candidate))
++  goto done;
++ if(gk162_commit_verified_checkpoint(a,csv,candidate)!=GK162_ENTRY_OK)
++  goto done;
++ a->rules_profile=0u;
++ snprintf(a->status,sizeof a->status,
++   "OWNER-PRIVATE ARCHIVED WORLD SPRING 1206: 3 SOURCE ORDERS; NOT FRESH RNG");
++ result=GK239_IMPORTED;
++done:
++ secure_clear(raw,sizeof raw);
++ secure_clear(observed,sizeof *observed);
++ secure_clear(candidate,sizeof *candidate);
++ free(observed);free(candidate);
++ return result;
++}
+diff --git a/source/execution_199/test_gk239_owner_world_mss.c b/source/execution_199/test_gk239_owner_world_mss.c
+new file mode 100644
+--- /dev/null
++++ b/source/execution_199/test_gk239_owner_world_mss.c
+@@ -0,0 +1,53 @@
++#include "gk239_owner_world_mss.h"
++#include "gk1_source_identity.h"
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++#define CHECK(expr) do {if(!(expr)){fprintf(stderr,"EXEC0239 line %d: %s\n",__LINE__,#expr);return 1;}checks++;}while(0)
++int main(int argc,char **argv){
++ if(argc!=2&&argc!=4)return 2;
++ unsigned checks=0u;
++ Gk1App *a=(Gk1App*)malloc(sizeof *a);
++ Gk1App *before=(Gk1App*)malloc(sizeof *before);
++ Gk1TemplateDataset *ds=(Gk1TemplateDataset*)malloc(sizeof *ds);
++ if(!a||!before||!ds)return 3;
++ gk1_app_init(a);
++ CHECK(gk1_template_load(argv[1],ds)==GK1_LOAD_OK);
++ CHECK(gk1_app_install_templates(a,ds));
++ *before=*a;
++ CHECK(gk239_owner_world_startup(a,argv[1],NULL,NULL,1,0)==GK239_UNREQUESTED);
++ CHECK(gk239_owner_world_startup(a,argv[1],"",NULL,1,0)==GK239_UNREQUESTED);
++ CHECK(gk239_owner_world_startup(a,argv[1],"/not/found.mss",NULL,1,1)==GK239_SMOKE_ISOLATED);
++ CHECK(gk239_owner_world_startup(a,argv[1],"/not/found.mss","/not/found.json",1,0)==GK239_CONFLICTING_SOURCES);
++ CHECK(gk239_owner_world_startup(a,argv[1],"/not/found.mss",NULL,0,0)==GK239_REFUSED);
++ CHECK(gk239_owner_world_startup(a,argv[1],"/not/found.mss",NULL,1,0)==GK239_REFUSED);
++ CHECK(gk239_owner_world_startup(a,argv[1],argv[1],NULL,1,0)==GK239_REFUSED);
++ CHECK(gk239_owner_world_startup(a,"/not/found.csv","/not/found.mss",NULL,1,0)==GK239_REFUSED);
++ CHECK(gk239_owner_world_startup(NULL,argv[1],"/not/found.mss",NULL,1,0)==GK239_REFUSED);
++ CHECK(memcmp(a,before,sizeof *a)==0);
++ CHECK(a->worlds[0].country_count==14u&&a->worlds[1].country_count==27u);
++ CHECK(a->screen==GK1_SCREEN_TITLE);
++ if(argc==4){
++  /* Optional owner-local positive original World Mesen state and distinct
++   * original Mongol state. Neither may ship with a public ZIP/installer. */
++  CHECK(gk239_owner_world_startup(a,argv[1],argv[2],NULL,1,1)==GK239_SMOKE_ISOLATED);
++  CHECK(memcmp(a,before,sizeof *a)==0);
++  CHECK(gk239_owner_world_startup(a,argv[1],argv[3],NULL,1,0)==GK239_REFUSED);
++  CHECK(memcmp(a,before,sizeof *a)==0);
++  CHECK(gk239_owner_world_startup(a,argv[1],argv[2],NULL,1,0)==GK239_IMPORTED);
++  CHECK(a->screen==GK1_SCREEN_STOCK_CONTINUE);
++  CHECK(a->stock_checkpoint.valid&&a->stock_checkpoint.source_verified);
++  CHECK(a->stock_checkpoint.profile==GK77_ARCHIVED_WORLD_SAVERAM);
++  CHECK(a->stock_checkpoint.year==1206u&&a->stock_checkpoint.rate==114u);
++  CHECK(a->stock_checkpoint.world.country_count==27u);
++  CHECK(a->stock_checkpoint.orders.remaining==3u);
++  CHECK(a->active_world==1u&&a->rules_profile==0u);
++  CHECK(memcmp(a->worlds,before->worlds,sizeof a->worlds)==0);
++  CHECK(gk85_raw_source_intact(&a->stock_checkpoint));
++  *before=*a;
++  CHECK(gk239_owner_world_startup(a,argv[1],argv[2],NULL,1,0)==GK239_REFUSED);
++  CHECK(memcmp(a,before,sizeof *a)==0);
++ }
++ printf("EXEC0239 %u assertions PASS; archived original World owner state import; no NES first Spring RNG or Xbox\n",checks);
++ free(a);free(before);free(ds);return 0;
++}
