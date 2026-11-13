@@ -232,4 +232,33 @@ jobs:
           }
           Remove-Item Env:GK1_SCENARIO_CSV -ErrorAction SilentlyContinue
           Remove-Item Env:GK1_ENHANCED_PRACTICE_SAVE_FILE -ErrorAction SilentlyContinue
-      # No workflow artifact uploads: known GitHub Actions storage pressure.
+      # EXEC0236: publish only the independently tested NSIS research candidate
+      # after all native/installed graphical and disk regression checks succeed.
+      # No original NES ROM, SRAM, Mesen state, screenshots or licensed asset.
+      - name: EXEC0236 gate NSIS package provenance and privacy
+        shell: pwsh
+        run: |
+          $setups = @(Get-ChildItem 'build-gk1-win32/out' -Filter '*.exe' -File)
+          if ($setups.Count -ne 1) { throw "Expected precisely one candidate NSIS EXE; found $($setups.Count)" }
+          $installed = Join-Path $env:RUNNER_TEMP 'GK1ResearchInstall'
+          if (-not (Test-Path (Join-Path $installed 'gk1_native_shell.exe'))) { throw 'Executable absent from installed candidate' }
+          if (-not (Test-Path (Join-Path $installed 'GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv'))) { throw 'Canonical country dataset absent from installed candidate' }
+          $forbidden = @(Get-ChildItem $installed -Recurse -File | Where-Object {
+            $_.Extension -in @('.nes','.srm','.sav','.mss','.ips','.bps','.nsf','.fds','.rom')
+          })
+          if ($forbidden.Count -gt 0) { throw 'Private ROM, patch, save or raw audio payload included in installer: publication refused' }
+          $setupHash = (Get-FileHash $setups[0].FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+          $binaryHash = (Get-FileHash (Join-Path $installed 'gk1_native_shell.exe') -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($setups[0].Length -lt 20000) { throw 'NSIS package unexpectedly small' }
+          Write-Host "EXEC0236 VERIFIED_STATIC package=$($setups[0].Name) bytes=$($setups[0].Length) sha256=$setupHash"
+          Write-Host "EXEC0236 TESTED_PORT_WIN32 installed exe sha256=$binaryHash"
+          Write-Host 'EXEC0236 classification: research candidate only; no original first Spring, full campaigns, or physical Xbox acceptance.'
+      - name: EXEC0236 publish Windows research NSIS candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: GK1_EXEC0236_Windows_NSIS_ResearchCandidate
+          path: build-gk1-win32/out/*.exe
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+
