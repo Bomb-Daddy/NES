@@ -31,6 +31,19 @@ def main(zip_path):
   except ValueError:pass
   else:raise AssertionError('duplicate accepted')
   check(p.read_bytes()==got,'duplicate rollback')
+  # Windows CRLF must be accepted only with byte-identical LF-normalized
+  # source; the exact physical CRLF representation must be retained on write.
+  crlf=original.replace(b'\n',b'\r\n')
+  p.write_bytes(crlf)
+  apply(root)
+  expected=got.replace(b'\n',b'\r\n')
+  check(p.read_bytes()==expected,'complete CRLF postimage')
+  mixed=original.replace(b'\n',b'\r\n',1)
+  p.write_bytes(mixed)
+  try:apply(root)
+  except ValueError:pass
+  else:raise AssertionError('mixed newline accepted')
+  check(p.read_bytes()==mixed,'mixed newline rollback')
   # Evaluate same conditional with CMake itself, not a Python reimplementation.
   start=got.index(b'if(MSVC AND GK1_REQUIRE_ARCHIVED_WORLD_IMPORT AND')
   end=got.index(b'find_package(ZLIB QUIET)',start)
@@ -48,5 +61,5 @@ def main(zip_path):
    check(result.returncode==0,'CMake script: '+result.stderr)
    actual=result.stdout+result.stderr
    check(('CRT=MultiThreaded$<$<CONFIG:Debug>:Debug>' in actual)==expect,('CRT conditional',ms,req,trip,actual))
- print('EXEC0244 14/14 source/rollback/conditional acceptance groups PASS')
+ print('EXEC0244 16/16 source/rollback/conditional acceptance groups PASS')
 if __name__=='__main__':main(sys.argv[1])
