@@ -19,6 +19,9 @@ PATCH_SHA = 'c38ce72b2d63c0921a66614263d8415060f07fc2d68f5a933294e51cc8241e20'
 def sha(data): return hashlib.sha256(data).hexdigest()
 
 def interpret_patch(data):
+    # Git for Windows may check out text patches as CRLF. Canonicalize only
+    # that newline convention, then SHA-gate the complete LF source patch.
+    data=data.replace(b'\r\n',b'\n')
     if sha(data) != PATCH_SHA: raise ValueError('unexpected published patch SHA')
     lines=data.splitlines(keepends=True)
     if sum(x.startswith(b'@@ ') for x in lines)!=1: raise ValueError('not one hunk')
