@@ -207,6 +207,61 @@ jobs:
           if (-not (Select-String -LiteralPath $cmake -SimpleMatch -Pattern 'GK1_262_NativeExecutableSourceCSVLayoutAndNegativeControls' -Quiet)) {
             throw 'EXEC0262 compiled CMake stage disappeared'
           }
+      # EXEC0265: the prior workflow compiled a SHA-pinned EXEC0256 source,
+      # then ported only the Win32 plumbing. EXEC0264's atomic restart was
+      # NOT in that binary. Apply and verify the exact tested C11 game delta.
+      - name: Reconcile actual Windows game with EXEC0264 and prove exact source
+        shell: pwsh
+        run: |
+          $app = 'current-gk1/execution_199/gk1_app_state.c'
+          $beforeSHA = '193a5c2f5d5c54524b8b70ad0d40992e8170a7a5d1d8a6de083bfa675fbb0926'
+          $afterSHA = 'a0edd0a5dc4974a17485320368c6613240785a2c813a941dcaef527fd632c05c'
+          if (-not (Test-Path -LiteralPath $app)) { throw 'EXEC0265 inherited app state source missing' }
+          $actual = (Get-FileHash -LiteralPath $app -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -ne $beforeSHA) { throw "EXEC0265 unexpected old C11 source SHA $actual" }
+          $patch265 = 'research/Genghis_Khan_NES/execution_265_win32_source_provenance/GK1_EXEC0265_AtomicRestart_SourceOnly.patch'
+          if (-not (Test-Path -LiteralPath $patch265)) { throw 'EXEC0265 verified source patch missing' }
+          git apply --directory=current-gk1 --check "$patch265"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0265 patch cannot apply to exact inherited app source' }
+          git apply --directory=current-gk1 "$patch265"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0265 patch failed' }
+          $actual = (Get-FileHash -LiteralPath $app -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -ne $afterSHA) { throw "GK1_EXEC0265 current-source SHA mismatch $actual" }
+          # Reuse the published original EXEC0264 regression as executable proof.
+          $test264 = 'research/Genghis_Khan_NES/execution_264_atomic_restart/test_gk264_scenario_restart.c'
+          $dest264 = 'current-gk1/execution_199/test_gk264_scenario_restart.c'
+          if (-not (Test-Path -LiteralPath $test264) -or (Test-Path -LiteralPath $dest264)) { throw 'EXEC0264 regression missing or duplicate' }
+          Copy-Item -LiteralPath $test264 -Destination $dest264
+          $expectedTestSHA = '6e62d9a2ba4317f0e6d3a23942203612861f501b64a7b90f18198c384cbd0d59'
+          if ((Get-FileHash -LiteralPath $dest264 -Algorithm SHA256).Hash.ToLowerInvariant() -ne $expectedTestSHA) { throw 'EXEC0264 regression SHA mismatch' }
+          $source265 = 'research/Genghis_Khan_NES/execution_265_win32_source_provenance/test_gk265_current_win32_source.py'
+          $dest265 = 'current-gk1/execution_199/packaging/test_gk265_current_win32_source.py'
+          if (-not (Test-Path -LiteralPath $source265)) { throw 'EXEC0265 hostile source gate missing' }
+          Copy-Item -LiteralPath $source265 -Destination $dest265 -Force
+          if ((Get-FileHash -LiteralPath $source265 -Algorithm SHA256).Hash -ne (Get-FileHash -LiteralPath $dest265 -Algorithm SHA256).Hash) { throw 'EXEC0265 hostile gate copy mismatch' }
+          $cmake = 'current-gk1/execution_199/CMakeLists.txt'
+          if (Select-String -LiteralPath $cmake -SimpleMatch -Pattern 'GK1_264_AtomicScenarioReinstallClearsSourceAndPortState' -Quiet) { throw 'Unexpected pre-existing EXEC0264 registration' }
+          $newRegistry = @'
+          # EXEC0265: compile the genuine inherited EXEC0264 app source and linked test.
+          add_executable(test_gk264_scenario_restart test_gk264_scenario_restart.c)
+          target_link_libraries(test_gk264_scenario_restart PRIVATE gk1_app_state)
+          add_test(NAME GK1_264_AtomicScenarioReinstallClearsSourceAndPortState
+           COMMAND test_gk264_scenario_restart
+           ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+          if(Python3_Interpreter_FOUND)
+           add_test(NAME GK1_265_CurrentWin32BuildSourceMustMatchEXEC0264
+            COMMAND ${Python3_EXECUTABLE}
+             ${CMAKE_CURRENT_SOURCE_DIR}/packaging/test_gk265_current_win32_source.py
+             ${CMAKE_CURRENT_SOURCE_DIR}/gk1_app_state.c
+             ${CMAKE_CURRENT_SOURCE_DIR}/test_gk264_scenario_restart.c
+             ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt
+             ${CMAKE_CURRENT_SOURCE_DIR}/../.github/workflows/gk1-native-windows.yml)
+          endif()
+          '@
+          Add-Content -LiteralPath $cmake -Value $newRegistry
+          python $dest265 $app $dest264 $cmake 'current-gk1/.github/workflows/gk1-native-windows.yml'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0265 source provenance and hostile mutations failed' }
+          Write-Output 'EXEC0265 EXACT GAME SOURCE + CTEST REGISTRY VERIFIED; WIN32 COMPILE FOLLOWS; PHYSICAL_XBOX_NOT_RUN'
       - name: Install the actual NSIS packager
         shell: pwsh
         run: |
