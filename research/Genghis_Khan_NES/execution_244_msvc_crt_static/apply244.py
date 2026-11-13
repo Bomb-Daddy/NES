@@ -22,15 +22,27 @@ endif()
 find_package(ZLIB QUIET)
 '''
 def sha(b):return hashlib.sha256(b).hexdigest()
+def canonical(raw):
+    # Git for Windows may materialize a fully CRLF checkout. The canonical
+    # source hash must still be exact; mixed newline styles and bare CR refuse.
+    crlf=b'\r\n' in raw
+    if crlf and raw.count(b'\r\n')!=raw.count(b'\n'):
+        raise ValueError('mixed newline styles')
+    data=raw.replace(b'\r\n',b'\n')
+    if b'\r' in data:raise ValueError('bare carriage return')
+    return data,crlf
 def apply(root):
     p=Path(root)/'execution_199'/'CMakeLists.txt'
     raw=p.read_bytes()
-    if sha(raw)!=PRE: raise ValueError('wrong predecessor/duplicate application: refused before write; actual sha='+sha(raw))
-    if raw.count(OLD)!=1:raise ValueError('CMake source context mismatch')
-    after=raw.replace(OLD,NEW,1)
+    data,crlf=canonical(raw)
+    if sha(data)!=PRE: raise ValueError('wrong predecessor/duplicate application: refused before write; canonical sha='+sha(data))
+    if data.count(OLD)!=1:raise ValueError('CMake source context mismatch')
+    after=data.replace(OLD,NEW,1)
     if sha(after)!=POST:raise ValueError('unexpected postimage')
-    p.write_bytes(after)
-    if sha(p.read_bytes())!=POST:raise ValueError('write verification failed')
+    encoded=after.replace(b'\n',b'\r\n') if crlf else after
+    p.write_bytes(encoded)
+    verified,style=canonical(p.read_bytes())
+    if sha(verified)!=POST or style!=crlf:raise ValueError('write verification failed')
     return p
 if __name__=='__main__':
     if len(sys.argv)!=2:sys.exit('Usage: apply244.py ROOT')
