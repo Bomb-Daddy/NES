@@ -1,0 +1,1194 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+index cfcf961..7827e9d 100644
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -7,7 +7,7 @@ set(CMAKE_C_EXTENSIONS OFF)
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk230_win32_smoke_args.c gk224_practice_save.c gk225_practice_resume.c gk226_practice_checkpoint.c gk227_practice_title_preview.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk241_archived_import_capability.c gk237_owner_fresh_win.c gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk230_win32_smoke_args.c gk224_practice_save.c gk225_practice_resume.c gk226_practice_checkpoint.c gk227_practice_title_preview.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -725,6 +725,14 @@ add_executable(test_gk166_fresh_entry test_gk166_fresh_entry.c)
+ target_link_libraries(test_gk166_fresh_entry PRIVATE gk1_app_state)
+ add_test(NAME GK1_166_OriginalFreshMesenDirectInMemoryAndRollback COMMAND test_gk166_fresh_entry ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+ 
++# EXEC0237: real WinMain opt-in to existing SHA-attested owner-private Mesen
++# fresh snapshot; all public test paths are fail-closed and copyright-clean.
++add_executable(test_gk237_owner_fresh_win test_gk237_owner_fresh_win.c)
++target_link_libraries(test_gk237_owner_fresh_win PRIVATE gk1_app_state)
++add_test(NAME GK1_237_WinOwnerPrivateFreshBootNegativeControls
++ COMMAND test_gk237_owner_fresh_win
++ ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
+ # EXEC0167: private self-contained original-stock continuation (no licensed
+ # save file is installed or distributed). Public test uses negative controls;
+ # owner-private original Mesen evidence is tested out of band.
+@@ -1191,3 +1199,73 @@ endif()
+ add_executable(test_gk230_win32_smoke_args test_gk230_win32_smoke_args.c)
+ target_link_libraries(test_gk230_win32_smoke_args PRIVATE gk1_app_state)
+ add_test(NAME GK1_230_BoundedWinMainSmokeParserNegativeControls COMMAND test_gk230_win32_smoke_args)
++
++# EXEC0234: the same native controller/app 27-country, four-ruler World flow.
++# This is a genuine compiled game-state regression, not original Spring parity.
++add_executable(test_gk234_world_four_players test_gk234_world_four_players.c)
++target_link_libraries(test_gk234_world_four_players PRIVATE gk1_manual_setup_store gk1_pad_router)
++add_test(NAME GK1_234_NativeWorldFourPlayerSetupAndRollback
++ COMMAND test_gk234_world_four_players ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0235: fail-closed multi-human World setup to Enhanced-only practice guard.
++add_executable(test_gk235_world_multi_guard test_gk235_world_multi_guard.c)
++target_link_libraries(test_gk235_world_multi_guard PRIVATE gk1_app_state gk1_pad_router)
++add_test(NAME GK1_235_WorldMultiplayerPracticeGuard
++ COMMAND test_gk235_world_multi_guard ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0238: source-pure Windows startup gate.  Public regressions use only
++# canonical 41-country templates and missing/invalid private-source negatives.
++target_sources(gk1_app_state PRIVATE gk238_owner_startup.c)
++add_executable(test_gk238_owner_startup test_gk238_owner_startup.c)
++target_link_libraries(test_gk238_owner_startup PRIVATE gk1_app_state)
++add_test(NAME GK1_238_WinMainOwnerPrivacyAndSmokeIsolation
++ COMMAND test_gk238_owner_startup ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0239: archived World owner-only Mesen SaveRAM source gate
++target_sources(gk1_app_state PRIVATE gk239_owner_world_mss.c)
++add_executable(test_gk239_owner_world_mss test_gk239_owner_world_mss.c)
++target_link_libraries(test_gk239_owner_world_mss PRIVATE gk1_app_state)
++add_test(NAME GK1_239_OwnerArchivedWorldSaveRAM_FailClosed
++ COMMAND test_gk239_owner_world_mss ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0240: genuine dual-zlib compilation/hostile source refusal check.
++add_executable(test_gk240_archived_optional_zlib test_gk240_archived_optional_zlib.c)
++target_link_libraries(test_gk240_archived_optional_zlib PRIVATE gk1_app_state)
++add_test(NAME GK1_240_ArchivedImportOptionalZlibCompileAndPrivacy
++ COMMAND test_gk240_archived_optional_zlib)
++
++# EXEC0240: Historical source-positive Mesen tests require DEFLATE.
++# Do not misreport zlib-disabled as a ROM-source failure.  The new fail-closed
++# test still runs in *both* configurations.  Keep historical test names.
++if(NOT ZLIB_FOUND)
++  set_tests_properties(
++    GK1_164_PrivateOriginalMssDirectControllerSourceGuard
++    GK1_182_SourceAuthenticatedSavedInstantMapperAndSeed
++    GK1_193_OriginalBankAwarePrivateSourceAutoEntryAtomicRollback
++    PROPERTIES DISABLED TRUE)
++endif()
++
++# EXEC0241: honest capability feedback for Windows owner-private World .mss.
++# The option is designed for release-qualified builds: compiling a Windows
++# installer without a working DEFLATE backend must not advertise original
++# archived World import. Linux no-zlib research remains separately supported.
++option(GK1_REQUIRE_ARCHIVED_WORLD_IMPORT "Require authenticated archived World importer backend" OFF)
++if(GK1_REQUIRE_ARCHIVED_WORLD_IMPORT AND NOT ZLIB_FOUND)
++  message(FATAL_ERROR "GK1 archived original World .mss import requested but zlib is missing")
++endif()
++add_executable(test_gk241_archived_import_capability test_gk241_archived_import_capability.c)
++target_link_libraries(test_gk241_archived_import_capability PRIVATE gk1_app_state)
++add_test(NAME GK1_241_archived_import_capability
++ COMMAND test_gk241_archived_import_capability
++ ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0242 Windows archived-World release dependency: compile and link the
++# EXACT native game's ZLIB::ZLIB backend, and execute a synthetic DEFLATE
++# round-trip including intentionally corrupted compressed input. Never
++# bundle private ROM/Mesen assets. Not original NES source parity.
++if(GK1_REQUIRE_ARCHIVED_WORLD_IMPORT)
++  add_executable(test_gk242_win32_archive_link test_gk242_win32_archive_link.c)
++  target_link_libraries(test_gk242_win32_archive_link PRIVATE gk1_app_state ZLIB::ZLIB)
++  add_test(NAME GK1_242_RequiredZlibBackend_LinkAndCorruption
++           COMMAND test_gk242_win32_archive_link)
++endif()
+diff --git a/execution_199/gk163_mesen_import.c b/execution_199/gk163_mesen_import.c
+index 1cba94d..a90c473 100644
+--- a/execution_199/gk163_mesen_import.c
++++ b/execution_199/gk163_mesen_import.c
+@@ -33,6 +33,7 @@ Gk163Status gk163_mesen_extract_with_proof(const char *path,Gk77Profile profile,
+     (profile!=GK77_ARCHIVED_MONGOL_SAVERAM&&
+      profile!=GK77_ARCHIVED_WORLD_SAVERAM))return GK163_ARGUMENT;
+ #ifndef GK163_HAS_ZLIB
++ (void)proof_out; /* no inflater: no private-state access or mutation */
+  return GK163_UNAVAILABLE;
+ #else
+  Gk163Status status=GK163_FORMAT;
+diff --git a/execution_199/gk182_archived_source_bank.c b/execution_199/gk182_archived_source_bank.c
+index cbdfceb..408bc61 100644
+--- a/execution_199/gk182_archived_source_bank.c
++++ b/execution_199/gk182_archived_source_bank.c
+@@ -10,7 +10,11 @@
+ #endif
+ #define GK182_MAX_MSS (1024u*1024u)
+ #define GK182_MAX_STATE (1024u*1024u)
+-/* Published DIGESTS ONLY, no original ROM, graphics, RAM or savestate bytes. */
++/* Published DIGESTS ONLY, no original ROM, graphics, RAM or savestate bytes.
++ * Keep these source-gate oracles inside the inflater feature guard.  MSVC
++ * builds without ZLIB and Linux -Werror no-ZLIB builds must both compile,
++ * while source-only imports remain explicitly unavailable in that mode. */
++#ifdef GK163_HAS_ZLIB
+ static const uint8_t archived_mongol_sha[32]={
+  0xa3,0x83,0x87,0x05,0xc5,0x80,0x10,0xa1,
+  0x1c,0xac,0x37,0xae,0x2d,0x8f,0x44,0x6c,
+@@ -21,7 +25,6 @@ static const uint8_t archived_world_sha[32]={
+  0xc4,0xdf,0x1d,0x14,0x58,0xdc,0x66,0x8d,
+  0xbe,0x8a,0x71,0x1d,0x92,0x5d,0xa9,0x5a,
+  0xe5,0xef,0x82,0x39,0x3d,0x13,0x89,0xfb};
+-#ifdef GK163_HAS_ZLIB
+ static uint32_t le32(const uint8_t *p){
+  return (uint32_t)p[0]|((uint32_t)p[1]<<8)|((uint32_t)p[2]<<16)|((uint32_t)p[3]<<24);
+ }
+diff --git a/execution_199/gk1_app_state.c b/execution_199/gk1_app_state.c
+index fccc490..18cc5d6 100644
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -35,6 +35,12 @@ Gk222Status gk1_app_enhanced_spring_lab_open(Gk1App *s){
+    s->setup_stage[s->active_world]!=GK53_SETUP_AWAIT_SOURCE||
+    s->setup_ability_method[s->active_world]==0u)return GK222_BAD_SOURCE;
+  uint8_t w=s->active_world;
++ /* EXEC0235: the Enhanced finance practice ledger has exactly ONE active
++  * ruler and ONE three-order budget. World setup may legitimately nominate
++  * 2-4 human rulers, but treating player one as everybody's campaign would
++  * silently discard the other players. Refuse before mutating any game state.
++  * This is NOT an original-stock Spring implementation. */
++ if(s->setup_player_count[w]!=1u)return GK222_BAD_SOURCE;
+  uint8_t player=s->setup_candidate[w];
+  if(player>=s->worlds[w].country_count)return GK222_BAD_PLAYER;
+  Gk222Spring next;
+@@ -647,7 +653,9 @@ int gk1_app_input(Gk1App *s,Gk1Input cmd){
+      s->rules_profile==1u && !s->manual_bonus_active[w]){
+      Gk222Status result=gk1_app_enhanced_spring_lab_open(s);
+      if(result!=GK222_OK)
+-       strcpy(s->status,"ENHANCED FINANCE PRACTICE REFUSED; SOURCE IS INVALID");
++       strcpy(s->status,(w==1u && s->setup_player_count[w]>1u)?
++         "WORLD MULTI-HUMAN SPRING NOT IMPLEMENTED: ALL RULERS PRESERVED":
++         "ENHANCED FINANCE PRACTICE REFUSED; SOURCE IS INVALID");
+      return 1;
+   }
+   /* A recorded draft never produces original attributes or Spring. */
+diff --git a/execution_199/gk1_native_shell.c b/execution_199/gk1_native_shell.c
+index 7f64389..846bb5b 100644
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -8,6 +8,7 @@
+ #include "gk174_setup_boundary.h"
+ #include "gk91_reset_zero.h"
+ #include "gk206_rng_source_parity.h"
++#include "gk241_archived_import_capability.h"
+ #include "gk208_archived_rng.h"
+ #include "gk209_archived_rate_ambiguity.h"
+ #include "gk185_stock_hotkey.h"
+@@ -54,6 +55,9 @@
+ #include "gk165_fresh_json.h"
+ #include "gk193_auto_source_entry.h"
+ #include "gk166_fresh_entry.h"
++#include "gk237_owner_fresh_win.h"
++#include "gk238_owner_startup.h"
++#include "gk239_owner_world_mss.h"
+ #include "gk167_private_cold_save.h"
+ #include "gk188_classic_receipt.h"
+ #include "gk189_classic_cold_save.h"
+@@ -661,6 +665,21 @@ static void render(void){
+    snprintf(line,sizeof line,"PLAYER %u/%u LORD: %s (COUNTRY %u)",p+1,
+       app.setup_player_count[w],c->lord_name,(unsigned)c->country_id);label(113,298,line,FG);
+    label(113,337,"ALLOWED WORLD: GENGHIS / RICHARD / ALEXIOUS / YORITOMO",EDGE);
++   /* EXEC0234: real 1-4 player setup audit on the gameplay screen.
++    * Show the committed human lords only. Unchosen slots remain blank;
++    * never imply an initialized ruler, original ROM RNG, or Spring turn. */
++   if(w==1u){
++    char picked[4][8];
++    for(unsigned j=0;j<4u;j++){
++     uint8_t ix=app.setup_rulers[1][j];
++     if(j>=app.setup_player_count[1]||ix==255u)
++      snprintf(picked[j],sizeof picked[j],"--");
++     else snprintf(picked[j],sizeof picked[j],"%u",(unsigned)ix+1u);
++    }
++    snprintf(line,sizeof line,"COMMITTED WORLD LORD COUNTRIES: P1 %s / P2 %s / P3 %s / P4 %s",
++     picked[0],picked[1],picked[2],picked[3]);
++    label(113,372,line,EDGE);
++   }
+   }else if(stage==GK53_SETUP_ABILITIES){
+    snprintf(line,sizeof line,"SIX ABILITIES / FIVE CHARACTERS: %s",
+      app.setup_method_cursor[w]?"MANUAL +100 POINTS":"AUTOMATIC RANDOM");label(113,298,line,FG);
+@@ -2092,13 +2111,26 @@ static void replay_key(int save){
+ }
+ 
+ #ifdef _WIN32
++/* EXEC0231: opt-in per-stage Windows GUI diagnosis; never reads gameplay bytes. */
++static int gk231_diagnostic_active=0;
++static void gk231_trace(const char *stage) {
++ const char *path=getenv("GK1_SMOKE_TRACE");
++ if(!gk231_diagnostic_active||!path||!*path)return;
++ FILE *f=fopen(path,"ab");
++ if(f) {
++  fprintf(f,"%llu\t%s\n",(unsigned long long)GetTickCount64(),stage);
++  fclose(f);
++ }
++}
++
+ static unsigned gk230_painted_frames=0u;
+ static LRESULT CALLBACK window_proc(HWND h,UINT msg,WPARAM w,LPARAM l){
+  (void)l;
+  if(msg==WM_DESTROY){running=0;PostQuitMessage(0);return 0;}
+  /* No keyboard gameplay or secret keyboard save paths: controller only. */
+- if(msg==WM_PAINT){PAINTSTRUCT p;screen_dc=BeginPaint(h,&p);render();EndPaint(h,&p);
+-  ++gk230_painted_frames;return 0;}
++ if(msg==WM_PAINT){gk231_trace("WM_PAINT entered");PAINTSTRUCT p;screen_dc=BeginPaint(h,&p);
++  gk231_trace("BeginPaint returned");render();gk231_trace("render returned");EndPaint(h,&p);
++  ++gk230_painted_frames;gk231_trace("WM_PAINT completed");return 0;}}
+  return DefWindowProcA(h,msg,w,l);
+ }
+ typedef DWORD(WINAPI *XinputGetStateFn)(DWORD,XINPUT_STATE*);
+@@ -2133,21 +2165,78 @@ static void poll_xinput(void){
+ int WINAPI WinMain(HINSTANCE instance,HINSTANCE prev,LPSTR cmd,int show){
+  (void)prev;
+  unsigned smoke_frames=0u;
+- const int smoke_mode=gk230_win32_smoke_frames(cmd,&smoke_frames);
++ /* EXEC0232 scripted raw XInput values, acceptance-only; never in normal gameplay. */
++ const int gk232_scripted_gamepad=strcmp(cmd,"--smoke-gamepad-nav")==0;
++ /* EXEC0233: private, Enhanced-only, multi-process Windows disk test. */
++ const int gk233_practice_mode=
++   strcmp(cmd,"--smoke-gamepad-practice-save")==0?1:
++   strcmp(cmd,"--smoke-gamepad-practice-resume")==0?2:
++   strcmp(cmd,"--smoke-gamepad-practice-verify")==0?3:
++   strcmp(cmd,"--smoke-gamepad-practice-corrupt")==0?4:0;
++ if(!gk232_scripted_gamepad&&!gk233_practice_mode&&
++    strncmp(cmd,"--smoke-gamepad",15)==0)return 4;
++ const char *gk233_bounded=gk232_scripted_gamepad?"--smoke-frames=10":
++   gk233_practice_mode==1?"--smoke-frames=26":
++   gk233_practice_mode==2?"--smoke-frames=8":
++   gk233_practice_mode?"--smoke-frames=4":cmd;
++ const int smoke_mode=gk230_win32_smoke_frames(gk233_bounded,&smoke_frames);
+  if(smoke_mode<0)return 4;
++ gk231_diagnostic_active=smoke_mode>0;
++ gk231_trace("WinMain arguments accepted");
+  gk1_app_init(&app);gk1_pad_init(&pad);load_optional_battle_view();load_optional_mesen_map();load_optional_spring_archive();load_optional_stock_spring();(void)load_scenario_data();
++ /* EXEC0238: single source-pure gate for normal WinMain, smoke isolation,
++  * and source refusal; no original RNG or source bytes are manufactured. */
++ const char *owner_fresh=getenv("GK1_OWNER_STOCK_FRESH_JSON");
++ const char *owner_world=getenv("GK1_OWNER_STOCK_WORLD_MSS");
++ /* EXEC0239: explicit, mutually exclusive owner sources; diagnostic modes
++  * never open either source. Archived World is SaveRAM, not fresh WorkRAM. */
++ Gk239Status world_result=gk239_owner_world_startup(&app,scenario_csv_path(),
++    owner_world,owner_fresh,scenario_loaded,smoke_mode!=0);
++ Gk238Startup owner_result=GK238_UNREQUESTED;
++ if(world_result==GK239_UNREQUESTED)
++  owner_result=gk238_owner_startup(&app,scenario_csv_path(),owner_fresh,
++    scenario_loaded,smoke_mode!=0);
++ if(world_result==GK239_CONFLICTING_SOURCES)
++  snprintf(app.status,sizeof app.status,
++   "OWNER IMPORT REFUSED: FRESH AND ARCHIVED WORLD SOURCES CONFLICT");
++ else if(world_result==GK239_REFUSED)
++  snprintf(app.status,sizeof app.status,"%s",gk241_archived_refusal_message());
++ else if(world_result==GK239_IMPORTED)
++  stock_selected=GK77_ARCHIVED_WORLD_SAVERAM;
++ else if(owner_result==GK238_REFUSED)
++  snprintf(app.status,sizeof app.status,
++   "OWNER FRESH SOURCE REFUSED; PRIVATE ORIGINAL WORKRAM EVIDENCE REQUIRED");
++ else if(owner_result==GK238_OWNER_IMPORTED)
++  stock_selected=GK77_FRESH_MONGOL_WORKRAM;
++ gk231_trace("app and scenario initialized");
++ static Gk1LoadedScenario gk232_original_worlds[2];
++ if(gk232_scripted_gamepad||gk233_practice_mode){
++  if(!scenario_loaded||app.screen!=GK1_SCREEN_TITLE||
++     !app.world_ready[0]||!app.world_ready[1]||
++     app.worlds[0].country_count!=14u||app.worlds[1].country_count!=27u||
++     app.worlds[0].phase!=GK1_PRE_SETUP_TEMPLATE||
++     app.worlds[1].phase!=GK1_PRE_SETUP_TEMPLATE)return 7;
++  memcpy(gk232_original_worlds,app.worlds,sizeof gk232_original_worlds);
++ }
+ 
+  WNDCLASSA cl={0};cl.lpfnWndProc=window_proc;cl.hInstance=instance;
+  cl.lpszClassName="GK1_NATIVE_RESEARCH";cl.hCursor=LoadCursor(NULL,IDC_ARROW);
+  cl.hbrBackground=(HBRUSH)(COLOR_WINDOW+1);
+  if(!RegisterClassA(&cl))return 2;
+- RECT r={0,0,WIDTH,HEIGHT};AdjustWindowRect(&r,WS_OVERLAPPEDWINDOW,FALSE);
+- hwnd=CreateWindowA(cl.lpszClassName,"Genghis Khan I - Native Port " GK1_PORT_VERSION,WS_OVERLAPPEDWINDOW,
+- CW_USEDEFAULT,CW_USEDEFAULT,r.right-r.left,r.bottom-r.top,NULL,NULL,instance,NULL);
++ RECT r={0,0,WIDTH,HEIGHT};
++ DWORD style=smoke_mode?WS_POPUP:WS_OVERLAPPEDWINDOW;
++ if(!smoke_mode)AdjustWindowRect(&r,WS_OVERLAPPEDWINDOW,FALSE);
++ hwnd=CreateWindowA(cl.lpszClassName,"Genghis Khan I - Native Port " GK1_PORT_VERSION,style,
++ smoke_mode?0:CW_USEDEFAULT,smoke_mode?0:CW_USEDEFAULT,
++ r.right-r.left,r.bottom-r.top,NULL,NULL,instance,NULL);
+  if(!hwnd)return 3;
+  font=CreateFontA(22,0,0,0,FW_BOLD,FALSE,FALSE,FALSE,ANSI_CHARSET,OUT_DEFAULT_PRECIS,
+  CLIP_DEFAULT_PRECIS,DEFAULT_QUALITY,FIXED_PITCH,"Consolas");
+- ShowWindow(hwnd,smoke_mode?SW_SHOWNORMAL:show);UpdateWindow(hwnd);
++ gk231_trace("before ShowWindow");
++ ShowWindow(hwnd,smoke_mode?SW_SHOWNORMAL:show);
++ gk231_trace("after ShowWindow, before UpdateWindow");
++ UpdateWindow(hwnd);
++ gk231_trace("after UpdateWindow");
+  if(smoke_mode){
+   RECT client={0};
+   if(!IsWindow(hwnd)||!GetClientRect(hwnd,&client)||
+@@ -2162,10 +2251,122 @@ int WINAPI WinMain(HINSTANCE instance,HINSTANCE prev,LPSTR cmd,int show){
+     TranslateMessage(&m);DispatchMessageA(&m);
+    }
+    if(!running)break;
+-   poll_xinput();InvalidateRect(hwnd,NULL,FALSE);UpdateWindow(hwnd);
++   if(gk232_scripted_gamepad){
++    /* 0 seed neutral, A, release, right, release, A, release, B,
++     * release, A. Actual WinMain -> decoder -> router -> app dispatch. */
++    static const uint16_t buttons[10]={0u,0x1000u,0u,0x0008u,0u,
++                                       0x1000u,0u,0x2000u,0u,0x1000u};
++    Gk99XinputRaw raw={buttons[frame],0,0};
++    Gk1PadSample decoded={0};
++    if(!gk99_xinput_sample(&raw,&decoded)){
++     if(IsWindow(hwnd))DestroyWindow(hwnd);
++     if(font)DeleteObject(font);return 8;
++    }
++    pad_actions(&decoded);
++    const int stage_ok=
++      (frame==1u?app.screen==GK1_SCREEN_CAMPAIGNS:
++       frame==3u?app.screen==GK1_SCREEN_CAMPAIGNS&&app.rules_profile==0u:
++       frame==5u?app.screen==GK1_SCREEN_SCENARIO_COUNTRIES&&app.active_world==0u:
++       frame==7u?app.screen==GK1_SCREEN_CAMPAIGNS:
++       frame==9u?app.screen==GK1_SCREEN_SCENARIO_COUNTRIES:1);
++    if(!stage_ok){
++     gk231_trace("EXEC0232 scripted navigation refused");
++     if(IsWindow(hwnd))DestroyWindow(hwnd);
++     if(font)DeleteObject(font);return 8;
++    }
++   }else if(gk233_practice_mode){
++    /* Only test mode supplies simulated raw gamepad; ordinary play still
++     * calls poll_xinput() and respects real XInput hotplug/active slot. */
++    uint16_t bits=0u;
++    if(gk233_practice_mode==1){
++     if(frame==1u||frame==3u||frame==5u||frame==9u||
++        frame==11u||frame==13u||frame==15u||frame==17u||frame==19u)
++       bits=0x1000u; /* XInput A */
++     else if(frame==7u)bits=0x0010u; /* XInput START */
++     else if(frame==21u)bits=0x4000u; /* XInput X: save */
++     else if(frame==23u)bits=0x2000u; /* XInput B: exit */
++    }else{
++     if(frame==1u)bits=0x8000u; /* Y on title: cold resume */
++     else if(gk233_practice_mode==2 && frame==3u)bits=0x1000u;
++     else if(gk233_practice_mode==2 && frame==5u)bits=0x4000u;
++     else if((gk233_practice_mode==2 && frame==7u)||
++             (gk233_practice_mode==3 && frame==3u))bits=0x2000u;
++    }
++    Gk99XinputRaw raw={bits,0,0};Gk1PadSample decoded={0};
++    if(!gk99_xinput_sample(&raw,&decoded)){
++     if(IsWindow(hwnd))DestroyWindow(hwnd);
++     if(font)DeleteObject(font);return 9;
++    }
++    pad_actions(&decoded);
++    char gk233_diag[320];
++    snprintf(gk233_diag,sizeof gk233_diag,
++      "EXEC0233 mode=%d frame=%u screen=%u stage=%u actions=%u remaining=%u status=%.150s",
++      gk233_practice_mode,(unsigned)frame,(unsigned)app.screen,
++      (unsigned)app.setup_stage[0],(unsigned)app.port_spring.actions_committed,
++      (unsigned)app.port_spring.remaining,app.status);
++    gk231_trace(gk233_diag);
++    int valid=1;
++    if(gk233_practice_mode==1){
++     if(frame==7u)valid=app.screen==GK1_SCREEN_SETUP_WIZARD;
++     if(frame==15u)valid=app.screen==GK1_SCREEN_SETUP_WIZARD&&
++       app.setup_stage[0]==GK53_SETUP_AWAIT_SOURCE;
++     if(frame==17u)valid=app.screen==GK1_SCREEN_ENHANCED_SPRING_LAB&&
++       app.port_spring.remaining==3u;
++     if(frame==19u)valid=app.port_spring.actions_committed==1u&&
++       app.port_spring.remaining==2u;
++     if(frame==21u)valid=strstr(app.status,"SOURCE-REPLAY VERIFIED")!=NULL;
++     if(frame==23u)valid=app.screen==GK1_SCREEN_SETUP_WIZARD;
++    }else if(gk233_practice_mode==2){
++     if(frame==1u)valid=app.screen==GK1_SCREEN_ENHANCED_SPRING_LAB&&
++       app.port_spring.actions_committed==1u&&app.port_spring.remaining==2u;
++     if(frame==3u)valid=app.port_spring.actions_committed==2u&&
++       app.port_spring.remaining==1u;
++     if(frame==5u)valid=strstr(app.status,"SOURCE-REPLAY VERIFIED")!=NULL;
++     if(frame==7u)valid=app.screen==GK1_SCREEN_SCENARIO_COUNTRIES;
++    }else if(gk233_practice_mode==3){
++     if(frame==1u)valid=app.screen==GK1_SCREEN_ENHANCED_SPRING_LAB&&
++       app.port_spring.actions_committed==2u&&app.port_spring.remaining==1u;
++     if(frame==3u)valid=app.screen==GK1_SCREEN_SCENARIO_COUNTRIES;
++    }else if(gk233_practice_mode==4 && frame==1u){
++     valid=app.screen==GK1_SCREEN_TITLE&&!app.port_spring.active&&
++       strstr(app.status,"CORRUPT - UNCHANGED")!=NULL;
++    }
++    if(!valid){
++     gk231_trace("EXEC0233 native Windows practice controller transition REFUSED");
++     if(IsWindow(hwnd))DestroyWindow(hwnd);
++     if(font)DeleteObject(font);return 9;
++    }
++   }else{
++    gk231_trace("before XInput");poll_xinput();gk231_trace("after XInput");
++   }
++   InvalidateRect(hwnd,NULL,FALSE);gk231_trace("before frame UpdateWindow");
++   UpdateWindow(hwnd);gk231_trace("after frame UpdateWindow");
+    Sleep(1);
+   }
+   int ok=running&&gk230_painted_frames>=smoke_frames;
++  if(gk233_practice_mode){
++   ok=ok&&app.rules_profile==1u&&app.active_world==0u&&
++     app.worlds[0].phase==GK1_PRE_SETUP_TEMPLATE&&
++     app.worlds[1].phase==GK1_PRE_SETUP_TEMPLATE&&
++     memcmp(gk232_original_worlds,app.worlds,sizeof gk232_original_worlds)==0;
++   if(gk233_practice_mode==4)
++     ok=ok&&app.screen==GK1_SCREEN_TITLE&&!app.port_spring.active;
++   else if(gk233_practice_mode==1)
++     ok=ok&&app.screen==GK1_SCREEN_SETUP_WIZARD;
++   else
++     ok=ok&&app.screen==GK1_SCREEN_SCENARIO_COUNTRIES;
++   gk231_trace(ok?"EXEC0233 Win32 Enhanced save/cold-load/corruption stage PASS":
++                   "EXEC0233 Win32 Enhanced persistence stage FAIL");
++  }
++  if(gk232_scripted_gamepad){
++   ok=ok&&app.screen==GK1_SCREEN_SCENARIO_COUNTRIES&&
++      app.rules_profile==0u&&app.active_world==0u&&
++      app.worlds[0].phase==GK1_PRE_SETUP_TEMPLATE&&
++      app.worlds[1].phase==GK1_PRE_SETUP_TEMPLATE&&
++      memcmp(gk232_original_worlds,app.worlds,sizeof gk232_original_worlds)==0;
++   gk231_trace(ok?"EXEC0232 scripted XInput menu navigation and original source immutability PASS":
++                 "EXEC0232 scripted XInput menu navigation FAIL");
++  }
+   if(IsWindow(hwnd))DestroyWindow(hwnd);
+   if(font)DeleteObject(font);
+   return ok?0:6;
+diff --git a/execution_199/gk237_owner_fresh_win.c b/execution_199/gk237_owner_fresh_win.c
+new file mode 100644
+index 0000000..1bb3edb
+--- /dev/null
++++ b/execution_199/gk237_owner_fresh_win.c
+@@ -0,0 +1,29 @@
++#include "gk237_owner_fresh_win.h"
++#include "gk166_fresh_entry.h"
++#include <stdio.h>
++#include <string.h>
++
++Gk237OwnerResult gk237_owner_fresh_boot(Gk1App *a,
++ const char *csv,const char *private_json){
++ if(!a||!csv||!*csv)return GK237_INVALID_ARGUMENT;
++ if(!private_json||!*private_json)return GK237_NOT_REQUESTED;
++ /* Deliberately never interpret a file as starting a new campaign. Only a
++  * pristine, already verified 14-country source template can receive this
++  * original NES observation, and the World template remains untouched. */
++ if(a->screen!=GK1_SCREEN_TITLE||a->stock_checkpoint.valid||
++    !a->world_ready[0]||!a->world_ready[1]||
++    a->worlds[0].phase!=GK1_PRE_SETUP_TEMPLATE||
++    a->worlds[1].phase!=GK1_PRE_SETUP_TEMPLATE||
++    a->worlds[0].country_count!=14u||
++    a->worlds[1].country_count!=27u||a->rules_profile>1u)
++  return GK237_REFUSED_CONTEXT;
++ /* GK166 independently checks the exact original-source CSV and SHA-pinned
++  * fresh JSON 14x83 record payload. All refusal paths leave app untouched.
++  * No licensed bytes or imported observations are built into this program. */
++ if(gk166_enter_original_fresh_json(a,csv,private_json,0u)!=GK166_OK)
++  return GK237_REFUSED_SOURCE;
++ a->rules_profile=0u;
++ snprintf(a->status,sizeof a->status,
++  "OWNER-PRIVATE FRESH 1175 RESTORED: 3 SOURCE ORDERS; NOT NES SETUP/RNG");
++ return GK237_IMPORTED;
++}
+diff --git a/execution_199/gk237_owner_fresh_win.h b/execution_199/gk237_owner_fresh_win.h
+new file mode 100644
+index 0000000..a6591bd
+--- /dev/null
++++ b/execution_199/gk237_owner_fresh_win.h
+@@ -0,0 +1,14 @@
++#ifndef GK237_OWNER_FRESH_WIN_H
++#define GK237_OWNER_FRESH_WIN_H
++#include "gk1_app_state.h"
++/* EXEC0237 — portable owner-activated fresh-stock WorkRAM handoff.  This
++ * exposes EXISTING authenticated GK166 checkpoint continuation to WinMain.
++ * No independent first-Spring generation, invented RNG or automatic import.
++ * The caller passes an explicit local owner-private file path. */
++typedef enum {
++ GK237_NOT_REQUESTED=0, GK237_IMPORTED=1, GK237_REFUSED_CONTEXT=2,
++ GK237_REFUSED_SOURCE=3, GK237_INVALID_ARGUMENT=4
++} Gk237OwnerResult;
++Gk237OwnerResult gk237_owner_fresh_boot(Gk1App *app,
++ const char *canonical_scenario_csv,const char *owner_private_json);
++#endif
+diff --git a/execution_199/gk238_owner_startup.c b/execution_199/gk238_owner_startup.c
+new file mode 100644
+index 0000000..1b5bd13
+--- /dev/null
++++ b/execution_199/gk238_owner_startup.c
+@@ -0,0 +1,12 @@
++#include "gk238_owner_startup.h"
++Gk238Startup gk238_owner_startup(Gk1App *app,const char *canonical_csv,
++ const char *private_json,int scenario_loaded,int diagnostic_mode){
++ /* An empty/unset owner path cannot become an automatic source search. */
++ if(!private_json||!*private_json)return GK238_UNREQUESTED;
++ /* Protect both genuine NSIS-installed game smoke and CI from accidentally
++  * consuming owner-private original bytes, even if an env var is inherited. */
++ if(diagnostic_mode)return GK238_SMOKE_ISOLATED;
++ if(!scenario_loaded||!app||!canonical_csv||!*canonical_csv)return GK238_REFUSED;
++ return gk237_owner_fresh_boot(app,canonical_csv,private_json)==GK237_IMPORTED?
++   GK238_OWNER_IMPORTED:GK238_REFUSED;
++}
+diff --git a/execution_199/gk238_owner_startup.h b/execution_199/gk238_owner_startup.h
+new file mode 100644
+index 0000000..b21b8b5
+--- /dev/null
++++ b/execution_199/gk238_owner_startup.h
+@@ -0,0 +1,14 @@
++#ifndef GK238_OWNER_STARTUP_H
++#define GK238_OWNER_STARTUP_H
++#include "gk237_owner_fresh_win.h"
++/* Controller startup gate. Owner paths are never opened in bounded CI smoke
++ * runs, and source-import refusal never mutates an app or canonical templates. */
++typedef enum {
++ GK238_UNREQUESTED=0,
++ GK238_OWNER_IMPORTED=1,
++ GK238_REFUSED=2,
++ GK238_SMOKE_ISOLATED=3
++} Gk238Startup;
++Gk238Startup gk238_owner_startup(Gk1App *app,const char *canonical_csv,
++ const char *private_json,int scenario_loaded,int diagnostic_mode);
++#endif
+diff --git a/execution_199/gk239_owner_world_mss.c b/execution_199/gk239_owner_world_mss.c
+new file mode 100644
+index 0000000..26fa492
+--- /dev/null
++++ b/execution_199/gk239_owner_world_mss.c
+@@ -0,0 +1,73 @@
++#include "gk239_owner_world_mss.h"
++#include "gk163_mesen_import.h"
++#include "gk162_original_entry.h"
++#include "gk1_source_identity.h"
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++
++static void secure_clear(void *p,size_t n){
++ volatile unsigned char *v=(volatile unsigned char *)p;
++ while(n--)*v++=0;
++}
++Gk239Status gk239_owner_world_startup(Gk1App *a,
++ const char *csv,const char *mss,const char *fresh_json,
++ int loaded,int diagnostic){
++ if(!mss||!*mss)return GK239_UNREQUESTED;
++ /* A diagnostic run must not open owner files, even on inherited env vars. */
++ if(diagnostic)return GK239_SMOKE_ISOLATED;
++ if(fresh_json&&*fresh_json)return GK239_CONFLICTING_SOURCES;
++ if(!a||!csv||!*csv||!loaded||a->screen!=GK1_SCREEN_TITLE||
++    a->rules_profile>1u||a->stock_checkpoint.valid||
++    !a->world_ready[0]||!a->world_ready[1]||
++    a->worlds[0].phase!=GK1_PRE_SETUP_TEMPLATE||
++    a->worlds[1].phase!=GK1_PRE_SETUP_TEMPLATE||
++    a->worlds[0].country_count!=14u||a->worlds[1].country_count!=27u||
++    a->worlds[1].scenario_id!=GK1_WORLD_CONQUEST||
++    !gk1_verified_original_csv(csv))return GK239_REFUSED;
++ /* Original Mesen archive contains native 8 KiB nesSaveRam, not fresh
++  * nesWorkRam. GK163 verifies the matching state schema, physical bank and
++  * pinned stock 27x83 country SHA before exposing any record bytes. */
++ uint8_t raw[GK163_MAX_RECORDS];
++ size_t size=0u;
++ Gk139MesenProof proof={0};
++ Gk163Status src=gk163_mesen_extract_with_proof(mss,
++    GK77_ARCHIVED_WORLD_SAVERAM,raw,&size,&proof);
++ if(src!=GK163_OK||size!=27u*GK77_RECORD_BYTES){
++  secure_clear(raw,sizeof raw);return GK239_REFUSED;
++ }
++ Gk77StockSpring *observed=(Gk77StockSpring*)calloc(1,sizeof *observed);
++ Gk79Checkpoint *candidate=(Gk79Checkpoint*)calloc(1,sizeof *candidate);
++ if(!observed||!candidate){free(observed);free(candidate);
++  secure_clear(raw,sizeof raw);return GK239_REFUSED;}
++ observed->profile=GK77_ARCHIVED_WORLD_SAVERAM;
++ observed->scenario=GK1_WORLD_CONQUEST;
++ observed->country_count=27u;
++ observed->orders=3u;
++ observed->year=1206u;
++ observed->rate=114u; /* only this archived original observation */
++ Gk239Status result=GK239_REFUSED;
++ for(unsigned i=0;i<27u;i++){
++  if(gk77_decode(raw+i*GK77_RECORD_BYTES,GK77_RECORD_BYTES,
++      &observed->countries[i])!=GK77_OK)goto done;
++ }
++ if(gk79_from_decoded(&a->worlds[1],observed,0u,candidate)!=GK79_OK)
++  goto done;
++ /* Source authenticity derives from GK163 bank+known source SHA, never
++  * from this user-visible import request or a synthetic profile. */
++ candidate->source_verified=1u;
++ if(!gk85_raw_source_intact(candidate)||!gk88_stock_projection_intact(candidate))
++  goto done;
++ if(gk162_commit_verified_checkpoint(a,csv,candidate)!=GK162_ENTRY_OK)
++  goto done;
++ a->rules_profile=0u;
++ snprintf(a->status,sizeof a->status,
++   "OWNER-PRIVATE ARCHIVED WORLD SPRING 1206: 3 SOURCE ORDERS; NOT FRESH RNG");
++ result=GK239_IMPORTED;
++done:
++ secure_clear(raw,sizeof raw);
++ secure_clear(observed,sizeof *observed);
++ secure_clear(candidate,sizeof *candidate);
++ free(observed);free(candidate);
++ return result;
++}
+diff --git a/execution_199/gk239_owner_world_mss.h b/execution_199/gk239_owner_world_mss.h
+new file mode 100644
+index 0000000..96386f6
+--- /dev/null
++++ b/execution_199/gk239_owner_world_mss.h
+@@ -0,0 +1,16 @@
++#ifndef GK239_OWNER_WORLD_MSS_H
++#define GK239_OWNER_WORLD_MSS_H
++#include "gk1_app_state.h"
++/* Owner-only archived original World Spring 1206 SaveRAM checkpoint, NOT a
++ * fresh reset, generated NES setup/RNG or a release-complete campaign. */
++typedef enum {
++ GK239_UNREQUESTED=0, GK239_IMPORTED=1, GK239_REFUSED=2,
++ GK239_SMOKE_ISOLATED=3, GK239_CONFLICTING_SOURCES=4
++} Gk239Status;
++/* Both source selectors originate from explicit owner-local environment
++ * variables. 'fresh_json' is the existing EXEC0238 WorkRAM import selector.
++ * Refuse ambiguous simultaneous selection without opening either file. */
++Gk239Status gk239_owner_world_startup(Gk1App *app,
++ const char *canonical_csv,const char *world_mss,const char *fresh_json,
++ int scenario_loaded,int diagnostic_mode);
++#endif
+diff --git a/execution_199/gk241_archived_import_capability.c b/execution_199/gk241_archived_import_capability.c
+new file mode 100644
+index 0000000..c8e8b14
+--- /dev/null
++++ b/execution_199/gk241_archived_import_capability.c
+@@ -0,0 +1,15 @@
++#include "gk241_archived_import_capability.h"
++Gk241ArchiveBackend gk241_archived_import_backend(void){
++#ifdef GK163_HAS_ZLIB
++ return GK241_ARCHIVE_BACKEND_ZLIB;
++#else
++ return GK241_ARCHIVE_BACKEND_UNAVAILABLE;
++#endif
++}
++const char *gk241_archived_refusal_message(void){
++#ifdef GK163_HAS_ZLIB
++ return "OWNER WORLD ARCHIVED SOURCE REFUSED; EXACT ORIGINAL SAVERAM EVIDENCE REQUIRED";
++#else
++ return "ARCHIVED WORLD IMPORT UNAVAILABLE: THIS BUILD LACKS ZLIB; NO GAME LOADED";
++#endif
++}
+diff --git a/execution_199/gk241_archived_import_capability.h b/execution_199/gk241_archived_import_capability.h
+new file mode 100644
+index 0000000..5836a1c
+--- /dev/null
++++ b/execution_199/gk241_archived_import_capability.h
+@@ -0,0 +1,12 @@
++#ifndef GK241_ARCHIVED_IMPORT_CAPABILITY_H
++#define GK241_ARCHIVED_IMPORT_CAPABILITY_H
++/* Compile-time capability of the actual native game's authenticated
++ * archived World Mesen .mss loader. Never describes source validity, and
++ * never grants first-Spring RNG or a campaign order. */
++typedef enum {
++ GK241_ARCHIVE_BACKEND_UNAVAILABLE=0,
++ GK241_ARCHIVE_BACKEND_ZLIB=1
++} Gk241ArchiveBackend;
++Gk241ArchiveBackend gk241_archived_import_backend(void);
++const char *gk241_archived_refusal_message(void);
++#endif
+diff --git a/execution_199/test_gk234_world_four_players.c b/execution_199/test_gk234_world_four_players.c
+new file mode 100644
+index 0000000..d26ef6c
+--- /dev/null
++++ b/execution_199/test_gk234_world_four_players.c
+@@ -0,0 +1,93 @@
++/* EXEC0234: real integrated four-player World campaign setup with source-gated
++ * refusal. Uses same native C11 Gk1App and gamepad router, not a mock game.
++ * Manual-derived controller choices only; NO original NES Spring generation. */
++#include "gk1_manual_setup_store.h"
++#include "gk1_pad_router.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++static unsigned assertions;
++#define REQUIRE(x) do { assertions++;if(!(x)){fprintf(stderr,"GK234 FAIL line %d: %s\n",__LINE__,#x);return 1;} } while(0)
++static int tap(Gk1PadRouter *router,Gk1App *game,uint16_t button){
++ Gk1PadSample off={0},on={0};Gk1PadAction actions[8];on.buttons=button;
++ (void)gk1_pad_step(router,&off,16,actions,8);
++ size_t n=gk1_pad_step(router,&on,16,actions,8);
++ for(size_t i=0;i<n;i++){
++  Gk1Input input=0;
++  switch(actions[i]){
++   case GK1_PAD_ACT_A: input=GK1_INPUT_CONFIRM;break;
++   case GK1_PAD_ACT_B: input=GK1_INPUT_CANCEL;break;
++   case GK1_PAD_ACT_UP:input=GK1_INPUT_UP;break;
++   case GK1_PAD_ACT_DOWN:input=GK1_INPUT_DOWN;break;
++   case GK1_PAD_ACT_LEFT:input=GK1_INPUT_LEFT;break;
++   case GK1_PAD_ACT_RIGHT:input=GK1_INPUT_RIGHT;break;
++   case GK1_PAD_ACT_MENU:input=GK1_INPUT_SETUP;break;
++   default:break;
++  }
++  if(input&&!gk1_app_input(game,input))return 0;
++ }
++ (void)gk1_pad_step(router,&off,16,actions,8);return 1;
++}
++int main(int argc,char **argv){
++ if(argc!=2)return 3;
++ Gk1TemplateDataset *data=malloc(sizeof *data);
++ Gk1App *game=malloc(sizeof *game),*reloaded=malloc(sizeof *reloaded);
++ Gk1App *snapshot=malloc(sizeof *snapshot);
++ REQUIRE(data&&game&&reloaded&&snapshot);
++ REQUIRE(gk1_template_load(argv[1],data)==GK1_LOAD_OK);
++ gk1_app_init(game);REQUIRE(gk1_app_install_templates(game,data));
++ Gk1PadRouter router;gk1_pad_init(&router);
++ REQUIRE(tap(&router,game,GK1_PAD_A)); /* title -> campaign */
++ REQUIRE(tap(&router,game,GK1_PAD_LEFT)); /* real Classic, not Enhanced */
++ REQUIRE(game->rules_profile==0);
++ REQUIRE(tap(&router,game,GK1_PAD_DOWN));
++ REQUIRE(tap(&router,game,GK1_PAD_A)); /* World scenario */
++ REQUIRE(game->screen==GK1_SCREEN_SCENARIO_COUNTRIES&&game->active_world==1);
++ REQUIRE(game->worlds[1].country_count==27&&game->worlds[0].country_count==14);
++ REQUIRE(tap(&router,game,GK1_PAD_A)); /* choose eligible World country 1 */
++ REQUIRE(tap(&router,game,GK1_PAD_MENU));
++ REQUIRE(game->screen==GK1_SCREEN_SETUP_WIZARD);
++ for(unsigned i=0;i<3;i++)REQUIRE(tap(&router,game,GK1_PAD_UP));
++ REQUIRE(game->setup_player_count[1]==4);
++ REQUIRE(tap(&router,game,GK1_PAD_A));
++ REQUIRE(game->setup_stage[1]==GK53_SETUP_DIFFICULTY);
++ for(unsigned i=0;i<4;i++)REQUIRE(tap(&router,game,GK1_PAD_RIGHT));
++ REQUIRE(game->setup_difficulty[1]==5);
++ REQUIRE(tap(&router,game,GK1_PAD_A));
++ REQUIRE(game->setup_stage[1]==GK53_SETUP_LORD);
++ const unsigned original_lords[4]={0,6,10,18};
++ for(unsigned i=0;i<4;i++){
++  REQUIRE(game->country_cursor[1]==original_lords[i]);
++  REQUIRE(tap(&router,game,GK1_PAD_A));
++  REQUIRE(game->setup_rulers[1][i]==original_lords[i]);
++ }
++ REQUIRE(game->setup_stage[1]==GK53_SETUP_ABILITIES);
++ REQUIRE(tap(&router,game,GK1_PAD_B));
++ REQUIRE(game->setup_stage[1]==GK53_SETUP_LORD&&game->setup_player_slot[1]==3);
++ REQUIRE(game->setup_rulers[1][3]==255);
++ REQUIRE(tap(&router,game,GK1_PAD_A));
++ REQUIRE(game->setup_rulers[1][3]==18&&game->setup_stage[1]==GK53_SETUP_ABILITIES);
++ REQUIRE(tap(&router,game,GK1_PAD_A)); /* automatic abilities */
++ REQUIRE(game->setup_stage[1]==GK53_SETUP_AWAIT_SOURCE);
++ REQUIRE(game->setup_ability_method[1]==1);
++ REQUIRE(tap(&router,game,GK1_PAD_A)); /* Classic must NOT enter false Spring */
++ REQUIRE(game->worlds[0].phase==GK1_PRE_SETUP_TEMPLATE&&game->worlds[1].phase==GK1_PRE_SETUP_TEMPLATE);
++ REQUIRE(game->screen==GK1_SCREEN_SETUP_WIZARD);
++ uint8_t encoded[GK53_PRE_SETUP_BYTES];
++ REQUIRE(gk53_setup_encode(game,data,encoded,sizeof encoded)==GK1_STORE_OK);
++ gk1_app_init(reloaded);REQUIRE(gk1_app_install_templates(reloaded,data));
++ REQUIRE(gk53_setup_decode(encoded,sizeof encoded,data,reloaded)==GK1_STORE_OK);
++ REQUIRE(reloaded->setup_player_count[1]==4&&reloaded->setup_difficulty[1]==5);
++ for(unsigned i=0;i<4;i++)REQUIRE(reloaded->setup_rulers[1][i]==original_lords[i]);
++ REQUIRE(reloaded->worlds[1].phase==GK1_PRE_SETUP_TEMPLATE&&reloaded->setup_stage[1]==GK53_SETUP_AWAIT_SOURCE);
++ /* Reject deliberate World setup corruption without modifying either world. */
++ *snapshot=*reloaded;
++ for(size_t k=0;k<sizeof encoded;k++){
++  uint8_t old=encoded[k];encoded[k]^=1u;
++  REQUIRE(gk53_setup_decode(encoded,sizeof encoded,data,reloaded)!=GK1_STORE_OK);
++  REQUIRE(memcmp(snapshot,reloaded,sizeof *reloaded)==0);
++  encoded[k]=old;
++ }
++ printf("EXEC0234 World four-player controller setup, no fake Spring, cold-load and hostile rollback %u assertions PASS\n",assertions);
++ free(snapshot);free(reloaded);free(game);free(data);return 0;
++}
+diff --git a/execution_199/test_gk235_world_multi_guard.c b/execution_199/test_gk235_world_multi_guard.c
+new file mode 100644
+index 0000000..e1a6b7c
+--- /dev/null
++++ b/execution_199/test_gk235_world_multi_guard.c
+@@ -0,0 +1,87 @@
++/* EXEC0235: same native world and input dispatcher. Original template countries
++ * remain PRE_SETUP. This tests a bounded Enhanced-only practice refusal, not
++ * authentic original Spring, which remains unimplemented. */
++#include "gk1_app_state.h"
++#include "gk1_pad_router.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++static unsigned checks;
++#define CHECK(q) do{checks++;if(!(q)){fprintf(stderr,"GK235 line %d: %s\n",__LINE__,#q);return 1;}}while(0)
++static int press(Gk1PadRouter *pad,Gk1App *a,uint16_t key){
++ Gk1PadAction actions[8];Gk1PadSample zero={0},one={0};one.buttons=key;
++ (void)gk1_pad_step(pad,&zero,16,actions,8);
++ size_t count=gk1_pad_step(pad,&one,16,actions,8);
++ for(size_t j=0;j<count;j++){
++  Gk1Input input=0;
++  switch(actions[j]){
++   case GK1_PAD_ACT_A:input=GK1_INPUT_CONFIRM;break;
++   case GK1_PAD_ACT_B:input=GK1_INPUT_CANCEL;break;
++   case GK1_PAD_ACT_UP:input=GK1_INPUT_UP;break;
++   case GK1_PAD_ACT_DOWN:input=GK1_INPUT_DOWN;break;
++   case GK1_PAD_ACT_LEFT:input=GK1_INPUT_LEFT;break;
++   case GK1_PAD_ACT_RIGHT:input=GK1_INPUT_RIGHT;break;
++   case GK1_PAD_ACT_MENU:input=GK1_INPUT_SETUP;break;
++   default:break;
++  }
++  if(input&&!gk1_app_input(a,input))return 0;
++ }
++ (void)gk1_pad_step(pad,&zero,16,actions,8);return 1;
++}
++static int world_setup(Gk1App *app,Gk1PadRouter *pad,unsigned humans){
++ /* New game starts Enhanced. Select World, then country #1. */
++ CHECK(press(pad,app,GK1_PAD_A));
++ CHECK(press(pad,app,GK1_PAD_DOWN));
++ CHECK(press(pad,app,GK1_PAD_A));
++ CHECK(app->active_world==1u && app->screen==GK1_SCREEN_SCENARIO_COUNTRIES);
++ CHECK(press(pad,app,GK1_PAD_A));
++ CHECK(press(pad,app,GK1_PAD_MENU));
++ for(unsigned i=1;i<humans;i++)CHECK(press(pad,app,GK1_PAD_UP));
++ CHECK(press(pad,app,GK1_PAD_A));
++ CHECK(press(pad,app,GK1_PAD_A));
++ for(unsigned i=0;i<humans;i++)CHECK(press(pad,app,GK1_PAD_A));
++ CHECK(press(pad,app,GK1_PAD_A));
++ CHECK(app->screen==GK1_SCREEN_SETUP_WIZARD&&app->setup_stage[1]==GK53_SETUP_AWAIT_SOURCE);
++ CHECK(app->setup_player_count[1]==humans&&app->setup_ability_method[1]==1);
++ return 0;
++}
++int main(int argc,char **argv){
++ if(argc!=2)return 2;
++ Gk1TemplateDataset *data=malloc(sizeof *data);
++ Gk1App *app=malloc(sizeof *app),*before=malloc(sizeof *before);
++ CHECK(data&&app&&before);
++ CHECK(gk1_template_load(argv[1],data)==GK1_LOAD_OK);
++ for(unsigned people=1;people<=4;people++){
++  gk1_app_init(app);
++  CHECK(gk1_app_install_templates(app,data));
++  Gk1PadRouter pad;gk1_pad_init(&pad);
++  CHECK(world_setup(app,&pad,people)==0);
++  CHECK(app->worlds[0].country_count==14u&&app->worlds[1].country_count==27u);
++  CHECK(app->worlds[0].phase==GK1_PRE_SETUP_TEMPLATE&&app->worlds[1].phase==GK1_PRE_SETUP_TEMPLATE);
++  *before=*app;
++  if(people>1){
++   CHECK(gk1_app_enhanced_spring_lab_open(app)==GK222_BAD_SOURCE);
++   CHECK(memcmp(before,app,sizeof *app)==0); /* pure rejected direct API */
++   CHECK(press(&pad,app,GK1_PAD_A));
++   CHECK(app->screen==GK1_SCREEN_SETUP_WIZARD && !app->port_spring.active);
++   CHECK(strstr(app->status,"MULTI-HUMAN SPRING NOT IMPLEMENTED")!=NULL);
++   CHECK(memcmp(before->worlds,app->worlds,sizeof app->worlds)==0);
++   CHECK(memcmp(before->setup_rulers,app->setup_rulers,sizeof app->setup_rulers)==0);
++   CHECK(memcmp(before->setup_player_count,app->setup_player_count,sizeof app->setup_player_count)==0);
++   CHECK(app->manual_remaining_orders==before->manual_remaining_orders);
++   CHECK(app->stock_checkpoint.orders.remaining==before->stock_checkpoint.orders.remaining);
++   /* Repeated A cannot promote pre-setup or spend a fake order. */
++   for(unsigned rep=0;rep<3;rep++)CHECK(press(&pad,app,GK1_PAD_A));
++   CHECK(app->screen==GK1_SCREEN_SETUP_WIZARD&&!app->port_spring.active);
++   CHECK(memcmp(before->worlds,app->worlds,sizeof app->worlds)==0);
++  }else{
++   CHECK(press(&pad,app,GK1_PAD_A));
++   CHECK(app->screen==GK1_SCREEN_ENHANCED_SPRING_LAB&&app->port_spring.active);
++   CHECK(app->port_spring.remaining==3u);
++   CHECK(memcmp(before->worlds,app->worlds,sizeof app->worlds)==0);
++   CHECK(app->rules_profile==1u);
++  }
++ }
++ printf("EXEC0235 %u checks: 1-human opt-in Enhanced practice, 2-4 human fail-closed and all 41 PRE_SETUP countries preserved PASS\n",checks);
++ free(before);free(app);free(data);return 0;
++}
+diff --git a/execution_199/test_gk237_owner_fresh_win.c b/execution_199/test_gk237_owner_fresh_win.c
+new file mode 100644
+index 0000000..2f45a57
+--- /dev/null
++++ b/execution_199/test_gk237_owner_fresh_win.c
+@@ -0,0 +1,66 @@
++#include "gk237_owner_fresh_win.h"
++#include "gk1_source_identity.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define CHECK(expr) do { if(!(expr)) { fprintf(stderr,"EXEC0237 line %d: %s\n",__LINE__,#expr);return 1; } assertions++; } while(0)
++static unsigned assertions;
++static int run(const char *csv,const char *private_path){
++ Gk1TemplateDataset *d=malloc(sizeof *d);
++ Gk1App *a=malloc(sizeof *a),*before=malloc(sizeof *before);
++ if(!d||!a||!before)return 2;
++ gk1_app_init(a);
++ CHECK(gk1_template_load(csv,d)==GK1_LOAD_OK);
++ CHECK(gk1_app_install_templates(a,d));
++ *before=*a;
++ CHECK(gk237_owner_fresh_boot(NULL,csv,private_path)==GK237_INVALID_ARGUMENT);
++ CHECK(gk237_owner_fresh_boot(a,NULL,private_path)==GK237_INVALID_ARGUMENT);
++ CHECK(gk237_owner_fresh_boot(a,"",private_path)==GK237_INVALID_ARGUMENT);
++ CHECK(gk237_owner_fresh_boot(a,csv,NULL)==GK237_NOT_REQUESTED);
++ CHECK(gk237_owner_fresh_boot(a,csv,"")==GK237_NOT_REQUESTED);
++ CHECK(memcmp(a,before,sizeof *a)==0);
++ CHECK(gk237_owner_fresh_boot(a,csv,"/path/not/found/EXEC0237") ==GK237_REFUSED_SOURCE);
++ CHECK(memcmp(a,before,sizeof *a)==0);
++ CHECK(gk237_owner_fresh_boot(a,"/path/not/found/invalid.csv", "private") ==GK237_REFUSED_SOURCE);
++ CHECK(memcmp(a,before,sizeof *a)==0);
++ CHECK(gk237_owner_fresh_boot(a,csv,csv)==GK237_REFUSED_SOURCE);
++ CHECK(memcmp(a,before,sizeof *a)==0);
++ /* Disallow transition from non-title, already-playable or modified templates. */
++ a->screen=GK1_SCREEN_CAMPAIGNS;
++ Gk1App *changed=malloc(sizeof *changed);if(!changed)return 2;
++ *changed=*a;
++ CHECK(gk237_owner_fresh_boot(a,csv,"anything") ==GK237_REFUSED_CONTEXT);
++ CHECK(memcmp(a,changed,sizeof *a)==0);
++ a->screen=GK1_SCREEN_TITLE;
++ a->worlds[1].phase=(Gk1ScenarioPhase)2;
++ *changed=*a;
++ CHECK(gk237_owner_fresh_boot(a,csv,"anything") ==GK237_REFUSED_CONTEXT);
++ CHECK(memcmp(a,changed,sizeof *a)==0);
++ a->worlds[1].phase=GK1_PRE_SETUP_TEMPLATE;
++ a->rules_profile=2;
++ *changed=*a;
++ CHECK(gk237_owner_fresh_boot(a,csv,"anything") ==GK237_REFUSED_CONTEXT);
++ CHECK(memcmp(a,changed,sizeof *a)==0);
++ *a=*before;
++ if(private_path&&*private_path){
++  CHECK(gk237_owner_fresh_boot(a,csv,private_path)==GK237_IMPORTED);
++  CHECK(a->rules_profile==0u);
++  CHECK(a->screen==GK1_SCREEN_STOCK_CONTINUE);
++  CHECK(a->stock_checkpoint.source_verified && a->stock_checkpoint.valid);
++  CHECK(a->stock_checkpoint.profile==GK77_FRESH_MONGOL_WORKRAM);
++  CHECK(a->stock_checkpoint.orders.remaining==3u);
++  /* One specific source observation. NEVER a universal game startup constant. */
++  CHECK(a->stock_checkpoint.world.countries[0].gold==430u);
++  CHECK(a->stock_checkpoint.world.countries[0].goods[10]==208u);
++  CHECK(a->stock_checkpoint.rate==121u);
++  CHECK(memcmp(a->worlds,before->worlds,sizeof a->worlds)==0);
++  *changed=*a;
++  CHECK(gk237_owner_fresh_boot(a,csv,private_path)==GK237_REFUSED_CONTEXT);
++  CHECK(memcmp(a,changed,sizeof *a)==0);
++  CHECK(gk237_owner_fresh_boot(a,csv,"/path/not/found/EXEC0237") ==GK237_REFUSED_CONTEXT);
++  CHECK(memcmp(a,changed,sizeof *a)==0);
++ }
++ printf("EXEC0237 %u assertions PASS: owner-local WinMain fresh WorkRAM opt-in %s; no new Mesen, original NES Spring or physical Xbox\n",assertions,private_path?"AUTHENTIC PRIVATE SOURCE":"PUBLIC NEGATIVE CONTROLS");
++ free(changed);free(before);free(a);free(d);return 0;
++}
++int main(int argc,char **argv){if(argc!=2&&argc!=3)return 3;return run(argv[1],argc==3?argv[2]:NULL);}
+diff --git a/execution_199/test_gk238_owner_startup.c b/execution_199/test_gk238_owner_startup.c
+new file mode 100644
+index 0000000..9458e2f
+--- /dev/null
++++ b/execution_199/test_gk238_owner_startup.c
+@@ -0,0 +1,44 @@
++#include "gk238_owner_startup.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define CHECK(x) do {if(!(x)){fprintf(stderr,"EXEC0238 failed line %d: %s\n",__LINE__,#x);return 1;}count++;}while(0)
++int main(int argc,char **argv){
++ if(argc!=2&&argc!=3)return 2;
++ unsigned count=0;
++ Gk1TemplateDataset *dataset=malloc(sizeof *dataset);
++ Gk1App *app=malloc(sizeof *app),*before=malloc(sizeof *before);
++ if(!dataset||!app||!before)return 3;
++ gk1_app_init(app);
++ CHECK(gk1_template_load(argv[1],dataset)==GK1_LOAD_OK);
++ CHECK(gk1_app_install_templates(app,dataset));
++ *before=*app;
++ CHECK(gk238_owner_startup(app,argv[1],NULL,1,0)==GK238_UNREQUESTED);
++ CHECK(gk238_owner_startup(app,argv[1],"",1,0)==GK238_UNREQUESTED);
++ CHECK(gk238_owner_startup(app,argv[1],"/nonexistent/private.json",1,1)==GK238_SMOKE_ISOLATED);
++ CHECK(gk238_owner_startup(app,argv[1],"/nonexistent/private.json",0,0)==GK238_REFUSED);
++ CHECK(gk238_owner_startup(app,argv[1],"/nonexistent/private.json",1,0)==GK238_REFUSED);
++ CHECK(gk238_owner_startup(app,argv[1],argv[1],1,0)==GK238_REFUSED);
++ CHECK(gk238_owner_startup(app,"/nonexistent/countries.csv","/nonexistent/private.json",1,0)==GK238_REFUSED);
++ CHECK(gk238_owner_startup(app,NULL,"/nonexistent/private.json",1,0)==GK238_REFUSED);
++ CHECK(gk238_owner_startup(NULL,argv[1],"/nonexistent/private.json",1,0)==GK238_REFUSED);
++ CHECK(memcmp(app,before,sizeof *app)==0);
++ CHECK(app->worlds[0].country_count==14&&app->worlds[1].country_count==27);
++ CHECK(app->screen==GK1_SCREEN_TITLE);
++ if(argc==3){
++  CHECK(gk238_owner_startup(app,argv[1],argv[2],1,1)==GK238_SMOKE_ISOLATED);
++  CHECK(memcmp(app,before,sizeof *app)==0);
++  CHECK(gk238_owner_startup(app,argv[1],argv[2],1,0)==GK238_OWNER_IMPORTED);
++  CHECK(app->screen==GK1_SCREEN_STOCK_CONTINUE);
++  CHECK(app->rules_profile==0u);
++  CHECK(app->stock_checkpoint.source_verified&&app->stock_checkpoint.valid);
++  CHECK(app->stock_checkpoint.orders.remaining==3u);
++  CHECK(app->stock_checkpoint.profile==GK77_FRESH_MONGOL_WORKRAM);
++  CHECK(memcmp(app->worlds,before->worlds,sizeof app->worlds)==0);
++  *before=*app;
++  CHECK(gk238_owner_startup(app,argv[1],argv[2],1,0)==GK238_REFUSED);
++  CHECK(memcmp(app,before,sizeof *app)==0);
++ }
++ printf("EXEC0238 %u assertions PASS; owner opt-in, fail closed, smoke isolation; no independent NES Spring or physical Xbox\n",count);
++ free(dataset);free(app);free(before);return 0;
++}
+diff --git a/execution_199/test_gk239_owner_world_mss.c b/execution_199/test_gk239_owner_world_mss.c
+new file mode 100644
+index 0000000..a918289
+--- /dev/null
++++ b/execution_199/test_gk239_owner_world_mss.c
+@@ -0,0 +1,53 @@
++#include "gk239_owner_world_mss.h"
++#include "gk1_source_identity.h"
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++#define CHECK(expr) do {if(!(expr)){fprintf(stderr,"EXEC0239 line %d: %s\n",__LINE__,#expr);return 1;}checks++;}while(0)
++int main(int argc,char **argv){
++ if(argc!=2&&argc!=4)return 2;
++ unsigned checks=0u;
++ Gk1App *a=(Gk1App*)malloc(sizeof *a);
++ Gk1App *before=(Gk1App*)malloc(sizeof *before);
++ Gk1TemplateDataset *ds=(Gk1TemplateDataset*)malloc(sizeof *ds);
++ if(!a||!before||!ds)return 3;
++ gk1_app_init(a);
++ CHECK(gk1_template_load(argv[1],ds)==GK1_LOAD_OK);
++ CHECK(gk1_app_install_templates(a,ds));
++ *before=*a;
++ CHECK(gk239_owner_world_startup(a,argv[1],NULL,NULL,1,0)==GK239_UNREQUESTED);
++ CHECK(gk239_owner_world_startup(a,argv[1],"",NULL,1,0)==GK239_UNREQUESTED);
++ CHECK(gk239_owner_world_startup(a,argv[1],"/not/found.mss",NULL,1,1)==GK239_SMOKE_ISOLATED);
++ CHECK(gk239_owner_world_startup(a,argv[1],"/not/found.mss","/not/found.json",1,0)==GK239_CONFLICTING_SOURCES);
++ CHECK(gk239_owner_world_startup(a,argv[1],"/not/found.mss",NULL,0,0)==GK239_REFUSED);
++ CHECK(gk239_owner_world_startup(a,argv[1],"/not/found.mss",NULL,1,0)==GK239_REFUSED);
++ CHECK(gk239_owner_world_startup(a,argv[1],argv[1],NULL,1,0)==GK239_REFUSED);
++ CHECK(gk239_owner_world_startup(a,"/not/found.csv","/not/found.mss",NULL,1,0)==GK239_REFUSED);
++ CHECK(gk239_owner_world_startup(NULL,argv[1],"/not/found.mss",NULL,1,0)==GK239_REFUSED);
++ CHECK(memcmp(a,before,sizeof *a)==0);
++ CHECK(a->worlds[0].country_count==14u&&a->worlds[1].country_count==27u);
++ CHECK(a->screen==GK1_SCREEN_TITLE);
++ if(argc==4){
++  /* Optional owner-local positive original World Mesen state and distinct
++   * original Mongol state. Neither may ship with a public ZIP/installer. */
++  CHECK(gk239_owner_world_startup(a,argv[1],argv[2],NULL,1,1)==GK239_SMOKE_ISOLATED);
++  CHECK(memcmp(a,before,sizeof *a)==0);
++  CHECK(gk239_owner_world_startup(a,argv[1],argv[3],NULL,1,0)==GK239_REFUSED);
++  CHECK(memcmp(a,before,sizeof *a)==0);
++  CHECK(gk239_owner_world_startup(a,argv[1],argv[2],NULL,1,0)==GK239_IMPORTED);
++  CHECK(a->screen==GK1_SCREEN_STOCK_CONTINUE);
++  CHECK(a->stock_checkpoint.valid&&a->stock_checkpoint.source_verified);
++  CHECK(a->stock_checkpoint.profile==GK77_ARCHIVED_WORLD_SAVERAM);
++  CHECK(a->stock_checkpoint.year==1206u&&a->stock_checkpoint.rate==114u);
++  CHECK(a->stock_checkpoint.world.country_count==27u);
++  CHECK(a->stock_checkpoint.orders.remaining==3u);
++  CHECK(a->active_world==1u&&a->rules_profile==0u);
++  CHECK(memcmp(a->worlds,before->worlds,sizeof a->worlds)==0);
++  CHECK(gk85_raw_source_intact(&a->stock_checkpoint));
++  *before=*a;
++  CHECK(gk239_owner_world_startup(a,argv[1],argv[2],NULL,1,0)==GK239_REFUSED);
++  CHECK(memcmp(a,before,sizeof *a)==0);
++ }
++ printf("EXEC0239 %u assertions PASS; archived original World owner state import; no NES first Spring RNG or Xbox\n",checks);
++ free(a);free(before);free(ds);return 0;
++}
+diff --git a/execution_199/test_gk240_archived_optional_zlib.c b/execution_199/test_gk240_archived_optional_zlib.c
+new file mode 100644
+index 0000000..3fdbd3b
+--- /dev/null
++++ b/execution_199/test_gk240_archived_optional_zlib.c
+@@ -0,0 +1,48 @@
++/* EXEC0240: build-contract test for optional Mesen inflater.
++ * No copyrighted source bytes, no owner paths, no artificial successful import.
++ * It deliberately differentiates no-zlib from a zlib-enabled build.
++ */
++#include "gk182_archived_source_bank.h"
++#include "gk163_mesen_import.h"
++#include <stdio.h>
++#include <string.h>
++int main(void){
++ Gk182SavedBankProof proof;
++ memset(&proof,0x5a,sizeof proof);
++ if(gk182_original_saved_bank(NULL,"/missing/private.mss",
++    GK77_ARCHIVED_WORLD_SAVERAM,&proof)!=GK182_ARGUMENT)return 1;
++ if(gk182_original_saved_bank("/missing/private.nes",NULL,
++    GK77_ARCHIVED_WORLD_SAVERAM,&proof)!=GK182_ARGUMENT)return 2;
++ if(gk182_original_saved_bank("/missing/private.nes","/missing/private.mss",
++    (Gk77Profile)99,&proof)!=GK182_ARGUMENT)return 3;
++ Gk182Status status=gk182_original_saved_bank("/missing/private.nes",
++    "/missing/private.mss",GK77_ARCHIVED_WORLD_SAVERAM,&proof);
++#ifdef GK163_HAS_ZLIB
++ if(status!=GK182_SOURCE)return 4;
++ puts("EXEC0240 PASS: zlib build refuses missing original source; no private input used");
++#else
++ if(status!=GK182_UNAVAILABLE)return 5;
++ puts("EXEC0240 PASS: no-zlib build explicitly refuses original importer");
++#endif
++ /* Both entry points reject absent private source and do not mutate output. */
++ unsigned char records[GK163_MAX_RECORDS];
++ memset(records,0xc3,sizeof records);
++ size_t count=17u;
++ Gk139MesenProof cpu;
++ memset(&cpu,0xa1,sizeof cpu);
++ Gk163Status unpack=gk163_mesen_extract_with_proof("/missing/private.mss",
++    GK77_ARCHIVED_WORLD_SAVERAM,records,&count,&cpu);
++#ifdef GK163_HAS_ZLIB
++ if(unpack!=GK163_IO)return 7;
++#else
++ if(unpack!=GK163_UNAVAILABLE)return 8;
++#endif
++ if(count!=17u)return 9;
++ for(size_t i=0;i<sizeof records;i++)if(records[i]!=0xc3)return 10;
++ const unsigned char *cp=(const unsigned char *)&cpu;
++ for(size_t i=0;i<sizeof cpu;i++)if(cp[i]!=0xa1)return 11;
++ /* Failure must not hand back fabricated source proof. */
++ const unsigned char *b=(const unsigned char *)&proof;
++ for(size_t i=0;i<sizeof proof;i++)if(b[i]!=0x5a)return 6;
++ return 0;
++}
+diff --git a/execution_199/test_gk241_archived_import_capability.c b/execution_199/test_gk241_archived_import_capability.c
+new file mode 100644
+index 0000000..816f732
+--- /dev/null
++++ b/execution_199/test_gk241_archived_import_capability.c
+@@ -0,0 +1,37 @@
++#include "gk241_archived_import_capability.h"
++#include "gk239_owner_world_mss.h"
++#include "gk1_source_identity.h"
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++#define CHECK(test) do {if(!(test)){fprintf(stderr,"GK241 assertion %d: %s\n",__LINE__,#test);return 1;} checks++;}while(0)
++int main(int argc,char **argv){
++ if(argc!=2)return 2;
++ unsigned checks=0;
++ Gk1TemplateDataset *ds=malloc(sizeof *ds);
++ Gk1App *app=malloc(sizeof *app);
++ Gk1App *before=malloc(sizeof *before);
++ if(!ds||!app||!before)return 3;
++ gk1_app_init(app);
++ CHECK(gk1_template_load(argv[1],ds)==GK1_LOAD_OK);
++ CHECK(gk1_app_install_templates(app,ds));
++ *before=*app;
++#ifdef GK163_HAS_ZLIB
++ CHECK(gk241_archived_import_backend()==GK241_ARCHIVE_BACKEND_ZLIB);
++ CHECK(strstr(gk241_archived_refusal_message(),"EXACT ORIGINAL SAVERAM")!=NULL);
++#else
++ CHECK(gk241_archived_import_backend()==GK241_ARCHIVE_BACKEND_UNAVAILABLE);
++ CHECK(strstr(gk241_archived_refusal_message(),"LACKS ZLIB")!=NULL);
++#endif
++ CHECK(gk239_owner_world_startup(app,argv[1],"/missing/stock.mss",NULL,1,1)==GK239_SMOKE_ISOLATED);
++ CHECK(memcmp(app,before,sizeof *app)==0);
++ CHECK(gk239_owner_world_startup(app,argv[1],"/missing/stock.mss","/missing/fresh.json",1,0)==GK239_CONFLICTING_SOURCES);
++ CHECK(memcmp(app,before,sizeof *app)==0);
++ CHECK(gk239_owner_world_startup(app,argv[1],"/missing/stock.mss",NULL,1,0)==GK239_REFUSED);
++ CHECK(memcmp(app,before,sizeof *app)==0);
++ CHECK(app->worlds[0].country_count==14u && app->worlds[1].country_count==27u);
++ CHECK(app->screen==GK1_SCREEN_TITLE);
++ CHECK(app->stock_checkpoint.valid==0u);
++ printf("EXEC0241 %u assertion PASS; backend=%d (NO private original loaded, Windows NOT RUN)\n",checks,(int)gk241_archived_import_backend());
++ free(before);free(app);free(ds);return 0;
++}
+diff --git a/execution_199/test_gk242_win32_archive_link.c b/execution_199/test_gk242_win32_archive_link.c
+new file mode 100644
+index 0000000..a781be6
+--- /dev/null
++++ b/execution_199/test_gk242_win32_archive_link.c
+@@ -0,0 +1,37 @@
++/* EXEC0242: archive-backend link-and-runtime test. Copyright-clean;
++ * synthetic compressed bytes only, never original ROM/Mesen evidence. */
++#include "gk241_archived_import_capability.h"
++#include <zlib.h>
++#include <stdio.h>
++#include <string.h>
++#include <stdint.h>
++#ifndef GK163_HAS_ZLIB
++#error "EXEC0242 release-archive test was compiled without required ZLIB"
++#endif
++#define CHECK(cond) do { if (!(cond)) { \
++ fprintf(stderr,"EXEC0242 assertion failed at %d: %s\n",__LINE__,#cond); \
++ return 1; } ++checks; } while(0)
++int main(void) {
++ static const Bytef source[]="GK1-EXEC0242 synthetic-archive-backend 27 countries; not Mesen data";
++ Bytef zipped[256], unzipped[sizeof(source)];
++ uLongf zipped_size=sizeof zipped;
++ uLongf output_size=sizeof unzipped;
++ unsigned checks=0;
++ CHECK(gk241_archived_import_backend()==GK241_ARCHIVE_BACKEND_ZLIB);
++ CHECK(zlibVersion()!=NULL && zlibVersion()[0]!='\0');
++ CHECK(compressBound(sizeof source)<=sizeof zipped);
++ CHECK(compress2(zipped,&zipped_size,source,sizeof source,Z_BEST_COMPRESSION)==Z_OK);
++ CHECK(zipped_size>8 && zipped_size<sizeof source+16);
++ CHECK(uncompress(unzipped,&output_size,zipped,zipped_size)==Z_OK);
++ CHECK(output_size==sizeof source);
++ CHECK(memcmp(unzipped,source,sizeof source)==0);
++ zipped[0]^=0x5au;
++ output_size=sizeof unzipped;
++ CHECK(uncompress(unzipped,&output_size,zipped,zipped_size)!=Z_OK);
++#if defined(_WIN32)
++ printf("EXEC0242 TESTED_PORT_WIN32 synthetic DEFLATE link/runtime and source backend %u assertions PASS; not physical Xbox or original NES\n",checks);
++#else
++ printf("EXEC0242 TESTED_PORT_LINUX synthetic DEFLATE link/runtime and source backend %u assertions PASS; Windows not tested by this process\n",checks);
++#endif
++ return 0;
++}
