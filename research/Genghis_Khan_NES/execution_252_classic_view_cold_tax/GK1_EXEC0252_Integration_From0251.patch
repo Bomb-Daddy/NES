@@ -1,0 +1,146 @@
+--- a/source/execution_199/gk1_app_state.c
++++ b/source/execution_199/gk1_app_state.c
+@@ -797,11 +797,15 @@
+    const Gk134CommandRoute route=gk134_command_route(s->stock_command_cursor);
+    if(route==GK134_ROUTE_VIEW){
+     if(s->rules_profile==0u && s->classic_assign.active){
++     /* EXEC0252: VIEW is a country browser, not an implicit jump back to
++      * the player's home country. Preserve the explicitly browsed index
++      * across the 14/27-country authenticated GC19 cold-load, including
++      * a completed three-order season. Validate THAT selected country
++      * before changing any UI state; do not mutate authentic NES records. */
+      Gk195CountryView v;
+-     if(gk195_classic_country_view(s,cp->player_index,&v)!=GK195_OK){
+-      strcpy(s->status,"CLASSIC VIEW REFUSED: SOURCE/ASSIGN REPLAY INVALID");return 1;
+-     }
+-     cp->view_index=cp->player_index;
++     if(gk195_classic_country_view(s,cp->view_index,&v)!=GK195_OK){
++      strcpy(s->status,"CLASSIC VIEW REFUSED: SOURCE/SELECTED COUNTRY INVALID");return 1;
++     }
+      s->stock_checkpoint.raw_view=0u;s->stock_reconcile_view=0u;
+     }
+     cp->pending_pass=0;s->screen=GK1_SCREEN_STOCK_CONTINUE;
+--- a/source/execution_199/gk1_native_shell.c
++++ b/source/execution_199/gk1_native_shell.c
+@@ -1132,8 +1132,12 @@
+     snprintf(line,sizeof line,"%s %u -> %u   %s %u -> %u",pools[3],
+      (unsigned)a->artisans,(unsigned)b->artisans,pools[4],
+      (unsigned)a->food_workers,(unsigned)b->food_workers);label(104,371,line,FG);
+-    snprintf(line,sizeof line,"GOLD %u FOOD %u RATE %u - ALL UNCHANGED FROM STOCK",
+-     (unsigned)b->gold,(unsigned)b->goods[10],(unsigned)cp->rate);label(104,412,line,FG);
++    /* Source exchange Rate is NOT the editable TAX percentage. Keep
++     * both visible after a real controller Tax and private cold resume;
++     * original Gold/Food are unchanged, but the PORT tax rate can differ. */
++    snprintf(line,sizeof line,"GOLD %u  FOOD %u  TRADE RATE %u  TAX %u -> %u (PORT)",
++     (unsigned)b->gold,(unsigned)b->goods[10],(unsigned)cp->rate,
++     (unsigned)a->tax,(unsigned)b->tax);label(104,412,line,FG);
+     label(104,458,cv.passed?"CLASSIC PASS COMPLETE - NO STOCK SEASON GENERATED":
+      cv.remaining?"A PASS: DOUBLE CONFIRM / B CANCEL / DPAD COUNTRIES":
+      "THREE ORDERS SPENT; NEXT STOCK SEASON UNIMPLEMENTED",WARN);
+@@ -3866,6 +3870,9 @@
+       original.orders.remaining!=app.stock_checkpoint.orders.remaining||
+       memcmp(original.stock_raw,app.stock_checkpoint.stock_raw,sizeof original.stock_raw))return 300;
+    if(smoke_classic_three_cold_original){
++    /* EXEC0252: preserve a real selected foreign country through the
++     * same source-authenticated private GC19 controller cold-load. */
++    app.stock_checkpoint.view_index=(uint8_t)(app.stock_checkpoint.world.country_count-1u);
+     /* EXEC0250: the REAL native-controller path above has performed three
+      * source-backed PORT orders. Save a private GC19, recreate a pristine
+      * application from the installed CSV (not by copying the live app),
+@@ -3896,6 +3903,7 @@
+        gk189_cold_load(private_path,scenario_csv_path(),restored)==GK189_OK &&
+        restored->screen==GK1_SCREEN_STOCK_COMMANDS &&
+        restored->stock_command_cursor==6u &&
++       restored->stock_checkpoint.view_index==original.world.country_count-1u &&
+        restored->stock_checkpoint.pending_pass==0u &&
+        restored->classic_assign.action_count==3u &&
+        restored->classic_assign.budget.remaining==0u &&
+@@ -3911,8 +3919,18 @@
+       const Gk187ClassicAssign before_view=restored->classic_assign;
+       good=(gk1_app_input(restored,GK1_INPUT_CONFIRM)==1 &&
+         restored->screen==GK1_SCREEN_STOCK_CONTINUE &&
++        restored->stock_checkpoint.view_index==original.world.country_count-1u &&
++        gk1_app_input(restored,GK1_INPUT_RIGHT)==1 &&
++        restored->stock_checkpoint.view_index==0u &&
+         !memcmp(&before_view,&restored->classic_assign,sizeof before_view) &&
+         gk187_intact(&restored->classic_assign,&restored->stock_checkpoint));
++      if(good){
++       Gk195CountryView selected={0};
++       good=(gk195_classic_country_view(restored,0u,&selected)==GK195_OK &&
++         selected.derived && selected.is_player &&
++         selected.current.tax==original_tax+2u &&
++         selected.original.tax==original_tax);
++      }
+     }
+     if(good){
+       *snapshot=*restored;
+--- a/source/execution_199/test_gk189_classic_cold_save.c
++++ b/source/execution_199/test_gk189_classic_cold_save.c
+@@ -5,6 +5,7 @@
+ #include "gk162_original_entry.h"
+ #include "gk193_auto_source_entry.h"
+ #include "gk1_source_identity.h"
++#include "gk195_classic_view.h"
+ #ifdef NDEBUG
+ #undef NDEBUG
+ #endif
+@@ -58,8 +59,11 @@
+  a->rules_profile=0u;
+  CHECK(gk187_open(&a->stock_checkpoint,&a->classic_assign)==GK187_OK);
+  CHECK(gk187_transfer(&a->classic_assign,&a->stock_checkpoint,0,4,1)==GK187_OK);
+- CHECK(gk187_transfer(&a->classic_assign,&a->stock_checkpoint,0,4,1)==GK187_OK);
+- a->stock_checkpoint.view_index=0u;
++ unsigned original_tax=a->stock_checkpoint.world.countries[0].tax;
++ CHECK(original_tax>=1u&&original_tax<=100u);
++ unsigned changed_tax=original_tax==100u?99u:original_tax+1u;
++ CHECK(gk187_set_tax(&a->classic_assign,&a->stock_checkpoint,(uint8_t)changed_tax)==GK187_OK);
++ a->stock_checkpoint.view_index=(uint8_t)(a->stock_checkpoint.world.country_count-1u);
+  CHECK(gk187_intact(&a->classic_assign,&a->stock_checkpoint));
+  char path[1024];
+ #ifndef _WIN32
+@@ -80,6 +84,7 @@
+  CHECK(gk189_cold_load(path,csv,loaded)==GK189_OK);
+  CHECK(loaded->screen==GK1_SCREEN_STOCK_COMMANDS);
+  CHECK(loaded->stock_command_cursor==0u);
++ CHECK(loaded->stock_checkpoint.view_index==loaded->stock_checkpoint.world.country_count-1u);
+  CHECK(loaded->classic_assign.budget.remaining==1u);
+  CHECK(loaded->classic_assign.action_count==2u);
+  CHECK(gk1_app_input(loaded,GK1_INPUT_CONFIRM)==1);
+@@ -88,6 +93,21 @@
+  CHECK(loaded->screen==GK1_SCREEN_STOCK_COMMANDS);
+  CHECK(loaded->classic_assign.budget.remaining==1u);
+  CHECK(gk187_intact(&loaded->classic_assign,&loaded->stock_checkpoint));
++ /* Actual controller VIEW must honor the saved nonplayer-country cursor,
++  * then wrap 14/27 countries without rewriting the authentic source. */
++ loaded->stock_command_cursor=6u;
++ CHECK(gk1_app_input(loaded,GK1_INPUT_CONFIRM)==1);
++ CHECK(loaded->screen==GK1_SCREEN_STOCK_CONTINUE);
++ CHECK(loaded->stock_checkpoint.view_index==loaded->stock_checkpoint.world.country_count-1u);
++ CHECK(gk1_app_input(loaded,GK1_INPUT_RIGHT)==1);
++ CHECK(loaded->stock_checkpoint.view_index==0u);
++ Gk195CountryView derived={0};
++ CHECK(gk195_classic_country_view(loaded,0u,&derived)==GK195_OK);
++ CHECK(derived.is_player&&derived.derived&&derived.actions==2u);
++ CHECK(derived.original.tax==original_tax&&derived.current.tax==changed_tax);
++ CHECK(derived.current.gold==derived.original.gold);
++ CHECK(gk1_app_input(loaded,GK1_INPUT_SETUP)==1);
++ CHECK(loaded->screen==GK1_SCREEN_STOCK_COMMANDS);
+  CHECK(remove(path)==0);
+  CHECK(gk187_pass(&a->classic_assign,&a->stock_checkpoint)==GK187_OK);
+  CHECK(gk187_intact(&a->classic_assign,&a->stock_checkpoint));
+@@ -96,6 +116,7 @@
+  CHECK(gk189_cold_load(path,csv,loaded)==GK189_OK);
+  CHECK(loaded->screen==GK1_SCREEN_STOCK_COMMANDS);
+  CHECK(loaded->stock_command_cursor==6u);
++ CHECK(loaded->stock_checkpoint.view_index==a->stock_checkpoint.view_index);
+  CHECK(loaded->stock_checkpoint.pending_pass==0u);
+  CHECK(loaded->classic_assign.passed==1u&&loaded->classic_assign.action_count==2u);
+  CHECK(loaded->classic_assign.budget.remaining==0u);
+@@ -115,6 +136,7 @@
+  Gk187ClassicAssign before_view=loaded->classic_assign;
+  CHECK(gk1_app_input(loaded,GK1_INPUT_CONFIRM)==1);
+  CHECK(loaded->screen==GK1_SCREEN_STOCK_CONTINUE);
++ CHECK(loaded->stock_checkpoint.view_index==a->stock_checkpoint.view_index);
+  CHECK(!memcmp(&loaded->classic_assign,&before_view,sizeof before_view));
+  CHECK(gk187_intact(&loaded->classic_assign,&loaded->stock_checkpoint));
+  /* Atomicity on incorrect canonical pre-setup template, even with valid file. */
