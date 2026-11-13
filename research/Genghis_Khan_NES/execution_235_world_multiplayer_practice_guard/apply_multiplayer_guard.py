@@ -37,7 +37,7 @@ def transform(src,cm):
 def install(root,donor):
  base=root/BASE; src=base/'gk1_app_state.c';cm=base/'CMakeLists.txt';out=base/'test_gk235_world_multi_guard.c'
  if out.exists():raise ValueError('test already exists')
- old=src.read_text();build=cm.read_text();a,b=transform(old,build)
+ old=src.read_text(encoding="utf-8");build=cm.read_text(encoding="utf-8");a,b=transform(old,build)
  payload=donor.read_bytes()
  if b'EXEC0235' not in payload or len(payload)<2000:raise ValueError('test donor incomplete')
  src.write_text(a,encoding='utf-8',newline='');cm.write_text(b,encoding='utf-8',newline='');out.write_bytes(payload)
