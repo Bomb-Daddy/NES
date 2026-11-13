@@ -27,28 +27,36 @@ jobs:
           $actual = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
           if ($actual -ne $expected) { throw "Inherited native source SHA mismatch $actual" }
           Expand-Archive -LiteralPath $archive -DestinationPath current-gk1 -Force
-          # EXEC0260: capture the actual SHA-pinned ZIP contents (not assumptions
-          # about the historical parent build) when the patch fails.
-          Write-Output '=== PINNED ARCHIVE WORKFLOW FIRST LINES ==='
-          Get-Content 'current-gk1/.github/workflows/gk1-native-windows.yml' -TotalCount 12
-          Write-Output '=== PINNED ARCHIVE CMAKE FINAL LINES ==='
-          Get-Content 'current-gk1/execution_199/CMakeLists.txt' -Tail 25
-          Write-Output ('=== PREEXISTING 0257 TEST: ' + (Test-Path 'current-gk1/execution_199/packaging/test_gk257_win32_acceptance.ps1'))
+          # EXEC0260: import source-only acceptance scripts from the immutable
+          # EXEC0257 patch. Its original workflow and CMake hunks don't match
+          # this SHA-pinned ZIP, so never claim the whole old patch was applied.
           $patch = 'research/Genghis_Khan_NES/execution_257_current_win32_gate/GK1_EXEC0257_Integration_From0256.patch'
-          # EXEC0260: apply from repository root, with an explicit destination directory.
-          # "git -C current-gk1 apply" silently skips outside-prefix paths when
-          # current-gk1 is an untracked subdirectory of this checkout (Win32 run 43495268577).
-          git apply --check --directory=current-gk1 "$patch"
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0257 patch does not apply to pinned complete source' }
-          git apply --directory=current-gk1 "$patch"
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0257 integration patch failed' }
-          git apply --reverse --check --directory=current-gk1 "$patch"
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0257 reverse patch verification failed' }
-          if (-not (Test-Path 'current-gk1/execution_199/packaging/test_gk257_win32_acceptance.ps1')) {
-            throw 'EXEC0257 Win32 acceptance test not materialized in extracted app'
-          }
-          # EXEC0259: compile nonportable historical test sources under MSVC without
-          # sacrificing Linux XDG coverage or silently skipping Win32 path policy.
+          git apply --check --directory=current-gk1 --include='execution_199/packaging/*' "$patch"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0257 packaging files cannot apply to pinned source' }
+          git apply --directory=current-gk1 --include='execution_199/packaging/*' "$patch"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0257 packaging files application failed' }
+          git apply --reverse --check --directory=current-gk1 --include='execution_199/packaging/*' "$patch"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0257 packaging reverse patch verification failed' }
+          if (-not (Test-Path 'current-gk1/execution_199/packaging/test_gk257_win32_acceptance.ps1')) { throw 'EXEC0257 WinMain test missing' }
+          if (-not (Test-Path 'current-gk1/execution_199/packaging/test_gk257_windows_ci_gate.py')) { throw 'EXEC0257 hostile test missing' }
+          # The inspected workflow must be the same live workflow being executed.
+          Copy-Item '.github/workflows/gk1-native-windows.yml' 'current-gk1/.github/workflows/gk1-native-windows.yml' -Force
+          # Restore the original EXEC0257 CMake test registration explicitly.
+          $cmake = 'current-gk1/execution_199/CMakeLists.txt'
+          $gk257 = @(
+            '# EXEC0257: executable workflow anti-stale hostile QA (EXEC0260 source-scoped restoration).',
+            'find_package(Python3 COMPONENTS Interpreter QUIET)',
+            'if(Python3_Interpreter_FOUND)',
+            ' add_test(NAME GK1_257_CurrentWin32Workflow_RejectsStaleSourceAndFalsePass',
+            '  COMMAND ${Python3_EXECUTABLE}',
+            '   ${CMAKE_CURRENT_SOURCE_DIR}/packaging/test_gk257_windows_ci_gate.py',
+            '   ${CMAKE_CURRENT_SOURCE_DIR}/../.github/workflows/gk1-native-windows.yml',
+            '   ${CMAKE_CURRENT_SOURCE_DIR}/packaging/test_gk257_win32_acceptance.ps1)',
+            'endif()'
+          )
+          if (Select-String -LiteralPath $cmake -Pattern 'add_test\(NAME GK1_257_' -Quiet) { throw 'Unexpected duplicate EXEC0257 test registration in pinned source' }
+          Add-Content -LiteralPath $cmake -Value $gk257
+          # EXEC0259: port real POSIX-only test sources; assert all touched files.
           $patch259 = 'research/Genghis_Khan_NES/execution_259_win32_posix_test_port/GK1_EXEC0259_Integration_From0257.patch'
           git apply --check --directory=current-gk1 "$patch259"
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0259 Win32 portability patch does not match pinned source' }
