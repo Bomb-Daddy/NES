@@ -41,9 +41,21 @@ jobs:
       - name: Install static zlib for authentic archived World-import capability
         shell: pwsh
         run: |
-          if (-not $env:VCPKG_ROOT) { throw 'Windows runner did not supply VCPKG_ROOT' }
-          & "$env:VCPKG_ROOT\vcpkg.exe" install zlib:x64-windows-static
+          # Hosted windows-2022 supplies VCPKG_INSTALLATION_ROOT, not necessarily VCPKG_ROOT.
+          # Resolve and export the verified installation before the subsequent CMake step.
+          $candidates = @($env:VCPKG_ROOT, $env:VCPKG_INSTALLATION_ROOT, 'C:\vcpkg') | Where-Object { $_ } | Select-Object -Unique
+          $root = $null
+          foreach ($candidate in $candidates) {
+            if ((Test-Path -LiteralPath (Join-Path $candidate 'vcpkg.exe')) -and
+                (Test-Path -LiteralPath (Join-Path $candidate 'scripts/buildsystems/vcpkg.cmake'))) {
+              $root = $candidate
+              break
+            }
+          }
+          if (-not $root) { throw 'No verified vcpkg installation (exe plus CMake toolchain) on Windows runner' }
+          & (Join-Path $root 'vcpkg.exe') install zlib:x64-windows-static
           if ($LASTEXITCODE -ne 0) { throw 'static zlib install failed' }
+          "VCPKG_ROOT=$root" >> $env:GITHUB_ENV
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
