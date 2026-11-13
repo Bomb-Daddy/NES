@@ -18,6 +18,7 @@ PLATFORM_INCOMPATIBLE = (
     "GK1_176_LauncherAndDualPackagingVersionContract",
     "GK1_221_PrivateStockMesenCaptureRunnerAdversarialHarness",
     "GK1_250_OriginalThreeOrderFullColdSmoke_FailClosed",
+    "GK1_058_ActualNativeMultiSlotColdLoad",
 )
 REQUIRED_NATIVE = (
     "GK1_259_Win32LocalAppDataPathAndRefusal",
@@ -62,7 +63,7 @@ def main(argv):
         # Deliberately register a fake malformed host-incompatible case: audit must reject.
         assert not audit(s + f'\nadd_test([=[{n}]=] [=[bad]=])')[0], f"Excluded case escaped {n}"
     print(f"EXEC0261 Win32 generated CTest registry PASS: {len(set(names))} unique native tests across {len(names)} multi-config branches; {len(REQUIRED_NATIVE)+len(PLATFORM_INCOMPATIBLE)} hostile controls")
-    print("7 Linux-specific tests excluded only from Win32; full native Windows registry still executes.")
+    print("8 Linux-specific tests excluded only from Win32; full native Windows registry still executes.")
     return 0
 
 if __name__ == "__main__":
