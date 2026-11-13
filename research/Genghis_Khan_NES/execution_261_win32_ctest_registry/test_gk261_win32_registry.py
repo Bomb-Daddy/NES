@@ -8,6 +8,7 @@ All game/finance/negative tests that are portable remain in the full registry.
 from pathlib import Path
 import re
 import sys
+from collections import Counter
 
 PLATFORM_INCOMPATIBLE = (
     "GK1_071_NativeControllerVIEWASafeGateAndBothWorldsImmutable",
@@ -30,10 +31,16 @@ def audit(source):
     # CMake generates add_test([=[NAME]=]...) with bracket quoting on modern versions.
     if not names:
         names = re.findall(r'add_test\(\[?=?\[?([^\] \r\n)]+)', source, re.I)
+    counts = Counter(names)
+    # Visual Studio is multi-config: CMake emits five mutually exclusive
+    # add_test() branches for each test. -C Release executes only one branch.
+    # Check unique *test names*, not the number of generator branches.
     return (
-        len(names) >= 195 and len(names) == len(set(names))
-        and all(any(n in name for name in names) for n in REQUIRED_NATIVE)
-        and all(not any(n in name for name in names) for n in PLATFORM_INCOMPATIBLE)
+        len(counts) >= 195
+        and len(set(counts.values())) == 1
+        and next(iter(counts.values()), 0) in (1, 5)
+        and all(n in counts for n in REQUIRED_NATIVE)
+        and all(n not in counts for n in PLATFORM_INCOMPATIBLE)
     ), names
 
 def main(argv):
@@ -54,7 +61,7 @@ def main(argv):
     for n in PLATFORM_INCOMPATIBLE:
         # Deliberately register a fake malformed host-incompatible case: audit must reject.
         assert not audit(s + f'\nadd_test([=[{n}]=] [=[bad]=])')[0], f"Excluded case escaped {n}"
-    print(f"EXEC0261 Win32 generated CTest registry PASS: {len(names)} real native tests; {len(REQUIRED_NATIVE)+len(PLATFORM_INCOMPATIBLE)} hostile controls")
+    print(f"EXEC0261 Win32 generated CTest registry PASS: {len(set(names))} unique native tests across {len(names)} multi-config branches; {len(REQUIRED_NATIVE)+len(PLATFORM_INCOMPATIBLE)} hostile controls")
     print("7 Linux-specific tests excluded only from Win32; full native Windows registry still executes.")
     return 0
 
