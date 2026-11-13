@@ -1,0 +1,13 @@
+# EXEC0238 implementer and hostile-QA handoff — ATTENTION Nobunaga / Hamilton
+
+**Baseline**: complete source from authoritative EXEC0237 package (not a reconstructed EXEC0235 approximation); the entire 1280x720 WinMain/XInput and X11 game, historical tests, and archived research code remain unchanged except five exact bounded source files.
+
+**What changed**: C11 `gk238_owner_startup.c/.h` centralizes the owner-private fresh-WorkRAM opt-in decision; real native Windows WinMain uses it; `test_gk238_owner_startup.c` asserts never reading owner bytes during bounded Windows CI smoke, normal unset no-op, no canonical-source/template drift, no mutation on invalid owner JSON, and an optional authenticated original-private positive source import. Existing 237 source blob byte identity and 14/27 canonical pre-setup templates preserved.
+
+**Reproduction and independent QA**: extraction of full 237 ZIP → source-hash-locked apply238.py → Linux Ninja Release full build + 204/204 tests. Separate exact overlay and Git patch replay produce SHA-identical five paths. Hostile modified predecessor, corrupt donor and repeated install fail with no partial source writes. Positive private input `GK1_EXEC0210_PRIVATE_Corrected_Fresh_First_Spring_Root_WorkRAM.json` produced 34/34 inherited GK237 and 25/25 GK238 source assertions; input remains only in the private research folder.
+
+**NEXT original gameplay gate**: source-trace ruler/difficulty/ability selection and first Spring seasonal RNG in matching native original Mesen for both fresh WorkRAM and archived SaveRAM; implement independent Spring engine and source-authentic three actual strategic orders in SAME native app (14/27 countries), no hardcoded one-capture Gold430/Rate121. Then market presence, AI, diplomacy/dynasty, terminal battle aftermath, graphics/audio, save/cold-load and full Windows/physical Xbox release acceptance. No further recitation of resolved 103 manual rules.
+
+**Evidence labels**: VERIFIED_STATIC and TESTED_PORT_LINUX passed here. OBSERVED_RUNTIME_STOCK_FRESH/ARCHIVED historical only; new Mesen NOT RUN. New EXEC0238 Win32/NSIS and physical Xbox NOT RUN until separately evidenced. An installer ZIP published in EXEC0236 is a research candidate, not this version or a complete game.
+
+**Privacy**: original ROM SHA256 `ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3` is recovered PRIVATE and MUST NOT enter GitHub/any public ZIP. No private owner JSON, Mesen artifacts, captures or licensed assets included. Do not treat handoff publication as an agent read/execute acknowledgement. Keep hourly execution enabled until user explicitly stops or full accepted release.
