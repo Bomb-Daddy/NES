@@ -63,12 +63,50 @@ jobs:
           Add-Content -LiteralPath $cmake -Value $gk257
           # EXEC0259: port real POSIX-only test sources; assert all touched files.
           $patch259 = 'research/Genghis_Khan_NES/execution_259_win32_posix_test_port/GK1_EXEC0259_Integration_From0257.patch'
-          # Apply only the genuine 0259 C11/CMake portability source hunks.
-          # The newly authored Windows path test is independently copied and hashed.
-          git apply --check --directory=current-gk1 --exclude='execution_199/test_gk259_win_user_home.c' "$patch259"
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0259 source patch does not match pinned C11 app' }
-          git apply --directory=current-gk1 --exclude='execution_199/test_gk259_win_user_home.c' "$patch259"
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0259 source patch application failed' }
+          # EXEC0260: the historical EXEC0259 patch also fails --check against
+          # the exact pinned ZIP; apply source-equivalent transformations with
+          # anchored assertions, never a silent no-op or skipped Win32 target.
+          $cmake = 'current-gk1/execution_199/CMakeLists.txt'
+          $cmakeText = [IO.File]::ReadAllText($cmake).Replace("`r`n", "`n")
+          $before = $cmakeText.IndexOf('# EXEC0120 portable user-data policy')
+          if ($before -lt 0) { throw 'CMake POSIX test anchor missing' }
+          $after = $cmakeText.IndexOf('# EXEC0121 original', $before)
+          if ($after -lt 0 -or $cmakeText.Substring($before,$after-$before).IndexOf('add_executable(test_gk120_save_home') -lt 0) { throw 'Unexpected CMake POSIX test content' }
+          $gk259 = @(
+            '# EXEC0259 Win32 LocalAppData native assertions; POSIX XDG test remains Linux-only.',
+            'if(WIN32)',
+            ' add_executable(test_gk259_win_user_home test_gk259_win_user_home.c)',
+            ' target_link_libraries(test_gk259_win_user_home PRIVATE gk59_storage)',
+            ' add_test(NAME GK1_259_Win32LocalAppDataPathAndRefusal COMMAND test_gk259_win_user_home)',
+            'else()',
+            ' add_executable(test_gk120_save_home test_gk120_save_home.c)',
+            ' target_link_libraries(test_gk120_save_home PRIVATE gk120_save_home gk58_slots gk59_storage)',
+            ' add_test(NAME GK1_120_NativeLinuxXDGHomeAndWinEnhancedUserDataNoCWD COMMAND test_gk120_save_home)',
+            'endif()',
+            ''
+          ) -join "`n"
+          [IO.File]::WriteAllText($cmake, $cmakeText.Substring(0,$before) + $gk259 + $cmakeText.Substring($after))
+          $p91 = 'current-gk1/execution_199/test_gk91_reset_zero.c'
+          $s91 = [IO.File]::ReadAllText($p91).Replace("`r`n", "`n")
+          $inc91 = '#include <unistd.h>'
+          $old91 = 'char badname[512];snprintf(badname,sizeof badname,"/tmp/gk91-altered-%ld.nes",(long)getpid());'
+          if (-not $s91.Contains($inc91) -or -not $s91.Contains($old91)) { throw 'Unrecognized original reset test; refuse replacement' }
+          $newInc91 = @('#ifdef _WIN32','# include <process.h>','# define GK91_PROCESS_ID _getpid','#else','# include <unistd.h>','# define GK91_PROCESS_ID getpid','#endif') -join "`n"
+          $new91 = @(
+            'char badname[512];',
+            '#ifdef _WIN32',
+            '  const char *temp=getenv("TEMP"); CHECK(temp&&*temp);',
+            '  snprintf(badname,sizeof badname,"%s\\gk91-altered-%ld.nes",temp,(long)GK91_PROCESS_ID());',
+            '#else',
+            '  snprintf(badname,sizeof badname,"/tmp/gk91-altered-%ld.nes",(long)GK91_PROCESS_ID());',
+            '#endif'
+          ) -join "`n"
+          $s91 = $s91.Replace($inc91,$newInc91).Replace($old91,$new91)
+          [IO.File]::WriteAllText($p91,$s91)
+          $pPre = 'current-gk1/execution_199/test_gk1_pre_setup_store.c'
+          $sPre = [IO.File]::ReadAllText($pPre).Replace("`r`n", "`n")
+          if (-not $sPre.Contains('#include <unistd.h>')) { throw 'Unrecognized pre-setup save test; refuse replacement' }
+          [IO.File]::WriteAllText($pPre,$sPre.Replace('#include <unistd.h>', ''))
           $src259 = 'research/Genghis_Khan_NES/execution_259_win32_posix_test_port/test_gk259_win_user_home.c'
           $dst259 = 'current-gk1/execution_199/test_gk259_win_user_home.c'
           Copy-Item $src259 $dst259 -Force
