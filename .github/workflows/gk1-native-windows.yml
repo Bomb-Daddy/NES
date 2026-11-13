@@ -147,6 +147,14 @@ jobs:
           if ($end250 -lt 0) { throw 'Malformed original 250 CMake test' }
           $fragment250 = $cmakeNow.Substring($s250,$end250-$s250+1)
           $cmakeNow = $cmakeNow.Replace($fragment250,"if(NOT WIN32)`n"+$fragment250+"`nendif()")
+          # EXEC0262: original 0058 separate-process test uses the Linux
+          # --slot-export/--slot-import CLI. On WinMain these arguments open
+          # the GUI, so the Python harness times out (observed Win32 202/203
+          # in run 43508624115). Keep it on Linux; Win32 still tests storage
+          # through its real native API and the 259 Windows path assertions.
+          $slot58 = "if(Python3_Interpreter_FOUND)`n add_test(NAME GK1_058_ActualNativeMultiSlotColdLoad"
+          if (-not $cmakeNow.Contains($slot58)) { throw 'Missing actual Linux-only slot subprocess registration' }
+          $cmakeNow = $cmakeNow.Replace($slot58,$slot58.Replace('if(Python3_Interpreter_FOUND)','if(Python3_Interpreter_FOUND AND NOT WIN32)'))
           [IO.File]::WriteAllText($cmake,$cmakeNow)
           # Source-level guard: the exclusion must be specific, not global.
           if (-not $cmakeNow.Contains('GK1_259_Win32LocalAppDataPathAndRefusal') -or
