@@ -60,11 +60,11 @@ def main() -> int:
     assert check(original), "Untested or unverified installer publication"
     negative = 0
     for token in NEEDED:
-        mutation = original.replace(token, "CORRUPTED", 1)
+        mutation = original.replace(token, "CORRUPTED")
         assert mutation != original and not check(mutation), f"Negative control accepted: {token}"
         negative += 1
     for token in ORDER:
-        mutation = original.replace(token, "CORRUPTED", 1)
+        mutation = original.replace(token, "CORRUPTED")
         assert not check(mutation), f"Order mutation accepted: {token}"
         negative += 1
     assert not check(original + "\ncontinue-on-error: true\n")
