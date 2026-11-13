@@ -1,0 +1,24 @@
+{
+  "predecessor": "EXEC0251",
+  "zip_sha256": "df2bcedcd65bc0bec79630ebee6fa1cffa5fbf61201063bd2a4759169f55761e",
+  "modified_files": {
+    "execution_199/gk1_app_state.c": {
+      "pre_sha256": "fde00c45a8d8d4b3d906def4bac1c9fa417662a5d8e683e4afd58a5f2e463310",
+      "new_sha256": "104b58e749cf6260c613a74e96013a973734103f7a0220c2fa53bac6789fbc4c",
+      "pre_bytes": 107938,
+      "new_bytes": 108270
+    },
+    "execution_199/gk1_native_shell.c": {
+      "pre_sha256": "2e643f39076bbc26181077c67592f529e812e7f5447de1ab5bac845563e89b24",
+      "new_sha256": "791d03a16e8e51562ffa2e34b6daa0397f74e41dfd899f81a08e4791554d84e3",
+      "pre_bytes": 262283,
+      "new_bytes": 263334
+    },
+    "execution_199/test_gk189_classic_cold_save.c": {
+      "pre_sha256": "623f69b73d28a6172a902754a146baf8e8fe6305511bea32c9d609b909fd151a",
+      "new_sha256": "d193e3a35b29fe989e5a3be8cd228b4b98f4e408380a9aa4661754baff97af67",
+      "pre_bytes": 8805,
+      "new_bytes": 10196
+    }
+  }
+}
