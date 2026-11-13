@@ -1,0 +1,174 @@
+diff --git a/execution_199/gk189_classic_cold_save.c b/execution_199/gk189_classic_cold_save.c
+--- a/execution_199/gk189_classic_cold_save.c
++++ b/execution_199/gk189_classic_cold_save.c
+@@ -209,8 +209,18 @@
+  if(b[11]&&gk187_pass(&stage->classic_assign,&stage->stock_checkpoint)!=GK187_OK)goto cleanup;
+  if(!gk187_intact(&stage->classic_assign,&stage->stock_checkpoint))goto cleanup;
+  stage->stock_checkpoint.view_index=b[9];
+- stage->screen=GK1_SCREEN_CLASSIC_ASSIGN;
+- strcpy(stage->status,"PRIVATE CLASSIC SOURCE+ASSIGN COLD-LOADED; NES PARITY NOT PROVEN");
++ /* EXEC0251: a cold save represents a strategic command state, not an
++  * in-progress Assign dialog.  Returning to Assign after a completed/Pass
++  * season strands the controller on an action that must refuse all orders.
++  * Resume in the original-source-attested 14-command menu instead; select
++  * the zero-cost VIEW command when no orders remain.  Never grant a season,
++  * spend an order, change an authentic record, or bypass integrity checks. */
++ stage->stock_checkpoint.pending_pass=0u;
++ stage->screen=GK1_SCREEN_STOCK_COMMANDS;
++ stage->stock_command_cursor=(uint8_t)(stage->classic_assign.budget.remaining?0u:6u);
++ strcpy(stage->status,stage->classic_assign.budget.remaining?
++  "PRIVATE CLASSIC COLD-RESUMED: COMMAND MENU / NES PARITY UNVERIFIED":
++  "PRIVATE CLASSIC COLD-RESUMED: 0 ORDERS / VIEW OR STORAGE; NEXT NES SEASON OPEN");
+  *app=*stage;
+  result=GK189_OK;
+ cleanup:
+diff --git a/execution_199/test_gk189_classic_cold_save.c b/execution_199/test_gk189_classic_cold_save.c
+--- a/execution_199/test_gk189_classic_cold_save.c
++++ b/execution_199/test_gk189_classic_cold_save.c
+@@ -3,6 +3,7 @@
+ #endif
+ #include "gk189_classic_cold_save.h"
+ #include "gk162_original_entry.h"
++#include "gk193_auto_source_entry.h"
+ #include "gk1_source_identity.h"
+ #ifdef NDEBUG
+ #undef NDEBUG
+@@ -41,12 +42,23 @@
+  const char *records,Gk77Profile profile){
+  Gk1App *a=newapp(ds),*loaded=newapp(ds),*before=malloc(sizeof *before);
+  CHECK(before!=NULL);
+- CHECK(gk162_enter_original_checkpoint(a,csv,records,profile,0u)==GK162_ENTRY_OK);
++ /* Preserve legacy raw83 positive fixtures while also accepting the
++  * Director's three REAL authenticated Mesen source file formats. */
++ FILE *probe=fopen(records,"rb");CHECK(probe!=NULL);
++ unsigned char sig[4]={0};CHECK(fread(sig,1,4u,probe)==4u);
++ CHECK(fclose(probe)==0);
++ if(!memcmp(sig,"MSS\1",4u)||sig[0]=='{'){
++  Gk77Profile detected=GK77_FRESH_MONGOL_WORKRAM;
++  a->rules_profile=0u;
++  CHECK(gk193_enter_original_auto(a,csv,records,0u,&detected)==GK193_OK);
++  CHECK(detected==profile);
++ }else{
++  CHECK(gk162_enter_original_checkpoint(a,csv,records,profile,0u)==GK162_ENTRY_OK);
++ }
+  a->rules_profile=0u;
+  CHECK(gk187_open(&a->stock_checkpoint,&a->classic_assign)==GK187_OK);
+  CHECK(gk187_transfer(&a->classic_assign,&a->stock_checkpoint,0,4,1)==GK187_OK);
+  CHECK(gk187_transfer(&a->classic_assign,&a->stock_checkpoint,0,4,1)==GK187_OK);
+- CHECK(gk187_pass(&a->classic_assign,&a->stock_checkpoint)==GK187_OK);
+  a->stock_checkpoint.view_index=0u;
+  CHECK(gk187_intact(&a->classic_assign,&a->stock_checkpoint));
+  char path[1024];
+@@ -62,10 +74,29 @@
+  strcpy(path,reserved);
+  CHECK(DeleteFileA(path)!=0);
+ #endif
++ /* Mid-season source-authenticated save must reopen the actual command
++  * menu with a remaining order, not jump into a stale Assign screen. */
++ CHECK(gk189_save_new(path,a)==GK189_OK);
++ CHECK(gk189_cold_load(path,csv,loaded)==GK189_OK);
++ CHECK(loaded->screen==GK1_SCREEN_STOCK_COMMANDS);
++ CHECK(loaded->stock_command_cursor==0u);
++ CHECK(loaded->classic_assign.budget.remaining==1u);
++ CHECK(loaded->classic_assign.action_count==2u);
++ CHECK(gk1_app_input(loaded,GK1_INPUT_CONFIRM)==1);
++ CHECK(loaded->screen==GK1_SCREEN_CLASSIC_TAX);
++ CHECK(gk1_app_input(loaded,GK1_INPUT_CANCEL)==1);
++ CHECK(loaded->screen==GK1_SCREEN_STOCK_COMMANDS);
++ CHECK(loaded->classic_assign.budget.remaining==1u);
++ CHECK(gk187_intact(&loaded->classic_assign,&loaded->stock_checkpoint));
++ CHECK(remove(path)==0);
++ CHECK(gk187_pass(&a->classic_assign,&a->stock_checkpoint)==GK187_OK);
++ CHECK(gk187_intact(&a->classic_assign,&a->stock_checkpoint));
+  CHECK(gk189_save_new(path,a)==GK189_OK);
+  CHECK(gk189_save_new(path,a)==GK189_EXISTS);
+  CHECK(gk189_cold_load(path,csv,loaded)==GK189_OK);
+- CHECK(loaded->screen==GK1_SCREEN_CLASSIC_ASSIGN);
++ CHECK(loaded->screen==GK1_SCREEN_STOCK_COMMANDS);
++ CHECK(loaded->stock_command_cursor==6u);
++ CHECK(loaded->stock_checkpoint.pending_pass==0u);
+  CHECK(loaded->classic_assign.passed==1u&&loaded->classic_assign.action_count==2u);
+  CHECK(loaded->classic_assign.budget.remaining==0u);
+  CHECK(gk187_intact(&loaded->classic_assign,&loaded->stock_checkpoint));
+@@ -78,6 +109,14 @@
+  CHECK(loaded->worlds[0].phase==GK1_PRE_SETUP_TEMPLATE&&
+        loaded->worlds[1].phase==GK1_PRE_SETUP_TEMPLATE);
+  CHECK(loaded->rules_profile==0u);
++ /* A real controller A now lands on the source-attested zero-order VIEW,
++  * rather than a stale Assign screen.  It must never refill the budget or
++  * modify original country records. */
++ Gk187ClassicAssign before_view=loaded->classic_assign;
++ CHECK(gk1_app_input(loaded,GK1_INPUT_CONFIRM)==1);
++ CHECK(loaded->screen==GK1_SCREEN_STOCK_CONTINUE);
++ CHECK(!memcmp(&loaded->classic_assign,&before_view,sizeof before_view));
++ CHECK(gk187_intact(&loaded->classic_assign,&loaded->stock_checkpoint));
+  /* Atomicity on incorrect canonical pre-setup template, even with valid file. */
+  *before=*loaded;
+  loaded->worlds[profile==3u?1u:0u].countries[0].gold++;
+diff --git a/execution_199/gk1_native_shell.c b/execution_199/gk1_native_shell.c
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -3894,7 +3894,9 @@
+        gk1_app_install_templates(restored,templates)!=0 &&
+        gk189_save_new(private_path,&app)==GK189_OK &&
+        gk189_cold_load(private_path,scenario_csv_path(),restored)==GK189_OK &&
+-       restored->screen==GK1_SCREEN_CLASSIC_ASSIGN &&
++       restored->screen==GK1_SCREEN_STOCK_COMMANDS &&
++       restored->stock_command_cursor==6u &&
++       restored->stock_checkpoint.pending_pass==0u &&
+        restored->classic_assign.action_count==3u &&
+        restored->classic_assign.budget.remaining==0u &&
+        restored->classic_assign.mutable_world.countries[0].tax==original_tax+2u &&
+@@ -3902,6 +3904,16 @@
+        memcmp(&restored->classic_assign,&app.classic_assign,sizeof completed)==0 &&
+        memcmp(restored->stock_checkpoint.stock_raw,original.stock_raw,
+               sizeof original.stock_raw)==0);
++    if(good){
++      /* Exercise the actual post-cold-load controller menu.  A starts on
++       * the zero-cost VIEW command; it does not replay an exhausted Assign
++       * dialog, refill orders, or mutate an original NES country record. */
++      const Gk187ClassicAssign before_view=restored->classic_assign;
++      good=(gk1_app_input(restored,GK1_INPUT_CONFIRM)==1 &&
++        restored->screen==GK1_SCREEN_STOCK_CONTINUE &&
++        !memcmp(&before_view,&restored->classic_assign,sizeof before_view) &&
++        gk187_intact(&restored->classic_assign,&restored->stock_checkpoint));
++    }
+     if(good){
+       *snapshot=*restored;
+       FILE *f=fopen(private_path,"r+b");
+diff --git a/execution_199/README_EXEC0251.md b/execution_199/README_EXEC0251.md
+new file mode 100644
+--- /dev/null
++++ b/execution_199/README_EXEC0251.md
+@@ -0,0 +1,31 @@
++# EXEC0251 — Classic original-stock cold-load returns to a usable command menu
++
++Derived from the **complete EXEC0250 native C11 app**, not from an earlier standalone stub.
++
++After a successful, source-authenticated owner-private GC19 restore, the actual native app
++returns to `GK1_SCREEN_STOCK_COMMANDS` rather than an always-on stale Assign screen.
++The command cursor selects TAX when at least one of the three first-Spring orders
++remains, or VIEW (zero-cost, cursor 6) when the budget is exhausted / passed.
++A canceled view/tax dialog leaves original country records, manual-derived mutable
++state, source verification and remaining budget unchanged. Failed GC19 imports remain
++transactional; they never change the UI, world or source. This is native UX
++correctness, **not** authentic independently generated first Spring or NES parity.
++
++The existing source-bound `test_gk189_classic_cold_save` now tests both a two-order
++midseason cold restore and the passed-season cold restore. It accepts the old raw83
++private fixture and, additionally, the authentic private Mesen fresh JSON and both
++archived MSS profiles, with exact profile detection. The actual graphical app's
++EXEC0250 three-controller-command native cold smoke also tests restored VIEW.
++
++Build and public test:
++`cmake -S source/execution_199 -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DGK1_REQUIRE_ARCHIVED_WORLD_IMPORT=ON`
++`cmake --build build -j12 && ctest --test-dir build -j12 --timeout 28 --output-on-failure`
++
++Private authenticity tests require Director-owned source snapshots and canonical
++41-country source CSV, and **must not** be uploaded to public GitHub:
++`build/test_gk189_classic_cold_save CSV FRESH.json MONGOL.mss WORLD.mss`
++`xvfb-run -a build/gk1_native_shell --smoke-classic-three-cold-original PRIVATE_SNAPSHOT 5`
++
++No new original NES emulation was performed. Actual Win32 build, NSIS install,
++physical Xbox input, independently generated first Spring, next seasons and two
++complete campaigns remain untested / unfinished for EXEC0251.
