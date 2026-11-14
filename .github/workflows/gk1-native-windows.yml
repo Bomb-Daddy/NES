@@ -11,6 +11,8 @@ on:
       - 'research/Genghis_Khan_NES/execution_261_win32_ctest_registry/**'
       - 'research/Genghis_Khan_NES/execution_262_exe_csv_stage/**'
       - 'research/Genghis_Khan_NES/execution_263_win64_qa_artifact/**'
+      - 'research/Genghis_Khan_NES/execution_266_controller_atomic_chords/**'
+      - 'research/Genghis_Khan_NES/execution_267_win32_controller_266/**'
 
 permissions:
   contents: read
@@ -294,6 +296,44 @@ jobs:
           & (Join-Path $root 'vcpkg.exe') install zlib:x64-windows-static
           if ($LASTEXITCODE -ne 0) { throw 'static zlib install failed' }
           "VCPKG_ROOT=$root" >> $env:GITHUB_ENV
+      # EXEC0267: pin the actual EXEC0266 controller code into the source
+      # that Win32 compiles. Earlier successful CI compiled the EXEC0264
+      # game but did not include the latest controller repair.
+      - name: Reconcile and verify exact EXEC0266 native controller source
+        shell: pwsh
+        run: |
+          $origin = 'research/Genghis_Khan_NES/execution_266_controller_atomic_chords'
+          $dest = 'current-gk1/execution_199'
+          $pins = @(
+            @('gk1_pad_router.c', '32fb1ac5f23520eeaf4a42aa1c6a147d9d2df9587b11f2f224604612d010ccbd'),
+            @('gk1_pad_router.h', '481b9f39103721369e24214d2d6510d10f01ce7d7dc2b4d2021a81e43f9136ba'),
+            @('test_gk266_controller_chord.c', 'c628c476fe003d1fe5cf4564ad074499152eafa29559daaeda3d61a145e497e8')
+          )
+          foreach ($entry in $pins) {
+            $from = Join-Path $origin $entry[0]
+            $to = Join-Path $dest $entry[0]
+            if (-not (Test-Path -LiteralPath $from) -or -not (Test-Path -LiteralPath $to)) {
+              if (-not (Test-Path -LiteralPath $from)) { throw "EXEC0267 missing canonical source $from" }
+              if ($entry[0] -ne 'test_gk266_controller_chord.c') { throw "EXEC0267 missing inherited source $to" }
+            }
+            $digest = (Get-FileHash -LiteralPath $from -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($digest -ne $entry[1]) { throw "EXEC0267 source input checksum mismatch: $from $digest" }
+            Copy-Item -LiteralPath $from -Destination $to -Force
+            $checked = (Get-FileHash -LiteralPath $to -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($checked -ne $entry[1]) { throw "EXEC0267 source output checksum mismatch: $to $checked" }
+          }
+          $cmake = Join-Path $dest 'CMakeLists.txt'
+          if (Select-String -LiteralPath $cmake -SimpleMatch -Pattern 'GK1_266_Controller_Atomic_Commands' -Quiet) {
+            throw 'EXEC0267 duplicate controller regression registration'
+          }
+          Add-Content -LiteralPath $cmake -Value @'
+          # EXEC0267: exact published EXEC0266 router compiled by Win32 CI.
+          add_executable(test_gk266_controller_chord test_gk266_controller_chord.c)
+          target_link_libraries(test_gk266_controller_chord PRIVATE gk1_pad_router gk99_xinput_bridge)
+          add_test(NAME GK1_266_Controller_Atomic_Commands COMMAND test_gk266_controller_chord)
+          '@
+          python research/Genghis_Khan_NES/execution_267_win32_controller_266/test_gk267_win32_0266_provenance.py .github/workflows/gk1-native-windows.yml
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0267 hostile current Win32 source gate failed' }
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
