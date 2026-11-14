@@ -20,3 +20,13 @@ Independent authentic first-Spring setup (NES ruler/difficulty/ability RNG, 14/2
 
 ## Publication gates
 Preserve all inherited EXEC0275 files and existing verified private sources. Public source patch contains no ROM, screenshots, audio or archived raw country records. Publish complete source/tests/QA ZIP to correct Collaboration Drive when transfer supports it; publication is not an agent read/execute acknowledgement. Do not mark full release accepted. Keep recurring execution active absent Director stop or verified complete release.
+
+
+## Post-publication native Windows CI acceptance (verified Nov 14, 2026)
+
+- Live Windows workflow commit `e8707a3edc3c2d73fe7c746664a33f29e51dda0c`: https://github.com/Bomb-Daddy/NES/actions/runs/43579831781 — **completed/success**.
+- Exact EXEC0276 source SHA-pinned stage, Visual Studio x64 C11 game compilation, linked `GK1_276_OriginalStockArchivedAndFreshWizardProvenance` CTest, all **209/209 Windows CTests**, WinMain software-controller/paint acceptance, NSIS package installation and installed-game launch all passed.
+- The GitHub QA-only workflow ZIP (not a release) SHA256 `f084e214d47aaedcebbb91d1f21cc236d7e708cfa3902c1ac0b15e6aa3d711d1`, Windows installer SHA256 `4b64aeb1f8109cc5fca520e52c13c1542e095fd1682dfc522252c9685f78c483`. Both are uploaded to the verified Collaboration Google Drive, and independently downloaded byte-identical.
+- Complete inherited public source ZIP (not ROM): https://drive.google.com/file/d/1x3BBeBElyu0_i4D3D-omXdRzG3eGkMJQ/view — 5,420,038 bytes SHA256 `2c78a73583f061fc8be2d4c567aa4b0fc68a785cce26d13acf9a3416f20e9c36`.
+- Final acceptance receipt: https://drive.google.com/file/d/16FyZq4Nm9WLQQ58LFVe6EpLS8b40iB5h/view ; cumulative v4.25.1 https://drive.google.com/file/d/1MzB4kVlOlS_EzC0YSgYznc_up3clzTK_/view ; ledger v1.1 https://drive.google.com/file/d/1sbiaIx6d1biyLAWbRWfkzbeZ5gICu7Br/view .
+- Still NOT RUN: physical Xbox, complete campaigns, original NES authentic independent first-Spring RNG/character/difficulty initialization. No completed-game release.
