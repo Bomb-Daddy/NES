@@ -340,7 +340,7 @@ jobs:
           target_link_libraries(test_gk266_controller_chord PRIVATE gk1_pad_router gk99_xinput_bridge)
           add_test(NAME GK1_266_Controller_Atomic_Commands COMMAND test_gk266_controller_chord)
           '@
-          python research/Genghis_Khan_NES/execution_267_win32_controller_266/test_gk267_win32_0266_provenance.py .github/workflows/gk1-native-windows.yml
+          python research/Genghis_Khan_NES/execution_269_win32_provenance_mutation/test_gk269_win32_0266_provenance.py .github/workflows/gk1-native-windows.yml
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0267 hostile current Win32 source gate failed' }
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
