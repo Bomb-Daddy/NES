@@ -22,6 +22,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_280_original_rate_source_bridge/**'
       - 'research/Genghis_Khan_NES/execution_282_stock_c289_chronology/**'
       - 'research/Genghis_Khan_NES/execution_284_c289_rate_history/**'
+      - 'research/Genghis_Khan_NES/execution_285_source_rate_difficulty/**'
 
 permissions:
   contents: read
@@ -906,6 +907,25 @@ jobs:
             throw 'EXEC0284 compiled CTest registry missing'
           }
           Write-Output 'EXEC0284 source-authenticated C289 all-history test registered in the complete Win32 native C11 application; FIRST_SPRING_NOT_GENERATED'
+      - name: EXEC0285 original-stock C289 selected-difficulty source and CTest gate
+        shell: pwsh
+        run: |
+          $base = 'research/Genghis_Khan_NES/execution_285_source_rate_difficulty'
+          python -m py_compile "$base/stage285.py" "$base/test_stage285.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0285 stage scripts have invalid Python syntax' }
+          python "$base/stage285.py" 'current-gk1/execution_199'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0285 source-pinned C11 native stage failed' }
+          $app = 'current-gk1/execution_199'
+          $src = Join-Path $app 'gk1_app_state.c'
+          $expected = '9ef37baf8713186622ece40472bd176078d4fec245cd8884c0cd9a06fecc1c97'
+          if ((Get-FileHash $src -Algorithm SHA256).Hash.ToLowerInvariant() -ne $expected) {
+            throw 'EXEC0285 native game compiled source hash mismatch'
+          }
+          if (-not (Select-String -LiteralPath (Join-Path $app 'CMakeLists.txt') -SimpleMatch -Pattern 'GK1_285_SelectedDifficulty_OriginalC289_CausalAndAtomic' -Quiet)) {
+            throw 'EXEC0285 CTest missing from real native C11 application'
+          }
+          Write-Output 'EXEC0285 selected-difficulty C289 source staged, public no-ROM CTest; no first Spring generated'
+
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
