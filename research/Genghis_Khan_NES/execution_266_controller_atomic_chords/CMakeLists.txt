@@ -790,7 +790,7 @@ target_link_libraries(test_gk169_port_storage PRIVATE gk1_app_state)
 add_test(NAME GK1_169_ControllerOTHER_SourceLockedPortStorage_AtomicCancel
  COMMAND test_gk169_port_storage)
 
-# EXEC0170 â independently validated controller TITLE private-slot inventory.
+# EXEC0170 — independently validated controller TITLE private-slot inventory.
 add_executable(test_gk170_slot_preview test_gk170_slot_preview.c)
 target_link_libraries(test_gk170_slot_preview PRIVATE gk1_app_state)
 add_test(NAME GK1_170_TitleSlotPreview_NoMutationAndSourceIdentity
