@@ -19,6 +19,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_274_original_stock_json_probe/**'
       - 'research/Genghis_Khan_NES/execution_277_fresh_title_provenance/**'
       - 'research/Genghis_Khan_NES/execution_279_win32_spring_coverage/**'
+      - 'research/Genghis_Khan_NES/execution_280_original_rate_source_bridge/**'
 
 permissions:
   contents: read
@@ -706,6 +707,79 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0279 complete current game does not pass retained hostile provenance checks' }
           Write-Output 'EXEC0279 legacy gate repaired for exact reviewed source: all older adversarial assertions RETAINED'
           Write-Output 'EXEC0279 staged authentic-source 24-field *comparison*, NOT independently generated original first Spring'
+      - name: EXEC0281 exact original ROM Rate bridge in Win32 native C11 source and tests
+        shell: pwsh
+        run: |
+          $review = 'research/Genghis_Khan_NES/execution_280_original_rate_source_bridge'
+          $app = 'current-gk1/execution_199'
+          $patch = Join-Path $review 'EXEC0280_Source_Integration_From_0278.patch'
+          if (-not (Test-Path $patch)) { throw 'EXEC0281 source patch missing' }
+          if ((Get-FileHash $patch -Algorithm SHA256).Hash.ToLowerInvariant() -ne 'dafd3903dea91b2043268a00db56f531391c24567a198339b7f76dd01ab1b6f2') { throw 'EXEC0281 source patch SHA mismatch' }
+          $oldC = '058b27ff7608b8d799568cce503023736e815820003a6a19cb36dc9c026b1cb9'
+          $newC = 'f2fc9d9f36ba6c0ba48f72c95ae5b9b343727876c3e84da286b7d8670e20252f'
+          $oldH = '4b88bb9d8cde5358189688793ad080105d9b576227cb3778d41ae93ba7da8645'
+          $newH = '981bcbcef37d1d1b3023f667c48f1eaef7125d3e2c3f0d46e0789a3fdf86468e'
+          foreach ($p in @(@('gk1_app_state.c',$oldC),@('gk1_app_state.h',$oldH))) {
+            $file = Join-Path $app $p[0]
+            if (-not (Test-Path $file) -or (Get-FileHash $file -Algorithm SHA256).Hash.ToLowerInvariant() -ne $p[1]) { throw "EXEC0281 wrong inherited production C11 preimage $file" }
+          }
+          $extra = @(
+            @('gk280_original_rate_bridge.c','4b2600e824789ef418b08b5a1f8184b484f4c18a43df28e54760bf760539351d'),
+            @('gk280_original_rate_bridge.h','f264b600e1765b255ede961f1e512926ac1cd47fa1b79e700d4596fa687468de'),
+            @('test_gk280_original_rate_bridge.c','121cac117f8de3e8a231e0c1e69f121d5df513b497e6fe01eadcbe7bcfe44f18')
+          )
+          foreach ($p in $extra) {
+            $src = Join-Path $review $p[0]
+            $dst = Join-Path $app $p[0]
+            if (-not (Test-Path $src) -or (Test-Path $dst)) { throw "EXEC0281 missing/duplicate reviewed source $($p[0])" }
+            python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $src
+            if ($LASTEXITCODE -ne 0 -or (Get-FileHash $src -Algorithm SHA256).Hash.ToLowerInvariant() -ne $p[1]) { throw "EXEC0281 new C11 source SHA mismatch $src" }
+          }
+          $raw = [IO.File]::ReadAllText($patch).Replace(([string][char]13+[char]10),([string][char]10))
+          $start = $raw.IndexOf('--- a/execution_199/gk1_app_state.c')
+          $end = $raw.IndexOf('--- /dev/null', $start)
+          if ($start -lt 0 -or $end -le $start) { throw 'EXEC0281 source patch section absent' }
+          $partialText = $raw.Substring($start,$end-$start)
+          if (-not $partialText.Contains('--- a/execution_199/gk1_app_state.h')) { throw 'EXEC0281 source patch lacks native API' }
+          $partialPath = Join-Path $env:RUNNER_TEMP 'GK1_EXEC0281_C11_only.patch'
+          [IO.File]::WriteAllText($partialPath,$partialText,(New-Object System.Text.UTF8Encoding($false)))
+          git -C current-gk1 apply --check $partialPath
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0281 inherited C11 preflight refused' }
+          git -C current-gk1 apply $partialPath
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0281 actual C11 source patch refused' }
+          foreach ($p in @(@('gk1_app_state.c',$newC),@('gk1_app_state.h',$newH))) {
+            $file = Join-Path $app $p[0]
+            python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $file
+            if ($LASTEXITCODE -ne 0 -or (Get-FileHash $file -Algorithm SHA256).Hash.ToLowerInvariant() -ne $p[1]) { throw "EXEC0281 actual compiled C11 source differs $file" }
+          }
+          foreach ($p in $extra) {
+            $src = Join-Path $review $p[0]; $dst = Join-Path $app $p[0]
+            Copy-Item $src $dst
+            if ((Get-FileHash $dst -Algorithm SHA256).Hash.ToLowerInvariant() -ne $p[1]) { throw "EXEC0281 copied code mismatch $dst" }
+          }
+          $cmake = Join-Path $app 'CMakeLists.txt'
+          $cm = [IO.File]::ReadAllText($cmake).Replace(([string][char]13+[char]10),([string][char]10))
+          $anchor = 'gk278_original_spring_coverage.c gk216_fresh_cpu_pc.c'
+          $replacement = 'gk278_original_spring_coverage.c gk280_original_rate_bridge.c gk216_fresh_cpu_pc.c'
+          $at = $cm.IndexOf($anchor)
+          if ($at -lt 0 -or $cm.IndexOf($anchor,$at+1) -ge 0 -or $cm.Contains('gk280_original_rate_bridge') -or -not $cm.Contains('GK1_278_OriginalSpring24DirectFieldsAtomicAndNoFakeParity')) { throw 'EXEC0281 inherited CMake source/CTest changed' }
+          $registration = @'
+          
+          # EXEC0281 source-authenticated ROM Rate candidate; public no-ROM tests are negative only.
+          add_executable(test_gk280_original_rate_bridge test_gk280_original_rate_bridge.c)
+          target_link_libraries(test_gk280_original_rate_bridge PRIVATE gk1_app_state)
+          add_test(NAME gk280_original_rate_bridge COMMAND test_gk280_original_rate_bridge
+           ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+          '@
+          [IO.File]::WriteAllText($cmake,$cm.Replace($anchor,$replacement)+$registration)
+          $gate = Join-Path $app 'packaging/test_gk265_current_win32_source.py'
+          $beforeGate = "EXPECTED_APP_SHA = '$oldC'"; $afterGate = "EXPECTED_APP_SHA = '$newC'"
+          $t = [IO.File]::ReadAllText($gate).Replace(([string][char]13+[char]10),([string][char]10))
+          if ($t.Split($beforeGate).Length -ne 2 -or $t.Contains($afterGate)) { throw 'EXEC0281 inherited hostile provenance gate cannot be reconciled safely' }
+          [IO.File]::WriteAllText($gate,$t.Replace($beforeGate,$afterGate))
+          python $gate (Join-Path $app 'gk1_app_state.c') (Join-Path $app 'test_gk264_scenario_restart.c') $cmake 'current-gk1/.github/workflows/gk1-native-windows.yml'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0281 inherited hostile game source gate failed' }
+          Write-Output 'EXEC0281 source-authenticated native C11 Rate bridge and new CTest STAGED; original first Spring remains unfinished.'
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
