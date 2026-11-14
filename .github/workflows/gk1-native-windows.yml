@@ -16,6 +16,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_270_classic_view_pass_navigation/**'
       - 'research/Genghis_Khan_NES/execution_271_win32_classic_view/**'
       - 'research/Genghis_Khan_NES/execution_273_win32_spring_source_integrity/**'
+      - 'research/Genghis_Khan_NES/execution_274_original_stock_json_probe/**'
 
 permissions:
   contents: read
@@ -452,6 +453,56 @@ jobs:
           [IO.File]::WriteAllText($gate,$gateText.Replace($old,$new))
           if (-not ([IO.File]::ReadAllText($gate).Contains($new))) { throw 'EXEC0273 hostile gate source readback failed' }
           Write-Output 'EXEC0273 app and linked native Win32 GK214 test are byte-identical to verified EXEC0272; first Spring setup/RNG NOT implemented'
+      - name: EXEC0274 exact original-stock JSON framing in real Win32 native source
+        shell: pwsh
+        run: |
+          # A UTF-8 BOM or JSON whitespace is valid framing for authentic
+          # Mesen source. Only the gk165 original WorkRAM SHA parser can
+          # authenticate it; binary MSS still requires byte-zero magic.
+          $base = 'research/Genghis_Khan_NES/execution_274_original_stock_json_probe'
+          $dest = 'current-gk1/execution_199'
+          $old = '1042a52d153459e85024b5078d350b8ecfd47f213fdc69bf1a62f8a4a7eab552'
+          $new = '768463b31a39fa928e220501225b37c85a47fe1315b3a63c88c885f9163f99cc'
+          $testSha = '49eb2481a3504d775a8b28bbd17aad0c6bb203240d1109d7443fd13fac0c7be9'
+          $app = Join-Path $dest 'gk193_auto_source_entry.c'
+          $test = Join-Path $dest 'test_gk274_source_probe.c'
+          if (-not (Test-Path -LiteralPath $app) -or (Test-Path -LiteralPath $test)) {
+            throw 'EXEC0274 inherited loader absent or duplicate source test'
+          }
+          if ((Get-FileHash -LiteralPath $app -Algorithm SHA256).Hash.ToLowerInvariant() -ne $old) {
+            throw 'EXEC0274 loader predecessor differs from fully inherited source'
+          }
+          foreach ($pair in @(@('gk193_auto_source_entry.c',$new),@('test_gk274_source_probe.c',$testSha))) {
+            $p = Join-Path $base $pair[0]
+            if (-not (Test-Path -LiteralPath $p)) { throw "Missing reviewed EXEC0274 source $p" }
+            # Git-for-Windows checkout CRLF normalizes to tested LF; the
+            # originally reviewed whole-file SHA must still match afterward.
+            python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $p
+            if ($LASTEXITCODE -ne 0) { throw 'EXEC0274 LF normalization failed' }
+            if ((Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash.ToLowerInvariant() -ne $pair[1]) {
+              throw "EXEC0274 source digest mismatch: $p"
+            }
+          }
+          Copy-Item -LiteralPath (Join-Path $base 'gk193_auto_source_entry.c') -Destination $app -Force
+          Copy-Item -LiteralPath (Join-Path $base 'test_gk274_source_probe.c') -Destination $test
+          if ((Get-FileHash $app -Algorithm SHA256).Hash.ToLowerInvariant() -ne $new -or
+              (Get-FileHash $test -Algorithm SHA256).Hash.ToLowerInvariant() -ne $testSha) {
+            throw 'EXEC0274 actual Win32 compiled sources were not copied exactly'
+          }
+          $cmake = Join-Path $dest 'CMakeLists.txt'
+          if (Select-String -LiteralPath $cmake -SimpleMatch -Pattern 'GK1_274_OriginalSourceJsonFramingAndHostileRefusal' -Quiet) {
+            throw 'EXEC0274 duplicate CTest registration'
+          }
+          Add-Content -LiteralPath $cmake -Value @'
+          # EXEC0274 production-linked source loader / negative-control test.
+          add_executable(test_gk274_source_probe test_gk274_source_probe.c)
+          target_link_libraries(test_gk274_source_probe PRIVATE gk1_app_state)
+          add_test(NAME GK1_274_OriginalSourceJsonFramingAndHostileRefusal
+           COMMAND test_gk274_source_probe
+           ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+          '@
+          Write-Output 'EXEC0274 exact C11 loader and adversarial regression staged for actual Windows build; no stock RNG or true first Spring added'
+
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
