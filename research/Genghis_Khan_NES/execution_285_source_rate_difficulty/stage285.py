@@ -75,10 +75,20 @@ def stage(app):
     if (app/TEST).exists():
         raise ValueError("EXEC0285 attempted duplicate test integration")
     text = cm.read_bytes().replace(b'\r\n',b'\n').decode('utf8')
-    if ('GK1_284_Stock_C289_RateHistory_' not in text or
+    # 0284 Linux source and the independently staged Win32 registry use two
+    # distinct, documented names for the same linked C289 history regression.
+    # Accept exactly ONE reviewed registration, never zero or both.
+    known_284 = (
+        'GK1_284_Stock_C289_RateHistory_AuthenticityAndRollback',
+        'GK1_284_OriginalC289AllHistoryRateCandidateRollback',
+    )
+    history_count = sum(text.count('add_test(NAME '+name) for name in known_284)
+    if (history_count != 1 or
         'GK1_285_SelectedDifficulty_' in text or
-        text.count('add_executable(test_gk282_stock_rng_trace') != 1):
-        raise ValueError("EXEC0285 CMake source and previous C289 history registry missing")
+        text.count('add_executable(test_gk282_stock_rng_trace') != 1 or
+        text.count('target_link_libraries(test_gk284_rate_history PRIVATE gk1_app_state') != 1 or
+        text.count('add_executable(test_gk284_rate_history test_gk284_rate_history.c)') != 1):
+        raise ValueError("EXEC0285 missing, duplicate or unlinked C289 history registry")
     gate_text = gate.read_bytes().replace(b'\r\n',b'\n').decode('utf8')
     old_pin = "EXPECTED_APP_SHA = '"+OLD_SHA[APP]+"'"
     new_pin = "EXPECTED_APP_SHA = '"+sha(out[APP])+"'"
