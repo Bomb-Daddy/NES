@@ -20,6 +20,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_277_fresh_title_provenance/**'
       - 'research/Genghis_Khan_NES/execution_279_win32_spring_coverage/**'
       - 'research/Genghis_Khan_NES/execution_280_original_rate_source_bridge/**'
+      - 'research/Genghis_Khan_NES/execution_282_stock_c289_chronology/**'
 
 permissions:
   contents: read
