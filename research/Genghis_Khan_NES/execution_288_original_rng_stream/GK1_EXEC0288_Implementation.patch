@@ -1,0 +1,253 @@
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -2239,3 +2239,29 @@
+  *out=staged;
+  return GK282_OK;
+ }
++
++/* EXEC0288: execute MULTIPLE real original fixed-bank C289 steps in the
++ * inherited native app. Controller setup difficulty is honored. The caller
++ * still must supply an independently observed initial seed, and no source
++ * step identifies which actual startup call generated a particular Rate. */
++Gk288Status gk1_app_original_rng_stream(const Gk1App *app,const char *rom,
++ const uint8_t seed[6],unsigned draws,Gk288Stream *out){
++ if(!app||app->active_world>1u||app->rules_profile!=0u||
++    !app->world_ready[app->active_world]||
++    app->worlds[app->active_world].phase!=GK1_PRE_SETUP_TEMPLATE||
++    app->worlds[app->active_world].scenario_id!=(app->active_world?
++        GK1_WORLD_CONQUEST:GK1_MONGOL_CONQUEST)||
++    app->worlds[app->active_world].country_count!=(app->active_world?27u:14u)||
++    memcmp(&app->worlds[app->active_world],
++      &app->finance_source_baseline[app->active_world],
++      sizeof app->worlds[app->active_world])!=0||
++    app->setup_stage[app->active_world]!=GK53_SETUP_AWAIT_SOURCE||
++    app->setup_difficulty[app->active_world]<1u||
++    app->setup_difficulty[app->active_world]>5u||
++    app->stock_checkpoint.valid||app->enhanced_assign.active||
++    app->enhanced_summer.active||app->enhanced_fall.active||
++    app->enhanced_winter.active||app->enhanced_year2.active||
++    app->enhanced_continuation.active)return GK288_STAGE;
++ return gk288_calculate_original_stream(rom,seed,
++   app->setup_difficulty[app->active_world],draws,out);
++}
+--- a/execution_199/gk1_app_state.h
++++ b/execution_199/gk1_app_state.h
+@@ -20,6 +20,7 @@
+ #include "gk278_original_spring_coverage.h"
+ #include "gk280_original_rate_bridge.h"
+ #include "gk282_stock_rng_trace.h"
++#include "gk288_original_rng_stream.h"
+ #include "gk222_enhanced_spring_lab.h"
+ #include "gk217_finance_preview.h"
+ #include "gk219_finance_compare.h"
+@@ -154,6 +155,11 @@
+   uint16_t demob_quantity; /* EXEC0060 Enhanced-only PRE_SETUP preview, not season */
+   char status[128];
+ } Gk1App;
++/* Source-verified contiguous C289 hypothetical draws from explicit CPU seed.
++ * Partial original RNG generator, NOT first Spring setup or a turn unlock. */
++Gk288Status gk1_app_original_rng_stream(const Gk1App *app,
++ const char *private_rom,const uint8_t observed_seed[6],
++ unsigned draws,Gk288Stream *out);
+ /* ROM-authenticated original C289 and initial Rate candidate at the setup
+  * boundary. A source calculation, NOT full original NES first Spring. */
+ Gk280Status gk1_app_original_rate_candidate(const Gk1App *app,
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -16,7 +16,7 @@
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk247_receipt_file_guard.c gk241_archived_import_capability.c gk237_owner_fresh_win.c gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk230_win32_smoke_args.c gk224_practice_save.c gk225_practice_resume.c gk226_practice_checkpoint.c gk227_practice_title_preview.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk278_original_spring_coverage.c gk280_original_rate_bridge.c gk282_stock_rng_trace.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk247_receipt_file_guard.c gk241_archived_import_capability.c gk237_owner_fresh_win.c gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk230_win32_smoke_args.c gk224_practice_save.c gk225_practice_resume.c gk226_practice_checkpoint.c gk227_practice_title_preview.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk278_original_spring_coverage.c gk280_original_rate_bridge.c gk288_original_rng_stream.c gk282_stock_rng_trace.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -1523,3 +1523,11 @@
+ add_test(NAME GK1_286_C289HistoricalTraceMustMatchSelectedCampaign
+  COMMAND test_gk286_c289_scenario_binding
+  "${CMAKE_CURRENT_BINARY_DIR}/gk286_scenario_trace.tmp")
++
++# EXEC0288 source-authenticated contiguous 6502 C289 stream in SAME game C11.
++# The original ROM is optional and NEVER embedded in a public installer.
++add_executable(test_gk288_original_rng_stream test_gk288_original_rng_stream.c)
++target_link_libraries(test_gk288_original_rng_stream PRIVATE gk1_app_state)
++add_test(NAME GK1_288_SourceOriginalC289MultiDrawNativeSetupAndRollback
++ COMMAND test_gk288_original_rng_stream
++ ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+--- /dev/null
++++ b/execution_199/gk288_original_rng_stream.c
+@@ -0,0 +1,55 @@
++#include "gk288_original_rng_stream.h"
++#include "gk178_source_rng.h"
++#include "gk137_stock_rng.h"
++#include "gk82_stock_cartridge.h"
++#include <stdio.h>
++#include <string.h>
++
++/* 16 PRG banks, 16-byte header, fixed last bank maps CPU C000-FFFF.
++ * Authenticated bank C2EC holds six private coefficients; load from the
++ * owner's exact ROM, never place original coefficient data into this code. */
++#define GK288_COEFF_OFF (16L+15L*16384L+0x02ecL)
++Gk288Status gk288_calculate_original_stream(const char *rom,
++ const uint8_t seed[6],uint8_t difficulty,unsigned draws,Gk288Stream *out){
++ if(!rom||!*rom||!seed||!out||difficulty<1u||difficulty>5u||
++    draws==0u||draws>GK288_MAX_DRAWS)return GK288_ARGUMENT;
++ Gk82RomBootstrap boot={0};
++ if(gk82_probe_stock_rom(rom,&boot)!=GK82_ROM_OK)return GK288_ROM;
++ FILE *f=fopen(rom,"rb");if(!f)return GK288_ROM;
++ uint8_t coeff[6]={0};
++ int read_ok=fseek(f,GK288_COEFF_OFF,SEEK_SET)==0&&fread(coeff,1,6,f)==6;
++ int error=ferror(f),closed=fclose(f);
++ if(!read_ok||error||closed){memset(coeff,0,sizeof coeff);return GK288_ROM;}
++ Gk288Stream next={0};next.difficulty=difficulty;next.count=(uint16_t)draws;
++ memcpy(next.before,seed,6);
++ uint8_t current[6];memcpy(current,seed,6);
++ Gk137StockRng independent={0};
++ if(gk137_from_nes_bytes(&independent,seed)!=GK137_OK){
++  memset(coeff,0,sizeof coeff);return GK288_PARITY;
++ }
++ for(unsigned i=0;i<draws;i++){
++  Gk178RngResult source={0};uint16_t modeled=0u;
++  if(gk178_step(current,coeff,&source)!=GK178_OK||
++     gk137_draw15(&independent,&modeled)!=GK137_OK){
++   memset(coeff,0,sizeof coeff);return GK288_PARITY;
++  }
++  uint8_t independent_bytes[6]={0};
++  gk137_to_nes_bytes(&independent,independent_bytes);
++  uint16_t observed_draw=(uint16_t)(((uint16_t)source.result_67<<8)|
++                                    (uint16_t)source.result_66);
++  if(memcmp(source.after,independent_bytes,6)!=0||
++     modeled!=observed_draw||independent.draws!=i+1u){
++   memset(coeff,0,sizeof coeff);return GK288_PARITY;
++  }
++  next.draw15[i]=observed_draw;
++  next.rate_candidates[i]=(uint16_t)(50u+observed_draw%(94u+7u*difficulty));
++  memcpy(current,source.after,6);
++ }
++ memcpy(next.after,current,6);
++ next.authenticated_original=1u;
++ next.conditional_stream=1u;
++ /* Do not claim source seed provenance, startup chronology or original turns. */
++ memset(coeff,0,sizeof coeff);
++ memset(current,0,sizeof current);
++ *out=next;return GK288_OK;
++}
+--- /dev/null
++++ b/execution_199/gk288_original_rng_stream.h
+@@ -0,0 +1,27 @@
++#ifndef GK288_ORIGINAL_RNG_STREAM_H
++#define GK288_ORIGINAL_RNG_STREAM_H
++#include <stdint.h>
++/* Source-executed C289 draw stream, not an NES first-Spring initialization.
++ * Seed MUST originate in independent original-CPU RAM evidence to be relevant.
++ * ROM is read locally, validated against original-stock SHA, and never copied.
++ * A contiguous stream is conditional: external seed writers, NMI/AI/menus,
++ * and unknown setup calls make it unsafe to promote any result to a season.
++ */
++#define GK288_MAX_DRAWS 64u
++typedef enum {
++ GK288_OK=0, GK288_ARGUMENT=1, GK288_STAGE=2,
++ GK288_ROM=3, GK288_PARITY=4
++} Gk288Status;
++typedef struct {
++ uint8_t before[6],after[6],difficulty;
++ uint8_t authenticated_original,conditional_stream;
++ uint8_t actual_startup_seed_proven,first_spring_generated,orders_granted;
++ uint16_t count;
++ uint16_t draw15[GK288_MAX_DRAWS];
++ uint16_t rate_candidates[GK288_MAX_DRAWS];
++} Gk288Stream;
++/* Fail-atomic output. No country, app, controller, game clock or save writes. */
++Gk288Status gk288_calculate_original_stream(const char *private_rom,
++ const uint8_t explicit_seed[6],uint8_t selected_difficulty,
++ unsigned draws,Gk288Stream *out);
++#endif
+--- /dev/null
++++ b/execution_199/test_gk288_original_rng_stream.c
+@@ -0,0 +1,85 @@
++/* EXEC0288: authentic original source C289 multi-draw sequence, no ROM bytes
++ * distributed and no fabricated Spring/turns. Private ROM is OPTIONAL.
++ * Pass original ROM path as argv[2] for the separate private-source proof. */
++#include "gk1_app_state.h"
++#include "gk1_source_identity.h"
++#include "gk137_stock_rng.h"
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++#define CK(x) do{if(!(x)){fprintf(stderr,"GK288 FAIL %d: %s\n",__LINE__,#x);return 1;}checks++;}while(0)
++int main(int argc,char **argv){
++ unsigned checks=0;CK(argc==2||argc==3);
++ const uint8_t initial[6]={0x12,0x25,0x38,0x4b,0x5e,0x71};
++ Gk288Stream out;memset(&out,0xb7,sizeof out);
++ Gk288Stream unchanged=out;
++ CK(gk288_calculate_original_stream("",initial,1,1,&out)==GK288_ARGUMENT);
++ CK(gk288_calculate_original_stream("/missing/private.nes",initial,0,1,&out)==GK288_ARGUMENT);
++ CK(gk288_calculate_original_stream("/missing/private.nes",initial,6,1,&out)==GK288_ARGUMENT);
++ CK(gk288_calculate_original_stream("/missing/private.nes",initial,1,0,&out)==GK288_ARGUMENT);
++ CK(gk288_calculate_original_stream("/missing/private.nes",initial,1,65,&out)==GK288_ARGUMENT);
++ CK(gk288_calculate_original_stream("/missing/private.nes",initial,1,1,&out)==GK288_ROM);
++ CK(memcmp(&out,&unchanged,sizeof out)==0);
++ Gk1TemplateDataset *dataset=malloc(sizeof *dataset);
++ Gk1App *app=calloc(1,sizeof *app),*prior=malloc(sizeof *prior);
++ CK(dataset&&app&&prior);
++ gk1_app_init(app);
++ CK(gk1_template_load(argv[1],dataset)==GK1_LOAD_OK);
++ CK(gk1_app_install_templates(app,dataset));
++ app->active_world=0u;app->rules_profile=0u;
++ app->setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;
++ app->setup_difficulty[0]=1u;
++ memcpy(prior,app,sizeof *prior);
++ CK(gk1_app_original_rng_stream(app,"/missing/private.nes",initial,1,&out)==GK288_ROM);
++ CK(!memcmp(app,prior,sizeof *app));
++ CK(!memcmp(&out,&unchanged,sizeof out));
++ app->worlds[0].countries[0].gold++;
++ CK(gk1_app_original_rng_stream(app,"/missing/private.nes",initial,1,&out)==GK288_STAGE);
++ app->worlds[0].countries[0].gold--;
++ CK(!memcmp(app,prior,sizeof *app));
++ app->rules_profile=1u;
++ CK(gk1_app_original_rng_stream(app,"/missing/private.nes",initial,1,&out)==GK288_STAGE);
++ app->rules_profile=0u;
++ app->stock_checkpoint.valid=1u;
++ CK(gk1_app_original_rng_stream(app,"/missing/private.nes",initial,1,&out)==GK288_STAGE);
++ app->stock_checkpoint.valid=0u;
++ if(argc==3&&argv[2][0]){
++  CK(gk1_verified_original_csv(argv[1]));
++  for(unsigned w=0;w<2;w++){
++   app->active_world=(uint8_t)w;
++   app->setup_stage[w]=GK53_SETUP_AWAIT_SOURCE;
++   for(unsigned diff=1;diff<=5;diff++){
++    app->setup_difficulty[w]=(uint8_t)diff;
++    uint8_t seed[6];
++    for(unsigned k=0;k<6;k++)seed[k]=(uint8_t)(initial[k]+w*37u+diff*13u);
++    memcpy(prior,app,sizeof *prior);
++    CK(gk1_app_original_rng_stream(app,argv[2],seed,64,&out)==GK288_OK);
++    CK(!memcmp(app,prior,sizeof *app));
++    CK(out.authenticated_original&&out.conditional_stream&&out.count==64u);
++    CK(!out.actual_startup_seed_proven&&!out.first_spring_generated&&!out.orders_granted);
++    CK(out.difficulty==diff&&memcmp(out.before,seed,6u)==0);
++    Gk137StockRng r={0};CK(gk137_from_nes_bytes(&r,seed)==GK137_OK);
++    for(unsigned i=0;i<64;i++){
++     uint16_t val=0;
++     CK(gk137_draw15(&r,&val)==GK137_OK);
++     CK(out.draw15[i]==val);
++     CK(out.rate_candidates[i]==50u+val%(94u+7u*diff));
++    }
++    uint8_t after[6];gk137_to_nes_bytes(&r,after);
++    CK(memcmp(after,out.after,6u)==0);
++    Gk288Stream replay={0};
++    CK(gk1_app_original_rng_stream(app,argv[2],seed,64,&replay)==GK288_OK);
++    CK(memcmp(&replay,&out,sizeof out)==0);
++    Gk280RateCandidate first={0};
++    CK(gk1_app_original_rate_candidate(app,argv[2],seed,&first)==GK280_OK);
++    CK(first.raw_draw15==out.draw15[0]&&first.source_rate_candidate==out.rate_candidates[0]);
++   }
++  }
++  /* Refuse a corrupt ROM without mutating a prior valid result. */
++  unchanged=out;
++  CK(gk1_app_original_rng_stream(app,"/missing/private.nes",initial,64,&out)==GK288_ROM);
++  CK(memcmp(&out,&unchanged,sizeof out)==0);
++ }
++ printf("GK288 %u assertions PASS; private original C289 stream %s; first Spring NOT generated\n",checks,argc==3&&argv[2][0]?"SOURCE_EXECUTED":"NOT RUN");
++ free(dataset);free(prior);free(app);return 0;
++}
