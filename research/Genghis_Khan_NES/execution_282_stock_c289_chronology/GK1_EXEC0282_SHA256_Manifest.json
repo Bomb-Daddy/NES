@@ -1,0 +1,41 @@
+{
+  "added": {
+    "execution_199/GK1_EXEC0282_Private_Mesen_C289_Trace.lua": {
+      "sha256": "523ed13da51a7dcaef2a624bd8ce9d07039c3987b5fd03564da281794746e55f"
+    },
+    "execution_199/gk282_stock_rng_trace.c": {
+      "sha256": "659a5ca4c1ea4c2299bf77da1407ed21932b975827db315e3ca86b5b3672f1e5"
+    },
+    "execution_199/gk282_stock_rng_trace.h": {
+      "sha256": "c6d3d9be633a25766689b3d439ab85cc10bbb6c605513d651a4c31f3af882e44"
+    },
+    "execution_199/test_gk282_stock_rng_trace.c": {
+      "sha256": "ff170b1c7a1992b584c6eb896721f712c441df1f6877e228040b4fd0ed4c9f15"
+    }
+  },
+  "changed": {
+    "execution_199/CMakeLists.txt": {
+      "new_sha256": "e2d69b238dd94f58f40a636842bb6f3bce559c87c9a0b9b152576c9c3dc52d39",
+      "old_sha256": "b56ee093c3dce901f7c87b81856cb5bf19d9a2e709e68d732bede1575c85f106"
+    },
+    "execution_199/gk1_app_state.c": {
+      "new_sha256": "4f9319989b5f82b99d7b3211c6fb5def892f4c9db58ad69d3ca29a754532a28f",
+      "old_sha256": "f2fc9d9f36ba6c0ba48f72c95ae5b9b343727876c3e84da286b7d8670e20252f"
+    },
+    "execution_199/gk1_app_state.h": {
+      "new_sha256": "0d7e0ac21b6b7d94858e16c3c0bd4c3519444ccf400e55f4197d8c5f099a8199",
+      "old_sha256": "981bcbcef37d1d1b3023f667c48f1eaef7125d3e2c3f0d46e0789a3fdf86468e"
+    }
+  },
+  "execution": "EXEC0282",
+  "first_spring_generated": false,
+  "integration_patch_sha256": "74c1b35676699ec6c8ae289eb19d56baefc46e700665fa6ac5945a0d7525dbf0",
+  "linux_private_synthetic_trace_assertions": "21/21 PASS",
+  "linux_targeted_ctest": "3/3 PASS",
+  "observed_original_mesen_new_run": false,
+  "physical_xbox": "NOT RUN",
+  "predecessor": "EXEC0280 complete source + EXEC0281 Windows CI",
+  "predecessor_sha256": "5b710b75f974597ca379841e3e7e3723602110eae69c3a0c200a76c86ab773c7",
+  "private_rom_included": false,
+  "win32": "NOT RUN"
+}
