@@ -747,9 +747,11 @@ jobs:
           if (-not $partialText.Contains('--- a/execution_199/gk1_app_state.h')) { throw 'EXEC0281 source patch lacks native API' }
           $partialPath = Join-Path $env:RUNNER_TEMP 'GK1_EXEC0281_C11_only.patch'
           [IO.File]::WriteAllText($partialPath,$partialText,(New-Object System.Text.UTF8Encoding($false)))
-          git -C current-gk1 apply --check $partialPath
+          # Apply only the SHA-pinned reviewed source patch relative to the
+          # exact inherited game root; retain the old hostile workflow audit.
+          git apply --check --directory=current-gk1 $partialPath
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0281 inherited C11 preflight refused' }
-          git -C current-gk1 apply $partialPath
+          git apply --directory=current-gk1 $partialPath
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0281 actual C11 source patch refused' }
           foreach ($p in @(@('gk1_app_state.c',$newC),@('gk1_app_state.h',$newH))) {
             $file = Join-Path $app $p[0]
