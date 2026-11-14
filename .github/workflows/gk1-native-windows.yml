@@ -21,6 +21,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_279_win32_spring_coverage/**'
       - 'research/Genghis_Khan_NES/execution_280_original_rate_source_bridge/**'
       - 'research/Genghis_Khan_NES/execution_282_stock_c289_chronology/**'
+      - 'research/Genghis_Khan_NES/execution_284_c289_rate_history/**'
 
 permissions:
   contents: read
@@ -884,6 +885,27 @@ jobs:
             throw 'EXEC0283 C289 actual native CTest missing'
           }
           Write-Output 'EXEC0283 actual C11 WinMain incorporates 0282 trace API, synthetic no-ROM negative test; first playable Spring NOT claimed'
+      - name: EXEC0284 exact original-stock C289 all-history source and hostile staging
+        shell: pwsh
+        run: |
+          # 0283 is already linked. Preserve the previous C11 native game and
+          # replace only the two SHA-pinned C289 diagnostic files; compile the
+          # bounded all-history regression into the very same executable library.
+          $base = 'research/Genghis_Khan_NES/execution_284_c289_rate_history'
+          python -m py_compile "$base/stage284.py" "$base/test_stage284.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0284 Python stage syntax refused' }
+          python "$base/test_stage284.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0284 hostile staging/rollback controls failed' }
+          python "$base/stage284.py" 'current-gk1/execution_199'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0284 actual C11 source staging failed closed' }
+          $app = 'current-gk1/execution_199'
+          foreach ($name in @('gk282_stock_rng_trace.c','gk282_stock_rng_trace.h','test_gk284_rate_history.c')) {
+            if (-not (Test-Path -LiteralPath (Join-Path $app $name))) { throw "EXEC0284 linked source missing $name" }
+          }
+          if (-not (Select-String -LiteralPath (Join-Path $app 'CMakeLists.txt') -SimpleMatch -Pattern 'GK1_284_OriginalC289AllHistoryRateCandidateRollback' -Quiet)) {
+            throw 'EXEC0284 compiled CTest registry missing'
+          }
+          Write-Output 'EXEC0284 source-authenticated C289 all-history test registered in the complete Win32 native C11 application; FIRST_SPRING_NOT_GENERATED'
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
