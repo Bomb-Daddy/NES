@@ -14,7 +14,7 @@
  add_test(NAME gk280_original_rate_bridge COMMAND test_gk280_original_rate_bridge
    ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
 +
-+# EXEC0282 â C289 source trace validation in same real app C11 library.
++# EXEC0282 — C289 source trace validation in same real app C11 library.
 +add_executable(test_gk282_stock_rng_trace test_gk282_stock_rng_trace.c)
 +target_link_libraries(test_gk282_stock_rng_trace PRIVATE gk1_app_state)
 +add_test(NAME gk282_original_c289_trace COMMAND test_gk282_stock_rng_trace
