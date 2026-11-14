@@ -714,6 +714,10 @@ jobs:
           $app = 'current-gk1/execution_199'
           $patch = Join-Path $review 'EXEC0280_Source_Integration_From_0278.patch'
           if (-not (Test-Path $patch)) { throw 'EXEC0281 source patch missing' }
+          # Git-for-Windows can check out text patch with CRLF. Restore the
+          # reviewed byte-exact LF file, then compare its physical SHA256.
+          python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $patch
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0281 reviewed patch newline restoration failed' }
           if ((Get-FileHash $patch -Algorithm SHA256).Hash.ToLowerInvariant() -ne 'dafd3903dea91b2043268a00db56f531391c24567a198339b7f76dd01ab1b6f2') { throw 'EXEC0281 source patch SHA mismatch' }
           $oldC = '058b27ff7608b8d799568cce503023736e815820003a6a19cb36dc9c026b1cb9'
           $newC = 'f2fc9d9f36ba6c0ba48f72c95ae5b9b343727876c3e84da286b7d8670e20252f'
