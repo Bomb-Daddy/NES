@@ -676,6 +676,22 @@ jobs:
           if (-not (Select-String -LiteralPath 'current-gk1/execution_199/CMakeLists.txt' -SimpleMatch -Pattern 'GK1_278_OriginalSpring24DirectFieldsAtomicAndNoFakeParity' -Quiet)) {
             throw 'EXEC0279 did not register its real C11 original Spring coverage test'
           }
+          # EXEC0279: the inherited hostile EXEC0265 provenance test remained
+          # pinned to exact EXEC0272 game source. The verified EXEC0278 app
+          # changes this SHA; update *only* that expected digest, keep all
+          # original test logic and adversarial cases enabled.
+          $gate = 'current-gk1/execution_199/packaging/test_gk265_current_win32_source.py'
+          $gateText = [IO.File]::ReadAllText($gate).Replace(([string][char]13+[char]10),([string][char]10))
+          $oldGate = "EXPECTED_APP_SHA = 'e7c7e02ed35760234bf7ddc8738f3a0ac87699fb2f1b46ca40f3071df7207372'"
+          $newGate = "EXPECTED_APP_SHA = '058b27ff7608b8d799568cce503023736e815820003a6a19cb36dc9c026b1cb9'"
+          if ($gateText.Split($oldGate).Length -ne 2 -or $gateText.Contains($newGate)) {
+            throw 'EXEC0279 inherited hostile provenance pin not unique / already updated'
+          }
+          [IO.File]::WriteAllText($gate,$gateText.Replace($oldGate,$newGate))
+          if (-not ([IO.File]::ReadAllText($gate).Contains($newGate))) { throw 'EXEC0279 updated hostile source pin readback failed' }
+          python $gate 'current-gk1/execution_199/gk1_app_state.c' 'current-gk1/execution_199/test_gk264_scenario_restart.c' 'current-gk1/execution_199/CMakeLists.txt' 'current-gk1/.github/workflows/gk1-native-windows.yml'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0279 complete current game does not pass retained hostile provenance checks' }
+          Write-Output 'EXEC0279 legacy gate repaired for exact reviewed source: all older adversarial assertions RETAINED'
           Write-Output 'EXEC0279 staged authentic-source 24-field *comparison*, NOT independently generated original first Spring'
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
