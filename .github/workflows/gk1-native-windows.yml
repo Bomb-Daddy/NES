@@ -15,6 +15,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_267_win32_controller_266/**'
       - 'research/Genghis_Khan_NES/execution_270_classic_view_pass_navigation/**'
       - 'research/Genghis_Khan_NES/execution_271_win32_classic_view/**'
+      - 'research/Genghis_Khan_NES/execution_273_win32_spring_source_integrity/**'
 
 permissions:
   contents: read
@@ -410,6 +411,47 @@ jobs:
           python research/Genghis_Khan_NES/execution_271_win32_classic_view/test_gk271_win32_0270_provenance.py .github/workflows/gk1-native-windows.yml
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0271 hostile Win32 source-gate QA failed' }
           Write-Output 'EXEC0271 native Windows app exactly matches EXEC0270 gameplay code; owner-private ROM test inputs excluded'
+      - name: EXEC0273 original-template identity source guard integrated into Win32
+        shell: pwsh
+        run: |
+          # The inherited 0271 Windows app is older than verified 0272.
+          # Apply both EXACT public C11 source deltas, not a synthetic test.
+          $script = 'research/Genghis_Khan_NES/execution_273_win32_spring_source_integrity/gk273_stage_source.py'
+          $app = 'current-gk1/execution_199/gk1_app_state.c'
+          $test = 'current-gk1/execution_199/test_gk214_spring_batch.c'
+          if (-not (Test-Path $script) -or -not (Test-Path $app) -or -not (Test-Path $test)) {
+            throw 'EXEC0273 reviewed source script / compiled game / linked GK214 test absent'
+          }
+          python $script app $app --self-test
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0273 source preimage/hostile checks failed' }
+          python $script test $test --self-test
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0273 regression preimage/hostile checks failed' }
+          python $script app $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0273 native game source update failed' }
+          python $script test $test
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0273 linked regression source update failed' }
+          $appHash = (Get-FileHash $app -Algorithm SHA256).Hash.ToLowerInvariant()
+          $testHash = (Get-FileHash $test -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($appHash -ne 'e7c7e02ed35760234bf7ddc8738f3a0ac87699fb2f1b46ca40f3071df7207372' -or
+              $testHash -ne 'ca52f9386bef4600e93fcecdb55aa59f706660599ebb4787a37089ee382898ad') {
+            throw 'EXEC0273 source/test exact provenance differs from reviewed EXEC0272'
+          }
+          $cmake = 'current-gk1/execution_199/CMakeLists.txt'
+          $cmakeText = [IO.File]::ReadAllText($cmake)
+          if (-not $cmakeText.Contains('add_executable(test_gk214_spring_batch test_gk214_spring_batch.c)') -or
+              -not $cmakeText.Contains('GK1_214_')) {
+            throw 'EXEC0273 actual GK214 executable regression not in native CTest build'
+          }
+          # EXEC0271 adjusted the prior hostile source gate to exact 0270.
+          # Preserve its negative controls and require exact 0272 instead.
+          $gate = 'current-gk1/execution_199/packaging/test_gk265_current_win32_source.py'
+          $gateText = [IO.File]::ReadAllText($gate).Replace(([string][char]13+[char]10),([string][char]10))
+          $old = "EXPECTED_APP_SHA = 'ee00ef0fc03676d09edfef9ca630acb9e605f128e5af5a66b1eafb2e86c2dc68'"
+          $new = "EXPECTED_APP_SHA = 'e7c7e02ed35760234bf7ddc8738f3a0ac87699fb2f1b46ca40f3071df7207372'"
+          if ($gateText.Split($old).Length -ne 2) { throw 'EXEC0273 previous hostile source pin absent or ambiguous' }
+          [IO.File]::WriteAllText($gate,$gateText.Replace($old,$new))
+          if (-not ([IO.File]::ReadAllText($gate).Contains($new))) { throw 'EXEC0273 hostile gate source readback failed' }
+          Write-Output 'EXEC0273 app and linked native Win32 GK214 test are byte-identical to verified EXEC0272; first Spring setup/RNG NOT implemented'
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
