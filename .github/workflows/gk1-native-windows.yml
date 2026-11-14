@@ -654,7 +654,7 @@ jobs:
            ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
           '@
           Write-Output 'EXEC0277 exact Linux-tested production C11 and new regression staged; real original first Spring still OPEN'
-      # EXEC0279 diagnostic retry: checksum reveals exact prior staging drift; fail-closed.
+      # EXEC0279: authentic Win32 CMake predecessor fingerprint from real failed run, exact C11 production diff remains fail-closed.
       - name: EXEC0279 hostile QA of exact inherited Spring source transform
         shell: pwsh
         run: |
