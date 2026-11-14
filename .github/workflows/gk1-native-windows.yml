@@ -17,6 +17,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_271_win32_classic_view/**'
       - 'research/Genghis_Khan_NES/execution_273_win32_spring_source_integrity/**'
       - 'research/Genghis_Khan_NES/execution_274_original_stock_json_probe/**'
+      - 'research/Genghis_Khan_NES/execution_277_fresh_title_provenance/**'
 
 permissions:
   contents: read
@@ -597,6 +598,62 @@ jobs:
            ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
           '@
           Write-Output 'EXEC0276 verified C11 setup-history admission staged for Windows; original stock Spring RNG remains OPEN'
+      - name: EXEC0277 fresh original-stock title-state rejection and rollback
+        shell: pwsh
+        run: |
+          # A historical original WorkRAM source cannot claim a different ruler,
+          # edited title-stage wizard, manual bonus or selected World campaign.
+          $base = 'research/Genghis_Khan_NES/execution_277_fresh_title_provenance'
+          $dest = 'current-gk1/execution_199'
+          $sourceFile = Join-Path $base 'gk162_original_entry.c'
+          $destFile = Join-Path $dest 'gk162_original_entry.c'
+          $pre = '7e192888fda4ee5ef9a4195ffaffef92269cb82f2fb4ae1172db5f5bf4ae3ce3'
+          $post = '8d29890d8eafbfd01dd3c045b3df16e7a504bf5d1c5a60cc3fc38926a6a0a0b3'
+          if (-not (Test-Path -LiteralPath $sourceFile) -or -not (Test-Path -LiteralPath $destFile)) {
+            throw 'EXEC0277 missing original stock C11 production source'
+          }
+          foreach ($f in @($sourceFile,$destFile)) {
+            python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $f
+            if ($LASTEXITCODE -ne 0) { throw "EXEC0277 source normalization failed $f" }
+          }
+          if ((Get-FileHash -LiteralPath $destFile -Algorithm SHA256).Hash.ToLowerInvariant() -ne $pre) {
+            throw 'EXEC0277 source preimage mismatch, previous full C11 integration not verified'
+          }
+          if ((Get-FileHash -LiteralPath $sourceFile -Algorithm SHA256).Hash.ToLowerInvariant() -ne $post) {
+            throw 'EXEC0277 reviewed source hash mismatch'
+          }
+          Copy-Item -LiteralPath $sourceFile -Destination $destFile -Force
+          if ((Get-FileHash -LiteralPath $destFile -Algorithm SHA256).Hash.ToLowerInvariant() -ne $post) {
+            throw 'EXEC0277 production C11 stage verification failed'
+          }
+          $newTest = Join-Path $base 'test_gk277_fresh_title_provenance.c'
+          $testDest = Join-Path $dest 'test_gk277_fresh_title_provenance.c'
+          if (-not (Test-Path -LiteralPath $newTest) -or (Test-Path -LiteralPath $testDest)) {
+            throw 'EXEC0277 regression source missing or already registered'
+          }
+          python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $newTest
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0277 regression normalization failed' }
+          $expectedTest = 'c9b3cfe6f7182812d67ac7494e63541bbe3d0204454d750a91e81de610243c71'
+          if ((Get-FileHash -LiteralPath $newTest -Algorithm SHA256).Hash.ToLowerInvariant() -ne $expectedTest) {
+            throw 'EXEC0277 regression source does not match Linux-tested bytes'
+          }
+          Copy-Item -LiteralPath $newTest -Destination $testDest
+          if ((Get-FileHash -LiteralPath $testDest -Algorithm SHA256).Hash.ToLowerInvariant() -ne $expectedTest) {
+            throw 'EXEC0277 C11 regression stage verification failed'
+          }
+          $cmake = Join-Path $dest 'CMakeLists.txt'
+          if (Select-String -LiteralPath $cmake -SimpleMatch -Pattern 'GK1_277_FreshSourceRequiresUntouchedTitleOrKnownWizardChoices' -Quiet) {
+            throw 'EXEC0277 duplicate CTest registration'
+          }
+          Add-Content -LiteralPath $cmake -Value @'
+          # EXEC0277: Reject mutated fresh title wizard or wrong active campaign.
+          add_executable(test_gk277_fresh_title_provenance test_gk277_fresh_title_provenance.c)
+          target_link_libraries(test_gk277_fresh_title_provenance PRIVATE gk1_app_state)
+          add_test(NAME GK1_277_FreshSourceRequiresUntouchedTitleOrKnownWizardChoices
+           COMMAND test_gk277_fresh_title_provenance
+           ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+          '@
+          Write-Output 'EXEC0277 exact Linux-tested production C11 and new regression staged; real original first Spring still OPEN'
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
