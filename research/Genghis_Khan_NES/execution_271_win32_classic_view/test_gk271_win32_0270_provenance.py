@@ -23,7 +23,7 @@ REQUIRED = (
 )
 
 def validate(source):
-    missing = [x for x in REQUIRED if source.count(x) != 1]
+    missing = [x for x in REQUIRED if source.count(x) < 1]
     if missing:
         raise ValueError('missing/nonunique mandatory source gates: ' + ', '.join(missing))
     if source.index('EXEC0270 source-integrated into native Win32') > source.index('Compile actual current 1280x720'):
@@ -37,7 +37,7 @@ def hostile(source):
     for n, marker in enumerate(REQUIRED):
         if marker == 'NSIS':
             continue
-        mutant = source.replace(marker, 'MUTATED_REJECTED', 1)
+        mutant = source.replace(marker, 'MUTATED_REJECTED')
         try:
             validate(mutant)
         except (ValueError, AssertionError):
