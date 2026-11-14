@@ -1,0 +1,234 @@
+diff --git a/execution_199/CMakeLists.txt b/execution_199/CMakeLists.txt
+index 74f7f4f..e6ea7ed 100644
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -1465,3 +1465,11 @@ add_test(NAME GK1_275_FreshOriginalSetupChoiceProvenanceNoFalseFirstSpring
+  COMMAND test_gk275_fresh_setup_provenance
+   ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv
+   )
++
++# EXEC0276: original stock fresh/archived input may never borrow unrelated
++# native wizard setup; authenticated source imports are immutable on refusal.
++add_executable(test_gk276_original_setup_admission test_gk276_original_setup_admission.c)
++target_link_libraries(test_gk276_original_setup_admission PRIVATE gk1_app_state)
++add_test(NAME GK1_276_OriginalStockArchivedAndFreshWizardProvenance
++ COMMAND test_gk276_original_setup_admission
++ ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+diff --git a/execution_199/gk162_original_entry.c b/execution_199/gk162_original_entry.c
+index ff6cdf0..597b9fb 100644
+--- a/execution_199/gk162_original_entry.c
++++ b/execution_199/gk162_original_entry.c
+@@ -5,6 +5,43 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++/* EXEC0276: source-history-compatible controller setup admission.
++ * Archived restored Mesen states document the actual RAM/season but DO NOT
++ * document what native setup wizard choices were used to reach that RAM.
++ * Never label one as produced by an arbitrary new wizard configuration.
++ * Cold source continuation from an UNTOUCHED title screen remains legal.
++ * Fresh stock 1175 retains the separately observed EXEC0275 choices. */
++static int pristine_title(const Gk1App *a,unsigned w){
++ if(a->setup_stage[w]!=GK53_SETUP_PLAYERS ||
++    a->setup_candidate[w]!=255u || a->setup_player_count[w]!=1u ||
++    a->setup_difficulty[w]!=1u || a->setup_player_slot[w]!=0u ||
++    a->setup_ability_method[w]!=0u || a->setup_method_cursor[w]!=0u ||
++    a->manual_bonus_active[w] || a->manual_bonus_person[w] ||
++    a->manual_bonus_ability[w])return 0;
++ for(unsigned i=0;i<4u;i++)if(a->setup_rulers[w][i]!=255u)return 0;
++ for(unsigned i=0;i<5u;i++)for(unsigned j=0;j<6u;j++)
++  if(a->manual_bonus[w][i][j])return 0;
++ return 1;
++}
++int gk162_original_setup_compatible(const Gk1App *a,Gk77Profile profile){
++ if(!a || profile<GK77_FRESH_MONGOL_WORKRAM ||
++   profile>GK77_ARCHIVED_WORLD_SAVERAM)return 0;
++ unsigned w=(profile==GK77_ARCHIVED_WORLD_SAVERAM)?1u:0u;
++ if(profile!=GK77_FRESH_MONGOL_WORKRAM)return pristine_title(a,w);
++ /* EXEC0275's known fresh original Temujin/one-player/difficulty-1/auto
++  * compatibility (not proof that the native game generated original RNG). */
++ if(a->setup_stage[0]==GK53_SETUP_PLAYERS)return 1;
++ if(a->setup_stage[0]!=GK53_SETUP_AWAIT_SOURCE || a->active_world!=0u ||
++    a->setup_player_count[0]!=1u || a->setup_player_slot[0]!=1u ||
++    a->setup_candidate[0]!=0u || a->setup_rulers[0][0]!=0u ||
++    a->setup_rulers[0][1]!=255u || a->setup_rulers[0][2]!=255u ||
++    a->setup_rulers[0][3]!=255u || a->setup_difficulty[0]!=1u ||
++    a->setup_ability_method[0]!=1u || a->manual_bonus_active[0])return 0;
++ for(unsigned i=0;i<5u;i++)for(unsigned j=0;j<6u;j++)
++  if(a->manual_bonus[0][i][j])return 0;
++ return 1;
++}
++
+ Gk162EntryStatus gk162_enter_original_checkpoint(Gk1App *a,
+  const char *csv,const char *records,Gk77Profile profile,uint8_t player){
+  if(!a||!csv||!*csv||!records||!*records||
+@@ -15,7 +52,8 @@ Gk162EntryStatus gk162_enter_original_checkpoint(Gk1App *a,
+  if(a->rules_profile>1u||!a->world_ready[w]||
+     a->worlds[w].phase!=GK1_PRE_SETUP_TEMPLATE||
+     a->worlds[w].scenario_id!=(w?GK1_WORLD_CONQUEST:GK1_MONGOL_CONQUEST)||
+-    a->worlds[w].country_count!=(w?27u:14u))return GK162_ENTRY_TEMPLATE;
++    a->worlds[w].country_count!=(w?27u:14u) ||
++    !gk162_original_setup_compatible(a,profile))return GK162_ENTRY_TEMPLATE;
+  /* Production source gate does all identity, SHA, and source-projection checks
+   * into a separate candidate; this function cannot mint a playable source. */
+  Gk79Checkpoint *candidate=malloc(sizeof *candidate);
+@@ -46,7 +84,8 @@ Gk162EntryStatus gk162_commit_verified_checkpoint(Gk1App *a,const char *csv,
+     a->worlds[w].scenario_id!=(w?GK1_WORLD_CONQUEST:GK1_MONGOL_CONQUEST)||
+     a->worlds[w].country_count!=(w?27u:14u)||
+     source->world.scenario_id!=a->worlds[w].scenario_id||
+-    source->world.country_count!=a->worlds[w].country_count)return GK162_ENTRY_TEMPLATE;
++    source->world.country_count!=a->worlds[w].country_count ||
++    !gk162_original_setup_compatible(a,source->profile))return GK162_ENTRY_TEMPLATE;
+  /* A public commit helper must not allow a SHA-authenticated record to
+   * borrow an arbitrary mutated, PRE_SETUP-labeled native template. Verify
+   * full 41-country canonical source and exact original scenario bytes. */
+diff --git a/execution_199/gk162_original_entry.h b/execution_199/gk162_original_entry.h
+index 21063cb..52f04be 100644
+--- a/execution_199/gk162_original_entry.h
++++ b/execution_199/gk162_original_entry.h
+@@ -19,6 +19,12 @@ typedef enum {
+  * pre-existing, source-bounded VIEW/PASS actions; it does not independently
+  * generate the NES first Spring nor imply 3 source-implemented actions.
+  */
++/* EXEC0276: a known original stock receipt is a historical continuation, not
++ * evidence that an unrelated native wizard selected the same NES RNG path.
++ * Fresh profile retains the EXEC0275 known-choice gate. Archived profiles
++ * have NO source-proven chooser history: allow only untouched title setup.
++ * This is a source-free, pure admission predicate, not an NES initializer. */
++int gk162_original_setup_compatible(const Gk1App *app,Gk77Profile profile);
+ Gk162EntryStatus gk162_enter_original_checkpoint(Gk1App *app,
+  const char *canonical_csv,const char *private_stock83,
+  Gk77Profile profile,uint8_t player_index);
+diff --git a/execution_199/gk164_mss_entry.c b/execution_199/gk164_mss_entry.c
+index 824e636..1f5ce8d 100644
+--- a/execution_199/gk164_mss_entry.c
++++ b/execution_199/gk164_mss_entry.c
+@@ -17,7 +17,8 @@ Gk164Result gk164_enter_original_mss(Gk1App *app,const char *csv,
+  if(app->rules_profile>1u||!app->world_ready[w]||
+     app->worlds[w].phase!=GK1_PRE_SETUP_TEMPLATE||
+     app->worlds[w].scenario_id!=(w?GK1_WORLD_CONQUEST:GK1_MONGOL_CONQUEST)||
+-    app->worlds[w].country_count!=(w?27u:14u))return GK164_TEMPLATE;
++    app->worlds[w].country_count!=(w?27u:14u) ||
++    !gk162_original_setup_compatible(app,profile))return GK164_TEMPLATE;
+  /* Exact 41-country CSV and every unsourced PRE_SETUP field are checked
+   * again atomically inside gk162_commit_verified_checkpoint before commit.
+   * Reject a clearly invalid canonical CSV early, before private state reads. */
+diff --git a/execution_199/gk166_fresh_entry.c b/execution_199/gk166_fresh_entry.c
+index bc90150..37e7641 100644
+--- a/execution_199/gk166_fresh_entry.c
++++ b/execution_199/gk166_fresh_entry.c
+@@ -6,29 +6,8 @@
+ #include <string.h>
+ 
+ static void wipe(void *p,size_t n){volatile uint8_t *v=(volatile uint8_t*)p;while(n--)*v++=0;}
+-/* EXEC0275: this ONE authenticated original WorkRAM receipt was captured
+- * with Mongol one-human Temujin, difficulty 1, automatically generated
+- * attributes, and no manual point allocation. The original B (no-prince)
+- * choice and intervening NES RNG history are NOT represented by the port
+- * wizard; passing this gate proves compatibility of KNOWN choices only.
+- *
+- * A title-screen cold continuation (default GK53_SETUP_PLAYERS) remains
+- * legal because it makes no claim that the port wizard generated the NES
+- * record. Once a user started a wizard, another difficulty/ruler/ability
+- * choice must not silently import a fixed unrelated historic Spring.
+- * No source data or private ROM bytes are embedded in this module. */
+-static int gk275_known_fresh_choice_compatible(const Gk1App *a){
+- if(a->setup_stage[0]==GK53_SETUP_PLAYERS)return 1;
+- if(a->setup_stage[0]!=GK53_SETUP_AWAIT_SOURCE || a->active_world!=0u ||
+-    a->setup_player_count[0]!=1u||a->setup_player_slot[0]!=1u||
+-    a->setup_candidate[0]!=0u||a->setup_rulers[0][0]!=0u||
+-    a->setup_rulers[0][1]!=255u||a->setup_rulers[0][2]!=255u||
+-    a->setup_rulers[0][3]!=255u||a->setup_difficulty[0]!=1u||
+-    a->setup_ability_method[0]!=1u||a->manual_bonus_active[0])return 0;
+- for(unsigned i=0;i<5u;i++)for(unsigned j=0;j<6u;j++)
+-  if(a->manual_bonus[0][i][j])return 0;
+- return 1;
+-}
++/* EXEC0276: the shared authenticated-checkpoint admission gate also
++ * protects direct original-record and archived SaveRAM import paths. */
+ Gk166Result gk166_enter_original_fresh_json(Gk1App *a,
+  const char *csv,const char *json,uint8_t player){
+  if(!a||!csv||!*csv||!json||!*json||player!=0u)return GK166_ARGUMENT;
+@@ -36,7 +15,7 @@ Gk166Result gk166_enter_original_fresh_json(Gk1App *a,
+     a->worlds[0].phase!=GK1_PRE_SETUP_TEMPLATE||
+     a->worlds[0].scenario_id!=GK1_MONGOL_CONQUEST||
+     a->worlds[0].country_count!=14u||
+-    !gk275_known_fresh_choice_compatible(a))return GK166_TEMPLATE;
++    !gk162_original_setup_compatible(a,GK77_FRESH_MONGOL_WORKRAM))return GK166_TEMPLATE;
+  if(!gk1_verified_original_csv(csv))return GK166_TEMPLATE;
+  uint8_t raw[GK165_FRESH_SIZE];
+  Gk165Status extracted=gk165_extract_fresh_json(json,raw);
+diff --git a/execution_199/test_gk276_original_setup_admission.c b/execution_199/test_gk276_original_setup_admission.c
+new file mode 100644
+index 0000000..8fe7aac
+--- /dev/null
++++ b/execution_199/test_gk276_original_setup_admission.c
+@@ -0,0 +1,68 @@
++/* EXEC0276: archived SaveRAM source-history admission must not impersonate
++ * an unrelated modern wizard; fresh WorkRAM cross-entry bypass also barred.
++ * Private source optional, no copyrighted RAM or ROM included. */
++#include "gk164_mss_entry.h"
++#include "gk162_original_entry.h"
++#include "gk166_fresh_entry.h"
++#include "gk1_source_identity.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++static unsigned assertions;
++#define CK(x) do { assertions++; if(!(x)){fprintf(stderr,"EXEC0276 failed line %d: %s\n",__LINE__,#x);return 2;} }while(0)
++static Gk1App *app,*before;
++static int reject_archived(const char *csv,Gk77Profile p){
++ memcpy(before,app,sizeof *app);
++ CK(!gk162_original_setup_compatible(app,p));
++ CK(gk164_enter_original_mss(app,csv,"/gk276-missing-original-Mesen.mss",p,0u)==GK164_TEMPLATE);
++ CK(memcmp(before,app,sizeof *app)==0);
++ CK(gk162_enter_original_checkpoint(app,csv,"/gk276-missing-original-records",p,0u)==GK162_ENTRY_TEMPLATE);
++ CK(memcmp(before,app,sizeof *app)==0);
++ return 0;
++}
++int main(int argc,char **argv){
++ CK(argc==2);
++ app=calloc(1,sizeof *app);before=malloc(sizeof *before);
++ Gk1TemplateDataset *d=malloc(sizeof *d);CK(app&&before&&d);
++ gk1_app_init(app);CK(gk1_template_load(argv[1],d)==GK1_LOAD_OK);
++ CK(gk1_app_install_templates(app,d));app->rules_profile=0u;
++ Gk77Profile profiles[]={GK77_ARCHIVED_MONGOL_SAVERAM,GK77_ARCHIVED_WORLD_SAVERAM};
++ for(unsigned i=0;i<2;i++){
++  unsigned w=i;Gk77Profile p=profiles[i];
++  CK(gk162_original_setup_compatible(app,p));
++  memcpy(before,app,sizeof *app);
++  CK(gk164_enter_original_mss(app,argv[1],"/gk276-missing-original-Mesen.mss",p,0u)==GK164_SOURCE);
++  CK(memcmp(before,app,sizeof *app)==0);
++  app->setup_stage[w]=GK53_SETUP_DIFFICULTY;
++  CK(reject_archived(argv[1],p)==0);app->setup_stage[w]=GK53_SETUP_PLAYERS;
++  app->setup_difficulty[w]=3u;
++  CK(reject_archived(argv[1],p)==0);app->setup_difficulty[w]=1u;
++  app->setup_candidate[w]=1u;
++  CK(reject_archived(argv[1],p)==0);app->setup_candidate[w]=255u;
++  app->manual_bonus[w][1][2]=2u;
++  CK(reject_archived(argv[1],p)==0);app->manual_bonus[w][1][2]=0u;
++  app->setup_rulers[w][0]=0u;
++  CK(reject_archived(argv[1],p)==0);app->setup_rulers[w][0]=255u;
++  app->setup_ability_method[w]=1u;
++  CK(reject_archived(argv[1],p)==0);app->setup_ability_method[w]=0u;
++  CK(gk162_original_setup_compatible(app,p));
++ }
++ /* Direct 83-byte fresh checkpoint entry had bypassed the prior EXEC0275
++  * fresh JSON-only wizard gate. Shared source entry now refuses it early. */
++ app->setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;app->active_world=0u;
++ app->setup_player_count[0]=1u;app->setup_player_slot[0]=1u;
++ app->setup_candidate[0]=0u;app->setup_rulers[0][0]=0u;
++ app->setup_ability_method[0]=1u;app->setup_difficulty[0]=2u;
++ CK(!gk162_original_setup_compatible(app,GK77_FRESH_MONGOL_WORKRAM));
++ memcpy(before,app,sizeof *app);
++ CK(gk162_enter_original_checkpoint(app,argv[1],"/gk276-missing-original-records",GK77_FRESH_MONGOL_WORKRAM,0u)==GK162_ENTRY_TEMPLATE);
++ CK(memcmp(before,app,sizeof *app)==0);
++ CK(gk166_enter_original_fresh_json(app,argv[1],"/gk276-missing-original-fresh.json",0u)==GK166_TEMPLATE);
++ CK(memcmp(before,app,sizeof *app)==0);
++ app->setup_difficulty[0]=1u;
++ CK(gk162_original_setup_compatible(app,GK77_FRESH_MONGOL_WORKRAM));
++ CK(!gk162_original_setup_compatible(app,(Gk77Profile)99));
++ CK(!gk162_original_setup_compatible(NULL,GK77_ARCHIVED_MONGOL_SAVERAM));
++ printf("EXEC0276 %u source-free C11 assertions PASS: archived title-only setup, direct fresh mismatch, missing private input, rollback; no new first-Spring RNG\n",assertions);
++ free(d);free(before);free(app);return 0;
++}
