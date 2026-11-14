@@ -11,8 +11,9 @@ REQUIRED = (
     'a0edd0a5dc4974a17485320368c6613240785a2c813a941dcaef527fd632c05c',
     'ee00ef0fc03676d09edfef9ca630acb9e605f128e5af5a66b1eafb2e86c2dc68',
     '490c9d476ffd272b5e0dcd507c19c241556df1b7d5aa4d417ae10ffb6e450f4c',
-    "git -C current-gk1 apply --check --include='execution_199/gk1_app_state.c'",
-    "git -C current-gk1 apply --include='execution_199/gk1_app_state.c'",
+    'apply_gk271_win32_270.py',
+    'python $integrator $app --self-test',
+    'python $integrator $app',
     'GK1_270_ControllerViewNavigationDisarmsPendingPass',
     'add_executable(test_gk270_view_pass_navigation',
     'target_link_libraries(test_gk270_view_pass_navigation PRIVATE gk1_app_state)',
@@ -43,7 +44,7 @@ def hostile(source):
         except (ValueError, AssertionError):
             continue
         raise AssertionError(f'hostile source mutation {n} survived')
-    print('EXEC0271 13 mandatory Win32 source gates; 13 hostile source mutations PASS')
+    print('EXEC0271 mandatory Win32 source gates and hostile mutations PASS')
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
