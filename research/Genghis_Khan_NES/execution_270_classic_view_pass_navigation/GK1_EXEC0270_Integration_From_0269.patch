@@ -1,0 +1,164 @@
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -1442,6 +1442,9 @@
+    if(!gk85_raw_source_intact(&s->stock_checkpoint)){
+     strcpy(s->status,"RAW RECORD INTEGRITY REJECTED: SOURCE REATTACH REQUIRED");return 1;
+    }
++   /* EXEC0270: a read-only VIEW mode change cancels an armed Pass. An A
++    * after switching views must arm anew, never spend the Spring budget. */
++   s->stock_checkpoint.pending_pass=0u;
+    if(s->stock_reconcile_view==3u){
+      s->stock_reconcile_view=0;s->stock_checkpoint.raw_view=0;
+      strcpy(s->status,"DECODED ORIGINAL STOCK NUMERIC FIELDS: READ ONLY");
+@@ -1474,9 +1477,13 @@
+   Gk79Checkpoint *cp=&s->stock_checkpoint;
+   if(!cp->valid)return 0;
+   if(cmd==GK1_INPUT_UP||cmd==GK1_INPUT_LEFT){
++   /* EXEC0270: browsing another verified country is not confirmation of
++    * a pending Pass. Disarm atomically before the country changes. */
++   cp->pending_pass=0u;
+    cp->view_index=(uint8_t)((cp->view_index+cp->world.country_count-1u)%cp->world.country_count);return 1;
+   }
+   if(cmd==GK1_INPUT_DOWN||cmd==GK1_INPUT_RIGHT){
++   cp->pending_pass=0u;
+    cp->view_index=(uint8_t)((cp->view_index+1u)%cp->world.country_count);return 1;
+   }
+   if(cmd==GK1_INPUT_CANCEL){
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -1440,3 +1440,11 @@
+ add_executable(test_gk266_controller_chord test_gk266_controller_chord.c)
+ target_link_libraries(test_gk266_controller_chord PRIVATE gk1_pad_router gk99_xinput_bridge)
+ add_test(NAME GK1_266_Controller_Atomic_Commands COMMAND test_gk266_controller_chord)
++
++# EXEC0270: controller VIEW moves/mode changes must disarm the pending Pass.
++# Optional owner-private original stock (fresh+two archived) supplied to the
++# binary only at test execution; never required or embedded in public CTest.
++add_executable(test_gk270_view_pass_navigation test_gk270_view_pass_navigation.c)
++target_link_libraries(test_gk270_view_pass_navigation PRIVATE gk1_app_state)
++add_test(NAME GK1_270_ControllerViewNavigationDisarmsPendingPass
++ COMMAND test_gk270_view_pass_navigation)
+--- /dev/null
++++ b/execution_199/test_gk270_view_pass_navigation.c
+@@ -0,0 +1,121 @@
++#ifndef _WIN32
++#define _POSIX_C_SOURCE 200809L
++#endif
++/* EXEC0270: moving among authenticated original-stock countries or changing
++ * the read-only VIEW must DISARM a pending Pass confirmation. Otherwise a
++ * delayed second A can unexpectedly end the port's three-order Spring.
++ * Private positive test input: exact original-stock 14x83 / 27x83 country
++ * records loaded through production SHA verification. No ROM or raw RAM
++ * is embedded, printed, or shipped in this copyright-clean regression.
++ */
++#include "gk193_auto_source_entry.h"
++#include "gk1_app_state.h"
++#include "gk188_classic_receipt.h"
++#include <assert.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#ifdef NDEBUG
++#undef NDEBUG
++#endif
++static unsigned checks;
++#define CK(x) do { if(!(x)){fprintf(stderr,"FAIL line %d: %s\n",__LINE__,#x); exit(3);} ++checks; } while(0)
++static void source_still_intact(const Gk1App *a,const Gk79Checkpoint *before){
++ CK(gk85_raw_source_intact(&a->stock_checkpoint));
++ CK(gk88_stock_projection_intact(&a->stock_checkpoint));
++ CK(memcmp(a->stock_checkpoint.stock_raw,before->stock_raw,sizeof before->stock_raw)==0);
++ CK(memcmp(a->stock_checkpoint.raw_sha256,before->raw_sha256,32u)==0);
++ CK(memcmp(&a->stock_checkpoint.orders,&before->orders,sizeof before->orders)==0);
++ CK(a->stock_checkpoint.orders.remaining==3u);
++ CK(a->stock_checkpoint.year==before->year);
++ CK(a->stock_checkpoint.rate==before->rate);
++ CK(a->stock_checkpoint.world.country_count==before->world.country_count);
++}
++static void check_profile(const char *csv,const char *source,Gk77Profile expected){
++ Gk1App *a=calloc(1,sizeof *a);CK(a!=NULL);
++ Gk1TemplateDataset *d=malloc(sizeof *d);CK(d!=NULL);
++ gk1_app_init(a);CK(gk1_template_load(csv,d)==GK1_LOAD_OK);
++ CK(gk1_app_install_templates(a,d)==1);free(d);
++ a->rules_profile=0u;
++ Gk77Profile found=0;
++ CK(gk193_enter_original_auto(a,csv,source,0u,&found)==GK193_OK);
++ CK(found==expected);
++ CK(a->screen==GK1_SCREEN_STOCK_CONTINUE);
++ CK(a->stock_checkpoint.source_verified==1u);
++ Gk79Checkpoint *before=malloc(sizeof *before);CK(before!=NULL);
++ *before=a->stock_checkpoint;
++ const Gk1Input moves[]={GK1_INPUT_UP,GK1_INPUT_DOWN,
++  GK1_INPUT_LEFT,GK1_INPUT_RIGHT,GK1_INPUT_LABOR_PLAN};
++ for(unsigned n=0;n<sizeof moves/sizeof moves[0];n++){
++  CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1); /* First A arms Pass. */
++  CK(a->stock_checkpoint.pending_pass==1u);
++  CK(a->classic_assign.active==0u);
++  CK(gk1_app_input(a,moves[n])==1);
++  CK(a->stock_checkpoint.pending_pass==0u); /* No surprise second-A commit. */
++  CK(a->classic_assign.active==0u);
++  source_still_intact(a,before);
++  CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++  CK(a->stock_checkpoint.pending_pass==1u);
++  CK(a->classic_assign.active==0u);
++  CK(gk1_app_input(a,GK1_INPUT_CANCEL)==1);
++  CK(a->stock_checkpoint.pending_pass==0u);
++  source_still_intact(a,before);
++ }
++ /* All navigation changes only VIEW state, even after one genuine port Tax
++  * transaction, while the original checkpoint remains byte-identical. */
++ CK(gk1_app_input(a,GK1_INPUT_SETUP)==1);
++ CK(a->screen==GK1_SCREEN_STOCK_COMMANDS);
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->screen==GK1_SCREEN_CLASSIC_TAX);
++ CK(gk1_app_input(a,GK1_INPUT_UP)==1);
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->classic_assign.action_count==1u);
++ CK(a->classic_assign.budget.remaining==2u);
++ CK(gk1_app_input(a,GK1_INPUT_CANCEL)==1);
++ for(int j=0;j<6;j++)CK(gk1_app_input(a,GK1_INPUT_DOWN)==1);
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->screen==GK1_SCREEN_STOCK_CONTINUE);
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->stock_checkpoint.pending_pass==1u);
++ CK(gk1_app_input(a,GK1_INPUT_DOWN)==1);
++ CK(a->stock_checkpoint.pending_pass==0u);
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->stock_checkpoint.pending_pass==1u);
++ CK(a->classic_assign.passed==0u);
++ CK(a->classic_assign.budget.remaining==2u);
++ source_still_intact(a,before);
++ /* A/A is still the correct explicit Pass confirmation after re-arming. */
++ CK(gk1_app_input(a,GK1_INPUT_CONFIRM)==1);
++ CK(a->classic_assign.passed==1u);
++ CK(a->classic_assign.budget.remaining==0u);
++ CK(gk187_intact(&a->classic_assign,&a->stock_checkpoint));
++ source_still_intact(a,before);
++ printf("EXEC0270 ORIGINAL %s: View A/move/A cancel; Tax/move; explicit Pass; immutable source PASS\n",gk77_profile_name(expected));
++ free(before);free(a);
++}
++static void check_public_negative(void){
++ Gk1App *a=calloc(1,sizeof *a);CK(a!=NULL);
++ Gk1App *copy=malloc(sizeof *copy);CK(copy!=NULL);
++ gk1_app_init(a);a->rules_profile=0u;
++ a->screen=GK1_SCREEN_STOCK_CONTINUE;
++ for(int state=0;state<2;state++){
++  if(state)a->stock_checkpoint.valid=1u;
++  for(int cmd=1;cmd<=10;cmd++){
++   memcpy(copy,a,sizeof *copy);
++   CK(gk1_app_input(a,(Gk1Input)cmd)==0);
++   CK(memcmp(a,copy,sizeof *a)==0);
++  }
++ }
++ free(copy);free(a);
++}
++int main(int argc,char **argv){
++ if(argc!=1&&argc!=5)return 2;
++ check_public_negative();
++ if(argc==5){
++  check_profile(argv[1],argv[2],GK77_FRESH_MONGOL_WORKRAM);
++  check_profile(argv[1],argv[3],GK77_ARCHIVED_MONGOL_SAVERAM);
++  check_profile(argv[1],argv[4],GK77_ARCHIVED_WORLD_SAVERAM);
++ }
++ printf("EXEC0270 %u checks PASS (%s); source-backed Spring continuation only, no RNG startup parity\n",checks,argc==5?"private three profiles":"public refusal");
++ return 0;
++}
