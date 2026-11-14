@@ -106,11 +106,19 @@ def main(argv=None):
                              input=production_patch, capture_output=True)
     if applied.returncode != 0:
         raise RuntimeError("EXEC0279 production source patch failed: " + applied.stderr.decode(errors='replace')[:800])
+    # Git-for-Windows may convert git-applied text back to CRLF. Digesting
+    # a normalized view is insufficient: the compiled on-disk source must
+    # itself be byte-identical to the independently tested Linux C11 source.
+    for name in ("gk1_app_state.c", "gk1_app_state.h", "gk1_native_shell.c"):
+        target = app / name
+        target.write_bytes(normalized(target))
+        if checksum(target.read_bytes()) != POST[name]:
+            raise RuntimeError("EXEC0279 patched on-disk C11 SHA mismatch: " + name)
     (app / "CMakeLists.txt").write_bytes(revised_cmake)
     for name in ADD:
         (app / name).write_bytes(normalized(review / name))
     for name, expected in POST.items():
-        if name != "CMakeLists.txt" and digest(app / name) != expected:
+        if name != "CMakeLists.txt" and checksum((app / name).read_bytes()) != expected:
             raise RuntimeError("EXEC0279 verified production postimage SHA mismatch: " + name)
     if normalized(app / "CMakeLists.txt") != revised_cmake:
         raise RuntimeError("EXEC0279 CMake source changed beyond two reviewed additions")
