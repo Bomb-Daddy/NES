@@ -1,0 +1,309 @@
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -16,7 +16,7 @@
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk247_receipt_file_guard.c gk241_archived_import_capability.c gk237_owner_fresh_win.c gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk230_win32_smoke_args.c gk224_practice_save.c gk225_practice_resume.c gk226_practice_checkpoint.c gk227_practice_title_preview.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk247_receipt_file_guard.c gk241_archived_import_capability.c gk237_owner_fresh_win.c gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk230_win32_smoke_args.c gk224_practice_save.c gk225_practice_resume.c gk226_practice_checkpoint.c gk227_practice_title_preview.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk278_original_spring_coverage.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -1481,3 +1481,11 @@
+ add_test(NAME GK1_277_FreshSourceRequiresUntouchedTitleOrKnownWizardChoices
+  COMMAND test_gk277_fresh_title_provenance
+  ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0278: authenticated first-Spring 24-field coverage matrix.
++# No ROM/raw original input in public CI; private 3-history QA run separately.
++add_executable(test_gk278_original_spring_coverage test_gk278_original_spring_coverage.c)
++target_link_libraries(test_gk278_original_spring_coverage PRIVATE gk1_app_state)
++add_test(NAME GK1_278_OriginalSpring24DirectFieldsAtomicAndNoFakeParity
++ COMMAND test_gk278_original_spring_coverage
++ ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+--- a/execution_199/gk1_app_state.h
++++ b/execution_199/gk1_app_state.h
+@@ -17,6 +17,7 @@
+ #include "gk212_stock_raw_variation.h"
+ #include "gk213_stock_spring_boundary.h"
+ #include "gk214_spring_batch.h"
++#include "gk278_original_spring_coverage.h"
+ #include "gk222_enhanced_spring_lab.h"
+ #include "gk217_finance_preview.h"
+ #include "gk219_finance_compare.h"
+@@ -152,6 +153,10 @@
+   char status[128];
+ } Gk1App;
+ void gk1_app_init(Gk1App *s);
++/* Authenticated 24-field ORIGINAL country-record gap versus finance-only
++ * pre-setup projection, read-only within the existing app/world. */
++Gk278Status gk1_app_original_spring_coverage(const Gk1App *app,
++ const char *canonical_csv,Gk278Coverage *out);
+ Gk222Status gk1_app_enhanced_spring_lab_open(Gk1App *s);
+ /* Fresh ORIGINAL Mesen CPU sample PCs, full exact-stock and 14-stage SHA gated.
+  * Read-only diagnostic; setup remains AWAIT_SOURCE, cannot award orders. */
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -2178,3 +2178,16 @@
+     app->enhanced_continuation.active)return GK182_ARGUMENT;
+  return gk182_original_saved_bank(private_rom,private_mss,profile,out);
+ }
++
++/* EXEC0278: the same mutable C11 game state and installed original stock
++ * receipt are the only read sources. This never grants a season/order. */
++Gk278Status gk1_app_original_spring_coverage(const Gk1App *app,
++ const char *csv,Gk278Coverage *out){
++ if(!app||!csv||!*csv||!out||!app->stock_checkpoint.valid||
++    !app->stock_checkpoint.source_verified)return GK278_ARGUMENT;
++ unsigned w=app->stock_checkpoint.world.scenario_id==GK1_WORLD_CONQUEST?1u:0u;
++ if(!app->world_ready[w]||app->worlds[w].scenario_id!=
++    app->stock_checkpoint.world.scenario_id)return GK278_ARGUMENT;
++ return gk278_compare_original_spring_coverage(csv,&app->worlds[w],
++    &app->stock_checkpoint,out);
++}
+--- a/execution_199/gk1_native_shell.c
++++ b/execution_199/gk1_native_shell.c
+@@ -1070,7 +1070,19 @@
+      label(104,488,line,WARN);
+     }
+ 
+-    label(104,536,"NO FIRST-SPRING INITIALIZER; NO SEASON, ORDER OR COUNTRY MUTATION",WARN);
++    Gk278Coverage full_source_gap={0};
++    Gk278Status direct=gk1_app_original_spring_coverage(&app,scenario_csv_path(),
++      &full_source_gap);
++    if(direct==GK278_OK){
++      snprintf(line,sizeof line,
++       "ORIGINAL 24 FIELD AUDIT: %u/%u CELLS UNEXPLAINED BY FINANCE-ONLY MODEL",
++       (unsigned)full_source_gap.unequal_cells,(unsigned)full_source_gap.compared_cells);
++      label(104,519,line,EDGE);
++    }else{
++      snprintf(line,sizeof line,"24-FIELD SOURCE CHECK REFUSED (%u); NO DATA MODIFIED",(unsigned)direct);
++      label(104,519,line,WARN);
++    }
++    label(104,546,"NO FIRST-SPRING INITIALIZER; NO SEASON, ORDER OR COUNTRY MUTATION",WARN);
+     label(104,566,"VIEW CYCLES DECODED / RAW / FINANCE / DELTAS / GOODS; DPAD COUNTRY",FG);
+    }else if(app.stock_reconcile_view==2u){
+     Gk112StockDeltas setup={0};
+--- a/execution_199/gk278_original_spring_coverage.h
++++ b/execution_199/gk278_original_spring_coverage.h
+@@ -0,0 +1,40 @@
++#ifndef GK278_ORIGINAL_SPRING_COVERAGE_H
++#define GK278_ORIGINAL_SPRING_COVERAGE_H
++#include "gk215_original_spring_gap.h"
++/* EXEC0278: exhaustive *DIRECT* fields actually decoded from the original
++ * 83-byte country record into Gk1CountryTemplate. The port-derived reserve,
++ * population and history fields are intentionally excluded. No ROM assets.
++ * Index order is stable for independent QA and subsequent source tracing. */
++typedef enum {
++ GK278_ARMS, GK278_SKILL, GK278_TROOPS, GK278_ECONOMY,
++ GK278_TOWN, GK278_DEFENSE, GK278_MASONS, GK278_ARTISANS,
++ GK278_FOOD_WORKERS, GK278_GOLD, GK278_MORALE, GK278_TAX,
++ GK278_UNDRAFTED, GK278_FUR, GK278_SILK, GK278_JEWELS,
++ GK278_METALS, GK278_MEDICINES, GK278_WOODWORKS,
++ GK278_CERAMICS, GK278_GLASS, GK278_TEXTILES, GK278_PERFUME,
++ GK278_FOOD, GK278_FIELD_COUNT
++} Gk278Field;
++typedef enum {GK278_OK=0,GK278_ARGUMENT=1,GK278_TEMPLATE=2,
++ GK278_SOURCE=3,GK278_PROJECTION=4} Gk278Status;
++typedef struct {
++ uint16_t unequal_countries;
++ int64_t signed_residual;
++ int32_t minimum_residual,maximum_residual;
++} Gk278FieldGap;
++typedef struct {
++ uint8_t profile,scenario,country_count,source_observation_only;
++ uint8_t independent_initialization,generated_rng,generated_ai,playable_order_granted;
++ uint16_t compared_cells,unequal_cells,exact_cells;
++ uint16_t countries_with_differences;
++ uint16_t unequal_fields_per_country[GK1_COUNTRIES_WORLD];
++ Gk278FieldGap field[GK278_FIELD_COUNT];
++} Gk278Coverage;
++/* Exact authenticated stock source, canonical untouched template, same
++ * source-only Spring finance projection as EXEC0214/0215. No state mutation.
++ * On ANY refusal, out is byte-for-byte unchanged. This does not infer the
++ * original first-Spring initialization or treat projections as gameplay. */
++Gk278Status gk278_compare_original_spring_coverage(const char *canonical_csv,
++ const Gk1LoadedScenario *untouched_pre_setup,
++ const Gk79Checkpoint *original_stock_spring,Gk278Coverage *out);
++const char *gk278_field_name(Gk278Field field);
++#endif
+--- a/execution_199/gk278_original_spring_coverage.c
++++ b/execution_199/gk278_original_spring_coverage.c
+@@ -0,0 +1,75 @@
++#include "gk278_original_spring_coverage.h"
++#include <stdlib.h>
++#include <string.h>
++#include <limits.h>
++
++static const char *const field_names[GK278_FIELD_COUNT]={
++ "Arms","Skill","Troops","Economy","Town","Defense","Masons",
++ "Artisans","FoodWorkers","Gold","Morale","Tax","Undrafted",
++ "Fur","Silk","Jewels","Metals","Medicines","Woodworks",
++ "Ceramics","Glass","Textiles","Perfume","Food"
++};
++const char *gk278_field_name(Gk278Field field){
++ return (unsigned)field<GK278_FIELD_COUNT?field_names[field]:NULL;
++}
++static uint16_t direct_value(const Gk1CountryTemplate *c,unsigned ix){
++ switch(ix){
++ case GK278_ARMS:return c->arms;
++ case GK278_SKILL:return c->skill;
++ case GK278_TROOPS:return c->troops;
++ case GK278_ECONOMY:return c->economy;
++ case GK278_TOWN:return c->town;
++ case GK278_DEFENSE:return c->defense;
++ case GK278_MASONS:return c->masons;
++ case GK278_ARTISANS:return c->artisans;
++ case GK278_FOOD_WORKERS:return c->food_workers;
++ case GK278_GOLD:return c->gold;
++ case GK278_MORALE:return c->morale;
++ case GK278_TAX:return c->tax;
++ case GK278_UNDRAFTED:return c->undrafted_reserve;
++ default:return c->goods[ix-GK278_FUR];
++ }
++}
++Gk278Status gk278_compare_original_spring_coverage(const char *csv,
++ const Gk1LoadedScenario *pre,const Gk79Checkpoint *original,Gk278Coverage *out){
++ if(!csv||!*csv||!pre||!original||!out)return GK278_ARGUMENT;
++ /* Inherit the complete existing canonical-template, original 83-byte raw
++  * source SHA, RAM-bank profile, season/year/3-order and source-projection
++  * validation. Never weaken these guards to obtain a better-looking count. */
++ Gk215Gap *gate=(Gk215Gap*)malloc(sizeof *gate);
++ if(!gate)return GK278_ARGUMENT;
++ Gk215Status check=gk215_compare_original_spring(csv,pre,original,gate);
++ free(gate);
++ if(check!=GK215_OK)return check==GK215_TEMPLATE_REFUSED?GK278_TEMPLATE:
++  check==GK215_SOURCE_REFUSED?GK278_SOURCE:
++  check==GK215_FINANCE_REFUSED?GK278_PROJECTION:GK278_ARGUMENT;
++ Gk214Batch *baseline=(Gk214Batch*)malloc(sizeof *baseline);
++ if(!baseline)return GK278_ARGUMENT;
++ if(gk214_project_spring_batch(pre,baseline)!=GK214_OK){
++  free(baseline);return GK278_PROJECTION;
++ }
++ Gk278Coverage next={0};
++ next.profile=original->profile;next.scenario=(uint8_t)pre->scenario_id;
++ next.country_count=pre->country_count;next.source_observation_only=1u;
++ for(unsigned f=0;f<GK278_FIELD_COUNT;f++){
++  next.field[f].minimum_residual=INT32_MAX;
++  next.field[f].maximum_residual=INT32_MIN;
++  for(unsigned i=0;i<pre->country_count;i++){
++   const Gk1CountryTemplate *actual=&original->world.countries[i];
++   const Gk1CountryTemplate *projected=&baseline->after.countries[i];
++   int32_t delta=(int32_t)direct_value(actual,f)-direct_value(projected,f);
++   Gk278FieldGap *g=&next.field[f];
++   if(delta<g->minimum_residual)g->minimum_residual=delta;
++   if(delta>g->maximum_residual)g->maximum_residual=delta;
++   g->signed_residual+=delta;
++   if(delta){g->unequal_countries++;next.unequal_cells++;
++     next.unequal_fields_per_country[i]++;}
++  }
++ }
++ next.compared_cells=(uint16_t)(pre->country_count*GK278_FIELD_COUNT);
++ next.exact_cells=(uint16_t)(next.compared_cells-next.unequal_cells);
++ for(unsigned i=0;i<pre->country_count;i++)
++  if(next.unequal_fields_per_country[i])next.countries_with_differences++;
++ /* Source credentials do not authorize independently generated values. */
++ free(baseline);*out=next;return GK278_OK;
++}
+--- a/execution_199/test_gk278_original_spring_coverage.c
++++ b/execution_199/test_gk278_original_spring_coverage.c
+@@ -0,0 +1,99 @@
++#include "gk278_original_spring_coverage.h"
++#include "gk1_source_identity.h"
++#include <stdlib.h>
++#include <stdio.h>
++#include <string.h>
++#define CHECK(c) do{if(!(c)){fprintf(stderr,"GK278 FAILED line %d: %s\n",__LINE__,#c);return 1;}checks++;}while(0)
++int main(int argc,char **argv){
++ unsigned checks=0;
++ if(argc!=2&&argc!=5){fprintf(stderr,"usage: %s CSV [PRIVATE_FRESH PRIVATE_ARCHIVED_MONGOL PRIVATE_ARCHIVED_WORLD]\n",argv[0]);return 2;}
++ CHECK(GK278_FIELD_COUNT==24u);
++ CHECK(gk278_field_name(GK278_ARMS)!=NULL);
++ CHECK(strcmp(gk278_field_name(GK278_FOOD),"Food")==0);
++ CHECK(gk278_field_name((Gk278Field)99)==NULL);
++ CHECK(gk1_verified_original_csv(argv[1]));
++ Gk1TemplateDataset *all=calloc(1,sizeof *all);
++ Gk1LoadedScenario *pre=calloc(1,sizeof *pre);
++ Gk79Checkpoint *stock=calloc(1,sizeof *stock);
++ Gk278Coverage *gap=malloc(sizeof *gap),*old=malloc(sizeof *old);
++ CHECK(all&&pre&&stock&&gap&&old);
++ CHECK(gk1_template_load(argv[1],all)==GK1_LOAD_OK);
++ for(unsigned w=1;w<=2;w++){
++  CHECK(gk1_open_loaded_scenario(all,(Gk1ScenarioId)w,pre)==GK1_LOAD_OK);
++  memset(gap,0xa7,sizeof *gap);*old=*gap;
++  CHECK(gk278_compare_original_spring_coverage(NULL,pre,stock,gap)==GK278_ARGUMENT);
++  CHECK(!memcmp(old,gap,sizeof *gap));
++  CHECK(gk278_compare_original_spring_coverage(argv[1],pre,stock,gap)==GK278_SOURCE);
++  CHECK(!memcmp(old,gap,sizeof *gap));
++  CHECK(gk278_compare_original_spring_coverage("/noncanonical.csv",pre,stock,gap)==GK278_TEMPLATE);
++  CHECK(!memcmp(old,gap,sizeof *gap));
++  pre->countries[0].skill++;
++  CHECK(gk278_compare_original_spring_coverage(argv[1],pre,stock,gap)==GK278_TEMPLATE);
++  CHECK(!memcmp(old,gap,sizeof *gap));
++ }
++ if(argc==5){
++  Gk278Coverage *fresh=malloc(sizeof *fresh),*arch=malloc(sizeof *arch);
++  CHECK(fresh&&arch);
++  for(unsigned p=1;p<=3;p++){
++   unsigned w=p==3u?2u:1u;
++   CHECK(gk1_open_loaded_scenario(all,(Gk1ScenarioId)w,pre)==GK1_LOAD_OK);
++   CHECK(gk79_open_original(pre,argv[1+p],(Gk77Profile)p,0,stock)==GK79_OK);
++   Gk79Checkpoint *saved=malloc(sizeof *saved);CHECK(saved);
++   *saved=*stock;
++   CHECK(gk278_compare_original_spring_coverage(argv[1],pre,stock,gap)==GK278_OK);
++   CHECK(gap->scenario==w&&gap->profile==p&&gap->country_count==(w==1u?14u:27u));
++   CHECK(gap->source_observation_only==1u&&!gap->independent_initialization&&
++    !gap->generated_rng&&!gap->generated_ai&&!gap->playable_order_granted);
++   CHECK(gap->compared_cells==(w==1u?336u:648u));
++   CHECK(gap->exact_cells+gap->unequal_cells==gap->compared_cells);
++   CHECK(gap->unequal_cells>0u&&gap->countries_with_differences>0u);
++   unsigned field_unequal_sum=0u;
++   for(unsigned f=0;f<GK278_FIELD_COUNT;f++){
++    CHECK(gap->field[f].unequal_countries<=gap->country_count);
++    CHECK(gap->field[f].minimum_residual<=gap->field[f].maximum_residual);
++    field_unequal_sum+=gap->field[f].unequal_countries;
++   }
++   CHECK(field_unequal_sum==gap->unequal_cells);
++   unsigned row_unequal_sum=0u;
++   for(unsigned i=0;i<gap->country_count;i++)row_unequal_sum+=gap->unequal_fields_per_country[i];
++   CHECK(row_unequal_sum==gap->unequal_cells);
++   /* Two legacy finance-projection fields must align with GK215's
++    * independently gated original-Spring residual report. */
++   Gk215Gap *legacy=malloc(sizeof *legacy);CHECK(legacy);
++   CHECK(gk215_compare_original_spring(argv[1],pre,stock,legacy)==GK215_OK);
++   CHECK(gap->field[GK278_GOLD].unequal_countries==legacy->gold_mismatches);
++   CHECK(gap->field[GK278_FOOD].unequal_countries==legacy->food_mismatches);
++   CHECK(gap->field[GK278_TROOPS].unequal_countries==legacy->troop_mismatches);
++   free(legacy);
++   CHECK(!memcmp(saved,stock,sizeof *stock));
++   if(p==1u)*fresh=*gap;
++   if(p==2u)*arch=*gap;
++   *old=*gap;
++   stock->stock_raw[0][0]^=1u;
++   CHECK(gk278_compare_original_spring_coverage(argv[1],pre,stock,gap)==GK278_SOURCE);
++   CHECK(!memcmp(old,gap,sizeof *gap));*stock=*saved;
++   stock->world.countries[0].skill++;
++   CHECK(gk278_compare_original_spring_coverage(argv[1],pre,stock,gap)==GK278_SOURCE);
++   CHECK(!memcmp(old,gap,sizeof *gap));*stock=*saved;
++   stock->orders.remaining=2u;
++   CHECK(gk278_compare_original_spring_coverage(argv[1],pre,stock,gap)==GK278_SOURCE);
++   CHECK(!memcmp(old,gap,sizeof *gap));*stock=*saved;
++   printf("OBSERVED_RUNTIME_STOCK_%s: %u direct source-record cells, %u unequal / %u exact vs SOURCE-BOUNDED pre-setup finance (NOT generated Spring); Skill mismatches=%u, Arms=%u, Gold=%u, Food=%u\n",
++    p==1u?"FRESH_RESET":p==2u?"ARCHIVED_MONGOL":"ARCHIVED_WORLD",
++    gap->compared_cells,gap->unequal_cells,gap->exact_cells,
++    gap->field[GK278_SKILL].unequal_countries,
++    gap->field[GK278_ARMS].unequal_countries,
++    gap->field[GK278_GOLD].unequal_countries,
++    gap->field[GK278_FOOD].unequal_countries);
++   free(saved);
++  }
++  /* Do not collapse two independently observed stock first-Spring
++   * RNG histories into a fabricated universal stat initialization. */
++  CHECK(fresh->profile==GK77_FRESH_MONGOL_WORKRAM);
++  CHECK(arch->profile==GK77_ARCHIVED_MONGOL_SAVERAM);
++  free(fresh);free(arch);
++ }else puts("PUBLIC negative-only QA: no private records packaged or first Spring generated.");
++ printf("GK278 %u assertions PASS; ORIGINAL SETUP/RNG STILL OPEN.\n",checks);
++ free(all);free(pre);free(stock);free(gap);free(old);
++ return 0;
++}
