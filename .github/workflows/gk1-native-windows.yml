@@ -503,6 +503,55 @@ jobs:
           '@
           Write-Output 'EXEC0274 exact C11 loader and adversarial regression staged for actual Windows build; no stock RNG or true first Spring added'
 
+      - name: EXEC0275 original Spring choice provenance in real Win32 C11
+        shell: pwsh
+        run: |
+          # A single authenticated Mesen first-Spring receipt must never
+          # impersonate a different difficulty, ruler or ability setup.
+          $base = 'research/Genghis_Khan_NES/execution_275_fresh_setup_provenance'
+          $dest = 'current-gk1/execution_199'
+          $app = Join-Path $dest 'gk166_fresh_entry.c'
+          $test = Join-Path $dest 'test_gk275_fresh_setup_provenance.c'
+          $oldSha = 'e3c796e02d7db070bd746bf459dc025fc3d3127223e344827b15685736e56ba2'
+          $newSha = '0c0a392ceac9a3c8d479f1c6ec1d85a8f22a86c0404acfd37bb0df162d3fd05b'
+          $testSha = '014b02b13bbccdc8f6800df5290cc05efd98a20f008831e74ff614abf129408f'
+          if (-not (Test-Path -LiteralPath $app) -or (Test-Path -LiteralPath $test)) {
+            throw 'EXEC0275 unexpected inherited C11 source state'
+          }
+          # Normalize file checkout, which can use CRLF on Windows.
+          foreach ($f in @($app, (Join-Path $base 'gk166_fresh_entry.c'), (Join-Path $base 'test_gk275_fresh_setup_provenance.c'))) {
+            if (-not (Test-Path -LiteralPath $f)) { throw "EXEC0275 missing $f" }
+            python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $f
+            if ($LASTEXITCODE -ne 0) { throw "EXEC0275 source normalization failed $f" }
+          }
+          if ((Get-FileHash $app -Algorithm SHA256).Hash.ToLowerInvariant() -ne $oldSha) {
+            throw 'EXEC0275 original source preimage mismatch'
+          }
+          $srcApp = Join-Path $base 'gk166_fresh_entry.c'
+          $srcTest = Join-Path $base 'test_gk275_fresh_setup_provenance.c'
+          if ((Get-FileHash $srcApp -Algorithm SHA256).Hash.ToLowerInvariant() -ne $newSha -or
+              (Get-FileHash $srcTest -Algorithm SHA256).Hash.ToLowerInvariant() -ne $testSha) {
+            throw 'EXEC0275 source or linked test differs from exact Linux-tested bytes'
+          }
+          Copy-Item -LiteralPath $srcApp -Destination $app -Force
+          Copy-Item -LiteralPath $srcTest -Destination $test
+          if ((Get-FileHash $app -Algorithm SHA256).Hash.ToLowerInvariant() -ne $newSha -or
+              (Get-FileHash $test -Algorithm SHA256).Hash.ToLowerInvariant() -ne $testSha) {
+            throw 'EXEC0275 Win32 compiled sources differ from exact reviewed bytes'
+          }
+          $cmake = Join-Path $dest 'CMakeLists.txt'
+          if (Select-String -LiteralPath $cmake -SimpleMatch -Pattern 'GK1_275_FreshOriginalSetupChoiceProvenanceNoFalseFirstSpring' -Quiet) {
+            throw 'EXEC0275 duplicate native CTest registration'
+          }
+          Add-Content -LiteralPath $cmake -Value @'
+          # EXEC0275: original-stock WorkRAM capture admission is setup-specific.
+          add_executable(test_gk275_fresh_setup_provenance test_gk275_fresh_setup_provenance.c)
+          target_link_libraries(test_gk275_fresh_setup_provenance PRIVATE gk1_app_state)
+          add_test(NAME GK1_275_FreshOriginalSetupChoiceProvenanceNoFalseFirstSpring
+           COMMAND test_gk275_fresh_setup_provenance
+           ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+          '@
+          Write-Output 'EXEC0275 verified source/test staged for real native Windows build; original first Spring RNG remains incomplete'
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
