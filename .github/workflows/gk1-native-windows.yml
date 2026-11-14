@@ -654,6 +654,28 @@ jobs:
            ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
           '@
           Write-Output 'EXEC0277 exact Linux-tested production C11 and new regression staged; real original first Spring still OPEN'
+      - name: EXEC0279 hostile QA of exact inherited Spring source transform
+        shell: pwsh
+        run: |
+          $base = 'research/Genghis_Khan_NES/execution_279_win32_spring_coverage'
+          $review = 'research/Genghis_Khan_NES/execution_278_original_spring_24field'
+          $patch = Join-Path $review 'GK1_EXEC0278_Integration_From_0277.patch'
+          python (Join-Path $base 'test_stage279.py') --source-root current-gk1 --review-root $review --patch $patch
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0279 inherited-source positive / hostile-negative QA failed' }
+      - name: EXEC0279 stage validated complete original-stock 24-field Spring source
+        shell: pwsh
+        run: |
+          $base = 'research/Genghis_Khan_NES/execution_279_win32_spring_coverage'
+          $review = 'research/Genghis_Khan_NES/execution_278_original_spring_24field'
+          $patch = Join-Path $review 'GK1_EXEC0278_Integration_From_0277.patch'
+          python (Join-Path $base 'stage279.py') --source-root current-gk1 --review-root $review --patch $patch
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0279 full source / native WinMain 24-field Spring integration failed' }
+          # The brand-new C11 regression is now an actual target in the same
+          # complete Win32 CTest registry executed below, not a Python-only proof.
+          if (-not (Select-String -LiteralPath 'current-gk1/execution_199/CMakeLists.txt' -SimpleMatch -Pattern 'GK1_278_OriginalSpring24DirectFieldsAtomicAndNoFakeParity' -Quiet)) {
+            throw 'EXEC0279 did not register its real C11 original Spring coverage test'
+          }
+          Write-Output 'EXEC0279 staged authentic-source 24-field *comparison*, NOT independently generated original first Spring'
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
