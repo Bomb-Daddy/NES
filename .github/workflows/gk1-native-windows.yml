@@ -357,10 +357,14 @@ jobs:
           $patch = '../research/Genghis_Khan_NES/execution_270_classic_view_pass_navigation/GK1_EXEC0270_Integration_From_0269.patch'
           $patchOnHost = 'research/Genghis_Khan_NES/execution_270_classic_view_pass_navigation/GK1_EXEC0270_Integration_From_0269.patch'
           if (-not (Test-Path -LiteralPath $patchOnHost)) { throw 'Exact published EXEC0270 patch missing' }
-          git -C current-gk1 apply --check --include='execution_199/gk1_app_state.c' $patch
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0270 app-only source patch cannot be replayed' }
-          git -C current-gk1 apply --include='execution_199/gk1_app_state.c' $patch
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0270 app-only source patch failed' }
+          # The git-apply --include filter returned success without modifying
+          # the game source in Windows run 43554403732. Refuse that false pass.
+          $integrator = 'research/Genghis_Khan_NES/execution_271_win32_classic_view/apply_gk271_win32_270.py'
+          if (-not (Test-Path -LiteralPath $integrator)) { throw 'Exact executable source integrator missing' }
+          python $integrator $app --self-test
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0271 hostile source-replay precheck rejected Windows game' }
+          python $integrator $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0271 exact source transform rejected Windows game' }
           $actual = (Get-FileHash -LiteralPath $app -Algorithm SHA256).Hash.ToLowerInvariant()
           if ($actual -ne $after) { throw "EXEC0270 linked game source SHA mismatch: $actual" }
           # The source test is public; its three original NES runtime inputs
