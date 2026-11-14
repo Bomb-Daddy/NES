@@ -1,0 +1,34 @@
+{
+  "schema": "GK1_EXEC0285_SOURCE_AND_QA",
+  "predecessor_zip_sha256": "671f577abcb6a55e68fed0bf517b301ebfdb90299b54317e2ad2ed56f6cf7b5c",
+  "created_utc": "2026-11-14T19:50:17.263543+00:00",
+  "changed_files": {
+    "gk282_stock_rng_trace.c": {
+      "previous_sha256": "2de1d86d4a357da7e8a1711ab953eba3ad344ff9e3fce461ef4a2d30018e27d8",
+      "new_sha256": "d928f2180314738124aa833d2d0810a0d4d0db8bf7907a02d38384e5c6e69999"
+    },
+    "gk282_stock_rng_trace.h": {
+      "previous_sha256": "6a3be153b608f26782e7c8c682f123429785ce0f3d9c30403ab612053d5091ab",
+      "new_sha256": "6db8bb42f5630cabd506e2033b5d1892da538f8099f8074188c03aa62254f3d3"
+    },
+    "gk1_app_state.c": {
+      "previous_sha256": "4f9319989b5f82b99d7b3211c6fb5def892f4c9db58ad69d3ca29a754532a28f",
+      "new_sha256": "9ef37baf8713186622ece40472bd176078d4fec245cd8884c0cd9a06fecc1c97"
+    },
+    "CMakeLists.txt": {
+      "previous_sha256": "9be5ba46f398f8b58c8b0f43a28dd6d53d8e1e6185b24a3280c4fea61ac9b620",
+      "new_sha256": "e2d62663be8cac09ea504809d07cf4c815e25d1c722fff72d1c49acff77ab0d7"
+    },
+    "test_gk285_source_difficulty.c": {
+      "previous_sha256": null,
+      "new_sha256": "d40b8039547a0fd011e7a96020436e4892ab0ffbad6def5191319bbcada91862"
+    }
+  },
+  "previous_member_count": 1181,
+  "copyright_private_rom_included": false,
+  "release_accepted": false,
+  "windows_0285_tested": false,
+  "physical_xbox_tested": false,
+  "new_mesen_stock_run": false,
+  "first_spring_generator_complete": false
+}
