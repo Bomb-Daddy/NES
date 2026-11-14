@@ -13,6 +13,8 @@ on:
       - 'research/Genghis_Khan_NES/execution_263_win64_qa_artifact/**'
       - 'research/Genghis_Khan_NES/execution_266_controller_atomic_chords/**'
       - 'research/Genghis_Khan_NES/execution_267_win32_controller_266/**'
+      - 'research/Genghis_Khan_NES/execution_270_classic_view_pass_navigation/**'
+      - 'research/Genghis_Khan_NES/execution_271_win32_classic_view/**'
 
 permissions:
   contents: read
