@@ -1,0 +1,47 @@
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -1832,7 +1832,15 @@
+  uint8_t world_index,Gk214Batch *out){
+  if(!app||!out||world_index>1u||!app->world_ready[world_index]||
+     app->worlds[world_index].phase!=GK1_PRE_SETUP_TEMPLATE||
+-    app->worlds[world_index].scenario_id!=(Gk1ScenarioId)(world_index+1u))
++    app->worlds[world_index].scenario_id!=(Gk1ScenarioId)(world_index+1u)||
++    /* EXEC0272: the public batch entry is an ORIGINAL-TEMPLATE audit.
++     * Controller labor planning and Enhanced preview can edit the mutable
++     * PRE_SETUP world without performing genuine NES setup. Do not then
++     * label its projected finances as source-original. The independent
++     * finance-comparison screen already handles draft what-ifs. */
++    memcmp(&app->worlds[world_index],
++           &app->finance_source_baseline[world_index],
++           sizeof app->worlds[world_index])!=0)
+   return GK214_BAD_INPUT;
+  return gk214_project_spring_batch(&app->worlds[world_index],out);
+ }
+--- a/execution_199/test_gk214_spring_batch.c
++++ b/execution_199/test_gk214_spring_batch.c
+@@ -76,6 +76,25 @@
+   CHECK(!out->orders_granted&&!out->generated_setup&&!out->generated_rng);
+   CHECK(!memcmp(game,saved,sizeof *game));
+  }
++ /* EXEC0272 regression: the old game mislabeled port-edited PRE_SETUP
++  * labor/Gold as an original-source finance batch. A real source identity
++  * read must reject the drift without touching output or the game. */
++ memcpy(backup,out,sizeof *out);
++ game->worlds[0].countries[0].gold++;
++ *saved=*game;
++ CHECK(gk1_app_spring_batch_projection(game,0,out)==GK214_BAD_INPUT);
++ CHECK(!memcmp(out,backup,sizeof *out));
++ CHECK(!memcmp(game,saved,sizeof *game));
++ game->worlds[0].countries[0].gold--;
++ game->worlds[1].countries[26].food_workers--;
++ *saved=*game;
++ CHECK(gk1_app_spring_batch_projection(game,1,out)==GK214_BAD_INPUT);
++ CHECK(!memcmp(out,backup,sizeof *out));
++ CHECK(!memcmp(game,saved,sizeof *game));
++ game->worlds[1].countries[26].food_workers++;
++ /* Only canonical installed data can enter source-bounded projection. */
++ CHECK(gk1_app_spring_batch_projection(game,0,out)==GK214_OK);
++ CHECK(gk1_app_spring_batch_projection(game,1,out)==GK214_OK);
+  game->worlds[0].phase=(Gk1ScenarioPhase)2;
+  memcpy(backup,out,sizeof *out);
+  CHECK(gk1_app_spring_batch_projection(game,0,out)==GK214_BAD_INPUT);
