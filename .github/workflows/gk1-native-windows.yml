@@ -552,6 +552,51 @@ jobs:
            ${CMAKE_CURRENT_BINARY_DIR}/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
           '@
           Write-Output 'EXEC0275 verified source/test staged for real native Windows build; original first Spring RNG remains incomplete'
+      - name: EXEC0276 verified C11 setup-history admission and archived source negative controls
+        shell: pwsh
+        run: |
+          # Source evidence from a saved NES Spring is not native wizard RNG.
+          $base = 'research/Genghis_Khan_NES/execution_276_original_setup_provenance'
+          $dest = 'current-gk1/execution_199'
+          $pins = @(
+            @{ file = 'gk162_original_entry.c'; before = '75a423ae63fcf7e112ccaeefd5f0ab61c33a43130d3fb071a92ec0a790cdd41f'; after = '7e192888fda4ee5ef9a4195ffaffef92269cb82f2fb4ae1172db5f5bf4ae3ce3' },
+            @{ file = 'gk162_original_entry.h'; before = 'cab89079c4eb655959c89fbac48c24a64d94b4d82d6562e8009b8d5f55f3602a'; after = '9bdac7a4cb4e412ef3bb4ad7c65db3c162c84ef2572e7c3971d28fc20331cf50' },
+            @{ file = 'gk164_mss_entry.c'; before = 'a20f2e402282e9ae1ddba04fb468ca277668acc538cd7b2a283da26377b92e89'; after = '0c9da839486866adfd7b3e2b4db2ebc9f5bbdef72a53412a066d45648f457f57' },
+            @{ file = 'gk166_fresh_entry.c'; before = '0c0a392ceac9a3c8d479f1c6ec1d85a8f22a86c0404acfd37bb0df162d3fd05b'; after = '9cc95629a5eb05f80599399fa0cb644022778123a18389d207d711037c20ada7' }
+          )
+          foreach ($p in $pins) {
+            $dst = Join-Path $dest $p.file
+            $src = Join-Path $base $p.file
+            if (-not (Test-Path -LiteralPath $dst) -or -not (Test-Path -LiteralPath $src)) { throw "EXEC0276 missing $($p.file)" }
+            foreach ($f in @($dst,$src)) {
+              python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $f
+              if ($LASTEXITCODE -ne 0) { throw "EXEC0276 normalize failed $f" }
+            }
+            if ((Get-FileHash -LiteralPath $dst -Algorithm SHA256).Hash.ToLowerInvariant() -ne $p.before) { throw "EXEC0276 preimage mismatch $($p.file)" }
+            if ((Get-FileHash -LiteralPath $src -Algorithm SHA256).Hash.ToLowerInvariant() -ne $p.after) { throw "EXEC0276 published source mismatch $($p.file)" }
+            Copy-Item -LiteralPath $src -Destination $dst -Force
+            if ((Get-FileHash -LiteralPath $dst -Algorithm SHA256).Hash.ToLowerInvariant() -ne $p.after) { throw "EXEC0276 stage mismatch $($p.file)" }
+          }
+          $sourceTest = Join-Path $base 'test_gk276_original_setup_admission.c'
+          $destTest = Join-Path $dest 'test_gk276_original_setup_admission.c'
+          if (-not (Test-Path -LiteralPath $sourceTest) -or (Test-Path -LiteralPath $destTest)) { throw 'EXEC0276 test source mismatch' }
+          python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $sourceTest
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0276 test normalize failed' }
+          $sha = 'b4905b3ff5a96184cd9dfb8b5b0d7376aa97e92b5b7af86736d9f65ba5e63c14'
+          if ((Get-FileHash -LiteralPath $sourceTest -Algorithm SHA256).Hash.ToLowerInvariant() -ne $sha) { throw 'EXEC0276 regression source SHA mismatch' }
+          Copy-Item -LiteralPath $sourceTest -Destination $destTest
+          if ((Get-FileHash -LiteralPath $destTest -Algorithm SHA256).Hash.ToLowerInvariant() -ne $sha) { throw 'EXEC0276 regression was not copied exactly' }
+          $cmake = Join-Path $dest 'CMakeLists.txt'
+          if (Select-String -LiteralPath $cmake -SimpleMatch -Pattern 'GK1_276_OriginalStockArchivedAndFreshWizardProvenance' -Quiet) { throw 'EXEC0276 duplicate native CTest' }
+          Add-Content -LiteralPath $cmake -Value @'
+          # EXEC0276: production original source-history provenance shared gate.
+          add_executable(test_gk276_original_setup_admission test_gk276_original_setup_admission.c)
+          target_link_libraries(test_gk276_original_setup_admission PRIVATE gk1_app_state)
+          add_test(NAME GK1_276_OriginalStockArchivedAndFreshWizardProvenance
+           COMMAND test_gk276_original_setup_admission
+           ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+          '@
+          Write-Output 'EXEC0276 verified C11 setup-history admission staged for Windows; original stock Spring RNG remains OPEN'
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
