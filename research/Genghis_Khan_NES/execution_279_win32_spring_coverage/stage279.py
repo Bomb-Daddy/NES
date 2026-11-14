@@ -55,7 +55,7 @@ def main(argv=None):
     for name, expected in PRE.items():
         p = app / name
         if not p.is_file() or digest(p) != expected:
-            raise RuntimeError("EXEC0279 predecessor bytes changed: " + name)
+            raise RuntimeError("EXEC0279 predecessor bytes changed: " + name + "; got_sha256=" + (digest(p) if p.is_file() else "missing") + "; expected_sha256=" + expected + ("; CMAKE_TAIL=" + repr(normalized(p)[-600:]) if name == "CMakeLists.txt" and p.is_file() else ""))
     for name in ADD:
         dest = app / name
         src = review / name
