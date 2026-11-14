@@ -393,6 +393,20 @@ jobs:
           add_test(NAME GK1_270_ControllerViewNavigationDisarmsPendingPass
            COMMAND test_gk270_view_pass_navigation)
           '@
+          # EXEC0271: the inherited 0265 hostile provenance test pins exact 0264
+          # app SHA. The strictly newer verified 0270 game intentionally
+          # differs; retain all its ten hostile mutations and original tests,
+          # but require the newer exact C11 game SHA, not the stale predecessor.
+          $legacyGate = 'current-gk1/execution_199/packaging/test_gk265_current_win32_source.py'
+          if (-not (Test-Path -LiteralPath $legacyGate)) { throw 'Original EXEC0265 hostile source gate missing' }
+          $gateText = [IO.File]::ReadAllText($legacyGate).Replace(([string][char]13+[char]10),([string][char]10))
+          $oldGate = "EXPECTED_APP_SHA = 'a0edd0a5dc4974a17485320368c6613240785a2c813a941dcaef527fd632c05c'"
+          $newGate = "EXPECTED_APP_SHA = 'ee00ef0fc03676d09edfef9ca630acb9e605f128e5af5a66b1eafb2e86c2dc68'"
+          $pos = $gateText.IndexOf($oldGate)
+          if ($pos -lt 0 -or $gateText.IndexOf($oldGate,$pos+1) -ge 0) { throw 'Stale source gate anchor missing or repeated' }
+          [IO.File]::WriteAllText($legacyGate, $gateText.Replace($oldGate,$newGate))
+          $readback = [IO.File]::ReadAllText($legacyGate)
+          if (-not $readback.Contains($newGate) -or $readback.Contains($oldGate)) { throw 'Strengthened source gate readback failed' }
           python research/Genghis_Khan_NES/execution_271_win32_classic_view/test_gk271_win32_0270_provenance.py .github/workflows/gk1-native-windows.yml
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0271 hostile Win32 source-gate QA failed' }
           Write-Output 'EXEC0271 native Windows app exactly matches EXEC0270 gameplay code; owner-private ROM test inputs excluded'
