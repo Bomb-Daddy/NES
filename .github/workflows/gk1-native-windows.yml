@@ -18,6 +18,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_273_win32_spring_source_integrity/**'
       - 'research/Genghis_Khan_NES/execution_274_original_stock_json_probe/**'
       - 'research/Genghis_Khan_NES/execution_277_fresh_title_provenance/**'
+      - 'research/Genghis_Khan_NES/execution_279_win32_spring_coverage/**'
 
 permissions:
   contents: read
