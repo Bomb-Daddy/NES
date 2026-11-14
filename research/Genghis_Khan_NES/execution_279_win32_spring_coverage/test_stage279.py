@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Hostile EXEC0279 stage QA. Requires copyright-clean complete EXEC0277 root."""
 import argparse, pathlib, hashlib, shutil, subprocess, tempfile, sys
+from stage279 import POST
 
 def run(src, review, patch):
     return subprocess.run([sys.executable,str(pathlib.Path(__file__).with_name('stage279.py')),
@@ -28,6 +29,12 @@ def main():
         checks+=1
         assert all_hashes(root,names)!=baseline
         checks+=1
+        # Verify the physical file bytes, not only normalized SHA views.
+        # This catches the real Git-for-Windows CRLF mismatch that broke
+        # the inherited EXEC0265 fail-closed source gate in native Win32 CI.
+        for name in ('gk1_app_state.c','gk1_app_state.h','gk1_native_shell.c'):
+            assert all_hashes(root,[name])[name] == POST[name], name
+            checks+=1
         assert (root/'execution_199'/'gk278_original_spring_coverage.c').is_file()
         checks+=1
         again=run(root,a.review_root,a.patch)
