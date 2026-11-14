@@ -689,6 +689,18 @@ jobs:
           }
           [IO.File]::WriteAllText($gate,$gateText.Replace($oldGate,$newGate))
           if (-not ([IO.File]::ReadAllText($gate).Contains($newGate))) { throw 'EXEC0279 updated hostile source pin readback failed' }
+          # EXEC0279 diagnosis: retain all older source/provenance assertions, report the actual
+          # staged Win32 preimages to identify why the inherited gate refuses them.
+          $appDiag='current-gk1/execution_199/gk1_app_state.c'
+          $testDiag='current-gk1/execution_199/test_gk264_scenario_restart.c'
+          $cmakeDiag='current-gk1/execution_199/CMakeLists.txt'
+          Write-Output ('EXEC0279 DIAG app_sha=' + (Get-FileHash -LiteralPath $appDiag -Algorithm SHA256).Hash.ToLowerInvariant())
+          Write-Output ('EXEC0279 DIAG test_sha=' + (Get-FileHash -LiteralPath $testDiag -Algorithm SHA256).Hash.ToLowerInvariant())
+          Write-Output ('EXEC0279 DIAG gate_expected_sha=' + ((Select-String -LiteralPath $gate -Pattern 'EXPECTED_APP_SHA =' | Select-Object -First 1).Line))
+          $cmakeText = [IO.File]::ReadAllText($cmakeDiag)
+          foreach ($token in @('add_executable(test_gk264_scenario_restart test_gk264_scenario_restart.c)', 'target_link_libraries(test_gk264_scenario_restart PRIVATE gk1_app_state)', 'GK1_264_AtomicScenarioReinstallClearsSourceAndPortState','GK1_265_CurrentWin32BuildSourceMustMatchEXEC0264')) {
+            Write-Output ('EXEC0279 DIAG cmake_token_count=' + ([regex]::Matches($cmakeText,[regex]::Escape($token))).Count + ' token=' + $token)
+          }
           python $gate 'current-gk1/execution_199/gk1_app_state.c' 'current-gk1/execution_199/test_gk264_scenario_restart.c' 'current-gk1/execution_199/CMakeLists.txt' 'current-gk1/.github/workflows/gk1-native-windows.yml'
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0279 complete current game does not pass retained hostile provenance checks' }
           Write-Output 'EXEC0279 legacy gate repaired for exact reviewed source: all older adversarial assertions RETAINED'
