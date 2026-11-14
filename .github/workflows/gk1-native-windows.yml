@@ -786,6 +786,103 @@ jobs:
           python $gate (Join-Path $app 'gk1_app_state.c') (Join-Path $app 'test_gk264_scenario_restart.c') $cmake 'current-gk1/.github/workflows/gk1-native-windows.yml'
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0281 inherited hostile game source gate failed' }
           Write-Output 'EXEC0281 source-authenticated native C11 Rate bridge and new CTest STAGED; original first Spring remains unfinished.'
+      # EXEC0283: apply the exact approved 0282 C289 trace source to the SAME
+      # inherited WinMain game that passed EXEC0281. No licensed NES bytes.
+      - name: EXEC0283 exact 0282 C289 source-integrated Win32 game and regression
+        shell: pwsh
+        run: |
+          $review = 'research/Genghis_Khan_NES/execution_282_stock_c289_chronology'
+          $app = 'current-gk1/execution_199'
+          $patch = Join-Path $review 'GK1_EXEC0282_Exact_Source_Integration_From_0280.patch'
+          $oldC = 'f2fc9d9f36ba6c0ba48f72c95ae5b9b343727876c3e84da286b7d8670e20252f'
+          $oldH = '981bcbcef37d1d1b3023f667c48f1eaef7125d3e2c3f0d46e0789a3fdf86468e'
+          $newC = '4f9319989b5f82b99d7b3211c6fb5def892f4c9db58ad69d3ca29a754532a28f'
+          $newH = '0d7e0ac21b6b7d94858e16c3c0bd4c3519444ccf400e55f4197d8c5f099a8199'
+          if (-not (Test-Path $patch)) { throw 'EXEC0283 reviewed predecessor source patch missing' }
+          python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $patch
+          if ($LASTEXITCODE -ne 0 -or (Get-FileHash $patch -Algorithm SHA256).Hash.ToLowerInvariant() -ne '74c1b35676699ec6c8ae289eb19d56baefc46e700665fa6ac5945a0d7525dbf0') {
+            throw 'EXEC0283 source patch does not match authenticated reviewed bytes'
+          }
+          foreach ($s in @(@('gk1_app_state.c',$oldC),@('gk1_app_state.h',$oldH))) {
+            $file = Join-Path $app $s[0]
+            if (-not (Test-Path $file) -or (Get-FileHash $file -Algorithm SHA256).Hash.ToLowerInvariant() -ne $s[1]) {
+              throw "EXEC0283 inherited WinMain preimage mismatch $file"
+            }
+          }
+          $newFiles = @(
+            @('gk282_stock_rng_trace.c','659a5ca4c1ea4c2299bf77da1407ed21932b975827db315e3ca86b5b3672f1e5'),
+            @('gk282_stock_rng_trace.h','c6d3d9be633a25766689b3d439ab85cc10bbb6c605513d651a4c31f3af882e44'),
+            @('test_gk282_stock_rng_trace.c','ff170b1c7a1992b584c6eb896721f712c441df1f6877e228040b4fd0ed4c9f15')
+          )
+          foreach ($s in $newFiles) {
+            $from = Join-Path (Join-Path $review 'source') $s[0]
+            $to = Join-Path $app $s[0]
+            if (-not (Test-Path $from) -or (Test-Path $to)) { throw "EXEC0283 missing or duplicate reviewed C11 source $($s[0])" }
+            python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $from
+            if ($LASTEXITCODE -ne 0 -or (Get-FileHash $from -Algorithm SHA256).Hash.ToLowerInvariant() -ne $s[1]) {
+              throw "EXEC0283 source checkout hash mismatch $from"
+            }
+          }
+          # Never use a --include filter which can return success without editing a file.
+          $patchText = [IO.File]::ReadAllText($patch).Replace(([string][char]13+[char]10),([string][char]10))
+          $start = $patchText.IndexOf('--- a/execution_199/gk1_app_state.c')
+          $stop = $patchText.IndexOf('--- /dev/null',$start)
+          if ($start -lt 0 -or $stop -le $start) { throw 'EXEC0283 precise C/H patch boundaries not found' }
+          $c11Patch = $patchText.Substring($start,$stop-$start)
+          if (-not $c11Patch.Contains('--- a/execution_199/gk1_app_state.h')) {
+            throw 'EXEC0283 actual WinMain API patch absent'
+          }
+          $limitedPatch = Join-Path $env:RUNNER_TEMP 'GK1_EXEC0283_C11_only.patch'
+          [IO.File]::WriteAllText($limitedPatch,$c11Patch,(New-Object System.Text.UTF8Encoding($false)))
+          git apply --check --directory=current-gk1 $limitedPatch
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0283 exact inherited C11 patch preflight refused' }
+          git apply --directory=current-gk1 $limitedPatch
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0283 source patch failed' }
+          foreach ($s in @(@('gk1_app_state.c',$newC),@('gk1_app_state.h',$newH))) {
+            $file = Join-Path $app $s[0]
+            python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $file
+            if ($LASTEXITCODE -ne 0 -or (Get-FileHash $file -Algorithm SHA256).Hash.ToLowerInvariant() -ne $s[1]) {
+              throw "EXEC0283 native compiled app postimage mismatch $file"
+            }
+          }
+          foreach ($s in $newFiles) {
+            $from = Join-Path (Join-Path $review 'source') $s[0]
+            $to = Join-Path $app $s[0]
+            Copy-Item $from $to
+            if ((Get-FileHash $to -Algorithm SHA256).Hash.ToLowerInvariant() -ne $s[1]) {
+              throw "EXEC0283 real compiled C11 file copy mismatch $to"
+            }
+          }
+          $cmake = Join-Path $app 'CMakeLists.txt'
+          $cm = [IO.File]::ReadAllText($cmake).Replace(([string][char]13+[char]10),([string][char]10))
+          $anchor = 'gk280_original_rate_bridge.c gk216_fresh_cpu_pc.c'
+          $replacement = 'gk280_original_rate_bridge.c gk282_stock_rng_trace.c gk216_fresh_cpu_pc.c'
+          if ($cm.Split($anchor).Length -ne 2 -or $cm.Contains('gk282_stock_rng_trace') -or -not $cm.Contains('gk280_original_rate_bridge')) {
+            throw 'EXEC0283 inherited CMake source/registration is unexpected'
+          }
+          $registration = @'
+          
+          # EXEC0283 source-based C289 step auditing; public CI tests absent-ROM refusal only.
+          add_executable(test_gk282_stock_rng_trace test_gk282_stock_rng_trace.c)
+          target_link_libraries(test_gk282_stock_rng_trace PRIVATE gk1_app_state)
+          add_test(NAME gk282_original_c289_trace COMMAND test_gk282_stock_rng_trace
+           "$ENV{GK1_PRIVATE_ORIGINAL_ROM}" "${CMAKE_CURRENT_BINARY_DIR}/gk282_trace_test.tmp")
+          '@
+          [IO.File]::WriteAllText($cmake,$cm.Replace($anchor,$replacement)+$registration)
+          $gate = Join-Path $app 'packaging/test_gk265_current_win32_source.py'
+          $before = "EXPECTED_APP_SHA = '$oldC'"
+          $after = "EXPECTED_APP_SHA = '$newC'"
+          $gateContents = [IO.File]::ReadAllText($gate).Replace(([string][char]13+[char]10),([string][char]10))
+          if ($gateContents.Split($before).Length -ne 2 -or $gateContents.Contains($after)) {
+            throw 'EXEC0283 inherited hostile source gate cannot be safely updated'
+          }
+          [IO.File]::WriteAllText($gate,$gateContents.Replace($before,$after))
+          python $gate (Join-Path $app 'gk1_app_state.c') (Join-Path $app 'test_gk264_scenario_restart.c') $cmake 'current-gk1/.github/workflows/gk1-native-windows.yml'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0283 retained EXEC0265 hostile source verification refused' }
+          if (-not (Select-String -LiteralPath $cmake -SimpleMatch -Pattern 'gk282_original_c289_trace' -Quiet)) {
+            throw 'EXEC0283 C289 actual native CTest missing'
+          }
+          Write-Output 'EXEC0283 actual C11 WinMain incorporates 0282 trace API, synthetic no-ROM negative test; first playable Spring NOT claimed'
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
