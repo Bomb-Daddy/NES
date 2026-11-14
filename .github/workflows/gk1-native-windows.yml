@@ -342,6 +342,54 @@ jobs:
           '@
           python research/Genghis_Khan_NES/execution_269_win32_provenance_mutation/test_gk269_win32_0266_provenance.py .github/workflows/gk1-native-windows.yml
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0267 hostile current Win32 source gate failed' }
+      - name: EXEC0270 source-integrated into native Win32
+        shell: pwsh
+        run: |
+          # EXEC0271: do not give the Windows executable an older app than
+          # the complete inherited Linux EXEC0270 source.
+          $app = 'current-gk1/execution_199/gk1_app_state.c'
+          $before = 'a0edd0a5dc4974a17485320368c6613240785a2c813a941dcaef527fd632c05c'
+          $after = 'ee00ef0fc03676d09edfef9ca630acb9e605f128e5af5a66b1eafb2e86c2dc68'
+          $actual = (Get-FileHash -LiteralPath $app -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -ne $before) { throw "EXEC0270 source preimage mismatch: $actual" }
+          $patch = '../research/Genghis_Khan_NES/execution_270_classic_view_pass_navigation/GK1_EXEC0270_Integration_From_0269.patch'
+          $patchOnHost = 'research/Genghis_Khan_NES/execution_270_classic_view_pass_navigation/GK1_EXEC0270_Integration_From_0269.patch'
+          if (-not (Test-Path -LiteralPath $patchOnHost)) { throw 'Exact published EXEC0270 patch missing' }
+          git -C current-gk1 apply --check --include='execution_199/gk1_app_state.c' $patch
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0270 app-only source patch cannot be replayed' }
+          git -C current-gk1 apply --include='execution_199/gk1_app_state.c' $patch
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0270 app-only source patch failed' }
+          $actual = (Get-FileHash -LiteralPath $app -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -ne $after) { throw "EXEC0270 linked game source SHA mismatch: $actual" }
+          # The source test is public; its three original NES runtime inputs
+          # are owner-private and are deliberately not included in the CI.
+          $testSrc = 'research/Genghis_Khan_NES/execution_270_classic_view_pass_navigation/test_gk270_view_pass_navigation.c'
+          $testDst = 'current-gk1/execution_199/test_gk270_view_pass_navigation.c'
+          if ((-not (Test-Path -LiteralPath $testSrc)) -or (Test-Path -LiteralPath $testDst)) {
+            throw 'EXEC0270 original source test missing or duplicated'
+          }
+          Copy-Item -LiteralPath $testSrc -Destination $testDst
+          # Git-for-Windows can checkout text C files with CRLF;
+          # normalize exactly, then check whole published C11 source hash.
+          python -c "from pathlib import Path;import sys;p=Path(sys.argv[1]);p.write_bytes(p.read_bytes().replace(bytes((13,10)),bytes((10,))))" $testDst
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0270 test source normalization failed' }
+          $testSha = '490c9d476ffd272b5e0dcd507c19c241556df1b7d5aa4d417ae10ffb6e450f4c'
+          $testActual = (Get-FileHash -LiteralPath $testDst -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($testActual -ne $testSha) { throw "EXEC0270 test source SHA mismatch: $testActual" }
+          $cmake = 'current-gk1/execution_199/CMakeLists.txt'
+          if (Select-String -LiteralPath $cmake -SimpleMatch -Pattern 'GK1_270_ControllerViewNavigationDisarmsPendingPass' -Quiet) {
+            throw 'EXEC0270 duplicated CTest registration'
+          }
+          Add-Content -LiteralPath $cmake -Value @'
+          # EXEC0271: linked real app must pass prior EXEC0270 controller refusal regression.
+          add_executable(test_gk270_view_pass_navigation test_gk270_view_pass_navigation.c)
+          target_link_libraries(test_gk270_view_pass_navigation PRIVATE gk1_app_state)
+          add_test(NAME GK1_270_ControllerViewNavigationDisarmsPendingPass
+           COMMAND test_gk270_view_pass_navigation)
+          '@
+          python research/Genghis_Khan_NES/execution_271_win32_classic_view/test_gk271_win32_0270_provenance.py .github/workflows/gk1-native-windows.yml
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0271 hostile Win32 source-gate QA failed' }
+          Write-Output 'EXEC0271 native Windows app exactly matches EXEC0270 gameplay code; owner-private ROM test inputs excluded'
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
