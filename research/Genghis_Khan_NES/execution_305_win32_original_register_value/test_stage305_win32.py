@@ -37,8 +37,17 @@ class Tests(unittest.TestCase):
         self.assertIn('GK1_304_PublicRegisterStoreRefusalNoROM',(self.root/'CMakeLists.txt').read_text())
         with self.assertRaises(ValueError):s.prepare(self.root,SOURCE,self.pin)
     def test_crlf_normalization(self):
-        p=self.root/'gk1_app_state.c';p.write_bytes(p.read_bytes().replace(b'\n',b'\r\n'))
+        p=self.root/'gk1_app_state.c'
+        # A Windows write_text() fixture already has CRLF. Canonicalize first;
+        # re-encoding raw CRLF as CRCRLF would falsely fail this positive case.
+        canonical = s.norm(p.read_bytes())
+        p.write_bytes(canonical.replace(b'\n',b'\r\n'))
         self.assertEqual(len(s.prepare(self.root,SOURCE,self.pin)),7)
+    def test_double_crlf_refused(self):
+        p=self.root/'gk1_app_state.c'
+        canonical = s.norm(p.read_bytes())
+        p.write_bytes(canonical.replace(b'\n',b'\r\r\n'))
+        with self.assertRaises(ValueError):s.prepare(self.root,SOURCE,self.pin)
     def test_modified_app_refused(self):
         p=self.root/'gk1_app_state.c';p.write_bytes(p.read_bytes()+b'evil')
         with self.assertRaises(ValueError):s.prepare(self.root,SOURCE,self.pin)
