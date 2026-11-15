@@ -6,6 +6,7 @@ The prerequisite EXEC0302+0304 source must have been staged first.
 import hashlib
 import os
 import pathlib
+import re
 import sys
 import tempfile
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -18,6 +19,17 @@ def norm(data):
 def one(s, old, new):
     if s.count(old) != 1: raise ValueError('unexpected or duplicate exact source anchor: '+old[:80])
     return s.replace(old,new,1)
+
+# EXEC0313 Win32 repair: a naive substring also occurs inside the
+# test_gk304_stock_store_value.c test filename, giving a false duplicate.
+# Match exactly one standalone CMake production-source token instead.
+def insert_312_native_source(cmake):
+    pattern = r'(?<![A-Za-z0-9_])gk304_stock_store_value\.c(?![A-Za-z0-9_])'
+    hits = list(re.finditer(pattern, cmake))
+    if len(hits) != 1:
+        raise ValueError('expected exactly one native gk304 source token, got '+str(len(hits)))
+    hit = hits[0]
+    return cmake[:hit.end()] + ' gk312_stock_event_pc.c' + cmake[hit.end():]
 
 # Constant generated from this new public C11 source, not any original game ROM.
 CHECKED_SOURCE_SHA = {
@@ -93,8 +105,7 @@ def prepare(app):
                '#include "gk300_stock_nmi_seed_clock.h"\n#include "gk312_stock_event_pc.h"')
     header=one(header,'Gk297Status gk1_app_original_reset_initializer(',
                HEADER+'Gk297Status gk1_app_original_reset_initializer(')
-    cm=one(cm,'gk304_stock_store_value.c',
-           'gk304_stock_store_value.c gk312_stock_event_pc.c')
+    cm=insert_312_native_source(cm)
     cm=cm.rstrip('\n')+'\n'+CMAKE
     changed={'gk1_app_state.c':source.encode(),'gk1_app_state.h':header.encode(),
              'CMakeLists.txt':cm.encode()}
