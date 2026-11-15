@@ -1,0 +1,45 @@
+{
+  "execution": "EXEC0290",
+  "predecessor": "EXEC0288 complete inherited source and separately successful EXEC0289 Windows staging",
+  "files": {
+    "execution_199/CMakeLists.txt": {
+      "old_sha256": "f7784972f85e9b64cf41c2e394f07443ab3e418498c591a2f240793fa5d9902b",
+      "new_sha256": "de4c67b53483759cb753d9326fd303acaac23e995a92f587e81745bb96744367",
+      "new_size": 103517
+    },
+    "execution_199/gk1_app_state.h": {
+      "old_sha256": "2a92dc2676679bda96f596d633cfdcb6db586717a35433751f86ffb8d7349f4d",
+      "new_sha256": "57aa287dfd51db2871428c3a96cbf3ee1aed9abf5fbec6443ff22bc961c4b512",
+      "new_size": 21700
+    },
+    "execution_199/gk1_app_state.c": {
+      "old_sha256": "1ece1ea80db941450d3f67a9395286f715c84132cc4728cf5141a6ac8f745ff9",
+      "new_sha256": "df780b871eb04d18ad2a6a55e60ed6a46eeded88fc8909ed810921a9e48b88fb",
+      "new_size": 115856
+    },
+    "execution_199/gk290_seed_chronology.h": {
+      "old_sha256": null,
+      "new_sha256": "2f6a8aa6903168fdf11e4f8465554bce4d2141f84e221699e24427950d67ad8d",
+      "new_size": 1604
+    },
+    "execution_199/gk290_seed_chronology.c": {
+      "old_sha256": null,
+      "new_sha256": "142f64f098a35ff5a349aa77e080312047a9f9c7d9e29af18653b3905d330509",
+      "new_size": 2373
+    },
+    "execution_199/test_gk290_seed_chronology.c": {
+      "old_sha256": null,
+      "new_sha256": "fa6401d18b60fe394043d1398b107d3a21a298a393f13a5671fa3ceff31daaf5",
+      "new_size": 5019
+    }
+  },
+  "tests": {
+    "linux_ctest_eligible": "233/233 PASS excluding obsolete 257 Windows workflow static gate",
+    "linux_test_290": "1/1 PASS; 43 assertions",
+    "asan_ubsan_test_290": "1/1 PASS",
+    "test_257_in_old_zip": "FAIL stale 257 gate; no status promotion",
+    "windows_exec290": "NOT RUN",
+    "physical_xbox": "NOT RUN",
+    "mesen_stock_exec290": "NOT RUN"
+  }
+}
