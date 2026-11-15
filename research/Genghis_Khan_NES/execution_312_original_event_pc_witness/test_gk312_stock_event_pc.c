@@ -1,4 +1,5 @@
 #include "gk312_stock_event_pc.h"
+#include "gk1_app_state.h"
 #include <stdio.h>
 #include "gk137_stock_rng.h"
 #include <stdlib.h>
@@ -70,6 +71,20 @@ int main(int argc,char **argv){
      !out.playable_orders_granted);
   CK(memcmp(out.replay.seed.final,e[2].rng_after,6u)==0);
  }
+ /* This C11 API is inside the actual Gk1App, not a reference-only stub.
+  * It must categorically refuse before genuine Classic setup, preserve all
+  * original 14/27-country data, and leave source witnesses untouched. */
+ Gk1App *app=(Gk1App *)calloc(1,sizeof *app);CK(app!=NULL);
+ gk1_app_init(app);
+ uint8_t before[sizeof *app];memcpy(before,app,sizeof *app);
+ out=sentinel;
+ CK(gk1_app_original_event_pc_witnesses(app,"none",seed,e,3,regs,1,pcs,3,&out)==GK312_STAGE);
+ CK(memcmp(&out,&sentinel,sizeof out)==0);
+ CK(memcmp(before,app,sizeof *app)==0);
+ app->rules_profile=0u;
+ CK(gk1_app_original_event_pc_witnesses(app,"none",seed,e,3,regs,1,pcs,3,&out)==GK312_STAGE);
+ CK(memcmp(&out,&sentinel,sizeof out)==0);
+ free(app);
  printf("GK312 %u PC witness and private-original-source negative/conditional controls PASS; NOT runtime STOCK gameplay\n",checks);
  return 0;
 }
