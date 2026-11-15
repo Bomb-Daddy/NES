@@ -30,6 +30,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_298_win32_stock_reset_source/**'
       - 'research/Genghis_Khan_NES/execution_300_original_stock_nmi_seed_clock/**'
       - 'research/Genghis_Khan_NES/execution_303_win32_stock_seed_timeline/**'
+      - 'research/Genghis_Khan_NES/execution_305_win32_original_register_value/**'
 
 permissions:
   contents: read
@@ -1159,6 +1160,26 @@ jobs:
           python "$base/repair_provenance_303.py" $app
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0303 inherited source provenance refused' }
           Write-Output 'EXEC0303 old native source provenance remains active; only exact new postimage is accepted'
+
+      # EXEC0305: original-stock 304 source must reach the same native WinMain,
+      # rather than remaining Linux-only or an isolated research demonstration.
+      - name: EXEC0305 SHA-pinned inherited Win32 STORE register integration and hostile QA
+        shell: pwsh
+        run: |
+          $base = 'research/Genghis_Khan_NES/execution_305_win32_original_register_value'
+          python -m py_compile "$base/stage305_win32.py" "$base/test_stage305_win32.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0305 Python syntax failed' }
+          python "$base/test_stage305_win32.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0305 hostile rollback tests failed' }
+          python "$base/stage305_win32.py" 'current-gk1/execution_199'
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0305 exact Win303 source integration refused' }
+          $cmake = 'current-gk1/execution_199/CMakeLists.txt'
+          foreach ($needle in @('gk304_stock_store_value.c','GK1_304_PublicRegisterStoreRefusalNoROM','GK1_302_PublicTimelineRefusalNoROM','GK1_257_CurrentWin32Workflow_RejectsStaleSourceAndFalsePass')) {
+            if (-not (Select-String -LiteralPath $cmake -SimpleMatch -Pattern $needle -Quiet)) {
+              throw "EXEC0305 inherited native CMake registration missing: $needle"
+            }
+          }
+          Write-Output 'EXEC0305 STAGED: WinMain native original-stock register witness source; NOT first playable Spring; NO private ROM; physical Xbox NOT RUN'
 
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
