@@ -18,12 +18,12 @@
       "size": 1543
     },
     "stage312.py": {
-      "sha256": "7eb3a78a317317e096b39738a0872d29b54091f741eff39ea5c7ed96a00d5b5f",
+      "sha256": "046affcc9180d3199d3d230132ef2473aefc3cfabf6d41d396ff4a8fe3b56aa7",
       "size": 6813
     },
     "test_gk312_stock_event_pc.c": {
-      "sha256": "e0130f303751ce59ae11914e76c20f0a0bc2b71f7ba5c9b9ddaf9644a60c6b32",
-      "size": 4015
+      "sha256": "c7984051265c22f397c27f3984c2c8adf488c40217d2e10e41d428b825ab027a",
+      "size": 4771
     },
     "test_stage312.py": {
       "sha256": "38b0cef9f1d552caf43b0b85a19ef3e1218438771856719422883646bd3ce546",
