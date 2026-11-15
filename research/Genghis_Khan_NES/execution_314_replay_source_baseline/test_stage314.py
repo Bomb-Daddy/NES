@@ -14,7 +14,8 @@ class Staging(unittest.TestCase):
         self.folder.mkdir()
         self.app=self.folder/'gk1_app_state.c'
         self.cmake=self.folder/'CMakeLists.txt'
-        # Binary writes preserve exact LF on Windows (write_text produces CRLF).\n        self.app.write_bytes(('before\n'+stage.SOURCE_ANCHOR+'\nafter\n').encode('utf-8'))
+        # Binary writes preserve exact LF on Windows (write_text produces CRLF).
+        self.app.write_bytes(('before\n'+stage.SOURCE_ANCHOR+'\nafter\n').encode('utf-8'))
         self.cmake.write_bytes(b'add_library(gk1_app_state STATIC foo.c)\n')
         self.before={p:p.read_bytes() for p in [self.app,self.cmake]}
     def test_fixture_exact_lf_cross_platform(self):
