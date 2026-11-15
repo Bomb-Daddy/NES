@@ -1,0 +1,18 @@
+{
+  "schema": "GK1_EXEC0300",
+  "predecessor_299_clean_c11_sha256": {
+    "gk1_app_state.c": "79ed178dec0a345886932bda2f887645c427b4b12e721438d937b7f97dbcf581",
+    "gk1_app_state.h": "95df64d698550869749d5f740e4d55e8726e5ae3d7637712e676cb482daa999b",
+    "CMakeLists.txt": "108527f653959b9da618a95c497f36d772c5f79ab384ff88584753ad35aa0c7f"
+  },
+  "result_sha256": {
+    "gk1_app_state.c": "c4a6707d70f809d9cb3d3bfaa775cc1757c331c81b985a82ec97e3a17f560fc6",
+    "gk1_app_state.h": "dbaf417047418e431fa08e2578a64cd506850e6dca079cb5ef6c6c8ae3d1a29e",
+    "CMakeLists.txt": "ff5eb9401c3159eb69ce7519583f2c467a1f32a88e65a8441bf2ded4af3e2770",
+    "gk300_stock_nmi_seed_clock.c": "9ffa5fb6f36975060829a1053c760da75f25a9376b7cc954d2cc08657ad43c98",
+    "gk300_stock_nmi_seed_clock.h": "ff8fbaa39b576abe0869ed8f385f8d117c95ef0352619b6d171bcb8bf92438d8",
+    "test_gk300_stock_nmi_seed_clock.c": "42a5b8dcd830d9f38086aca225ba065810300458263946d826cb2d8d16271290"
+  },
+  "patch_sha256": "4d995f902b9d63fae492df65e4116a74e9ab9533ca12be1f4067362da858b940",
+  "original_rom_sha256_private_metadata_only": "ada7066d9e71a81310fff78bc7037126798018a69dc2b92382c3cbdcd9b243b3"
+}
