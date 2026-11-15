@@ -20,6 +20,7 @@ SRC={
  'gk302_stock_seed_timeline.h':b'#ifndef SOURCE\n#define SOURCE\n#endif\n',
  'test_gk302_stock_seed_timeline.c':b'int main(void){return 0;}\n'}
 passed=0
+# Ensure all fixtures use LF on Windows as well as Linux.
 def refused(root):
  global passed
  previous={p.name:p.read_bytes() for p in root.iterdir()}
@@ -33,26 +34,26 @@ with tempfile.TemporaryDirectory() as temp:
  root=Path(temp)/'app';root.mkdir()
  source=Path(temp)/'verified';source.mkdir()
  for n,s in [('gk1_app_state.c',C),('gk1_app_state.h',H),('CMakeLists.txt',CM)]:
-  (root/n).write_text(s)
+  (root/n).write_bytes(s.encode('utf-8'))
  for n,b in SRC.items():(source/n).write_bytes(b)
  m.SOURCE_DIRECTORY=source
  m.EXPECTED_APP={n:hashlib.sha256((root/n).read_bytes()).hexdigest()
    for n in ['gk1_app_state.c','gk1_app_state.h']}
  m.SOURCE_BLOBS={n:m.source_blob(b) for n,b in SRC.items()}
- (root/'gk1_app_state.c').write_text(C+'// altered\n');refused(root)
- (root/'gk1_app_state.c').write_text(C)
+ (root/'gk1_app_state.c').write_bytes((C+'// altered\n').encode('utf-8'));refused(root)
+ (root/'gk1_app_state.c').write_bytes(C.encode('utf-8'))
  (source/'gk302_stock_seed_timeline.c').write_bytes(SRC['gk302_stock_seed_timeline.c']+b'X');refused(root)
  (source/'gk302_stock_seed_timeline.c').write_bytes(SRC['gk302_stock_seed_timeline.c'])
- (root/'gk1_app_state.h').write_text(H.replace('gk300_stock_nmi_seed_clock.h','wrong.h'))
+ (root/'gk1_app_state.h').write_bytes(H.replace('gk300_stock_nmi_seed_clock.h','wrong.h').encode('utf-8'))
  m.EXPECTED_APP['gk1_app_state.h']=hashlib.sha256((root/'gk1_app_state.h').read_bytes()).hexdigest()
  refused(root)
- (root/'gk1_app_state.h').write_text(H)
+ (root/'gk1_app_state.h').write_bytes(H.encode('utf-8'))
  m.EXPECTED_APP['gk1_app_state.h']=hashlib.sha256(H.encode()).hexdigest()
- (root/'CMakeLists.txt').write_text(CM.replace('gk300_stock_nmi_seed_clock.c','missing.c'));refused(root)
- (root/'CMakeLists.txt').write_text(CM.replace('GK1_257_CurrentWin32Workflow_RejectsStaleSourceAndFalsePass','MISSING'));refused(root)
- (root/'CMakeLists.txt').write_text(CM)
+ (root/'CMakeLists.txt').write_bytes(CM.replace('gk300_stock_nmi_seed_clock.c','missing.c').encode('utf-8'));refused(root)
+ (root/'CMakeLists.txt').write_bytes(CM.replace('GK1_257_CurrentWin32Workflow_RejectsStaleSourceAndFalsePass','MISSING').encode('utf-8'));refused(root)
+ (root/'CMakeLists.txt').write_bytes(CM.encode('utf-8'))
  (root/'gk1_app_state.c').write_bytes(C.encode()+b'\rX');refused(root)
- (root/'gk1_app_state.c').write_text(C)
+ (root/'gk1_app_state.c').write_bytes(C.encode('utf-8'))
  result=m.stage(root)
  assert len(result)==6
  assert 'gk302_stock_seed_timeline.c' in (root/'CMakeLists.txt').read_text()
