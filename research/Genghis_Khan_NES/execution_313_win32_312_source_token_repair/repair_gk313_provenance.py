@@ -13,8 +13,11 @@ CHECKED_APP = {
     'gk1_app_state.h': '077673206942e635dc866a72fec21cab6d4871769ede0f93486bded98e4c9be9',
     'CMakeLists.txt': '972b1d9f4877f51ef6859bacc19859100dc4c3f1f9e5af28bce2f895196d6312',
 }
-GATE_303_SHA = 'e8a02617413e85db371cb0efb86a5e5918c2e8bf0ca26d07ed7537adc4a2ca1b'
-OLD_APP = '1e18aa0bf086b762f93aef3720c083f4e427d9fb9e5cb212a4755a9cb56ad813'
+# Exact observed post-EXEC0310 inherited gate SHA from Win32 run 43757065128.
+# Gate has been deliberately advanced by prior stages after EXEC0303;
+# updating from its real latest postimage preserves the ten hostile controls.
+GATE_303_SHA = '7586b22e7ac5ddec09207e3725ce0248b4dea54ebebd729e178613650e85e988'
+OLD_APP = '2922886bf38ff441bdf7d629ae47455734363e213992d45ff4dcba68c5ebe71e'
 NEW_APP = CHECKED_APP['gk1_app_state.c']
 OLD_LINE = "EXPECTED_APP_SHA = '" + OLD_APP + "'"
 NEW_LINE = "EXPECTED_APP_SHA = '" + NEW_APP + "'"
