@@ -1147,6 +1147,19 @@ jobs:
           }
           Write-Output 'EXEC0303 inherited native Win32 source staged: no original ROM, no invented Spring, physical Xbox NOT RUN'
 
+      - name: Reconcile inherited EXEC0265 Win32 source provenance to verified post-EXEC0303 native source
+        shell: pwsh
+        run: |
+          $base = 'research/Genghis_Khan_NES/execution_303_win32_stock_seed_timeline'
+          $app = 'current-gk1/execution_199'
+          python -m py_compile "$base/repair_provenance_303.py" "$base/test_repair_provenance_303.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0303 provenance Python syntax failed' }
+          python "$base/test_repair_provenance_303.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0303 provenance hostile mutations failed' }
+          python "$base/repair_provenance_303.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0303 inherited source provenance refused' }
+          Write-Output 'EXEC0303 old native source provenance remains active; only exact new postimage is accepted'
+
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
