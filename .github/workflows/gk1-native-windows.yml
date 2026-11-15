@@ -27,6 +27,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_287_win32_campaign_binding/**'
       - 'research/Genghis_Khan_NES/execution_289_win32_original_rng_stream/**'
       - 'research/Genghis_Khan_NES/execution_295_win32_seed_attestation/**'
+      - 'research/Genghis_Khan_NES/execution_298_win32_stock_reset_source/**'
 
 permissions:
   contents: read
@@ -1034,6 +1035,38 @@ jobs:
             throw 'EXEC0295 actual complete C11 application source postimage incorrect'
           }
           Write-Output 'EXEC0295 public C11 source candidate attestation staged; no private stock ROM or playable Spring claim'
+      - name: EXEC0298 hostile QA and SHA-pinned original stock reset-source integration in same Win32 game
+        shell: pwsh
+        run: |
+          $base = 'research/Genghis_Khan_NES/execution_298_win32_stock_reset_source'
+          $app = 'current-gk1/execution_199'
+          python -m py_compile "$base/stage298.py" "$base/test_stage298.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0298 host source syntax failed' }
+          $env:GK298_PREDECESSOR_DIR = $app
+          python "$base/test_stage298.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0298 hostile regression failed' }
+          python "$base/stage298.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0298 Win32 native source stage failed' }
+          foreach ($entry in @(
+            @('gk1_app_state.c','79ed178dec0a345886932bda2f887645c427b4b12e721438d937b7f97dbcf581'),
+            @('gk1_app_state.h','95df64d698550869749d5f740e4d55e8726e5ae3d7637712e676cb482daa999b'),
+            @('gk296_stock_seed_origin.c','d8dabe4dd08379d96b59bde1fa9828922ff4ac9a797e73cbe33edf12ba5cfcff'),
+            @('gk297_stock_reset_seed.c','91acda7830f471d901fd7775e8625e0143ba62ae1975d8d753bdf82496586fdf')
+          )) {
+            $p = Join-Path $app $entry[0]
+            $actual = (Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($actual -ne $entry[1]) { throw "EXEC0298 compiled source hash mismatch $p" }
+          }
+          foreach ($required in @(
+            'GK1_296_OriginalFourWriterOriginAndUnknownTailRollback',
+            'GK1_297_StockResetInitializerAndUnknownC289Preseed'
+          )) {
+            if (-not (Select-String -LiteralPath (Join-Path $app 'CMakeLists.txt') -SimpleMatch -Pattern $required -Quiet)) {
+              throw "EXEC0298 native executable CTest missing: $required"
+            }
+          }
+          Write-Output 'EXEC0298 native Win32 app source integrated and source gated; ORIGINAL FIRST SPRING NOT YET PLAYABLE'
+
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
