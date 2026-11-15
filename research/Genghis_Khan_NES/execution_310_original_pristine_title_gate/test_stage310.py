@@ -12,7 +12,8 @@ PRIOR=pathlib.Path(__file__).resolve().parents[1]/'GK1_EXEC0276_gk162_original_e
 # intentionally NOT accepted by production pin.
 SYNTHETIC='''static int pristine_title(const Gk1App *a,unsigned w) {return 1;}
 int gk162_original_setup_compatible(const Gk1App *a,unsigned profile){
-if(a->setup_stage[0]==GK53_SETUP_PLAYERS)return 1;
+if(a->setup_stage[0]==GK53_SETUP_PLAYERS)
+  return a->active_world==0u && pristine_title(a,0u);
 return 0;
 }
 '''
@@ -38,6 +39,7 @@ class Tests(unittest.TestCase):
         self.assertNotIn(m.BEFORE,(self.app/'gk162_original_entry.c').read_text())
         self.assertIn(m.MARKER,(self.app/'CMakeLists.txt').read_text())
         self.assertEqual(m.digest((self.app/m.TEST_NAME).read_bytes()),m.TEST_SHA)
+        self.assertEqual(o['gk162_original_entry.c'], (self.app/'gk162_original_entry.c').read_bytes(), 'EXEC0277 pristine guard must remain byte-identical')
         self.assertNotEqual(self.original(),o)
     def test_rollback_all_three_boundaries(self):
         for fail in (1,2,3):
@@ -57,12 +59,12 @@ class Tests(unittest.TestCase):
         (self.app/'CMakeLists.txt').write_text('project(fake)\n')
         with self.assertRaisesRegex(ValueError,'EXEC0309'):m.stage(self.app)
     def test_missing_unique_anchor(self):
-        new=self.src.replace(m.BEFORE.encode(),b'return 1;')
+        new=self.src.replace(m.AFTER.encode(),b'return 1;')
         (self.app/'gk162_original_entry.c').write_bytes(new)
         m.SOURCE_SHA=m.digest(new)
         with self.assertRaisesRegex(ValueError,'unique anchor'):m.stage(self.app)
     def test_multi_anchor_refusal(self):
-        src=self.src.replace(m.BEFORE.encode(),(m.BEFORE+'\n'+m.BEFORE).encode())
+        src=self.src.replace(m.AFTER.encode(),(m.AFTER+'\n'+m.AFTER).encode())
         (self.app/'gk162_original_entry.c').write_bytes(src)
         m.SOURCE_SHA=m.digest(src)
         with self.assertRaisesRegex(ValueError,'unique anchor'):m.stage(self.app)
@@ -93,6 +95,13 @@ class Tests(unittest.TestCase):
         try:
             with self.assertRaisesRegex(ValueError,'test changed'):m.stage(self.app)
         finally:m.TEST_SHA=original
+    def test_unsafe_pre_277_shortcut_refused_even_with_rebased_digest(self):
+        old=self.src.replace(m.AFTER.encode(),m.BEFORE.encode())
+        (self.app/'gk162_original_entry.c').write_bytes(old)
+        m.SOURCE_SHA=m.digest(old)
+        before=self.original()
+        with self.assertRaisesRegex(ValueError,'unique anchor'):m.stage(self.app)
+        self.assertEqual(before,self.original())
     def test_production_sha_never_matches_synthetic(self):
         self.assertNotEqual(self.old,m.digest(self.src))
 
