@@ -1267,6 +1267,10 @@ jobs:
           $app='current-gk1/execution_199'
           python -m py_compile "$base/stage312.py" "$base/test_stage312.py"
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0312 source staging syntax failed' }
+          # EXEC0313: reproduce CMake false duplicate from test_ prefix, then reject
+          # real duplicate/missing production source tokens before mutating app.
+          python research/Genghis_Khan_NES/execution_313_win32_312_source_token_repair/test_gk313_cmake_anchor.py
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0313 Windows CMake token regression failed' }
           python "$base/stage312.py" $app
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0312 rejected actual complete inherited C11 source' }
           python "$base/test_stage312.py" $app
