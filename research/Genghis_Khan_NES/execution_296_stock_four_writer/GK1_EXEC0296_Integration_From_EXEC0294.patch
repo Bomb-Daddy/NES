@@ -1,0 +1,308 @@
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -16,7 +16,7 @@
+ if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+   add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+ endif()
+-add_library(gk1_app_state STATIC gk247_receipt_file_guard.c gk241_archived_import_capability.c gk237_owner_fresh_win.c gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk230_win32_smoke_args.c gk224_practice_save.c gk225_practice_resume.c gk226_practice_checkpoint.c gk227_practice_title_preview.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk278_original_spring_coverage.c gk280_original_rate_bridge.c gk288_original_rng_stream.c gk294_seed_writer_attest.c gk282_stock_rng_trace.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
++add_library(gk1_app_state STATIC gk247_receipt_file_guard.c gk241_archived_import_capability.c gk237_owner_fresh_win.c gk61_market.c gk64_manual_rules.c gk65_battle_terminal.c gk68_observed_rest.c gk74_spring_archive.c gk75_spring_economy.c gk110_spring_stage.c gk111_stock_spring_audit.c gk112_stock_setup_deltas.c gk212_stock_raw_variation.c gk213_stock_spring_boundary.c gk214_spring_batch.c gk222_enhanced_spring_lab.c gk230_win32_smoke_args.c gk224_practice_save.c gk225_practice_resume.c gk226_practice_checkpoint.c gk227_practice_title_preview.c gk217_finance_preview.c gk219_finance_compare.c gk220_labor_history.c gk215_original_spring_gap.c gk278_original_spring_coverage.c gk280_original_rate_bridge.c gk288_original_rng_stream.c gk294_seed_writer_attest.c gk296_stock_seed_origin.c gk282_stock_rng_trace.c gk216_fresh_cpu_pc.c gk218_stock_write_trace.c gk114_stock_spring_timeline.c gk115_market_gate.c gk116_enhanced_assign.c gk158_enhanced_summer.c gk159_enhanced_fall.c gk160_enhanced_winter.c gk161_enhanced_year2.c gk176_enhanced_cycle.c gk177_enhanced_receipt.c gk178_source_rng.c gk180_seed_writer_scan.c gk181_bank_seed_trace.c gk182_archived_source_bank.c gk183_checkpoint_isolation.c gk185_stock_hotkey.c gk187_classic_assign.c gk188_classic_receipt.c gk189_classic_cold_save.c gk162_original_entry.c gk164_mss_entry.c gk165_fresh_json.c gk166_fresh_entry.c gk193_auto_source_entry.c gk194_classic_storage_gate.c gk195_classic_view.c gk196_classic_trade_status.c gk198_tax_forecast.c gk199_classic_tax_undo.c gk202_irq_rng_dispatch.c gk203_rng_selector_writers.c gk204_selector_store_inventory.c gk205_selector_runtime_watch.c gk206_rng_source_parity.c gk207_seed_write_watch.c gk208_archived_rng.c gk209_archived_rate_ambiguity.c gk211_fresh_sequence.c gk167_private_cold_save.c gk170_slot_preview.c gk171_enhanced_title_resume.c gk172_rng_source_xref.c gk173_rng_control.c gk174_setup_boundary.c gk119_order_bridge.c gk117_stock_pristine_gate.c gk77_stock_spring.c gk78_spring_world.c gk79_stock_checkpoint.c gk80_full_checkpoint.c gk81_stock_attach.c gk82_stock_cartridge.c gk83_reset_trace.c gk105_openbus.c gk106_ppu_bus.c gk107_ppu_ports.c gk108_cpu_rmw_bus.c gk109_rmw_families.c gk121_bit_flags.c gk122_cpu_logic.c gk123_cpu_loadstore.c gk124_cpu_compare.c gk125_cpu_arith.c gk126_io_barrier.c gk127_io_transaction.c gk128_oam.c gk129_dma_source.c gk130_dma_bus.c gk131_boot_gate.c gk132_f5_setup.c gk133_boot_order.c gk134_stock_command_route.c gk137_stock_rng.c gk138_rng_reverse.c gk139_mesen_state.c gk140_rng_lineage.c gk141_dispatch_scan.c gk142_fixed_cfg.c gk143_bank_cfg.c gk144_archived_mapper.c gk145_fresh_progress.c gk146_assign_quantity.c gk147_stock_goods.c gk148_fresh_bank_trace.c gk149_ppu_phase_scan.c gk150_render_window.c gk151_even_source.c gk152_spring_writer_map.c gk153_country_write_watch.c gk94_prgram.c gk98_controller_port.c gk98_cpu_rotate.c gk100_cpu_cycles.c gk101_mmc1_cycles.c gk103_ntsc_ppu.c gk95_stock_trade_reference.c gk96_ppu_warmup.c gk91_reset_zero.c gk92_ppustatus_hypothesis.c gk89_spring_reconcile.c gk90_verified_finance.c gk71_order_budget.c gk72_battle_pass.c ../execution_049/gk1_scenario_factory.c ../execution_045/gk1_observed_turn.c ../execution_047/gk1_divide_contract.c gk1_app_state.c gk1_source_identity.c ../execution_039/gk1_battle_session.c ../execution_034/gk1_tactical_slice.c)
+ target_include_directories(gk1_app_state PUBLIC . ../execution_039 ../execution_034 ../execution_045 ../execution_047 ../execution_049)
+ add_library(gk1_pre_setup_store STATIC gk1_pre_setup_store.c)
+ add_library(gk1_setup_draft_store STATIC gk1_setup_draft_store.c)
+@@ -1538,3 +1538,11 @@
+ add_test(NAME GK1_294_OriginalRomSourceSeedWriterAndAtomicRefusals
+  COMMAND test_gk294_seed_writer_attest
+  ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0296: original-stock real-run revealed only four source writes before
++# first C289. Do not counterfeit two unwitnessed power-on source stores.
++add_executable(test_gk296_stock_four_writer test_gk296_stock_four_writer.c)
++target_link_libraries(test_gk296_stock_four_writer PRIVATE gk1_app_state)
++add_test(NAME GK1_296_OriginalFourWriterOriginAndUnknownTailRollback
++ COMMAND test_gk296_stock_four_writer
++ ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -2290,3 +2290,31 @@
+     app->enhanced_continuation.active)return GK294_STAGE;
+  return gk294_attest_seed_writers(private_rom,claimed,count,out);
+ }
++
++/* EXEC0296: authentic source-validated four-writer boundary, not an
++ * original first Spring unlock or independently authenticated CPU transcript.
++ * Preserve full existing Classic stage validation and atomic world state. */
++Gk296Status gk1_app_source_four_writer_first_draw(
++ const Gk1App *app,const char *private_rom,
++ const Gk296Witness *writes,size_t count,const uint8_t initial[6],
++ const uint8_t before_first_draw[6],const uint8_t after_first_draw[6],
++ uint16_t draw15,Gk296Report *out){
++ if(!app||app->active_world>1u||app->rules_profile!=0u||
++    !app->world_ready[app->active_world]||
++    app->worlds[app->active_world].phase!=GK1_PRE_SETUP_TEMPLATE||
++    app->worlds[app->active_world].scenario_id!=(app->active_world?
++       GK1_WORLD_CONQUEST:GK1_MONGOL_CONQUEST)||
++    app->worlds[app->active_world].country_count!=(app->active_world?27u:14u)||
++    memcmp(&app->worlds[app->active_world],
++     &app->finance_source_baseline[app->active_world],
++     sizeof app->worlds[app->active_world])!=0||
++    app->setup_stage[app->active_world]!=GK53_SETUP_AWAIT_SOURCE||
++    app->setup_difficulty[app->active_world]<1u||
++    app->setup_difficulty[app->active_world]>5u||
++    app->stock_checkpoint.valid||app->enhanced_assign.active||
++    app->enhanced_summer.active||app->enhanced_fall.active||
++    app->enhanced_winter.active||app->enhanced_year2.active||
++    app->enhanced_continuation.active)return GK296_STAGE;
++ return gk296_check_four_writer_first_draw(private_rom,writes,count,
++      initial,before_first_draw,after_first_draw,draw15,out);
++}
+--- a/execution_199/gk1_app_state.h
++++ b/execution_199/gk1_app_state.h
+@@ -22,6 +22,7 @@
+ #include "gk282_stock_rng_trace.h"
+ #include "gk288_original_rng_stream.h"
+ #include "gk294_seed_writer_attest.h"
++#include "gk296_stock_seed_origin.h"
+ #include "gk222_enhanced_spring_lab.h"
+ #include "gk217_finance_preview.h"
+ #include "gk219_finance_compare.h"
+@@ -161,6 +162,11 @@
+ /* EXEC0294: authentic-ROM STORE-byte attestation at pristine Classic setup.
+  * This is SOURCE_STATIC candidate evidence, not an executed Mesen trace.
+  * Never alters app or awards Spring orders. */
++Gk296Status gk1_app_source_four_writer_first_draw(
++ const Gk1App *app,const char *private_rom,
++ const Gk296Witness *writes,size_t count,const uint8_t initial[6],
++ const uint8_t before_first_draw[6],const uint8_t after_first_draw[6],
++ uint16_t draw15,Gk296Report *out);
+ Gk294Status gk1_app_attest_seed_writer_source(const Gk1App *app,
+  const char *private_rom,const Gk294Write *claimed,size_t count,
+  Gk294SourceProof *out);
+--- a/execution_199/gk294_seed_writer_attest.c
++++ b/execution_199/gk294_seed_writer_attest.c
+@@ -24,9 +24,11 @@
+  if(memcmp(sha,expected_sha,sizeof sha)!=0){free(bytes);return GK294_ROM_IDENTITY;}
+  *out=bytes;return GK294_OK;
+ }
+-Gk294Status gk294_attest_seed_writers(const char *rom,
+- const Gk294Write *writes,size_t count,Gk294SourceProof *out){
+- if(!rom||!*rom||!writes||!out||count==0||count>GK294_MAX_WRITES)
++Gk294Status gk294_attest_seed_writers_masked(const char *rom,
++ const Gk294Write *writes,size_t count,uint8_t required_mask,
++ Gk294SourceProof *out){
++ if(!rom||!*rom||!writes||!out||count==0||count>GK294_MAX_WRITES||
++    required_mask==0u||(required_mask&0xc0u)!=0u)
+   return GK294_ARGUMENT;
+  for(size_t k=0;k<count;k++){
+   const Gk294Write *w=&writes[k];
+@@ -64,7 +66,7 @@
+   mask|=(uint8_t)(1u<<(w->destination_zp-0x84u));
+  }
+  free(source);
+- if(mask!=0x3fu)return GK294_INCOMPLETE;
++ if(mask!=required_mask)return GK294_INCOMPLETE;
+  Gk294SourceProof next={0};
+  next.opcode=0u; /* Multiple opcodes: no single 'canonical writer' exists. */
+  next.target=0u;
+@@ -76,3 +78,9 @@
+  *out=next;
+  return GK294_OK;
+ }
++
++/* Keep EXEC0294's original all-six contract unchanged for older users/tests. */
++Gk294Status gk294_attest_seed_writers(const char *rom,
++ const Gk294Write *writes,size_t count,Gk294SourceProof *out){
++ return gk294_attest_seed_writers_masked(rom,writes,count,0x3fu,out);
++}
+--- a/execution_199/gk294_seed_writer_attest.h
++++ b/execution_199/gk294_seed_writer_attest.h
+@@ -33,6 +33,12 @@
+  * STA/STX/STY and absolute stores to zero-page addresses only.
+  * Failure leaves *out unchanged; successful result cannot unlock gameplay.
+  */
++/* EXEC0296: authenticate exactly the supplied source-write target mask.
++ * 0x0f is the genuine observed fresh-boot four-writer set; bytes $88/$89
++ * need separate RAM-origin evidence. No substitution for full 0x3f proof. */
++Gk294Status gk294_attest_seed_writers_masked(const char *private_rom,
++ const Gk294Write *claimed, size_t count, uint8_t required_mask,
++ Gk294SourceProof *out);
+ Gk294Status gk294_attest_seed_writers(const char *private_rom,
+  const Gk294Write *claimed, size_t count, Gk294SourceProof *out);
+ #endif
+--- /dev/null
++++ b/execution_199/gk296_stock_seed_origin.c
+@@ -0,0 +1,47 @@
++#include "gk296_stock_seed_origin.h"
++#include "gk137_stock_rng.h"
++#include <string.h>
++Gk296Status gk296_check_four_writer_first_draw(
++ const char *rom,const Gk296Witness *writes,size_t count,
++ const uint8_t initial[6],const uint8_t claimed_pre[6],
++ const uint8_t claimed_post[6],uint16_t claimed_draw15,
++ Gk296Report *out){
++ if(!rom||!*rom||!writes||!initial||!claimed_pre||!claimed_post||!out||
++    count<4u||count>GK294_MAX_WRITES||claimed_draw15>0x7fffu)
++   return GK296_ARGUMENT;
++ Gk294Write sources[GK294_MAX_WRITES];uint8_t shadow[6];
++ memcpy(shadow,initial,sizeof shadow);
++ uint8_t mask=0u;
++ uint64_t prev_cycle=0u;
++ for(size_t i=0;i<count;i++){
++  const Gk296Witness *w=&writes[i];
++  if(w->source.cpu_cycle<=prev_cycle)return GK296_CHRONOLOGY;
++  prev_cycle=w->source.cpu_cycle;
++  if(w->source.destination_zp<0x84u||w->source.destination_zp>0x87u)
++   return GK296_MASK; /* '$88/$89 actually written' is different provenance */
++  const unsigned j=(unsigned)(w->source.destination_zp-0x84u);
++  if(w->before!=shadow[j])return GK296_SEED;
++  shadow[j]=w->committed;
++  mask|=(uint8_t)(1u<<j);
++  sources[i]=w->source;
++ }
++ if(mask!=0x0fu)return GK296_MASK;
++ if(memcmp(shadow,claimed_pre,6u)!=0)return GK296_SEED;
++ Gk294SourceProof proof={0};
++ if(gk294_attest_seed_writers_masked(rom,sources,count,0x0fu,&proof)!=GK294_OK)
++  return GK296_WRITER_SOURCE;
++ Gk137StockRng rng={0};uint16_t draw=0u;uint8_t calculated[6];
++ if(gk137_from_nes_bytes(&rng,claimed_pre)!=GK137_OK||
++    gk137_draw15(&rng,&draw)!=GK137_OK)return GK296_C289;
++ gk137_to_nes_bytes(&rng,calculated);
++ if(draw!=claimed_draw15||memcmp(claimed_post,calculated,6u)!=0)
++  return GK296_C289;
++ Gk296Report next={0};
++ next.source_writer_mask=0x0fu;
++ next.unknown_poweron_mask=0x30u;
++ next.original_rom_sha256_verified=proof.original_rom_sha256_verified;
++ next.original_source_static_only=1u;
++ next.first_c289_math_parity=1u;
++ next.first_draw15=draw;
++ *out=next;return GK296_OK;
++}
+--- /dev/null
++++ b/execution_199/gk296_stock_seed_origin.h
+@@ -0,0 +1,33 @@
++#ifndef GK296_STOCK_SEED_ORIGIN_H
++#define GK296_STOCK_SEED_ORIGIN_H
++#include "gk294_seed_writer_attest.h"
++#include <stdint.h>
++#include <stddef.h>
++/* The genuine fresh original ROM's pre-first-C289 witnessed source writes
++ * touch $84..$87, but NOT $88/$89. Their initial RAM origin is UNKNOWN.
++ * This source-only verifier checks a claimed four-writer subsequence and
++ * one C289, without asserting an emulator ran it or a Spring turn exists. */
++typedef enum {
++ GK296_OK=0,GK296_ARGUMENT=1,GK296_STAGE=2,GK296_WRITER_SOURCE=3,
++ GK296_MASK=4,GK296_CHRONOLOGY=5,GK296_SEED=6,GK296_C289=7
++} Gk296Status;
++typedef struct {
++ Gk294Write source;
++ uint8_t before;
++ uint8_t committed; /* alleged value, must match before of next same byte */
++} Gk296Witness;
++typedef struct {
++ uint8_t source_writer_mask;      /* on success, exactly 0x0f */
++ uint8_t unknown_poweron_mask;    /* on success, exactly 0x30 */
++ uint8_t original_rom_sha256_verified;
++ uint8_t original_source_static_only; /* ALWAYS 1; witness NOT proven executed */
++ uint8_t first_c289_math_parity;
++ uint8_t fresh_spring_implemented; /* ALWAYS 0 */
++ uint16_t first_draw15;
++} Gk296Report;
++Gk296Status gk296_check_four_writer_first_draw(
++ const char *private_rom,const Gk296Witness *writes,size_t count,
++ const uint8_t explicit_initial_seed[6],const uint8_t claimed_first_pre[6],
++ const uint8_t claimed_first_post[6],uint16_t claimed_draw15,
++ Gk296Report *out);
++#endif
+--- /dev/null
++++ b/execution_199/test_gk296_stock_four_writer.c
+@@ -0,0 +1,89 @@
++/* EXEC0296: original source code cross-check, synthetic known values only.
++ * No original game ROM, screenshots, private traces, or campaign saves here. */
++#include "gk1_app_state.h"
++#include "gk137_stock_rng.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#define CHECK(e) do{if(!(e)){fprintf(stderr,"EXEC0296 FAIL %u: %s\n",__LINE__,#e);return 1;}checks++;}while(0)
++static const Gk296Witness four[4]={
++ {{1000u,0xc0bau,15u,0x84u},0u,1u},
++ {{1005u,0xc0bdu,15u,0x86u},0u,2u},
++ {{1010u,0xc0c2u,15u,0x85u},0u,3u},
++ {{1015u,0xc0c5u,15u,0x87u},0u,4u}
++};
++int main(int argc,char **argv){
++ unsigned checks=0;
++ CHECK(argc==2||argc==3);
++ Gk1App *app=calloc(1,sizeof *app),*before=malloc(sizeof *before);
++ Gk1TemplateDataset *dataset=malloc(sizeof *dataset);
++ CHECK(app&&before&&dataset);
++ gk1_app_init(app);
++ CHECK(gk1_template_load(argv[1],dataset)==GK1_LOAD_OK);
++ CHECK(gk1_app_install_templates(app,dataset));
++ const uint8_t initial[6]={0,0,0,0,5,6},predraw[6]={1,3,2,4,5,6};
++ Gk137StockRng rng={0};uint16_t draw=0;uint8_t after[6]={0};
++ CHECK(gk137_from_nes_bytes(&rng,predraw)==GK137_OK);
++ CHECK(gk137_draw15(&rng,&draw)==GK137_OK);
++ gk137_to_nes_bytes(&rng,after);
++ Gk296Report output;memset(&output,0xa5,sizeof output);
++ const Gk296Report sentinel=output;
++ CHECK(gk296_check_four_writer_first_draw(NULL,four,4,initial,predraw,after,draw,&output)==GK296_ARGUMENT);
++ CHECK(gk296_check_four_writer_first_draw("/no/rom",NULL,4,initial,predraw,after,draw,&output)==GK296_ARGUMENT);
++ CHECK(gk296_check_four_writer_first_draw("/no/rom",four,3,initial,predraw,after,draw,&output)==GK296_ARGUMENT);
++ CHECK(gk296_check_four_writer_first_draw("/no/rom",four,4,initial,predraw,after,32768,&output)==GK296_ARGUMENT);
++ CHECK(memcmp(&output,&sentinel,sizeof output)==0);
++ Gk296Witness bad[4];memcpy(bad,four,sizeof bad);
++ bad[0].source.cpu_cycle=1005;
++ CHECK(gk296_check_four_writer_first_draw("/no/rom",bad,4,initial,predraw,after,draw,&output)==GK296_CHRONOLOGY);
++ memcpy(bad,four,sizeof bad);bad[2].source.destination_zp=0x88;
++ CHECK(gk296_check_four_writer_first_draw("/no/rom",bad,4,initial,predraw,after,draw,&output)==GK296_MASK);
++ memcpy(bad,four,sizeof bad);bad[2].source.destination_zp=0x84;
++ CHECK(gk296_check_four_writer_first_draw("/no/rom",bad,4,initial,predraw,after,draw,&output)==GK296_SEED||
++       gk296_check_four_writer_first_draw("/no/rom",bad,4,initial,predraw,after,draw,&output)==GK296_MASK);
++ memcpy(bad,four,sizeof bad);bad[2].before=99;
++ CHECK(gk296_check_four_writer_first_draw("/no/rom",bad,4,initial,predraw,after,draw,&output)==GK296_SEED);
++ uint8_t wrong[6];memcpy(wrong,predraw,6);wrong[4]++;
++ CHECK(gk296_check_four_writer_first_draw("/no/rom",four,4,initial,wrong,after,draw,&output)==GK296_SEED);
++ CHECK(gk296_check_four_writer_first_draw("/no/rom",four,4,initial,predraw,after,draw,&output)==GK296_WRITER_SOURCE);
++ CHECK(memcmp(&output,&sentinel,sizeof output)==0);
++ app->active_world=0;app->rules_profile=0;
++ app->setup_stage[0]=GK53_SETUP_AWAIT_SOURCE;
++ app->setup_difficulty[0]=1;
++ memcpy(before,app,sizeof *before);
++ CHECK(gk1_app_source_four_writer_first_draw(app,"/no/rom",four,4,initial,predraw,after,draw,&output)==GK296_WRITER_SOURCE);
++ CHECK(!memcmp(before,app,sizeof *app));
++ app->rules_profile=1;
++ CHECK(gk1_app_source_four_writer_first_draw(app,"/no/rom",four,4,initial,predraw,after,draw,&output)==GK296_STAGE);
++ app->rules_profile=0;
++ app->worlds[0].countries[0].gold++;
++ CHECK(gk1_app_source_four_writer_first_draw(app,"/no/rom",four,4,initial,predraw,after,draw,&output)==GK296_STAGE);
++ app->worlds[0].countries[0].gold--;
++ CHECK(!memcmp(before,app,sizeof *app));
++ if(argc==3){
++  for(unsigned scenario=0;scenario<2;scenario++){
++   app->active_world=(uint8_t)scenario;
++   app->setup_stage[scenario]=GK53_SETUP_AWAIT_SOURCE;
++   for(unsigned difficulty=1;difficulty<=5;difficulty++){
++    app->setup_difficulty[scenario]=(uint8_t)difficulty;
++    memcpy(before,app,sizeof *before);
++    CHECK(gk1_app_source_four_writer_first_draw(app,argv[2],four,4,initial,predraw,after,draw,&output)==GK296_OK);
++    CHECK(output.source_writer_mask==0x0f&&output.unknown_poweron_mask==0x30);
++    CHECK(output.original_rom_sha256_verified&&output.original_source_static_only);
++    CHECK(output.first_c289_math_parity&&output.first_draw15==draw);
++    CHECK(output.fresh_spring_implemented==0);
++    CHECK(!memcmp(before,app,sizeof *app));
++   }
++  }
++  memcpy(bad,four,sizeof bad);bad[0].source.source_pc++;
++  CHECK(gk296_check_four_writer_first_draw(argv[2],bad,4,initial,predraw,after,draw,&output)==GK296_WRITER_SOURCE);
++  memcpy(bad,four,sizeof bad);bad[1].source.mapped_prg_bank=14;
++  CHECK(gk296_check_four_writer_first_draw(argv[2],bad,4,initial,predraw,after,draw,&output)==GK296_WRITER_SOURCE);
++  uint8_t wrong_after[6];memcpy(wrong_after,after,6);wrong_after[5]^=1;
++  CHECK(gk296_check_four_writer_first_draw(argv[2],four,4,initial,predraw,wrong_after,draw,&output)==GK296_C289);
++  CHECK(gk296_check_four_writer_first_draw(argv[2],four,4,initial,predraw,after,(uint16_t)(draw^1u),&output)==GK296_C289);
++ }
++ CHECK(memcmp(&output,&sentinel,sizeof output)!=0 || argc==2);
++ printf("GK296 PASS %u assertions; four source-written bytes, tail RAM origin UNKNOWN; no playable Spring\n",checks);
++ free(app);free(before);free(dataset);return 0;
++}
