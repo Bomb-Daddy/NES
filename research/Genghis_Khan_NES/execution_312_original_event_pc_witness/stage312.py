@@ -23,7 +23,7 @@ def one(s, old, new):
 CHECKED_SOURCE_SHA = {
   'gk312_stock_event_pc.c': '85e802815a91f9c833c023dd02bee608622168c949cd81c329886daf45fe443e',
   'gk312_stock_event_pc.h': '33b362896cac283e3119dc4ce8cf950561e9d582af393db214ca6d18c72f4dd8',
-  'test_gk312_stock_event_pc.c': 'e0130f303751ce59ae11914e76c20f0a0bc2b71f7ba5c9b9ddaf9644a60c6b32',
+  'test_gk312_stock_event_pc.c': 'c7984051265c22f397c27f3984c2c8adf488c40217d2e10e41d428b825ab027a',
 }
 
 APP_WRAPPER = '''
