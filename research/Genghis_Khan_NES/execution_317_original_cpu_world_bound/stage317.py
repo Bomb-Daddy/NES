@@ -34,7 +34,7 @@ NEW=''' /* An authentic World transcript cannot be associated with Mongolia,
  free(candidate);
  return result;'''
 if ORIGINAL.count(OLD)!=1:raise RuntimeError('EXEC0316 wrapper source unexpected')
-CORRECTED=ORIGINAL.replace(OLD,NEW,1)
+CORRECTED='#include <stdlib.h>\n'+ORIGINAL.replace(OLD,NEW,1)
 CMAKE_APPEND='''\n# EXEC0317: reject cross-campaign original stock CPU claim logs atomically.
 add_executable(test_gk317_world_bound test_gk317_world_bound.c)
 target_link_libraries(test_gk317_world_bound PRIVATE gk1_app_state)
