@@ -23,6 +23,7 @@ with tempfile.TemporaryDirectory() as t:
  actual=stage317.stage(root)
  ck(len(actual)==3 and all(hashlib.sha256((root/n).read_bytes()).hexdigest()==h for n,h in actual.items()))
  ck((root/'gk1_app_state.c').read_bytes().count(b'candidate->world!=app->active_world')==1)
+ ck((root/'gk1_app_state.c').read_bytes().count(b'#include <stdlib.h>\n\n/* EXEC0316')==1)
  ck(b'GK1_317_OriginalCpuClaimsAreWorldBoundWithoutOrders' in (root/'CMakeLists.txt').read_bytes())
  after={p.name:p.read_bytes() for p in root.iterdir()}
  try:stage317.stage(root)
