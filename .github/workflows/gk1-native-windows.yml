@@ -1090,19 +1090,40 @@ jobs:
             if ($actual -ne $item[1]) { throw "EXEC0299 wrong native C11 writer-mask postimage $path" }
           }
           Write-Output 'EXEC0299 exact reviewed four-writer mask symbol present for native MSVC link; NO first Spring claimed'
-      - name: EXEC0300 authenticate and link original-stock NMI gate clock into full native C11 application
+      # EXEC0301 repairs actual failed CI 43698862057: EXEC0300 pinned a
+      # Linux CMake file, but this Win32 pipeline has legitimate older tests.
+      - name: EXEC0301 integrate reviewed original-stock NMI source while preserving accumulated Win32 CMake
         shell: pwsh
         run: |
-          $base = 'research/Genghis_Khan_NES/execution_300_original_stock_nmi_seed_clock'
+          $base = 'research/Genghis_Khan_NES/execution_301_win32_nmi_cmake_variant'
           $app = 'current-gk1/execution_199'
-          python -m py_compile "$base/stage300.py"
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0300 source-stage syntax failed' }
-          python "$base/stage300.py" $app
-          if ($LASTEXITCODE -ne 0) { throw 'EXEC0300 SHA-gated native source stage failed' }
-          if (-not (Select-String -LiteralPath (Join-Path $app 'CMakeLists.txt') -SimpleMatch -Pattern 'GK1_300_OriginalStockNmiGateClockAndRollback' -Quiet)) {
-            throw 'EXEC0300 native C11 source test absent'
+          python -m py_compile "$base/stage301.py" "$base/test_stage301.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0301 source syntax failed' }
+          $env:GK301_PRE300_APP = $app
+          python "$base/test_stage301.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0301 hostile source and Win32 CMake preservation failed' }
+          python "$base/stage301.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0301 native source-stage postimage refused' }
+          foreach ($item in @(
+            @('gk1_app_state.c','c4a6707d70f809d9cb3d3bfaa775cc1757c331c81b985a82ec97e3a17f560fc6'),
+            @('gk1_app_state.h','dbaf417047418e431fa08e2578a64cd506850e6dca079cb5ef6c6c8ae3d1a29e'),
+            @('gk300_stock_nmi_seed_clock.c','9ffa5fb6f36975060829a1053c760da75f25a9376b7cc954d2cc08657ad43c98'),
+            @('gk300_stock_nmi_seed_clock.h','ff8fbaa39b576abe0869ed8f385f8d117c95ef0352619b6d171bcb8bf92438d8'),
+            @('test_gk300_stock_nmi_seed_clock.c','42a5b8dcd830d9f38086aca225ba065810300458263946d826cb2d8d16271290')
+          )) {
+            $actual = (Get-FileHash -LiteralPath (Join-Path $app $item[0]) -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($actual -ne $item[1]) { throw "EXEC0301 compiled C11 source mismatch: $($item[0])" }
           }
-          Write-Output 'EXEC0300 source-authenticated stock NMI clock compiled into inherited app; first Spring NOT claimed'
+          $cmake = Join-Path $app 'CMakeLists.txt'
+          foreach ($marker in @('GK1_264_AtomicScenarioReinstallClearsSourceAndPortState',
+             'GK1_296_OriginalFourWriterOriginAndUnknownTailRollback',
+             'GK1_297_StockResetInitializerAndUnknownC289Preseed',
+             'GK1_300_OriginalStockNmiGateClockAndRollback')) {
+            if (-not (Select-String -LiteralPath $cmake -SimpleMatch -Pattern $marker -Quiet)) {
+              throw "EXEC0301 inherited CMake test missing: $marker"
+            }
+          }
+          Write-Output 'EXEC0301 original NMI native C11 source and Win32 CMake accepted; original playable first Spring NOT complete'
 
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
