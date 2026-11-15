@@ -1,0 +1,33 @@
+{
+  "eligible_linux_ctest": "237/237 PASS (one stale workflow gate excluded)",
+  "execution": "GK1_EXEC0312",
+  "predecessor": "EXEC0311 Win32 226/226 accepted; 312 Win32 NOT RUN",
+  "private_rom_included": false,
+  "private_stock_rom_test": "33 assertions PASS; not live emulator",
+  "source_files": {
+    "README_EXEC0312.md": {
+      "sha256": "fb4c7cf4cb29dc21290e0ac9a71749e788922b17b8921c02943f6961f6ed4326",
+      "size": 5175
+    },
+    "gk312_stock_event_pc.c": {
+      "sha256": "85e802815a91f9c833c023dd02bee608622168c949cd81c329886daf45fe443e",
+      "size": 2015
+    },
+    "gk312_stock_event_pc.h": {
+      "sha256": "33b362896cac283e3119dc4ce8cf950561e9d582af393db214ca6d18c72f4dd8",
+      "size": 1543
+    },
+    "stage312.py": {
+      "sha256": "7eb3a78a317317e096b39738a0872d29b54091f741eff39ea5c7ed96a00d5b5f",
+      "size": 6813
+    },
+    "test_gk312_stock_event_pc.c": {
+      "sha256": "e0130f303751ce59ae11914e76c20f0a0bc2b71f7ba5c9b9ddaf9644a60c6b32",
+      "size": 4015
+    },
+    "test_stage312.py": {
+      "sha256": "38b0cef9f1d552caf43b0b85a19ef3e1218438771856719422883646bd3ce546",
+      "size": 3173
+    }
+  }
+}
