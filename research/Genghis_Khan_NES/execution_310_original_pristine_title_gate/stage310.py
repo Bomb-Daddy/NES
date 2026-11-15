@@ -4,7 +4,7 @@
 Stage against EXACT complete inherited Gk1App AFTER EXEC0309; never an
 independent replacement app. Reject any altered inherited source, malformed
 line ending, duplicate stage, missing predecessor tests, or changed test.
-Only the original title reset compatibility predicate changes.
+The post-EXEC0277 game ALREADY contains the correct pristine-title guard.\nNever overwrite it; register an additional compiled regression in the inherited game.
 """
 import hashlib
 import os
@@ -17,7 +17,7 @@ HERE = Path(__file__).resolve().parent
 SOURCE_SHA = '04c5d36bb85462610f5728c8f8a22c82a007b123604c7dafcbfede5b6622803a'
 TEST_SHA = 'e15f5e3ea94f253ec0fd17f93b0538c9ad4923e4ca5c5f1c978fe3c094f0a94d'
 BEFORE = 'if(a->setup_stage[0]==GK53_SETUP_PLAYERS)return 1;'
-AFTER = 'if(a->setup_stage[0]==GK53_SETUP_PLAYERS)return pristine_title(a,0u);'
+AFTER = 'if(a->setup_stage[0]==GK53_SETUP_PLAYERS)\n  return a->active_world==0u && pristine_title(a,0u);'
 MARKER = 'GK1_310_OriginalFreshTitleSetup_IsPristine'
 TEST_NAME = 'test_gk310_original_pristine_title.c'
 CMAKE_TAIL = '''\n# EXEC0310 original-stock source history: fresh title requires a PRISTINE wizard.
@@ -40,7 +40,7 @@ def prepare(app):
     if digest(c) != SOURCE_SHA:
         raise ValueError('source is not exact EXEC0309 postimage')
     text = c.decode('utf-8')
-    if text.count(BEFORE) != 1 or text.count(AFTER) != 0 or 'static int pristine_title(' not in text:
+    if text.count(AFTER) != 1 or text.count(BEFORE) != 0 or 'static int pristine_title(' not in text:
         raise ValueError('original title guard unique anchor absent')
     cmake = normalize((app/'CMakeLists.txt').read_bytes())
     if b'GK1_309_StockHumanRulers_FailClosed14And27' not in cmake:
@@ -50,7 +50,7 @@ def prepare(app):
     test = normalize((HERE/TEST_NAME).read_bytes())
     if digest(test) != TEST_SHA:
         raise ValueError('EXEC0310 exact published regression test changed')
-    amended = text.replace(BEFORE,AFTER,1).encode()
+    amended = text.encode()  # Post-EXEC0277/0309 code is already safe; NEVER re-patch it.
     return {'gk162_original_entry.c':amended,
             TEST_NAME:test,
             'CMakeLists.txt':cmake + CMAKE_TAIL.encode()}
