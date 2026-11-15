@@ -51,7 +51,7 @@ def main(src):
         else:raise AssertionError('CRCRLF accepted')
         assert snapshot(app)==before;checks+=1
         f=d/'old';f.mkdir();app=fixture(src,f)
-        c=app/'CMakeLists.txt';c.write_text(c.read_text().replace('gk304_stock_store_value.c','gk304_NOT_SOURCE.c'))
+        c=app/'CMakeLists.txt';c.write_bytes(c.read_bytes().replace(b'gk304_stock_store_value.c',b'gk304_NOT_SOURCE.c'))
         before=snapshot(app)
         try:m.stage(app)
         except ValueError:pass
