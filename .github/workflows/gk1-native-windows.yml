@@ -1289,6 +1289,9 @@ jobs:
           $repair313='research/Genghis_Khan_NES/execution_313_win32_312_source_token_repair'
           python "$repair313/test_repair_gk313_provenance.py"
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0313 provenance hostile tests failed' }
+          $gate313=Join-Path $app 'packaging/test_gk265_current_win32_source.py'
+          if (-not (Test-Path -LiteralPath $gate313)) { throw 'EXEC0313 missing old hostile source gate' }
+          Write-Output ("EXEC0313 PRE_GATE_RAW_SHA " + (Get-FileHash -LiteralPath $gate313 -Algorithm SHA256).Hash.ToLowerInvariant())
           python "$repair313/repair_gk313_provenance.py" $app
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0313 old native source SHA gate reconciliation failed' }
           Write-Output 'EXEC0312/0313 current Win32 C11 source and inherited hostile provenance reconciled, NOT original Spring or physical Xbox'
