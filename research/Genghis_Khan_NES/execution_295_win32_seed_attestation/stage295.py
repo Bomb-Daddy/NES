@@ -91,6 +91,11 @@ def stage(app_dir):
     for name,expected in ADDED.items():
         if (app/name).exists(): raise ValueError('Duplicate source refused: '+name)
         data=(UPSTREAM/name).read_bytes()
+        # Git for Windows may check out tracked C sources with CRLF. Normalize
+        # ONLY canonical CRLF pairs before exact SHA-256 validation; reject
+        # stray CR and never weaken source integrity or accept modified code.
+        data=data.replace(b'\r\n',b'\n')
+        if b'\r' in data: raise ValueError('Invalid lone CR in source: '+name)
         if digest(data)!=expected: raise ValueError('Public EXEC0294 source mismatch: '+name)
         planned[name]=data
     cm_path=app/'CMakeLists.txt'
