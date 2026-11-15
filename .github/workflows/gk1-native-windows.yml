@@ -31,6 +31,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_300_original_stock_nmi_seed_clock/**'
       - 'research/Genghis_Khan_NES/execution_303_win32_stock_seed_timeline/**'
       - 'research/Genghis_Khan_NES/execution_305_win32_original_register_value/**'
+      - 'research/Genghis_Khan_NES/execution_307_physical_controller_qa/**'
 
 permissions:
   contents: read
@@ -1180,6 +1181,28 @@ jobs:
             }
           }
           Write-Output 'EXEC0305 STAGED: WinMain native original-stock register witness source; NOT first playable Spring; NO private ROM; physical Xbox NOT RUN'
+
+      - name: EXEC0307 physical XInput diagnostic C11 source integration and hostile QA (device NOT RUN)
+        shell: pwsh
+        run: |
+          $base = 'research/Genghis_Khan_NES/execution_307_physical_controller_qa'
+          $app = 'current-gk1/execution_199'
+          python -m py_compile "$base/stage307.py" "$base/test_stage307.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0307 Python source syntax failed' }
+          python "$base/test_stage307.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0307 hostile source/rollback test failed' }
+          python "$base/stage307.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0307 exact WinMain source integration refused' }
+          foreach ($needle in @('gk307_physical_pad_qa.c','GK1_307_PhysicalXboxDiagnosticInputFSM_NoHardwareClaim','GK1_304_PublicRegisterStoreRefusalNoROM','GK1_257_CurrentWin32Workflow_RejectsStaleSourceAndFalsePass')) {
+            if (-not (Select-String -LiteralPath (Join-Path $app 'CMakeLists.txt') -SimpleMatch -Pattern $needle -Quiet)) {
+              throw "EXEC0307 missing native game CMake source/test: $needle"
+            }
+          }
+          $shellSha=(Get-FileHash -LiteralPath (Join-Path $app 'gk1_native_shell.c') -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($shellSha -ne 'ac96fc2842077afed77a091d4e9d17fdf8c4b3545fe512076ba347aed9630e2f') {
+            throw "EXEC0307 native WinMain shell mismatch: $shellSha"
+          }
+          Write-Output 'EXEC0307 verified C11 physical-XInput QA staging. Physical Xbox NOT RUN; original first Spring NOT GENERATED.'
 
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
