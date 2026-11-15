@@ -34,6 +34,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_307_physical_controller_qa/**'
       - 'research/Genghis_Khan_NES/execution_309_original_ruler_admission/**'
       - 'research/Genghis_Khan_NES/execution_310_original_pristine_title_gate/**'
+      - 'research/Genghis_Khan_NES/execution_312_original_event_pc_witness/**'
 
 permissions:
   contents: read
@@ -1258,6 +1259,27 @@ jobs:
             throw "EXEC0311 source mutated unexpectedly: $guardSha"
           }
           Write-Output 'EXEC0311 preserved authentic post-EXEC0277 original fresh-title guard; C11 regression staged; first playable Spring remains OPEN'
+
+      - name: EXEC0312 strict original source event-PC C11 app integration and hostile QA
+        shell: pwsh
+        run: |
+          $base='research/Genghis_Khan_NES/execution_312_original_event_pc_witness'
+          $app='current-gk1/execution_199'
+          python -m py_compile "$base/stage312.py" "$base/test_stage312.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0312 source staging syntax failed' }
+          python "$base/stage312.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0312 rejected actual complete inherited C11 source' }
+          python "$base/test_stage312.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0312 hostile staging regression failed' }
+          $cmake=Join-Path $app 'CMakeLists.txt'
+          foreach ($needle in @('GK1_312_OriginalSourceEventPcWitnessProvenance','gk312_stock_event_pc.c',
+                                  'GK1_310_OriginalFreshTitleSetup_IsPristine',
+                                  'GK1_304_PublicRegisterStoreRefusalNoROM')) {
+            if (-not (Select-String -LiteralPath $cmake -SimpleMatch -Pattern $needle -Quiet)) {
+              throw "EXEC0312 missing inherited/new native CTest $needle"
+            }
+          }
+          Write-Output 'EXEC0312 source/cycle/PC claims staged in complete C11 game, NOT authentic first Spring, NOT physical Xbox'
 
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
