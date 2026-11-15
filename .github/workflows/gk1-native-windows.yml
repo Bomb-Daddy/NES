@@ -25,6 +25,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_285_source_rate_difficulty/**'
       - 'research/Genghis_Khan_NES/execution_286_c289_campaign_trace/**'
       - 'research/Genghis_Khan_NES/execution_287_win32_campaign_binding/**'
+      - 'research/Genghis_Khan_NES/execution_289_win32_original_rng_stream/**'
 
 permissions:
   contents: read
@@ -973,6 +974,49 @@ jobs:
             throw 'EXEC0287 CTest not linked into current native Win32 C11 game'
           }
           Write-Output 'EXEC0287 exact reviewed EXEC0286 source linked to current native WinMain game, negative tests passed; FIRST_SPRING_STILL_OPEN; PHYSICAL_XBOX_NOT_RUN'
+      - name: EXEC0289 source-authenticated original C289 64-step validator in actual Windows game
+        shell: pwsh
+        run: |
+          $base = 'research/Genghis_Khan_NES/execution_289_win32_original_rng_stream'
+          $app = 'current-gk1/execution_199'
+          $prezip = Join-Path $env:RUNNER_TEMP 'GK1_EXEC0289_PRISTINE_EXEC0287_C11.zip'
+          python -m py_compile "$base/stage289.py" "$base/test_stage289.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0289 Python stage/test syntax failed' }
+          # Capture the *actual prior Windows staged source* for every hostile
+          # test; a synthetic no-ROM fixture is not acceptable as CI proof.
+          @'
+          from pathlib import Path
+          from zipfile import ZipFile,ZIP_DEFLATED
+          import sys
+          app=Path(sys.argv[1]); out=Path(sys.argv[2])
+          files=['gk1_app_state.c','gk1_app_state.h','CMakeLists.txt',
+                 'packaging/test_gk265_current_win32_source.py']
+          with ZipFile(out,'w',ZIP_DEFLATED) as z:
+              for name in files:
+                  src=app/name
+                  if not src.is_file(): raise SystemExit('missing inherited Win32 source '+name)
+                  z.write(src,'execution_199/'+name)
+          '@ | python - $app $prezip
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0289 Win32 predecessor source snapshot failed' }
+          python "$base/test_stage289.py" $prezip
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0289 hostile source-stage rollback checks failed' }
+          python "$base/stage289.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0289 reviewed native C11 source stage failed' }
+          foreach ($spec in @(
+            @('gk1_app_state.c','1ece1ea80db941450d3f67a9395286f715c84132cc4728cf5141a6ac8f745ff9'),
+            @('gk1_app_state.h','2a92dc2676679bda96f596d633cfdcb6db586717a35433751f86ffb8d7349f4d'),
+            @('gk288_original_rng_stream.c','0f4064ccd98e5b3a6af7f6763dfe1a6f7c8df0eed80c5f24bc3b66a666527b3c'),
+            @('gk288_original_rng_stream.h','c7a655e1e66b3be2b381ce9d6529e80a62486a9926402e32f90cbe3ff9366768'),
+            @('test_gk288_original_rng_stream.c','27e4389d5833d620d0626e8f9b4a6e2ec868ff8182bcfd0ed24e6eb3e96535d7')
+          )) {
+            $p = Join-Path $app $spec[0]
+            $actual = (Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($actual -ne $spec[1]) { throw "EXEC0289 Windows compiled-source SHA mismatch $p" }
+          }
+          if (-not (Select-String -LiteralPath (Join-Path $app 'CMakeLists.txt') -SimpleMatch -Pattern 'GK1_288_SourceOriginalC289MultiDrawNativeSetupAndRollback' -Quiet)) {
+            throw 'EXEC0289 executable CTest not registered in real Win32 game'
+          }
+          Write-Output 'EXEC0289 reviewed C289 multi-draw C11 game and CTest staged; private ROM not shipped; FIRST_SPRING_OPEN'
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
