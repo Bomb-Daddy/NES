@@ -1,0 +1,11 @@
+--- a/execution_199/CMakeLists.txt
++++ b/execution_199/CMakeLists.txt
+@@ -1561,3 +1561,8 @@
+ add_test(NAME GK1_300_OriginalStockNmiGateClockAndRollback
+  COMMAND test_gk300_stock_nmi_seed_clock
+  ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
++
++# EXEC0314: preserve 14/27 source baselines after isolated tactical replay.
++add_executable(test_gk314_replay_source_baseline test_gk314_replay_source_baseline.c)
++target_link_libraries(test_gk314_replay_source_baseline PRIVATE gk1_app_state)
++add_test(NAME GK1_314_ReplayPreservesSourceBaseline COMMAND test_gk314_replay_source_baseline ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
