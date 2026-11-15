@@ -1,0 +1,16 @@
+{
+  "GK1_EXEC0304_Completion_Ledger.md": "2df0ce6d819e5f36f806acf24b9bdaada1dd0f511b2137763a05fe6668b411e3",
+  "GK1_EXEC0304_Hostile_9_of_9.log": "2c650f1af97fe64dde6178e9bd27096ec777d4ea1f7972964d96b961ca546a72",
+  "GK1_EXEC0304_Implementer_QA_Handoff.md": "f4b161697330988080498eb38d4fdf331c04521559718ccb0828f588cf7568ed",
+  "GK1_EXEC0304_InheritedApp_C11.patch": "1672bb39f28397cc5eb638617cb10e9db6f2703d480fd0060b00d6ab82b046d7",
+  "GK1_EXEC0304_Linux_238_of_238_Eligible_CTests.log": "b3a424111a0069c606aa80f59ab3ccdfb0796782dbfd6b0e1fad7514a3740186",
+  "GK1_EXEC0304_Original_ROM_Gated_Test_CTest.log": "1a237fe843df2702b9bf4c4d179d7c1f9c0739acb9a1d7e79206c2f8fb39152f",
+  "GK1_EXEC0304_README.md": "9fc346380071c0d782be76cb9f2c44928b05fc1a306031cdcbae57e4a29ec530",
+  "app304.c.inc": "17978a0a6367468f2352e533146a7e40b66a8b71240ec4d1516952d41d0de595",
+  "app304.h.inc": "81f8c90d7bbb1220e08934659cb605d50855487208a7ecbabcd345cb892c4677",
+  "gk304_stock_store_value.c": "315351065db80d9a4b466f4a1bd69ce452192f4988ecd5cf14d92a13ba1cf7e3",
+  "gk304_stock_store_value.h": "ee6603e159111e2376cad1b2a208d2dd43fae5b3e4bb59724ac1cc49bba15afa",
+  "stage304.py": "7d0cae685e945c00e6806e3d073a71478f4b6df985c56c9b76a34f7cd96eaed1",
+  "test_gk304_stock_store_value.c": "c2ab30829b4e356138edf0dcfd4ffc24b5677279bc963544b8c43c76ff0af0df",
+  "test_stage304.py": "5b21b6cddc35e13ab425da161293e532ba8801c5bd382d16f29722dd7617cfd7"
+}
