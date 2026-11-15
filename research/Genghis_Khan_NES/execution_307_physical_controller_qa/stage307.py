@@ -92,7 +92,8 @@ target_link_libraries(test_gk307_physical_pad_qa PRIVATE gk307_physical_pad_qa)
 add_test(NAME GK1_307_PhysicalXboxDiagnosticInputFSM_NoHardwareClaim COMMAND test_gk307_physical_pad_qa)''')
  result={'gk1_native_shell.c':s.encode(),'CMakeLists.txt':cm.encode()}
  for file,sha in FILES.items():
-  b=(BASE/file).read_bytes()
+  b=normalized(BASE/file)
+  # Windows Git checkout CRLF is canonicalized; malformed carriage returns still fail.
   if digest(b)!=sha:raise ValueError('Corrupt published EXEC0307 module: '+file)
   if (app/file).exists():raise ValueError('Duplicate staging: '+file)
   result[file]=b

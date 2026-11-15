@@ -45,6 +45,19 @@ if __name__=='__main__':
   for n in ('gk1_native_shell.c','CMakeLists.txt'):
    p=d/n;p.write_bytes(p.read_bytes().replace(b'\n',b'\r\n'))
   verify(len(s.stage(d))==5)
+  # Windows checkout CRLF in the *published source inputs* must not produce
+  # false source corruption. A malformed CR remains strictly refused.
+  import importlib.util
+  moddir=base/'win_source';moddir.mkdir()
+  for n in (*s.FILES,'stage307.py'):
+   inp=s.BASE/n
+   out=moddir/n
+   out.write_bytes(inp.read_bytes().replace(b'\r\n',b'\n').replace(b'\n',b'\r\n'))
+  spec=importlib.util.spec_from_file_location('gk307_windows_checkout',moddir/'stage307.py')
+  module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+  d=base/'win_source_app';fixture(src,d)
+  verify(len(module.stage(d))==5)
+  verify(s.digest((d/'gk307_physical_pad_qa.c').read_bytes())==s.FILES['gk307_physical_pad_qa.c'])
   d=base/'rollback';fixture(src,d)
   original={n:(d/n).read_bytes() for n in ('gk1_native_shell.c','CMakeLists.txt')}
   try:s.stage(d,inject_failure_after=2);verify(False)
