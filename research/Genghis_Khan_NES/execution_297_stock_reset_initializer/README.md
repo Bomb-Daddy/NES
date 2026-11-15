@@ -28,3 +28,7 @@ No ROM, raw NES RAM, screenshots, save states, sounds or licensed assets are com
 
 **Outstanding critical path:** original stock CPU seed-write chronology/source-generated first playable Spring in the native C11 game (all 14/27 countries, ruler/difficulty/ability, 3 controller orders). Then controller Trade scheduling, strategic AI, battle aftermath, diplomacy, dynasty and complete campaigns.
 
+
+## Full selected Linux regression after complete build
+
+The full inherited native project was compiled with `cmake --build build297 -j16` (exit 0), then the applicable suite ran as `ctest --test-dir build297 -j16 --output-on-failure -E '([Ww]in32|[Ww]indows|[Xx]11)'`: **227/227 PASS, exit 0**. This supersedes the earlier test-target-only result, but does not establish Win32 or physical Xbox validation. An earlier run attempted before all test executables were built correctly reported Not Run failures; the 227/227 passing retest followed the complete build. The full unfiltered cross-platform suite was not run.
