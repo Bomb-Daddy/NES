@@ -48,6 +48,17 @@ class Tests(unittest.TestCase):
         canonical = s.norm(p.read_bytes())
         p.write_bytes(canonical.replace(b'\n',b'\r\r\n'))
         with self.assertRaises(ValueError):s.prepare(self.root,SOURCE,self.pin)
+    def test_hash_pinned_realistic_source_without_literal_return(self):
+        # EXEC0305 CI saw the exact expected inherited app hash but refused
+        # a synthetic return-line assumption not present in the real build.
+        p=self.root/'gk1_app_state.c'
+        content=s.norm(p.read_bytes()).decode('utf-8')
+        old='return gk302_replay_stock_seed_timeline(rom,initial,events,count,out);'
+        self.assertEqual(content.count(old),1)
+        p.write_bytes(content.replace(old,'/* source-authenticated replay adapter */').encode('utf-8'))
+        self.pin['gk1_app_state.c']=s.sha(s.norm(p.read_bytes()))
+        change=s.prepare(self.root,SOURCE,self.pin)
+        self.assertIn(b'gk304_stock_store_value',change['gk1_app_state.c'])
     def test_modified_app_refused(self):
         p=self.root/'gk1_app_state.c';p.write_bytes(p.read_bytes()+b'evil')
         with self.assertRaises(ValueError):s.prepare(self.root,SOURCE,self.pin)
