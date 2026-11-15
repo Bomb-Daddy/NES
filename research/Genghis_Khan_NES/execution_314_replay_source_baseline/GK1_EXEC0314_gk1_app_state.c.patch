@@ -1,0 +1,14 @@
+--- a/execution_199/gk1_app_state.c
++++ b/execution_199/gk1_app_state.c
+@@ -1730,6 +1730,11 @@
+  * currently loaded original country data. Campaign saves are STILL absent. */
+ static void retain_original_templates(Gk1App *next,const Gk1App *old){
+  memcpy(next->worlds,old->worlds,sizeof next->worlds);
++ /* EXEC0314: isolated tactical replay must retain the original 14/27
++  * immutable CSV baselines for source/finance/labor checks. These are
++  * not NES first-Spring initialization or playable orders. */
++ memcpy(next->finance_source_baseline,old->finance_source_baseline,
++        sizeof next->finance_source_baseline);
+  memcpy(next->world_ready,old->world_ready,sizeof next->world_ready);
+  memcpy(next->country_cursor,old->country_cursor,sizeof next->country_cursor);
+  next->active_world=old->active_world;
