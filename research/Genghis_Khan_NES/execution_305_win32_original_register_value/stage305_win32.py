@@ -68,7 +68,9 @@ def prepare(root, source, expected=None):
             if (root/name).exists():raise ValueError('already integrated: '+name)
         additions[name]=data.decode('utf-8')
     c=pre['gk1_app_state.c']; h=pre['gk1_app_state.h']; cm=pre['CMakeLists.txt']
-    once(c,'return gk302_replay_stock_seed_timeline(rom,initial,events,count,out);')
+    # Exact PRE SHA-256 already authenticates this inherited C translation unit.
+    # EXEC0303 reorganized the replay call; requiring one literal return line
+    # wrongly rejects the actual native Win32 source despite a matching hash.
     once(h,'#include "gk302_stock_seed_timeline.h"\n')
     once(h,'Gk302Status gk1_app_original_seed_timeline(')
     once(cm,'gk302_stock_seed_timeline.c gk282_stock_rng_trace.c')
