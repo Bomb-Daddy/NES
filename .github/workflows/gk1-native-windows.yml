@@ -26,6 +26,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_286_c289_campaign_trace/**'
       - 'research/Genghis_Khan_NES/execution_287_win32_campaign_binding/**'
       - 'research/Genghis_Khan_NES/execution_289_win32_original_rng_stream/**'
+      - 'research/Genghis_Khan_NES/execution_295_win32_seed_attestation/**'
 
 permissions:
   contents: read
