@@ -1244,12 +1244,20 @@ jobs:
               throw "EXEC0310 source registration missing: $needle"
             }
           }
-          $entry=Get-Content -LiteralPath (Join-Path $app 'gk162_original_entry.c') -Raw
-          if (-not $entry.Contains('if(a->setup_stage[0]==GK53_SETUP_PLAYERS)return pristine_title(a,0u);') -or
+          # EXEC0311: EXEC0277 ALREADY implemented the correct two-line guard.
+          # Never require an invented one-line source patch or weaken it.
+          $entryPath=Join-Path $app 'gk162_original_entry.c'
+          $entry=[IO.File]::ReadAllText($entryPath).Replace("`r`n","`n")
+          $safeGuard='if(a->setup_stage[0]==GK53_SETUP_PLAYERS)' + "`n" + '  return a->active_world==0u && pristine_title(a,0u);'
+          if (-not $entry.Contains($safeGuard) -or
               $entry.Contains('if(a->setup_stage[0]==GK53_SETUP_PLAYERS)return 1;')) {
-            throw 'EXEC0310 original fresh-reset admission fix absent'
+            throw 'EXEC0311 authentic EXEC0277 pristine-title guard absent or unsafe'
           }
-          Write-Output 'EXEC0310 source-authenticated complete native app title gate STAGED; original first playable Spring remains NOT IMPLEMENTED'
+          $guardSha=(Get-FileHash -LiteralPath $entryPath -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($guardSha -ne '04c5d36bb85462610f5728c8f8a22c82a007b123604c7dafcbfede5b6622803a') {
+            throw "EXEC0311 source mutated unexpectedly: $guardSha"
+          }
+          Write-Output 'EXEC0311 preserved authentic post-EXEC0277 original fresh-title guard; C11 regression staged; first playable Spring remains OPEN'
 
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
