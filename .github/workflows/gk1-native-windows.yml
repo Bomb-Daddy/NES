@@ -1067,6 +1067,28 @@ jobs:
           }
           Write-Output 'EXEC0298 native Win32 app source integrated and source gated; ORIGINAL FIRST SPRING NOT YET PLAYABLE'
 
+      - name: EXEC0299 repair verified EXEC0298 masked-writer MSVC LNK2019 in actual C11 game
+        shell: pwsh
+        run: |
+          $base = 'research/Genghis_Khan_NES/execution_299_win32_masked_writer_link'
+          $app = 'current-gk1/execution_199'
+          python -m py_compile "$base/stage299.py" "$base/test_stage299.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0299 source syntax failed' }
+          $env:GK299_POST298_APP = $app
+          $env:GK299_GK294_OLD = $app
+          python "$base/test_stage299.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0299 hostile test failure or skipped source fixture' }
+          python "$base/stage299.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0299 reviewed native symbol repair failed' }
+          foreach ($item in @(
+            @('gk294_seed_writer_attest.c','cf38c32f5b3358fbeab4a2a84e4f1936b32c797d8497efc1bee9c9311708f964'),
+            @('gk294_seed_writer_attest.h','2642bf11bc03b3112427f54749ea60eb5508bea9d21490aa9c6531ef4dc5c2cc')
+          )) {
+            $path = Join-Path $app $item[0]
+            $actual = (Get-FileHash $path -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($actual -ne $item[1]) { throw "EXEC0299 wrong native C11 writer-mask postimage $path" }
+          }
+          Write-Output 'EXEC0299 exact reviewed four-writer mask symbol present for native MSVC link; NO first Spring claimed'
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
