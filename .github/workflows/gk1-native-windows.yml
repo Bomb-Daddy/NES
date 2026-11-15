@@ -29,6 +29,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_295_win32_seed_attestation/**'
       - 'research/Genghis_Khan_NES/execution_298_win32_stock_reset_source/**'
       - 'research/Genghis_Khan_NES/execution_300_original_stock_nmi_seed_clock/**'
+      - 'research/Genghis_Khan_NES/execution_303_win32_stock_seed_timeline/**'
 
 permissions:
   contents: read
@@ -1124,6 +1125,27 @@ jobs:
             }
           }
           Write-Output 'EXEC0301 original NMI native C11 source and Win32 CMake accepted; original playable first Spring NOT complete'
+
+      - name: Stage EXEC0302 authentic seed chronology in complete inherited C11 Windows game
+        shell: pwsh
+        run: |
+          $base = 'research/Genghis_Khan_NES/execution_303_win32_stock_seed_timeline'
+          $app = 'current-gk1/execution_199'
+          python -m py_compile "$base/stage303.py" "$base/test_stage303.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0303 Python source syntax check failed' }
+          python "$base/test_stage303.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0303 hostile staging tests failed' }
+          python "$base/stage303.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0303 source-authenticated integration refused' }
+          foreach ($filename in @('gk302_stock_seed_timeline.c','gk302_stock_seed_timeline.h','test_gk302_stock_seed_timeline.c')) {
+            if (-not (Test-Path (Join-Path $app $filename))) { throw "EXEC0302 source missing: $filename" }
+          }
+          foreach ($needle in @('gk302_stock_seed_timeline.c','GK1_302_PublicTimelineRefusalNoROM','GK1_300_OriginalStockNmiGateClockAndRollback','GK1_257_CurrentWin32Workflow_RejectsStaleSourceAndFalsePass')) {
+            if (-not (Select-String -LiteralPath (Join-Path $app 'CMakeLists.txt') -SimpleMatch -Pattern $needle -Quiet)) {
+              throw "EXEC0303 missing inherited or new native CTest integration: $needle"
+            }
+          }
+          Write-Output 'EXEC0303 inherited native Win32 source staged: no original ROM, no invented Spring, physical Xbox NOT RUN'
 
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
