@@ -32,6 +32,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_303_win32_stock_seed_timeline/**'
       - 'research/Genghis_Khan_NES/execution_305_win32_original_register_value/**'
       - 'research/Genghis_Khan_NES/execution_307_physical_controller_qa/**'
+      - 'research/Genghis_Khan_NES/execution_309_original_ruler_admission/**'
 
 permissions:
   contents: read
@@ -1203,6 +1204,28 @@ jobs:
             throw "EXEC0307 native WinMain shell mismatch: $shellSha"
           }
           Write-Output 'EXEC0307 verified C11 physical-XInput QA staging. Physical Xbox NOT RUN; original first Spring NOT GENERATED.'
+
+      - name: EXEC0309 source-authentic human ruler entry gate + hostile QA
+        shell: pwsh
+        run: |
+          $base='research/Genghis_Khan_NES/execution_309_original_ruler_admission'
+          $app='current-gk1/execution_199'
+          python -m py_compile "$base/stage309.py" "$base/test_stage309.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0309 stager syntax failure' }
+          python "$base/test_stage309.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0309 hostile source and rollback regression failed' }
+          python "$base/stage309.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0309 rejected inherited original-stock source' }
+          foreach ($needle in @('GK1_309_StockHumanRulers_FailClosed14And27','GK1_307_PhysicalXboxDiagnosticInputFSM_NoHardwareClaim')) {
+            if (-not (Select-String -LiteralPath (Join-Path $app 'CMakeLists.txt') -Pattern $needle -SimpleMatch -Quiet)) {
+              throw "EXEC0309 native integration missing $needle"
+            }
+          }
+          $hash=(Get-FileHash -LiteralPath (Join-Path $app 'gk162_original_entry.c') -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($hash -ne '04c5d36bb85462610f5728c8f8a22c82a007b123604c7dafcbfede5b6622803a') {
+            throw "EXEC0309 staged original-stock source postimage mismatch $hash"
+          }
+          Write-Output 'EXEC0309 original selectable human ruler source gate STAGED; original first Spring still unimplemented; no hardware claim'
 
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
