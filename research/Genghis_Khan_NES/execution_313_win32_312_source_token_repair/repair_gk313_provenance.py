@@ -35,7 +35,12 @@ def normalized(data):
 
 def updated_gate(source, expected_preimage_sha=GATE_303_SHA):
     raw=normalized(source)
-    if sha(raw)!=expected_preimage_sha: raise ValueError('old hostile provenance gate SHA mismatch')
+    if sha(raw)!=expected_preimage_sha:
+        fingerprint = next((line for line in raw.decode('utf-8',errors='replace').splitlines()
+                            if line.startswith('EXPECTED_APP_SHA = ')), '<missing>')
+        raise ValueError('old hostile provenance gate SHA mismatch: actual=' +
+                         sha(raw) + ' expected=' + expected_preimage_sha +
+                         ' source_literal=' + fingerprint)
     text=raw.decode('utf-8')
     if text.count(OLD_LINE)!=1 or NEW_LINE in text:
         raise ValueError('old original source SHA literal missing/duplicated')
