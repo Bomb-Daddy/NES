@@ -1327,6 +1327,10 @@ jobs:
           $base316='research/Genghis_Khan_NES/execution_316_stock_cpu_trace_ingest'
           $base317='research/Genghis_Khan_NES/execution_317_original_cpu_world_bound'
           $app='current-gk1/execution_199'
+          # EXEC0317: the earlier EXEC0268 tool intentionally pins only old
+          # controller filenames. Use NEW SHA-pinned whitelist for source 316/317.
+          python "$base317/test_normalize317_checkout.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0317 exact checkout normalizer hostile tests failed' }
           # Source-byte-authenticate published EXEC0316 modules; Windows may
           # check out CRLF but compiler must see exactly the tested LF inputs.
           foreach ($pair in @(
@@ -1335,10 +1339,10 @@ jobs:
             @('test_gk316_cpu_claims.c','e91a23234e1ff69d0992c85024f5b6f202d611363b5b0a022c0ecfb99e06cbc5'),
             @('test_gk316_controller_fuzz.c','182ae7d066301217ab9bc71a9b4231016a965d827f72bbded17c27e20063e8c2')
           )) {
-            python research/Genghis_Khan_NES/execution_268_win32_crlf_pin/gk268_normalize_pinned_checkout.py (Join-Path $base316 $pair[0]) $pair[1]
+            python "$base317/normalize317_checkout.py" (Join-Path $base316 $pair[0])
             if ($LASTEXITCODE -ne 0) { throw "EXEC0316 source byte authentication rejected $($pair[0])" }
           }
-          python research/Genghis_Khan_NES/execution_268_win32_crlf_pin/gk268_normalize_pinned_checkout.py (Join-Path $base317 'test_gk317_world_bound.c') 2f751ea6c6367f57e6e6a34497cb05d37b9c37684cf88f29933ae93c621213e6
+          python "$base317/normalize317_checkout.py" (Join-Path $base317 'test_gk317_world_bound.c')
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0317 source byte authentication rejected' }
           python "$base316/test_stage316.py"
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0316 hostile source stage failed' }
