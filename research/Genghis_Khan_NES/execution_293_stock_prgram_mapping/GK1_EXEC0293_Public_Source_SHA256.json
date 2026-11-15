@@ -1,0 +1,42 @@
+{
+  "GK1_EXEC0293_Completion_Ledger.md": {
+    "sha256": "4350929455ff4cb1bdf146f4313fba0bbae7e21d7987e0793e8295a7ef5fc557",
+    "bytes": 1341
+  },
+  "GK1_EXEC0293_Cumulative_Master_v4.42_Addendum.md": {
+    "sha256": "81898883f42a30600a4c1a53a4f1c02d02bf491d00c77fd0fd0082a13d48090e",
+    "bytes": 1292
+  },
+  "GK1_EXEC0293_Implementer_HostileQA_Handoff.md": {
+    "sha256": "8324a39b5d4e7c1e09664c96381589c017084c45ac834316d34e9555ce9a203a",
+    "bytes": 4059
+  },
+  "GK1_EXEC0293_Private_Mesen_PowerOn_Recorder_V3.lua": {
+    "sha256": "3f26012d2ed1248ad98584b619fc145d82ac73623397e8bf3f66b190bddf8560",
+    "bytes": 5514
+  },
+  "README_EXEC0293.md": {
+    "sha256": "ad0a82330db82df7215e2c177953b096616b0fc9692edaa048cbd365a54acdfc",
+    "bytes": 2100
+  },
+  "gk293_verify_existing_stock_capture.py": {
+    "sha256": "de8075126d6bf41f01e808ed186094840554e8cc438b7376e97975a6bf8e53ae",
+    "bytes": 3195
+  },
+  "gk293_verify_stock_trace_v3.py": {
+    "sha256": "7f77c5712c05803a6956ac115a312e0af71eb431b64e78e161605d21bf096c54",
+    "bytes": 7427
+  },
+  "test_gk293_lua_mock.py": {
+    "sha256": "889bb9113f3a3d22adb8770b80e9519640c1e98c654755727b7e49b329de4f8d",
+    "bytes": 6138
+  },
+  "test_gk293_stock_capture_hqa.py": {
+    "sha256": "893809527e5dbcde21a1ffc021006bb39ece97e998c2185f514a5602de62e9f2",
+    "bytes": 1936
+  },
+  "test_gk293_trace_v3.py": {
+    "sha256": "733eb1fbccfaf0be45879cfcdb26ed11a9f71e3bdb865ea56d07d303c2176948",
+    "bytes": 5584
+  }
+}
