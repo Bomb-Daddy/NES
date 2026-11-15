@@ -71,9 +71,23 @@ class Tests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'newlines'):m.stage(self.app)
     def test_windows_crlf_source_with_sha_matching_normal_form(self):
         (self.app/'gk162_original_entry.c').write_bytes(self.src.replace(b'\n',b'\r\n'))
-        (self.app/'CMakeLists.txt').write_bytes((self.app/'CMakeLists.txt').read_bytes().replace(b'\n',b'\r\n'))
+        # Windows Path.write_text() can ALREADY have produced CRLF in setUp.
+        # Normalize first: blindly inserting CR before every LF creates CRCRLF.
+        cmake_normal=m.normalize((self.app/'CMakeLists.txt').read_bytes())
+        cmake_crlf=cmake_normal.replace(b'\n',b'\r\n')
+        self.assertNotIn(b'\r\r\n',cmake_crlf)
+        (self.app/'CMakeLists.txt').write_bytes(cmake_crlf)
         m.stage(self.app)
         self.assertIn(m.AFTER,(self.app/'gk162_original_entry.c').read_text())
+        self.assertNotIn(b'\r\r\n',(self.app/'CMakeLists.txt').read_bytes())
+    def test_crcrlf_cmake_rejected_without_mutation(self):
+        # Deliberately malformed CRCRLF must still be rejected, never silently repaired.
+        cmake_normal=m.normalize((self.app/'CMakeLists.txt').read_bytes())
+        (self.app/'CMakeLists.txt').write_bytes(cmake_normal.replace(b'\n',b'\r\r\n'))
+        before=self.original()
+        with self.assertRaisesRegex(ValueError,'malformed source newlines'):
+            m.stage(self.app)
+        self.assertEqual(before,self.original())
     def test_tampered_test_file(self):
         original=m.TEST_SHA;m.TEST_SHA='0'*64
         try:
