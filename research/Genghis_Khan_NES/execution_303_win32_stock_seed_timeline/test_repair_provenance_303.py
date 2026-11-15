@@ -8,7 +8,7 @@ directory=Path(__file__).resolve().parent
 spec=importlib.util.spec_from_file_location('source303',directory/'repair_provenance_303.py')
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 old=directory.parent/'execution_265_win32_source_provenance'/'test_gk265_current_win32_source.py'
-raw=old.read_bytes()
+raw=m.canonical(old.read_bytes())  # Git checkout may use CRLF on Win32
 assert m.blob(m.canonical(raw))==m.OLD_GATE_GIT_BLOB
 checks=0
 a=m.revised_gate(raw)
