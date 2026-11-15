@@ -25,7 +25,14 @@ int gk307_physical_step(Gk307PhysicalQa *s,uint8_t slot,
  }
  if(s->complete)return 1;
  if(s->wait_release){
-  if(neutral(raw))s->wait_release=0u;
+  if(neutral(raw)){
+   s->wait_release=0u;
+   /* EXEC0308: an analog-right hold is an observation, NOT a completed
+    * diagnostic. Require a final distinct neutral sample from the same
+    * XInput slot before returning success. In particular, closing the
+    * window while full-right is held must return incomplete status 10. */
+   if(s->step>GK307_PHYSICAL_STEPS)s->complete=1u;
+  }
   return 1;
  }
  if(s->step==0u){
@@ -41,9 +48,11 @@ int gk307_physical_step(Gk307PhysicalQa *s,uint8_t slot,
  }else if(s->step==8u){
   match=raw->buttons==0u && raw->thumb_lx>22000 && centered(raw->thumb_ly);
  }
- if(match){s->accepted_edges++;s->step++;
-  if(s->step>GK307_PHYSICAL_STEPS){s->complete=1u;s->wait_release=0u;}
-  else s->wait_release=1u;
+ if(match){
+  s->accepted_edges++;s->step++;
+  /* Always require a release. Before EXEC0308 the final right-stick
+   * motion set complete=1 immediately, unlike the seven earlier steps. */
+  s->wait_release=1u;
  }
  return 1;
 }

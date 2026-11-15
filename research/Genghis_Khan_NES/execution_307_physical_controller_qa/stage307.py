@@ -13,9 +13,9 @@ import tempfile
 BASE=pathlib.Path(__file__).resolve().parent
 SHELL_SHA='ee3a8ed192670379f812554de0c3e5ba29311f3084a4336db8fa985be6e84df5'
 FILES={
- 'gk307_physical_pad_qa.c':'536f1f46df15a4bdf3af9d3b7b1463f685b9d11f5877cfee495efa779935e589',
- 'gk307_physical_pad_qa.h':'19b8befc4dfd341b6652a94fe72ac529d8901ebb2a7bd9631b8fa96add4eb464',
- 'test_gk307_physical_pad_qa.c':'4c5160111d69770c09255b2340575eeedc37155c5048e00a63f183340c357d27',
+ 'gk307_physical_pad_qa.c':'e700b54895a13422e9c5ceb3726f4163b4174abf81f6254c20e0e92e30c394bc',
+ 'gk307_physical_pad_qa.h':'76b2a1b64f6dfc11771de6059e16af303ef1085c854638be711d01f8babd7b02',
+ 'test_gk307_physical_pad_qa.c':'a0b2e773e55fbd89db06c5d31b3b3a271f20f776287f416fec7e2797b6704e7d',
 }
 def digest(data):return hashlib.sha256(data).hexdigest()
 def normalized(p):

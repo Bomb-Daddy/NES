@@ -9,7 +9,7 @@
 #define GK307_PHYSICAL_STEPS 8u
 typedef struct {
  uint8_t active_slot; /* 0-3, or 0xff when none */
- uint8_t step;        /* 0..8: neutral, UP, DOWN, A, B, START, BACK, LX LEFT, LX RIGHT */
+ uint8_t step;        /* 0..9: neutral, UP, DOWN, A, B, START, BACK, LX LEFT, LX RIGHT, final release */
  uint8_t wait_release;
  uint8_t complete;
  uint32_t accepted_edges;

@@ -35,8 +35,14 @@ int main(void){
  push(&q,0,0,-30000);C(q.step==8u&&q.accepted_edges==7u);
  push(&q,0,0,30000);C(q.step==8u); /* must release first */
  push(&q,0,0,0);C(!q.wait_release);
- push(&q,0,0,30000);C(q.complete&&q.accepted_edges==8u);
- push(&q,0,0,0);C(q.complete);
+ push(&q,0,0,30000);C(!q.complete&&q.wait_release&&q.step==9u&&q.accepted_edges==8u);
+ /* EXEC0308 regression: final right-stick hold was previously enough to
+  * return a zero process exit. It must not pass before the last release. */
+ C(strstr(gk307_physical_instruction(&q),"8/8")==NULL);
+ C(strstr(gk307_physical_instruction(&q),"RELEASE")!=NULL);
+ push(&q,0,0,30000);C(!q.complete);
+ push(&q,0,0x1000u,0);C(!q.complete); /* false neutral with button pressed */
+ push(&q,0,0,0);C(q.complete&&!q.wait_release);
  C(strstr(gk307_physical_instruction(&q),"8/8")!=NULL);
  /* Removing or changing a controller invalidates completion and forces
   * neutral, rather than attributing achievements to another physical pad. */
@@ -44,7 +50,6 @@ int main(void){
  push(&q,1,0,0);C(q.step==1u);
  gk307_physical_disconnect(&q);C(!q.complete&&q.active_slot==255u);
  C(strstr(gk307_physical_instruction(&q),"CONNECT")!=NULL);
- /* Repeated physical QA input is independent of all gameplay and ROMs. */
- printf("EXEC0307 physical XInput diagnostic FSM PASS (%u assertions; hardware NOT RUN)\n",tested);
+ printf("EXEC0308 physical XInput final-neutral hostile regression PASS (%u assertions; hardware NOT RUN)\n",tested);
  return 0;
 }
