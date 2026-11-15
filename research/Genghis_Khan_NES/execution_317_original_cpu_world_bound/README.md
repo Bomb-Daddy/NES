@@ -1,4 +1,4 @@
-# GK1 EXEC0317 â World-bound original stock CPU claim admission
+# GK1 EXEC0317 — World-bound original stock CPU claim admission
 
 ## Defect and correction
 The inherited EXEC0316 `gk1_app_original_cpu_claims_parse` checked Classic PRE_SETUP and source-ready state but admitted an otherwise well-formed **World**-scenario CPU claim transcript against a **Mongolian** active campaign, and vice versa. This is not source-authentic association. Source research receipts are claims until correlated with private original NES/Mesen evidence.
