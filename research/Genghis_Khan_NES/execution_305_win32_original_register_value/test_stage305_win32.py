@@ -58,7 +58,7 @@ class Tests(unittest.TestCase):
         p.write_bytes(content.replace(old,'/* source-authenticated replay adapter */').encode('utf-8'))
         self.pin['gk1_app_state.c']=s.sha(s.norm(p.read_bytes()))
         change=s.prepare(self.root,SOURCE,self.pin)
-        self.assertIn(b'gk304_stock_store_value',change['gk1_app_state.c'])
+        self.assertIn(b'gk1_app_original_store_values',change['gk1_app_state.c'])
     def test_modified_app_refused(self):
         p=self.root/'gk1_app_state.c';p.write_bytes(p.read_bytes()+b'evil')
         with self.assertRaises(ValueError):s.prepare(self.root,SOURCE,self.pin)
