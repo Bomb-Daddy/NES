@@ -19,10 +19,20 @@ Source readback: `research/Genghis_Khan_NES/execution_314_replay_source_baseline
 ## Scope and acceptance
 VERIFIED_STATIC: exact source fix and prior failure independently identified.
 TESTED_HOST_LINUX_PYTHON: 10/10 PASS.
-TESTED_PORT_WIN32_CI: pending independent finished GitHub Actions run.
+TESTED_PORT_WIN32_CI: 228/228 native Windows CTests PASS, WinMain/NSIS installed launch PASS, via run 43767261827.
 TESTED_PORT_LINUX_C11: prior EXEC0314 5/5 related native tests; no new full Linux C11 suite.
 OBSERVED_RUNTIME_STOCK (fresh and archived): historical observations only; not rerun.
 Physical Xbox and full campaigns: NOT RUN.
 Stock first playable Spring with authentic ruler/character/difficulty/RNG, 14/27 countries and three controller orders: OPEN.
 
 No original-stock ROM, licensed assets, SRAM, raw game screenshots, user checkpoints or campaigns may be published.
+
+## Final independent Windows CI228 acceptance — 2026-11-15 22:08 UTC
+
+The actual [native Win32 Actions run 43767261827](https://github.com/Bomb-Daddy/NES/actions/runs/43767261827), at exact game source/test commit `50ba9362e460cb7210a57fc48e8ae21b99468d43`, **completed success**. The fixed Windows hostile test step passed, the full Visual Studio C11 application compiled, **228/228 native Windows CTests passed** (including real `GK1_314_ReplayPreservesSourceBaseline`), real WinMain graphical/software-controller smoke and NSIS silent install/installed WinMain launch passed.
+
+Exact QA-only GitHub Actions artifact 14183125667: ZIP 579223 bytes SHA256 `f0145c1ee170f880ad9e26fce4056a42562e8eea8ac8c55a4de33537400a8c99`; embedded NSIS installer 612813 bytes SHA256 `bb70aff2013c10442a29d01b3c115e29fadb6aae3722f1b29358f6c66f8b1e3b`; installed EXE SHA256 `814fcd89aeaf5b9549b391129e6d4a5a078ad31779084b3e7a9eeccf771bfbd3`. Manifest explicitly `release_accepted=false`, `physical_xbox_tested=false`, `full_campaign_tested=false`. Independent ZIP CRC and Drive readback passed.
+
+Verified exact Collaboration Drive: [QA ZIP](https://drive.google.com/file/d/1MFQ4ytY_eBiyoW_-9l9WsxgT5iSMMdsf/view), [installer](https://drive.google.com/file/d/1i5ItzTaSPMbNXYtpr8NY1DHe8kx5rUUr/view), [C11 source/hostile QA](https://drive.google.com/file/d/1xOHguL2sryhnJtSUebvJFD6Iamb12JjA/view), [full numbered handoff](https://docs.google.com/document/d/1YJkCK9yINrEQA_OtXu63OCSjuz39vXvG5FuDksWS78U/edit).
+
+Win32 CI228 success does **not** imply first playable Spring authentic generation, controller-only two complete campaigns, real physical Xbox, independent Mesen retest or release acceptance. Previous native Linux C11 test result retained separately.
