@@ -1,0 +1,26 @@
+{
+  "files": {
+    "README_EXEC0309.md": {
+      "sha256": "11cc2c4e054f4ac76cd19bce276b1fcf777b6b3cb295b96ef7eeef7eea90e641",
+      "bytes": 3021
+    },
+    "stage309.py": {
+      "sha256": "1c8476c824301e35efe6d10452ebbd30092662312b7cf034f21b306f69d533ab",
+      "bytes": 4917
+    },
+    "test_stage309.py": {
+      "sha256": "0e918c2fa7335ce68960c58e7c4a0003e5d610d53de856917dff35892b6a6f08",
+      "bytes": 2643
+    },
+    "test_gk309_original_player_gate.c": {
+      "sha256": "1d8247a8186795085a2e1e14e299e2c8aa535f9475228912fcfb7bd16ddc2bde",
+      "bytes": 2398
+    },
+    "GK1_EXEC0309_gk162_original_entry.patch": {
+      "sha256": "eb56d5dc5a6953ceed1c7080ff734ba3e30ffc4bcf4d2dff252a9cf1f2089682",
+      "bytes": 1379
+    }
+  },
+  "inherited_gk162_sha256": "8d29890d8eafbfd01dd3c045b3df16e7a504bf5d1c5a60cc3fc38926a6a0a0b3",
+  "after_gk162_sha256": "04c5d36bb85462610f5728c8f8a22c82a007b123604c7dafcbfede5b6622803a"
+}
