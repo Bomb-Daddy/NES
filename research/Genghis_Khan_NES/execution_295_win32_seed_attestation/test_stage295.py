@@ -44,7 +44,7 @@ class StageTests(unittest.TestCase):
         # Real Windows Git checkout can transform every tracked newline to CRLF.
         upstream=self.root/'source_294';upstream.mkdir()
         for f in ADDED:
-            clean=(ROOT.parent/'execution_294_stock_seed_opcode_attestation'/f).read_bytes()
+            clean=(ROOT.parent/'execution_294_stock_seed_opcode_attestation'/f).read_bytes().replace(b'\r\n',b'\n')
             self.assertNotIn(b'\r',clean)
             (upstream/f).write_bytes(clean.replace(b'\n',b'\r\n'))
         with patch('stage295.UPSTREAM',upstream): stage(self.src)
@@ -54,7 +54,7 @@ class StageTests(unittest.TestCase):
     def test_lone_carriage_return_source_refused_atomically(self):
         upstream=self.root/'source_294';upstream.mkdir()
         for f in ADDED:
-            data=(ROOT.parent/'execution_294_stock_seed_opcode_attestation'/f).read_bytes()
+            data=(ROOT.parent/'execution_294_stock_seed_opcode_attestation'/f).read_bytes().replace(b'\r\n',b'\n')
             if f=='gk294_seed_writer_attest.c': data+=b'\r'
             (upstream/f).write_bytes(data)
         old=self.snapshot()
