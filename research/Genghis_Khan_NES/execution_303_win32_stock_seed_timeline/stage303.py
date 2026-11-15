@@ -47,12 +47,12 @@ add_executable(test_gk302_stock_seed_timeline test_gk302_stock_seed_timeline.c)
 target_link_libraries(test_gk302_stock_seed_timeline PRIVATE gk1_app_state)
 add_test(NAME GK1_302_PublicTimelineRefusalNoROM
  COMMAND test_gk302_stock_seed_timeline
- \${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
+ ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv)
 if(GK302_PRIVATE_ROM)
  add_test(NAME GK1_302_OriginalStockInterleavedSeedTimelineAndAtomicRollback
   COMMAND test_gk302_stock_seed_timeline
-  \${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv
-  \${GK302_PRIVATE_ROM})
+  ${CMAKE_CURRENT_SOURCE_DIR}/../execution_049/GK1_ALL_41_COUNTRY_ECONOMIC_DATA_v1.07.csv
+  ${GK302_PRIVATE_ROM})
 endif()
 """
 
