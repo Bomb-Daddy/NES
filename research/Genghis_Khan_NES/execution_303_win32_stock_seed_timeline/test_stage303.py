@@ -10,7 +10,7 @@ m=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
 H='#include "gk300_stock_nmi_seed_clock.h"\n#ifndef G\n#define G\n#endif\n'
 C='#include "gk1_app_state.h"\nint baseline=1;\n'
-CM='add_library(gk1_app_state STATIC gk300_stock_nmi_seed_clock.c)\n'+''.join(
+CM='add_library(gk1_app_state STATIC gk300_stock_nmi_seed_clock.c gk282_stock_rng_trace.c)\n'+''.join(
  'add_test(NAME '+n+' COMMAND baseline)\n' for n in [
  'GK1_257_CurrentWin32Workflow_RejectsStaleSourceAndFalsePass',
  'GK1_297_StockResetInitializerAndUnknownC289Preseed',
