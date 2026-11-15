@@ -15,4 +15,3 @@ OBSERVED_RUNTIME_STOCK_ARCHIVED_RESTORED: previous Mongol Spring1175 and World S
 NOT RUN: real V2 on Mesen, complete native first Spring, user-level controller-only orders, physical Xbox controller, full campaigns.
 
 OPEN: exact source startup RNG and 14/27 seasonal first-Spring transformations; merchant AI diplomacy dynasty battle aftermath and full player Windows release. Source publication is not recipient read/execute acknowledgment. Hourly development remains enabled.
-
