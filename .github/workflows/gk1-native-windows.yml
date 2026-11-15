@@ -1017,6 +1017,22 @@ jobs:
             throw 'EXEC0289 executable CTest not registered in real Win32 game'
           }
           Write-Output 'EXEC0289 reviewed C289 multi-draw C11 game and CTest staged; private ROM not shipped; FIRST_SPRING_OPEN'
+      - name: Hostile QA and stage EXEC0295 authenticated seed-writer C11 in same Win32 game
+        shell: pwsh
+        run: |
+          $env:GK295_PREDECESSOR_DIR = 'current-gk1/execution_199'
+          python -m unittest discover -s research/Genghis_Khan_NES/execution_295_win32_seed_attestation -p test_stage295.py -v
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0295 hostile source-staging tests failed' }
+          python research/Genghis_Khan_NES/execution_295_win32_seed_attestation/stage295.py current-gk1/execution_199
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0295 original-stock seed-writer source integration failed' }
+          if (-not (Select-String -Path current-gk1/execution_199/CMakeLists.txt -Pattern 'GK1_294_OriginalRomSourceSeedWriterAndAtomicRefusals' -Quiet)) {
+            throw 'EXEC0295 native test not registered in actual Win32 game'
+          }
+          $actualSource = (Get-FileHash current-gk1/execution_199/gk1_app_state.c -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actualSource -ne 'f3df3cc44c23555b5670d17d66423a7578e3fb40d0fc226a1614fe76950f246c') {
+            throw 'EXEC0295 actual complete C11 application source postimage incorrect'
+          }
+          Write-Output 'EXEC0295 public C11 source candidate attestation staged; no private stock ROM or playable Spring claim'
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
