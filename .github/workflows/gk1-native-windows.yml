@@ -36,6 +36,8 @@ on:
       - 'research/Genghis_Khan_NES/execution_310_original_pristine_title_gate/**'
       - 'research/Genghis_Khan_NES/execution_312_original_event_pc_witness/**'
       - 'research/Genghis_Khan_NES/execution_314_replay_source_baseline/**'
+      - 'research/Genghis_Khan_NES/execution_316_stock_cpu_trace_ingest/**'
+      - 'research/Genghis_Khan_NES/execution_317_original_cpu_world_bound/**'
 
 permissions:
   contents: read
@@ -1318,6 +1320,43 @@ jobs:
             throw 'EXEC0314 real native replay-baseline CTest not registered'
           }
           Write-Output 'EXEC0314 source baseline native test integrated: no new NES Spring/physical Xbox claim'
+
+      - name: EXEC0316/0317 source-authenticated original CPU claims, campaign isolation and hostile QA
+        shell: pwsh
+        run: |
+          $base316='research/Genghis_Khan_NES/execution_316_stock_cpu_trace_ingest'
+          $base317='research/Genghis_Khan_NES/execution_317_original_cpu_world_bound'
+          $app='current-gk1/execution_199'
+          # Source-byte-authenticate published EXEC0316 modules; Windows may
+          # check out CRLF but compiler must see exactly the tested LF inputs.
+          foreach ($pair in @(
+            @('gk316_cpu_claims_ingest.c','15d093cb07ecbd18ec95ff6c4f58f1fe46fece19259e45dad9c693623a8cfe3b'),
+            @('gk316_cpu_claims_ingest.h','104217c7f3d11dc7992766996b24f48150553ad47dfc15b3377bf01e8f0f4d8e'),
+            @('test_gk316_cpu_claims.c','e91a23234e1ff69d0992c85024f5b6f202d611363b5b0a022c0ecfb99e06cbc5'),
+            @('test_gk316_controller_fuzz.c','182ae7d066301217ab9bc71a9b4231016a965d827f72bbded17c27e20063e8c2')
+          )) {
+            python research/Genghis_Khan_NES/execution_268_win32_crlf_pin/gk268_normalize_pinned_checkout.py (Join-Path $base316 $pair[0]) $pair[1]
+            if ($LASTEXITCODE -ne 0) { throw "EXEC0316 source byte authentication rejected $($pair[0])" }
+          }
+          python research/Genghis_Khan_NES/execution_268_win32_crlf_pin/gk268_normalize_pinned_checkout.py (Join-Path $base317 'test_gk317_world_bound.c') 2f751ea6c6367f57e6e6a34497cb05d37b9c37684cf88f29933ae93c621213e6
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0317 source byte authentication rejected' }
+          python "$base316/test_stage316.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0316 hostile source stage failed' }
+          python "$base316/stage316.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0316 native C11 integration failed closed' }
+          python "$base317/test_stage317.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0317 hostile campaign provenance tests failed' }
+          python "$base317/test_repair317_provenance.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0317 inherited SHA gate negative tests failed' }
+          python "$base317/stage317.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0317 native C11 campaign binding failed closed' }
+          python "$base317/repair317_provenance.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0317 inherited hostile app source gate repair failed' }
+          $cmake=Join-Path $app 'CMakeLists.txt'
+          foreach ($test in @('GK1_316_CpuTraceClaimsAtomicAndClassicSetupGate','GK1_316_ControllerStatefulHostileNoFalseSpring','GK1_317_OriginalCpuClaimsAreWorldBoundWithoutOrders')) {
+            if (-not (Select-String -LiteralPath $cmake -SimpleMatch -Pattern $test -Quiet)) { throw "New real native C11 CTest absent $test" }
+          }
+          Write-Output 'EXEC0316/317 native original CPU CLAIM ingestion / cross-world atomic refusal staged, not NES stock gameplay proof or a playable first Spring'
 
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
