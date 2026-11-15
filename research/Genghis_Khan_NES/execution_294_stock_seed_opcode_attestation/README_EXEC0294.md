@@ -1,0 +1,2 @@
+# EXEC0294 — Native C11 original ROM source-writer attestation
+Preserves complete inherited game, adds four app/source modifications in execution_199 and a new native regression. The patch is replayable against the authenticated EXEC0288 complete source archive, with EXEC0293 research scripts left separate and unchanged. Public source never embeds original ROM or licensed resources. Six candidate STORE instruction sites from original ROM are source-static only, not observed execution. See numbered handoff for exact limitations, QA exclusions and reproduce commands.
