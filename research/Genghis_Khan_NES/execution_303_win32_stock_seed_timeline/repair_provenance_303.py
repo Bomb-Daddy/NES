@@ -18,6 +18,8 @@ NEW_HEADER_SHA="afbf999525593bec1857890d0b61905e16069b76cc0c58d1280656dae6302c97
 NEW_CMAKE_SHA="3d73c3a1d502bedbfbd62bb697175f8ea48bece325b6046dddbb6cda122c1191"
 OLD_APP_SHA="a0edd0a5dc4974a17485320368c6613240785a2c813a941dcaef527fd632c05c"
 OLD_TOKEN="EXPECTED_APP_SHA = '"+OLD_APP_SHA+"'"
+PREVIOUS_APP_SHA="c4a6707d70f809d9cb3d3bfaa775cc1757c331c81b985a82ec97e3a17f560fc6"
+PREVIOUS_TOKEN="EXPECTED_APP_SHA = '"+PREVIOUS_APP_SHA+"'"
 NEW_TOKEN="EXPECTED_APP_SHA = '"+NEW_APP_SHA+"'"
 
 def canonical(b):
@@ -27,20 +29,31 @@ def canonical(b):
 def sha(b):return hashlib.sha256(b).hexdigest()
 def blob(b):return hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
 def revised_gate(data):
-    clean=canonical(data)
-    if blob(clean)!=OLD_GATE_GIT_BLOB:
-        raise ValueError("original 0265 hostile provenance test no longer matches published source")
-    txt=clean.decode('utf-8')
-    if txt.count(OLD_TOKEN)!=1 or NEW_TOKEN in txt:
-        raise ValueError("unrecognized or already changed 0265 source gate")
+    # Reconstruct the exact previous EXEC0301 provenance fixture by changing
+    # only the original hash literal in the Git-blob-authenticated 0265 gate.
+    # Accept neither the old 0265 app nor arbitrary modified test bodies.
+    original_path=Path(__file__).resolve().parent.parent / "execution_265_win32_source_provenance" / "test_gk265_current_win32_source.py"
+    original=canonical(original_path.read_bytes())
+    if blob(original)!=OLD_GATE_GIT_BLOB:
+        raise ValueError("published original EXEC0265 provenance gate changed")
+    legacy=original.decode('utf-8')
+    if legacy.count(OLD_TOKEN)!=1 or PREVIOUS_TOKEN in legacy:
+        raise ValueError("original 0265 test contract is not as published")
+    expected=legacy.replace(OLD_TOKEN,PREVIOUS_TOKEN,1)
+    actual=canonical(data).decode('utf-8')
+    if actual!=expected:
+        raise ValueError("post-EXEC0301 provenance gate differs outside approved source SHA")
+    if actual.count(PREVIOUS_TOKEN)!=1 or NEW_TOKEN in actual:
+        raise ValueError("unexpected old or repeated source SHA")
     for required in ("EXPECTED_PREDECESSOR_SHA", "EXPECTED_TEST_SHA",
                      "for index,values in enumerate(mutations,1)", "def audit(",
                      "GK1_264_AtomicScenarioReinstallClearsSourceAndPortState"):
-        if required not in txt:raise ValueError("old gate lost independent hostile control")
-    updated=txt.replace(OLD_TOKEN,NEW_TOKEN,1).encode('utf-8')
-    if updated.count(NEW_TOKEN.encode())!=1:
-        raise ValueError("provenance expected-hash mutation failed")
-    return updated
+        if required not in actual:
+            raise ValueError("independent hostile controls missing")
+    revised=actual.replace(PREVIOUS_TOKEN,NEW_TOKEN,1).encode('utf-8')
+    if revised.count(NEW_TOKEN.encode())!=1:
+        raise ValueError("expected source hash replacement mismatch")
+    return revised
 def run(appdir):
     root=Path(appdir)
     for n,expected in [('gk1_app_state.c',NEW_APP_SHA),
