@@ -1291,6 +1291,7 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0313 provenance hostile tests failed' }
           $gate313=Join-Path $app 'packaging/test_gk265_current_win32_source.py'
           if (-not (Test-Path -LiteralPath $gate313)) { throw 'EXEC0313 missing old hostile source gate' }
+          # Post-EXEC0310 inherited provenance gate accepted ONLY at source SHA 7586b22e7ac5ddec09207e3725ce0248b4dea54ebebd729e178613650e85e988.
           Write-Output ("EXEC0313 PRE_GATE_RAW_SHA " + (Get-FileHash -LiteralPath $gate313 -Algorithm SHA256).Hash.ToLowerInvariant())
           python "$repair313/repair_gk313_provenance.py" $app
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0313 old native source SHA gate reconciliation failed' }
