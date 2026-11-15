@@ -10,6 +10,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from stage295 import stage, OLD, NEW, ADDED, TEST_NAME, LIB_OLD
 
@@ -39,6 +40,28 @@ class StageTests(unittest.TestCase):
     def snapshot(self):
         return {str(p.relative_to(self.src)):sha(p.read_bytes())
                 for p in self.src.rglob('*') if p.is_file()}
+    def test_windows_crlf_source_checkout_normalized_exactly(self):
+        # Real Windows Git checkout can transform every tracked newline to CRLF.
+        upstream=self.root/'source_294';upstream.mkdir()
+        for f in ADDED:
+            clean=(ROOT.parent/'execution_294_stock_seed_opcode_attestation'/f).read_bytes()
+            self.assertNotIn(b'\r',clean)
+            (upstream/f).write_bytes(clean.replace(b'\n',b'\r\n'))
+        with patch('stage295.UPSTREAM',upstream): stage(self.src)
+        for f,expected in ADDED.items():
+            self.assertEqual(sha((self.src/f).read_bytes()),expected)
+
+    def test_lone_carriage_return_source_refused_atomically(self):
+        upstream=self.root/'source_294';upstream.mkdir()
+        for f in ADDED:
+            data=(ROOT.parent/'execution_294_stock_seed_opcode_attestation'/f).read_bytes()
+            if f=='gk294_seed_writer_attest.c': data+=b'\r'
+            (upstream/f).write_bytes(data)
+        old=self.snapshot()
+        with patch('stage295.UPSTREAM',upstream):
+            with self.assertRaises(ValueError): stage(self.src)
+        self.assertEqual(self.snapshot(),old)
+
     def test_stages_exactly_and_one_time(self):
         stage(self.src)
         for k,v in {**NEW,**ADDED}.items(): self.assertEqual(sha((self.src/k).read_bytes()),v)
