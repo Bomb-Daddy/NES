@@ -35,6 +35,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_309_original_ruler_admission/**'
       - 'research/Genghis_Khan_NES/execution_310_original_pristine_title_gate/**'
       - 'research/Genghis_Khan_NES/execution_312_original_event_pc_witness/**'
+      - 'research/Genghis_Khan_NES/execution_314_replay_source_baseline/**'
 
 permissions:
   contents: read
@@ -1296,6 +1297,27 @@ jobs:
           python "$repair313/repair_gk313_provenance.py" $app
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0313 old native source SHA gate reconciliation failed' }
           Write-Output 'EXEC0312/0313 current Win32 C11 source and inherited hostile provenance reconciled, NOT original Spring or physical Xbox'
+
+      - name: EXEC0314 preserve authentic 14/27 CSV baselines across native tactical replay cold loads
+        shell: pwsh
+        run: |
+          $base='research/Genghis_Khan_NES/execution_314_replay_source_baseline'
+          $app='current-gk1/execution_199'
+          python -m py_compile "$base/stage314.py" "$base/test_stage314.py" "$base/repair314_provenance.py" "$base/test_repair314_provenance.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0314 source staging syntax failed' }
+          python "$base/test_stage314.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0314 source staging hostile tests failed' }
+          python "$base/test_repair314_provenance.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0314 provenance hostile tests failed' }
+          python "$base/stage314.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0314 original app source-baseline integration refused' }
+          python "$base/repair314_provenance.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0314 inherited hostile SHA gate reconciliation refused' }
+          $cmake=Join-Path $app 'CMakeLists.txt'
+          if (-not (Select-String -LiteralPath $cmake -SimpleMatch -Pattern 'GK1_314_ReplayPreservesSourceBaseline' -Quiet)) {
+            throw 'EXEC0314 real native replay-baseline CTest not registered'
+          }
+          Write-Output 'EXEC0314 source baseline native test integrated: no new NES Spring/physical Xbox claim'
 
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
