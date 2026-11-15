@@ -28,6 +28,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_289_win32_original_rng_stream/**'
       - 'research/Genghis_Khan_NES/execution_295_win32_seed_attestation/**'
       - 'research/Genghis_Khan_NES/execution_298_win32_stock_reset_source/**'
+      - 'research/Genghis_Khan_NES/execution_300_original_stock_nmi_seed_clock/**'
 
 permissions:
   contents: read
@@ -1089,6 +1090,20 @@ jobs:
             if ($actual -ne $item[1]) { throw "EXEC0299 wrong native C11 writer-mask postimage $path" }
           }
           Write-Output 'EXEC0299 exact reviewed four-writer mask symbol present for native MSVC link; NO first Spring claimed'
+      - name: EXEC0300 authenticate and link original-stock NMI gate clock into full native C11 application
+        shell: pwsh
+        run: |
+          $base = 'research/Genghis_Khan_NES/execution_300_original_stock_nmi_seed_clock'
+          $app = 'current-gk1/execution_199'
+          python -m py_compile "$base/stage300.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0300 source-stage syntax failed' }
+          python "$base/stage300.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0300 SHA-gated native source stage failed' }
+          if (-not (Select-String -LiteralPath (Join-Path $app 'CMakeLists.txt') -SimpleMatch -Pattern 'GK1_300_OriginalStockNmiGateClockAndRollback' -Quiet)) {
+            throw 'EXEC0300 native C11 source test absent'
+          }
+          Write-Output 'EXEC0300 source-authenticated stock NMI clock compiled into inherited app; first Spring NOT claimed'
+
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
