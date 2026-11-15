@@ -1,0 +1,25 @@
+--- a/execution_199/gk162_original_entry.c
++++ b/execution_199/gk162_original_entry.c
+@@ -55,6 +55,12 @@
+      profile!=GK77_ARCHIVED_MONGOL_SAVERAM&&
+      profile!=GK77_ARCHIVED_WORLD_SAVERAM))return GK162_ENTRY_ARGUMENT;
+  unsigned w=profile==GK77_ARCHIVED_WORLD_SAVERAM?1u:0u;
++ /* EXEC0309: original-stock numeric country records are not evidence that
++  * any country is a selectable HUMAN ruler. The NES allows only Temujin
++  * for Mongol, four named national rulers for World. Check before source
++  * loading; do not manufacture an original first Spring. */
++ if(!gk53_setup_allowed_lord((uint8_t)w,player))
++  return GK162_ENTRY_TEMPLATE;
+  if(a->rules_profile>1u||!a->world_ready[w]||
+     a->worlds[w].phase!=GK1_PRE_SETUP_TEMPLATE||
+     a->worlds[w].scenario_id!=(w?GK1_WORLD_CONQUEST:GK1_MONGOL_CONQUEST)||
+@@ -85,6 +91,9 @@
+     source->profile<GK77_FRESH_MONGOL_WORKRAM||
+     source->profile>GK77_ARCHIVED_WORLD_SAVERAM)return GK162_ENTRY_ARGUMENT;
+  unsigned w=source->profile==GK77_ARCHIVED_WORLD_SAVERAM?1u:0u;
++ /* Public copied-checkpoint path must not bypass human-ruler selection. */
++ if(!gk53_setup_allowed_lord((uint8_t)w,source->player_index))
++  return GK162_ENTRY_TEMPLATE;
+  if(a->rules_profile>1u||!a->world_ready[w]||
+     a->worlds[w].phase!=GK1_PRE_SETUP_TEMPLATE||
+     a->worlds[w].scenario_id!=(w?GK1_WORLD_CONQUEST:GK1_MONGOL_CONQUEST)||
