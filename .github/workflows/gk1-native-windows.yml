@@ -1283,7 +1283,15 @@ jobs:
               throw "EXEC0312 missing inherited/new native CTest $needle"
             }
           }
-          Write-Output 'EXEC0312 source/cycle/PC claims staged in complete C11 game, NOT authentic first Spring, NOT physical Xbox'
+          # EXEC0313: the inherited EXEC0265 gate is intentionally still active.
+          # The exact C11 app gained EXEC0312 source, so advance ONLY its
+          # authenticated expected-app digest; preserve all ten hostile controls.
+          $repair313='research/Genghis_Khan_NES/execution_313_win32_312_source_token_repair'
+          python "$repair313/test_repair_gk313_provenance.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0313 provenance hostile tests failed' }
+          python "$repair313/repair_gk313_provenance.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0313 old native source SHA gate reconciliation failed' }
+          Write-Output 'EXEC0312/0313 current Win32 C11 source and inherited hostile provenance reconciled, NOT original Spring or physical Xbox'
 
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
