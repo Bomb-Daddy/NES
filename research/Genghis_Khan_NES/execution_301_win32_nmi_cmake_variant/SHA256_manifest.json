@@ -1,0 +1,26 @@
+{
+  "stage301.py": {
+    "size": 8267,
+    "sha256": "5e8932fb78bc026bf2d4bff509b0faeca370d65e66977ac2357398b83a4f4d5c"
+  },
+  "test_stage301.py": {
+    "size": 4165,
+    "sha256": "f261fd84b4a6e33f585519b092bb41391256b7884da256da5bfcad5b771bdd66"
+  },
+  "README.md": {
+    "size": 2654,
+    "sha256": "465116943f9a57f79fd7e48b34769abb48eba538901fc5a4420fd095cbe3efe3"
+  },
+  "GK1_EXEC0301_Implementer_HostileQA_Handoff.md": {
+    "size": 2654,
+    "sha256": "465116943f9a57f79fd7e48b34769abb48eba538901fc5a4420fd095cbe3efe3"
+  },
+  "GK1_EXEC0301_Cumulative_Master_v4.50_Addendum.md": {
+    "size": 2117,
+    "sha256": "a593e57853760d6b5cf1bd0674d6c6ccccb83b6593cbc822b355af1de4ba4c60"
+  },
+  "GK1_EXEC0301_Completion_Ledger.md": {
+    "size": 1062,
+    "sha256": "3f89f371d74e86c3d2cf3f696366849947ddf7e523c5789b9d914d46ff0a4d8c"
+  }
+}
