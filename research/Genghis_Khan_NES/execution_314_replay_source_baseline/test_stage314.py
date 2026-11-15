@@ -14,9 +14,22 @@ class Staging(unittest.TestCase):
         self.folder.mkdir()
         self.app=self.folder/'gk1_app_state.c'
         self.cmake=self.folder/'CMakeLists.txt'
-        self.app.write_text('before\n'+stage.SOURCE_ANCHOR+'\nafter\n')
-        self.cmake.write_text('add_library(gk1_app_state STATIC foo.c)\n')
+        # Binary writes preserve exact LF on Windows (write_text produces CRLF).\n        self.app.write_bytes(('before\n'+stage.SOURCE_ANCHOR+'\nafter\n').encode('utf-8'))
+        self.cmake.write_bytes(b'add_library(gk1_app_state STATIC foo.c)\n')
         self.before={p:p.read_bytes() for p in [self.app,self.cmake]}
+    def test_fixture_exact_lf_cross_platform(self):
+        raw=self.app.read_bytes()
+        self.assertIn(stage.SOURCE_ANCHOR.encode('utf-8'),raw)
+        self.assertNotIn(b'\r',raw)
+        self.assertNotIn(b'\r',self.cmake.read_bytes())
+
+    def test_translated_crlf_fixture_rejected_without_mutation(self):
+        self.app.write_bytes(self.app.read_bytes().replace(b'\n',b'\r\n'))
+        prior={p:p.read_bytes() for p in [self.app,self.cmake]}
+        with self.assertRaises(ValueError):stage.integrate(self.folder)
+        self.assertEqual(prior,{p:p.read_bytes() for p in [self.app,self.cmake]})
+        self.assertFalse((self.folder/'test_gk314_replay_source_baseline.c').exists())
+
     def tearDown(self):
         self.tmp.cleanup()
     def verify_unchanged(self):
