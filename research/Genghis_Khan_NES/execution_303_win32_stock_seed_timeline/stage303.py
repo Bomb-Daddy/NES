@@ -93,8 +93,8 @@ def prepare(root):
     if end<0 or h[end:].strip()!='#endif':
         raise ValueError('header final guard unexpected')
     h=h[:end]+PROTO+'\n'+h[end:]
-    cm=replace_once(cm,'gk300_stock_nmi_seed_clock.c',
-       'gk300_stock_nmi_seed_clock.c gk302_stock_seed_timeline.c')
+    cm=replace_once(cm,'gk300_stock_nmi_seed_clock.c gk282_stock_rng_trace.c',
+       'gk300_stock_nmi_seed_clock.c gk302_stock_seed_timeline.c gk282_stock_rng_trace.c')
     for name in ('GK1_257_CurrentWin32Workflow_RejectsStaleSourceAndFalsePass',
                  'GK1_297_StockResetInitializerAndUnknownC289Preseed',
                  'GK1_300_OriginalStockNmiGateClockAndRollback'):
