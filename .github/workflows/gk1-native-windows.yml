@@ -1362,6 +1362,23 @@ jobs:
           }
           Write-Output 'EXEC0316/317 native original CPU CLAIM ingestion / cross-world atomic refusal staged, not NES stock gameplay proof or a playable first Spring'
 
+      - name: EXEC0319 original CPU claim arithmetic, NMI and source-writer hostile QA
+        shell: pwsh
+        run: |
+          $base='research/Genghis_Khan_NES/execution_319_cpu_trace_math_bridge'
+          $app='current-gk1/execution_199'
+          python -m py_compile "$base/stage319.py" "$base/test_stage319.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0319 Python source-stage syntax failed' }
+          python "$base/test_stage319.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0319 hostile source-stage tests failed' }
+          python "$base/stage319.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0319 current game C11 math integration rejected' }
+          $cmake=Join-Path $app 'CMakeLists.txt'
+          if (-not (Select-String -LiteralPath $cmake -SimpleMatch -Pattern 'GK1_319_SourceCpuNmiStoreC289MathClaimsNoOrders' -Quiet)) {
+            throw 'EXEC0319 new real native CTest absent'
+          }
+          Write-Output 'EXEC0319 source NMI/STORE/C289 claimed-event arithmetic linked into native game, not Mesen runtime or first-Spring gameplay'
+
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
