@@ -1,4 +1,4 @@
-# GK1 EXEC0325 â original-stock opening chronology and native-app C11 guard
+# GK1 EXEC0325 — original-stock opening chronology and native-app C11 guard
 
 2026-11-16. **Partial, not a playable native Genghis Khan I release.**
 
