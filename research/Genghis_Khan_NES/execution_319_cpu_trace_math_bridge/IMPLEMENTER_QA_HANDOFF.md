@@ -1,0 +1,13 @@
+# GK1 EXEC0319 — Implementer and hostile-QA handoff — 2026-11-15/16
+
+**Predecessor**: EXEC0318 (Win32 CI231 success; QA-only). Existing C11 native application preserved, with original-stock two-campaign PRE_SETUP invariants. Public source revision <= EXEC0318 must be verified before applying. Independent source recovery EXEC0076 is accepted; no original ROM data is to be made public.
+
+**New tested source**: gk319_cpu_trace_math.c/h and test_gk319_cpu_trace_math.c, staged only after the real EXEC0316/EXEC0317 original-stock CPU trace parsing and campaign-bounding steps. This is a live linked C11 original-source verification component in the existing game library, not a standalone replacement. It reconciles chronologically interleaved NMI ($C106), completed CPU STORE of $84..$89, and RNG C289 source draw/after state from claimed events using existing source models (GK300/GK137). Each accepted receipt is deliberately labeled source claim only; no true Mesen observation or original game initialization is inferred.
+
+**Hostile controls**: first complete 6-writer set required; NMI +2 wrap and suppression modeled; wrong gate, wrong CPU PC/bank, missing STORES, malformed register-value membership, modified prior seed, modified after seed, corrupted draw, out-of-order cycle, stale claimed count, fabricated real-Mesen or Spring flags and rollback all fail closed. Test runtime 46/46 C11 assertions PASS; 46/46 ASan+UBSan PASS; 11/11 Python source-stage hostile checks PASS. Native complete Linux game not run; native Windows CI not yet run. No independent stock Mesen emulator run.
+
+**Source hierarchy**: Project authority; cumulative master v4.56 and completion ledger through EXEC0318; exact prior 0316/317 app integration; archived-versus-fresh original-stock Spring evidence; manual v2.01. The dated source evidence is operational and does not constitute agent read/execute ACK.
+
+**Next gameplay implementation**: original-stock initial seed writers, NMI/cycle and all C289 event sequence must be correlated with *real* stock-ROM Mesen startup, then derive character/ability/difficulty/season transformations producing all 14 Mongol and 27 World country states, genuine three playable controller orders. Do not substitute any archived/fresh Gold/Rate screenshot as a universal constant. Do not re-run settled Mesen-GAP-0001 tactical capture.
+
+**Privacy**: Copyright-clean sources/tests only may go on public GitHub and Collaboration Drive; original ROM, `.mss`, SRAM, private telemetry, screenshots and licensed assets remain in private Genghis research Drive. No release acceptance, full campaigns, or physical Xbox testing claimed. Leave hourly execution enabled until explicit Director stop/accepted completed release.
