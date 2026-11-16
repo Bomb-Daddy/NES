@@ -1434,6 +1434,14 @@ jobs:
             'stage323.py' = 'ae7d7cc6d26c949310c85c3f5f92f9a40ea9266b5bc9a2d585fa9a98e9d4ea26'
             'test_stage323.py' = '8d7499736e6a5399b09b7052f531a2af3ba24f69ae35dec90bb90d1fb4f98102'
           }
+          # EXEC0324: Git for Windows can materialize exact LF Git blobs as CRLF.
+          # Verify ALL authenticated EXEC0323 SHA256s after ONLY CRLF->LF normalization.
+          # Fail closed for CRCRLF/lone CR/NUL, tampering, missing files and rollback.
+          $src324 = 'research/Genghis_Khan_NES/execution_324_win32_323_source_canonicalization'
+          python "$src324/test_checkout.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0324 hostile Windows checkout-normalization tests failed' }
+          python "$src324/normalize_checkout.py" $src323
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0324 exact-source SHA canonicalization rejected' }
           foreach ($name in $requirements323.Keys) {
             $source = Join-Path $src323 $name
             if (-not (Test-Path -LiteralPath $source) -or (Get-Item -LiteralPath $source).Length -eq 0) {
