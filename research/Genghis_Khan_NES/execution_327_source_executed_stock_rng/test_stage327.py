@@ -45,7 +45,7 @@ with tempfile.TemporaryDirectory(prefix='gk327-hostile-') as root:
     ok(not any((app/n).exists() for n in FILES))
     ok(CMAKE_MARKER not in (app/'CMakeLists.txt').read_text())
     shutil.copyfile(original/'gk327_fixed6502_rng.c',source/'gk327_fixed6502_rng.c')
-    (source/'gk327_fixed6502_rng.h').write_bytes((source/'gk327_fixed6502_rng.h').read_bytes().replace(b'\n',b'\r\n'))
+    (source/'gk327_fixed6502_rng.h').write_bytes(canonical((source/'gk327_fixed6502_rng.h').read_bytes()).replace(b'\n',b'\r\n'))
     stage(source,app)
     ok(all((app/n).read_bytes()==canonical((original/n).read_bytes()) for n in FILES))
     ok(CMAKE_MARKER in (app/'CMakeLists.txt').read_text())
