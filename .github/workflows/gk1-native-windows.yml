@@ -1419,6 +1419,45 @@ jobs:
           }
           Write-Output 'EXEC0322 real inherited game C11 source and CTest linked; original first playable Spring still OPEN'
 
+      - name: EXEC0323 SHA-pinned original stock first-Spring record decoder and live Gk1App bridge
+        shell: pwsh
+        run: |
+          $src323 = 'research/Genghis_Khan_NES/execution_323_original_stock_ram_import'
+          $app323 = 'current-gk1/execution_199'
+          $requirements323 = @{
+            'gk323_original_spring.c' = 'd428b0c0b9e683076a6fd4e39f3bc7893c0919cc694d4c6315187a3305a034b1'
+            'gk323_original_spring.h' = 'fc2074ef04969e2f73cfb45421828844c7e440f0a7a5981aaf831fc04a05c657'
+            'gk323_app_stock_bridge.c' = '23b4616022c38b1604c31e5c768774ee099780be087bd7e531f5ed0f63c8fb7c'
+            'gk323_app_stock_bridge.h' = '3f3d5ed0477651e0030b7b81a4169ddb4b6bbecb64d19949b228a8409fa8d6ea'
+            'test_gk323_original_spring.c' = '256f556d2ca44f1e1d484e86e607e25a0800d8d842364c9202acd7b864cd944c'
+            'test_gk323_app_bridge.c' = '2a572727ade4e50e1a5e07c9cd67b5843329973e3cc17207d041f2d5072d97df'
+            'stage323.py' = 'ae7d7cc6d26c949310c85c3f5f92f9a40ea9266b5bc9a2d585fa9a98e9d4ea26'
+            'test_stage323.py' = '8d7499736e6a5399b09b7052f531a2af3ba24f69ae35dec90bb90d1fb4f98102'
+          }
+          foreach ($name in $requirements323.Keys) {
+            $source = Join-Path $src323 $name
+            if (-not (Test-Path -LiteralPath $source) -or (Get-Item -LiteralPath $source).Length -eq 0) {
+              throw "EXEC0323 source missing or empty: $name"
+            }
+            $sha = (Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($sha -ne $requirements323[$name]) { throw "EXEC0323 exact source SHA mismatch: $name" }
+          }
+          python -m py_compile "$src323/stage323.py" "$src323/test_stage323.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0323 source Python syntax failed' }
+          python "$src323/test_stage323.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0323 hostile source-stage tests failed' }
+          python "$src323/stage323.py" $app323
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0323 native source integration failed' }
+          $cm323 = Join-Path $app323 'CMakeLists.txt'
+          foreach ($required in @('gk323_original_spring.c','gk323_app_stock_bridge.c',
+            'GK1_323_OriginalSpring_AuthenticRecordDecode_BanksAndRollback',
+            'GK1_323_LiveGk1App_OriginalSpringReadOnlyBridge')) {
+            if (-not (Select-String -LiteralPath $cm323 -SimpleMatch -Pattern $required -Quiet)) {
+              throw "EXEC0323 native app/source CTest absent: $required"
+            }
+          }
+          Write-Output 'EXEC0323 source-authentic captured Spring decoder integrated; NOT independent NES RNG, no real port controller orders'
+
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
