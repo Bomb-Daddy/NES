@@ -1393,6 +1393,32 @@ jobs:
           }
           Write-Output 'EXEC0319 source NMI/STORE/C289 claimed-event arithmetic linked into native game, not Mesen runtime or first-Spring gameplay'
 
+      - name: EXEC0322 authenticate and integrate bounded first-Spring phase
+        shell: pwsh
+        run: |
+          $base321='research/Genghis_Khan_NES/execution_321_first_spring_phase_candidate'
+          $app='current-gk1/execution_199'
+          # No-op Python runs from empty published files previously caused false pass.
+          foreach ($name in @('stage321.py','test_stage321.py','gk321_first_spring_phase.c','gk321_first_spring_phase.h','test_gk321_first_spring_phase.c')) {
+            $src=Join-Path $base321 $name
+            if (-not (Test-Path -LiteralPath $src) -or (Get-Item -LiteralPath $src).Length -lt 80) {
+              throw "EXEC0322 empty or missing required executable source: $src"
+            }
+          }
+          python -m py_compile "$base321/stage321.py" "$base321/test_stage321.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0322 Python C11 source-stage syntax failed' }
+          python "$base321/test_stage321.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0322 source-authentication hostile tests failed' }
+          python "$base321/stage321.py" $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0322 full inherited native C11 app stage failed' }
+          $cmake=Join-Path $app 'CMakeLists.txt'
+          foreach ($needle in @('gk321_first_spring_phase.c','GK1_321_BoundedSpringPhaseArithmetic_RejectsUniversalSnapshot')) {
+            if (-not (Select-String -LiteralPath $cmake -SimpleMatch -Pattern $needle -Quiet)) {
+              throw "EXEC0322 new native C11 source/CTest absent $needle"
+            }
+          }
+          Write-Output 'EXEC0322 real inherited game C11 source and CTest linked; original first playable Spring still OPEN'
+
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
