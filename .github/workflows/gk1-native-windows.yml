@@ -1497,6 +1497,35 @@ jobs:
           }
           Write-Output 'EXEC0325 staged in actual C11 app: original-stock timeline ordering guard; NO native first-Spring unlock, NO physical Xbox acceptance'
 
+      - name: EXEC0326 authentic 6502 CPU store address source and hostile QA
+        shell: pwsh
+        run: |
+          $src326 = 'research/Genghis_Khan_NES/execution_326_original_cpu_country_write'
+          $app326 = 'current-gk1/execution_199'
+          foreach ($name in @('gk326_sha256.h','gk326_sha256.c',
+            'gk326_cpu_country_store.h','gk326_cpu_country_store.c',
+            'test_gk326_cpu_country_store.c','SOURCE_SHA256.txt',
+            'stage326.py','test_stage326.py')) {
+            $file = Join-Path $src326 $name
+            if (-not (Test-Path -LiteralPath $file) -or (Get-Item -LiteralPath $file).Length -lt 40) {
+              throw "EXEC0326 missing/empty required source: $file"
+            }
+          }
+          python -m py_compile "$src326/stage326.py" "$src326/test_stage326.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0326 staging syntax failure' }
+          python "$src326/test_stage326.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0326 hostile staging tests failed' }
+          python "$src326/stage326.py" $app326
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0326 existing C11 application staging failed' }
+          $cm326 = Join-Path $app326 'CMakeLists.txt'
+          foreach ($needle in @('gk326_cpu_country_store.c',
+            'GK1_326_6502CountryStoreEffectiveAddressSourceBankAndRollback')) {
+            if (-not (Select-String -LiteralPath $cm326 -SimpleMatch -Pattern $needle -Quiet)) {
+              throw "EXEC0326 C11 module/CTest missing in actual inherited game: $needle"
+            }
+          }
+          Write-Output 'EXEC0326 linked to SAME native app; real Windows CTest pending; stock initial Spring and Xbox campaign still OPEN'
+
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
         run: |
