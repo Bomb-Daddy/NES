@@ -1,0 +1,5 @@
+# EXEC0325 Win32 CI revision v1.01 (2026-11-16)
+
+The first Windows CI attempt, https://github.com/Bomb-Daddy/NES/actions/runs/43809058683 at commit `419d49748d5841a5b9e6a157948f8b8c5209315a`, failed in source-stage **Python QA only** before any WinMain compile or Windows CTests. Root cause: `test_stage325.py` compared the canonical LF staged files against original Git Windows-checkout CRLF bytes, causing a false `AssertionError: copied byte exact`. The correctly SHA-pinned `stage325.py` already canonicalizes line endings and was NOT the defect. Correction updates only `test_stage325.py`: compare to `normalize((ROOT/n).read_bytes())` and add `normalize` to import. No original C11 files or private records changed, no source checks weakened or tests skipped.
+
+Corrected source Git blob `4dc19e11d7f23f9b9634b239e08fd13a739d70db`; commit `aa6e593682468bc678d243e8aea6febfab773df9`. Host Linux `python test_stage325.py`: 18/18 PASS. The corrected Win32 CI run is https://github.com/Bomb-Daddy/NES/actions/runs/43809302423 . Its final result must be inspected before claiming Windows CTest acceptance.
