@@ -38,6 +38,8 @@ on:
       - 'research/Genghis_Khan_NES/execution_314_replay_source_baseline/**'
       - 'research/Genghis_Khan_NES/execution_316_stock_cpu_trace_ingest/**'
       - 'research/Genghis_Khan_NES/execution_317_original_cpu_world_bound/**'
+      - 'research/Genghis_Khan_NES/execution_319_cpu_trace_math_bridge/**'
+      - 'research/Genghis_Khan_NES/execution_320_win32_319_missing_stage_restore/**'
 
 permissions:
   contents: read
@@ -1362,6 +1364,16 @@ jobs:
           }
           Write-Output 'EXEC0316/317 native original CPU CLAIM ingestion / cross-world atomic refusal staged, not NES stock gameplay proof or a playable first Spring'
 
+      - name: EXEC0320 authenticate and normalize complete EXEC0319 source before Python runs
+        shell: pwsh
+        run: |
+          $src319='research/Genghis_Khan_NES/execution_319_cpu_trace_math_bridge'
+          $guard='research/Genghis_Khan_NES/execution_320_win32_319_missing_stage_restore'
+          python "$guard/verify320.py" $src319
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0320 rejected missing, empty, modified or malformed original CPU source' }
+          python "$guard/test_verify320.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0320 hostile source authenticity tests failed' }
+          Write-Output 'EXEC0320 authentic nonempty EXEC0319 source staged; rejects blank Python no-op success'
       - name: EXEC0319 original CPU claim arithmetic, NMI and source-writer hostile QA
         shell: pwsh
         run: |
@@ -1373,6 +1385,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0319 hostile source-stage tests failed' }
           python "$base/stage319.py" $app
           if ($LASTEXITCODE -ne 0) { throw 'EXEC0319 current game C11 math integration rejected' }
+          python research/Genghis_Khan_NES/execution_320_win32_319_missing_stage_restore/verify320.py $base $app
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0320 native app source/CTest afterimage identity failed' }
           $cmake=Join-Path $app 'CMakeLists.txt'
           if (-not (Select-String -LiteralPath $cmake -SimpleMatch -Pattern 'GK1_319_SourceCpuNmiStoreC289MathClaimsNoOrders' -Quiet)) {
             throw 'EXEC0319 new real native CTest absent'
