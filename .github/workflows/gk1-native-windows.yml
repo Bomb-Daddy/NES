@@ -41,6 +41,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_319_cpu_trace_math_bridge/**'
       - 'research/Genghis_Khan_NES/execution_320_win32_319_missing_stage_restore/**'
       - 'research/Genghis_Khan_NES/execution_325_original_stock_opening_phases/**'
+      - 'research/Genghis_Khan_NES/execution_327_source_executed_stock_rng/**'
 
 permissions:
   contents: read
@@ -1525,6 +1526,36 @@ jobs:
             }
           }
           Write-Output 'EXEC0326 linked to SAME native app; real Windows CTest pending; stock initial Spring and Xbox campaign still OPEN'
+
+      - name: EXEC0327 execute authenticated original fixed-bank RNG in inherited native C11 app
+        shell: pwsh
+        run: |
+          $src327 = 'research/Genghis_Khan_NES/execution_327_source_executed_stock_rng'
+          $app327 = 'current-gk1/execution_199'
+          foreach ($name in @('gk327_fixed6502_rng.c','gk327_fixed6502_rng.h',
+            'gk327_app_rng_bridge.c','gk327_app_rng_bridge.h',
+            'test_gk327_cpu_rng.c','test_gk327_app_rng_bridge.c',
+            'stage327.py','test_stage327.py')) {
+            $file = Join-Path $src327 $name
+            if (-not (Test-Path -LiteralPath $file) -or (Get-Item -LiteralPath $file).Length -lt 40) {
+              throw "EXEC0327 missing or empty source $file"
+            }
+          }
+          python -m py_compile "$src327/stage327.py" "$src327/test_stage327.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0327 Python syntax failed' }
+          python "$src327/test_stage327.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0327 hostile SHA-pinned source tests failed' }
+          python "$src327/stage327.py" $app327
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0327 native app source stage failed' }
+          $cm327=Join-Path $app327 'CMakeLists.txt'
+          foreach ($required in @('gk327_fixed6502_rng.c','gk327_app_rng_bridge.c',
+             'GK1_327_BoundedFixedBank6502InterpreterAndRollback',
+             'GK1_327_ActualGk1AppSourceRngNoOrdersAndRollback')) {
+            if (-not (Select-String -LiteralPath $cm327 -SimpleMatch -Pattern $required -Quiet)) {
+              throw "EXEC0327 actual native source/CTest not linked: $required"
+            }
+          }
+          Write-Output 'EXEC0327 exact original-ROM source CPU RNG executor linked; seed is UNWITNESSED, Spring still PRE_SETUP, NO original controller orders granted'
 
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
