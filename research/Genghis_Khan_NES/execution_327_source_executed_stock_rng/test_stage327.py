@@ -31,10 +31,13 @@ with tempfile.TemporaryDirectory(prefix='gk327-hostile-') as root:
     (app/'gk326_sha256.h').write_text('/* prior */\n')
     (app/'gk326_sha256.c').write_text('/* prior */\n')
     ok(set(FILES)==set(SHA256))
-    ok(all(hashlib.sha256((source/n).read_bytes()).hexdigest()==SHA256[n] for n in FILES))
+    ok(all(hashlib.sha256(canonical((source/n).read_bytes())).hexdigest()==SHA256[n] for n in FILES))
     ok(canonical(b'A\r\nB\r\n')==b'A\nB\n')
     for bad in (b'',b'\x00',b'A\rB',b'A\r\r\nB'):
         fails(lambda b=bad: canonical(b))
+    # Git-for-Windows may check out text as CRLF; authentic SHA is over canonical LF.
+    (source/'gk327_app_rng_bridge.h').write_bytes((source/'gk327_app_rng_bridge.h').read_bytes().replace(b'\r\n', b'\n').replace(b'\n', b'\r\n'))
+    ok(hashlib.sha256(canonical((source/'gk327_app_rng_bridge.h').read_bytes())).hexdigest()==SHA256['gk327_app_rng_bridge.h'])
     prepared,cmake=prepare(source,app)
     ok(len(prepared)==6 and CMAKE_MARKER.encode() in cmake)
     (source/'gk327_fixed6502_rng.c').write_bytes((source/'gk327_fixed6502_rng.c').read_bytes()+b'/* injected */\n')
@@ -44,10 +47,10 @@ with tempfile.TemporaryDirectory(prefix='gk327-hostile-') as root:
     shutil.copyfile(original/'gk327_fixed6502_rng.c',source/'gk327_fixed6502_rng.c')
     (source/'gk327_fixed6502_rng.h').write_bytes((source/'gk327_fixed6502_rng.h').read_bytes().replace(b'\n',b'\r\n'))
     stage(source,app)
-    ok(all((app/n).read_bytes()==(original/n).read_bytes() for n in FILES))
+    ok(all((app/n).read_bytes()==canonical((original/n).read_bytes()) for n in FILES))
     ok(CMAKE_MARKER in (app/'CMakeLists.txt').read_text())
     fails(lambda:stage(source,app))  # duplicate guard
-    ok((app/'gk327_fixed6502_rng.h').read_bytes()==(original/'gk327_fixed6502_rng.h').read_bytes())
+    ok((app/'gk327_fixed6502_rng.h').read_bytes()==canonical((original/'gk327_fixed6502_rng.h').read_bytes()))
     # Regress specific malicious source/path swaps independently.
     (app/'CMakeLists.txt').write_text('wrong source project\n')
     fails(lambda:prepare(source,app))
