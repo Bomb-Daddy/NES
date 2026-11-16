@@ -1,0 +1,54 @@
+{
+  "files": {
+    "IMPLEMENTER_QA_HANDOFF.md": {
+      "bytes": 2741,
+      "sha256": "1c027223f6eaaff9e89f00bf10181c37cc5b58b1b98b1656c95db76079b74bb5"
+    },
+    "README.md": {
+      "bytes": 3836,
+      "sha256": "7414c6a3f2127f4b45b38422a13a3c320b1d6897cd7dca3a0a26b31d031b4039"
+    },
+    "gk319_cpu_trace_math.c": {
+      "bytes": 3006,
+      "sha256": "1319766048a5783ea6e17cde6b953855fec3e307a8e803a1717c742073c430e3"
+    },
+    "gk319_cpu_trace_math.h": {
+      "bytes": 1344,
+      "sha256": "4e51efb7018cf9f1acba354220420f9fe40f05728300879e52be79e4559357c9"
+    },
+    "qa_inherited/gk137_stock_rng.c": {
+      "bytes": 910,
+      "sha256": "b8ac494c88475612ab1875967be8c2487cc1a06cb03fac9c192e96108f7eb40a"
+    },
+    "qa_inherited/gk137_stock_rng.h": {
+      "bytes": 411,
+      "sha256": "5fa5ebc8101401c560db4abaf4e90a2989b5468ccabebd25a1fc5d82b6dc4099"
+    },
+    "qa_inherited/gk300_stock_nmi_seed_clock.c": {
+      "bytes": 821,
+      "sha256": "544ae62b14c35c12b62dca5e9c3c76b0c67db992113fbbaf2cef778b93a0f446"
+    },
+    "qa_inherited/gk300_stock_nmi_seed_clock.h": {
+      "bytes": 630,
+      "sha256": "6ecaa01f2426be80e6f493383525917ddc86c233f3eaac238581d4f9e3bb5d17"
+    },
+    "qa_inherited/gk316_cpu_claims_ingest.h": {
+      "bytes": 896,
+      "sha256": "90b4903053ad05965e2f6413d76666a4de11c599888b5b860596b9b2d96a5b77"
+    },
+    "stage319.py": {
+      "bytes": 3874,
+      "sha256": "3be8eb2fca8a6b00f15a7d84117c3f00676959a233ebcb89a0c6da6e301de816"
+    },
+    "test_gk319_cpu_trace_math.c": {
+      "bytes": 4521,
+      "sha256": "629a1a750c954630d471dfa8b08276700dee972b299952891a3f3b5081e82be3"
+    },
+    "test_stage319.py": {
+      "bytes": 2829,
+      "sha256": "9336f64517ffe4e8f979509b2a987594c1c494a19dd6e5aeea2be82abc5ce1bd"
+    }
+  },
+  "not_a_complete_app": true,
+  "private_rom_included": false
+}
