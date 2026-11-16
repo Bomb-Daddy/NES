@@ -2,7 +2,7 @@
 import tempfile
 import shutil
 from pathlib import Path
-from stage325 import install,Refused,source_files,update_cmake,FILE_NAMES
+from stage325 import install,Refused,source_files,update_cmake,FILE_NAMES,normalize
 ROOT=Path(__file__).resolve().parent
 checks=0
 
@@ -24,7 +24,7 @@ with tempfile.TemporaryDirectory() as d:
     new=(app/"CMakeLists.txt").read_bytes()
     check(new.count(b"GK1_325_SourceStockSetupCalendarFinanceEventAndOrders")==1,"test wired")
     check(b"add_library(gk1_app_state STATIC gk325_opening_sequence.c gk325_app_opening_bridge.c " in new,"library linked")
-    check(all((app/n).read_bytes()==(ROOT/n).read_bytes() for n in FILE_NAMES),"copied byte exact")
+    check(all((app/n).read_bytes()==normalize((ROOT/n).read_bytes()) for n in FILE_NAMES),"copied canonical LF byte exact")
     try:install(ROOT,app)
     except Refused:check(True,"duplicate refused")
     else:check(False,"duplicate accepted")
