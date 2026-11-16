@@ -1,0 +1,18 @@
+{
+  "execution": "EXEC0329",
+  "date": "2026-11-16",
+  "classification": "COPYRIGHT_CLEAN_SOURCE_ONLY_NOT_RELEASE",
+  "files": {
+    "gk329_archived_seed_replay.c": "bb9de73d942ea12ea4d883f3f01c88eca734e2ddda9f41988d9f6fe5435f13e4",
+    "gk329_archived_seed_replay.h": "fd6b5dde86845a629b20436942d0c052102e356c8eb80daea3fb9803f6411bee",
+    "gk329_app_bridge.c": "1ceb8a5f61a4a4bf82863c470f16f7e7a47dbae10d62c62929a518dbcd94d1f5",
+    "gk329_app_bridge.h": "e7431b913a57c628b081154c4c7fec2ec4575398192ad19f1804e224431c5c4a",
+    "test_gk329_private.c": "c5db134e78e54f1d0b972cc76aa2ebef9e964fed32e6fe213503b5ee8f5cf627",
+    "test_gk329_public.c": "19a473b1702a1006d9ab898936ec806247ce3b865ff68ef09bb799967a461449",
+    "test_gk329_app_bridge.c": "4c4c513a24f74795301996a24db1b5f96fb5973f7ff200e079dc971540142fbb",
+    "stage329.py": "c49e5f6b7c2aac2ffa7ba58d479ac10271746250bc51f5753953c2c7012d25d7",
+    "test_stage329.py": "83ee8d3b6bec83f44e15ef5a186a0b035927e74deb582da9d27c92d9a5a329a4",
+    "README.md": "68e1f07da1e2a70b7e7fa2eb0370eebd6225e6a7a1c97a0e6fe832bedbaf324e",
+    "QA_HANDOFF.md": "50cdbe761d3ecc81ffaadc456028ba70f42ba650ffb2672468dbc297ad3c647e"
+  }
+}

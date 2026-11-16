@@ -42,6 +42,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_320_win32_319_missing_stage_restore/**'
       - 'research/Genghis_Khan_NES/execution_325_original_stock_opening_phases/**'
       - 'research/Genghis_Khan_NES/execution_327_source_executed_stock_rng/**'
+      - 'research/Genghis_Khan_NES/execution_329_archived_stock_rng/**'
 
 permissions:
   contents: read
@@ -1556,6 +1557,50 @@ jobs:
             }
           }
           Write-Output 'EXEC0327 exact original-ROM source CPU RNG executor linked; seed is UNWITNESSED, Spring still PRE_SETUP, NO original controller orders granted'
+
+      - name: Stage EXEC0329 authentic archived-stock RNG C11 code into inherited Win32 app
+        shell: pwsh
+        run: |
+          $src329 = 'research/Genghis_Khan_NES/execution_329_archived_stock_rng'
+          $app329 = 'current-gk1/execution_199'
+          # Exact source SHA-256 before staged insertion; canonicalize Windows CRLF.
+          $checks329 = @{
+            'gk329_archived_seed_replay.c' = 'bb9de73d942ea12ea4d883f3f01c88eca734e2ddda9f41988d9f6fe5435f13e4'
+            'gk329_archived_seed_replay.h' = 'fd6b5dde86845a629b20436942d0c052102e356c8eb80daea3fb9803f6411bee'
+            'gk329_app_bridge.c' = '1ceb8a5f61a4a4bf82863c470f16f7e7a47dbae10d62c62929a518dbcd94d1f5'
+            'gk329_app_bridge.h' = 'e7431b913a57c628b081154c4c7fec2ec4575398192ad19f1804e224431c5c4a'
+            'test_gk329_private.c' = 'c5db134e78e54f1d0b972cc76aa2ebef9e964fed32e6fe213503b5ee8f5cf627'
+            'test_gk329_public.c' = '19a473b1702a1006d9ab898936ec806247ce3b865ff68ef09bb799967a461449'
+            'test_gk329_app_bridge.c' = '4c4c513a24f74795301996a24db1b5f96fb5973f7ff200e079dc971540142fbb'
+            'stage329.py' = 'c49e5f6b7c2aac2ffa7ba58d479ac10271746250bc51f5753953c2c7012d25d7'
+            'test_stage329.py' = '83ee8d3b6bec83f44e15ef5a186a0b035927e74deb582da9d27c92d9a5a329a4'
+          }
+          foreach ($name329 in $checks329.Keys) {
+            $path329 = Join-Path $src329 $name329
+            if (-not (Test-Path -LiteralPath $path329)) { throw "Missing EXEC0329 source $name329" }
+            $raw329 = [IO.File]::ReadAllBytes($path329)
+            if ($raw329.Length -lt 40) { throw "Truncated EXEC0329 source $name329" }
+            $text329 = [Text.Encoding]::UTF8.GetString($raw329)
+            $lf329 = $text329.Replace("`r`n", "`n")
+            if ($lf329.Contains("`r")) { throw "Invalid EXEC0329 CR or CRCRLF $name329" }
+            $canonical329 = [Text.Encoding]::UTF8.GetBytes($lf329)
+            $hash329 = [System.Security.Cryptography.SHA256]::HashData($canonical329)
+            $actual329 = [Convert]::ToHexString($hash329).ToLowerInvariant()
+            if ($actual329 -ne $checks329[$name329]) { throw "EXEC0329 source identity refused: $name329" }
+            [IO.File]::WriteAllBytes($path329, $canonical329)
+          }
+          python -m py_compile "$src329/stage329.py" "$src329/test_stage329.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0329 Python syntax failure' }
+          python "$src329/test_stage329.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0329 hostile staging failure' }
+          python "$src329/stage329.py" $app329
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0329 inherited game source stage failure' }
+          foreach ($needle329 in @('gk329_archived_seed_replay.c', 'gk329_app_bridge.c', 'GK1_329_ArchivedOriginalSourceRngRefusalNoMutation', 'GK1_329_RealAppNoForgedSpringAcceptance')) {
+            if (-not (Select-String -LiteralPath "$app329/CMakeLists.txt" -SimpleMatch -Pattern $needle329 -Quiet)) {
+              throw "EXEC0329 native source or test not registered: $needle329"
+            }
+          }
+          Write-Output 'EXEC0329 original archived-stock RNG linked READ ONLY: no initial Spring or controller orders granted'
 
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
