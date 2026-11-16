@@ -40,6 +40,7 @@ on:
       - 'research/Genghis_Khan_NES/execution_317_original_cpu_world_bound/**'
       - 'research/Genghis_Khan_NES/execution_319_cpu_trace_math_bridge/**'
       - 'research/Genghis_Khan_NES/execution_320_win32_319_missing_stage_restore/**'
+      - 'research/Genghis_Khan_NES/execution_325_original_stock_opening_phases/**'
 
 permissions:
   contents: read
@@ -1465,6 +1466,36 @@ jobs:
             }
           }
           Write-Output 'EXEC0323 source-authentic captured Spring decoder integrated; NOT independent NES RNG, no real port controller orders'
+
+      - name: EXEC0325 source phase chronology and real Gk1App native C11 regression
+        shell: pwsh
+        run: |
+          $src325 = 'research/Genghis_Khan_NES/execution_325_original_stock_opening_phases'
+          $app325 = 'current-gk1/execution_199'
+          foreach ($filename in @('gk325_opening_sequence.h','gk325_opening_sequence.c',
+            'gk325_app_opening_bridge.h','gk325_app_opening_bridge.c',
+            'test_gk325_opening_sequence.c','test_gk325_app_opening_bridge.c',
+            'stage325.py','test_stage325.py','SOURCE_SHA256.txt')) {
+            $full = Join-Path $src325 $filename
+            if (-not (Test-Path -LiteralPath $full) -or (Get-Item -LiteralPath $full).Length -lt 40) {
+              throw "EXEC0325 missing or empty copyright-clean source $full"
+            }
+          }
+          python -m py_compile "$src325/stage325.py" "$src325/test_stage325.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0325 Python source syntax failure' }
+          python "$src325/test_stage325.py"
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0325 hostile stage / tamper / rollback tests FAILED' }
+          python "$src325/stage325.py" $app325
+          if ($LASTEXITCODE -ne 0) { throw 'EXEC0325 actual inherited C11 source stage FAILED' }
+          $actualCmake = Join-Path $app325 'CMakeLists.txt'
+          foreach ($required in @('gk325_opening_sequence.c','gk325_app_opening_bridge.c',
+            'GK1_325_SourceStockSetupCalendarFinanceEventAndOrders',
+            'GK1_325_ActualGk1AppClassicWorldPreSetupRollback')) {
+            if (-not (Select-String -LiteralPath $actualCmake -SimpleMatch -Pattern $required -Quiet)) {
+              throw "EXEC0325 native library / test not present in actual inherited game: $required"
+            }
+          }
+          Write-Output 'EXEC0325 staged in actual C11 app: original-stock timeline ordering guard; NO native first-Spring unlock, NO physical Xbox acceptance'
 
       - name: Compile actual current 1280x720 WinMain C11 XInput game
         shell: pwsh
