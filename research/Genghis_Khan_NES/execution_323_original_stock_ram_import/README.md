@@ -1,0 +1,13 @@
+# Genghis Khan I — EXEC0323 stock first-Spring record source bridge
+
+Scope: additional copyright-clean C11 code/tests for **the existing inherited native game**; not a replacement app. Exact stock iNES SHA256 is a provenance identifier only. No original ROM, original RAM, screenshot, checkpoint, save, or licensed art/audio assets are in this source.
+
+This increment parses captured original-stock first-Spring 83-byte country records and binds observations read-only to the actual `Gk1App` Classic active scenario, while refusing the wrong RAM bank (fresh `nesWorkRam` vs archived `nesSaveRam`), scenario, year, season, unsupported fresh World captures, false ROM SHA, corrupt fields, and unsupported Enhanced profile. Goods begin at country offset 0x22, not 0x24. All output is atomic. 14 Mongol, 27 World. Source-observed three orders are **not** playable native turns.
+
+It DOES NOT independently compute RNG, ruler/difficulty/ability transforms, seasonal growth, 3 command orders or full-game acceptance. Two independent stock NES first-Spring outcomes differ and must not be hardcoded. Source captures are supplied privately at runtime by an authorized source; caller asserted SHA alone is not a cryptographic attestation.
+
+Native integration: after preceding EXEC0322 stage, run `python execution_323_original_stock_ram_import/test_stage323.py` then `python execution_323_original_stock_ram_import/stage323.py current-gk1/execution_199` (path relative to repo root). The stage SHA-pins all six C11 files, copies atomically into current native game, appends source files to the existing `gk1_app_state` CMake target, registers two native CTests, refuses stale/duplicate scope, checks rollback. Does not change save files or existing original source.
+
+Local host assertions: raw decoder C11 34; ASan+UBSan raw decoder 34; mock-header Gk1App bridge C11 15; hostile stage 19. A PRIVATE verification harness independently compared 55 authentic original-stock captured 83-byte records (14 fresh Mongol WorkRAM; 14 archived Mongol SaveRAM; 27 archived World SaveRAM) against source truth, 1393 assertions PASS. Private RAM/ROM not in public bundle. The Gk1App bridge's native full-suite and Win32 test results must only be claimed once an actual integrated build executes.
+
+Correct acceptance vocabulary: VERIFIED_STATIC source SHA + publication if independently read back; TESTED_HOST_LINUX_C11_COMPONENT; TESTED_PORT_WIN32_CI only on actual CI; TESTED_PORT_LINUX_FULL only if full native game tests actually run; OBSERVED_RUNTIME_STOCK_FRESH_RESET and OBSERVED_RUNTIME_STOCK_ARCHIVED_RESTORED refer to prior genuine EXEC0076 Mesen evidence, NOT new Mesen runs. PHYSICAL_XBOX and FULL_CAMPAIGNS NOT RUN. RELEASE_ACCEPTED false.
